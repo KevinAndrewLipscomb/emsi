@@ -70,11 +70,14 @@ else
       $msg .= "FirstName"
          . ",MiddleInitial"
          . ",LastName"
+         . ",CerNum"
+         . ",CertLevel"
+         . ",CertNum"
          . ",CertLevel"
          . ",EmailAddress"
-         . ",CertNum"
          . ",DateOfBirth"
          . ",StreetAddress"
+         . ",StreetAddress2"
          . ",City"
          . ",State"
          . ",ZipCode"
@@ -82,26 +85,33 @@ else
          . ",CountyCode"
          . ",RegionCode"
          . ",BeInstructor"
+         . ",Surge"
+         . ",PrimaryAffiliationGroup"
+         . ",SecondAffiliationGroup"
+         . ",OtherAffiliationGroup"
          . "\n";
       while ($row = mysql_fetch_array($result))
          {
          extract($row);
          $msg .= '"'
-            . $first_name
+            . ucfirst(strtolower($first_name))
             . '","'
             . $middle_initial
             . '","'
-            . $last_name
+            . ucfirst(strtolower($last_name))
+            . '","'
+            . sprintf('pa%06s',$cert_num)
             . '","'
             . $cert_level_name
             . '","'
-            . $email_address
             . '","'
-            . $cert_num
+            . '","'
+            . $email_address
             . '","'
             . $date_of_birth
             . '","'
             . $street_address
+            . '","'
             . '","'
             . $city
             . '","'
@@ -116,6 +126,12 @@ else
             . $region_code
             . '","'
             . ($be_instructor==1 ? 'Yes' : 'No' )
+            . '","'
+            . 'No'
+            . '","'
+            . 'EMS'
+            . '","'
+            . '","'
             . '"'
             . "\n";
          }
