@@ -155,7 +155,7 @@ $be_instructor = $_be_instructor;
                <h2><i>Error!</i></h2>
                <b>
                <blockquote>
-                  <p>One or more required parameters were missing or invalid:</p>
+                  <p>One or more required parameters were missing or invalid.</p>
                   <p>Please press your browser's [<--&nbsp;BACK] button to correct the problems.</p>
                </blockquote>            
                </b>
