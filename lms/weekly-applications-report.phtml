@@ -63,7 +63,7 @@ else
          . ", county_code "
          . ", region_code "
          . ", be_instructor "
-         . "from " . $mode . "lms_applicant left join " . $mode . "valid_for_lms on cert_num=short_cert_num "
+         . "from " . $mode . "lms_applicant left join " . $mode . "valid_for_lms on cert_num=short_cert_num and lms_applicant.cert_level_code=valid_for_lms.cert_level_code "
          . "   left join " . $mode . "cert_level_map using (cert_level_code) "
          . "where batch_id='$batch_id' ";
       $result = mysql_query($sql) or die("Select failed with error: " . mysql_error());
@@ -100,7 +100,7 @@ else
             . '","'
             . ucfirst(strtolower($last_name))
             . '","'
-            . $cert_level_name . ($cert_level_name=='FR' ? "f" : "")
+            . sprintf('pa%06s',$cert_num) . ($cert_level_name=='FR' ? "f" : "")
             . '","'
             . $cert_level_name
             . '","'
