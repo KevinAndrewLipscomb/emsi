@@ -1,0 +1,104 @@
+<title>Instructions for completing Student Application form</title>
+INSTRUCTIONS FOR COMPLETING STUDENT APPLICATION
+
+This application should be completed in pencil so that any mistakes may be erased completely. Care should be taken to answer all items accurately, filling in the circles and not straying into the circle next to it. When filling in the circles, please take care to not make multiple entities in a column, leaving others blank. In completing the name and address sections, do not fill in unused blocks or circles. PLEASE PRINT CLEARLY! 
+1.	
+NAME – There is a separate section for each part of your name (last, first, and middle initial).  If you utilize a suffix, complete this part. 
+
+2.	
+ADDRESS – This is to be the address to which the postal service delivers your mail.  Take note that city is a separate section from street, P.O. Box #, or route.  Should your street address require more spaces than those provided (25), you must abbreviate the address so that it fits, and is recognizable. 
+
+3.	
+STATE/ZIP CODE – Use the standard two-letter abbreviation (PA).  The basic zip code should be used (5 numbers). 
+
+4.	
+BIRTH DATE – This is a six (6) digit field.  Be sure to use a leading zero (0), when applicable, i.e., 01-09-70, month, day, and year. 
+
+5.	
+REGISTRATION NO. – This is your DOH certification number, if certified.  This section should be left blank if is form being completed by a student in a basic class. 
+
+
+
+Column A .............(1) If a valid number
+
+(2) If an invalid number (dummy number assigned by regional council) 
+Column B--G ........Enter your six (6) digit DOH certification numb er.
+
+Column H .............Enter your level of current certification.
+
+(A) 
+First Responder (D) PHRN (F) EMT (new curriculum) 
+
+(B) 
+EMT (old curriculum) (E) HP Physician (H) Rescue (all courses) 
+
+(C) 
+Paramedic 
+
+
+6. SPECIAL CODES 
+
+Column A - G .......This is the unique DOH-assigned class number (enter all zeroes (0) only when completing form for name or address change. 
+Column H .............Sex ------------------(1) Male (2) Female
+
+Column I...............Education Level ----(1) Less than high school (3) Post High School
+
+(2) High School  (4) College Graduate  
+Column J...............Race-----------------(1)  White  (4)  Asian or Pacific Islander  
+(2)  Black  (5)  American Indian or Alaskan Native  
+(3) Hispanic  
+Column K .............Enter Zero (0).  
+
+Leave Blank 
+APPENDIX I 
+4/30/2003 
+
+
+INSTRUCTIONS FOR COMPLETING STUDENT APPLICATION
+
+Column L-M .........Enter the two-digit county of residence code. Enter (0) in both if residence is outside PA. 
+NOTE:	When completing this form for a change of name, address, or phone number, enter zero (0) in Columns A -K. 
+7.	
+FINAL SCORE SEND TO – Enter the regional EMS council number to which the student is registered; or if a new student, enter the regional number to be registered. 
+
+8.	
+IDENTIFICATION NUMBER – Enter the applicant’s social security number in A-I.  Leave J blank. 
+
+
+APPENDIX I 
+4/30/2003 
+
+Pennsylvania Region Numbers and County Codes 
+Region Number is the region of the practitioner’s residence. Region Number is to be placed on the 
+top left side of the CE scan card.
+County Code is the county where the practitioner resides.
+Place in columns AB on far right side of scan card.
+
+Example: Delaware County Regional Number = 12, Delaware County Code Number = 23 
+Region #  County Name  Code  Region #  County Name  Code  Region #  County Name  Code  
+03  Adams  01  19  Elk  24  15  Montour  47  
+04  Allegheny  02  18  Erie  25  02  Northampton  48  
+04  Armstrong  03  04  Fayette  26  15  Northumberland  49  
+04  Beaver  04  18  Forest  27  03  Perry  50  
+09  Bedford  05  03  Franklin  28  14  Philadelphia  51  
+02  Berks  06  09  Fulton  29  05  Pike  52  
+09  Blair  07  04  Greene  30  19  Potter                            53  
+01  Bradford  08  09  Huntingdon  31  02  Schuylkill  54  
+10  Bucks  09  04  Indiana  32  15  Snyder                           55  
+04  Butler  10  19  Jefferson  33  09  Somerset  56  
+09  Cambria  11  08  Juniata  34  07  Sullivan                         57  
+19  Cameron                           12  05  Lackawanna  35  01  Susquehanna  58  
+02  Carbon                 13  03  Lancaster  36  07  Ti oga                             59  
+08  Centre                               14  04  Lawrence  37  15  Union  60  
+11  Chester  15  03  Lebanon  38  18  Venango  61  
+18  Clarion                             16  02  Lehigh  39  18  Warren  62  
+19  Clearfield  17  05  Luzerne  40  04  Washington  63  
+08  Clinton  18  07  Lycoming  41  05  Wayne  64  
+15  Columbia  19  19  McKean  42  04  Westmoreland              65  
+18  Crawford                          20  18  Mercer  43  05  Wyoming  66  
+03  Cumberland  21  08  Mifflin  44  03  York  67  
+03  Dauphin                            22  02  Monroe  45  
+12  Delaware  23  13  Montgomery  46  OUT OF STATE  68  
+
+
+
