@@ -20,8 +20,13 @@
       protocols for the triage, treatment, transport and transfer of patients to
       the most appropriate facility.</td>
     <td valign="top" align="left">
-       <small><p><a href="http://www.pabulletin.com/secure/data/vol32/32-23/1002.html">Approved
-          Drugs for ALS Ambulance Services</a></p></small>
+       <form METHOD="POST" ACTION="http://www.pabulletin.com/search_results.asp?">
+          <INPUT TYPE="hidden" NAME="keywords" VALUE="approved NEAR drugs NEAR als NEAR ambulance NEAR services">
+          <INPUT TYPE="hidden" NAME="volume" VALUE="33">
+          <INPUT TYPE="hidden" NAME="sdate" VALUE="01/01/2003">
+          <small>Approved Drugs for ALS Ambulance Services</small><br>
+          <INPUT TYPE="submit" NAME="send" VALUE="Go!">
+       </form>
        <form METHOD="POST" ACTION="http://www.pabulletin.com/search_results.asp?">
           <INPUT TYPE="hidden" NAME="keywords" VALUE="prehospital AND practitioners AND scope AND practice">
           <INPUT TYPE="hidden" NAME="volume" VALUE="33">
