@@ -1,0 +1,12 @@
+<!-- $Id$ -->
+<html>
+<head>
+<title>EMSI - Special codes</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<!--#include virtual="/std-header.html" -->
+<!--#include virtual="/std-pre-content.html" -->
+<!--#include virtual="index.html" -->
+<!--#include virtual="/std-post-content.html" -->
+</body>
+</html>
