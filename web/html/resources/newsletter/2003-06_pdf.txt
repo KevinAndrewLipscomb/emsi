@@ -1,0 +1,515 @@
+<title>EMSI Intercom newsletter, June 2003</title>
+
+Precautions Outlined for Transport of SARS Patients 
+
+he outbreak of Severe Acute Respiratory Syndrome (SARS) in Asia, Europe and North America has created concerns among health care and EMS personnel regarding the transaction of the disease. A number of health care workers have contracted the disease from interaction with patients. In addition, EMS personnel involved in the transport of SARS patients to medical facilities are considered at risk for infection. 
+The Centers for Disease Control and Prevention (CDC) recently released recommendations for EMS providers to manage suspected SARS patients while ensuring the safety of transport personnel. These recommendations are based on standard infection control practices and available epidemiologic information regarding the transmission of SARS. 
+The CDC currently recommends that Standard precautions, with eye protection to prevent droplet exposure, as well as Contact and Airborne precautions be taken in dealing with potential SARS cases. In addition, respiratory protection using respirators providing at least 95 filtering efficiency (e.g. N-95) with appropriate fit-testing is recommended. 
+continued on page 2 
+
+Sound Card Funding Available ..............3
+Antidote Recommendations Made .........4
+EMSI New and Improved Web Site .......7
+Smallpox Vaccination Legislation.........10
+EMS Update Photographs...................12
+
+SARS continued from cover 
+drinking, application of cosmetics, and handling of contact lenses, should not be performed during patient transport. 
+Protective Equipment 
+
+•Disposablenon-sterile gloves must be worn for all patient contact. Gloves should be removed and discarded in biohazard bags after patient care is completed 
+• 
+Drivers who provide direct patient care, including moving patients on stretchers, should wear a disposable gown, eye-protection, and gloves as described above during patient care activities. Gowns and gloves are not required for personnel whose duties are strictly limited to driving. 
+
+•
+Vehicles that have separate driver and patient compartments and can provide separate ventilation to these areas are preferred for transport of possible SARS patients. If a vehicle without separate compartments and ventilation must be used, the outside air vents in the driver compartment should be open, and the rear exhaust ventilation fans should be turned on at the highest setting during transport of SARS patients to provide relative negative pressure in the patient care compartment. 
+
+• 
+Oxygen delivery with non-rebreather facemasks may be used for patient oxygen support during transport. 
+
+• 
+The patient may wear a paper surgical mask to reduce droplet production. 
+
+• 
+Positive pressure ventilation should be performed using a resuscitation bag-valve mask, preferably one equipped to provide HEPA or equivalent filtration of expired air. 
+
+• 
+Cough-generating procedures should be avoided during pre-hospital care (e.g., nebulizer treatments). 
+
+• 
+EMS organizations should consult their ventilator equipment manufacturer to confirm appropriate filtration capability and the effect of filtration on positive pressure ventilation. Mechanical ventilators for SARS-patient transport should provide HEPA or equivalent filtration of airflow exhaust. 
+
+
+The CDC has also made the following recommendations for EMS personnel transporting potential SARS patients: 
+General 
+• 
+Suspected SARS patients should be transported using the minimum number of EMS personnel and without non-SARS patients or passengers in the vehicle. 
+
+• 
+Receiving facilities must be notified prior to arrival of suspected SARS patients to facilitate preparation of appropriate infection control procedures and facilities. 
+
+• 
+SARS may be transmitted if residual infectious particles on environmental surfaces are brought into direct contact with the eyes, nose or mouth, or by unwashed hands. Hand hygiene is of primary importance using protective equipment throughout transport of a suspected SARS patient. 
+
+• 
+Personal activities, including eating, 
+
+
+
+or when soiled or damaged. Hands must be washed or disinfected with a waterless hand sanitizer immediately after removal of gloves. 
+•
+ Disposable fluid-resistant gowns should be worn for all direct patient care. Gowns should be removed and discarded in biohazard bags after patient care is completed or when soiled or damaged. 
+
+• 
+Eye-protection must be worn in the patient-care compartment and when working within six feet of the patient. Corrective eyeglasses alone are not appropriate protection. 
+
+• 
+The door/window between driver and patient compartments should be closed before a suspected SARS patient is brought onboard. N-95 (or greater) respirators should be worn by the driver if the driver’s compartment is open to the patient-care compartment. 
+
+
+
+Waste Disposal 
+
+Bioterrorism
+
+• Standard precautions must be used when collecting and transporting clinical 
+
+Grants Provide 
+specimens. 
+
+Funding for
+• Clinical specimens should be labeled with appropriate patient information 
+
+Sound Cards
+
+and placed in a clean self-sealing bag 
+for storage and transport. 
+
+MSI is currently offering sound 
+• Standard disposal of medical waste 
+cards for the Learning Managementshould be followed in accordance with 
+System to regional EMS services thankslocal requirements at the destination 
+to bioterroism grants provided throughhospital. 
+the Pennsylvania State Department of Health. Last year, $50,000 in grants were 
+awarded for various upgrades to systems
+Cleaning and Disinfecting 
+dealing with bioterroism education. possible SARS patient, compressed air that might re-aerosolize infectious • When cleaning after transport of a 
+The Learning Management System
+material should not be used for cleaning
+
+provides computer content on a number the vehicle or reusable equipment. 
+of topics, including Pennsylvania’s
+Vehicles should be cleaned and
+
+smallpox plan, the Pennsylvania
+maintained according to vehicle
+
+National Pharmaceutical Stockpile Plan, manufacturer’s recommendations 
+Pennsylvania’s Laboratory Network,
+and EPA guidelines.
+
+Disaster Nursing, Health Alert Network, and the National Electronic Disease Surveillance System.
+Follow-up 
+• Personnel who have transported a 
+The system requires a sound card for
+suspected SARS patient and develop 
+participants to hear the audio portion
+symptoms of SARS within the 10 day 
+of the classes. Services that currently
+post-exposure period should seek 
+have a computer base, but lack the
+medical evaluation. Information on 
+ability to hear the audio portion of the
+these personnel should be reported 
+presentations, can apply for funding to
+to the state health department and to 
+purchase a sound card.
+the CDC. Personnel may continue 
+working during the 10 day post-exposure 
+EMSI is eligible to purchase up to 100
+period if they have no symptoms of 
+cards through the grant monies. For
+fever or respiratory illness. 
+more information on ordering sound 
+cards, contact Kevin Lipscomb, For more information on precautions to 
+assistant executive director, EMSI, at take during ground transportation, visit 
+412-242-7322. the CDC web site at www.cdc.gov or visit 
+the Department of Health site at www.health.state.pa.us. 
+
+
+
+
+Antidotes for Agents of Chemical
+Terrorism Recommendations Made
+
+
+se of chemical weapons by terrorists is a real threat to Americans, and EMS personnel are at the front line in plans to offer antidotes for these agents should an event occur. The Department of Health and Human Services (HHS) recently approved pralidoxime and sodium thiosulfate as exceptions to the ALS drug list. These drugs are approved antidotes for nerve agents and cyanide. 
+According to a Pennsylvania Department of Health memo, pralidoxime (2-PAM) and atropine are approved antidotes that are now part of the Mark 1 autoin­jector kits used by ALS personnel. These two components should be used in the initial treatment for patients with symptoms of nerve agent exposure and may be given by individual injection or with the autoinjector kids. Generally, one kit is used to treat mild or moderate symptoms; three for moderate to severe symptoms. Should a seizure occur, diazepam should be administered. 
+Also, sodium thiosulfate is a used to treat cyanide. It is now a component of the cyanide kits and is the only drug approved by the HHS for this purpose. 
+The kits have been approved by the state and continuing education training on administering these antidotes at the local level will be forthcoming. The course will be completed as a traditional continuing education lecture using the Learning Management System. EMS treatment protocols and information on access to these medications will be developed and discussed at that time. 
+For more information on the use of anti­dotes for agents of chemical terrorism, contact the EMSI office at 412-242-7322. 
+
+MDC Meetings
+
+EMSI’s Regional Medical Direction Committee (MDC) has set the following meeting schedule for 2003: 
+Wednesday, September 10 
+Location TBA 
+Friday, December 5 
+Westmoreland Regional Hospital 
+Meetings begin at noon and include lunch. For more information, contact Joseph Ponko, EMSI medical specialist, at 412-242-7322 or jponko@ emsi04.org. 
+
+Services Asked to Enter Information in
+
+
+
+
+Licensure Data Bank
+
+
+Licensure Data Bank has been developed by the Pennsylvania Department of Health through the Emergency Medical Services Office. All ambulance services should be submitting their data to this bank electronically when applying for an initial license, license renewal, or amendment of an existing license. For renewals, the process must be completed between 60-120 days prior to expiration of a current license. Utilizing the user-friendly electronic process, services will benefit from the expedited process that allows the EMS office to provide timely information for emergency preparedness and funding opportunities. 
+
+Ambulance services that want to use the new system must have Internet access and an e-mail address. If these are not available, services should contact their EMS council. 
+To register, log on to http://ecapps.health. state.pa.us/emso and click on the “click here to begin” link. Participants will need to login and register an account by clicking on the “register” button. Prompts will lead the participant through the remainder of the process. 
+For more information or answers to questions regarding electronic registrations, contact the EMSI office at 412-242-7322 or Robert H. Gaumer, EMS Office, 717-787-8740 or EMSquestion@state.pa.us. 
+
+
+DNR Update: Out-of-State Physician Signature Instructions 
+
+he recent changes in the Do-Not-Resuscitate Act, Act 59, present clear instructions on the issuance, administration and revocation of out-of-hospital DNR orders. As part of the new rulings, the patient’s attending physician provides a patient with an out-of-hospital DNR order, bracelet or necklace that EMS personnel are to honor when a terminally ill patient experiences cardiac or respiratory arrest. 
+What is not quite so clear in the new regulations is the procedures for out-of-state patients with DNR orders. Under the DNR Act, the EMS provider is empowered to withhold CPR upon observing an out-of-hospital DNR order, bracelet or necklace displayed by the patient. In Pennsylvania, a physician’s signature is required and must be displayed as part of the order. Although the Pennsylvania statute allows for out-of-state hospital DNR orders, no other states have been identified that require the physician signature that is deemed essential by the Commonwealth. Because of this, these DNR orders can not be recognized. 
+The Pennsylvania Department of Health is working on developing procedures and a list of states with signature requirements. This information will be provided to EMS personnel when available so documentation is clear on out-of-state patient DNR procedures. In the meantime, ambulance personnel should write down the name of the physician listed on the DNR tag to ensure a physician’s order is present and that all procedures have been properly followed in accordance with Act 59. 
+For more information on the new DNR act, visit http://webserver.health.state.pa.us, and under Health Topics A-Z, click Do-Not-Resuscitate (DNR) Orders. 
+
+
+
+EMSI Offers New and Improved Web Site
+
+
+MSI’s web site, www.emsi04.org, is growing by leaps and bounds. What was once little more than a five page online brochure is rapidly becoming a dynamic site containing dozens of pages and scores of useful features. 
+Many changes are evident on the site’s main page, where visitors will see the mission statement, a set of hot links (the most commonly requested items), and a block of timely EMS news items of regional interest. There are also quick links to the state EMS office, to other regional EMS councils, and to county EMS councils in our region. 
+At the top of every page, there are phone numbers and EMSI’s street address. There’s even a link to a map that shows how to get to the office. Also, in the left margin of each page, visitors will find links to the site’s major areas of interest. 
+The deepest and broadest content can be found under the Services link in the left margin. This page leads to other pages organized by constituency: pre-hospital personnel, ambulance services, medical directors, medical command facilities and physicians, con-ed sponsors, training institutions, researchers, PSAPs, rescue technicians and the general public. Each constituency can click an adjacent link to find information tailored to its particular needs or interests. 
+For instance, on the pre-hospital personnel page, there are links to an interactive list of course offerings and to several forms and documents commonly needed by EMTs and paramedics. On the ambulance services page, there are links to checklists and manuals relating to inspection, licensure, electronic PCR software, and more. Elsewhere on the site, content is similarly grouped by constituency. 
+
+As new pages are added, the site’s search feature, always available in the top margin, gains importance. EMSI is working with its web site vendor to make this feature more useful. 
+The bulk of the improvements to the site obey four basic rules: 
+• 
+All pages have a consistent look and feel to encourage visitors to stay awhile and learn about EMSI. 
+
+• 
+Pages and links are arranged according to the different constituencies served by EMSI. 
+
+
+• 
+The content of each page is related to EMSI’s tasking from the state and from its own Board of Directors. 
+
+• 
+New content from any EMSI staff member or partner, regardless of the contributor’s web authoring talent, can be added without violating the first three rules. 
+
+
+In the near future, EMSI expects to add interactive pages that will allow many kinds of regional council business to be conducted entirely online. For example, one such page will allow safe, consistent uploading of electronic PCR data. 
+If you haven’t done so lately, visit www.emsi04.org today and see what is new and interesting on this great site. 
+
+
+
+2003 Class Registrations By Specific Dates
+
+Start Class Course Hours Class
+Date Time Number Name 1st Resp EMT ALS Location Contact Phone
+
+7/1 7/1  12:00 18:30  030700 031496  Pulse/EM 2003 Penetrating Trauma Basic Vehicle Rescue (DHVR)  1.50 28.00  1.50 28.00  1.50 28.00  Mon Valley Indiana Co Fire Academy  Linda Zidek Jim Sadler  (724) 379-7539 (724) 357-4052  
+7/1 7/7  18:30 8:00  031512 031216  Basic Vehicle Rescue (DHVR) Tactical Emerg Medical Operator  28.00 29.00  28.00 29.00  28.00 36.00  Indiana Co Fire Academy BCCC  Brian Check Brian Check  (724) 287-8711 (724) 287-8711  
+7/7 7/9  18:00 11:00  031489 030169  Basic Veh Res-Ops-DOH (DHVRO) AED Recertification  11.00 2.00  11.00 2.00  11.00 2.00  Gilpin Twp VFD Jeannette Hospital  Brian Check Don Thoma  (724) 287-8711 (724) 527-9341  
+7/9 7/10  7:00 20:00  030509 030714  ACLS-R Ambulance Operations  0.00 1.00  0.00 1.00  8.00 1.00  Mercy Hospital Rescue 8 N. Huntingdon  Jim Blosser Walt Lipinski  (412) 232-5906 (724) 864-2540  
+7/10 7/10  19:00 18:30  030713 031413  INTERACT (Intersection Accident) Hazardous Materials R & I  1.00 4.00  1.00 4.00  1.00 4.00  Rescue 8 N. Huntingdon Lower Valley Ambulance  Walt Lipinski Ruth Ann Bradford  (724) 864-2540 (724) 274-4155  
+7/10 7/12  8:00 8:00  030110 031383  ACLS Basic Vehicle Rescue (DHVR)  0.00 28.00  0.00 28.00  16.00 28.00  Canonsburg Hospital Yukon VFD  Michael Gannon Brian Check  (412) 359-3923 (724) 287-8711  
+7/15 7/16  18:30 7:30  031474 030520 PALS  Emergency Veh Operations Course 8.00  8.00 0.00  8.00 16.00  Adamsburg VFD Mercy Hospital  Dave Hauger Jim Blosser  (800) 262-2103 (412) 232-5906  
+7/16 7/16  18:30 8:00  031114 030076 ACLS-R  Thoracoabdominal Trauma  0.00 0.00  0.00 0.00  3.00 8.00  CCAC Allegheny General  CCAC Michael Gannon  (412) 237-2500 (412) 359-3923  
+7/16 7/17  8:00 8:00  030141 031323 PALS  ACLS-R  0.00 0.00  0.00 0.00  8.00 16.00  Med Rescue Team South Magee Womans Hospital  Adella Mueller CCAC  (724) 356-7381 (412) 237-2500  
+7/17 7/17  18:00 19:00  030808 030809  Lightning Strikes Environmental Emergencies  1.00 0.00  1.00 2.00  1.00 2.00  BCCC BCCC  Brian Check Brian Check  (724) 287-8711 (724) 287-8711  
+7/19 7/21  8:30 18:00  031240 030944  Emergency Veh Driver Training Basic Veh Res-Ops-DOH (DHVRO)  16.00 2.00 11.00  16.00 11.00  16.00 11.00  Med Rescue Team South Elfinwild VFD  Dave or Dorothy CCAC  (800) 233-1957 (412) 237-2500  
+7/23 7/24  16:30 7:45  030265 030318 PALS-R  ACLS Refresher-Accelerated  0.00  0.00  6.00 8.00  Valley Ambulance Children’s Hospital  Judith Haluka Prehospital Service  (412) 262-5736 (412) 692-8720  
+7/26 7/27  8:00 8:00  031435 031436 PALS-R  PALS  0.00 0.00  0.00 0.00  16.00 8.00  UPMC St. Margaret UPMC St. Margaret  Steven Smith Steven Smith  (412) 237-2500 (412) 237-2500  
+7/28 7/29  7:00 8:00  030510 030077 PALS  ACLS-R  0.00 0.00  0.00 0.00  8.00 16.00  Mercy Hospital Forbes Regional  Jim Blosser Michael Gannon  (412) 232-5906 (412) 359-3923  
+7/30 7/30  7:30 18:00  030525 031333  PALS-R Mgmt-Suspected Spine Injury Athlete 2.50  0.00  0.00 2.50  8.00 2.50  Mercy Hospital BCCC  Jim Blosser Brian Check  (412) 232-5906 (724) 287-8711  
+8/1 8/6  12:00 17:30  030699 030269  Pulse/EM 2003 Transportaion PALS Refresher-Accelerated  1.50  1.50  1.50 5.00  Mon Valley Valley Ambulance  Linda Zidek Judith Haluka  (724) 258-1072 (412) 262-5736  
+8/6 8/7  18:30 14:30  031470 030716  Blood Borne Pathogens Scene Size Up & Initial Assessment  3.00 1.50  3.00 1.50  3.00 1.50  Lower Valley Amb Svs Rescue 8 N. Huntingdon  CCAC Walt Lipinski  (412) 237-2500 (724) 864-2540  
+8/7 8/7  13:00 7:00  030715 030502 ACLS  Documentation  1.50 0.00  1.50 0.00  1.50 16.00  Rescue 8 N. Huntingdon Mercy Hospital  Walt Lipinski Jim Blosser  (724) 864-2540 (412) 232-5906  
+8/7  18:00  031352  ACLS  0.00  0.00  16.00  BCCC  Brian Check  (724) 287-8711  
+8/7  8:00  030078  ACLS-R  0.00  0.00  8.00  Forbes Regional  Michael Gannon  (412) 359-3923  
+8/9  8:00 8:30  031336 030956 PALS  PALS-R  0.00 0.00  0.00 0.00  8.00 16.00  Citizens’ Ambulance Citizens’ Ambulance  CCAC CCAC  (412) 237-2500  
+8/12 8/9  18:30 12:00  031506 030171  Emergency Veh Driver Training  16.00 1.00  16.00 1.00  16.00 1.00  Renton VFC  CCAC Don Thoma  (412) 237-2500 (412) 237-2500  
+8/13 8/13  11:00 18:30  030170 031135  Ambulance Operations Gaining Access  1.00 4.00  1.00 4.00  1.00 4.00  Jeannette Hospital Jeannette Hospital  Don Thoma CCAC  (724) 527-9341 (724) 527-9341  
+8/13 8/13 8/13  19:00 8:00  030384 030079 ACLS-R  Case Review Hazardous Materials R & I  3.00 0.00  3.00 0.00  3.00 8.00  Latrobe Hospital CCAC Allegheny General  Keith Stouffer Michael Gannon  (724) 537-1578 (412) 237-2500 (412) 359-3923  
+
+
+
+
+2003 Class Registrations By Specific Dates
+
+Start Class Course Hours Class
+Date Time Number Name 1st Resp EMT Med PHRN Location Contact Phone
+
+8/14 8/14  18:00 18:00  031351 030766  ACLS-R Injuries to the Head & Spine  0.00 4.00  0.00 4.00  8.00 4.00  BCCC Ohio Valley Hospital  Brian Check Michael Nemec  (724) 287-8711 (412) 777-6574  
+8/15 8/16  7:45 8:00  030325 031322  PALS Basic Rigging for Rope Rescue  0.00 1.00  0.00 1.00  16.00 1.00  Children’s Hospital Brentwood VFC  Prehospital Service CCAC  (412) 692-8720 (412) 237-2500  
+8/18 8/20  18:00 8:00  031488 030080 ACLS  Basic Veh Resc-Tech-DOH DHVRT  7.00 0.00  7.00 0.00  7.00 16.00  Gilpin Twp VFD Allegheny General  Brian Check Michael Gannon  (724) 287-8711 (412) 359-3923  
+8/21 8/21  7:30 18:30  030521 031507  PALS Injuries to the Head & Spine  0.00 4.00  0.00 4.00  16.00 4.00  Mercy Hospital Jefferson Regional  Jim Blosser CCAC  (412) 232-5906 (412) 237-2500  
+8/21 8/21  20:00 18:00  030901 030810  Pediatric Immobilazation Pediatric Patients  1.50 2.00  1.50 2.00  1.50 2.00  BCCC BCCC  Brian Check Brian Check  (724) 287-8711 (724) 287-8711  
+8/26 8/28  8:00 8:00  030081 030082 PALS-R  ACLS  0.00 0.00  0.00 0.00  16.00 8.00  Forbes Regional Allegheny General  Michael Gannon Michael Gannon  (412) 359-3923 (412) 359-3923  
+9/1 9/2  12:00 18:00  030698 031473  Pulse/EM 2003 Lessons From 9/11 Basic Veh Res-Ops-DOH (DHVRO) 11.00  1.50  1.50 11.00  1.50 11.00  Mon Valley Swissvale VFD  Linda Zidek CCAC  (724) 258-1072 (412) 237-2500  
+9/3 9/5  8:00 18:30  030083 030459  PALS Case Review  0.00 3.00  0.00 3.00  16.00 3.00  Allegheny General Medical Center Beaver  Michael Gannon Joe Campbell  (412) 359-3923 (724) 773-3433  
+9/6 9/7  8:00 8:00  030395 030396  ACLS ACLS-R  0.00  0.00 0.00  16.00 8.00  Jefferson Hospital Jefferson Hospital  CCAC CCAC  (412) 237-2500 (412) 237-2500  
+9/8  18:00  030948  Basic Veh Resc-Tech-DOH DHVRT  7.00 0.00  7.00  7.00  Elfinwild VFD  CCAC  (412) 237-2500  
+9/10  11:00  030172  Hazardous Materials Overview  1.00  1.00  1.00  Jeannette Hospital  Don Thoma  (724) 527-9341  
+9/10  12:00 7:45  030173 030326 PALS  Communications  1.00 0.00  1.00 0.00  1.00 16.00  Jeannette Hospital  Don Thoma  (724) 527-9341  
+9/10 9/10  8:00 8:00  030084 030116 PALS-R  PALS-R  0.00 0.00  0.00 0.00  8.00 8.00  Allegheny General Children’s Hospital  Michael Gannon Prehospital Service  (412) 359-3923 (412) 692-8720  
+9/15 9/12  7:00 8:00  030515 030085 ACLS-R  ACLS for the Experienced Provider 0.00  0.00 0.00  8.00 8.00  Mercy Hospital Westmoreland Hospital  Jim Blosser Michael Gannon  (412) 232-5906 (412) 359-3923  
+9/16 9/15  19:00 8:00  030595 030086 ACLS-R  Soft Tissue Injuries  2.00 0.00  2.00 0.00  2.00 8.00  Latrobe Hospital West Penn Hospital  Keith Stouffer Michael Gannon  (724) 537-1578 (412) 359-3923  
+9/18 9/17  19:00 18:00  030717 030811  Soft Tissue Injuries Patient Assessment  2.00 0.00  2.00 2.00  2.00 2.00  Rescue 8 N. Huntingdon Allegheny General  Walt Lipinski Michael Gannon  (724) 864-2540 (412) 359-3923  
+9/18 9/18  8:00  030111  PALS-R  0.00 2.00  0.00  8.00  Canonsburg Hospital BCCC  Michael Gannon Brian Check  (412) 359-3923 (724) 287-8711  
+9/19  18:00  031520  BTLS  16.00  16.00  16.00  Richland EMS  Brian Check  (724) 287-8711  
+9/19  18:00 7:30  031521 030695 PALS-R  BTLS-R  8.00 0.00  8.00 0.00  8.00 8.00  Richland EMS  Brian Check Linda Zidek  (724) 287-8711  
+9/22 9/20  7:00  030511  ACLS-R  0.00  0.00  8.00  Mercy Hospital Mon Valley Hospital  Jim Blosser  (412) 232-5906 (724) 258-1072  
+9/24 9/24  9:00 19:00  030403 030400  SHHS ALS Skills Review SHHS ALS Skills Review  0.00  0.00  2.50 2.50  Jefferson Hospital Jefferson Hospital  CCAC CCAC  (412) 237-2500 (412) 237-2500  
+9/26 9/26  7:30 7:45  030526 030319 PALS-R BTLS-R  PALS-R  0.00 8.00  0.00 8.00  8.00 8.00  Mercy Hospital Children’s Hospital  Jim Blosser Prehospital Service  (412) 232-5906 (412) 692-8720  
+9/27 9/27  8:00 8:00  031472 030493  Basic Veh Resc-Tech-DOH DHVRT  7.00 0.00  7.00 16.00  7.00 8.00  Swissvale VFD CEM  CCAC Bob Seitz  (412) 237-2500 (412) 647-4671  
+9/29 9/27  8:00 8:00  031357 030087 PHTLS  PALS  0.00  0.00  16.00 16.00  Armstrong Memorial Allegheny General  Brian Check Michael Gannon  (724) 287-8711 (412) 359-3923  
+9/29  8:00  030088  ACLS-R  0.00  0.00  8.00  Allegheny General  Michael Gannon  (412) 359-3923  
+9/30  18:00  031350  BTLS  16.00  16.00  16.00  BCCC  Brian Check  (724) 287-8711  
+
+
+
+Legislation Offers Compensation
+for Smallpox Vaccination Injury
+
+
+n the last issue of Intercom, detailed information on the Pennsylvania Smallpox Vaccination Plan was presented. The plan calls for the advance inoculation of health care workers and first responders in the event of an outbreak. In late April, President Bush signed into law a compensation package for those individuals participating in the federal program who may be injured by smallpox vaccinations. The new law calls for the following coverage: 
+• 
+Individuals permanently disabled by the vaccine to receive up to $50,000 per year, with no cap on lifetime compensation. 
+
+• 
+Individuals with less serious injury to receive up to $50,000 per year, with a $262,100 lifetime cap. 
+
+• 
+Spouses of individuals who die due to the administration of the vaccine to receive a lump sum of $262,100; their children to receive a lump sum of $262,100 or $50,000 per year until age 18. 
+
+
+Funding for the compensation program is estimated at $42 million and will be available for public health and health care workers who participate in the first phase of the vaccination program. This includes emergency, health care workers and other official personnel who volunteer to be part of the Smallpox Response Team. Phase 2, which has not yet been initiated, will include the voluntary inoculation of EMS, firefighters and law enforcement personnel. 
+Currently, EMS services that would be designated as smallpox capable in an emergency are being identified. Personnel within these designated services are encouraged by the Emergency Management Services Office (EMSO) to go through the screening process to determine eligibility for vaccination. Although an inoculation program is not underway yet for first responders, determining eligibility for voluntarily receiving the vaccination is a step that can be taken early. 
+For more information on the smallpox vaccination plan, the compensation legislation, or EMS smallpox capable services, contact EMSI at 412-242-7322. 
+
+National Registry Exam Dates Set 
+EMSI will administer the National Registry Paramedic practical exam on the following dates: 
+Wednesday, July 16 Tuesday, July 24 
+10 a.m. 10 a.m. 
+Mutual Aid Ambulance Service Indiana University of Pennsylvania 
+For more information on the testing dates or to check for available testing slots, contact EMSI at 412-242-7322. 
+
+
+Correction
+
+
+n a recent issue of Intercom, it was inadvertently reported that ambulance services are not required by the Pennsylvania Department of Health to complete a form for every ambulance accident that occurs. According to the state codes, ambulance service are, in fact, required to “report to the appropriate regional EMS council, in a form and manner prescribed by the Department, any ambulance vehicle accident.” 
+The EMS Office has provided each regional EMS council with a copy of the form developed by Southern Alleghenies EMS Council. This form should be used by all regional ambulance services to report accidents to the EMSI office, which will forward it to the EMS Office. 
+The form is now available at EMSI’s web site, www.emsi04.org. For more information on reporting ambulance accidents, or to obtain a paper copy of the form, contact EMSI at 412-242-7322. 
+
+Report on Ambulance Licensures 
+During the period of February through April 2003, EMSI’s field staff conducted inspections on the following EMS providers in the region. All providers met the requirements established by the Pennsylvania Department of Health. 
+Regular licenses were issued to: 
+Beaver County 
+Hanover VFD Ambulance 
+Butler County 
+Butler Ambulance Service 
+
+Lawrence County 
+PA Medical Transport 
+
+
+
+
+
+
+EMS Update 2003 – Good Training and Great Fun
+
+
+
+MS Update 2003 was an event to remember. It was a record breaking year for 
+the 16th annual conference with 743 registrants and approximately 1,100 people visiting 50 exhibits over the two days. In the midst of it all, participants and their families enjoyed a weekend of learning, training and good times. 
+The hot topics at the conference included pediatric emergencies, sports injuries, information on treating patients who have overdosed on heroin and/or ecstasy, patient assessment, and the new federal guidelines on patient privacy (HIPAA). 
+Information on the new DNR regulations was distributed to attendees as well. 
+Mary Popovich of Perryopolis EMS was honored with the 2003 EMS Practitioner of the Year Award for her 30 plus years of emergency medical service to the community. Also at the conference, EMSI’s grant awardees received recognition (see story on opposite page). 
+Mark your calendars now for next year’s great event to be held March 25-27 at Seven Springs Resort. Preliminary information will be available in October on the EMSI web site. 
+
+Top Left: One of presenters who shared his knowledge during the numerous educational programs. 
+Bottom Left: Registrants visited more than 50 vendors in the conference exhibit hall. 
+Top Right: Kids age 8-15 participated in a CPR and first aid class. 
+Bottom Right: Mardi Gras was theme of the always-fun Saturday night event. 
+
+Recipients Named for EMSI Grants 
+
+MSI has announced its grant recipients for system improvements. The fol­lowing recipients were selected to receive funding based on their proposed efforts to improve EMS in the region through research or purchases: 
+Penn State Fayette 
+Distance Based Education 
+Mutual Aid Citizens Ambulance and Fayette EMS 
+EMT-1 
+Hose #6 Kittanning Ambulance Service 
+CPR/AED Classes 
+Tri-Community South and 
+Seven South Hills Services 
+LifeNet EKG Receiving 
+UPMC Pre-Hospital Services 
+Medic 15 Recruiting 
+Center for Emergency Medicine 
+PCR Research 
+Allegheny County EMS Council 
+Conference for EMS Leaders 
+Funding may be available for the 2003-04 year to continue to address ongoing needs. To be considered for funding, all EMS councils are invited to submit proposals to the EMS office by November 14, 2003. 
+For more information on funding requirements and proposal instructions, contact George Aupperlee, Pennsylvania Department of Health, at 717-787-8740. 
+
+
+Want to Present at the 2004 EMS Update? 
+
+he Emergency Medical Service Institute (EMSI) invites those interested in speaking at the 2004 EMS Update to submit presentation proposals for next year’s event. 
+The EMS Update has grown to become one of the largest EMS conferences in the United States and is known for offering an exceptional educational experience to those who attend. As presenters at the regional 
+EMS conference, speakers have the opportunity to reach approximately 750 attendees during the four-day event, which is scheduled for March 25-27 at Seven Springs Mountain Resort. 
+EMSI is current accepting speaker proposals, which must include the following: 
+•
+Ashort biography/speaker introduction, including title, educational back­ground, expertise and experiences in the area of presentation. 
+
+• 
+Biographical data form (available from EMSI). 
+
+•
+Abrief summary or outline of the presentation. Proposals may include audio­tapes, videotapes, or other supporting materials. This information will be used to develop the brochure copy.  
+
+
+Deadline for submitting proposals is Friday, August 1; applicants will be notified by September 1. At that time, speakers will receive information on conference placement and topics. 
+Presenters who would like to be considered for a faculty position at EMS Update 2004 should complete and submit a presentation packet to the EMSI office. For more information on speaking at the conference or to submit a proposal, contact the EMSI office at 412-242-7322 or e-mail info@emsi04.org. 
+
+
+Community Partnership Formed to Study AEDs in Rural Areas; Funding Available in January 
+
+lthough the initial application deadline has passed, rural services that are interested in having Automatic External Defibrillators (AEDs) available in their communities will have a chance to apply again for funding next year. AEDs are life-saving treatment devices in ambulances for patients suffering from cardiac arrest. However, in rural areas, their effectiveness is limited due to the longer distances EMS units must travel to reach the patient. Because of this, there is a need to find a way to make AEDs accessible for individuals who treat patients in these areas. A statewide community partnership has begun initial evaluation and identifi­cation of first responders and community members to determine the best locations to place AEDs and to provide training and other resources to hospi­tals and ambulance services. Applications were recently accepted for the pro­vision of AEDs with an AED medical director to rural ambulance services with an emergency response area. 
+
+Look for more information on how to apply in the future. For additional information on the status of this project, contact the EMSI office at 412-242-7322. 
+BILLING  
+Ambulance Billing Specialists STOP AND SEE US AT EMS UPDATE 2003 - March 27-29th Seven Springs Mountain Resort SUPERIOR SERVICE AT COMPETITIVE RATES c Medicare signature authorizations c Medical necessity documentation c Patient insurance information c Calls to patients, hospitals, and insurance carriers c Joint ALS/BLS billing c Electronic claims submission c Electronic funds transfer Cornerstone ADMINISYSTEMS  
+Call toll free: 877-214-7224 c info@casys.com c www.casys.com  
+
+
+
+Officers 
+•
+William E. Groft, EMT-P, President 
+
+•
+Michael Coleman, DO, Vice President 
+
+•
+Mary Ann Scott, RN, BSN, Treasurer 
+
+•
+Douglas Garretson, BA, NREMT-P, Secretary 
+
+•
+Richard F. Kunkle, MD, FACEP, Past President 
+
+
+EMS Council Representatives 
+•
+Russell Chiodo, Beaver 
+
+•
+Mike Coleman, DO, Butler Cataldo Corrado, MD, Fayette Rick Huff, Washington George Laskey, Westmoreland Jim Sadler, Indiana 
+
+•
+Mary Ann Scott, Allegheny
+
+•
+Brian Shaw, Lawrence Doug Young, Greene 
+
+
+County Government Representatives 
+Chief Bob Full, Allegheny
+Rod Groomes, MD, Armstrong 
+Bernie Smith, Indiana
+Sandra Smythe, Westmoreland
+Walt Vincinelly, Fayette 
+Thomas White, Lawrence
+
+•Linda Zidek, RN, Washington 
+Directors at-Large 
+Joseph Akif
+Kay Jo Fischer
+Richard G. Fuller, MEd, EMT-P
+
+•
+Doug Garretson, NREMT-P 
+
+•
+William E. Groft, EMT-P 
+
+•
+Ed HeltmanBrian Kircher Harry Meredith Bradley D. Penrod, AAE 
+
+•
+B.J. PinoRodney Rohrer 
+
+•
+Ron Roth, MDPatrick M. Sherin Edward Stevenson Don Swayze Jim Withee 
+
+
+•Indicates Executive Committee
+EMSI Staff E-Mail Addresses 
+Gloria Arrington, Accountant 
+garrington@emsi04.org 
+Jessika Brown, Secretary 
+jbrown@emsi04.org 
+Scott Crawford, Regional Training Coordinator 
+scrawford@emsi04.org 
+Pam Dixon, Data Processor 
+pdixon@emsi04.org 
+Kurt Henkel, Regional Training Coordinator 
+khenkel@emsi04.org 
+Linda Kovac, Con-Ed/Training Program Specialist 
+lkovac@emsi04.org 
+Kevin A. Lipscomb, Assistant Executive Director 
+klipscomb@emsi04.org 
+Louise Myers, Data Processor 
+lmyers@emsi04.org 
+Joe Ponko, Medical Specialist 
+jponko@emsi04.org 
+Bruce Sivak, Prehospital Service Specialist 
+bsivak@emsi04.org 
+Philip Stoner, Executive Director 
+pstoner@emsi04.org 
+Nancy Theilacker, Secretary 
+ntheilacker@emsi04.org 
+
+www .emsi04.org 
+
+EMSI Intercom is published quarterly as a service of Emergency Medical Service Institute. EMSI is a regional non-profit agency coordinating emergency medical resources in ten counties of southwestern Pennsylvania. 
+Philip Stoner ...........................................Executive Director
+Camille Downing.......................................................Editor
+Drawing Conclusions .............................................Designer
+Reed & Witting ........................................................Printer
+
+
+
+
+Jerry "Mr. Ambulance" Esposito Dies
+
+
+erry Esposito, a local and national EMS legend who was known for his caring commitment to the community, passed away on March 31 after an extended illness. 
+Esposito retired as the director of Citizen's Ambulance in Indiana County in 1992 after a lifetime of service as an EMT and EMT trainer. He was known nationwide as a consultant for ambu­lances and worked tirelessly at the state and local level. 
+He founded the Paramedic Journal, which was the statewide ambulance association; directed the Allegheny County Council of Emergency Health Services (now EMSI); and sat on more than 25 state, national and global com­mittees and organizations. 
+Esposito is also well known for his work with Dr. Peter Safar to help redesign the shape and function of ambulances. His innovative work is evi­dent in today's ambulances. Much of what he learned came from his early experiences, not only at Citizen's, but also from when he opened his first ambulance service out of his home in Punxsutawny using his station wagon as an ambulance. 
+
+
+221 Penn Avenue Suite 2500 Pittsburgh, PA 15221 
+(412) 242-7322 
+In an obituary in the Pittsburgh Post-Gazette, friends and family reminisced about the man who gave his heart and soul to the EMS profession. 
+"It is impossible to describe the count­less number of people that he educated, coordinated and encouraged," said B.J. Pino, Citizens' chief operating officer and a former EMT, in the obituary. "Jerry told me on several occasions that he had experienced a 'good life,' one that was fulfilling, especially with his wonderful family and unique career. He was right." 
+
+Non-Profit Org. U.S. Postage PAID Pittsburgh, PA Permit #2304 
+
