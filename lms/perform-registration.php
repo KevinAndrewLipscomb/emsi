@@ -155,21 +155,7 @@ $be_instructor = $_be_instructor;
                <h2><i>Error!</i></h2>
                <b>
                <blockquote>
-                  <p>One or more of thes required parameters were missing or invalid:</p>
-                  <ul>
-                     <li><p>First name</p>
-                     <li><p>Last name</p>
-                     <li><p>Email address</p>
-                     <li><p>Certification #</p>
-                     <li><p>Street address</p>
-                     <li><p>City</p>
-                     <li><p>State</p>
-                     <li><p>County of residence</p>
-                     <li><p>EMS region</p>
-                     <li><p>Date of birth</p>
-                     <li><p>Are you a certified EMT Instructor?</p>
-                     <li><p>Do you hold any other DOH EMSO certifications?</p>
-                  </ul>
+                  <p>One or more required parameters were missing or invalid:</p>
                   <p>Please press your browser's [<--&nbsp;BACK] button to correct the problems.</p>
                </blockquote>            
                </b>
