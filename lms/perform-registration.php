@@ -98,7 +98,7 @@ $be_instructor = $_be_instructor;
                and
                   (($day_of_birth >= 1) and ($day_of_birth <= 31))
                and
-                  ($year_of_birth != "")
+                  ($year_of_birth >  1889)  // According to Guinness, all born before are dead.
                and
                   ($street_address != "")
                and
