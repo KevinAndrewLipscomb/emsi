@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD> 
+	 <TITLE>Emergency Medical Service Institute: Course Schedule</TITLE> <SCRIPT LANGUAGE="JavaScript">
+<!--
+     NS4 = (document.layers);
+     IE4 = (document.all);
+    ver4 = (NS4 || IE4);
+   isMac = (navigator.appVersion.indexOf("Mac") != -1);
+  isMenu = (NS4 || (IE4 && !isMac));
+  function popUp(){return};
+  function popDown(){return};
+  function startIt(){return};
+  if (!ver4) event = null;
+
+  if (isMenu) {
+menuVersion = 3;
+menuWidth = 120;
+borWid = 2;
+borSty = "ridge";
+borCol = "#FF6633";
+separator = 1;
+separatorCol = "#000000";
+fntFam = "Arial";
+fntBold = true;
+fntItal = true;
+fntSiz = 10;
+fntCol = "#FF6633";
+overFnt = "#800080";
+itemPad = 5;
+backCol = "#3333FF";
+overCol = "#87CEEB";
+imgSrc = "tri.gif";
+imgSiz = 10;
+
+childOffset = 5;
+childOverlap = 50;
+perCentOver = null;
+
+clickStart = false;
+clickKill = false;
+secondsVisible = 0.5;
+
+keepHilite = false;
+NSfontOver = false;
+
+isFrames = false;
+navFrLoc = "left";
+mainFrName = "main";
+  }
+//-->
+</SCRIPT> <SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+  if (isMenu) {
+  document.write("<SCRIPT LANGUAGE='JavaScript1.2' SRC='hierArrays.js'><\/SCRIPT>");
+  document.write("<SCRIPT LANGUAGE='JavaScript1.2' SRC='hierMenus.js'><\/SCRIPT>");
+  }
+//-->
+</SCRIPT> 
+  </HEAD> 
+  <BODY BGCOLOR="#CCCCCC" TEXT="#000000" LINK="#0000FF" VLINK="#660066"
+	ALINK="#FF0000" BACKGROUND="SMDecors/place0H.gif" ONLOAD="startIt()">
+	 <TABLE WIDTH="650" CELLPADDING="5">
+		<TR>
+		  <TD WIDTH="140" ALIGN="LEFT" VALIGN="TOP">
+			 <P ALIGN="RIGHT"><IMG SRC="graphics/logo_left.gif"
+				WIDTH="113" HEIGHT="99"></P>
+			 <P ALIGN="RIGHT">&nbsp;</P></TD>
+		  <TD WIDTH="510" VALIGN="TOP"><IMG SRC="graphics/logo_right.gif"
+			 ALIGN="LEFT" WIDTH="135" HEIGHT="100" BORDER="0"> 
+			 <P>&nbsp;&nbsp;221 Penn Avenue, Suite 2500<BR>&nbsp;&nbsp;Pittsburgh,
+				PA 15221-2166<BR>&nbsp;&nbsp;412/242-7322<BR>&nbsp;&nbsp;Fax:
+				412/242-7434<BR>&nbsp;&nbsp;<A
+				HREF="mailto:info@emsi04.org">info@emsi04.org</A></P></TD>
+		</TR>
+		<TR>
+		  <TD WIDTH="140" ALIGN="LEFT" VALIGN="TOP">
+			 <P><A HREF="index.html"
+				ONMOUSEOVER="if (HoverImage.src) {HoverImage.src='graphics/buttons/home_on.gif'}"
+				ONMOUSEOUT="if (HoverImage.src) {HoverImage.src='graphics/buttons/home_off.gif'}"><IMG
+				SRC="graphics/buttons/home_off.gif" ID="HoverImage" NAME="HoverImage"
+				BORDER="0" WIDTH="120" HEIGHT="30"></A> <BR>
+				<A HREF="conference.html"
+				 ONMOUSEOVER="if (HoverImage2.src) {HoverImage2.src='graphics/buttons/conference_on.gif'}"
+				 ONMOUSEOUT="if (HoverImage2.src) {HoverImage2.src='graphics/buttons/conference_off.gif'}"><IMG
+				SRC="graphics/buttons/conference_off.gif" ID="HoverImage2" NAME="HoverImage2"
+				BORDER="0" WIDTH="120" HEIGHT="30"></A> <BR><A HREF="courses.html"
+				ONMOUSEOVER="if (HoverImage4.src) {HoverImage4.src='graphics/buttons/classes_on.gif'}"
+				ONMOUSEOUT="if (HoverImage4.src) {HoverImage4.src='graphics/buttons/classes_off.gif'}"><IMG
+				SRC="graphics/buttons/classes_off.gif" ID="HoverImage4" NAME="HoverImage4"
+				BORDER="0" WIDTH="120" HEIGHT="30"></A><BR><BR><A
+				HREF="links.html" ONMOUSEOVER="popUp('elMenu1',event)"
+				ONMOUSEOUT="popDown('elMenu1')"><IMG SRC="graphics/buttons/links_off.gif"
+				ID="HoverImage3" NAME="HoverImage3" BORDER="0" WIDTH="120" HEIGHT="30"
+				ONMOUSEOVER="if (HoverImage3.src) {HoverImage3.src='graphics/buttons/links_on.gif'}"
+				ONMOUSEOUT="if (HoverImage3.src) {HoverImage3.src='graphics/buttons/links_off.gif'}"></A>
+				<BR><A HREF="about.html"
+				ONMOUSEOVER="if (HoverImage1.src) {HoverImage1.src='graphics/buttons/about_on.gif'}"
+				ONMOUSEOUT="if (HoverImage1.src) {HoverImage1.src='graphics/buttons/about_off.gif'}"><IMG
+				SRC="graphics/buttons/about_off.gif" ID="HoverImage1"
+				NAME="HoverImage1" BORDER="0" WIDTH="120" HEIGHT="30"></A> </P></TD>
+		  <TD WIDTH="510">
+			 <H2>Continuing Education Course Schedule</H2> 
+			 <FORM ACTION="/cgi-bin/courses" METHOD="POST"> 
+				<TABLE WIDTH="500" CELLPADDING="5"> 
+				  <TR> 
+					 <TD ALIGN="CENTER"><B>Date Range:</B></TD> 
+					 <TD><B>From</B>: <BR>Month 
+						<SELECT NAME="FromMonth" SIZE="1"> 
+						  <OPTION VALUE="01" SELECTED="SELECTED">January</OPTION> 
+						  <OPTION VALUE="02">February</OPTION> 
+						  <OPTION VALUE="03">March</OPTION> 
+						  <OPTION VALUE="04">April</OPTION> 
+						  <OPTION VALUE="05">May</OPTION> 
+						  <OPTION VALUE="06">June</OPTION> 
+						  <OPTION VALUE="07">July</OPTION> 
+						  <OPTION VALUE="08">August</OPTION> 
+						  <OPTION VALUE="09">September</OPTION> 
+						  <OPTION VALUE="10">October</OPTION> 
+						  <OPTION VALUE="11">November</OPTION> 
+						  <OPTION VALUE="12">December</OPTION> 
+						</SELECT>&nbsp;&nbsp;Year 
+						<SELECT NAME="FromYear" SIZE="1"> 
+						  <OPTION VALUE="2002" SELECTED="SELECTED">2002</OPTION> 
+						  <OPTION VALUE="2003">2003</OPTION> 
+						</SELECT><BR><BR><B>To</B>:<BR>Month 
+						<SELECT NAME="ToMonth" SIZE="1"> 
+						  <OPTION VALUE="01">January</OPTION> 
+						  <OPTION VALUE="02">February</OPTION> 
+						  <OPTION VALUE="03">March</OPTION> 
+						  <OPTION VALUE="04">April</OPTION> 
+						  <OPTION VALUE="05">May</OPTION> 
+						  <OPTION VALUE="06">June</OPTION> 
+						  <OPTION VALUE="07">July</OPTION> 
+						  <OPTION VALUE="08">August</OPTION> 
+						  <OPTION VALUE="09">September</OPTION> 
+						  <OPTION VALUE="10">October</OPTION> 
+						  <OPTION VALUE="11">November</OPTION> 
+						  <OPTION VALUE="12" SELECTED="SELECTED">December</OPTION> 
+						</SELECT>&nbsp;&nbsp;Year 
+						<SELECT NAME="ToYear" SIZE="1"> 
+						  <OPTION VALUE="2002" SELECTED="SELECTED">2002</OPTION> 
+						  <OPTION VALUE="2003">2003</OPTION> 
+						</SELECT></TD> 
+				  </TR> 
+				  <TR> 
+					 <TD ALIGN="CENTER"><B>Keywords</B> (optional):</TD> 
+					 <TD><INPUT TYPE="TEXT" NAME="Keywords" SIZE="30"
+						MAXLENGTH="100"></TD> 
+				  </TR> 
+				  <TR> 
+					 <TD ALIGN="CENTER"><B>Location</B> (optional):</TD> 
+					 <TD><INPUT TYPE="TEXT" NAME="Location" SIZE="30"
+						MAXLENGTH="100"></TD> 
+				  </TR> 
+				  <TR> 
+					 <TD COLSPAN="2" ALIGN="CENTER"><INPUT TYPE="SUBMIT"
+						NAME="SUBMIT" CHECKED="CHECKED" VALUE="List Courses"></TD> 
+				  </TR> 
+				</TABLE></FORM></TD>
+		</TR>
+		<TR>
+		  <TD WIDTH="140" ALIGN="LEFT" VALIGN="TOP"></TD>
+		  <TD WIDTH="510" VALIGN="BOTTOM" ALIGN="CENTER">
+			 <P> <A HREF="index.html">Home </A> | <A
+				HREF="conference.html">Conference Info </A>| <A HREF="courses.html">Course
+				Schedule</A> | <A HREF="links.html">Links</A> | <A HREF="about.html">About
+				EMSI</A></P>
+			 <P><FONT SIZE="-1">All material Copyright &copy; 2002 Emergency
+				Medical Service Institute</FONT></P></TD>
+		</TR>
+	 </TABLE> </BODY>
+</HTML>
