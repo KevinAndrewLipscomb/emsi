@@ -1,0 +1,133 @@
+<title>EMSAMS Implementation Instructions</title>
+Continuing Education and Certification Course  Electronic Application Implementation June/July 2003 
+The EMS Office is pleased to announce the implementation of the Continuing Education and Certification Course website provided by the PA Department of Health. 
+The website is designed primarily to allow new course applications to be submitted via the web and to permit a practitioner to view his/her record of continuing education classes completed.  Please note that this is not the official status report for an individual, but will show the individual the classes that have been added to his/her record. 
+Additional functions implemented during this phase include the completion and submission of class registrations, the viewing of classes (both continuing education and certification classes) registered statewide, and the viewing of a sponsor and training institute contact list. 
+o	Please do not access the website until the date specified for implementation in your EMS region 
+
+o	The website https://ecapps.health.state.pa.us/emsotakes you to the same webpage that is used for the ambulance application, but you will be able to choose “Continuing Education and Certification Courses” 
+
+o	If you experience difficulty, email us at ems_ceweb@state.pa.us. Be specific about the step you are trying to perform and what is occurring. You may want to send a copy of the email to your regional EMS council.  Please do not copy the EMS Office, as the EMS Office will be able to see and answer all correspondence to that email address.  Your input will be used to develop user assistance tools and enhancements.  
+
+
+
+Website Functions 
+When visiting the website for the first time, a user will be required to “register”
+on the system. This registration establishes the user’s identity with the system 
+and allows the user to continue onto the website.  
+The website will allow:
+
+The public to: 
+•	
+View his/her user settings 
+
+•	
+Search for 
+
+o	Classes (both continuing education and certification classes) that have been registered 
+
+o	CE course information 
+
+o	Regional EMS council contact information 
+
+o	CE sponsor and training institute contact information 
+
+
+
+•	
+Complete a new course application and submit it to the regional EMS council for review 
+
+
+The EMS practitioner to perform all actions above, plus: 
+•	View his/her continuing education credits 
+The CE sponsor or training institute administrator to perform all actions above, except “View his/her continuing education credits,” plus: 
+•	
+Register certification classes and continuing education classes and send them to the regional EMS council 
+
+•	
+Manage the organization’s contact information 
+
+•	
+Manage the list of users that are permitted to submit class registrations for the CE sponsor/training institute  
+
+
+The regional EMS council administrator to perform all actions above, except “View his/her continuing education credits,” plus: 
+•	General user search to assist the sponsors and training institutes to manage their users 
+
+Approving Individual Users to Register Classes 
+In order for a CE sponsor/training institute to add a user to the approved list: 
+First -The individual must: 
+•	
+Be “registered” on the system 
+
+•	
+Have his/her user setting called “user type” set to “sponsor or training institute” 
+
+•	
+Select the correct CE sponsor or training institute with which to affiliate 
+
+•	
+Be approved by the CE sponsor or training institute administrator or primary contact. 
+
+
+To approve a user: 
+
+Second - The CE sponsor/training institute administrator or primary contact must: 
+•	
+Enter the “My Organization’s User’s and Contact Information” screen 
+
+•	
+Click on “Manage Users” 
+
+•	
+Review individuals requesting affiliation with your organization that appear on the bottom list under “Users requesting affiliation…”  
+
+o	To approve a user to register courses, click “Add user…”   
+
+o	To disapprove, click on the individual’s name and an email will 
+
+
+
+
+pop-up. 
+.	Send an email message to the individual 
+.	Instruct the individual to go into his/her user settings, 
+and change the “user type” to “EMS Practitioner or 
+public.” Or, if he/she is affiliated with another sponsor or 
+training institute, instruct the individual to change the 
+sponsor/training institute number that appears on the 
+user settings 
+.	Changing the user setting will remove the request from the “Users requesting affiliation…” on the “Manage User” screen 
+
+
+Major Steps to be Accomplished during Implementation 
+1. 
+The CE sponsors and training institutes must not approve more than two staff to act as lead continuing education and certification course managers. All CE class registrations and all certification class registrations will be required to be entered into this system and will be reviewed and approved on-line.  
+
+2. 
+The CE sponsor/training institute managers may then approve other individuals to register. 
+
+3. 
+The primary contact individual must be “registered” on the system by creating a user profile: 
+
+a.	
+For all training institutes: by the end of the implementation period for the EMS region in which the training institute is headquartered 
+
+b. 
+For CE sponsors: by September 1, 2003 This process should be started the week of implementation and can continue for several weeks. By September 1, 2003, all active CE sponsors must be signed onto the system and have a user profile established for the primary contact person for that organization.   
+
+
+
+
+4. 
+CE sponsors and training institutes must instruct individuals approved by their organizations to register continuing education classes or certification classes to “register” on the system by creating a user profile.  Directions are included above. See “Approving Individual Users to Register Classes.”  
+
+5. 
+Process all CE new course applications through the web application.  Assist with verifying appropriate functioning of the system by checking new course information as it appears on the website. 
+
+6. 
+Process all class registrations through the web application.  	Assist with verifying appropriate functioning of the system by checking class registration information as it appears on the website. 
+
+
+Effective on the date of implementation in the EMS region, ALL new course applications and ALL continuing education and certification class registrations must be entered utilizing the website.  If no email address is provided on the applications, automatic email messages cannot be sent to the applicant.  The applicant must specify an email address to which correspondence can be sent.  
+

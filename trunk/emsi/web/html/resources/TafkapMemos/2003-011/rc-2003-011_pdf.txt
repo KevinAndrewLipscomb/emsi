@@ -1,0 +1,33 @@
+
+DATE:  April 25, 2003  
+SUBJECT:  AED Specifications  
+TO:  Regional EMS Directors  
+FROM:  Andrew Gilger, EMT-P  THRU: Margaret E. Trimble  
+Rescue and Special Programs Coordinator  Director  
+Emergency Medical Services Office  Emergency Medical Services Office  
+
+The following specifications for Automatic External Defibrillators are the minimum standards for units purchased and put into service. These specifications apply to newly purchased devices put into service, they do not relate to devices already in service. 
+Minimum Specifications for Automated External Defibrillator 
+Intent: To describe minimum specification requirements for an entire, portable, automated external defibrillator (AED) life saving system. The AED must have FDA approval. The AED shall be designed for first-responders who are at the scene of a cardiac incident.  The AED shall be put into service in such a way that electrodes, and any other elements essential to its use are readily available with the device. 
+
+Prompts: 
+The AED will include comprehensive voice instruction to guide user through the rescue process. 
+
+Instrumentation/Indicators: 
+The AED will include “ready status” indicator, battery indicator, and service required indicator with audible alarm. One indicator for several functions is acceptable. 
+
+Diagnostics: 
+The AED will include daily checks of the electrodes and battery, and more extensive diagnostic checks of its components to include, but not limited to, circuitry and delivery system that will occur on a monthly basis. 
+RC-2003-011 -2-April 25, 2003 
+
+Electrodes/Pads: 
+Each AED shall include two (2) sets of disposable, non-polarized, self-adhesive, gelled electrode pads. Electrodes may not be carried beyond their expiration date. 
+
+Batteries: 
+The AED shall include two (2) batteries per device. Each battery will be capable of providing a minimum of 20 discharges at the maximum Joule level. 
+
+AED/ECG Recording and Information Documentation: 
+AED will provide internal event and ECG documentation with the ability to produce a direct printed record of the event or the ability to download and print a record of the event via a Windows based PC. 
+Memory: 
+The AED shall be capable of one (1) hour ECG and event recording. 
+

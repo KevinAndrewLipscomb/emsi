@@ -1,0 +1,60 @@
+<title>EMS Personnel Called to Active Military Duty</title>
+DATE: February 18, 2003 SUBJECT: EMS Personnel Called to Active Military Duty 
+TO:  Regional EMS Directors  THRU: Director 
+ EMS Office  
+FROM:  Barbara J. Seifert  
+Prehospital Education Coordinator  
+Emergency Medical Services Office  
+(717) 787-8740  
+
+As authorized by the EMS Act, the EMS regulations, 28 Pa. Code § 1003.22 (c) and § 1003.23 (d), which permits recertification of a first responder and an EMT if certification has lapsed and § 1003.28 (c) which requires the ALS service medical director to ensure that an EMT-paramedic (EMT-P) or a Prehospital RN (PHRN) has completed or is completing the applicable CE and CPR requirements and has demonstrated competence in performing each of the services that fall within the scope of the individual’s medical command authorization, the EMS Office has established a procedure to address the needs of EMS practitioners deployed to active military duty. 
+The attached “EMS Personnel Called to Active Military Duty” policy has been established to define the documentation and process required for the recognition/authorization of EMS practitioners who are deployed or activated under military orders in the service of the United States Armed Forces, including any member of the military reserve called to extended active duty. 
+Requests for extensions should sent electronically to the EMS Office with a recommendation from the regional EMS council for the approval or denial of the request. The supporting documentation, including the most recent CE status report for the individual, should be kept at the regional EMS council for reference should additional information be requested by the EMS Office. The regional EMS council may submit a general request for extension for several individuals at one time by using the attached Excel file called “extensions.” This file is being distributed with the electronic distribution of this memo. If you do not receive the file or need additional instruction on the use of the file, please contact me.  
+Members of the military who are currently deployed, may chose not to wait until return to request extensions. Regional EMS councils should process these requests for extensions using the same process as described in this notice (i.e., length of his/her deployment up to one year) to establish completion of re-recognition/re-authorization requirements. 
+RC 2003-002                                                -2-February 18, 2003 
+It is anticipated that all requests will quickly be approved and that the returning military personnel will have little delay in returning to work in EMS. For paramedics and PHRNs, the ALS service medical director is key to facilitating this process. Paramedics are permanently certified but return to practice depends upon medical command authorization which only the ALS service medical director can authorize. 
+ADMINISTRATIVE PROCESS/EXCEL FILE INSTRUCTIONS: 
+The first line in the file is an example of how the information should be completed.  After completion of the information for extension requests, please forward the file to me to import into the database here at the EMS Office. 
+Skip columns A & B, start in column C. Use normal sentence case (first letter upper case the rest lower case), do not use all capitals except for certification level or course identification. 
+Column  Description  Data type or format  
+C  Region #  two digit number  
+D  Last Name  use input format of Aaa…. (not all capitals)  
+E  First Name  use input format of Aaa…. (not all capitals)  
+F  Certification Level  indicate FR, EMT, EMT-P, or PHRN  
+G  Certification #  six digit certification number  
+H  Certification Expiration  date current cert is expiring or expired (mm/dd/yy)  
+I  CE Acquired  indicate # of CE credits already earned  
+J  Deficiency  indicate # of CE credits that is needed  
+K  CPR Requirement Met  indicate whether it “has been” or “has not been” met  
+L  Facts  list the facts of the case in very simple & concise  
+statements – answer the questions – what is the  
+situation, what created the situation, what has the  
+practitioner done to rectify the situation.  
+M  Documentation Included  a list of documents provided to substantiate the claim  
+N  Information Needed  
+items that may be needed to substantiate the claim and notations regarding the  
+request for that information  
+O-skip  Approved  FOR EMS OFFICE USE  
+P  Extension For  length of the extension (in months up to one year)  
+Q  Compliance Required By  date which the extension expires (mm/dd/yy)  
+R  Requirement for Recertification/Reauthorization  
+List what will be required to be completed to be  
+recertified or reauthorized  
+S  New Expiration Date  end of the new certification period if conditions met  
+(mm/dd/yy)  
+T  Request from Provider  date that regional EMS council received the request  
+RC 2003-002 -3-February 18, 2003 
+
+
+(mm/dd/yy) 
+U  Request from Region  date that regional EMS council sends the request to  
+EMS Office (mm/dd/yy)  
+V-skip  Received at DOH  FOR EMS OFFICE USE  
+W-skip  Response to Region  FOR EMS OFFICE USE  
+X  Comments  provide any additional comments that you feel are  
+pertinent to the case or notes that you want to  
+remember about the case  
+
+NOTE: Modifications to CETAC must be made at the regional EMS council in accordance with guidance previously provided for managing personnel who have been granted extensions for continuing education deadlines. 
+cc: PEHSC 
+
