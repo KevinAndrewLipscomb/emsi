@@ -115,7 +115,7 @@ else
             . '","'
             . $region_code
             . '","'
-            . $be_instructor
+            . ($be_instructor==1 ? 'Yes' : 'No' )
             . '"'
             . "\n";
          }
