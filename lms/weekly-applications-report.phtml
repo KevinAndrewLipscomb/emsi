@@ -108,7 +108,7 @@ else
             . '","'
             . $email_address
             . '","'
-            . $date_of_birth
+            . sprintf("%06s",$date_of_birth
             . '","'
             . $street_address
             . '","'
@@ -121,9 +121,9 @@ else
             . '","'
             . $home_phone
             . '","'
-            . $county_code
+            . sprintf("%02s",$county_code)
             . '","'
-            . $region_code
+            . sprintf("%02s",$region_code)
             . '","'
             . ($be_instructor==1 ? 'Yes' : 'No' )
             . '","'
