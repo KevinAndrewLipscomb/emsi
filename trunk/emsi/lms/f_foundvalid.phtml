@@ -16,7 +16,7 @@ function FoundValid
       (
       "select 1 from " . $mode . "valid_for_lms "
       .  "   where short_cert_num='$cert_num'"
-      .  "      and first_name like '$first_name %' "
+      .  "      and ((first_name='$first_name') or (first_name like '$first_name %')) "
       .  "      and last_name='$last_name' "
       )
       or die("FoundValid query failed with error:  " . mysql_error());
