@@ -1,0 +1,487 @@
+<title>EMSI Intercom newsletter, March 2002</title>
+Droperidol Removed from Pennsylvania ALS Units 
+
+ollowing a change in the warning label for droperidol (Inapsine) by the drug manufacturer Akorn Pharmaceuticals, the Pennsylvania Department of Health has removed droperidol from the stock of medications to be carried on ALS units. The Department has recom­mended droperidol not be used in patient care until further notice and will most likely drop it from the state drug list. 
+Droperidol has been a useful agent for sedation in the emergency department and prehospital setting and was added as an approved ALS drug for Pennsylvania EMS providers within the last year. However, recent research has shown that QT prolongation (delayed recharging of the heart between beats) within minutes after injection of a dose of droperidol at the upper end of the labeled dose range can result in a potentially fatal heart arrhythmia known as torsades de pointes. 
+The new warning recommends a 12-lead ECG to identify QT prolon­gation before the use of droperidol. The ECG monitoring should be performed prior to treatment and continued for two to three hours after completing treatment to monitor for arrhythmias, according to the label warning. Because these patient care requirements are not feasible during EMS care, especially during the sedation of agitated out-of-hospital patients, the Pennsylvania Department of Health rec­ommended suspending use of droperidol by ALS services. 
+continued on page 2 
+
+EpiPen Pilot Project.............................3
+Field Update: Anthrax .........................9
+2002 Class Registrations....................12
+
+Droperidol continued from cover 
+According to representatives from Akorn Pharmaceuticals, approximately five million units of droperidol are distributed annually. Of those, the FDA has reports of approximately 100 cases of cardiovascular adverse events and 18 deaths associated with the drug. There have been six deaths from torsades reported, with five of the adverse reactions occurring at or below the dose of 2.5 mg. 
+
+Because of these statistics, Akorn Pharmaceuticals has changed the warning to state that droperidol should be reserved for use in the treatment of patients who fail to show an acceptable response to other adequate treatments, either because of insufficient effectiveness or the inability to achieve an effective dose due to intolerable adverse effects from those drugs. The recommendation continues to state that all patients should undergo a 12-lead ECG prior to administration of droperidol to determine if a prolonged QT 
+
+interval (QTc greater than 440 msec for males or 450 msec for females) is present. If there is prolonged QT interval, the drug should not be administered. 
+The Pennsylvania Department of Health EMS office suggests that patient protocols be updated to remove reference to the administration of droperidol, and that changes to regional treatment and transport protocols be reviewed and approved by the Department. This includes use of droperidol for the treatment of nau­sea since the risks associated with droperidol are not justified in the treatment of nausea in the prehospital setting. 
+The Department of Health recommends ALS practitioners contact medical command for possible orders of a denzodiazepine as sedation for patients struggling against physical restraints. It will consider adding haloperidol or lorazepam to the ALS drug list as a substitute for droperidol. 
+In addition to the removal of droperidol from the ALS drug list, there have been numerous drug shortages reported by the Department of Health over the past year. While these shortages are usually short term, the trend is expected to con­tinue in the coming years. 
+ALS services can take several steps to ensure adequate stock in EMS vehicles, including: 
+•
+ Avoiding the temptation to overstock due to the shortage. Services should be able to project the amount of medications that will be needed to assure adequate stock without stockpiling additional medication that is likely to expire. 
+
+•
+ Establishing communications withsurrounding hospitals, pharmacies and medication suppliers to assure continued availability of stock. 
+
+•
+ Considering carrying substitutedrugs recommended by the Department of Health and estab­lished through regional treatment protocols. 
+
+
+According to Douglas F. Kupas, Pennsylvania EMS Medical Director, there have been regular shortages of various generic medications over the last year. During these shortages, branded non-generic medications cannot keep up with the demand. Kupas agrees that these drug shortages are likely to continue and may affect almost every generic drug. 
+The EMS office will continue to follow the shortages and suggest potential solutions for regions and EMS providers. 
+
+
+Pilot Project Trains Rural EMTs on EpiPen Use 
+course on epinephrine. During the course, lectures focused on allergies with an expanded pharmacology section on epinephrine, including handling and storage. EMTs engaged in a practice session with an instructor who was available to answer ques­
+
+tions and critique per-EpiPen packets can help formance. The course those who are at a higher concluded with a risk for bee stings and practicum station where insect bites that can cause students were tested by a an allergic reaction. 
+
+pilot project that began last August may offer a viable solution to pre­hospital units that may be called to treat individuals with acute allergic reactions. The EpiPen Pilot Project provides EMTs with epinephrine (EpiPen) auto-injectors and the necessary training to administer this life-saving drug to patients in rural areas where prolonged response time is an issue. 
+The EpiPen Pilot Program began in August 2001 and focuses on providing EpiPen packets to EMTs in rural areas where hikers, campers and others are at a higher risk for bee stings and insect bites that can cause an allergic reaction. The EpiPen is a disposable drug delivery system with a spring-activated, concealed needle designed for emergency first aid to individuals sensitive to fatal allergic reactions. The needle injects epinephrine, which is the treatment of choice for anaphylactic reactions. 
+The pilot project began in four rural areas: Bureau of State Parks at Ricketts Glen State Park, Fairmount Ambulance, Mildred Ambulance, and Sugarloaf Ambulance. These basic life support services received packets labeled with a face sheet about the project, contents, a warning and a contact number. Each packet contains two EpiPen adult and two EpiPen junior auto-injectors, a quick reference use card, index cards to record the content, and a document sheet to record and submit for event review. 
+Twenty-five EMTs, along with personnel from the Columbia County Rescue Task Force, completed a four-hour training the observation that the required skill level had been achieved. I believe this is because the training rein­forced prior learned material building on a knowledge base and skills the EMTs already poss­essed.”
+team consisting of a paramedic, nurse or physician observation tester and a patient tester. Using an anaphylaxis sce­nario, the patient tester interacted with the EMT while the observation tester recorded performance. 
+
+The training proved to be successful with 22 of the 25 EMTs passing the training with a score of 86 percent or better and no critical misses on the first attempt. The final three passed upon immediate retesting. 
+Follow-up with this initial group will be conducted every three months, including attendance at lectures, team meetings, and a visual check of the EpiPen packet contents. Retesting will occur every six months using the interactive patient anaphylactic scenario. 
+“The training was easily assimilated by the EMTs,” notes Debra Stoner, MD, FACEP, EpiPen Project Coordinator. “Feedback from the four testers supported In the final analysis, Dr. Stoner believes that the project will have far reaching significance for services that want to have EMTs carry EpiPen in the field. 
+“I believe equipping prehospital units with an epinephrine auto-injector has significant implications for improved patient outcomes in acute allergic reactions, especially in rural areas with prolonged response time,” notes Dr. Stoner. 
+This can be safely achieved, according to Dr. Stoner, because: 
+•
+ EMTs have had prior training. 
+
+•
+ EMTs will be able to contact medical command for direction. 
+
+•
+ The use will be limited to EMTs who pass the additional training. 
+
+•
+ The medication, cases and outcomescan be monitored by standard DOH guidelines. 
+
+
+The pilot project will continue through the summer of 2002. 
+
+
+ANTHRA X 
+
+ANTHRA X
+
+Since the September 11 terrorist attacks, the word anthrax has become a household word. From reports of traces of anthrax in a senator’s office to the death of a postal worker from the disease, the mere mention of the word can bring anxiety to many individuals. While reports of actual cases of anthrax have been few, virtually every city in the United States has had to deal with an increase in the number of hoaxes and false reports of anthrax. Yet, the proper authorities, including EMS services that may be called to the scene, must address all threats. 
+The following is a primer on diag­nosing and treating anthrax, as well as information on how to handle packages or other items that are suspected to contain anthrax spores. 
+What is Anthrax? 
+Anthrax is an infection caused by Bacillus anthracas, which is a spore­forming bacteria most often found in soil and in hoofed farm animals that have eaten food contaminated with the spores. Normally, humans who are at the highest risk for infection are those who work with farm animals or products, such as veterinarians or animal handlers. However, most cases of anthrax that occur naturally are found in south and central America, eastern Europe, Asia, Africa, the Caribbean and the Middle East. Prior to September 2001, there were only 18 cases of inhalation anthrax reported in the United States in the last 100 years. The last case reported was in 1976. 
+
+How Does Someone Become Infected? 
+Infection occurs in three ways: through inhalation of air containing the spores; by touching contaminated animal fur, skin or anything else containing the spores; or by eating undercooked animal meat containing the spores. The most common natural occurrence is cutaneous anthrax, which occurs through direct contact with the skin. 
+In the days since September 11, the bioterroristic threats have been associ­ated with inhalation anthrax in which individuals inhaled the spores con­tained in letters sent through the US Mail. While anthrax is not contagious, it can be deadly. 
+What are the Symptoms of Inhalation Anthrax? 
+The initial symptoms are similar to a cold, flu or pneumonia and may start with a cough, nausea and breathing problems. As the days progress, the symptoms worsen and eventually lead to a total collapse of bodily function. The majority of inhalation anthrax patients die within a day or two of the appear­ance of severe breathing difficulty. However, if antibiotic therapy (usually ciproflaxacin) begins early, patients can fully recover. 
+
+Is There a Vaccine Against Anthrax? 
+There is a vaccine; however, it is generally unavailable to general public. Currently, the vaccines are reserved for people who are at high risk, such as the military in areas where bioterrorism is a concern or individuals who work in laboratories where exposure is possible. In the days after September 2001, postal workers and others considered at a high risk for infection and possibly exposed to spores received the vaccine. 
+The vaccine causes the body to produce anthrax fighting antibodies without actual exposure to the disease and is considered to be 93 percent effective in protecting against anthrax. The immunization involves three injections given two weeks apart followed by three additional injections given at six, 12 and 18 month intervals. There are not considered to be any long term side effects from the vaccine. 
+
+The Center for Disease Control does not recommend a widespread use of the vaccination. Instead, it is only recom­mended for at-risk occupations and those individuals who have been identified to be at risk for exposure to the spores. 
+How is Anthrax Being Used in Biological Warfare 
+Because anthrax spores can survive for long periods, can be spread through the air, and cause severe fatal symptoms relatively quickly, it has become a real threat as a biological weapon. A treaty has been signed by 143 nations banning anthrax use in missiles or bombs. However, terrorists who obtain access to spores can spread the disease by spraying it, releasing it into ventilation systems, or even mailing it in packages or letters. In the most recent anthrax cases, the spores were in the form of a white powder mailed in envelopes to unsuspecting individuals. 
+What Can People Do to Prevent Infection? 
+If a suspicious letter or package appears and contains a threat or pow­dery substance, the person should put the package down immediately, cover it or put it in an envelope, and leave the area. The police should be called immediately. These officials may call the public safety department or the Department of Emergency Management and a hazardous materials team. Steps should be taken to be sure that no one goes near the potentially contaminated area. Anyone who touched the package should wash his or her hands and arms with warm soapy water. Also, heavily contaminated clothing should be removed, placed in a plastic bag, and given to emergency responders. The law enforcement officials will remove the package and bags, mostly likely while wearing gloves and masks, and send it for analyzation. While waiting for results, individuals who may have been exposed can take showers and wash their clothes in their own home, and do not need to be isolated since the disease is not contagious. If a person receives positive test results, he or she will be notified and antibiotic therapy can begin immediately. 
+What is Being Done to Prepare for Additional Anthrax Threats? 
+Local and regional officials have disaster plans that they follow regularly regarding bioterrorism and chemical warfare. These plans are being reviewed and updated to include response for anthrax and other chemical threats. 
+Governor Richard Schweiker also announced at a recent meeting with the Pennsylvania Department of Health that the Commonwealth is planning roll-out of a process for how to handle this type of threat at the state level. This roll-out is expected within the next two months. 
+“The State Health Laboratory in Chester County is currently the only facility in the state that is designated by the FBI and the Centers for Disease Control as a reference lab for chemical and bio­terrorism testing. It has performed all of the state’s anthrax testing,” noted Schweiker in a recent press release. He added that the Health Department is “working with health officials in the Pittsburgh area to improve public health laboratory capacity in Allegheny County – not just for western Pennsylvania, but also as a backup bio-terrorism lab­oratory for the entire state.” 
+In addition to activities at the local and state level, the federal government has supplies of antibiotics and antidotes for biological and chemical warfare. These supplies are centrally located and can be delivered within hours of the identification of exposure. Individuals are discouraged from stockpiling antibiotics for future use should an exposure occur and should not take such antibiotics unless recommended by a physician. 
+Information for this article was obtained from the Center for Disease Control and the Patient Education Institute. 
+
+
+Cardiac Arrests (whole state) by Age Group Under 5 0 5 – 9 1 10 – 14 1 15 – 19 9 20 – 24 5 25 – 34 20 35 – 44 38 45 – 54 87 55 – 59 59 60 – 64 69 65 – 74 155 75 – 84 137 85 & Over 43 
+
+Cardiac Arrest Information Compiled 
+The EMSI Office recently compiled cardiac arrest data from the 1999 patient care records and the 2000 census data for the various counties in the region. The charts on this page are an overview of the data collected. The sample size of arrests per county is less than 30 when variations in the rate are largely random. 
+Cardiac Arrests by County (total state - 196) 
+Allegheny  108  
+Armstrong  3  
+Beaver  11  
+Butler  8  
+Fayette  6  
+Greene  2  
+Indiana  9  
+Lawrence  8  
+Washington  15  
+Westmoreland  26  
+
+
+
+
+
+FOR POSITION ONLY
+
+
+
+t’s a well known fact that there is a staffing shortage in the emergency medical services field. The Emergency Medical Services Institute recently con­ducted a survey of ambulance services in the region to validate this claim. 
+
+Last year, all 176 ambu­lance companies in the region received a survey that asked for specific numbers of paramedics and EMTs on staff. The survey also asked for numbers of open positions. Of the 55 ambulance companies that respond­ed, it was reported that there were 195 para-
+Staffing Survey 
+medic and 180 EMT 
+
+Confirms Shortages openings. Multiply this 
+
+sampling by the total 
+companies in the area, 
+and the number quickly escalates to an estimated 400 openings in the region. 
+
+ACEMS Scholarships Offered 
+
+pplications are being accepted for winners $500 toward attendance at an the Allen S. Schattner Paramedic approved paramedic training program. Scholarship Program sponsored by Last year’s winners were EMTs Jennifer Allegheny County EMS Council. Now in Breze from Elizabeth Twp. EMS, Sean Jones its second year, this program is named from Steel Valley Ambulance, and Keith after Allen S. Schattner for his work in Jankowski from Ross West View EMSA. promoting the development of advance life support and the paramedic profession Applications will be available at the in Allegheny County. EMSI Update at Seven Springs or by 
+writing to: ACEMS Council, PO Box Open to Allegheny County residents, the 10498, Pittsburgh, PA 15234. program offers each of the scholarship Broken down, there are currently 78 full time and 117 part time paramedic openings reported in the 176 companies who participated in the survey. There are 71 full time and 109 part time EMT openings in the same companies. 
+The reasons for shortages are numerous and as varied as the people represented in the field. Some qualified personnel accept positions in hospitals or with other health care providers that are also suffering from shortages. Others attribute the move out of the EMS setting to low wages. Whatever the reasons, there is a very real issue in the field today as ambulance companies struggle to recruit and retain qualified personnel. 
+“The staffing issues so prevalent in health care have spread to the prehospital environment,” notes Phil Stoner, EMSI executive director. “They are significantly affecting the services on which the citizens of the Commonwealth depend.” 
+
+MDC Meeting
+Schedule Set
+
+EMSI’s Regional Medical Direction Committee (MDC) has set the following meeting schedule: 
+Friday, April 5 
+Friday, June 7 
+Friday, September 13 
+Friday, December 6 
+All meetings begin at noon and include lunch. The location for each meeting has not been set. 
+For more information on joining the MDC, contact Joseph Ponko, EMSI medical specialist, at (412) 242-7322. 
+
+
+
+FOR POSITION ONLY
+
+
+
+EMT National Registry Training Courses Scheduled 
+
+he National Registry of Emergency Medical Technicians registers emer­gency medical services providers from across the nation through an extensive system that includes written and per­formance exams. Effective October 1, 2002, all paramedic students must suc­cessfully complete the practical and written exams to receive Pennsylvania paramedic certification. 
+There are several paramedic exams scheduled in the coming months. The following is a list of the written and practical exam dates: 
+Written Exams 
+Friday, April 5 ............................6 p.m. CCAC/Washington Hospital 
+Friday, April 12 ..........................6 p.m. Butler Community College 
+Thursday, April 25 .....................2 p.m. Center for Emergency Medicine 
+Tuesday, May 21.........................2 p.m. Penn State Fayette 
+Practical Exams 
+Saturday, April 6.........................8 a.m. CCAC/Washington Hospital 
+Saturday, April 13.......................8 a.m. Butler Community College 
+Friday, April 26 ..........................8 a.m. Center for Emergency Medicine 
+Wednesday, May 22 ....................8 a.m. Penn State Fayette 
+Thursday, May 23 .......................8 a.m. Penn State Fayette Paramedic students interested in taking the exams should keep the following information in mind. 
+•
+ Individuals must apply for the writtenexam a minimum of four weeks before the date of the test. The application must include all information, the required signatures, and all attach­ments. There is a comprehensive checklist on the application for required materials that should be followed closely. Also, remember that the application must be signed and mailed in; copies of signatures and faxes can not be accepted. 
+
+• 
+Any electronic, electrical or mechanical equipment used in the practical exam must be approved in advance by the National Registry. 
+
+•
+ Individuals must complete testing andbecome certified within two years of completion of paramedic coursework. 
+
+
+For more information on upcoming tests or guidelines for taking the exams, contact Scott Crawford, EMSI National Registry Representative, at (412) 242-7322 or log on to www.nremt.org. 
+
+Funding Still Available for Trip Sheet Software 
+
+he Emergency Medical Services Institute Office reminds EMS providers that funds are still available for the purchase of approved trip sheet software programs. Funding is now at 100 percent for up to $1,700 in software. 
+There are several software programs approved by the Department of Health including EMMA, Ambulance Track, Quick Trip for the INET, Code III, Aim Trip Module and EMSAT. A full listing of the approved programs and vendors is available through EMSI. 
+The newer software is faster, more accurate and easier to use than previous versions. Through trip sheet software, EMS providers can enter data and patient care records, which cuts down considerably on paper usage and costs. 
+For more information or to obtain a copy of the application, contact the EMSI office at (412) 242-7322. 
+
+
+National
+
+
+EMS
+Week
+May 19 - 25
+
+Web Site News
+
+
+he EMSI web site is up and running again. Visitors to emsi04.org will be able to see a work in progress as information on courses and conferences is being added regularly. Additional information already on the site includes background on EMSI as well as links to other interesting and important sites. 
+Anyone interested in giving input on the site should contact Phil Stoner, EMSI Executive Director, at stoner@emsi04.org. Bookmark this site and visit it often. 
+emsi04.org 
+
+Watch Out for
+Identity Theft
+
+
+MSI has been notified that several EMS providers have been victims of identity theft and credit fraud. While no thefts have been reported locally, there have been incidents in two EMS regions. 
+Victims should report this federal crime to their local law enforcement agency. Regional EMS councils must assure that all personal information is secured and not accessible to unauthorized persons. 
+For details call 877-ID-THEFT (438-4388) or log on to www.idtheftcenter.org or www.consumer.gov/idtheft. 
+
+Continuing Education Requirements
+
+First Responders: To qualify for recertification by fulfilling continuing education requirements, first responders must complete the following prior to the expiration of the three-year certification. 
+•
+16 hours of instruction in subjectsrelated to the scope of practice of a first responder that have been approved by the Department for continuing education credit. 
+
+•
+At least eight credits in medical andtrauma education, commencing with the first full certification period the first responder begins following October 14, 2000. 
+
+•
+A CPR course completed or taughtbiennially. 
+
+
+EMTs: To qualify for recertification by fulfilling continuing education require­ments, first responders must complete the following prior to the expiration of the three-year certification period. 
+•
+24 hours of instruction related tothe scope of practice of an EMT that have been approved by the Department for continuing education credit. 
+
+•
+At least 12 hours of medical and trauma education, commencing with the first full certification period the EMT begins following October 14, 2000. 
+
+•
+A CPR course completed or taughtbiennially. 
+
+
+EMT-Paramedics: For eligibility to receive and retain medical command authorization, an EMT-paramedic must complete the following each calendar year. 
+•18 hours of instruction in subjectsrelated to the scope of practice of an EMT-paramedic that have been approved by the Department for continuing education credit. 
+•
+At least nine hours of instruction in medical and trauma education beginning in 2002. 
+
+•
+A CPR course completed or taught
+
+
+biennially. In the initial year of certification, the EMT-paramedic’s continuing education requirements to secure renewal of medical command authorization for the following year will be prorated based on the month the certification was secured. 
+Prehospital Registered Nurses: For eligibility to receive and retain medical command authorization, a prehospital nurse must successfully complete the following in each calendar year. 
+•
+18 hours of instruction in subjectsrelated to the scope of practice of prehospital registered nurse that have been approved by the Department for continuing education credit. 
+
+•
+At least nine hours of instruction in medical and trauma education beginning in 2002. 
+
+•
+A CPR course completed or taught
+
+
+biennially. In the initial year of recognition, the prehospital registered nurse’s continuing education requirements to secure renewal of medical command authorization for the following year will be prorated based on the month the certification was secured. 
+The Department of Health is currently working on designating medical/trauma hours and other category hours. EMSI will make this information public when the designation occurs. 
+For more information on continuing education requirements, contact Bruce Sivik, EMSI Prehospital Service Specialist, at (412) 242-7322. 
+
+
+
+2002 Class Registrations By Specific Dates
+
+Start Class Course Hours Class
+Date Time Number Name 1st Resp EMT Med PHRN Location Contact Phone
+
+3/19 19:00  020415  Foc. History/Phys Exam/Medical 2.0  2.0  2.0  Penn State Ted Mellors (724) 430-4215  
+3/19 18:30  020307  Clinical Issue of Terrorism 3.0  3.0  3.0  Armstrong Co. Memorial William Hamilton (724) 543-8112  
+3/19 8:00  020087  ACLS - R 0.0  0.0  8.0  Alle Kiski Medical Ctr. William Held (412) 359-4955  
+3/22 8:00  020424  ACLS - R 0.0  0.0  8.0  St. Clair Hospital CCAC (412) 237-2500  
+3/24 14:00  020420  Communicable Diseases 2.0  2.0  2.0  North Huntingdon Walt Lipinski (724) 864-2540  
+3/26 8:00  020088  PALS 0.0  0.0  16.0  Allegheny General William Held (412) 359-4955  
+3/27 14:00  020285  ACLS - R 0.0  0.0  8.0  Valley Ambulance MC Nash (412) 749-7120  
+3/28 10:00  020010  Brain Attack Program 2.0  2.0  2.0  Hamer Hall Barb Webb (724) 938-5956  
+3/28 9:00  020009  Detailed Physical Exam 1.0  1.0  1.0  Hamer Hall Barb Webb (724) 938-5956  
+3/28 12:30  020011  Cardiac Emergencies 2.5  3.0  3.0  Hamer Hall Barb Webb (724) 938-5956  
+3/28 8:00  020089  ACLS - R 0.0  0.0  8.0  Canonsburg Hospital William Held (412) 359-4955  
+4/2 21:00  020416  Mass Casualty/Triage Overview 1.0  1.0  1.0  Penn State Ted Mellors (724) 430-4215  
+4/2 19:00  020410  Patient Assessment Services 2.0  2.0  2.0  Foxwall EMS Nate Szewczyk (412) 963-6611  
+4/3 8:00  020090  PALS 0.0  0.0  16.0  Alle Kiski Medical Ctr. William Held (412) 359-4955  
+4/5 7:45  020319  PALS 0.0  0.0  16.0  Children’s Hospital  Prehospital Svcs. (412) 692-8720  
+4/6 8:00  020091  BTLS 16.0  16.0  16.0  Alle Kiski Medical Ctr. William Held (412) 359-4955  
+4/7 8:00  020092  BTLS - R 8.0  8.0  8.0  Alle Kiski Medical Ctr. William Held (412) 359-4955  
+4/10 11:00  020186  Lifting & Moving 3.0  3.0  3.0  Jeannette Hospital Don Thoma (724) 527-9341  
+4/10 19:00  020168  Head Injuries 2.0  2.0  2.0  Valley Ambulance MC Nash (412) 749-7120  
+4/10 8:00  020093  PALS - R 0.0  0.0  8.0  Allegheny General PALS Faculty (412) 359-4955  
+4/11 7:15  020201  ACLS 0.0  0.0  16.0  Mercy Hospital Jim Blosser (412) 232-5855  
+4/11 12:30  020013  Documentation 1.5  1.5  1.5  Hamer Hall Barb Webb (724) 938-5956  
+4/11 9:00  020012  Lifting & Moving 3.0  3.0  3.0  Hamer Hall Barb Webb (724) 938-5956  
+4/11 14:15  020014  Intro. to Emergency Medical Care 1.5  1.5  1.5  Hamer Hall Barb Webb (724) 938-5956  
+4/13 8:00  020286  PHTLS - R 0.0  8.0  8.0  Valley Ambulance MC Nash (412) 749-7120  
+4/13 8:00  020056  Trauma Cadaver Lab 6.0  6.0  6.0  CCAC Main CCAC (412) 237-2500  
+4/13 9:00  020313  Trauma Assessment 0.0  0.0  3.0  Foxwall EMS Nate Szewczyk (412) 963-6611  
+4/13 12:00  020314  Foc. History/Phys Exam – Trauma 4.0  4.0  4.0  Foxwall EMS Nate Szewczyk (412) 963-6611  
+4/16 8:00  020173  ACLS - R 0.0  0.0  8.0  Med. Rescue Team South Adella Mueller (724) 356-7381  
+4/17 8:00  020094  ACLS - R 0.0  0.0  8.0  Allegheny General William Held (412) 359-4955  
+4/18 19:00  020421  Airway & Airway Practical Lab 6.0  6.0  6.0  North Huntingdon Resc. 8 Walt Lipinski (724) 864-2540  
+4/18 18:30  020178  Hazardous Materials R & I 4.0  4.0  4.0  CCAC Allegheny CCAC (412) 237-2500  
+4/18 9:00  020015  Behavioral Emergencies 1.5  1.5  1.5  Hamer Hall Barb Webb (724) 938-5956  
+4/18 14:30  020017  Medical/Legal & Ethical Issues 1.5  1.5  1.5  Hamer Hall Barb Webb (724) 938-5956  
+4/18 11:00  020016  BSI & Infection Control 3.0  3.0  3.0  Hamer Hall Barb Webb (724) 938-5956  
+4/22 18:30  020065  AED 4.0  4.0  4.0  Mt. Pleasant FD CCAC (412) 237-2500  
+4/24 8:00  020095  ACLS 0.0  0.0  16.0  Allegheny General William Held (412) 359-4955  
+4/26 7:30  020221  PALS - R 0.0  0.0  8.0  Mercy Hospital Jim Blosser (412) 232-5855  
+4/27 8:00  020347  ACLS - R 0.0  0.0  8.0  Jefferson Hospital CCAC (412) 237-2500  
+4/27 8:00  020180  EVOC - NSC 10.0  10.0  10.0  CCAC Allegheny CCAC (412) 237-2500  
+5/1 14:00  020281  ACLS - R 0.0  0.0  8.0  Valley Ambulance Judy Haluka (412) 262-5736  
+5/1 8:00  020097  ACLS - R 0.0  0.0  8.0  West Penn Hospital William Held (412) 359-4955  
+5/2 8:00  020425  PALS - R 0.0  0.0  8.0  St. Clair Hospital CCAC (412) 237-2500  
+5/2 8:00  020098  PALS - R 0.0  0.0  8.0  West Penn Hospital William Held (412) 359-4955  
+5/8 11:00  020187  Mass Casualty/Triage Overview 1.0  1.0  1.0  Jeannette Hospital Don Thoma (724) 527-9341  
+5/9 7:45  020320  PALS - R 0.0  0.0  8.0  Children’s Hospital Prehospital Svcs. (412) 692-8720  
+5/16 13:30  020019  Brain Attack Program 2.0  2.0  2.0  Hamer Hall Barb Webb (724) 938-5956  
+5/16 9:00  020018  Injuries to the Head & Spine 4.0  4.0  4.0  Hamer Hall Barb Webb (724) 938-5956  
+5/16 8:00  020099  ACLS - R 0.0  0.0  8.0  Allegheny General William Held (412) 359-4955  
+5/22 8:00  020100  ACLS 0.0  0.0  16.0  Forbes Regional William Held (412) 359-4955  
+5/24 7:30  020210  ACLS - R 0.0  0.0  8.0  Mercy Hospital Jim Blosser (412) 232-5855  
+5/24 18:30  020345  BTLS 16.0  16.0  16.0  Jefferson Hospital CCAC (412) 237-2500  
+5/24 18:30  020346  BTLS - R 8.0  8.0  8.0  Jefferson Hospital CCAC (412) 237-2500  
+5/30 7:45  020321  PALS 0.0  0.0  16.0  Children’s Hospital Prehospital Svcs. (412) 692-8720  
+5/30 7:30  020216  PALS 0.0  0.0  16.0  Mercy Hospital Jim Blosser (412) 232-5855  
+6/1 8:00  020291  PALS - R 0.0  0.0  8.0  Economy Ambulance Judy Haluka (412) 749-7120  
+6/1 8:00  020181  EVOC - NSC 10.0  10.0  10.0  CCAC Allegheny CCAC (412) 237-2500  
+6/1 8:00  020101  PHTLS - R 0.0  8.0  8.0  Allegheny General William Held (412) 359-4955  
+6/2 8:00  020292  ACLS - R 0.0  0.0  8.0  Economy Ambulance MC Nash (412) 749-7120  
+6/3 8:00  020102  ACLS - R 0.0  0.0  8.0  Alle Kiski Medical Ctr. William Held (412) 359-4955  
+6/5 19:00  020336  SHHS ALS Skills Review  2.5  Jefferson Hospital CCAC (412) 237-2500  
+6/5 9:00  020335  SHHS ALS Skills Review  2.5  Jefferson Hospital CCAC (412) 237-2500  
+6/5 8:00  020103  PALS 0.0  0.0  16.0  Allegheny General William Held (412) 359-4955  
+6/6 8:00  020426  ACLS - R 0.0  0.0  8.0  St. Clair Hospital CCAC (412) 237-2500  
+6/6 9:00  020054  Airway & Airway Practical Lab 6.0  6.0  6.0  Hamer Hall Barb Webb (724) 938-5956  
+6/10 8:00  020104  ACLS 0.0  0.0  16.0  West Penn Hospital William Held (412) 359-4955  
+6/12 11:00  020188  Protect Yourself-Serious Bloodborne 1.5  1.5  1.5  Jeannette Hospital Don Thoma (724) 527-9341  
+6/13 8:00  020105  ACLS - R 0.0  0.0  8.0  Allegheny General Willaim Held (412) 359-4955  
+6/13 8:00  020174  PALS - R 0.0  0.0  8.0  Med. Rescue Team South Adella Mueller (724) 356-7381  
+6/20 7:15  020202  ACLS 0.0  0.0  16.0  Mercy Hospital Jim Blosser (412) 232-5855  
+6/26 8:00  020348  ACLS - R 0.0  0.0  8.0  Jefferson Hospital CCAC (412) 237-2500  
+6/27 7:15  020203  ACLS 0.0  0.0  16.0  Mercy Hospital Jim Blosser (412) 232-5855  
+6/27 7:30  020217  PALS 0.0  0.0  16.0  Mercy Hospital Jim Blosser (412) 232-5855  
+6/29 7:45  020322  PALS 0.0  0.0  16.0  Children’s Hospital Prehospital Svcs. (412) 692-8720  
+
+
+
+
+
+FOR POSITION ONLY
+
+
+Officers 
+•
+William E. Groft, EMT-P, President 
+
+•
+Michael Coleman, DO, Vice President 
+
+•
+Mary Ann Scott, RN, BSN, Treasurer 
+
+•
+Douglas Garretson, BA, NREMT-P, Secretary 
+
+•
+Richard F. Kunkle, MD, FACEP, Past President 
+
+
+EMS Council Representatives 
+•
+Russell Chiodo, Beaver 
+
+•
+Mike Coleman, DO, Butler Cataldo Corrado, MD, Fayette Rick Huff, Washington George Laskey, Westmoreland Jim Sadler, Indiana 
+
+•
+Mary Ann Scott, Allegheny
+
+•
+Brian Shaw, Lawrence Doug Young, Greene 
+
+
+County Government Representatives 
+Chief Bob Full, Allegheny
+Rod Groomes, Armstrong 
+Bernie Smith, Indiana
+Sandra Smythe, Westmoreland
+Walt Vincinelly, Fayette 
+Thomas White, Lawrence
+
+•Linda Zidek, Washington 
+Directors at-Large 
+Joseph Akif
+Mike Caroselli
+Richard G. Fuller,  MEd, EMT-P
+
+•
+Doug Garretson, NREMT-P 
+
+•
+Bill Groft 
+
+•
+Ed HeltmanBradley D. Penrod, AAE 
+
+•
+B. J. PinoBill Plunkett 
+
+•
+Ron RothPatrick M. Sherin 
+
+
+•Indicates Executive Committee
+EMSI Staff E-Mail Addresses 
+Gloria Arrington, Accountant 
+garrington@emsi04.org 
+Scott Crawford, Regional Training Coordinator 
+scrawford@emsi04.org 
+Pam Dixon, Data Processor 
+pdixon@emsi04.org 
+Kurt Henkel, Regional Training Coordinator 
+khenkel@emsi04.org 
+Linda Kovac, Con-Ed/Training Program Specialist 
+lkovac@emsi04.org 
+Louise Myers, Data Processor 
+lmyers@emsi04.org 
+Carolyn Palmer, Secretary 
+cpalmer@emsi04.org 
+Joe Ponko, Medical Specialist 
+jponko@emsi04.org 
+Bruce Sivak, Prehospital Service Specialist 
+bsivak@emsi04.org 
+Philip Stoner, Executive Director 
+pstoner@emsi04.org 
+Nancy Theilacker, Secretary 
+ntheilacker@emsi04.org 
+
+www .emsi04.org 
+
+EMSI Intercom is published quarterly as a service of Emergency Medical Service Institute. EMSI is a regional non-profit agency coordinating emergency medical resources in ten counties of southwestern Pennsylvania. 
+Philip Stoner ...........................................Executive Director
+Camille Downing.......................................................Editor
+Drawing Conclusions .............................................Designer
+Rosenfeld Graphic Services........................................Printer
+
+
+
+EMSI Offers Information on the Voluntary Rescue Service Recognition Program 
+
+ast year, the Department of Health and the Pennsylvania Health Services
+Council (PEHSC) announced the imple
+­mentation of the Voluntary Rescue
+Service Recognition program designed
+to provide rescue services with standards
+for training and equipment.
+
+Rescue services wishing to participate
+in this program must be recognized in
+one of three categories: first responder,
+operations or advanced. With each step up
+in category, the requirements for staffing
+and equipment increase to a higher
+level of ability in rescue capability.
+
+
+EMSI
+
+220 Penn Avenue Suite 2500 Pittsburgh, PA 15221 
+(412) 242-7322 
+EMSI can provide rescue services with a copy of the Voluntary Rescue Service Recognition document. To request a copy, the chief or director of the rescue team must send a letter on business letterhead to EMSI. If the service meets all the requirements of the program, an appli­cation can be completed and returned with the necessary documentation to EMSI. 
+Upon receipt of the application, the fol­lowing EMSI field representatives will arrange an inspection of the rescue service based on locale. 
+Kurt J. Henkle: 
+Allegheny County 
+Scott Crawford: 
+Armstrong, Beaver, Butler, Indiana,     
+Lawrence Counties Joseph Ponko: 
+Fayette, Greene, Washington, 
+Westmoreland Counties 
+For more information on the Voluntary Rescue Service Recognition program, contact your field representative or call Bruce Sivak, EMSI Prehospital Service Specialist, at (412) 242-7322. 
+
+
+
+
