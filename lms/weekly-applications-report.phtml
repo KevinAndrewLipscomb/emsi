@@ -100,7 +100,7 @@ else
             . '","'
             . ucfirst(strtolower($last_name))
             . '","'
-            . sprintf('pa%06s',$cert_num)
+            . $cert_level_name . ($cert_level_name=='FR' ? "f" : "")
             . '","'
             . $cert_level_name
             . '","'

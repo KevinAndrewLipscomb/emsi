@@ -83,12 +83,16 @@ $assert_email_address = $_assert_email_address;
                {
                if ($assert_email_address or BeValidEmailAddress($email_address,$mode))
                   {
-                  if (FoundValid($cert_num,$first_name,$last_name,$mode))
+                  $found_valid_rec = FoundValid($cert_num,$first_name,$last_name,$mode);
+                  if ($found_valid_rec["value"])
                      {
                      mysql_query
                         (
-                        "insert into " . $mode . "lms_applicant set cert_num='$cert_num' "
+                        "insert into " . $mode . "lms_applicant "
+                        .  "set cert_num='$cert_num' "
+                        .  ", cert_level_code='" . $found_valid_rec["cert_level_code"] . "' "
                         .  ", email_address='$email_address' "
+                        .  ", application_timestamp='" . time() . "' "
                         )
                         or die("Insert failed with error: " . mysql_error());
                      echo "<b>Thanks!</b></p>\n";
