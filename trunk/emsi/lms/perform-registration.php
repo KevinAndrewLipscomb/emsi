@@ -86,23 +86,44 @@ $assert_email_address = $_assert_email_address;
                   $found_valid_rec = FoundValid($cert_num,$first_name,$last_name,$mode);
                   if ($found_valid_rec["value"])
                      {
-                     mysql_query
+                     $result = mysql_query
                         (
                         "insert into " . $mode . "lms_applicant "
                         .  "set cert_num='$cert_num' "
                         .  ", cert_level_code='" . $found_valid_rec["cert_level_code"] . "' "
                         .  ", email_address='$email_address' "
                         .  ", application_timestamp='" . time() . "' "
-                        )
-                        or die("Insert failed with error: " . mysql_error());
-                     echo "<b>Thanks!</b></p>\n";
-                     echo "<p>Your application has been registered in EMSI's database.  You should receive your account "
-                        . "information within ten days.</p>\n";
-                     echo "<ul>\n"
-                        . "   <li><p><a href=http://www.emsi04.org/services/prehosp-pers/lms/>Return to EMSI's LMS page</a></p></li>\n"
-                        . "   <li><p><a href=http://www.emsi04.org/>Return to EMSI's home page</a></p></li>\n"
-                        . "</ul>\n"
-                        . "<p>Problems?&nbsp; Contact <a href=mailto:asst-director@emsi04.org><i>asst-director@emsi04.org</i></a>.</p>\n";
+                        );
+                     if ($result)
+                        {
+                        echo "<b>Thanks!</b></p>\n";
+                        echo "<p>Your application has been registered in EMSI's database.  You should receive your account "
+                           . "information within ten days.</p>\n";
+                        echo "<ul>\n"
+                           . "   <li><p><a href=http://www.emsi.org/services/prehosp-pers/lms/>Return to EMSI's LMS page</a></p></li>\n"
+                           . "   <li><p><a href=http://www.emsi.org/>Return to EMSI's home page</a></p></li>\n"
+                           . "</ul>\n"
+                           . "<p>Problems?&nbsp; Contact <a href=mailto:asst-director@emsi.org><i>asst-director@emsi.org</i></a>.</p>\n";
+                        }
+                     else
+                        {
+                        $error_number = mysql_errno();
+                        if ($error_number == 1062)  //Duplicate entry for key
+                           {
+                           echo "<h2><i>Alert!</i></h2></p>\n";
+                           echo "<p>Your application was <b>already</b> successfully registered in EMSI's database.  You "
+                              . "should receive your account information within ten days.  <b>There is no need to reapply.</b></p>\n";
+                           echo "<ul>\n"
+                              . "   <li><p><a href=http://www.emsi.org/services/prehosp-pers/lms/>Return to EMSI's LMS page</a></p></li>\n"
+                              . "   <li><p><a href=http://www.emsi.org/>Return to EMSI's home page</a></p></li>\n"
+                              . "</ul>\n"
+                              . "<p>Problems?&nbsp; Contact <a href=mailto:asst-director@emsi.org><i>asst-director@emsi.org</i></a>.</p>\n";
+                           }
+                        else
+                           {
+                           die("Insert failed with error # " . $error_number . ":&nbsp; " . mysql_error());
+                           }
+                        }
                      }
                   else
                      {
