@@ -16,7 +16,7 @@ require_once("$foundation_dir/f_bodyopen.phtml");
 require_once("$foundation_dir/f_connectselectdb.phtml");
 require_once("$foundation_dir/f_password.phtml");
 require_once("$foundation_dir/f_bevalidemailaddress.phtml");
-require_once($mode . "f_foundvalid.phtml");
+require_once("f_foundvalid.phtml");
 //
 // Initialize optional parameters.
 //
@@ -110,12 +110,12 @@ $assert_email_address = $_assert_email_address;
                      <b>
                      <blockquote>
                         <p>That name and certification number do not match any record in our table of
-                           valid practitioners.</p>
+                           LMS-eligible practitioners.</p>
                         <p>You can either:</p>
                         <ul>
                            <li><p>Press your browser's [<--&nbsp;BACK] button to correct the problem.</p></li>
                            <li>
-                              <p>Call your regional EMS council to see why you aren't showing up as valid.</p>
+                              <p>Call your regional EMS council to see why you aren't showing up as eligible.</p>
                               <p><small>To see which counties EMSI serves, see <a href=http://www.emsi04.org>EMSI's home
                                  page.</a></small></p>
                            </li>
