@@ -1,0 +1,684 @@
+<title>PA DOH EMSO Continuing Education Manual</title>
+
+
+DEFINITIONS ................................................................................................................................ 5
+
+PROGRAM OBJECTIVES........................................................................................................... 10
+
+ADMINISTRATION .................................................................................................................... 11
+
+PROMOTION ........................................................................................................................... 11
+
+Continuing Education Sponsor Responsibilities ................................................................... 11
+
+Regional Council Responsibilities ........................................................................................ 11
+
+
+
+CLASS SIZE ............................................................................................................................. 11
+
+ATTENDANCE ........................................................................................................................ 12
+
+TIME FRAMES FOR MATERIALS SUBMISSION BY THE CONTINUING  EDUCATION
+SPONSOR................................................................................................................................. 12
+
+
+
+ACCREDITED CONTINUING EDUCATION SPONSORS ...................................................... 12
+
+SPONSOR CRITERIA ............................................................................................................. 13
+
+RECORD KEEPING.................................................................................................................13
+
+INSTRUCTORS ....................................................................................................................... 13
+
+EDUCATIONAL RESOURCES .............................................................................................. 13
+
+REQUIREMENTS FOR ACCREDITATION ( §1003.30) ...................................................... 14
+
+APPLICATION PROCESS ...................................................................................................... 14
+
+RENEWAL OF ACCREDITATION ........................................................................................ 15
+
+APPLICATION PROCESS - OUT-OF-STATE PROVIDERS................................................ 16
+
+WITHDRAWAL OR NONRENEWAL OF ACCREDITATION ............................................ 16
+
+
+
+COURSE APPROVAL .................................................................................................................17
+
+COURSE APPROVAL APPLICATION .................................................................................. 17
+
+CLASS REGISTRATION.............................................................................................................19
+
+STUDENT REQUIREMENTS..................................................................................................... 21
+
+FIRST RESPONDER................................................................................................................ 21
+
+EMERGENCY MEDICAL TECHNICIAN (EMT)..................................................................22
+
+EMT-PARAMEDICS AND PREHOSPITAL REGISTERED NURSES (EMT-P/PHRN) ..... 22
+
+CONTINUING EDUCATION BY ENDORSEMENT ............................................................ 23
+
+
+
+ASSIGNMENT OF CONTINUING EDUCATION HOURS ...................................................... 24
+
+CRITERIA ................................................................................................................................ 24
+
+REGISTRY SYSTEM................................................................................................................... 25
+
+GOAL........................................................................................................................................ 25
+
+STUDENT TRACKING - ALS/BLS PROVIDERS................................................................. 25
+
+STUDENT TRACKING - INSTRUCTORS ............................................................................ 26
+
+Teaching Continuing Education Class .................................................................................. 26
+
+Teaching DOH Certification/Recognition Programs ............................................................ 27
+
+
+
+
+
+QUALITY ..................................................................................................................................... 28
+
+QUALITY GOAL ..................................................................................................................... 28
+
+RESPONSIBILITIES FOR QUALITY..................................................................................... 28
+
+Student................................................................................................................................... 28
+
+Instructor ............................................................................................................................... 28
+
+Continuing Education Sponsor..............................................................................................29
+
+Regional EMS Council..........................................................................................................29
+
+Department ............................................................................................................................ 29
+
+
+
+
+
+ATTACHMENTS .............................................................................................................................
+
+Attachment 1 - List of Approved Courses........................................................................ 1-1
+
+Attachment 2 - List of Regional EMS Councils...............................................................2-1
+
+
+
+APPENDICES...................................................................................................................................
+Appendix A - Continuing Education Sponsor Application......................................... A-1
+
+Appendix B - New Course Approval Application ...................................................... B-1
+
+Appendix C - Class Registration Form ....................................................................... C-1
+
+Appendix D - Class Roster.......................................................................................... D-1
+
+Appendix E - Class Evaluation Summary................................................................... E-1
+
+Appendix F - Continuing Education Completion Form...............................................F-1
+
+Appendix G - Prehospital Personnel Continuing Education Record .......................... G-1
+
+Appendix H - Continuing Education by Endorsement Form ...................................... H-1
+
+Appendix I - Continuing Education Student Evaluation...............................................I-1
+
+
+
+
+
+The Pennsylvania Department of Health (Department) developed  and adopted regulations, effective September 2, 1995, to facilitate implementation of Act 1994-82 (Act 82) amendments to the Emergency Medical Services Act 35 P.S. § 6921-6938.  In part, these regulations prescribe the continuing education requirements for prehospital personnel to satisfy when continuing education is employed as a route for recertification.  They also prescribe the continuing education requirements that must be satisfied to maintain medical command authorization. 
+In July 1995, the Department formed the Certification/Recertification System Task Force to draft the EMS Continuing Education (Con-Ed Manual) as required by Act 82 of 1994.  The Task Force  is comprised of regional EMS council staff  representing all  areas of the state -- as well as urban, suburban, and rural EMS systems and representatives  from the Division of Emergency Medical Services Systems and the  Pennsylvania Emergency Health Services Council (PEHSC). The principle task given to the  Task Force was to assist the Department with the development of this Con-Ed Manual. 
+This manual is designed to provide  information which should be helpful in aiding the EMS community to  make the transition to the regulatory scheme relevant to continuing education brought about by Act 82 and the ensuing regulations.  This manual does the following: 
+1. 
+Apprises prehospital personnel of continuing education options and requirements; 
+
+2. 
+Explains how  continuing education credit will be assigned to courses; 
+
+3. 
+Explains how continuing education records of prehospital personnel may be tracked. 
+
+
+The Department appreciates the assistance received from the following individuals and organizations in developing this manual: 
+Thomas J. Liebman, Task Force Chairman 
+Executive Director, EMMCO East EMS Council Caroline L. Bowes, R.N., EMS Program Specialist 
+Division of Emergency Medical Services Systems John Campos, Executive Director EMS of Northeastern Pennsylvania Sandra L. Jablonski, M.S.Ed., Executive Director Southern Alleghenies EMS Council, Inc. Janette Kearney, Assistant Director Pennsylvania EHS Council 
+Donna Lebisley, Training Coordinator Philadelphia Regional EMS David Nicholas, Director of Prehospital Services Emergency Medical Service Institute Joseph Schmider, Executive Director, Bucks County EMS Council John Yingling, EMS Program Manager Lycoming, Tioga, Sullivan EMS Council 
+
+{* Denotes a definition taken directly from Act 45 Rules and Regulations} 
+ALS Ambulance Service* 
+Advanced Life Support Ambulance Service 
+An entity licensed by the Department to provide ALS services and transportation by ambulance to seriously ill or injured patients.  The term includes mobile ALS services that may or may not transport patients. 
+
+ALS Service Medical Director* 
+Advanced Life Support Service Medical Director 
+A medical command physician or physician meeting the equivalent qualifications set forth in §1003.5 (relating to ALS service medical director) who is employed by, contracts with or volunteers with, either directly, or through an intermediary, an ALS ambulance service to provide medical guidance and advice to the ALS ambulance service and to evaluate the quality of patient care provided by the prehospital personnel utilized by the ALS ambulance service. 
+
+Act* 
+The Emergency Medical Services Act (35 P. S. §§ 6921--6938). 
+
+Ambulance Service* 
+An entity which regularly engages in the business or service of providing emergency medical care and transportation of patients in this Commonwealth. The term includes mobile ALS services that may or may not transport patients. 
+
+Attendance Roster 
+A document utilized to record student presence. 
+
+Audio Tape Training 
+A course of instruction utilizing the reception of sound via a cassette. 
+BLS Ambulance Service* 
+Basic Life Support Ambulance Service 
+An entity licensed by the Department to provide BLS services and transportation by ambulance to seriously ill or injured patients. 
+
+Class 
+A specific offering of a  course by a continuing education sponsor requiring the assignment of a unique class number. A class may be offered in one or more sessions. 
+
+Conference 
+A series of sessions for the purpose of educating or training EMS providers on a variety of current topics. 
+Course 
+A program of instruction approved by the Department and assigned a unique course number. 
+
+CPR* 
+Cardiopulmonary Resuscitation 
+The combination of artificial respiration and circulation which is started immediately as an emergency procedure when cardiac arrest or respiratory arrest occurs, by those properly trained and certified to do so. 
+
+CPR Certification * 
+Cardiopulmonary Resuscitation Certification 
+A certificate evidencing successful completion of a course of instruction in CPR, meeting the most current American Heart Association standards.  The certification shall have a current valid date and encompass one and two rescuer, infant, and obstructed airway methods. 
+
+Continuing Education Completion Form 
+The document provided for student use upon successful completion of an approved continuing education class which is used to record continuing education  hours earned by the student 
+
+Continuing Education Coordinator 
+The person designated by the continuing education sponsor to exercise primary responsibility for the administration of a course. 
+
+Continuing Education Sponsor* 
+An entity or institution that applies to the Department and satisfies the Department’s requirements to become an accredited sponsor of continuing education courses. 
+
+Credit Hour(s) 
+Time assigned by the Department for successful completion of a course. 
+Department* 
+The Department of Health of the Commonwealth or a designee. 
+
+Department of Health Certification Number* 
+A number issued through the Department’s computer system that identifies an individual who has been certified as an EMT, EMT-paramedic, EMT instructor, first responder, and the like. The certification includes the expiration date and the status level. 
+EMS* 
+Emergency Medical Services 
+The ALS and BLS services utilized in responding to the needs of an individual for immediate medical care to prevent loss of life or aggravation of physiological or psychological illness or injury. 
+
+EMT* 
+Emergency Medical Technician 
+An individual trained to provide prehospital emergency medical treatment and certified as such by the Department in accordance with the current NSC for basic EMTs, as set forth in this part. 
+
+EMT-NSC* 
+Emergency Medical Technician-National Standard Curriculum 
+The current National training program for emergency medical technicians, as adopted by the United States Department of Transportation. 
+
+EMT-Paramedic* 
+Emergency Medical Technician Paramedic 
+An individual who is trained to provide prehospital emergency medical treatment as an advanced level and certified as such by the Department under the current NSC for EMT­paramedics, as set forth in this part. 
+
+EMT-Paramedic NSC* 
+Emergency Medical Technician-Paramedic National Standard Curriculum 
+The National training program for EMT-paramedics adopted by the United States Department of Transportation. 
+
+Facility* 
+A hospital. 
+
+First Responder* 
+An individual who is certified by the Department as a first responder. 
+
+Health Professional* 
+A licensed physician who has education and continuing education in ALS services and prehospital care or a prehospital registered nurse. 
+
+Hospital* 
+An institution having an organized medical staff which is primarily engaged in providing to inpatients by or under the supervision of physicians, diagnostic and therapeutic services or rehabilitation services for the care or rehabilitation of injured, disabled, pregnant, diseased, sick, or mentally ill persons.  The term includes a facility for the diagnosis and treatment of disorders within the scope of specific medical specialties, but not a facility caring exclusively for the mentally ill. 
+
+Medical Command Authorization* 
+Permission given by the ALS service medical director to an EMT-paramedic or a prehospital registered nurse under § 1003.28 (relating to medical command authorization) to perform, on behalf of an ALS ambulance service, ALS services pursuant to medical command or in accordance with Department approved regional EMS council transfer and medical treatment protocols when medical command cannot be secured, is disrupted or is not required pursuant to the approved regional EMS council transfer and medical treatment protocols 
+
+NSC* 
+National Standard Curriculum. 
+
+Prehospital Personnel* 
+Personnel certified or recognized by the Department to render EMS  to patients outside the hospital setting. 
+
+Prehospital Registered Nurse* 
+An individual who is recognized by the Department as such under § 1003.25b (relating to prehospital registered nurse). 
+
+QRS* 
+Quick Response Service 
+A service which meets Department requirements and is strategically located to fill a response time gap if EMS cannot be provided within 10 minutes of the time a call for assistance is received. 
+
+Recertification by Continuing Education Program (RCEP) 
+A process established by the Department as a result of the passage of Act 82 (1994), whereby EMTs and first responders may receive recertification; and whereby paramedics and prehospital registered nurses may maintain eligibility for medical command authorization. 
+
+Regional EMS Council* 
+Regional Emergency Medical Services Council 
+A non-profit incorporated entity or appropriate equivalent whose function is to plan, develop, maintain, expand, and improve EMS systems within a specific geographical area of the Commonwealth and which is deemed by the Department as being representative of health professions and major public and voluntary agencies, organizations, and institutions concerned with providing EMS in the regional.  See the definition of “EMS council.” 
+
+Scope of Practice* 
+Those emergency medical services that an individual who is certified or recognized by the Department is permitted to perform pursuant to the certification or recognition provided the individual has medical command authorization, if required. 
+Secretary* 
+The Secretary of the Department of Health. 
+Seminar 
+A session for the purpose of educating or training EMS providers on current topic(s). 
+
+Session 
+A meeting, or a series of meetings which, collectively, comprise  a class, conference, or seminar. 
+
+Sponsor Guide 
+The document detailing the recertification by continuing education program (RCEP) distributed to potential continuing education sponsor(s). 
+
+Student Handbook 
+A document distributed to EMS providers explaining the recertification by continuing education program for first responders and emergency medical technicians; and the continuing education and medical command authorization requirements for paramedics and prehospital registered nurses. 
+
+Successful Completion 
+Meeting the evaluation criteria established in a course, as verified by the continuing education sponsor. 
+Video Training 
+A course utilizing stand alone audio visual materials without the aid of an on-site instructor. 
+
+The primary goals of the Continuing Education Program are to promote quality of patient care by enhancing the skills and knowledge of Pennsylvania’s prehospital personnel through an efficient and flexible program of continuing education. 
+
+Objectives 
+1.	
+To provide prehospital personnel with an opportunity to expand their prehospital care knowledge and skills while emphasizing the core concepts of prehospital emergency medicine. 
+
+2.	
+To provide prehospital personnel activities designed to both maintain and enhance their ability to provide EMS. 
+
+3.	
+To provide prehospital personnel with a method of recertification, alternative to testing, which meets individual educational needs. 
+
+4.	
+To provide EMT-paramedics and prehospital registered nurses with the continuing education they need to maintain medical command authorization. 
+
+
+
+
+Continuing Education Sponsor Responsibilities 
+Continuing education sponsors are permitted, when promoting a course or class,  to include a
+statement similar to the one below.  A statement of this nature will indicate to prospective
+students that they shall receive continuing education credit for the training program.
+
+“This class has been approved for _____ hours of continuing education for _______ level 
+personnel by the Pennsylvania Department of Health.” 
+The continuing education sponsor may, for new  training programs  with requests for approval pending  before the Department, indicate that the training programs have  been submitted for approval to the Department. 
+
+Regional Council Responsibilities 
+Regional EMS councils will disseminate a list of accredited continuing education sponsors to all ambulance and QRS services at least annually. 
+
+There are no minimum requirements for continuing education class size,  unless a minimum class size is specified by the Department for  a specific course or class. The class size, however, may not interfere with the ability of the course to fulfill its educational purpose.  Continuing education sponsors may adopt policies regarding minimum class sizes and instructor to student ratios. 
+
+Prehospital personnel must complete all sessions comprising a class as required by the continuing education sponsor.  Continuing education credit hours will not be recorded by the continuing education sponsor when students: 
+•	
+Are absent for an entire session (that is not made up); 
+
+•	
+Arrive fifteen (15) or more minutes late (that is not made up); 
+
+•	
+Are expelled from class for disruptive behavior; 
+
+•	
+Leave during a scheduled session without the  continuing education coordinator’s permission; 
+
+•	
+Attend a session or a  class, but do not  participate in the activities scheduled for that session; 
+
+•	
+Fail to sign the Department approved class roster; 
+
+•	
+Fail to satisfactorily complete the continuing education completion form. 
+
+
+Students may make up a missed or partial session by: 
+•	
+Attending another class session as arranged with the continuing education coordinator; 
+
+•	
+Listening to an audio or video tape of the session as developed and/or approved by the continuing education coordinator; 
+
+•	
+Attending the class session at another approved course with the approval of the continuing education coordinator . 
+
+
+The continuing education sponsor may assist the student with arranging session makeups, but the continuing education  sponsor is not required to offer make-up sessions. 
+
+Event  Deadline  
+Continuing Education Sponsor re-accreditation application  30 days before expiration  
+Application for New Course Approval  30 business days before class  
+registration form can be  
+submitted  
+Class Registration Form  10 business days before class  
+End of class paperwork --- includes Class Roster, Continuing Education  10 business days following  
+Completion forms, Class Evaluation Summary --- submit to regional  last class session 
+EMS council where the class was held.  
+
+
+
+Any individual, company, organization, or institution may apply for accreditation as a continuing education sponsor, i.e. public safety entities, private companies, educational institutions, hospitals, or individuals. 
+
+Continuing education sponsors shall maintain class records for a minimum of five (5) years. Class files shall be available for inspection by the Department. 
+
+It is the  responsibility of the continuing education sponsor to use qualified instructors, appropriately trained in the specialty they are teaching, as identified by the course requirements. The continuing education sponsor is ultimately responsible for the quality of material taught and for ensuring that the course instructors possess the necessary practical and academic skills to conduct the course effectively. 
+
+The continuing education sponsor shall make available the appropriate educational resources to the participants. Resources such as textbooks, materials, supplies, facilities, or equipment, as identified by the course requirements, do not have to be provided free of charge.  They shall be made available to all students as applicable, and students shall be notified of required materials prior to the first class session. All courses shall be presented in a suitable setting devoted to the educational purpose of the course. 
+
+Continuing education sponsors shall adhere to the following requirements set forth in  the Department’s rules and regulations. 
+1.	
+The courses shall be of intellectual and practical content. 
+
+2.	
+The courses shall contribute directly to the professional competence, skills and education of prehospital personnel. 
+
+3.	
+The course instructors shall possess the necessary practical and academic skills to conduct the course effectively. 
+
+4.	
+Course materials shall be well written, carefully prepared, readable, and distributed to attendees at or before the time the course is offered whenever practical. 
+
+5.	
+The courses shall be presented in a suitable setting devoted to the educational purpose of the course. 
+
+6.	
+The course shall be open to prehospital personnel interested in the subject matter. 
+
+
+
+The applicant may request an application from any regional EMS council.  The application is found in Appendix A, and contains the following components: 
+Agency/Entity Name and Address:  This is the legal name and mailing address of the 
+applicant. 
+Phone Number: The phone number of the applicant. 
+Continuing Education Level (ALS, BLS, or Both):  The level of continuing education that the applicant expects to offer.  This section can be modified later if the applicant desires to expand its course offerings. 
+Principle Line of Business:  The principle line of the applicant’s business. For example, 
+EMS education, ambulance service, hospital, etc. 
+Applicant Signature:  By affixing the signature, the applicant is agreeing to abide by all rules and regulations relating to the accreditation and operation of a continuing education sponsor established by the Department.
+After the application is completed, it is to be sent to the regional EMS council that operates in the region in which the applicant is located, as reflected by its legal address.  The regional EMS council will perform the following duties within 10 business days of its receipt of the application. 
+.	
+Review the application for accuracy and completeness. 
+
+.	
+Return the application to the applicant for more information or recommend approval or denial to the Department. 
+
+.	
+If approved, notify the applicant that it has been accredited by the Department. 
+
+.	
+If rejected,  notify the applicant  that it has been rejected and inform the  applicant of the Department’s rationale for the rejection. 
+
+.	
+Forward a copy of the notification to the Department. 
+
+.	
+Assign the continuing education sponsor an identification number. 
+
+.	
+Enter the sponsor identification number and sponsor information into a centralized database. 
+
+
+If the applicant is denied accreditation, then the applicant may ask the Department to reconsider its decision citing reasons why the Department should reverse its prior decision.  The Department shall maintain a database of continuing education sponsors and disseminate this information annually to regional EMS councils. 
+
+Accreditation as a continuing education sponsor shall be for a period of three (3) years.  At least thirty (30) days prior to accreditation expiration, the continuing education sponsor shall apply to the Department for renewal of its accreditation (Appendix A).  The application shall be prepared on the same form as that used to apply for initial accreditation.  The application shall be submitted to the regional EMS council that operates in the region in which the applicant is located, as reflected by its legal address. 
+In order for the applicant to receive renewal of accreditation,  the Department, with the assistance of the regional EMS council, shall verify that the continuing education sponsor has: 
+•	
+registered and presented, within the preceding three (3) year period, at least five (5) separate continuing education courses; and 
+
+•	
+established that future courses offered by the continuing education sponsor will meet the minimum standards as listed on page 14 of this manual. 
+
+
+After the completed application is received by the regional EMS council, the council shall perform the following duties: 
+.	
+Review the application for accuracy and completeness. 
+
+.	
+Return the application to the applicant for more information or recommend approval or denial to the Department. 
+
+.	
+If approved, notify the applicant that it has been reaccredited by the Department. 
+
+.	
+If rejected,  notify the applicant  that it has been rejected and inform the  applicant of the Department’s rationale for the rejection. 
+
+.	
+Forward a copy of the notification to the Department. 
+
+.	
+Verify that the sponsor information contained in the  continuing education sponsor database is accurate. 
+
+
+
+An individual, entity or institution that offers continuing education outside the Commonwealth of Pennsylvania, must be accredited by  the Department for its  students to earn continuing education credit hours. Out of state providers of continuing education shall apply directly to the Department for accreditation. Accreditation applications may be obtained from any regional EMS council, or directly from the Department. 
+
+The standards an applicant must satisfy to receive accreditation as a continuing education sponsor shall be maintained by the sponsor throughout the accreditation period.  Failure to adhere to those standards may result in the Department withdrawing the sponsor’s accreditation or refusing to renew the accreditation when it expires. 
+
+The Department shall maintain a list of courses, and update the list at least semi-annually. Courses approved as of the date of the publication of this manual are listed in Attachment 1. Regional EMS councils shall disseminate the list of approved courses at least twice per year to all continuing education sponsors in its jurisdiction. 
+Persons wishing to have their training program reviewed for possible inclusion on the list of courses shall follow the procedure outlined below. To be eligible for inclusion, a training program may address any EMS related topic, including fire  and rescue services. There are no pre-established restrictions on the format for presenting the course.  Video and audio tape training, for example, may be employed to present all or a portion of a course. 
+Course Approval Application: The application for course approval is found in Appendix B. The completed application may be submitted to any regional EMS council.  The application form requests the following: 
+Course Schedule: The typical schedule used for the course. 
+Program Objectives: The learning objectives of the course.  The application shall show at 
+least one course objective per hour of instruction. 
+Evaluation Mechanism: The method of evaluation, along with the criteria for successful completion of the course.  If there will be a written exam, the exam shall be attached.  If skill evaluation will be utilized, the skill measurement instrument shall be attached. 
+Applicable Resources: Identification of  resources that will be available to the student, such 
+as textbooks, workbooks, handouts, supplies, etc. 
+Instructional Staff: Outline of the current qualifications of the instructor(s) necessary to teach the course, and the instructor to student ratio. 
+Minimum Class Size:  Specify the minimum class size permissible for this course, if 
+applicable. 
+Intended Audience:  The expected certification level of program attendees. 
+Sponsor Identification Number:  If applicant previously accredited as a continuing education sponsor. 
+Pennsylvania Department of Health EMS Continuing Education Manual 
+Regional EMS Council Responsibilities 
+After receiving an application for new course approval, the regional EMS council shall review the application for accuracy and completeness, returning incomplete applications to the applicant. The regional EMS council shall forward a complete application, with a recommendation for approval or disapproval to the Department within ten (10) business days after receipt.  The regional EMS council shall not render any opinion on the credit hour assignment. 
+Division of EMS Systems Responsibilities 
+After receiving an application from a regional EMS council, the Department shall approve or deny the application and assign credit hours to a training program it approves as a course. 
+An applicant denied approval to offer a course may request the Department to reconsider its decision, and shall provide reasons for the Department to reverse the decision. 
+
+This section outlines the procedure necessary to register a class.  No class may be registered for a training program that has not been approved  as a course, and no credit shall be given for a class that is not registered.  Regional EMS councils may adopt policies regarding time frames for submission of the Class Registration Form (Appendix C), but no policy may require a continuing education sponsor to submit paperwork more than ten (10) business days prior to the start of a class. 
+To register a class a continuing education sponsor shall complete a Class Registration Form, and submit it to the regional EMS council that operates in the region that includes the site of the class. A complete listing of the regional EMS councils in the Commonwealth, the area that they cover, and contact information is found in Attachment 2. 
+The information that is requested in the Class Registration Form includes: 
+Sponsor ID#:  This is the unique number assigned to each continuing education sponsor. 
+Class Location(s):  The applicant should list the location of the class, and any individual 
+sessions if they will be held at an alternative location. 
+Student Cost/Tuition Fees:  The cost for each student to take the class.  The cost includes the 
+cost of tuition and any required materials such as textbooks, workbooks, or supplies. 
+Open/Closed Class:  Whether the class is open to the general public, or closed to the general 
+public and available to certain prehospital personnel only.  If the class is closed, identify who 
+may register for the class. 
+Class Schedule:  A brief schedule showing date(s) and time(s) of class or sessions. 
+Lead Instructor Name/Qualifications: The name and qualifications of the person who will 
+serve as the primary instructor for the class. 
+Contact Person and Phone #:  The person responsible for registering students for the class. 
+After completing the Class Registration Form, the  continuing education sponsor shall submit it to the appropriate regional EMS council.  Complete applications shall be reviewed by the regional EMS council within ten (10) business days of receipt.  Incomplete registration forms shall be returned to the continuing education sponsor. 
+If the class meets all criteria of the approved course, i.e., hours, instructor qualifications, etc., the regional EMS council shall assign a class number and notify the continuing education sponsor of approval. The class number shall be based on the following components: 
+•
+Region Number 
+
+•
+Approved Course Number 
+
+•
+Sequential Number Based on Date 
+
+•
+Instructor Hours 
+
+
+Example: 19 1001 - 960001 - 06 This number indicates that the class is registered in the EMMCO East region (19), is approved course number 1001 (ACLS), is the first class registered in the calendar year 1996 (960001), and is being used to assign hours to an instructor (see the Registry System section, Student Tracking - Instructors, on page 26 for a more detailed explanation of these last two digits). The last two digits should remain blank if not for instructor use. 
+The regional EMS council shall also provide the continuing education sponsor with Continuing Education Completion (Appendix F), Class Roster (Appendix D), and Class Evaluation Summary (Appendix E) forms. 
+
+The EMS rules and regulations specify the requirements for the recertification of EMTs and first responders through continuing education;  and for continuing education necessary for EMT­paramedics and prehospital registered nurses to maintain medical command authorization.  These requirements are identified below. 
+
+The first responder’s certification is valid for a period of three (3) years, subject to disciplinary action under section 11(j.1) of the act and § 1003.27 of the regulations (relating to disciplinary and corrective action). First responders may choose from two (2) methods of recertification: 
+1.	
+Successful completion of a practical and written examination prescribed by the
+Department.
+
+
+2.	
+Completion of continuing education requirements. 
+
+
+First responders who choose to recertify by completing continuing education shall fulfill the following requirements within their three (3) year certification period: 
+•	
+Sixteen (16) credit hours of instruction provided by a continuing education sponsor in topics related to the scope of practice of a first responder. 
+
+•	
+Attend a CPR course for adult, child, and infant that meets or exceeds Department standards for CPR programs. 
+
+
+First responders who do not complete the  requirements within the three (3) year certification period above shall successfully complete the practical and written recertification examination to be recertified. 
+First responders shall receive a report annually from the regional EMS council detailing the credit hours they have earned to date.  A sample of this report, called an EMS Provider Continuing Education Record is located in Appendix G.  When all of the requirements for recertification are met, first responders shall automatically receive their certificate and wallet card prior to the expiration date of their certification (but no earlier than 60 days prior to their expiration date).  It is important for first responders to carefully review their EMS Provider Continuing Education Record, and to report any discrepancies to the regional EMS council in which they are registered. 
+No first responder is eligible to receive credit for the same course more than once in the three (3) year certification period, and credit hours earned may not be carried over into the next certification period. 
+
+The EMT’s certification is valid for a period of three (3) years, subject to disciplinary action under section 11(j.1) of the act and § 1003.27 of the regulations (relating to disciplinary and corrective action). EMTs may choose from two (2) methods of recertification: 
+1.	
+Successful completion of a practical and written examination prescribed by the
+Department.
+
+
+2.	
+Completion of continuing education requirements. 
+
+
+EMTs that choose to recertify by continuing education shall fulfill the following requirements within their three (3) year certification period: 
+•	
+Twenty four (24) credit hours of instruction provided by a continuing education sponsor in topics related to the scope of practice of a EMT. 
+
+•	
+Attend a CPR course for adult, child, and infant that meets or exceeds Department
+standards for CPR programs.
+
+
+
+EMTs that do not complete the above requirements within the three (3) year certification period shall complete the practical and written recertification examination to be recertified. 
+EMTs shall receive at least annually a report from the  regional EMS council detailing the credit hours they have earned to date.  A sample of this report, called an EMS Provider Continuing Education Record is located in Appendix G.  When all of the requirements for recertification are met, EMTs shall automatically receive their certificate and wallet card prior to the expiration date of their certification (but no earlier than 60 days prior to their expiration date).  It is important for EMTs to carefully review their EMS Provider Continuing Education Record, and to report any discrepancies to the regional EMS council in which they are registered. 
+No EMT is eligible to receive credit for the same course more than once in the three (3) year certification period, and credit hours earned may not be carried over into the next certification period. 
+
+EMT-paramedics are permanently certified and prehospital registered nurses are permanently recognized.  They must, however, maintain current medical command authorization in order to provide ALS services.  The decision to grant, deny or restrict medical command authorization rests with the ALS service medical director. 
+To be eligible to receive medical command authorization, EMT-paramedics and prehospital registered nurses shall (except in the calendar year in which initially certified or recognized) meet the following criteria: 
+•	
+Complete, in each calendar year, eighteen (18) credit hours of continuing education provided by a continuing education sponsor. 
+
+•	
+Attend a CPR course every two (2) years for adult, child, and infant that meets or exceeds Department standards for CPR programs. 
+
+
+They shall receive, twice a year from the regional EMS council, the EMS Provider Continuing Education Record (Appendix G).  They are responsible to present this record to their ALS service medical director to remain eligible for medical command authorization.  The ALS service medical director may not extend medical command authorization to any EMT-paramedic or prehospital registered nurse who has not satisfied the criteria specified above. 
+No EMT-paramedic or prehospital registered nurse is eligible to receive credit for the same course more than once in each calendar year, and credit hours earned may not be carried over into the next calendar year. 
+
+Prehospital personnel who attend courses offered by any organization or agency with National or state accreditation to provide continuing education may apply to receive credit for these courses. The individual shall have the burden of demonstrating to the Department that these courses meet standards equivalent to those standards set forth in the Department’s regulations.  Persons wishing to receive credit for these programs must submit the Continuing Education by Endorsement form (Appendix H) to the Department through the regional EMS council in which they are registered. 
+The regional EMS council shall review the material submitted for accuracy and completeness, and then forward the Continuing Education by Endorsement form (Appendix H) along with a recommendation to the Department.  Information submitted shall be reviewed by the Department for approval or disapproval and assignment of continuing education credit hours if approved. The regional EMS council is responsible to notify the applicant of the Department’s decision. An applicant denied credit for a training program for which credit is sought through endorsement, may request the Department to reconsider its decision, and shall provide reasons for the Department to reverse its decision. 
+
+The Department shall assign continuing education hours using the following criteria based on the information submitted by the applicant on the New Course Approval Application  (Appendix B). 
+Course Objectives: The course objectives shall be referenced to the applicable national 
+standard basic or refresher curriculum (NSC).  For example, objectives on airway 
+management shall be referenced in the NSC. Credit hours shall be assigned hour for hour for 
+each course hour that can be referenced to a NSC objective.  The smallest denominator of 
+time shall be 0.5 hours. 
+Length of the Course:  Credit hours assigned to a course cannot exceed the length of the 
+course. 
+After a course is approved, the Department shall assign it a unique course number.  The course number shall be based on the general classification of the training program.  After the Department assigns credit hours and a course number, the Department, through the appropriate regional EMS council, shall notify the applicant.  If approved, the course will be included in a revised list of courses. See Attachment 1. 
+
+The main goal of the registry system is to provide a user friendly, flexible method for tracking each prehospital provider  and his or her  continuing education record.  Each prehospital provider shall be able to attend  a class  anywhere in the Commonwealth and receive credit. 
+
+To receive credit for continuing education earned, each  prehospital provider is responsible for completing a Continuing Education Completion Form correctly.  A sample form is found in Appendix F.  The following information is requested on the form: 
+•
+Name 
+
+•
+Department Issued Certification Number 
+
+•
+Class Number 
+
+•
+Level of Certification 
+
+•
+Change of Address (Yes/No Field) 
+
+•
+If yes, space for the address 
+
+
+The Continuing Education Completion Form (Appendix F) will be submitted by the sponsor to the appropriate regional EMS council that issued the class number for processing. 
+All continuing education records will be processed and maintained through the regional EMS councils as part of a statewide registry system.  Individual prehospital providers will receive a report, annually for FRs and EMTs, semi-annually for EMT-Ps and PHRNs.  The report will provide a detailed record of their continuing education hours accrued. 
+It is the responsibility of the individual prehospital provider to review their report and notify their regional EMS council of any discrepancy.  It is also their responsibility to keep their regional EMS council apprised of any address changes. 
+
+Prehospital personnel are eligible to receive continuing education credit for time spent providing instruction in initial and continuing education programs.  To receive credit for providing instruction the prehospital provider needs to follow a somewhat different process than the usual process to secure that credit. The prehospital provider who served as the instructor must submit a Continuing Education Completion Form following each class in which they taught. 
+Instructors who are certified as EMT-paramedics  or recognized prehospital registered nurses are only eligible to receive a maximum of six (6) credit hours  per year for instructing in BLS level training programs.  Instructors certified as EMTs or first responders are eligible to receive full credit for hours of instruction. 
+
+Teaching Continuing Education Class 
+Prehospital personnel are eligible to receive continuing education credit for time spent providing instruction in initial and continuing education programs.  These programs can be offered as single or multiple session(s) class(es).  A single session continuing education class, is a class that is no longer than one day and is taught in one session.  A multiple session continuing education class, is a class that is divided into multiple sessions over at least two days. 
+The instructor shall mark the hours taught in the last two digits (Instructor Hours) of the class number on the Continuing Education Completion Form. Credit may be awarded for one half hour (0.5) or up to the entire credit hours allowed for the course, for the time spent actually teaching. The hours marked must equal the number of hours shown on the Class Roster. 
+Instructors participating in the remainder of a class as a student (after teaching their segment), shall also receive credit for the remainder of the class, if the class is one for which continuing education could otherwise be earned by the prehospital provider. 
+
+Teaching DOH Certification/Recognition Programs 
+This would apply to any Department approved class for certification, recognition or recertification that has not been registered as a continuing education program, but is sponsored by an accredited training institute.  First responder, EMT-Basic, EMT- paramedic, and prehospital registered nurse programs would fall into this category. Prehospital personnel who serve as instructors in these programs will not normally have easy access to the continuing education registry system.  Therefore, these persons will need to take extra steps to receive credit. They shall: 
+1.	
+Contact any  regional EMS council and request a Continuing Education Completion Form. 
+
+2.	
+Complete the Continuing Education Completion Form, using the class number assigned to the  program,  marking the last two digits (Instructor Hours) with the total number of hours taught. 
+
+3.	
+Submit the Continuing Education Completion Form,  and any documentation supporting the request to the regional EMS council in which the class was registered, within thirty 
+
+(30) days from the last regular class session. 
+
+4.	
+The regional EMS council shall verify all of the material submitted, and  update the prehospital provider’s continuing education record. 
+
+
+
+
+To evaluate training effectiveness and assess the quality of continuing education  programs. 
+
+
+Student 
+The student is responsible for: 
+V  assuring that he or she is receiving continuing education from a  continuing education  
+sponsor;  
+V  accurately completing  all required registration paperwork, including the Continuing  
+Education Completion Form and the Class Roster;  
+V  completing  a class evaluation form (sample is Class Evaluation Form (Appendix I)); and  
+V  reporting  any complaints or concerns about instructional quality directly to the regional  
+EMS council responsible for the region in which the class was offered.  
+
+
+Instructor 
+The instructor is responsible for: 
+V	ensuring  that each student completes a Class Evaluation Form; 
+V	accurately completing any instructor paperwork, including the Continuing Education Completion Form, and Class Roster, and accurately calculating the instructor hours for which continuing education  credit is sought; 
+V	responsible for adhering to all policies and procedures established by the continuing education sponsor; and 
+V	reporting  any complaints or concerns about instructional quality directly to the
+continuing education sponsor.
+
+
+Continuing Education Sponsor 
+The continuing education sponsor is responsible for: V forwarding  a copy of the Class Roster and the Class Evaluation Summary to the regional EMS council within ten (10) days following the last class session; V reviewing the students’ class evaluations and making improvements to the instructional 
+staff, or taking  corrective action if necessary; V the quality, content, and manner in which the material was presented; V to adhering  to all the rules and regulations established by the Department; V maintaining  records on each continuing education class for at least five (5) years; and V reporting  complaints about instructional quality to the regional EMS council. 
+
+Regional EMS Council 
+The regional EMS council is responsible for: 
+V	conducting, as appropriate, an audit of continuing education programs to verify the location and time allotments of training, actual attendance, and the subject matter presented (this may be accomplished though the use of random site inspections); 
+V	providing  summary reports of the above audits to the Department; 
+V	reporting  patterns of non-compliance with rules and regulations to the Department; and 
+V	assisting  students and instructors in understanding and complying with the process for securing  continuing education credit hours earned toward recertification or medical command authorization. 
+
+Department 
+The Department is responsible for: 
+V	investigating  complaints and regional EMS council  patterns of non-compliance with continuing education rules and regulations; 
+V	overseeing  the  registry system, ensuring that each EMS provider’s continuing education record is maintained and reported accurately; and 
+V	ensuring that all continuing education programs are reviewed, and credit hours are assigned fairly and consistently. 
+
