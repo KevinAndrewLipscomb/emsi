@@ -1,0 +1,177 @@
+<title>EMSI - ePCRs - Semantic requirements and approval process</title>
+<h1>Technical help for prospective ePCR developers</h1>
+
+<h2>Semantic requirements and approval process</h2>
+
+<p>The following is adapted from letters issued by PA DOH EMSO to
+prospective ePCR developers:</p>
+
+<blockquote>
+<small>
+<p>The vendor must agree, in writing, to make changes to the software program at
+no cost to the customer if the change is a minor one requested by the EMS
+Office. A minor change is one that does not add or decrease a field. For
+example, a change of the year in the date field is a minor change. The vendor
+must agree, in writing, to provide to the EMS Office and to all licensed users
+30-days advance notice before selling the vendor’s license program source code
+and company, or going out of business. If circumstances prevent a vendor from
+meeting the 30-day notice requirement, the vendor will provide input
+specifications and the source code for the software program to the EMS Office at
+no cost.</p>
+<p>After the output specifications and the patient care information are obtained
+from the EMS Office, the requirements that a PCR data collection software
+program must meet are:</p>
+<ol>
+  <li><p>It must have all the data elements identified in the column titled “Required
+    Data Elements” on the EMS Patient Care Report Data and Information chart
+    included in this notice.</p></li>
+  <li><p>It must have symbols for years that are consistent with ASCII codes
+    assigned by the aggregating data program.</p></li>
+  <li><p>It must be able to collect and print narrative.</p></li>
+  <li><p>It must be able to generate an ASCII flat file (undelimited).</p></li>
+  <li><p>It must allow for the user or administrator to make corrections when data
+    elements are omitted or a PCR is otherwise rejected showing that the PCR has
+    been edited, and submit the revised PCR to the regional EMS council.</p></li>
+  <li><p>It must assign a specific lithocode to each PCR and prevent duplication of
+    lithocode assignments.</p></li>
+</ol>
+<p>The prospective vendor must coordinate with a regional EMS council that is
+willing to conduct a Beta test of the software program using 100 pre-prepared
+PCRs provided by the EMS Office. The regional EMS council will run the raw data
+files and generate reports from the statewide PCR data system for
+validation.</p>
+<p>The Beta test will include:</p>
+<ol>
+  <li><p>Two ambulance services each entering the data from 50 of the 100
+    pre-prepared PCRs provided by the department.</p></li>
+  <li><p>Printing of the 100 PCRs.</p></li>
+  <li><p>Printing a list of the data elements collected.</p></li>
+  <li><p>Printing reports that identify unit utilization for:</p>
+</small>
+    <ol type="a">
+      <li><small>Response
+    outcome, hour/day of week</li>
+      </small>
+      <li><small>Fractile time</li>
+      </small>
+      <li><small>Municipal response for
+    each of the two beta sites.</li>
+    </ol>
+    <br>
+  </li>
+  <li><p>Printing the following reports:</p>
+    <ol type="a">
+      <li>Incident location/type report with number of calls and percentage
+        of calls</li>
+      <li>Trauma summary</li>
+      <li>Revised trauma scores</li>
+      <li>Glasgow coma scale</li>
+      <li>Medical summary</li>
+      <li>EKG</li>
+      <li>Treatment summary</li>
+      <li>Admission summary</li>
+      <li>BLS and ALS skills report for each practitioner.</li>
+      <li>BLS and ALS EMT skills report for each beta test site.</li>
+      <li>Demographics summary (age, gender, total)</li>
+      <li>Vital signs summary (ranges, systolic, diastolic, pulse,
+        respiration)</li>
+      <li>Attendant Activity</li>
+    </ol>
+    <br>
+  </li>
+  <li><p>Printing output files of data elements to include:</p>
+    <ol type="a">
+      <li>Field number</li>
+      <li>Field name</li>
+      <li>Number of fields for each field name</li>
+      <li>Type of field (i.e. numeric, blanks stored as “0”, mm/dd/yyyy,
+        character Boolean, and acceptable field values)</li>
+    </ol>
+    <br>
+  </li>
+</ol>
+<p>The regional EMS council that coordinates the Beta test will submit a letter
+to the EMS Office recommending approval or disapproval. It will validate that
+all of the aforementioned criteria have been met before recommending approval.
+The EMS Office will notify the vendor as to whether the data collection software
+program satisfies the requirements for electronic PCR reporting or, if the EMS
+Office determines there are inadequacies, it will identify the corrections that
+need to be made. Program must have ability to collect and print a narrative.</p>
+<p>Send all Beta test artifacts to the Emergency Medical Services (EMS) Office
+of the Department of Health, P. O. Box, Harrisburg, Pennsylvania 17108, to be
+evaluated by the EMS Office to ensure all requirements are met.</p>
+<p>The software should have safeguards to limit omissions or entry of data that
+does not meet the requirements of the business rules that are part of the EMS
+Office data collection instruction manual</p>
+<p>The EMS Office must approve any additional items added to data collection
+fields that are written out as “other”. For example additional suspected
+illnesses that are mapped to “other”.</p>
+<p>Performance Standards:</p>
+<ol type="a">
+  <li><p>The program vendor will not duplicate lithocode numbers. The vendor
+    will not be responsible for a duplication that was caused by user error (a
+    user restoring a backup causing re-entry of lithocode numbers).</p></li>
+  <li><p>A program vendor will not exceed 1 hour in answering support calls for
+    a single service during normal business hours Monday through Friday between
+    9:00 AM and 4:00 PM in their own time zone within 1 hour more than 2 times
+    in the period of a year and more than 40 times for all services in the
+    period of a year. Support calls outside of normal business hours should be
+    returned on the next business day.</p></li>
+  <li><p>The program vendor must ensure that the program shall not exceed the
+    following standards for non-compliant reports:</p>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td width="25%">&nbsp;</td>
+    <td width="25%" align="center">First year</td>
+    <td width="25%" align="center">Second Year</td>
+    <td width="25%" align="center">Third and Beyond</td>
+  </tr>
+  <tr>
+    <td width="25%">Critical Errors/Omissions</td>
+    <td width="25%" align="center">7%</td>
+    <td width="25%" align="center">5%</td>
+    <td width="25%" align="center">1%</td>
+  </tr>
+  <tr>
+    <td width="25%">Total Errors/Omissions (Critical + Business Logic)</td>
+    <td width="25%" align="center">15%</td>
+    <td width="25%" align="center">10%</td>
+    <td width="25%" align="center">3%</td>
+  </tr>
+</table>
+    <br>
+</li>
+  <li><p>In the event that a regional EMS council suspects that the
+    vendor is exceeding the minimum non-compliance standards, that council will
+    contact another regional EMS council with services utilizing that program.
+    Both regions will record the non-compliance results from that program for
+    one month and submit those findings to the EMS Office or its designee for
+    review.&nbsp; If another council is not available or if that vendor is not
+    in another region, two months of data will be reviewed.</p></li>
+  <li><p>If it is determined that the software has a “bug” that is causing a
+    critical error or omission, that vendor will make any necessary corrections
+    to the program, test that field with a regional council, and make that
+    program update available to all customers, at no cost, within 25 business
+    days of notification. The vendor will retroactively fix any regional data
+    affected by the “bug” within 50 business days of notification.</p></li>
+  <li><p>If it is determined that the software has a “bug” that is causing a
+    business logic error or omission, that vendor will make any necessary
+    corrections to the program, test that field with a regional council, and
+    make that program update available to all customers, at not cost, within 50
+    business days of notification. The vendor will retroactively fix any
+    regional data affected by the “bug” within 100 business days of
+    notification.</p></li>
+  <li><p>The program vendor must agree to notify the EMS Office and all licensed
+    users at least thirty days prior to selling your license or going out of
+    business. If you fail to provide the thirty days notification, you will
+    provide the input specifications for your program to the EMS Office at no
+    cost.</p></li>
+  <li><p>The program vendor must agree to the ACSII symbol sequences stated in
+    the letter of February 15, 2002.</p></li>
+  <li><p>Lithocodes 16130000-16130100 will be used for the purpose of conducting
+    this beta test.&nbsp;</p></li>
+</ol>
+<p>Once the EMS Office has received all the documentation, a determination will
+be made as to whether your software meets Pennsylvania's requirements.</p>
+</small>
+</blockquote>

@@ -1,0 +1,463 @@
+<title>User Guide for On Line Continuing Education</title>
+User Guide for On Line Continuing Education 
+Getting Started Page 1 
+
+Defining your User Settings     
+Con Ed Sponsor      Page 2
+
+Training Institute Page 3 
+
+Managing your Users
+Continuing Education Sponsors Page 4 
+
+Training Institutes Page 4 
+
+Registering a Con Ed Class    Page 5
+
+Registering a Certification Course Page 6 
+
+Apply for a New Con Ed Course Page 7 
+
+Continuing Education By Endorsement Page 7
+
+
+Getting Started 
+• Type in the following Internet address https://ecapps.health.state.pa.us/emso.
+If you do not have Microsoft Internet Explorer click on the icon at the bottom of the page and follow the prompts to download Microsoft Internet Explorer. 
+•	
+Click on “Click here to begin entry” 
+
+•	
+At the bottom of the page click on Continue 
+
+•	
+Click on the “Register” button. 
+
+o	Fill in all requested information using normal sentence fonts (first letter upper case, the rest lower case letters).  Do not use all capitals. 
+
+o	Remember your log in name and password 
+
+o	Make sure your email address is correct 
+
+
+
+•	
+Click on “Sign Up” 
+
+
+o	A message should appear confirming successful registration and returning you to the log in page. 
+Page 1 
+
+
+Defining User Setting for as a Continuing Education
+Sponsor
+
+After successful registration the system will automatically return you to the log in screen. For the initial log in you will need to define your user settings. 
+• 
+Type in your log in name 
+
+• 
+Type in your password 
+
+•
+ Click “login” 
+
+• 
+Click on the link “continuing education/certification course applications”  
+
+• 
+Select “Sponsor (CE Courses) or Training Institute (Certification Courses)” 
+
+• 
+Click on Continue 
+
+• 
+Click on “Select Sponsor Affiliation” 
+
+oType in your sponsor name or CE sponsor accreditation number 
+
+oUnder “Type” choose Con Ed Sponsor only from the drop down box 
+
+
+
+• 
+Click on “Search Now” 
+
+• 
+Click on Sponsor Name 
+
+• 
+Review the sponsor information to ensure it is correct 
+
+• 
+Click on “Select” 
+
+• 
+Click on “Save My Settings” 
+
+• 
+Await approval from regional council 
+
+
+Note: The regional council will approve the initial user for the continuing education sponsor. Once approved you will need to manage all other users within your organization. 
+Page 2 
+
+Defining your User Settings for Training Institutes 
+After successful registration the system will automatically return you to the log in screen. For the initial log in you will need to define your user settings. 
+•	
+Type in your log in name 
+
+•	
+Type in your password 
+
+•	
+ Click “login” 
+
+•	
+Click on the link “continuing education/certification course applications”  
+
+•	
+Click on “view your user setting “ in the blue box 
+
+•	
+Click on “Change user type” 
+
+•	
+Select “Sponsor (CE Courses) or Training Institute (Certification Courses)” 
+
+•	
+Click on Continue 
+
+•	
+Click on “Select Sponsor Affiliation” 
+
+o	Type in your Training Institute name or Training Institute accreditation number 
+
+o	Under “Type” choose Training Institutes (certifications) only 
+
+
+
+•	
+Click on “Search Now” 
+
+•	
+Review the sponsor information to ensure it is correct 
+
+•	
+Click on “Select” 
+
+•	
+Click on Save My Settings” 
+
+•	
+ Log out 
+
+•	
+Await approval from regional 
+
+
+Note: The regional council will approve the initial user for the training institute.  Once approved you will need to manage all other users within your organization. 
+Page 3 
+
+Managing your Con Ed Sponsor Users 
+• 
+Log In 
+
+• 
+Click on “Continuing Education/ Certification Course Applications” 
+
+• 
+In the blue section click on “Sponsors and Their Users” 
+
+• 
+Type in sponsor name 
+
+• 
+Click on “Search Now” 
+
+• 
+Click on your Continuing Education Sponsor Link 
+
+• 
+Click On “Manage Users” 
+
+• 
+Click on “Add User 1” 
+
+oTo Remove User click on remove user 
+
+• 
+Click on “Done” 
+
+
+Managing Training Institute Users 
+• 
+Log In 
+
+• 
+Click on “Continuing Education/ Certification Course Applications” 
+
+• 
+In the blue section click on “Sponsors and Their Users” 
+
+• 
+Type in your Training Institute Name 
+
+• 
+Click on “Search Now” 
+
+• 
+Click on your Training Institute Link 
+
+• 
+Click On “Manage Users” 
+
+• 
+Click on “Add User 1” 
+
+oTo Remove User click on remove user 
+
+• 
+Click on “Done” 
+
+
+Page 4 
+
+Registering a Continuing Education Course 
+•	
+ Log In 
+
+•	
+Click on Continuing Education / certification course applications 
+
+•	
+Click on Register a new class in the blue section 
+
+•	
+Click on Select a sponsor 
+
+o	Search by name, or sponsor number (use as little information as possible to search (Ex : Any town Ambulance Service type in Any) 
+
+•	
+Click on Search now 
+
+o	Review sponsor information to ensure that it is the proper sponsor list 
+
+•	
+Click on Sponsor Name 
+
+•	
+Click on Select  
+
+
+othis will automatically fill in the sponsor information on the registration 
+form Under course information 
+•	
+Click on Select course 
+
+•	
+Click Select a course 
+
+•	
+Type in course name or number (6-digit number) 
+
+•	
+Click on Search Now  
+
+•	
+Click on Course Title 
+
+•	
+Review the information to ensure that it is the proper course 
+
+•	
+Click on Select  
+
+o	This will automatically fill in the course information 
+
+•	
+Type in the rest of the information  
+
+o	 Class Location, 
+
+o	Contact Information, 
+
+o	Public Contact information,  
+
+o	Class Details and 
+
+o	Class schedule.   . Under Class Schedule, check the days of the week that the class will be conducted  . Enter other dates not specified as the start or end date into the 
+
+
+
+
+Other Dates and Times field. Go to the internet browser menu bar 
+•	
+ Choose File 
+
+•	
+Select Print and the printer menu will appear 
+
+•	
+ Select Print 
+
+o	The Form will print 
+
+• 
+Sign, date, and then fax or mail the signed form to the regional EMS council. 
+
+o	Contact information for regional EMS council can be found under Region Search 
+
+•	
+Route the class to regional EMS council where class is being conducted. 
+
+o	Please note that the system has already selected the appropriate region and identified the regional EMS council on the class registration form under Class Location. 
+
+o	scroll to the bottom of the registration form 
+
+o	Choose Route 
+
+o	Verify that it is going to the correct region or choose the appropriate region from the drop-down box 
+
+o	Type comments or message in the box 
+
+o	Select Route it now 
+
+
+
+
+Page 5 
+
+Registering a Certification Course 
+•	
+ Log In 
+
+•	
+Click on “Continuing Education / Certification Course Applications” 
+
+•	
+Click on “Register a new class” 
+
+•	
+Click on “Select a sponsor” 
+
+•	
+Search by name, or sponsor number 
+
+o	 use as little information as possible to search (Ex : If searching for Any town Ambulance Service type in Any) 
+
+•	
+Click on “Search now” 
+
+oReview sponsor information to ensure that it is the proper sponsor list 
+
+•	
+Click on “Sponsor Name” 
+
+•	
+Click on “Select” 
+
+
+othis will automatically fill in the sponsor information on the registration 
+form Under course information 
+•	
+click the drop-down arrow and choose appropriate code 
+
+o	Certification courses that also have CE course numbers assigned may be registered for both certification and Con Ed by using the Registering a Con Ed Course process. Only one form is required to be submitted if both numbers appear on the registration form.  
+
+•	
+Type in the rest of the information  
+
+o	 Class Location, 
+
+o	Contact Information, 
+
+o	Public Contact information,  
+
+o	 Class Details 
+
+o	Class schedule.  
+
+
+•	Under Class Schedule, check the days of the week that the class will be conducted and enter other dates not specified as the start or end date into the Other Dates and Times field. 
+
+•	
+Go to the internet browser menu bar 
+
+•	
+Click on “File” 
+
+•	
+Click on “Print” and the printer menu will appear 
+
+•	
+ Select “Print” 
+
+o	The form will print 
+
+• 
+Sign, date, and then fax or mail the signed form to the regional EMS council. 
+
+o	Contact information for regional EMS council can be found under Region Search 
+
+•	
+Route the class to regional EMS council where class is being conducted. 
+
+o	Please note that the system has already selected the appropriate region and identified the regional EMS council on the class registration form under Class Location. 
+
+o	scroll to the bottom of the registration form 
+
+o	Choose Route 
+
+o	Verify that it is going to the correct region or choose the appropriate region from the drop-down box 
+
+o	Type comments or message in the box 
+
+o	Select Route it now 
+
+
+
+
+Page 6 
+
+Applying for New Continuing Education Course 
+•	
+ Log In 
+
+•	
+Click on “Create a New Course Application” in the blue section 
+
+•	
+Complete all required information 
+
+o	 Save often 
+
+o	Use Tab not Return 
+
+
+
+
+.	Using Return will kick you out of the system and you can not recover your work 
+•	
+Go to the internet browser menu bar 
+
+o	 Choose File 
+
+o	Select Print and the printer menu will appear 
+
+o	Select Print 
+
+o	The form will print 
+
+
+
+•	
+Mail a copy of the signature page to the regional council where the course will be presented 
+
+•	
+Route to the regional council where the course will first be presented 
+
+
+Page 7 
+
+
