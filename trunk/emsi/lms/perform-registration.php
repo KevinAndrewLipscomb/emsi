@@ -2,12 +2,14 @@
 //
 // $Id$
 //
+// Turn on all error reporting.
+//
 error_reporting(E_ALL);
 //
 // Determine, based on the name by which this file was invoked, whether or not to operate in production or test mode.
 //
-$foundation_dir = "../../foundation";
-require_once("f_runmode.phtml");
+$foundation_dir = "../../../foundation";
+require_once("$foundation_dir/f_runmode.phtml");
 $mode = RunMode($PHP_SELF);
 //
 require_once("$foundation_dir/f_bodyopen.phtml");
@@ -16,9 +18,31 @@ require_once("$foundation_dir/f_password.phtml");
 //
 // Initialize optional parameters.
 //
-$middle_name = $street_address_2 = $zip = $phone = $other_certs = '';
+$middle_initial = $street_address_2 = $zip = $phone = $other_certs = '';
 //
-import_request_variables('PG');
+// Accept user-supplied parameters and copy them into local variables.
+//
+import_request_variables('PG','_');
+$first_name = $_first_name;
+$middle_initial = $_middle_initial;
+$last_name = $_last_name;
+$cert_level = $_cert_level;
+$email_address = $_email_address;
+$cert_num = $_cert_num;
+$month_of_birth = $_month_of_birth;
+$day_of_birth = $_day_of_birth;
+$year_of_birth = $_year_of_birth;
+$street_address = $_street_address;
+$street_address_2 = $_street_address_2;
+$city = $_city;
+$state = $_state;
+$zip = $_zip;
+$phone = $_phone;
+$county = $_county;
+$region = $_region;
+$be_other_certs = $_be_other_certs;
+$other_certs = $_other_certs;
+$be_instructor = $_be_instructor;
 //
 ?>
 <html>
@@ -33,16 +57,16 @@ import_request_variables('PG');
       <td>
          <table>
             <tr>
-               <td><img align="center" valign="middle" src="/graphics/logo.gif"></td>
+               <td><img align="center" valign="middle" src="http://www.emsi04.org/graphics/logo.gif"></td>
                <td>
-                  <h6 align="center">EMSI LAMPS Application Host at Oscarsystem.com</h6>
+                  <h6>EMSI LAMPapp host at Oscarsystem.com</h6>
                   <h1>Learning Management System Registration</h1>
                </td>
             </tr>
          </table>
          <hr>
          <br>
-         <?
+         <?php
          if (ConnectSelectDb("localhost","kalipso",Password(),"emsi") != "TRUE")
             {
             ?>
@@ -52,7 +76,7 @@ import_request_variables('PG');
                <? echo "<p>The database is temporarily offline.&nbsp; Please try again later.</p>"; ?>
             </blockquote>            
             </b>
-            <?
+            <?php
             }
          else
             {
@@ -70,13 +94,13 @@ import_request_variables('PG');
                and
                   ($cert_num != "")
                and
-                  ($date_of_birth != "")
+                  (($month_of_birth >= 1) and ($month_of_birth <= 12))
+               and
+                  (($day_of_birth >= 1) and ($day_of_birth <= 31))
+               and
+                  ($year_of_birth != "")
                and
                   ($street_address != "")
-               and
-                  ($city != "")
-               and
-                  ($state != "")
                and
                   ($city != "")
                and
@@ -87,8 +111,6 @@ import_request_variables('PG');
                   ($region != "")
                and
                   ($be_other_certs != "")
-               and
-                  ($other_certs != "")
                and
                   ($be_instructor != "")
                )
@@ -102,7 +124,7 @@ import_request_variables('PG');
                   .  ", cert_level='$cert_level' "
                   .  ", email_address='$email_address' "
                   .  ", cert_num='$cert_num' "
-                  .  ", dob='$date_of_birth' "
+                  .  ", dob='$year_of_birth-$month_of_birth-$day_of_birth' "
                   .  ", street_address_1='$street_address' "
                   .  ", street_address_2='$street_address_2' "
                   .  ", city='$city' "
@@ -116,6 +138,13 @@ import_request_variables('PG');
                   .  ", be_emt_instructor='$be_instructor' "
                   )
                   or die("Insert failed with error: " . mysql_error());
+               echo "<b>Thanks!</b></p>\n";
+               echo "<p>Your application has been registered in EMSI's database.  You should receive your account "
+                  . "information within two weeks.</p>\n";
+               echo "<ul>\n"
+                  . "   <li><p><a href=http://www.emsi04.org/services/prehosp-pers/lms/>Return to EMSI's LMS page</a></p></li>\n"
+                  . "   <li><p><a href=http://www.emsi04.org/>Return to EMSI's home page</a></p></li>\n"
+                  . "</ul>\n";
                }
             else
                {
@@ -137,14 +166,14 @@ import_request_variables('PG');
                      <li><p>State</p>
                      <li><p>County of residence</p>
                      <li><p>EMS region</p>
-                     <li><p>Date of birth</p>
+                     <li><p>Date of birth (with valid numbers)</p>
                      <li><p>Are you a certified EMT Instructor?</p>
                      <li><p>Do you hold any other DOH EMSO certifications?</p>
                   </ul>
                   <p>Please press your browser's [<--&nbsp;BACK] button to correct the problems.</p>
                </blockquote>            
                </b>
-               <?
+               <?php
                }
             } // database up
          ?>
@@ -154,7 +183,5 @@ import_request_variables('PG');
       </td>
    </tr>
 </table>
-<b>Thanks!</b></p>
-<p>Your application has been sent to EMSI's LMS Registration Coordinator.</p>
 </body>
 </html>
