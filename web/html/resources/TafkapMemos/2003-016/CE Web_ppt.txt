@@ -1,0 +1,109 @@
+<title>EMSAMS PowerPoint presentation</title>
+
+
+Goals of this presentation
+
+Explain the system design
+
+Provide an overview of the criticality of 
+participation and “buy in”
+Identify reasonable expectations of the 
+
+application
+Describe the testing process & schedule
+
+
+
+
+
+
+New Course Application
+
+Applicant submits via web & sends to 
+
+region Region reviews/recommends & sends to EMS Office 
+EMS Office approves/disapproves
+If approved, EMS Office assigns #
+Course added to master list & web
+
+
+
+
+
+
+Class Registrations
+
+Applicant chooses to register a class
+
+CE Web Application looks to see if they are a valid CE Sponsor or Training Inst. If yes, they may continue registering 
+the class, sending it to the region Region reviews/approves/disapproves If approved, region assigns # Sent to web 
+
+
+
+Sponsor/Training Institute List
+
+
+Will contain a primary contact who can manage/update the people authorized to submit class registrations for the CE Sponsor or Training Institute once they have a user profile on the system. 
+
+Will contain the list of people authorized to submit class registrations for CE and/or certification classes 
+May be able to provide information to update the master database. 
+
+
+
+CE Credit View
+
+Allows a practitioner to view his/her 
+
+own CE earned/recorded in the system The practitioner must create a user profile to access the system 
+
+
+
+System Testing Process
+
+System testing began on June 4th and 
+continued until June 13th. Approximately 35 people from 5 regional EMS councils participated in the system testing phase. 
+System tests went very well, identified a multitude of issues that have been addressed and corrected as well as many things that worked well from the beginning. 
+
+
+
+Implementation
+
+Implementation is scheduled to begin the last week in June and continue to the mid-July, 2003. 
+
+
+
+
+st week – 5 regions that did testing nd week – 4 additional regions rd week – 4 additional regions th week – 3 final regions 
+
+
+
+What is Needed?
+
+It is essential that CE sponsors and training institutes manage their users and oversee class registrations Good data in, to get good data out 
+
+The more complete the data is when it is entered, the easier it is to find when searching 
+
+
+
+
+Data Entry
+
+No abbreviations
+
+Spell-out ALL acronyms (put acronyms in 
+parenthesis)
+Correct spelling (can’t find words that are 
+
+not spelled correctly)
+Consistency in organization names, course 
+titles, etc. 
+
+
+
+
+Have a Good Experience!
+
+Questions should be directed to the 
+
+regional EMS council System issues should be emailed to ems_ceweb@state.pa.us 
+
