@@ -1,0 +1,48 @@
+<?php
+//
+// $Id$
+//
+error_reporting(E_ALL);
+//
+$foundation_dir = "../../../foundation";
+require_once("$foundation_dir/f_runmode.phtml");
+$mode = RunMode($PHP_SELF);
+//
+require_once("$foundation_dir/f_password.phtml");
+require_once("$foundation_dir/f_connectselectdb.phtml");
+//
+// Accept user-supplied parameters and copy them into local variables.
+//
+import_request_variables('PG','_');
+$batch_id = $_batch_id;
+//
+?>
+<html>
+<body bgcolor=#FFFFFF>
+<table align=center width=80%><tr><td>
+<H6 ALIGN=CENTER>EMSI LAMPapps host at Oscarsystem.com</H6>
+<H1 ALIGN=CENTER>Weekly LMS Applications Cleanup</H1>
+<hr>
+<?php
+//
+//
+// Connect to the database.
+//
+if (ConnectSelectDb("localhost","kalipso",Password(),"emsi") != "TRUE")
+   {
+   //
+   // Fill the page out with a warning and instructions.
+   //
+   $msg = "Sorry, the database is temporarily offline.\n";
+   }
+else
+   {
+   mysql_query("delete from " . $mode . "lms_applicant where batch_id='$batch_id' ")
+      or die("Deletion failed with error: " . mysql_error());
+   //
+   echo "<p><b>Deleted " . mysql_affected_rows() . " rows.</b></p>\n";
+   }
+?>
+</td></tr></table>
+</body>
+</html>
