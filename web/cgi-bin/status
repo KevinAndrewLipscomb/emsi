@@ -1,0 +1,66 @@
+#!/usr/bin/perl
+
+use CGI ':all';
+use CGI::FastTemplate;
+use LWP::Simple 'get';
+use XML::Simple;
+
+%code = (   0 => "green",
+	    1 => "yellow",
+	    2 => "red",
+	    3 => "black",
+	    9 => "closed",
+	);
+		 #bgcolor,  font
+%color = (  0 => ["green",  "black"], 
+	    1 => ["yellow", "black"], 
+	    2 => ["red",    "black"], 
+	    3 => ["black",  "white"], 
+	    9 => ["black",  "red"], 
+	);
+
+$tmpl = new CGI::FastTemplate;
+$tmpl->define(status => '/var/www/EMSI04/html/status.tmpl');
+
+$statURL = 'http://www.emscharts.com/mc/xml_hospstatus.cfm?hosp=1';
+# County codes at 'http://www.emscharts.com/mc/xml_county.cfm';
+($XMLstr = get($statURL)) =~ s/^\s+//;	# Get rid of leading whitespace
+$XML = XMLin($XMLstr);
+
+undef $status_table, $county;
+$entity = (keys %$XML)[0];	# One top-level entity
+$hospital = $XML->{$entity};
+for my $row (sort
+	{ $hospital->{$a}->{county} cmp $hospital->{$b}->{county} || $a cmp $b }
+	    keys %$hospital) {
+    next if ref $hospital->{$row}->{county};	# Skip empty County names
+    if ($county ne $hospital->{$row}->{county}) {
+	$county = $hospital->{$row}->{county};
+	$status_table .= TR({bgcolor => "black", colspan => 2},
+	    th(font({color => "white"}, b($county, "County"))),
+	    th(font({color => "white"}, "Status")),
+	    th(font({color => "white"}, "Date Changed")),
+	    th(font({color => "white"}, "Expires")));
+	$status_table .= "\n";
+	}
+    ($name = $row) =~ s/%([\dA-Fa-f][\dA-Fa-f])/chr(hex($1))/ge;
+    $status_table .= TR(
+	td($name),
+	td({align => "middle", bgcolor =>
+		($color{$hospital->{$row}->{status}}->[0] || "white")},
+	    font({color =>
+		    ($color{$hospital->{$row}->{status}}->[1] || "black")},
+		b($code{$hospital->{$row}->{status}}) || "unknown")),
+	td({align => "middle"}, ref $hospital->{$row}->{dt} ?
+	    "&nbsp;-" x 7 : $hospital->{$row}->{dt}),
+	td({align => "middle"}, ref $hospital->{$row}->{dt} ?
+	    "&nbsp;-" x 7 : $hospital->{$row}->{expires}));
+    $status_table .= "\n";
+    }
+
+$tmpl->assign(TABLE => table($status_table));
+$tmpl->parse(STATUS => "status");
+print header();
+$tmpl->print("STATUS");
+$tmpl->clear();
+
