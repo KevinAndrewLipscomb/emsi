@@ -1,0 +1,86 @@
+#!/usr/bin/perl
+
+use CGI ':all';
+use CGI::FastTemplate;
+
+import_names;
+$Q::FromMonth = 1			unless $Q::FromMonth =~ /^\d{1,2}$/;
+$Q::FromYear = (localtime)[5]+1900	unless $Q::FromYear =~ /^\d{4}$/;
+$Q::ToMonth = 12			unless $Q::ToMonth =~ /^\d{1,2}$/;
+$Q::ToYear = (localtime)[5]+1901	unless $Q::ToYear =~ /^\d{4}$/;
+$fym = sprintf("%4d%02d", $Q::FromYear, $Q::FromMonth);
+$tym = sprintf("%4d%02d", $Q::ToYear, $Q::ToMonth);
+$tym = $fym	if $tym < $fym;
+@keywords = map { qr/$_/i } split /\s+/, $Q::Keywords;
+@locations = map { qr/$_/i } split /\s+/, $Q::Location;
+
+$tmpl = new CGI::FastTemplate;
+$tmpl->define(courses => '/var/www/EMSI04/html/courses.tmpl');
+open COURSES, '/var/www/EMSI04/html/courses.txt';
+
+$table_head = TR(th([qw(Date Time Course# Class#),
+		    "Course Name", qw(FR EMT ALS Location Contact Phone#)]));
+$table_rows = undef;
+
+SCAN: for my $scan (1, 0) {
+    LINE: while (<COURSES>) {
+	($date, $time, $course, $class, $name, $fr, $emt, $als, $location,
+	    $contact, $phone) = split /\t/;
+	next LINE if $date !~ m#(\d+)/\d+/(\d+)#;
+	$ym = sprintf("%4d%02d", $2, $1);
+	next LINE if $ym < $fym || $ym > $tym;
+	if ($scan) {
+	    $kmatch = $lmatch = $other = 0;
+	    if (@keywords != 0 || @locations != 0) {
+		REGEX: for $regex (@keywords) {
+		    if ($name =~ s#$regex#<b>$&</b>#) {
+			$kmatch = @keywords;	# Scalar assignment
+			}
+		    }
+		REGEX: for $regex (@locations) {
+		    if ($location =~ s#$regex#<b>$&</b>#) {
+			$lmatch = @locations;	# Scalar assignment
+			}
+		    }
+		}
+	    if ($fr > 0  && $Q::Keywords =~ /first\s+responder|\bfr\b/i) {
+		$fr = b($fr);
+		$other++;
+		}
+	    if ($emt > 0 && $Q::Keywords =~ /\bemt\b/i) {
+		$emt = b($emt);
+		$other++;
+		}
+	    if ($als > 0 && $Q::Keywords =~ /\bals\b/i) {
+		$als = b($als);
+		$other++;
+		}
+	    next LINE unless ($kmatch + $lmatch == @keywords + @locations) ||
+		$other;
+	    $fr = "&nbsp;"	unless $fr ne "";
+	    $emt = "&nbsp;"	unless $emt ne "";
+	    $als = "&nbsp;"	unless $als ne "";
+	    $table_rows .= TR(td([$date, $time, $course, $class, $name, $fr,
+		$emt, $als, $location,$contact, $phone]));
+	    $table_rows .= "\n";
+	    }
+	}
+    last SCAN if $table_rows;
+    }
+
+$table_rows ||= TR(td({colspan => 11}, font({color => "red"},
+		    "No classes match your search criteria")));
+
+
+if ($fym eq $tym) {
+    $tmpl->assign(WHEN => "Courses Scheduled $Q::FromMonth/$Q::FromYear");
+    }
+else {
+    $tmpl->assign(WHEN => "Courses Scheduled $Q::FromMonth/$Q::FromYear - $Q::ToMonth/$Q::ToYear");
+    }
+$tmpl->assign(TABLE_HEAD => $table_head);
+$tmpl->assign(TABLE_ROWS => $table_rows);
+$tmpl->parse(COURSES => "courses");
+print header();
+$tmpl->print("COURSES");
+$tmpl->clear(qw(WHEN TABLE_HEAD TABLE_ROWS COURSES));
