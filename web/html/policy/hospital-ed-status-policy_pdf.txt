@@ -1,0 +1,78 @@
+<title>Hospital Emergency Department Status Policy</title>
+HOSPITAL EMERGENCY DEPARTMENT STATUS 
+EMSI REGIONAL POLICY June 2002 
+GENERAL: 
+.
+ The terms “Divert”, “Diversion”, “Bypass” (and equivalent terms) are no longer recognized as valid and will be disregarded by EMS. 
+
+.
+ In the event that a patient is redirected from one facility to another facility for reasons of a Condition Red or Condition Yellow status, such event must be noted on the trip sheet including the fact that the patient or patient’s family was notified of this situation. 
+
+.
+ Patients assessed at the scene and perceived by EMS personnel to be experiencing an immediately life-threatening illness or injury, shall be transported to the nearest appropriate facility and may not be redirected unless that facility has been reported as in “Condition Black” 
+
+
+
+CONDITION GREEN: 
+.
+ The Emergency Department is open with no restrictions. 
+
+.
+ This is the default status for all Emergency Departments unless another condition has been specified. 
+
+
+
+CONDITION YELLOW: 
+. 
+The Emergency Department is busy but not overwhelmed. Patients presenting to the Emergency Department via EMS may experience significant delays in treatment due to the current volume and/or acuity of patients already in the Emergency Department.  EMS personnel should inform the patient of this situation and consider transporting the patient to another facility if the patient consents.  
+
+.
+ This condition automatically terminates in four (4) hours unless renewed. 
+
+.
+ Use of this condition is not reportable to the Pennsylvania Department of Health under Title 28, Chapter 51, Section 51.3 of the Pennsylvania Code as interpreted by the Department of Health. 
+
+
+
+CONDITION RED: 
+.
+ All of the usually available resources in the Emergency Department are overwhelmed such that receipt of additional patients will result in the inability to care for them safely. Patients may not be brought to the Emergency Department unless the EMS personnel perceive the patient to be suffering from an immediately life-threatening illness or injury. 
+
+.
+ If the majority of geographically adjacent hospitals are also on “Condition Red” then all hospitals revert to “Condition Yellow”. The County EOC Medical Director is responsible for determining when this situation exists.  He or she may establish a policy to make this determination in his/her absence.  
+
+.
+ This condition automatically terminates in 2 hours unless renewed.  
+
+.
+ Use of this condition is reportable to the Pennsylvania Department of Health under Title 28, Chapter 51, Section 51.3 of the Pennsylvania Code as interpreted by the Department of Health. 
+
+
+
+CONDITION BLACK: 
+.
+ A hospital/facility may be reported in “Condition Black” when an emergency situation or catastrophic event exists that renders the entire facility as being unsafe. Examples include: Fire, explosion, bomb threat, gun fire, nuclear/biological/chemical incidents, etc. 
+
+.
+ NO patients shall be transported to facilities that are reported as in “Condition Black”. 
+
+.
+ Use of this condition is reportable to the Pennsylvania Department of Health under Title 28, Chapter 51, Section 51.3 of the Pennsylvania Code as interpreted by the Department of Health. 
+
+
+
+TEMPORARY NOTIFICATION PROCESS 
+
+Based upon the individual hospital’s internal policy, the designated individual responsible for notification will contact the County Emergency Operation Center (EOC – 911 Center) to report any Emergency Department status change. 
+All status reports must be in the color condition format approved by EMSI. Reports not corresponding to this format will be disregarded. 
+The designated caller must provide his/her name and a call back telephone number. Notifications not providing the callers name and call back telephone number will be disregarded. 
+Note: If the hospital is located on a county fringe area, the hospital 
+would be responsible for notifying the EOC of each of the respective 
+counties. 
+The County EOC (911 Center) will be responsible for notifying any additional dispatch agencies within that county if the county EOC is not the single Emergency Medical Service (EMS) dispatch point for the county. 
+In Allegheny County, the County EOC will be responsible for notifying the appropriate Regional Public Safety Answering Point (PSAPs). Regional PSAPs will be responsible for notifying EMS dispatching agencies within their jurisdiction. 
+Each EMS dispatch center (County EOC if single EMS dispatch point) shall notify the EMS provider at the time of dispatch to emergency calls. 
+Note: Dispatch Centers may exceed this minimum policy if desired 
+(e.g. General broadcast announcements or telephone calls in addition to notification at the time of dispatch). This policy is intended to establish a “ground floor” standardized policy of EMS providers being notified at the time of dispatch. 
+
+

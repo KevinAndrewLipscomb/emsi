@@ -1,0 +1,13 @@
+<!-- $Id$ -->
+<html>
+<head>
+<title>Emergency Medical Service Institute - EMSI Direct</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<!--#include virtual="/std-header.html" -->
+<!--#include virtual="/std-pre-content.html" -->
+<!--#include virtual="emsi-direct.html" -->
+<!--#include virtual="/std-post-content.html" -->
+</body>
+</html>

@@ -1,0 +1,34 @@
+<title>EMSI EMSOF Request Tracking Form</title>
+EMSI EMSOF REQUEST TRACKING FORM 
+County Coordinator: Staple completed form on top of Equipment Request Form, then submit packet to EMSI. 
+REQUEST IDENTIFICATION BLOCK 
+County: ____________________________________________
+Service name: ____________________________________________
+Brief unique description of request: ____________________________________________
+
+RECOMMENDATION BLOCK 
+County Coordinator Disposition 
+.&FAVOR .'OPPOSE 
+If opposed, choose most appropriate reason: 
+. Insufficient funds 
+. Outside of funding priorities
+. Outside of regional / state development plan 
+. Request received after deadline°
+
+Whose deadline? .County .Region .State 
+When received? ___________________________ 
+County Coordinator Signature:___________________________________  Date:____________ 
+Regional Disposition 
+.&FAVOR .'OPPOSE 
+If opposed, choose most appropriate reason: 
+. Insufficient funds 
+. Outside of funding priorities
+. Outside of regional / state development plan 
+. Request received after deadline°
+
+Whose deadline? .Region .State 
+When received? ___________________________ 
+Regional Director Signature: ____________________________________  Date:____________ 
+www.emsi04.org/programs/emsof/request-tracking-form.pdf 
+www.emsi04.org/programs/emsof/request-tracking-form.pdf 
+

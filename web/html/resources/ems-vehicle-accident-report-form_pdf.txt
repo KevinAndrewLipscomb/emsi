@@ -1,0 +1,25 @@
+<title>Vehicle Accident Report Form</title>
+Injury Info  Description of the Event:    ____________________________________________________________________________________   ____________________________________________________________________________________   ____________________________________________________________________________________  
+Complete an Injury Report (below) for each person, EMS or other, injured in this vehicle.*  
+Injury A EMS: Yes No  
+Age  Sex M F  Ejected Yes No  Injury Severity: Fatal   Serious Moderate Minor  Restraint System:  Safety Belt Air Bag Deployed   Child Restraint   Other  Position in Vehicle: Enter #†  
+Injury B EMS: Yes No  
+Age  Sex M F  Ejected Yes No  Injury Severity: Fatal   Serious Moderate Minor  Restraint System:  Safety Belt Air Bag Deployed   Child Restraint   Other  Position in Vehicle: Enter #†  
+Injury C EMS: Yes No  
+Age  Sex M F  Ejected Yes No  Injury Severity: Fatal   Serious Moderate Minor  Restraint System:  Safety Belt Air Bag Deployed   Child Restraint   Other  Position in Vehicle: Enter #†  
+Total Number of People Injured:        Fatality Involved:    Yes      No Number: # EMS Personnel Injured:               EMS Fatality: Yes   No Number:  
+Police Report Information  Did Police Investigate This Incident:       Yes   No  Police Report Attached:   
+If Police Report Was Filed and Copy Not Attached Complete the Following  
+Investigating Police Agency:  
+Address:  
+City:                  State: Zip:  
+Citations Issued: Yes No  Issued To: EMS Driver   Other Driver  
+Sign  I believe the information provided above to be accurate and correct: Sign:_____________________________________Title:_______________________Date:_____________  
+
+*Use additional sheets as necessary if more than three injured individuals. 
+†Vehicle Position Numbers:  
+1=Driver's seat  5=Back seat of squad unit  9=Litter  
+2=Front passenger seat  6=Captain's chair  10=Standing, patient compartment  
+3=Squad bench seated  7=Squad bench/seat  11=Other  
+4=Squad bench supine (patient)  8=Driver's side  
+
