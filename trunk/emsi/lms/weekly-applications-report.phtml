@@ -121,7 +121,7 @@ else
             . '","'
             . $home_phone
             . '","'
-            . sprintf("%02s",$county_code)
+            . ($county_code==0 ? '02' : sprintf("%02s",$county_code))
             . '","'
             . sprintf("%02s",$region_code)
             . '","'
