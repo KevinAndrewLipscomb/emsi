@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>FDSE: Admin Page</title>
+	<meta http-equiv="Content-Type" content="%content_type%" />
+	<meta name="version" content="%VERSION%" />
+	<meta name="robots" content="none" />
+	<!--#include file="admin_style.inc" -->
+	<script type="text/javascript">
+	<!--
+	var g_loaded = false;
+	function HandleUncontrolledExit() {
+		if (!g_loaded) {
+			var err_msg = "%ue_msg%";
+			if ((document) && (document.all) && (document.all("script_output"))) {
+				document.all("script_output").innerHTML += "<p>" + err_msg + "</p>";
+				}
+			else {
+				alert(err_msg);
+				}
+			}
+		}
+	//-->
+	</script>
+</head>
+<body dir="%dir%" onload="HandleUncontrolledExit();">
+
+	<div id="script_output">%script_output%</div>
+
+	<script type="text/javascript">
+	<!--
+	g_loaded = true;
+	//-->
+	</script>
+
+	<p><br /></p>
+
+	<p><br /></p>
+
+</body>
+</html>
+

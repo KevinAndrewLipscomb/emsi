@@ -1,0 +1,55 @@
+<!-- $Id$ -->
+<html>
+<head>
+<title>Emergency Medical Service Institute - Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="KeyWords" content="EMERGENCY MEDICAL SERVICE INSTITUTE, EMSI, EMS, PENNSYLVANIA, REGIONAL EMS COUNCIL,
+OFFICE, EMSOF, PARAMEDIC, 911, EMT, MEDIC, MEDICAL, AMBULANCE, RESCUE, SQUAD, QRS, PREHOSPITAL, HOSPITAL,
+HOSPITAL STATUS, EMSAMS, FRED, METRICS, MEASUREEMS, QI, LEARNING MANAGEMENT SYSTEM, LMS, HEALTH, FIRST AID, TRAINING, QUALITY, COMMUNICATIONS, CONTINUING EDUCATION, CON ED, RECIPROCITY,
+LICENSE, LICENSURE, CERTIFICATION, PITTSBURGH, ALLEGHENY, ARMSTRONG, BEAVER, BUTLER, FAYETTE, GREENE,
+INDIANA, LAWRENCE, WASHINGTON, WESTMORELAND, SOUTHWEST, PA, PENNSYLVANIA, CRASH, ACCIDENT, TRAUMA,
+GUNSHOT, CARDIAC, DEFIBRILLATE, DEFIBRILLATION, LIFEPAK, INTUBATE, INTUBATION, EMERGENCY, SCANNER,
+SCANNING, NONPROFIT, CHARITY, DONATION">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<!--#include virtual="/std-header.html" -->
+<!--#include virtual="/std-pre-content.html" -->
+<!--#include virtual="/description-and-mission.html" -->
+<!--#include virtual="/hot-links.html" -->
+<!--#include virtual="/news.html" -->
+<table border="0" cellspacing="0" cellpadding="10" width="100%">
+   <tr>
+      <td align="center" bgcolor="#6699FF" nowrap>
+         <p align="left">
+         <big><big><b><i><font color="#FFFFFF">Meta</font></i><span style="font-variant: small-caps"><font color="#FFFFFF">Navigation</font></span></b></big></big>
+         </p>
+      </td>
+   </tr>
+   <tr>
+      <td align="center" nowrap>
+         <p><a href="http://webserver.health.state.pa.us/health/cwp/view.asp?a=170&amp;q=203353&amp;pp=0"><b>&#9650;<br>State<br>
+            EMS Office</b></a>
+         <p><a href="http://webserver.health.state.pa.us/health/cwp/view.asp?A=170&amp;Q=203381&amp;pp=3"><b>
+            &#9668; Other Regional EMS Councils &#9658;
+            </b></a><br>
+         <a href="http://webserver.health.state.pa.us/health/cwp/view.asp?A=170&Q=203514&pp=3">[map]</a>
+      </td>
+   </tr>
+   <tr>
+      <td align=right>
+         <p align="left">&nbsp;</p>
+         <p align="left">
+         <small>
+            <small>
+               <i>
+               <a href="about-the-site.shtml">
+               About this web site</a></i>
+            </small>
+         </small>
+         </p>
+      </td>
+   </tr>
+</table>
+<!--#include virtual="/std-post-content.html" -->
+</body>

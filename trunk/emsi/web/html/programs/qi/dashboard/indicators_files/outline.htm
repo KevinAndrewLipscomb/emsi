@@ -1,0 +1,3476 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=PowerPoint.Slide>
+<meta name=Generator content="Microsoft PowerPoint 10">
+<link id=Main-File rel=Main-File href="../indicators.htm">
+<link rel=Preview href=preview.wmf>
+<meta name=Robots content=NoIndex>
+<script src=script.js></script><script><!--
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+{
+	obj = GetObj("Main-File")
+	parent.location.href=obj.href
+}
+var gOtlHiliteClr="#000000",gOtlNormalClr="#ffffff",gOtlActiveClr="#0000ff",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+function Load()
+{
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+	if( g_supportsPPTHTML ) {
+		if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+		if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+	}
+}
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+function LoadNav( oId,UpdFunc )
+{
+	document.ondragstart=CancelDrag
+	document.onselectstart=CancelDrag
+	document.body.style.margin=2
+	UpdFunc()
+	obj=document.all.item(oId)
+	obj.style.display="block"
+	obj.style.visibility="visible"
+	document.bgColor="threedface"
+	if( parent.frames["PPTNts"] )
+		notesBtn.style.display = ""
+	if( parent.gHasNarration )
+		nb_voiceBorder.style.display = ""
+}
+function LoadOtl()
+{
+	var otl=GetObj("OtlObj")
+	otl.style.display="block"
+	otl.style.visibility="visible"
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+	if( gOtlNormalClr == "" )
+		gOtlNormalClr=document.bgColor
+	else
+		document.bgColor=gOtlNormalClr
+	InitArray()
+	if( ObjExists( parent.gCurSld ) ) {
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+		gSelected=parent.gCurSld
+	}
+	else gSelected = -1
+	UpdOtl()
+}
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+function UpdIdx( idx )
+{
+	if( gSelected != idx ) {
+		if( gSelected > 0 )
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+		if( ObjExists( idx ) ) {
+			gSelected = idx
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+		}
+		else gSelected = -1
+	}
+	if( gTxtState != parent.gOtlTxtExp ) {
+		state = "block"
+		if( !parent.gOtlTxtExp )
+			state="none"
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+			obj=gChildEntryTable[ii];
+			if( obj.id == null ) continue;
+			if( obj.id.indexOf("PPTC") >= 0 )
+				obj.style.display=state;
+		}
+		gTxtState=parent.gOtlTxtExp
+		if( ObjExists( gSelected ) )
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+	}
+}
+function InitArray()
+{
+	count=0
+	var list=GetTags(document,"DIV");
+	for(ii=0; ii<list.length; ii++) {
+		obj=list.item(ii)
+		if( obj.id == null ) continue
+		if( obj.id.indexOf("PPTC") >= 0 )
+			gChildEntryTable[count++]=obj
+	}
+}
+function ChangeState( idx,fgColor,bgColor )
+{
+	obj=GetObj("PPTL"+idx)
+	obj.style.color=fgColor
+	obj=GetObj("PPTP"+idx)
+	obj.style.backgroundColor=bgColor
+}
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+function Over( src ){ ChgClr(GetLink(src),gOtlActiveClr) }
+function Out( src ){ ChgClr(GetLink(src),gOtlHiliteClr) }
+function Follow(src){ window.location.href = GetLink(src).href; }
+function ObjExists( ii ) { obj=GetObj("PPTP"+ii ); return( obj ) }
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+function GetLink(src)
+{
+   if(src.tagName=="A") return src
+   else return GetTags(src,"A").item(0)
+}
+function UpdNav()
+{
+	txt = "<center>";
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+	else
+		txt += "Hidden Slide"
+	txt += "</center>";
+	nav_text.innerHTML = txt;
+	if( !parent.HasPrevSld() )
+		gBtnArr["nb_prev"].Enabled(0)
+	else
+		gBtnArr["nb_prev"].Enabled(1)
+	if( !parent.HasNextSld() )
+		gBtnArr["nb_next"].Enabled(0)
+	else
+		gBtnArr["nb_next"].Enabled(1)
+	gBtnArr["nb_nts"].SetEnabled()
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+	gBtnArr["nb_sldshw"].Enabled(1)
+	gBtnArr["nb_voice"].Enabled(1)
+}
+function UpdOtlNav()
+{
+	gBtnArr["nb_otl"].SetEnabled();
+	if( parent.gOtlOpen )
+		gBtnArr["nb_otlTxt"].Enabled( true );
+	else
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+}
+
+//--></script>
+<style>
+<!--.PTxt
+	{position:relative;
+	width:100%;
+	margin-top:5px;
+	padding-left:2px;
+	font-weight:bold;}
+.CTxt
+	{position:relative;
+	width:100%;
+	margin-top:5px;}
+a
+	{color:black;
+	text-decoration:none;}
+ul
+	{color:black;
+	margin-bottom:0px;
+	margin-left:20px;}
+.sldNum
+	{margin-top:5px;
+	color:black;}
+.button
+	{position:absolute;
+	width:32px;
+	height:20px;
+	border-style:solid;
+	border-width:1px;
+	border-color:threedface;}
+-->
+</style>
+</head>
+
+<body onload="Load()" style='margin:2px'>
+
+<div id=NavObj onload="Load()" onmouseover="BtnOnOver()"
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+<table id="notesBtn" style='position:absolute;display:none;width:70px' align=left cellpadding=0
+ cellspacing=0>
+ <td nowrap>
+ <div id="nb_ntsElem" align=center style='position:relative;padding:3px;
+ font-family:Arial;color:buttontext;font-size:9pt'><img src="notes_flag.gif"
+ border=0 id="notes_flag" style='display:none'><span
+style='mso-spacerun:yes'>  </span>Notes</div>
+ <div title="Show/Hide Notes" id="nb_nts" style='position:absolute;top:0%;
+ left:0%;width:100%;height:100%'></div>
+ </td>
+</table>
+
+<table style='position:relative;width:70px' align=right cellpadding=0 cellspacing=0>
+ <td nowrap>
+ <div id="nb_sldshwText" title="Full
+Screen Slide Show" align=center style='position:relative;margin-left:20px;padding:3px;
+ font-family:Arial;color:buttontext;font-size:9pt;cursor:default'>Slide
+Show</div>
+ <div id="nb_sldshwBorder" title="Full Screen Slide Show" style='position:absolute;top:0%;left:0%;width:100%;height:20px'>
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_sldshw" style='position:relative;left:-254px' width="344" height="18"></div>
+ </div>
+ </td>
+ <td>
+ <div id="nb_voiceBorder" style='display:none;position:absolute;top:0;left:-40px;
+ width:20px;height:20px'>
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_voice" title="Pause/Play Narration" style='position:
+ relative;left:-290px' width="344" height="18"></div>
+ </div>
+ </td>
+</table>
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+ <td nowrap>
+ <div id="nb_prevBorder" class=button style='left:-30px'>
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_prev" title="Previous Slide" style='position:relative;
+ left:0px' width="344" height="18"></div>
+ </div>
+ <span id="nav_text" style='position:relative;top:3px;width:100px;font-family:
+ Arial;color:buttontext;font-size:9pt'></span>
+ <div id="nb_nextBorder" class=button>
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_next" title="Next Slide" style='position:relative;
+ left:-90px' width="344" height="18"></div>
+ </div>
+ </td>
+</table>
+</div>
+
+<div id=OtlNavObj onload="Load()" onmouseover="BtnOnOver()"
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+<table style='position:relative;width:70px' align=left cellpadding=0 cellspacing=0>
+ <td nowrap><div title="Show/Hide
+Outline" id="nb_otl"
+ style='position:absolute;top:0%;left:0%;width:100%;height:100%;cursor:default'>
+ <div id="nb_otlElem" align=center style='position:relative;padding:3px;font-family:Arial;
+ color:buttontext;font-size:9pt'>Outline</div></div>
+ </td>
+</table>
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+ <td>
+ <div style='position:absolute;left:-18px;width:24px;height:20px;border-style:
+ solid;border-width:1px;border-color:threedface' id="nb_otlTxtBorder">
+ <div style='position:absolute;clip:rect(0px, 22px, 18px, 0px)'><img
+ src=buttons.gif id="nb_otlTxt" title="Expand/Collapse Outline"
+ style='position:relative;left:-157px' width="344" height="18"></div>
+ </div>
+ </td>
+</table>
+
+</div>
+
+<div id=OtlObj style='display:none;visibility:hidden;'>
+
+
+<table width="100%" style='font-family:Arial;font-size:9pt'>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>1</font></div>
+  </td>
+  <td width="100%">
+  <div id=PPTP1 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0001.htm');" id=PPTL1>EMS Quality
+  Indicators<br>
+    for<br>
+    PA EMS Region 4</a></font></div>
+  <div id=PPTC1 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Quality Leadership Working Group</li>
+   <li>Quality Improvement Program</li>
+   <li>Emergency Medical Service Institute</li>
+   <li>Pittsburgh, PA</li>
+   <li>www.emsi.org</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>2</font></div>
+  </td>
+  <td>
+  <div id=PPTP2 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0002.htm');" id=PPTL2>Why now?</a></font></div>
+  <div id=PPTC2 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Because for the first time, an intersection of technology and know-how
+       has allowed us to:</li>
+   <br>
+   <br>
+   <ul>
+    <li>Import state standard PCR data into Microsoft Access</li>
+    <br>
+    <br>
+    <li>Perform statistically valid data analyses using “BPCHART” tool</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>3</font></div>
+  </td>
+  <td>
+  <div id=PPTP3 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0003.htm');" id=PPTL3>Why these analyses?</a></font></div>
+  <div id=PPTC3 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>NOT science</li>
+   <br>
+   <br>
+   <li>Low-hanging fruit</li>
+   <br>
+   <br>
+   <li>Business considerations</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>4</font></div>
+  </td>
+  <td>
+  <div id=PPTP4 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0004.htm');" id=PPTL4>Agenda</a></font></div>
+  <div id=PPTC4 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Predicates</li>
+   <br>
+   <br>
+   <li>Performance</li>
+   <br>
+   <br>
+   <li>Practitioners</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>5</font></div>
+  </td>
+  <td>
+  <div id=PPTP5 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0006.htm');" id=PPTL5>Common factors</a></font></div>
+  <div id=PPTC5 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Four years of data (2000-2003)</li>
+   <br>
+   <br>
+   <li>Almost 1.8 million records</li>
+   <br>
+   <br>
+   <li>Restricted to cases in EMSI counties</li>
+   <br>
+   <br>
+   <li>Emergency + non-emergency cases</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>6</font></div>
+  </td>
+  <td>
+  <div id=PPTP6 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0222.htm');" id=PPTL6>Caveats</a></font></div>
+  <div id=PPTC6 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Trend indications are hypotheses only.<span style='mso-spacerun:yes'> 
+       </span>Simple linear trend hypotheses are included on all charts.</li>
+   <br>
+   <br>
+   <li>If the phrase &quot;There is poor evidence of a trend!!&quot; appears on
+       a chart, the statistical tests applied by the charting tool indicate low
+       confidence in the validity of the trend hypothesis.</li>
+   <br>
+   <br>
+   <li>The more &quot;Special Cause Flags&quot; on a chart, the less confidence
+       one should have in the simple linear trend hypothesis that is indicated.</li>
+   <br>
+   <br>
+   <li>Data points in the last quarter of 2003 are not reliable -- some EMSCAN
+       submissions from that period are still outstanding.<span
+       style='mso-spacerun:yes'>  </span>All other data points are reliable.</li>
+   <br>
+   <br>
+   <li>The charts only include what is documented on EMSCAN records received by
+       EMSI.</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>7</font></div>
+  </td>
+  <td>
+  <div id=PPTP7 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0007.htm');" id=PPTL7>Predicates</a></font></div>
+  <div id=PPTC7 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Number of cases</li>
+   <li>Patient age</li>
+   <li>Incident Location</li>
+   <li>Incident Type</li>
+   <li>Suspected Illness</li>
+   <li>Response Outcome</li>
+   <li>Bystander CPR</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>8</font></div>
+  </td>
+  <td>
+  <div id=PPTP8 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0009.htm');" id=PPTL8># incidents</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>9</font></div>
+  </td>
+  <td>
+  <div id=PPTP9 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0223.htm');" id=PPTL9>PATIENT AGE<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC9 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Under 5</li>
+   <li>5-14</li>
+   <li>15-24</li>
+   <li>25-34</li>
+   <li>35-44</li>
+   <li>45-54</li>
+   <li>55-64</li>
+   <li>65-74</li>
+   <li>75+</li>
+   <br>
+   <br>
+   <br>
+   <li>Stratified in accordance with Health Profile 2000 Demographic Data
+       published by PA DOH Health Statistics Bureau</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>10</font></div>
+  </td>
+  <td>
+  <div id=PPTP10 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0229.htm');" id=PPTL10># not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>11</font></div>
+  </td>
+  <td>
+  <div id=PPTP11 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0230.htm');" id=PPTL11># &lt;5</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>12</font></div>
+  </td>
+  <td>
+  <div id=PPTP12 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0231.htm');" id=PPTL12># 5-14</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>13</font></div>
+  </td>
+  <td>
+  <div id=PPTP13 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0232.htm');" id=PPTL13># 15-24</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>14</font></div>
+  </td>
+  <td>
+  <div id=PPTP14 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0233.htm');" id=PPTL14># 25-34</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>15</font></div>
+  </td>
+  <td>
+  <div id=PPTP15 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0234.htm');" id=PPTL15># 35-44</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>16</font></div>
+  </td>
+  <td>
+  <div id=PPTP16 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0235.htm');" id=PPTL16># 45-54</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>17</font></div>
+  </td>
+  <td>
+  <div id=PPTP17 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0236.htm');" id=PPTL17># 55-64</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>18</font></div>
+  </td>
+  <td>
+  <div id=PPTP18 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0237.htm');" id=PPTL18># 65-74</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>19</font></div>
+  </td>
+  <td>
+  <div id=PPTP19 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0238.htm');" id=PPTL19># 75+</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>20</font></div>
+  </td>
+  <td>
+  <div id=PPTP20 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0225.htm');" id=PPTL20>PATIENT AGE<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC20 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Under 5</li>
+   <li>5-14</li>
+   <li>15-24</li>
+   <li>25-34</li>
+   <li>35-44</li>
+   <li>45-54</li>
+   <li>55-64</li>
+   <li>65-74</li>
+   <li>75+</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>21</font></div>
+  </td>
+  <td>
+  <div id=PPTP21 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0227.htm');" id=PPTL21>Patient Age in years
+  (#) summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>22</font></div>
+  </td>
+  <td>
+  <div id=PPTP22 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0224.htm');" id=PPTL22>PATIENT AGE<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC22 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Under 5</li>
+   <li>5-14</li>
+   <li>15-24</li>
+   <li>25-34</li>
+   <li>35-44</li>
+   <li>45-54</li>
+   <li>55-64</li>
+   <li>65-74</li>
+   <li>75+</li>
+   <br>
+   <br>
+   <br>
+   <li>Stratified in accordance with Health Profile 2000 Demographic Data
+       published by PA DOH Health Statistics Bureau</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>23</font></div>
+  </td>
+  <td>
+  <div id=PPTP23 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0239.htm');" id=PPTL23>% not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>24</font></div>
+  </td>
+  <td>
+  <div id=PPTP24 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0240.htm');" id=PPTL24>% &lt;5</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>25</font></div>
+  </td>
+  <td>
+  <div id=PPTP25 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0241.htm');" id=PPTL25>% 5-14</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>26</font></div>
+  </td>
+  <td>
+  <div id=PPTP26 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0242.htm');" id=PPTL26>% 15-24</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>27</font></div>
+  </td>
+  <td>
+  <div id=PPTP27 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0243.htm');" id=PPTL27>% 25-34</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>28</font></div>
+  </td>
+  <td>
+  <div id=PPTP28 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0244.htm');" id=PPTL28>% 35-44</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>29</font></div>
+  </td>
+  <td>
+  <div id=PPTP29 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0245.htm');" id=PPTL29>% 45-54</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>30</font></div>
+  </td>
+  <td>
+  <div id=PPTP30 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0246.htm');" id=PPTL30>% 55-64</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>31</font></div>
+  </td>
+  <td>
+  <div id=PPTP31 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0247.htm');" id=PPTL31>% 65-74</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>32</font></div>
+  </td>
+  <td>
+  <div id=PPTP32 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0248.htm');" id=PPTL32>% 75+</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>33</font></div>
+  </td>
+  <td>
+  <div id=PPTP33 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0226.htm');" id=PPTL33>PATIENT AGE<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC33 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Under 5</li>
+   <li>5-14</li>
+   <li>15-24</li>
+   <li>25-34</li>
+   <li>35-44</li>
+   <li>45-54</li>
+   <li>55-64</li>
+   <li>65-74</li>
+   <li>75+</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>34</font></div>
+  </td>
+  <td>
+  <div id=PPTP34 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0228.htm');" id=PPTL34>Patient Age in years
+  (%) summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>35</font></div>
+  </td>
+  <td>
+  <div id=PPTP35 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0019.htm');" id=PPTL35>INCIDENT LOCATION<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC35 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Residence</li>
+   <li>Traffic way, 55+ MPH</li>
+   <li>Other traffic way</li>
+   <li>Public place</li>
+   <li>Recreation area</li>
+   <li>Waterway</li>
+   <li>Wilderness</li>
+   <li>Hotel/Motel</li>
+   <li>Bar/Restaurant</li>
+   <li>Industrial</li>
+   <li>Mine</li>
+   <li>Office/Business</li>
+   <li>Farm</li>
+   <li>Acute Care Facility</li>
+   <li>Clinic/Dr.’s office</li>
+   <li>Extended care facility</li>
+   <li>EMS Rendevous</li>
+   <li>Other</li>
+   <li>Unknown code</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>36</font></div>
+  </td>
+  <td>
+  <div id=PPTP36 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0010.htm');" id=PPTL36># not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>37</font></div>
+  </td>
+  <td>
+  <div id=PPTP37 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0011.htm');" id=PPTL37># residence</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>38</font></div>
+  </td>
+  <td>
+  <div id=PPTP38 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0012.htm');" id=PPTL38># traffic way, 55+ mph</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>39</font></div>
+  </td>
+  <td>
+  <div id=PPTP39 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0013.htm');" id=PPTL39># other traffic way</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>40</font></div>
+  </td>
+  <td>
+  <div id=PPTP40 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0014.htm');" id=PPTL40># public place</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>41</font></div>
+  </td>
+  <td>
+  <div id=PPTP41 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0015.htm');" id=PPTL41># recreation area</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>42</font></div>
+  </td>
+  <td>
+  <div id=PPTP42 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0016.htm');" id=PPTL42># waterway</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>43</font></div>
+  </td>
+  <td>
+  <div id=PPTP43 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0017.htm');" id=PPTL43># wilderness</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>44</font></div>
+  </td>
+  <td>
+  <div id=PPTP44 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0020.htm');" id=PPTL44># hotel/motel</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>45</font></div>
+  </td>
+  <td>
+  <div id=PPTP45 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0021.htm');" id=PPTL45># bar/restaurant</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>46</font></div>
+  </td>
+  <td>
+  <div id=PPTP46 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0022.htm');" id=PPTL46># industrial</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>47</font></div>
+  </td>
+  <td>
+  <div id=PPTP47 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0023.htm');" id=PPTL47># mine</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>48</font></div>
+  </td>
+  <td>
+  <div id=PPTP48 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0024.htm');" id=PPTL48># office/business</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>49</font></div>
+  </td>
+  <td>
+  <div id=PPTP49 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0025.htm');" id=PPTL49># farm</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>50</font></div>
+  </td>
+  <td>
+  <div id=PPTP50 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0026.htm');" id=PPTL50># acute care facility</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>51</font></div>
+  </td>
+  <td>
+  <div id=PPTP51 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0027.htm');" id=PPTL51># clinic/dr.’s office</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>52</font></div>
+  </td>
+  <td>
+  <div id=PPTP52 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0028.htm');" id=PPTL52># extended care
+  facility</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>53</font></div>
+  </td>
+  <td>
+  <div id=PPTP53 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0029.htm');" id=PPTL53># ems rendevous</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>54</font></div>
+  </td>
+  <td>
+  <div id=PPTP54 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0030.htm');" id=PPTL54># other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>55</font></div>
+  </td>
+  <td>
+  <div id=PPTP55 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0031.htm');" id=PPTL55># (unknown code)</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>56</font></div>
+  </td>
+  <td>
+  <div id=PPTP56 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0018.htm');" id=PPTL56>INCIDENT LOCATION<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC56 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Residence</li>
+   <li>Traffic way, 55+ MPH</li>
+   <li>Other traffic way</li>
+   <li>Public place</li>
+   <li>Recreation area</li>
+   <li>Waterway</li>
+   <li>Wilderness</li>
+   <li>Hotel/Motel</li>
+   <li>Bar/Restaurant</li>
+   <li>Industrial</li>
+   <li>Mine</li>
+   <li>Office/Business</li>
+   <li>Farm</li>
+   <li>Acute Care Facility</li>
+   <li>Clinic/Dr.’s office</li>
+   <li>Extended care facility</li>
+   <li>EMS Rendevous</li>
+   <li>Other</li>
+   <li>Unknown code</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>57</font></div>
+  </td>
+  <td>
+  <div id=PPTP57 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0005.htm');" id=PPTL57>Incident Location (#)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>58</font></div>
+  </td>
+  <td>
+  <div id=PPTP58 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0032.htm');" id=PPTL58>INCIDENT LOCATION<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC58 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Residence</li>
+   <li>Traffic way, 55+ MPH</li>
+   <li>Other traffic way</li>
+   <li>Public place</li>
+   <li>Recreation area</li>
+   <li>Waterway</li>
+   <li>Wilderness</li>
+   <li>Hotel/Motel</li>
+   <li>Bar/Restaurant</li>
+   <li>Industrial</li>
+   <li>Mine</li>
+   <li>Office/Business</li>
+   <li>Farm</li>
+   <li>Acute Care Facility</li>
+   <li>Clinic/Dr.’s office</li>
+   <li>Extended care facility</li>
+   <li>EMS Rendevous</li>
+   <li>Other</li>
+   <li>Unknown code</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>59</font></div>
+  </td>
+  <td>
+  <div id=PPTP59 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0034.htm');" id=PPTL59>% not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>60</font></div>
+  </td>
+  <td>
+  <div id=PPTP60 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0035.htm');" id=PPTL60>% residence</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>61</font></div>
+  </td>
+  <td>
+  <div id=PPTP61 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0036.htm');" id=PPTL61>% traffic way, 55+ mph</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>62</font></div>
+  </td>
+  <td>
+  <div id=PPTP62 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0037.htm');" id=PPTL62>% other traffic way</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>63</font></div>
+  </td>
+  <td>
+  <div id=PPTP63 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0038.htm');" id=PPTL63>% public place</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>64</font></div>
+  </td>
+  <td>
+  <div id=PPTP64 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0039.htm');" id=PPTL64>% recreation area</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>65</font></div>
+  </td>
+  <td>
+  <div id=PPTP65 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0040.htm');" id=PPTL65>% waterway</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>66</font></div>
+  </td>
+  <td>
+  <div id=PPTP66 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0041.htm');" id=PPTL66>% wilderness</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>67</font></div>
+  </td>
+  <td>
+  <div id=PPTP67 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0042.htm');" id=PPTL67>% hotel/motel</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>68</font></div>
+  </td>
+  <td>
+  <div id=PPTP68 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0044.htm');" id=PPTL68>% industrial</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>69</font></div>
+  </td>
+  <td>
+  <div id=PPTP69 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0043.htm');" id=PPTL69>% bar/restaurant</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>70</font></div>
+  </td>
+  <td>
+  <div id=PPTP70 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0045.htm');" id=PPTL70>% mine</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>71</font></div>
+  </td>
+  <td>
+  <div id=PPTP71 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0046.htm');" id=PPTL71>% office/business</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>72</font></div>
+  </td>
+  <td>
+  <div id=PPTP72 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0047.htm');" id=PPTL72>% farm</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>73</font></div>
+  </td>
+  <td>
+  <div id=PPTP73 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0048.htm');" id=PPTL73>% acute care facility</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>74</font></div>
+  </td>
+  <td>
+  <div id=PPTP74 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0049.htm');" id=PPTL74>% clinic/dr.’s office</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>75</font></div>
+  </td>
+  <td>
+  <div id=PPTP75 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0050.htm');" id=PPTL75>% extended care
+  facility</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>76</font></div>
+  </td>
+  <td>
+  <div id=PPTP76 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0051.htm');" id=PPTL76>% ems rendevous</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>77</font></div>
+  </td>
+  <td>
+  <div id=PPTP77 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0052.htm');" id=PPTL77>% other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>78</font></div>
+  </td>
+  <td>
+  <div id=PPTP78 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0053.htm');" id=PPTL78>% (unknown code)</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>79</font></div>
+  </td>
+  <td>
+  <div id=PPTP79 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0033.htm');" id=PPTL79>INCIDENT LOCATION<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC79 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Residence</li>
+   <li>Traffic way, 55+ MPH</li>
+   <li>Other traffic way</li>
+   <li>Public place</li>
+   <li>Recreation area</li>
+   <li>Waterway</li>
+   <li>Wilderness</li>
+   <li>Hotel/Motel</li>
+   <li>Bar/Restaurant</li>
+   <li>Industrial</li>
+   <li>Mine</li>
+   <li>Office/Business</li>
+   <li>Farm</li>
+   <li>Acute Care Facility</li>
+   <li>Clinic/Dr.’s office</li>
+   <li>Extended care facility</li>
+   <li>EMS Rendevous</li>
+   <li>Other</li>
+   <li>Unknown code</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>80</font></div>
+  </td>
+  <td>
+  <div id=PPTP80 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0008.htm');" id=PPTL80>Incident Location (%)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>81</font></div>
+  </td>
+  <td>
+  <div id=PPTP81 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0054.htm');" id=PPTL81>INCIDENT TYPE<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC81 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Not entered</li>
+   <li>Assault</li>
+   <li>Bicycle</li>
+   <li>Bite/sting</li>
+   <li>Fall</li>
+   <li>Fire</li>
+   <li>Inter-facility</li>
+   <br>
+   <li>Medical</li>
+   <li>Motorcycle</li>
+   <li>Pedestrian</li>
+   <li>Recreational vehicle</li>
+   <li>Shooting</li>
+   <li>Stabbing</li>
+   <li>Vehicular</li>
+   <li>Other</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>82</font></div>
+  </td>
+  <td>
+  <div id=PPTP82 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0056.htm');" id=PPTL82># not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>83</font></div>
+  </td>
+  <td>
+  <div id=PPTP83 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0057.htm');" id=PPTL83># assaults</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>84</font></div>
+  </td>
+  <td>
+  <div id=PPTP84 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0058.htm');" id=PPTL84># bicycle</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>85</font></div>
+  </td>
+  <td>
+  <div id=PPTP85 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0059.htm');" id=PPTL85># bite/sting</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>86</font></div>
+  </td>
+  <td>
+  <div id=PPTP86 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0060.htm');" id=PPTL86># fall</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>87</font></div>
+  </td>
+  <td>
+  <div id=PPTP87 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0061.htm');" id=PPTL87># fire</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>88</font></div>
+  </td>
+  <td>
+  <div id=PPTP88 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0062.htm');" id=PPTL88># inter-facility</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>89</font></div>
+  </td>
+  <td>
+  <div id=PPTP89 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0063.htm');" id=PPTL89># medical</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>90</font></div>
+  </td>
+  <td>
+  <div id=PPTP90 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0065.htm');" id=PPTL90># pedestrian</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>91</font></div>
+  </td>
+  <td>
+  <div id=PPTP91 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0064.htm');" id=PPTL91># motorcycle</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>92</font></div>
+  </td>
+  <td>
+  <div id=PPTP92 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0066.htm');" id=PPTL92># recreational vehicle</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>93</font></div>
+  </td>
+  <td>
+  <div id=PPTP93 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0067.htm');" id=PPTL93># shooting</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>94</font></div>
+  </td>
+  <td>
+  <div id=PPTP94 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0068.htm');" id=PPTL94># stabbing</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>95</font></div>
+  </td>
+  <td>
+  <div id=PPTP95 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0069.htm');" id=PPTL95># vehicular</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>96</font></div>
+  </td>
+  <td>
+  <div id=PPTP96 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0070.htm');" id=PPTL96># other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>97</font></div>
+  </td>
+  <td>
+  <div id=PPTP97 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0071.htm');" id=PPTL97>INCIDENT TYPE<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC97 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Assault</li>
+   <li>Bicycle</li>
+   <li>Bite/sting</li>
+   <li>Fall</li>
+   <li>Fire</li>
+   <li>Inter-facility</li>
+   <li>Medical</li>
+   <li>Motorcycle</li>
+   <li>Pedestrian</li>
+   <li>Recreational vehicle</li>
+   <li>Shooting</li>
+   <li>Stabbing</li>
+   <li>Vehicular</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>98</font></div>
+  </td>
+  <td>
+  <div id=PPTP98 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0072.htm');" id=PPTL98>Incident Type (#)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>99</font></div>
+  </td>
+  <td>
+  <div id=PPTP99 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0074.htm');" id=PPTL99>INCIDENT TYPE<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC99 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Not entered</li>
+   <li>Assault</li>
+   <li>Bicycle</li>
+   <li>Bite/sting</li>
+   <li>Fall</li>
+   <li>Fire</li>
+   <li>Inter-facility</li>
+   <br>
+   <li>Medical</li>
+   <li>Motorcycle</li>
+   <li>Pedestrian</li>
+   <li>Recreational vehicle</li>
+   <li>Shooting</li>
+   <li>Stabbing</li>
+   <li>Vehicular</li>
+   <li>Other</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>100</font></div>
+  </td>
+  <td>
+  <div id=PPTP100 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0075.htm');" id=PPTL100>% not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>101</font></div>
+  </td>
+  <td>
+  <div id=PPTP101 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0076.htm');" id=PPTL101>% assaults</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>102</font></div>
+  </td>
+  <td>
+  <div id=PPTP102 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0077.htm');" id=PPTL102>% bicycle</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>103</font></div>
+  </td>
+  <td>
+  <div id=PPTP103 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0078.htm');" id=PPTL103>% bite/sting</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>104</font></div>
+  </td>
+  <td>
+  <div id=PPTP104 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0079.htm');" id=PPTL104>% fall</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>105</font></div>
+  </td>
+  <td>
+  <div id=PPTP105 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0080.htm');" id=PPTL105>% fire</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>106</font></div>
+  </td>
+  <td>
+  <div id=PPTP106 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0082.htm');" id=PPTL106>% medical</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>107</font></div>
+  </td>
+  <td>
+  <div id=PPTP107 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0081.htm');" id=PPTL107>% inter-facility</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>108</font></div>
+  </td>
+  <td>
+  <div id=PPTP108 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0083.htm');" id=PPTL108>% motorcycle</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>109</font></div>
+  </td>
+  <td>
+  <div id=PPTP109 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0085.htm');" id=PPTL109>% recreational vehicle</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>110</font></div>
+  </td>
+  <td>
+  <div id=PPTP110 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0084.htm');" id=PPTL110>% pedestrian</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>111</font></div>
+  </td>
+  <td>
+  <div id=PPTP111 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0086.htm');" id=PPTL111>% shooting</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>112</font></div>
+  </td>
+  <td>
+  <div id=PPTP112 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0088.htm');" id=PPTL112>% vehicluar</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>113</font></div>
+  </td>
+  <td>
+  <div id=PPTP113 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0087.htm');" id=PPTL113>% stabbing</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>114</font></div>
+  </td>
+  <td>
+  <div id=PPTP114 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0089.htm');" id=PPTL114>% other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>115</font></div>
+  </td>
+  <td>
+  <div id=PPTP115 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0090.htm');" id=PPTL115>INCIDENT TYPE<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC115 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Assault</li>
+   <li>Bicycle</li>
+   <li>Bite/sting</li>
+   <li>Fall</li>
+   <li>Fire</li>
+   <li>Inter-facility</li>
+   <li>Medical</li>
+   <li>Motorcycle</li>
+   <li>Pedestrian</li>
+   <li>Recreational vehicle</li>
+   <li>Shooting</li>
+   <li>Stabbing</li>
+   <li>Vehicular</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>116</font></div>
+  </td>
+  <td>
+  <div id=PPTP116 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0091.htm');" id=PPTL116>Incident Type (%)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>117</font></div>
+  </td>
+  <td>
+  <div id=PPTP117 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0092.htm');" id=PPTL117>SUSPECTED
+  ILLNESS<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC117 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Airway obstruction</li>
+   <li>Behavioral</li>
+   <li>Cardiac arrest</li>
+   <li>Cardiac symptoms</li>
+   <li>Dehydration</li>
+   <li>Diabetes</li>
+   <li>Dizziness</li>
+   <li>Drowning</li>
+   <li>GI problem</li>
+   <li>Hemorrhaging</li>
+   <li>Hyperthermia</li>
+   <li>Hpothermia</li>
+   <li>Nausea</li>
+   <li>OB/GYN</li>
+   <li>Pain</li>
+   <li>Paralysis</li>
+   <li>Poisoning/OD</li>
+   <li>Respiratory</li>
+   <li>Seizure</li>
+   <li>Shock</li>
+   <li>Stroke</li>
+   <li>Vomiting</li>
+   <li>Weakness</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>118</font></div>
+  </td>
+  <td>
+  <div id=PPTP118 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0093.htm');" id=PPTL118># airway obstruction</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>119</font></div>
+  </td>
+  <td>
+  <div id=PPTP119 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0094.htm');" id=PPTL119># behavioral</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>120</font></div>
+  </td>
+  <td>
+  <div id=PPTP120 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0095.htm');" id=PPTL120># cardiac arrest</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>121</font></div>
+  </td>
+  <td>
+  <div id=PPTP121 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0096.htm');" id=PPTL121># cardiac symtpoms</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>122</font></div>
+  </td>
+  <td>
+  <div id=PPTP122 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0097.htm');" id=PPTL122># dehydration</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>123</font></div>
+  </td>
+  <td>
+  <div id=PPTP123 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0099.htm');" id=PPTL123># dizziness</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>124</font></div>
+  </td>
+  <td>
+  <div id=PPTP124 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0098.htm');" id=PPTL124># diabetes</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>125</font></div>
+  </td>
+  <td>
+  <div id=PPTP125 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0100.htm');" id=PPTL125># drowning</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>126</font></div>
+  </td>
+  <td>
+  <div id=PPTP126 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0101.htm');" id=PPTL126># gi problems</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>127</font></div>
+  </td>
+  <td>
+  <div id=PPTP127 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0102.htm');" id=PPTL127># hemorrhaging</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>128</font></div>
+  </td>
+  <td>
+  <div id=PPTP128 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0103.htm');" id=PPTL128># hyperthermia</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>129</font></div>
+  </td>
+  <td>
+  <div id=PPTP129 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0104.htm');" id=PPTL129># hypothermia</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>130</font></div>
+  </td>
+  <td>
+  <div id=PPTP130 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0105.htm');" id=PPTL130># nausea</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>131</font></div>
+  </td>
+  <td>
+  <div id=PPTP131 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0106.htm');" id=PPTL131># ob/gyn</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>132</font></div>
+  </td>
+  <td>
+  <div id=PPTP132 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0107.htm');" id=PPTL132># pain</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>133</font></div>
+  </td>
+  <td>
+  <div id=PPTP133 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0108.htm');" id=PPTL133># paralysis</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>134</font></div>
+  </td>
+  <td>
+  <div id=PPTP134 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0109.htm');" id=PPTL134># poisoning/od</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>135</font></div>
+  </td>
+  <td>
+  <div id=PPTP135 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0110.htm');" id=PPTL135># respiratory</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>136</font></div>
+  </td>
+  <td>
+  <div id=PPTP136 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0111.htm');" id=PPTL136># seizure</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>137</font></div>
+  </td>
+  <td>
+  <div id=PPTP137 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0112.htm');" id=PPTL137># shock</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>138</font></div>
+  </td>
+  <td>
+  <div id=PPTP138 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0113.htm');" id=PPTL138># stroke</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>139</font></div>
+  </td>
+  <td>
+  <div id=PPTP139 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0115.htm');" id=PPTL139># weakness</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>140</font></div>
+  </td>
+  <td>
+  <div id=PPTP140 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0114.htm');" id=PPTL140># vomiting</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>141</font></div>
+  </td>
+  <td>
+  <div id=PPTP141 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0116.htm');" id=PPTL141># other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>142</font></div>
+  </td>
+  <td>
+  <div id=PPTP142 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0117.htm');" id=PPTL142>SUSPECTED
+  ILLNESS<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC142 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Airway obstruction</li>
+   <li>Behavioral</li>
+   <li>Cardiac arrest</li>
+   <li>Cardiac symptoms</li>
+   <li>Dehydration</li>
+   <li>Diabetes</li>
+   <li>Dizziness</li>
+   <li>Drowning</li>
+   <li>GI problem</li>
+   <li>Hemorrhaging</li>
+   <li>Hyperthermia</li>
+   <li>Hypothermia</li>
+   <li>Nausea</li>
+   <li>OB/GYN</li>
+   <li>Pain</li>
+   <li>Paralysis</li>
+   <li>Poisoning/OD</li>
+   <li>Respiratory</li>
+   <li>Seizure</li>
+   <li>Shock</li>
+   <li>Stroke</li>
+   <li>Vomiting</li>
+   <li>Weakness</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>143</font></div>
+  </td>
+  <td>
+  <div id=PPTP143 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0118.htm');" id=PPTL143>Suspected Illness (#)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>144</font></div>
+  </td>
+  <td>
+  <div id=PPTP144 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0120.htm');" id=PPTL144>SUSPECTED
+  ILLNESS<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC144 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Airway obstruction</li>
+   <li>Behavioral</li>
+   <li>Cardiac arrest</li>
+   <li>Cardiac symptoms</li>
+   <li>Dehydration</li>
+   <li>Diabetes</li>
+   <li>Dizziness</li>
+   <li>Drowning</li>
+   <li>GI problem</li>
+   <li>Hemorrhaging</li>
+   <li>Hyperthermia</li>
+   <li>Hpothermia</li>
+   <li>Nausea</li>
+   <li>OB/GYN</li>
+   <li>Pain</li>
+   <li>Paralysis</li>
+   <li>Poisoning/OD</li>
+   <li>Respiratory</li>
+   <li>Seizure</li>
+   <li>Shock</li>
+   <li>Stroke</li>
+   <li>Vomiting</li>
+   <li>Weakness</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>145</font></div>
+  </td>
+  <td>
+  <div id=PPTP145 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0121.htm');" id=PPTL145>% airway obstruction</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>146</font></div>
+  </td>
+  <td>
+  <div id=PPTP146 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0122.htm');" id=PPTL146>% behavioral</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>147</font></div>
+  </td>
+  <td>
+  <div id=PPTP147 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0123.htm');" id=PPTL147>% cardiac arrest</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>148</font></div>
+  </td>
+  <td>
+  <div id=PPTP148 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0124.htm');" id=PPTL148>% cardiac symptoms</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>149</font></div>
+  </td>
+  <td>
+  <div id=PPTP149 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0125.htm');" id=PPTL149>% dehydration</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>150</font></div>
+  </td>
+  <td>
+  <div id=PPTP150 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0126.htm');" id=PPTL150>% diabetes</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>151</font></div>
+  </td>
+  <td>
+  <div id=PPTP151 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0127.htm');" id=PPTL151>% dizziness</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>152</font></div>
+  </td>
+  <td>
+  <div id=PPTP152 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0128.htm');" id=PPTL152>% drowning</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>153</font></div>
+  </td>
+  <td>
+  <div id=PPTP153 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0129.htm');" id=PPTL153>% gi problems</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>154</font></div>
+  </td>
+  <td>
+  <div id=PPTP154 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0130.htm');" id=PPTL154>% hemorrhaging</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>155</font></div>
+  </td>
+  <td>
+  <div id=PPTP155 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0131.htm');" id=PPTL155>% hyperthermia</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>156</font></div>
+  </td>
+  <td>
+  <div id=PPTP156 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0132.htm');" id=PPTL156>% hypothermia</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>157</font></div>
+  </td>
+  <td>
+  <div id=PPTP157 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0134.htm');" id=PPTL157>% ob/gyn</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>158</font></div>
+  </td>
+  <td>
+  <div id=PPTP158 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0133.htm');" id=PPTL158>% nausea</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>159</font></div>
+  </td>
+  <td>
+  <div id=PPTP159 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0135.htm');" id=PPTL159>% pain</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>160</font></div>
+  </td>
+  <td>
+  <div id=PPTP160 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0136.htm');" id=PPTL160>% paralysis</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>161</font></div>
+  </td>
+  <td>
+  <div id=PPTP161 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0137.htm');" id=PPTL161>% poisoning/od</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>162</font></div>
+  </td>
+  <td>
+  <div id=PPTP162 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0138.htm');" id=PPTL162>% respiratory</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>163</font></div>
+  </td>
+  <td>
+  <div id=PPTP163 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0139.htm');" id=PPTL163>% seizure</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>164</font></div>
+  </td>
+  <td>
+  <div id=PPTP164 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0140.htm');" id=PPTL164>% shock</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>165</font></div>
+  </td>
+  <td>
+  <div id=PPTP165 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0141.htm');" id=PPTL165>% stroke</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>166</font></div>
+  </td>
+  <td>
+  <div id=PPTP166 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0142.htm');" id=PPTL166>% vomiting</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>167</font></div>
+  </td>
+  <td>
+  <div id=PPTP167 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0144.htm');" id=PPTL167>% other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>168</font></div>
+  </td>
+  <td>
+  <div id=PPTP168 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0143.htm');" id=PPTL168>% weakness</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>169</font></div>
+  </td>
+  <td>
+  <div id=PPTP169 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0145.htm');" id=PPTL169>SUSPECTED
+  ILLNESS<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC169 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Airway obstruction</li>
+   <li>Behavioral</li>
+   <li>Cardiac arrest</li>
+   <li>Cardiac symptoms</li>
+   <li>Dehydration</li>
+   <li>Diabetes</li>
+   <li>Dizziness</li>
+   <li>Drowning</li>
+   <li>GI problem</li>
+   <li>Hemorrhaging</li>
+   <li>Hyperthermia</li>
+   <li>Hypothermia</li>
+   <li>Nausea</li>
+   <li>OB/GYN</li>
+   <li>Pain</li>
+   <li>Paralysis</li>
+   <li>Poisoning/OD</li>
+   <li>Respiratory</li>
+   <li>Seizure</li>
+   <li>Shock</li>
+   <li>Stroke</li>
+   <li>Vomiting</li>
+   <li>Weakness</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>170</font></div>
+  </td>
+  <td>
+  <div id=PPTP170 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0119.htm');" id=PPTL170>Suspected illness (%)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>171</font></div>
+  </td>
+  <td>
+  <div id=PPTP171 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0146.htm');" id=PPTL171>RESPONSE OUTCOME<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC171 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Transported</li>
+   <li>Care transferred</li>
+   <li>Cancelled</li>
+   <li>Refused</li>
+   <li>False call</li>
+   <li>No patient found</li>
+   <li>P.O.V.</li>
+   <li>Treated/no transport</li>
+   <li>Standby</li>
+   <li>DOA</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>172</font></div>
+  </td>
+  <td>
+  <div id=PPTP172 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0148.htm');" id=PPTL172># not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>173</font></div>
+  </td>
+  <td>
+  <div id=PPTP173 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0150.htm');" id=PPTL173># care transferred</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>174</font></div>
+  </td>
+  <td>
+  <div id=PPTP174 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0149.htm');" id=PPTL174># transported</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>175</font></div>
+  </td>
+  <td>
+  <div id=PPTP175 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0152.htm');" id=PPTL175># refused</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>176</font></div>
+  </td>
+  <td>
+  <div id=PPTP176 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0151.htm');" id=PPTL176># cancelled</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>177</font></div>
+  </td>
+  <td>
+  <div id=PPTP177 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0154.htm');" id=PPTL177># no patient found</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>178</font></div>
+  </td>
+  <td>
+  <div id=PPTP178 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0153.htm');" id=PPTL178># false call</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>179</font></div>
+  </td>
+  <td>
+  <div id=PPTP179 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0155.htm');" id=PPTL179># P.O.V.</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>180</font></div>
+  </td>
+  <td>
+  <div id=PPTP180 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0156.htm');" id=PPTL180># treated/not
+  transported</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>181</font></div>
+  </td>
+  <td>
+  <div id=PPTP181 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0158.htm');" id=PPTL181># DOA</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>182</font></div>
+  </td>
+  <td>
+  <div id=PPTP182 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0157.htm');" id=PPTL182># standby</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>183</font></div>
+  </td>
+  <td>
+  <div id=PPTP183 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0159.htm');" id=PPTL183># other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>184</font></div>
+  </td>
+  <td>
+  <div id=PPTP184 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0160.htm');" id=PPTL184>RESPONSE OUTCOME<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC184 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Transported</li>
+   <li>Care transferred</li>
+   <li>Cancelled</li>
+   <li>Refused</li>
+   <li>False call</li>
+   <li>No patient found</li>
+   <li>P.O.V.</li>
+   <li>Treated/no transport</li>
+   <li>Standby</li>
+   <li>DOA</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>185</font></div>
+  </td>
+  <td>
+  <div id=PPTP185 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0161.htm');" id=PPTL185>Response Outcome (#)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>186</font></div>
+  </td>
+  <td>
+  <div id=PPTP186 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0163.htm');" id=PPTL186>RESPONSE OUTCOME<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC186 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Transported</li>
+   <li>Care transferred</li>
+   <li>Cancelled</li>
+   <li>Refused</li>
+   <li>False call</li>
+   <li>No patient found</li>
+   <li>P.O.V.</li>
+   <li>Treated/no transport</li>
+   <li>Standby</li>
+   <li>DOA</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>187</font></div>
+  </td>
+  <td>
+  <div id=PPTP187 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0164.htm');" id=PPTL187>% not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>188</font></div>
+  </td>
+  <td>
+  <div id=PPTP188 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0165.htm');" id=PPTL188>% transported</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>189</font></div>
+  </td>
+  <td>
+  <div id=PPTP189 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0166.htm');" id=PPTL189>% care transferred</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>190</font></div>
+  </td>
+  <td>
+  <div id=PPTP190 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0167.htm');" id=PPTL190>% cancelled</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>191</font></div>
+  </td>
+  <td>
+  <div id=PPTP191 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0168.htm');" id=PPTL191>% refused</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>192</font></div>
+  </td>
+  <td>
+  <div id=PPTP192 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0169.htm');" id=PPTL192>% false call</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>193</font></div>
+  </td>
+  <td>
+  <div id=PPTP193 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0170.htm');" id=PPTL193>% no patient found</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>194</font></div>
+  </td>
+  <td>
+  <div id=PPTP194 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0171.htm');" id=PPTL194>% P.O.V.</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>195</font></div>
+  </td>
+  <td>
+  <div id=PPTP195 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0172.htm');" id=PPTL195>% treated/not
+  transported</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>196</font></div>
+  </td>
+  <td>
+  <div id=PPTP196 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0174.htm');" id=PPTL196>% DOA</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>197</font></div>
+  </td>
+  <td>
+  <div id=PPTP197 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0173.htm');" id=PPTL197>% standby</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>198</font></div>
+  </td>
+  <td>
+  <div id=PPTP198 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0175.htm');" id=PPTL198>% other</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>199</font></div>
+  </td>
+  <td>
+  <div id=PPTP199 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0176.htm');" id=PPTL199>RESPONSE OUTCOME<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC199 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Not entered</li>
+   <li>Transported</li>
+   <li>Care transferred</li>
+   <li>Cancelled</li>
+   <li>Refused</li>
+   <li>False call</li>
+   <li>No patient found</li>
+   <li>P.O.V.</li>
+   <li>Treated/no transport</li>
+   <li>Standby</li>
+   <li>DOA</li>
+   <li>Other</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>200</font></div>
+  </td>
+  <td>
+  <div id=PPTP200 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0162.htm');" id=PPTL200>Response Outcome (%)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>201</font></div>
+  </td>
+  <td>
+  <div id=PPTP201 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0177.htm');" id=PPTL201>BYSTANDER CPR<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC201 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Not entered</li>
+   <li>Yes</li>
+   <li>No</li>
+   <li>Unknown</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>202</font></div>
+  </td>
+  <td>
+  <div id=PPTP202 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0181.htm');" id=PPTL202># cardiac arrests</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>203</font></div>
+  </td>
+  <td>
+  <div id=PPTP203 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0182.htm');" id=PPTL203># not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>204</font></div>
+  </td>
+  <td>
+  <div id=PPTP204 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0183.htm');" id=PPTL204># yes</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>205</font></div>
+  </td>
+  <td>
+  <div id=PPTP205 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0184.htm');" id=PPTL205># no</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>206</font></div>
+  </td>
+  <td>
+  <div id=PPTP206 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0185.htm');" id=PPTL206># unknown</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>207</font></div>
+  </td>
+  <td>
+  <div id=PPTP207 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0179.htm');" id=PPTL207>BYSTANDER CPR<br>
+    Absolute numbers</a></font></div>
+  <div id=PPTC207 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <br>
+   <li>Not entered</li>
+   <li>Yes</li>
+   <li>No</li>
+   <li>Unknown</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>208</font></div>
+  </td>
+  <td>
+  <div id=PPTP208 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0187.htm');" id=PPTL208>Bystander CPR (#)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>209</font></div>
+  </td>
+  <td>
+  <div id=PPTP209 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0178.htm');" id=PPTL209>BYSTANDER CPR<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC209 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Not entered</li>
+   <li>Yes</li>
+   <li>No</li>
+   <li>Unknown</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>210</font></div>
+  </td>
+  <td>
+  <div id=PPTP210 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0188.htm');" id=PPTL210>% not entered</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>211</font></div>
+  </td>
+  <td>
+  <div id=PPTP211 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0190.htm');" id=PPTL211>% no</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>212</font></div>
+  </td>
+  <td>
+  <div id=PPTP212 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0189.htm');" id=PPTL212>% yes</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>213</font></div>
+  </td>
+  <td>
+  <div id=PPTP213 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0191.htm');" id=PPTL213>% unknown</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>214</font></div>
+  </td>
+  <td>
+  <div id=PPTP214 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0180.htm');" id=PPTL214>BYSTANDER CPR<br>
+    Relative numbers</a></font></div>
+  <div id=PPTC214 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <br>
+   <li>Not entered</li>
+   <li>Yes</li>
+   <li>No</li>
+   <li>Unknown</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>215</font></div>
+  </td>
+  <td>
+  <div id=PPTP215 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0186.htm');" id=PPTL215>Bystander CPR (%)
+  summary</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>216</font></div>
+  </td>
+  <td>
+  <div id=PPTP216 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0192.htm');" id=PPTL216>Performance</a></font></div>
+  <div id=PPTC216 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>On-scene times for possible cardiacs</li>
+   <li>“EE” trauma response times</li>
+   <li>Arrest interval reporting</li>
+   <li>Time-to-shock</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>217</font></div>
+  </td>
+  <td>
+  <div id=PPTP217 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0194.htm');" id=PPTL217>ON-SCENE TIME FOR
+  POSSIBLE CARDIACS</a></font></div>
+  <div id=PPTC217 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Num possible cardiacs</li>
+   <li>% w/time-on-scene &lt;15’</li>
+   <li>% w/time-on-scene &lt;20’</li>
+   <li>% w/time-on-scene &lt;25’</li>
+   <li>% w/time-on-scene &lt;30’</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>218</font></div>
+  </td>
+  <td>
+  <div id=PPTP218 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0195.htm');" id=PPTL218># possible cardiacs</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>219</font></div>
+  </td>
+  <td>
+  <div id=PPTP219 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0196.htm');" id=PPTL219>% w/time-on-scene
+  &lt;15’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>220</font></div>
+  </td>
+  <td>
+  <div id=PPTP220 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0197.htm');" id=PPTL220>% w/time-on-scene
+  &lt;20’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>221</font></div>
+  </td>
+  <td>
+  <div id=PPTP221 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0198.htm');" id=PPTL221>% w/time-on-scene
+  &lt;25’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>222</font></div>
+  </td>
+  <td>
+  <div id=PPTP222 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0199.htm');" id=PPTL222>% w/time-on-scene
+  &lt;30’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>223</font></div>
+  </td>
+  <td>
+  <div id=PPTP223 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0200.htm');" id=PPTL223>“EE” TRAUMA RESPONSE
+  TIMES<br>
+    <br>
+    (“EE” = Emergency response, Emergency transport)</a></font></div>
+  <div id=PPTC223 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Median response times</li>
+   <li>Num EE trauma cases (all)</li>
+   <li>Num (all) with response time &lt;15’</li>
+   <li>Num (all) with response time &lt;12’</li>
+   <li>Num (all) with response time &lt;9’</li>
+   <li>% (all) with response time &lt;15’</li>
+   <li>% (all) with response time &lt;12’</li>
+   <li>% (all) with response time &lt;9’</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>224</font></div>
+  </td>
+  <td>
+  <div id=PPTP224 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0201.htm');" id=PPTL224>Median response times</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>225</font></div>
+  </td>
+  <td>
+  <div id=PPTP225 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0202.htm');" id=PPTL225># EE trauma cases</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>226</font></div>
+  </td>
+  <td>
+  <div id=PPTP226 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0203.htm');" id=PPTL226>% w/response time
+  &lt;15’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>227</font></div>
+  </td>
+  <td>
+  <div id=PPTP227 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0204.htm');" id=PPTL227>% w/response time
+  &lt;12’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>228</font></div>
+  </td>
+  <td>
+  <div id=PPTP228 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0205.htm');" id=PPTL228>% w/response time
+  &lt;9’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>229</font></div>
+  </td>
+  <td>
+  <div id=PPTP229 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0210.htm');" id=PPTL229>ARREST INTERVAL
+  REPORTING</a></font></div>
+  <div id=PPTC229 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Num arrest interval reports</li>
+   <ul>
+    <li>Any of the following were documented:</li>
+    <ul>
+     <li>Arrest-to-CPR time</li>
+     <li>Arrest-to-defib time</li>
+     <li>Arrest-to-ALS time</li>
+    </ul>
+   </ul>
+   <li>% invalid reports</li>
+   <ul>
+    <li>“Witnessed” was:</li>
+    <ul>
+     <li>not entered</li>
+     <li>No</li>
+     <li>Unknown</li>
+    </ul>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>230</font></div>
+  </td>
+  <td>
+  <div id=PPTP230 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0211.htm');" id=PPTL230># arrest interval
+  reports</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>231</font></div>
+  </td>
+  <td>
+  <div id=PPTP231 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0212.htm');" id=PPTL231>% invalid reports</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>232</font></div>
+  </td>
+  <td>
+  <div id=PPTP232 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0213.htm');" id=PPTL232>“Witnessed” values</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>233</font></div>
+  </td>
+  <td>
+  <div id=PPTP233 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0206.htm');" id=PPTL233><br>
+    TIME TO SHOCK<br>
+    <br>
+    (Witnessed arrests only)</a></font></div>
+  <div id=PPTC233 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <br>
+   <li>Num cases where TTS is known</li>
+   <li>% w/TTS known &lt;10’</li>
+   <li>% w/TTS known &lt;4’</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>234</font></div>
+  </td>
+  <td>
+  <div id=PPTP234 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0207.htm');" id=PPTL234># w/TTS known</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>235</font></div>
+  </td>
+  <td>
+  <div id=PPTP235 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0209.htm');" id=PPTL235>% w/TTS known &lt;4’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>236</font></div>
+  </td>
+  <td>
+  <div id=PPTP236 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0208.htm');" id=PPTL236>% w/TTS known &lt;10’</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>237</font></div>
+  </td>
+  <td>
+  <div id=PPTP237 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0193.htm');" id=PPTL237>Practitioners</a></font></div>
+  <div id=PPTC237 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Supply and load</li>
+   <br>
+   <br>
+   <li>Service affiliations per practitioner</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>238</font></div>
+  </td>
+  <td>
+  <div id=PPTP238 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0214.htm');" id=PPTL238>PRACTITIONER SUPPLY
+  &amp; LOAD</a></font></div>
+  <div id=PPTC238 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Num active EMTs</li>
+   <li>Num active ALS practitioners</li>
+   <li>Num cases</li>
+   <li>Num cases per EMT</li>
+   <li>Num cases per ALS practitioner</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>239</font></div>
+  </td>
+  <td>
+  <div id=PPTP239 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0215.htm');" id=PPTL239># active EMTs</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>240</font></div>
+  </td>
+  <td>
+  <div id=PPTP240 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0216.htm');" id=PPTL240># active ALS</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>241</font></div>
+  </td>
+  <td>
+  <div id=PPTP241 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0217.htm');" id=PPTL241># cases/EMT</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>242</font></div>
+  </td>
+  <td>
+  <div id=PPTP242 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0218.htm');" id=PPTL242># cases/ALS</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>243</font></div>
+  </td>
+  <td>
+  <div id=PPTP243 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0221.htm');" id=PPTL243>SERVICE AFFILIATIONS
+  PER PRACTITIONER</a></font></div>
+  <div id=PPTC243 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <br>
+   <li>Mean number of affiliations per EMTs</li>
+   <br>
+   <br>
+   <li>Mean number affiliations per ALS practitioner</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>244</font></div>
+  </td>
+  <td>
+  <div id=PPTP244 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0219.htm');" id=PPTL244>Mean # affils/EMT</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>245</font></div>
+  </td>
+  <td>
+  <div id=PPTP245 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0220.htm');" id=PPTL245>Mean # affils/ALS</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>246</font></div>
+  </td>
+  <td>
+  <div id=PPTP246 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0249.htm');" id=PPTL246>EMS Quality
+  Indicators<br>
+    for<br>
+    PA EMS Region 4</a></font></div>
+  <div id=PPTC246 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Quality Leadership Working Group</li>
+   <li>Quality Improvement Program</li>
+   <li>Emergency Medical Service Institute</li>
+   <li>Pittsburgh, PA</li>
+   <li>www.emsi.org</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+</table>
+
+
+
+</div>
+</body>
+
+</html>
