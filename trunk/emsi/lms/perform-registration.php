@@ -144,7 +144,8 @@ $be_instructor = $_be_instructor;
                echo "<ul>\n"
                   . "   <li><p><a href=http://www.emsi04.org/services/prehosp-pers/lms/>Return to EMSI's LMS page</a></p></li>\n"
                   . "   <li><p><a href=http://www.emsi04.org/>Return to EMSI's home page</a></p></li>\n"
-                  . "</ul>\n";
+                  . "</ul>\n"
+                  . "<p>Problems?&nbsp; Contact <a href=mailto:asst-director@emsi04.org><i>asst-director@emsi04.org</i></a>.</p>\n";
                }
             else
                {
