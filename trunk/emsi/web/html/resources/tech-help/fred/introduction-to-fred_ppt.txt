@@ -1,0 +1,169 @@
+
+FRED
+
+
+Facility Resource Emergency Database 
+One might ask, “Why spend the time, effort and money to develop, post and participate in FRED.” Because it does what we are already doing, but it does it Faster (instant Vs 30-90 min) 
+With better security that Faxes or phone calls (who knows who is on the other end) One knows that MIEMSS is sending it and all information will be thoroughly verified before distributed 
+FRED keeps track of what has happened and can be saved for later evaluation or critique FRED provides a new first option in a list 4 long of possible communication tools 
+•
+FRED 
+
+•
+EMS Voice Systen
+
+•
+Fax 
+
+•
+Ma Bell 
+
+
+FRED will live at MIEMSS where, with the advent of EMAIS, he will two servers to host the participants. Both servers are backed up daily Before we talk about FRED would like to cite a few examples of the type of information conveyed  during previous incidents 
+
+Recent Rail disaster Notified hospitals of incident and products involved Fax from scene to EMRC then to hospitals -took>45 minutes to accomplish Poison Center was not included in the transmission and received multiple calls from 
+hospitals tying up their lines Did not know products involved untill received from Hospitals and local media 3rd &4th hand 
+
+On many incidents from minor bus accidents to incidents on the scale of the AMTRAK/Conrail crash EMRC does a call down of hospitals -spiraling Geographically from the scene until space is found for 150% of the estimated patient count.  
+Takes 30-90 minutes to complete 
+Information Conveyed
+
+
+Unusual Occurrences
+
+Unusual events have been reported by one or more of the EMS System components in the past. EMRC has been used to pass along critical information EX Homicide Unusually violent reactions to Narcan being administered to OD patients New street drug “Homicide” Heroin/scapolomine Information gathered by Dr. Casani from Phila. Dr Alcorta and John determined course of action and treatment guidelines Info sent to FDs and Hospitals to curb use of Narcan to minimal effect 
+
+On Sept 7 EMRC began a call-down at the request for NDMS to Exercise bed availability. 
+Was not completed until Sept 12 
+
+Important treatment guidelines to maximize resources and assure public 
+
+Using new triage tags EMS officer at the scene of a multi-causality hand tallies patient transports as it relates to resources ( IE ED availability) and determines destination of patients 
+Minimal feed back as to receipt of patients Weather plays havoc on the process No central database of patients to provide information to families Red Cross not linked in the process 
+
+
+Now being done by DHMH Administrators spent inordinate amount of time attempting to monitor activity looking for WMD related syndromes 
+
+Minimal inclusion in the loop in the past Need to reduce their call volume from system components Have valuable information and access to many information sources FRED is to be a tool to assist with current operations Not meant to be additional burden Simply combines several step of the communication process and speeds the transmission of information Replace what we are doing now Discussed options to move the information 
+
+
+
+Hard wired closed network is optimal and is planned for the future. Infact may components are in place as we speak Several months to years and mega bucks to implement such a system WE CAN”T WAIT! Will implement on secured web site through MIEMSS servers to get it up now! 
+Programming for version 1.0 is nearing completion Would like to give a quick tour 
+
+
+
+When the participants in FRED receive the information they will hear an Irritating audible signal and a screen similar to this one will appear on their computer 
+They would then click the areas to which they are directed In the case of any incident MIEMSS (EMRC/Syscom) would initiate an alert to all affected components of the EMS system.  This could include Fire Depts, Hospitals, Emergency Management, Health Departments ETC 
+
+
+
+Such an alert could include specific instructions and guidelines and request they  submit specific information.  Just as we do now but by voice of Fax 
+
+They will be asked to verify the Hospital contact person and then can proceed to submit the request information by clicking the screen 
+
+Here they can quickly enter the requested info  Each screen does have space to indicate the specific person responsible for the information requested. 
+This is the ED Availability entry Screen mentioned in the initial alert 
+
+This is the Meds/ Equipment entry screen also requested in the alert This is the central spread sheet available to the incident manager 
+
+
+As you may see -the information entered is transferred instantenouusly Total elapsed time from the initiation of the alert -5-10 minutes! 
+
+There are also several other spreadsheets This is one to monitor the availability of Pediatric beds as they are a precious resource that become tight from time to time 
+
+This is the medication /Equipment sheet.  Several fields are definable for each specific incident 
+
+This is the NDMS bed categorization  -When received the contact person will be listed so Hospital personnel know who to contact within their facility to gain the requested information 
+
+EMS Unit availability -needs to be linked to CAD (computer aided dispatch) systems to work best , but wanted to make it available for hand entry if deemed necessary 
+
+This was used on Sept 12 Personner and…. 
+
+Equipment Want to make this compatible with the Fire Chiefs Council Resource list This is the only portion that will not be incident dependent Psych facilities will update every 4-8 hours Hope to provide 
+
+
+FRED also has a log feature that will allow participants to be updated through-out an event. And can scroll back to refresh themselves on the activities and advisements 
+
+Additional instructions or information requests can also be provided 
+
+These are the planned partners that will be allowed access initially.  These can be easily added or deleted as necessary.  Everyone will be provided access through the use of a password and all transmissions will be encrypted. 
+
+
+Why FRED ?
+
+
+. Speed . Security . Reliable Information . Situational Update Log . Redundancy – 
+– multiple servers 
+One might ask, “Why spend the time, effort and money to develop, post and participate in FRED.” Because it does what we are already doing, but it does it Faster (instant Vs 30-90 min) 
+With better security that Faxes or phone calls (who knows who is on the other end) One knows that MIEMSS is sending it and all information will be thoroughly verified before distributed 
+FRED keeps track of what has happened and can be saved for later evaluation or critique FRED provides a new first option in a list 4 long of possible communication tools 
+•
+FRED 
+
+•
+EMS Voice Systen
+
+•
+Fax 
+
+•
+Ma Bell 
+
+
+FRED will live at MIEMSS where, with the advent of EMAIS, he will two servers to host the participants. Both servers are backed up daily 
+
+MIEMSS will handle most of the burden to post and maintain FRED We will incur the cost of the initial programming and will provide the webserver in which FRED will reside. Users manuals will also be provider to approved participants 
+
+Participants simply need a personal computer which has reliable internet access, a current web browser and a sound card.  Mobile units such as command posts need to consider wireless access.  Existing data channels could be used to transmit to a central access point versus direct wireless access.  This will decrease the likelihood that transmissions would be intercepted. 
+
+Where the computers will be is up to the individual users.  Some are considering the 
+Emergency Department or Security Office. 
+Multiple sites are acceptable as long as they do not attempt to edit the same screen 
+
+simultaneously.
+We ask that participants monitor FRED 24/7.  The monitoring program can be 
+minimized to allow the PC to be used for other tasks
+
+
+For the most part, FRED will only be active when there is an incident occurring. Weekly tests of FRED will be performed to ensure the system is intact and participants are familiar with its use. 
+Some screens, such as the Psych Beds will be accessable all the time, but will be updated by the Psych facilities themselves.  We may find other activities that may require constant activity in the future. 
+
+
+
+Future Plans for FRED
+
+
+. Regular Software Updates ….. . Syndromic Monitoring ………... . Triage & Tracking ………………. . Database Linkage……………….. . Infrastructure ……………………. 
+Once Up we do not plan to let FRED lounge around on our servers. We intend to continue to build on his assets with . . . 
+Regular Updates We have had discussions with DHMH to allow FRED to assist wit the Syndromic monitoring 
+We hope to tie a Triage program under development to track bed availability as they are added and taken. This could also be used as a central repository to determine who went to which facility. 
+We hope to link several databases to decrease double entry of information  to include Pysch Bed Registers, CADs, EMAIS, ED patient logs, Medical Records,  ETC 
+Want to hard wire the system into a closed WAN for better security.  This will be required for database linkage and will improve speed. 
+Costs are as stated Notes on Infrastructure cost 806K will bring up 22 hospitals by the end of the Fiscal year Infrastructure committee has the system planned but money has been cut from an 
+already slow implementation Cost may be reduced if Network Maryland fibers can be accessed for MPT so we can get access to their equipment. 
+
+
+
+
+
+Questions ?
+
+One might ask, “Why spend the time, effort and money to develop, post and participate in FRED.” Because it does what we are already doing, but it does it Faster (instant Vs 30-90 min) 
+With better security that Faxes or phone calls (who knows who is on the other end) One knows that MIEMSS is sending it and all information will be thoroughly verified before distributed 
+FRED keeps track of what has happened and can be saved for later evaluation or critique FRED provides a new first option in a list 4 long of possible communication tools 
+•
+FRED 
+
+•
+EMS Voice Systen
+
+•
+Fax 
+
+•
+Ma Bell 
+
+
+FRED will live at MIEMSS where, with the advent of EMAIS, he will two servers to host the participants. Both servers are backed up daily 
+

@@ -1,0 +1,401 @@
+<!-- $Id$ -->
+<title>EMSI - ePCRs - Record Specifications</title>
+<h1>Technical help for prospective ePCR developers</h1>
+<h2>Record specifications</h2>
+<p>The PCR software must be capable of exporting records in the following format, for import into the state's EMSCAN application:</p>
+<blockquote>
+<pre>                EMSCAN ASCII Record Specs
+===========================================================
+Output is in fixed-length ASCII format (one record per line):
+Character fields are padded on the left with blanks.
+Numeric fields are padded out on the left with zeroes.
+Boolean fields are printed as strings of &quot;Y&quot;s and &quot;N&quot;s.
+&quot;One-Of&quot; fields with more than 3 options are printed
+as 2-digit numbers (4 to 15 choices) or 3-digit numbers 
+if there are 16 or more possible choices.
+ 
+field 01: Lithocode            8 Digit Numeric                     at 1
+field 02: Vehicle#             7 Digit Numeric                     at 9
+field 03: MCD Code             5 Digit Numeric                     at 16
+field 04: Date                 Date represented as &quot;MM/DD/YYYY&quot;    at 21
+field 05: Crew Member 1 Type   1 2 Digit Numeric column            at 31
+    00 = &quot;Not Entered&quot;
+    01 = &quot;H&quot;
+    02 = &quot;P&quot;
+    03 = &quot;E&quot;
+    04 = &quot;F&quot;
+    05 = &quot;A&quot;
+    06 = &quot;O&quot;
+field 06: Crew Member 1        6 Digit Numeric                     at 33
+field 07: Crew Member 2 Type   1 2 Digit Numeric column            at 39
+    00 = &quot;Not Entered&quot;
+    01 = &quot;H&quot;
+    02 = &quot;P&quot;
+    03 = &quot;E&quot;
+    04 = &quot;F&quot;
+    05 = &quot;A&quot;
+    06 = &quot;O&quot;
+field 08: Crew Member 2        6 Digit Numeric                     at 41
+field 09: Crew Member 3 Type   1 2 Digit Numeric column            at 47
+    00 = &quot;Not Entered&quot;
+    01 = &quot;H&quot;
+    02 = &quot;P&quot;
+    03 = &quot;E&quot;
+    04 = &quot;F&quot;
+    05 = &quot;A&quot;
+    06 = &quot;O&quot;
+field 10: Crew Member 3        6 Digit Numeric                     at 49
+field 11: Crew Member 4 Type   1 2 Digit Numeric column            at 55
+    00 = &quot;Not Entered&quot;
+    01 = &quot;H&quot;
+    02 = &quot;P&quot;
+    03 = &quot;E&quot;
+    04 = &quot;F&quot;
+    05 = &quot;A&quot;
+    06 = &quot;O&quot;
+field 12: Crew Member 4        6 Digit Numeric                     at 57
+field 13: Driver               1 2 Digit Numeric column            at 63
+    00 = &quot;Not Entered&quot;
+    01 = &quot;Crew Member 1&quot;
+    02 = &quot;Crew Member 2&quot;
+    03 = &quot;Crew Member 3&quot;
+    04 = &quot;Crew Member 4&quot;
+field 14: Resp/Transp Mode     2 Single Digit Numeric entries      at 65
+    Subfields:   To Scene  at 65
+               From Scene  at 66
+    0 = &quot;Not Entered&quot; 
+    1 = &quot;Emergency&quot; 
+    2 = &quot;Non-Emergency&quot; 
+field 15: Dispatch Time        4 Digit Numeric                     at 67
+field 16: Enroute Time         4 Digit Numeric                     at 71
+field 17: Arrive Scene         4 Digit Numeric                     at 75
+field 18: Depart Scene         4 Digit Numeric                     at 79
+field 19: Arrive Dest.         4 Digit Numeric                     at 83
+field 20: Available            4 Digit Numeric                     at 87
+field 21: In Quarters          4 Digit Numeric                     at 91
+field 22: Response Outcome     1 2 Digit Numeric column            at 95
+    00 = &quot;Not Entered&quot;
+    01 = &quot;Transported&quot;
+    02 = &quot;Care Transferred&quot;
+    03 = &quot;Cancelled&quot;
+    04 = &quot;Refused&quot;
+    05 = &quot;False Call&quot;
+    06 = &quot;No Patient Found&quot;
+    07 = &quot;P.O.V.&quot;
+    08 = &quot;Treated/No Transport&quot;
+    09 = &quot;Standby&quot;
+    10 = &quot;DOA&quot;
+    11 = &quot;Other&quot;
+field 23: Incident #           7 Digit Numeric                     at 97
+field 24: Disp. to Enroute     4 Digit Numeric                     at 104
+field 25: Time to Scene        4 Digit Numeric                     at 108
+field 26: Time at Scene        4 Digit Numeric                     at 112
+field 27: Time to Dest.        4 Digit Numeric                     at 116
+field 28: Time at Dest.        4 Digit Numeric                     at 120
+field 29: Time to Quarters     4 Digit Numeric                     at 124
+field 30: Total Call Time      4 Digit Numeric                     at 128
+field 31: Response Time        4 Digit Numeric                     at 132
+field 32: Incident Location    2 Digit Numeric                     at 136
+    00 = &quot;Not Entered&quot;
+    01 = &quot;Residence&quot;
+    02 = &quot;Traffic Way, 55+ MPH&quot;
+    03 = &quot;Other Traffic Way&quot;
+    04 = &quot;Public Place&quot;
+    05 = &quot;Recreation Area&quot;
+    06 = &quot;Waterway&quot;
+    07 = &quot;Wilderness&quot;
+    08 = &quot;Hotel/Motel&quot;
+    09 = &quot;Bar/Restaurant&quot;
+    10 = &quot;Industrial&quot;
+    11 = &quot;Mine&quot;
+    12 = &quot;Office/Business&quot;
+    13 = &quot;Farm&quot;
+    14 = &quot;Acute Care Facility&quot;
+    15 = &quot;Clinic/Dr.'s Office&quot;
+    16 = &quot;Extended Care Facility&quot;
+    17 = &quot;EMS Rendezvous&quot;
+    18 = &quot;Other&quot;
+field 33: Work Related?        1 Single Digit Numeric entry        at 138
+    0 = &quot;Not Entered&quot;
+    1 = &quot;Yes&quot;
+    2 = &quot;No&quot;
+    3 = &quot;Unknown&quot;
+field 34: Incident Type        1 2 Digit Numeric column            at 139
+    00 = &quot;Not Entered&quot;
+    01 = &quot;Assault&quot;
+    02 = &quot;Bicycle&quot;
+    03 = &quot;Bite/Sting&quot;
+    04 = &quot;Fall&quot;
+    05 = &quot;Fire&quot;
+    06 = &quot;Inter-Facility&quot;
+    07 = &quot;Medical&quot;
+    08 = &quot;Motorcycle&quot;
+    09 = &quot;Pedestrian&quot;
+    10 = &quot;Recreational Vehicle&quot;
+    11 = &quot;Shooting&quot;
+    12 = &quot;Stabbing&quot;
+    13 = &quot;Vehicular&quot;
+    14 = &quot;Other&quot;
+field 35: Suspected Illness    24 Character Boolean                at 141
+    Subfields: Airway Obstruction  at 141
+                       Behavioral  at 142
+                   Cardiac Arrest  at 143
+                     Cardiac Sym.  at 144
+                      Dehydration  at 145
+                         Diabetes  at 146
+                        Dizziness  at 147
+                         Drowning  at 148
+                       GI Problem  at 149
+                     Hemorrhaging  at 150
+                     Hyperthermia  at 151
+                      Hypothermia  at 152
+                           Nausea  at 153
+                           OB/GYN  at 154
+                             Pain  at 155
+                        Paralysis  at 156
+                     Poisoning/OD  at 157
+                      Respiratory  at 158
+                          Seizure  at 159
+                            Shock  at 160
+                           Stroke  at 161
+                         Vomiting  at 162
+                         Weakness  at 163
+                            Other  at 164
+field 36: Sex                  1 Single Digit Numeric entry        at 165
+    0 = &quot;Not Entered&quot;
+    1 = &quot;Female&quot;
+    2 = &quot;Male&quot;
+field 37: Age                  2 Digit Numeric                     at 166
+field 38: Month/Days?          1 Single Digit Numeric entry        at 168
+    0 = &quot;Years&quot;
+    1 = &quot;Months&quot;
+    2 = &quot;Days&quot;
+field 39: Systolic             3 Digit Numeric                     at 169
+field 40: Diastolic            3 Digit Numeric                     at 172
+field 41: Diastolic Palpable   1 Character Boolean                 at 175
+field 42: Pulse                3 Digit Numeric                     at 176
+field 43: Respiration          2 Digit Numeric                     at 179
+field 44: Glasgow              1 2 Digit Numeric column            at 181
+field 45: Safety Devices       8 Character Boolean                 at 183
+    Subfields: Lap Belt            at 183
+               Shoulder Belt       at 184
+               Lap/Shoulder Belt   at 185
+               Air Bag             at 186
+               Helmet              at 187
+               Safety Seat         at 188
+               Unknown             at 189
+               Not Available/Used  at 190
+field 46: Contributing         7 Character Boolean                 at 191
+    Subfields:      Hazardous Materials  at 191
+               Hx of Cardiac/Resp. Dis.  at 192
+                        Self Extricated  at 193
+                        Self Infliction  at 194
+                  StrWhl/Dsh/Wndsd Dam.  at 195
+                 Walking After Accident  at 196
+                      Co-Morbid Factors  at 197
+field 47: SOI                  15 Character Boolean                at 198
+    Subfields: Flail Chest                    at 198
+               Burns 10+%/Face/Airway         at 199
+               Extrication 20+ minutes        at 200
+               Falls 20+ feet                 at 201
+               Limb Paralysis                 at 202
+               Speed 40+ MPH                  at 203
+               20+ speed change               at 204
+               Deformity 20+ inches           at 205
+               Intrusion 12+ inches           at 206
+               Rollover                       at 207
+               Ejection                       at 208
+               Death same MV                  at 209
+               Pedestrian vs. MV 5+ MPH       at 210
+               Pedestrian Thrown/Runover      at 211
+               Motorcycle 20+ MPH/separation  at 212
+field 48: Injury Site &amp; Type   84 Character Boolean                at 213
+    Rows:         Head  at 213 - 219
+                  Face  at 220 - 226
+                   Eye  at 227 - 233
+            Neck/Spine  at 234 - 240
+                 Chest  at 241 - 247
+            Back/Spine  at 248 - 254
+               Abdomen  at 255 - 261
+           Pelv./Groin  at 262 - 268
+                   Arm  at 269 - 275
+                  Hand  at 276 - 282
+                 Thigh  at 283 - 289
+              Leg/Foot  at 290 - 296
+    Cols:     Amputate
+            Burn/Elec.
+                 Blunt
+             Penetrate
+          Frac/Disloc.
+           Soft-Closed
+             Soft-Open
+field 49: Revised Trauma Score 1 2 Digit Numeric column            at 297
+field 50: BLS Treatment        155 Character Boolean               at 299
+    Rows:    Abdominal Thrust  at 299 - 303
+                   Back Blows  at 304 - 308
+                       Manual  at 309 - 313
+               Nasopharyngeal  at 314 - 318
+                Oropharyngeal  at 319 - 323
+                  Pocket Mask  at 324 - 328
+                 Demand Valve  at 329 - 333
+               Bag Valve Mask  at 334 - 338
+            C-Spine Stabilize  at 339 - 343
+              Cervical Collar  at 344 - 348
+             C-Spine Imm.Dev.  at 349 - 353
+                 Board - Long  at 354 - 358
+                Board - Short  at 359 - 363
+           Splint - Extremity  at 364 - 368
+            Splint - Traction  at 369 - 373
+               Oxygen 1-9 lpm  at 374 - 378
+             Oxygen 10-15 lpm  at 379 - 383
+          Auto Defibrillation  at 384 - 388
+                      Bandage  at 389 - 393
+                          CPR  at 394 - 398
+                     Hot Pack  at 399 - 403
+                    Cold Pack  at 404 - 408
+                Delivery (OB)  at 409 - 413
+                  Extrication  at 414 - 418
+                       Ipecac  at 419 - 423
+                   Irrigation  at 424 - 428
+                 MAST Applied  at 429 - 433
+                MAST Inflated  at 434 - 438
+                 Oral Glucose  at 439 - 443
+                   Suctioning  at 444 - 448
+                   Tourniquet  at 449 - 453
+    Cols:               Att 1
+                        Att 2
+                        Att 3
+                        Att 4
+                        Other
+field 51: ALS Treatment        65 Character Boolean                at 454
+    Rows:    Peripheral IV  at 454 - 458
+                       EKG  at 459 - 463
+          EndoTrach.Intub.  at 464 - 468
+               Med. Admin.  at 469 - 473
+                Blood Draw  at 474 - 478
+           Central Ven. IV  at 479 - 483
+            Cricothyrotomy  at 484 - 488
+          Defib/Cardiovert  at 489 - 493
+                       EOA  at 494 - 498
+           Intraosseous IV  at 499 - 503
+            Needle Thorac.  at 504 - 508
+                    Pacing  at 509 - 513
+             Urinary Cath.  at 514 - 518
+    Cols:            Att 1
+                     Att 2
+                     Att 3
+                     Att 4
+                     Other
+field 52: EKG                  30 Character Boolean                at 519
+    Rows:                  Normal Sinus  at 519 - 520
+                      Sinus Tachycardia  at 521 - 522
+                      Sinus Bradycardia  at 523 - 524
+                               Asystole  at 525 - 526
+                               AV Block  at 527 - 528
+                    Atrial Fibrillation  at 529 - 530
+                         Atrial Flutter  at 531 - 532
+                                    EMD  at 533 - 534
+                             Junctional  at 535 - 536
+                                  Paced  at 537 - 538
+                                  PVC's  at 539 - 540
+          Supra Ventricular Tachycardia  at 541 - 542
+                Ventricular Tachycardia  at 543 - 544
+               Ventricular Fibrillation  at 545 - 546
+                                  Other  at 547 - 548
+    Cols:                       Initial
+                                   Last
+field 53: IV Fluid             3 Character Boolean                 at 549
+    Subfields:           D5W  at 549
+               Normal Saline  at 550
+                 Ring. Lact.  at 551
+field 54: IV Rate              3 Character Boolean                 at 552
+    Subfields:   TKO  at 552
+               BOLUS  at 553
+                WIDE  at 554
+field 55: Medication           30 Character Boolean                at 555
+    Subfields:      Albuterol  at 555
+                Aminophylline  at 556
+                     Atropine  at 557
+                       Bicarb  at 558
+                    Bretylium  at 559
+                      Calcium  at 560
+                     Dexameth  at 561
+                          D50  at 562
+                     Diazepam  at 563
+                   Diphenhyd.  at 564
+                   Dobutamine  at 565
+                     Dopamine  at 566
+                  Epinephrine  at 567
+                   Furosemide  at 568
+                     Glucagon  at 569
+                      Heparin  at 570
+               Hydrocortisone  at 571
+                Isoproterenol  at 572
+                    Lidocaine  at 573
+                   Meperidine  at 574
+               Metaproterenol  at 575
+                     Morphine  at 576
+                     Naloxone  at 577
+               Nitroglycerine  at 578
+                Nitrous Oxide  at 579
+                     Oxytocin  at 580
+                 Procainamide  at 581
+                  Terbutaline  at 582
+                    Verapamil  at 583
+                        Other  at 584
+field 56: CPR                  5 2 Digit Numeric columns           at 585
+    Subfields:   Time from Arrest to CPR  at 585
+                                           00 = &quot;Not Entered  &quot; 
+                                           01 = &quot;&lt; 4 Minutes   &quot; 
+                                           02 = &quot;4 - 10 Minutes&quot; 
+                                           03 = &quot;&gt; 10 Minutes  &quot; 
+                                           04 = &quot;Unknown       &quot; 
+                 Time from Arrest to ALS  at 587
+                                           00 = &quot;Not Entered  &quot; 
+                                           01 = &quot;&lt; 4 Minutes   &quot; 
+                                           02 = &quot;4 - 10 Minutes&quot; 
+                                           03 = &quot;&gt; 10 Minutes  &quot; 
+                                           04 = &quot;Unknown       &quot; 
+               Time from Arrest to Shock  at 589
+                                           00 = &quot;Not Entered  &quot; 
+                                           01 = &quot;&lt; 4 Minutes   &quot; 
+                                           02 = &quot;4 - 10 Minutes&quot; 
+                                           03 = &quot;&gt; 10 Minutes  &quot; 
+                                           04 = &quot;Unknown       &quot; 
+                       Witnessed Arrest?  at 591
+                                           00 = &quot;Not Entered  &quot; 
+                                           01 = &quot;Yes&quot; 
+                                           02 = &quot;No&quot; 
+                                           03 = &quot;Unknown&quot; 
+                          Bystander CPR?  at 593
+                                           00 = &quot;Not Entered  &quot; 
+                                           01 = &quot;Yes&quot; 
+                                           02 = &quot;No&quot; 
+                                           03 = &quot;Unknown&quot; 
+field 57: Patient Condition    2 2 Digit Numeric columns           at 595
+    Subfields:    On Scene  at 595
+                             00 = &quot;Not Entered&quot;
+                             01 = &quot;Life Threatened&quot; 
+                             02 = &quot;Moderate&quot; 
+                             03 = &quot;Minor&quot; 
+               At Facility  at 597
+                             00 = &quot;Not Entered&quot; 
+                             01 = &quot;Improved&quot; 
+                             02 = &quot;Stable&quot; 
+                             03 = &quot;Unstable&quot; 
+                             04 = &quot;Worse&quot; 
+field 58: Medical Command      7 Character Boolean                 at 599
+    Subfields:     Telephone  at 599
+                    Cellular  at 600
+                       Radio  at 601
+                    Protocol  at 602
+                 MD On-Scene  at 603
+               None Required  at 604
+                        None  at 605
+field 59: Receiving Facility   5 Digit Numeric                     at 606
+field 60: Research             4 Digit Numeric                     at 611
+field 61: Command Facility     4 Digit Numeric                     at 615
+ 
+Total record length including terminating &lt;CR&gt;&lt;LF&gt; is 620.
+</pre>
+</blockquote>

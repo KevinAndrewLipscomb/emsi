@@ -1,0 +1,208 @@
+Facility Resource Emergency Database (FRED) 
+Users Manual 
+
+Copyright 2002, MIEMSS 
+Windows® is a registered trademark of the Microsoft Corporation Internet Explorer® is a registered trademark of the Microsoft Corporation Netscape Communicator® is a registered trademark of the Netscape Communications Corporation 
+Table of Contents 
+
+I. 
+Introduction 
+Overview of FRED ...........................................................................4 
+Using an Internet Browser ................................................................4 
+
+II. 
+System Requirements .....................................................................5
+III. 
+Getting Started 
+FRED – Getting Started ....................................................................6 
+Login Menu .......................................................................................7 
+Monitor Menu ...................................................................................7 
+
+
+IV. 
+Monitor Menu .................................................................................8
+V. 
+Login Menu 
+Hospital User ....................................................................................10 
+EMS, EMA, Prehospital , Commercial Ambulance, and 
+Dispatch Center Users ......................................................................12 
+Prehospital Access to Hospital Section..................................12 
+EMS Section .........................................................................12 
+Pre-Hospital Section .............................................................13 
+
+
+
+
+
+
+
+
+Foreword 
+Why FRED? 
+In after-action reports or critiques of responses to major incidents or mass casualty exercises, communication is the most frequently cited problem or failure under the topic of operations. Historically EMRC (Emergency Medical Resource Center)/SYSCOM (Systems Communication Center), the central hub of Maryland’s emergency medical communication system, has relayed critical information between field units, hospitals, dispatch centers and many other organizations involved in the response. Such information would include, the advisement of an incident or threat, emergency department capacities, pediatric and psychiatric bed availability, specific treatment protocols, the status of pharmaceutical stocks, response personnel, equipment and teams, and NDMS resources. Currently, distribution of information and gathering of required data is accomplished through serial faxes, telephone calls, and radio transmissions, which can take 45-90 minutes to complete. 
+In response to the urgent need, MIEMSS (Maryland Institute for Emergency Medical Services Systems) contracted with a network software vendor to replace a system of hand entered spreadsheets with a system that can be managed via the worldwide web. FRED will replace those cumbersome and time-consuming tasks of information management.  It is expected that FRED will not increase the administrative burden on those attempting to manage the care of patients, but relieve existing tasks associated with that administration.  When information regarding an emergency situation that is deemed critical is received from first responders, operators at the EMRC can enter information into FRED and send it to all components of the emergency response system simultaneously.  Those users of FRED will receive a loud audible signal that an alert has been issued.  They will be able to read the alert information and input any requested data into a series of entry screens.  Once entered, that data will appear and be calculated on central spreadsheets which will be available to those who require the information. 
+Hospitals, law enforcement agencies, state and local emergency management agencies and health departments, fire and rescue companies and dispatch centers and information centers such as the Poison Center will all have a major resource at their hands with FRED. Information can be shared with all components quickly and simultaneously and the status of resources can be cataloged efficiently.  The system is secured through username, password and 128-bit encryption.  The system will be reliable as it will reside on two servers at MIEMSS and will eventually be on other servers at distant buildings.  There will be limited access to the global broadcast capabilities to ensure information that is disseminated is correct.  FRED will become the primary means of shared information management for emergency response and management organizations in Maryland. 
+MIEMSS intends to continually enhance FRED to make it more useful. Enhancements being considered include: 
+•	
+An expanded security matrix to allow access to specified screens 
+
+•	
+The ability to direct alerts to specified groups, auto page and email both users and administrators with changes to FRED activities 
+
+•	
+Provide "Chat Rooms" for direct contact with multiple users 
+
+•	
+Incorporate the existing Triage Tag program into FRED to allow for auto updates on bed and patient status 
+
+
+These improvements will be added as funds and programming time is made available. 
+
+
+I. Introduction 
+Overview of FRED 
+FRED is an internet based program that alerts all components of the Maryland EMS system of an emergency medical situation.  Once notified of such an event, the users of the system are directed to view the information regarding the alert and then proceed to a series of entry screens to update the resources available from the users’ organizations. If a user encounters an unusual situation that requires the notification of the EMS system, that user should contact EMRC to initiate an alert. 
+
+Using an Internet Browser 
+Specific characteristics of browsing the internet will be explained throughout this document, but it is assumed the user has some familiarity with the World Wide Web and using an internet browser.  This section will not serve as a substitute for the browser’s help guide and MIEMSS recommends the user become familiar with this first before using FRED. 
+•	
+Use of Mouse – Throughout this document, user interface is described as if a mouse is in use. Within the FRED application and throughout this text, the term click refers to a short tap on the left button of the mouse and will either open, select, choose or access the particular item.  It is assumed throughout the manual that the left mouse button is used. To use the right mouse button, you must change the default using the Control Panel in Windows. 
+
+•	
+Use of Keyboard – If a mouse is not available, generally certain key strokes can be substituted. The ALT key is used in conjunction with the other keys to access different windows; the cursor keys are used to position windows and select actions; the ENTER key can be using in place of a mouse click; and the TAB keys are used in conjunction with radio buttons, check boxes, push-buttons and data entry fields. 
+
+
+
+
+II. System Requirements 
+For accessing FRED, MIEMSS recommends the following hardware: 
+• 
+IBM-compatible personal computer 
+
+• 
+Pentium II 233Mhz minimum processor 
+
+• 
+64 Meg minimum memory 
+
+• 
+56K minimum modem 
+
+• 
+Mouse 
+
+• 
+Internet Explorer version 5.0 or greater 
+
+• 
+Printer 
+
+
+MIEMSS cannot guarantee results with a lesser-configured system. 
+MIEMSS does not recommend Netscape Communicator as it has been found to be unreliable when working with the Facility Resource Emergency Database. 
+
+Login Menu 
+The Login Menu option allows administrators of the FRED application to alter information in the system.  The categories available for entry of data are based on the user’s responsibilities. 
+
+Monitor Menu 
+The Monitor Menu option allows users of the FRED application to determine the alert status for their particular state.  If an alert is present, the user will then have the ability to click through to gain more information regarding the current alert.  The user will also have the ability to update pertinent information such as PED Availability, ED Availability, NDMS Status and so on. 
+
+Steps of Operation 
+The steps below should be followed in order to assure proper operation of the FRED system: 
+1.	
+Point browser to http://www.miemss.org/alert 
+
+2.	
+Click on Login 
+
+3.	
+Enter ID and Password and click Submit 
+
+4.	
+MINIMIZE the new window 
+
+5.	
+Make the previous window (the first screen) active 
+
+6.	
+Click on Monitor 
+
+7.	
+Click on Maryland 
+
+8.	
+Once an alert has been issued (the screen has turned red), click on Please click here for details 
+
+9.	
+Enter the Hospital ID and Password and click Submit 
+
+10. 
+Click on Alert Info and read the description of the alert and what information is required 
+
+11. 
+Enter the information required, logging out and back in with the proper ID and Password if necessary 
+
+12. 
+Once the requested information has been entered, logout and return to step 1 
+
+
+
+
+*** Please note that this screen needs to remain active at all times.  It does not have to appear maximized on the screen, but must be active and in at least a minimized state. Thus when an alert is activated the audible alarm can be heard and then the screen can be maximized to present the following alert screen.  This does not preclude the user from performing other functions or programs with this workstation.  This includes opening up another instance of Internet Explorer to surf the web.  However the first instance of Internet Explorer must remain active and on the Monitor screen. 
+Once an alert has been activated, an audible tone will be heard.  If not already maximized, the user should maximize the monitor site and the screen will look like this. 
+To get more information regarding the alert, click where it states “Please click here for details”. This will activate the login screen to enter the user’s ID and password.  Login as a Hospital user first to reference the information regarding the alert.  Upon successful login, the user will be presented with the same options as listed in the next chapter on page 10 regarding the Login Menu. 
+
+This screen will allow the user to: 
+•	
+Check the Alert Info – Please read the information provided here very carefully as instructions might be included as to which sections need to be updated. Please update only those sections as per the Alert Info request. 
+
+•	
+Update general contact information under General Administration 
+
+•	
+Update PED Availability – this pertains to Pediatric Bed availability. 
+
+•	
+Update ED Availability – this pertains to Emergency Department Bed availability. 
+
+•	
+Update NDMS Status – National Disaster Medical System 
+
+•	
+Update MEDS Status – this pertains to the Medication and Equipment stocks and supplies. The data entered here is for the number of adult dosages. 
+
+•	
+Update Psych Status – this pertains to Psychiatric Bed availability. 
+
+•	
+Other Options – this allows the Hospital User to view the current Psychiatric Bed Availability and the Emergency Department Bed Availability along with the Alert Info for the entire state. 
+
+
+To update the information in any of the preceding categories, just click on the proper link. 
+
+
+EMS, EMA, Prehospital , Commercial Ambulance, andDispatch Center Users 
+You will be provided with 3 usernames and passwords to allow access to 3 separate sections of FRED.  (These sections will be combined in the next revision of the program).  When an alert is issued you may be asked to complete information in one or more of the sections. Until the program is revised, you will need to log-in separately to access each section. Medications are listed in the Hospital Section, EMS Unit Status is in the EMS Section, and Prehospital Resources are listed in the Prehospital Section.  You may use any username and password to access the ALERT INFO intially.  Read the instructions there carefully to determine what information is required for that particular incident. 
+
+Prehospital Access to the Hospital Section 
+Utilize your Hospital username and password From the “LOG-IN” page and follow the instructions in the “Hospital Users’” instructions on Page 10 
+
+Access to EMS Section 
+Enter your EMS username and password from the LOG-IN screen.  After a successful entry of the user’s ID and Password, the following screen will appear. 
+This screen will allow the user to: 
+•	
+Update the contact information and the Transport Units Availability.  
+
+** Be sure to “Save” or “Submit” when entry is complete or data will be lost.** 
+
+•	
+Check the Alert Info – Please read the information provided here very carefully as instructions might be included as to which sections need to be updated. 
+
+•	
+Other Options – this allows the EMS user to view the current ED Availability, the EMS Status, and the Pre-hospital Personnel and Equipment status along with the Alert Info for the entire state. 
+
+
+
+
+
+
