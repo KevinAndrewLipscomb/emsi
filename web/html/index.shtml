@@ -18,12 +18,15 @@ SCANNING, NONPROFIT, CHARITY, DONATION">
 <!--#include virtual="/description-and-mission.html" -->
 <!--#include virtual="/hot-links.html" -->
 <!--#include virtual="/news.html" -->
-<table border="0" cellspacing="0" cellpadding="10" width="100%">
+<table width="100%">
    <tr>
-      <td align="center" bgcolor="#6699FF" nowrap>
-         <p align="left">
-         <big><big><b><i><font color="#FFFFFF">Meta</font></i><span style="font-variant: small-caps"><font color="#FFFFFF">Navigation</font></span></b></big></big>
-         </p>
+      <td valign="top" align="left">
+         <table border="0" width="100%">
+            <tr>
+               <td width="1%"><big><big><b><i>Meta</i><span style="font-variant: small-caps; font-weight:700">Navigation</span></b></big></big></td>
+               <td width="99%"><hr color="#B3CBFF" size="5"></td>
+            </tr>
+         </table>
       </td>
    </tr>
    <tr>
