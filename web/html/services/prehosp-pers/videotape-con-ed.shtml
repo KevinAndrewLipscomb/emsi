@@ -1,0 +1,13 @@
+<!-- $Id$ -->
+<html>
+<head>
+<title>EMSI - Videotape-based Con Ed</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<!--#include virtual="/std-header.html" -->
+<!--#include virtual="/std-pre-content.html" -->
+<!--#include virtual="videotape-con-ed.html" -->
+<!--#include virtual="/std-post-content.html" -->
+</body>
+</html>
