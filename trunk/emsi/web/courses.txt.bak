@@ -1,0 +1,335 @@
+StartDate	Text26	Course#	Class#	COURSENAME	Text28	Text30	Text32	ClassLoc	Contact	ContTel#
+1/28/2003	19:00	2015	030314	Carbon Monoxide Detection & Monitor	1.50	1.50	1.50	Unity VFD	Tom Izydore	(412) 793-4801
+1/28/2003	20:30	1792	030313	Cold Weather Emergencies	1.50	1.50	1.50	Unity VFD	Tom Izydore	(412) 793-4801
+1/29/2003	8:00	1002	030533	ACLS - R	0.00	0.00	8.00	Mutual Aid	Paul Colligan	(724) 837-6134
+1/29/2003	8:00	1003	030278	PALS	0.00	0.00	16.00	Sewickley Valley Hospital	MCNash	(412) 749-7120
+1/29/2003	7:00	1002	030506	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+1/29/2003	7:00	2079	030253	WMD Hospital Provider Course	3.00	3.00	3.00	Allegheny General	CCAC	(412) 237-2500
+1/29/2003	18:30	2101	030231	Terrorism Awareness (TADP)	4.00	4.00	4.00	BCCC	Brian Check	(724) 287-8711
+1/29/2003	15:00	4807	030529	HANDLING (LIFTING/MOVING)	3.00	3.00	3.00	Guardian Angel	Linda Coen	(412) 462-1400
+1/29/2003	15:00	1005	030530	AED	4.00	4.00	4.00	Guardian Angel	Linda Coen	(412) 232-5906
+1/30/2003	8:00	1004	030285	PALS-R	0.00	0.00	8.00	Sewickley Valley Hospital	MC Nash	(412) 749-7120
+1/30/2003	7:45	1004	030315	PALS-R	0.00	0.00	8.00	Children's Hospital	Prehospital Services	(412) 692-8720
+1/30/2003	18:00	7800	030404	Injuries to the Head & Spine	4.00	4.00	4.00	USS Clairton	CCAC	(412) 237-2500
+1/30/2003	18:30	2026	030421	Incident Command	4.00	4.00	4.00	Fayette Co EMA	Brian Check	(724) 287-8711
+1/30/2003	8:00	1004	030044	PALS-R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+1/31/2003	7:00	2079	030252	WMD Hospital Provider Course	3.00	3.00	3.00	Allegheny General	CCAC	(412) 237-2500
+2/1/2003	8:00	752	030482	Street Survival for Emer Personnel	16.00	16.00	16.00	Valley Ambulance	Roberta Plohr	(724) 266-3241
+2/1/2003	9:00	1005	030465	AED	4.00	4.00	4.00	Richeyville VFD	CCAC	(412) 237-2500
+2/3/2003	19:00	6080	030415	PA Essentials Fire Fighting (EBM)	9.50	9.50	9.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+2/4/2003	18:30	2006	030129	HazMat Response for EMS Personnel	14.00	14.00	14.00	CCAC	CCAC	(412) 237-2500
+2/4/2003	18:00	2001	030026	Hazardous Materials R & I	4.00	4.00	4.00	West Alexander VFD	CCAC	(412) 235-2500
+2/4/2003	18:30	6008	030390	Basic Rigging for Rope Rescue	1.00	1.00	1.00	Aspinwall VFd	CCAC	(412) 237-2500
+2/4/2003	18:30	6080	030226	PA Essentials Fire Fighting (EBM)	9.50	9.50	9.50	BCCC	Brian Check	(724) 287-8711
+2/5/2003	7:00	1001	030498	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+2/5/2003	18:30	2001	030232	Hazardous Materials R & I	4.00	4.00	4.00	BCCC	Brian Check	(724) 287-8711
+2/5/2003	8:00	1002	030045	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+2/5/2003	18:00	2019	030203	HazMat Awareness R & I - EPA	4.00	4.00	4.00	Richland EMS	William Wise	(724) 443-3030
+2/6/2003	18:30	6043	030375	Forcible Entry Seminar	1.00	1.00	1.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+2/6/2003	18:30	9993	030356	Case Review	3.00	3.00	3.00	Peters Twp Ambulance	Lenny Robinson	(724) 941-4700
+2/7/2003	18:30	9993	030461	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+2/7/2003	8:00	1004	030046	PALS-R	0.00	0.00	8.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+2/8/2003	8:00	1001	030282	ACLS	0.00	0.00	16.00	Valley Ambulance	MC Nash	(412) 749-7120
+2/8/2003	8:00	1001	030120	ACLS	0.00	0.00	16.00	CCAC	CCAC	(412) 237-2500
+2/8/2003	8:00	6080	030417	PA Essentials Fire Fighting (EBM)	9.50	9.50	9.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+2/8/2003	8:00	1001	030408	ACLS	0.00	0.00	16.00	Jefferson Hospital	CCAC	(412) 237-2500
+2/8/2003	8:00	6080	030481	PA Essentials Fire Fighting (EBM)	9.50	9.50	9.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+2/8/2003	8:00	530	030388	Emergency Response to Terrorism:NFA	14.00	14.00	14.00	Mayview Hospital	CCAC	(412) 237-2500
+2/8/2003	8:00	6079	030234	Ice Resc / Emerg Resp III (FCIR)	5.00	5.00	5.00	BCCC	Brian Check	(724) 287-8711
+2/8/2003	8:00	3029	030370	Blood Borne Pathogens	3.00	3.00	3.00	Lower Burrel #3	Henry	(724) 339-9611
+2/8/2003	8:00	2019	030343	HazMat Awareness R & I - EPA	4.00	4.00	4.00	Petrolia VFD	William Collins	(724) 756-4710
+2/9/2003	8:00	1002	030281	ACLS - R	0.00	0.00	8.00	Valley Ambulance	MC Nash	(412) 749-7120
+2/9/2003	8:00	1002	030121	ACLS - R	0.00	0.00	8.00	CCAC	CCAC	(412) 237-2500
+2/9/2003	8:00	1002	030407	ACLS - R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+2/10/2003	18:30	591	030235	High Rise Fire Fighting (HIRI)	1.00	1.00	1.00	BCCC	Brian Check	(724) 287-8711
+2/12/2003	11:00	4006	030164	Allergies	1.00	2.00	2.00	Jeannete Hospital	Don Thoma	(724) 527-9341
+2/12/2003	19:00	9992	030295	Case Review: Grand Rounds - 2 Hours	2.00	2.00	2.00	Valley Ambulance	MC Nash	(412) 749-7120
+2/12/2003	8:00	1004	030143	PALS-R	0.00	0.00	8.00	Medical Rescue Team South	Adella Mueller	(724) 356-7381
+2/15/2003	18:00	1024	030447	AED Recertification	2.00	2.00	2.00	Norvelt VFD	Marc Taylor	(724) 547-1466
+2/15/2003	8:00	7002	030492	BTLS-R	8.00	8.00	8.00	CEM	Bob Seitz	(412) 647-4671
+2/15/2003	8:00	7004	030047	PHTLS-R	0.00	8.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+2/18/2003	18:30	4010	030160	Geriatric Patients	2.00	2.00	2.00	Armstrong Memorial Hospital	William Hamilton	(724) 543-8112
+2/18/2003	8:00	1002	030048	ACLS - R	0.00	0.00	8.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+2/19/2003	18:30	9993	030457	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+2/19/2003	7:30	1004	030523	PALS-R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+2/19/2003	18:30	3029	030373	Blood Borne Pathogens	3.00	3.00	3.00	CCAC	CCAC	(412) 237-2500
+2/19/2003	8:00	1001	030049	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+2/20/2003	18:00	4011	030161	Pediatric Patients	2.00	2.00	2.00	Butler Co Community College	Brian Check	(724) 287-8711
+2/20/2003	9:00	504	030033	Intro to Emergency Medical Care	1.50	1.50	1.50	Hamer Hall	Barbara Webb	(724) 938-5956
+2/21/2003	7:45	1003	030321	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+2/21/2003	8:00	3017	030353	BSI & Infection Control	3.00	3.00	3.00	Canonsburg Ambulance	Chris DeJohn	(724) 745-6911
+2/22/2003	15:00	9992	030220	Case Review: Grand Rounds - 2 Hours	2.00	2.00	2.00	Woodland Hills EMS Station 341	Gary Harvat	(412) 858-2089
+2/22/2003	19:00	9992	030222	Case Review: Grand Rounds - 2 Hours	2.00	2.00	2.00	Trafford EMS	Gary Harvat	(412) 858-2089
+2/22/2003	16:50	9992	030221	Case Review: Grand Rounds - 2 Hours	2.00	2.00	2.00	Woodland Hills EMS Station 340	Gary Harvat	(412) 858-2089
+2/22/2003	13:00	9992	030219	Case Review: Grand Rounds - 2 Hours	2.00	2.00	2.00	Penn Hills EMS	Gary Harvat	(412) 858-2089
+2/22/2003	8:00	6096	030130	Vehicle Resc RefresherTech VRTU	8.50	8.50	8.50	CCAC	CCAC	(412) 237-2500
+2/24/2003	17:00	1001	030344	ACLS	0.00	0.00	16.00	Uniontown Hospital	Al Dawson	(724) 430-5482
+2/24/2003	18:00	2001	030466	Hazardous Materials R & I	4.00	4.00	4.00	Amwell VFD	CCAC	(412) 237-2500
+2/25/2003	18:00	2012	030422	HazMat Operations Refresher HMOR	5.50	5.50	5.50	Monongahela FD	Brian Check	(724) 287-8711
+2/25/2003	19:00	9993	030382	Case Review	3.00	3.00	3.00	Latrobe Hospital	Keith Stouffer	(724) 537-1578
+2/25/2003	18:00	1750	030485	Environmental Emergencies	2.00	2.00	2.00	Northwest EMS	Brad Kaiser	(412) 761-2200
+2/26/2003	19:00	9993	030451	Case Review	3.00	3.00	3.00	Community College of Beaver Co	Jim Campese	(724) 775-8561
+2/26/2003	16:30	1014	030264	ACLS Refresher - Accelerated			6.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+2/26/2003	8:00	1001	030050	ACLS	0.00	0.00	16.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+2/27/2003	8:00	2079	030479	WMD Hospital Provider Course	3.00	3.00	3.00	Canonsburg Hospital	CCAC	(412) 237-2500
+2/27/2003	9:00	5272	030034	Patient Assessment/Transition Cours	10.00	10.00	10.00	Hamer Hall	Barbara Webb	(724) 938-5956
+2/28/2003	7:00	1002	030507	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+3/1/2003	18:30	6080	030487	PA Essentials Fire Fighting (EBM)	9.50	9.50	9.50	Mt Lebanon FD	CCAC	(412) 237-2500
+3/5/2003	18:30	4011	030338	Pediatric Patients	2.00	2.00	2.00	Ross West View EMS	Ed Davies	(412) 931-8200
+3/5/2003	8:00	1001	030305	ACLS	0.00	0.00	16.00	BCCC	Vern Smith	(724) 287-8711
+3/6/2003	8:00	1002	030306	ACLS - R	0.00	0.00	8.00	BCCC	Vern Smith	(724) 287-8711
+3/6/2003	9:00	5752	030035	Interventions - Transition Course	0.00	11.00	11.00	Hamer Hall	Barbara Webb	(724) 938-5956
+3/6/2003	8:00	1002	030107	ACLS - R	0.00	0.00	8.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+3/7/2003	18:30	9993	030462	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+3/7/2003	8:00	1004	030405	PALS-R	0.00	0.00	8.00	St Clair Hospital	CCAC	(412) 237-2500
+3/8/2003	8:00	1001	030495	ACLS	0.00	0.00	16.00	CEM	Dave Hostler	(412) 647-3643
+3/8/2003	7:45	1004	030316	PALS-R	0.00	0.00	8.00	Children's Hospital	Prehospital Services	(412) 692-8720
+3/8/2003	8:00	7001	030051	BTLS	16.00	16.00	16.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+3/10/2003	7:00	1044	030513	ACLS for the Experienced Provider	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+3/10/2003	8:00	1004	030052	PALS-R	0.00	0.00	8.00	Forbes Regional	Michael Gannon	(412) 359-3923
+3/11/2003	18:30	6093	030001	Basic Vehicle Resc-Tech-DOH (DHVRT)	7.00	7.00	7.00	Peebles VFD	CCAC	(412) 237-2500
+3/12/2003	11:00	6505	030165	Critical Incident Stress Management	2.00	2.00	2.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+3/12/2003	8:00	4741	030293	ALS Skills Review			4.00	Valley Ambulance	MC Nash	(412) 749-7120
+3/12/2003	9:00	253	030414	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAC	(412) 237-2500
+3/12/2003	19:00	253	030413	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAc	(412) 237-2500
+3/12/2003	18:00	279	030149	Airway Management Update (4 hr)	4.00	4.00	4.00	CCAC	CCAC	(412) 237-2500
+3/12/2003	8:00	1002	030053	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(413) 359-3923
+3/13/2003	7:30	1003	030517	PALS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+3/14/2003	8:00	1004	030114	PALS-R	0.00	0.00	8.00	Westmoreland Hospital	Michael Gannon	(412) 359-3923
+3/15/2003	8:00	1004	030419	PALS-R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+3/15/2003	9:00	1005	030122	AED	4.00	4.00	4.00	Downtown	CCAC	(412) 237-2500
+3/18/2003	8:00	2011	030207	IAFF HazMat Trng - First Responders	21.50	21.50	21.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+3/18/2003	8:00	1002	030054	ACLS - R	0.00	0.00	8.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+3/19/2003	18:30	9993	030456	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+3/19/2003	19:00	6085	030416	Structual Collapse Operat I (SCOA)	1.00	1.00	1.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+3/19/2003	8:00	1003	030055	PALS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+3/20/2003	19:00	7910	030188	Burn Trauma	1.00	1.00	1.00	Butler County Community College	Brian Check	(724) 287-8711
+3/20/2003	20:00	7049	030189	Crush Injuries	1.00	1.00	1.00	Butler County Community College	Brian Check	(724) 287-8711
+3/20/2003	18:00	900908	030187	Geriatric Trauma	1.00	1.00	1.00	Butler County Community College	Brian Check	(724) 287-8711
+3/20/2003	9:00	2504	030036	Infants & Children/Transition Cours	3.00	3.00	3.00	Hamer Hall	Barbara Webb	(724) 938-5956
+3/21/2003	8:00	2026	030208	Incident Command	4.00	4.00	4.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+3/22/2003	8:00	6001	030131	Special Vehicle Rescue	7.50	7.50	7.50	CCAC	CCAC	(412) 237-2500
+3/24/2003	15:00	1002	030532	ACLS - R	0.00	0.00	8.00	Jeannette Hospital	Karen Edumnds	(724) 527-9605
+3/24/2003	18:30	6091	030132	Basic Vehicle Resc-Aware-DOH (DHVRA	10.00	10.00	10.00	Monroeville #4	CCAC	(412) 237-2500
+3/25/2003	8:00	530	030209	Emergency Response to Terrorism:NFA	14.00	14.00	14.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+3/25/2003	9:00	2079	030480	WMD Hospital Provider Course	3.00	3.00	3.00	Canonsburg Hospital	CCAC	(412) 237-2500
+3/26/2003	15:00	1002	030531	ACLS - R	0.00	0.00	8.00	Jeannette Hospital	Karen Edumnds	(724) 527-9605
+3/26/2003	17:30	1015	030271	PALS Refresher - Accelerated			5.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+3/26/2003	8:00	1002	030056	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+3/27/2003	8:00	581	030210	Arson Detection First Resp (ADFR)	2.00	2.00	2.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+3/31/2003	13:00	582	030211	Electrical Emergencies (ELFS)	1.50	1.50	1.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+4/1/2003	18:30	6087	030391	Structual Fire Rescue	4.00	4.00	4.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+4/3/2003	8:00	6080	030212	PA Essentials Fire Fighting (EBM)	9.50	9.50	9.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+4/3/2003	9:00	1005	030037	AED	4.00	4.00	4.00	Hamer Hall	Barbara Webb	(724) 938-5956
+4/3/2003	8:00	1003	030108	PALS	0.00	0.00	16.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+4/4/2003	18:30	9993	030463	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+4/4/2003	7:45	1003	030322	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+4/4/2003	7:30	1004	030524	PALS-R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+4/4/2003	18:00	2011	030202	IAFF HazMat Trng - First Responders	21.50	21.50	21.50	Richland EMS	William Wise	(724) 443-3030
+4/5/2003	8:00	7004	030284	PHTLS-R	0.00	8.00	8.00	Valley Ambulance	MC Nash	(412) 749-7120
+4/5/2003	8:00	1003	030123	PALS	0.00	0.00	16.00	CCAC	CCAC	(412) 237-2500
+4/5/2003	8:00	1005	030239	AED	4.00	4.00	4.00	Washington Co Courthouse	CCAC	(412) 237-2500
+4/5/2003	8:00	6086	030376	Structual Collapse Operation II (SC	2.50	2.50	2.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+4/5/2003	8:00	1001	030329	ACLS	0.00	0.00	16.00	WCCC Youngwood	David Hauger	(800) 262-2103
+4/6/2003	8:00	1004	030124	PALS-R	0.00	0.00	8.00	CCAC	CCAC	(412) 237-2500
+4/6/2003	8:00	1002	030330	ACLS - R	0.00	0.00	8.00	WCCC Youngwood	David Hauger	(800) 262-2103
+4/7/2003	18:30	6038	030389	Basic Rope Rescue	10.00	10.00	10.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+4/9/2003	11:00	5253	030166	Focused History/Phys Exam - Medical	2.00	2.00	2.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+4/9/2003	20:30	4094	030291	Ecstacy & It's Adulterants	1.50	1.50	1.50	Valley Ambulance	MC Nash	(412) 749-7120
+4/9/2003	19:00	4082	030294	Street Drugs	1.50	1.50	1.50	Valley Ambulance	MC Nash	(412) 749-7120
+4/9/2003	8:00	1001	030057	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+4/9/2003	8:00	1002	030140	ACLS - R	0.00	0.00	8.00	Medical Rescue Team Soth	Adella Mueller	(724) 356-7381
+4/10/2003	7:00	1001	030499	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+4/12/2003	8:00	1002	030410	ACLS - R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+4/12/2003	8:00	503	030133	Emergency Vehicle Driver Training	16.00	16.00	16.00	CCAC	CCAC	(412) 237-2500
+4/14/2003	18:30	6092	030134	Basic Vehicle Res-Ops-DOH (DHVRO)	11.00	11.00	11.00	Monroeville #4	CCAC	(412) 237-2500
+4/16/2003	18:30	9993	030455	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+4/16/2003	18:30	2101	030125	Terrorism Awareness (TADP)	4.00	4.00	4.00	CCAC	CCAC	(412) 237-2500
+4/16/2003	8:00	1002	030058	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+4/19/2003	8:00	2006	030135	HazMat Response for EMS Personnel	14.00	14.00	14.00	CCAC	CCAC	(412) 237-2500
+4/21/2003	8:00	8132	030365	Pulse/EM 2003-04 Natural Disasters	1.50	1.50	1.50	Ross West View EMS	Ed Davies	(412) 931-8200
+4/21/2003	8:00	6091	030213	Basic Vehicle Resc-Aware-DOH (DHVRA	10.00	10.00	10.00	Monroeville #4	CCAC	(412) 237-2500
+4/21/2003	8:00	1004	030059	PALS-R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+4/22/2003	18:00	503	030490	Emergency Vehicle Driver Training	16.00	16.00	16.00	CEM	Walt Stoy	(412) 647-4667
+4/23/2003	8:00	6092	030214	Basic Vehicle Res-Ops-DOH (DHVRO)	11.00	11.00	11.00	Monroeville #4	CCAC	(412) 237-2500
+4/23/2003	8:00	1003	030060	PALS	0.00	0.00	16.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+4/23/2003	8:00	1003	030061	PALS	0.00	0.00	16.00	Alle kiski Center	Michael Gannon	(412) 359-3923
+4/24/2003	18:00	598	030392	Fire Fighter Survival (SURV)	2.50	2.50	2.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+4/25/2003	8:00	1003	030115	PALS	0.00	0.00	16.00	Westmoreland Hospital	Michael Gannon	(412) 359-3923
+4/26/2003	8:00	4069	030488	Advanced Medical Life Support(AMLS)	9.50	9.50	15.50	CEM	Tom Platt	(412) 647-4665
+4/26/2003	8:00	6073	030136	Basic Rigging Rope Rescue (ROBR)	2.00	2.00	2.00	CCAC	CCAC	(412) 237-2500
+4/28/2003	18:30	6003	030223	Basic Rescue Practices	11.00	11.00	11.00	Ross West View EMS	CCAC	(412) 237-2500
+4/28/2003	8:00	1002	030062	ACLS - R	0.00	0.00	8.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+4/29/2003	8:00	1003	030277	PALS	0.00	0.00	16.00	Sewickley Valley Hospital	MC Nash	(412) 749-7120
+4/29/2003	8:00	1003	030307	PALS	0.00	0.00	16.00	BCCC	Vern Smith	(724) 287-8711
+4/30/2003	8:00	1004	030275	PALS-R	0.00	0.00	8.00	Sewickley Valley Hospital	MC Nash	(412) 749-7120
+4/30/2003	8:00	1004	030109	PALS-R	0.00	0.00	8.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+5/1/2003	8:00	1004	030406	PALS-R	0.00	0.00	8.00	St Clair Hospital	CCAC	(412) 237-2500
+5/1/2003	8:00	7001	030361	BTLS	16.00	16.00	16.00	Arnold Ambulance	BCCC	(724) 287-8711
+5/1/2003	8:00	1002	030063	ACLS - R	0.00	0.00	8.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+5/2/2003	18:30	9993	030460	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+5/2/2003	19:00	7001	030494	BTLS	16.00	16.00	16.00	CEM	Bob Seitz	(412) 647-4671
+5/3/2003	8:00	4753	030263	Critical Care for EMS			14.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+5/5/2003	7:00	1044	030514	ACLS for the Experienced Provider	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+5/5/2003	18:30	6093	030137	Basic Vehicle Resc-Tech-DOH (DHVRT)	7.00	7.00	7.00	Monroeville #4	CCAC	(412) 237-2500
+5/7/2003	19:00	4048	030292	Helphing Hands (Assisting Paramedic	0.00	0.00	3.00	Valley Ambulance	MC Nash	(412) 749-7120
+5/7/2003	18:30	1005	030126	AED	4.00	4.00	4.00	CCAC	CCAC	(412) 237-2500
+5/7/2003	19:00	1750	030383	Environmental Emergencies	2.00	2.00	2.00	Latrobe Hospital	Keith Stouffer	(724) 537-1578
+5/8/2003	8:00	1001	030064	ACLS	0.00	0.00	16.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+5/12/2003	18:30	2001	030192	Hazardous Materials R & I	4.00	4.00	4.00	St Vincents College	Bob Grunmeier	(215) 340-8401
+5/12/2003	18:30	6091	030191	Basic Vehicle Resc-Aware-DOH (DHVRA	10.00	10.00	10.00	St Vincent College	Bob Grunmier	(215) 340-8401
+5/12/2003	18:30	601	030198	Dynamics of Emergency Vehicle	4.00	4.00	4.00	St Vincent College	Bob Grunmeier	(215) 430-8401
+5/12/2003	18:30	6081	030201	Respiratory Protect I (REPR)	2.00	2.00	2.00	St Vincent College	Bob Grunmeier	(215) 430-8401
+5/13/2003	19:00	2086	030193	Carbon Monoxide Detector Resp (CORE	1.50	1.50	1.50	St Vincents College	Bob Grunmeier	(215) 340-8401
+5/14/2003	11:00	5251	030167	Scene Size Up & Initial Assessment	1.50	1.50	1.50	Jeannette Hospital	Don Thoma	(724) 527-9341
+5/14/2003	16:30	1014	030266	ACLS Refresher - Accelerated			6.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+5/14/2003	8:00	1001	030308	ACLS	0.00	0.00	16.00	BCCC	Vern Smith	(724) 287-8711
+5/14/2003	8:00	1002	030065	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+5/15/2003	8:00	598	030215	Fire Fighter Survival (SURV)	2.50	2.50	2.50	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+5/15/2003	8:00	1002	030309	ACLS - R	0.00	0.00	8.00	BCCC	Vern Smith	(724) 287-8711
+5/15/2003	18:30	2103	030194	Propane Emergencies Awareness (PPEA	1.00	1.00	1.00	St Vincent College	Bob Grunmeier	(215) 340-8401
+5/16/2003	7:45	1004	030317	PALS-R	0.00	0.00	8.00	Children's Hospital	Prehospital Service	(412) 692-8720
+5/17/2003	8:00	7004	030066	PHTLS-R	0.00	8.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+5/17/2003	8:00	2026	030199	Incident Command	4.00	4.00	4.00	St Vincent College	Bob Grunmeier	(215) 340-8401
+5/17/2003	8:00	503	030200	Emergency Vehicle Driver Training	16.00	16.00	16.00	St Vincent College	Bob Grunmeier	(215) 430-8401
+5/17/2003	8:00	6074	030196	Bus Rescue (BRES)	11.00	11.00	11.00	St Vincent College	Bob Grunmeier	(215) 340-8401
+5/17/2003	8:00	6092	030195	Basic Vehicle Res-Ops-DOH (DHVRO)	11.00	11.00	11.00	St Vincent College	Bob Grunmeier	(215) 430-8401
+5/19/2003	7:00	1002	030508	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+5/20/2003	8:00	1002	030067	ACLS - R	0.00	0.00	8.00	Forbes Regional	Michael Gannon	(412) 359-3923
+5/21/2003	18:30	9993	030454	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+5/21/2003	17:30	1015	030270	PALS Refresher - Accelerated			5.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+5/21/2003	19:00	7500	030224	Bleeding and Shock	2.00	2.00	2.00	CCAC	CCAC	(412) 237-2500
+5/21/2003	8:00	591	030216	High Rise Fire Fighting (HIRI)	1.00	1.00	1.00	Allegheny Co Fire Acad	CCAC	(412) 237-2500
+5/22/2003	8:00	1002	030068	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+5/28/2003	7:45	2524	030041	Neonatal ALS - AHA	0.00	0.00	7.00	Children's Hospital	Prehospital Services	(412) 692-8720
+5/28/2003	8:00	1001	030069	ACLS	0.00	0.00	16.00	Forbes Regional	Michael Gannon	(412) 359-3923
+5/29/2003	7:45	1003	030323	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Services	(412) 692-8720
+5/31/2003	8:00	1003	030420	PALS	0.00	0.00	16.00	Jefferson Hospital	CCAC	(412) 237-2500
+6/1/2003	8:00	1004	030418	PALS-R	0.00	0.00	8.00	Jeffersoon Hospital	CCAC	(412) 237-2500
+6/3/2003	8:00	1002	030070	ACLS - R	0.00	0.00	8.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+6/4/2003	19:00	751	030290	Behavioral Emergencies	1.50	1.50	1.50	Valley Ambulance	MC Nash	(412) 749-7120
+6/4/2003	8:00	1003	030071	PALS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+6/5/2003	7:30	1003	030518	PALS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+6/5/2003	9:00	2530	030412	Pediatrics: Recognition/Mgmt Shock	1.00	1.00	1.00	Jefferson Hospital	CCAC	(412) 237-2500
+6/5/2003	19:00	253	030411	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAC	(412) 237-2500
+6/7/2003	8:00	1014	030273	ACLS Refresher - Accelerated			6.00	Valley Ambulance	MC Nash	(412) 749-7120
+6/11/2003	11:00	3538	030168	Emerg Resp to Terrorism Overview	2.00	2.00	2.00	Jeannete Hospital	Don Thoma	(724) 527-9341
+6/11/2003	8:00	1002	030072	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+6/16/2003	9:00	3033	030359	Bloodborne Pathogens (Western Penns	2.50	2.50	2.50	Western PA Safety Council	Rob Lanious	(412) 856-5400
+6/17/2003	18:30	503	030162	Emergency Vehicle Driver Training	16.00	16.00	16.00	CCAC	CCAC	(412) 237-2500
+6/17/2003	8:00	1029	030358	NSC -- Automated External Defibrill	4.00	4.00	4.00	Western PA Safety Council	Rob Lanious	(412) 856-5400
+6/18/2003	8:00	1001	030073	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+6/18/2003	8:00	1004	030144	PALS-R	0.00	0.00	8.00	Medical Rescue Team South	Adella Mueller	(724) 356-7381
+6/19/2003	7:00	1001	030500	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+6/19/2003	18:00	7908	030151	Pre-Hospital Burn Class Condensed	2.00	2.00	2.00	Butler County Community College	Brian Check	(724) 287-8711
+6/20/2003	8:00	1002	030409	ACLS - R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+6/23/2003	7:00	1001	030501	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+6/23/2003	7:30	1003	030519	PALS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+6/23/2003	8:00	1001	030074	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+6/25/2003	8:00	1001	030075	ACLS	0.00	0.00	16.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+6/29/2003	7:45	1003	030324	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+7/9/2003	11:00	1024	030169	AED Recertification	2.00	2.00	2.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+7/9/2003	7:00	1002	030509	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+7/10/2003	8:00	1001	030110	ACLS	0.00	0.00	16.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+7/16/2003	7:30	1003	030520	PALS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+7/16/2003	8:00	1002	030076	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+7/16/2003	8:00	1002	030141	ACLS - R	0.00	0.00	8.00	Medical Rescue Team South	Adella Mueller	(724) 356-7381
+7/23/2003	16:30	1014	030265	ACLS Refresher - Accelerated			6.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+7/24/2003	7:45	1004	030318	PALS-R	0.00	0.00	8.00	Children's Hospital	Prehospital Service	(412) 692-8720
+7/28/2003	7:00	1002	030510	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+7/29/2003	8:00	1003	030077	PALS	0.00	0.00	16.00	Forbes regional	Michael Gannon	(412) 359-3923
+7/30/2003	7:30	1004	030525	PALS-R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+8/6/2003	17:30	1015	030269	PALS Refresher - Accelerated			5.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+8/7/2003	7:00	1001	030502	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+8/7/2003	8:00	1002	030078	ACLS - R	0.00	0.00	8.00	Forbes Regional	Michael Gannon	(412) 359-3923
+8/13/2003	11:00	500	030170	Ambulance Operations	1.00	1.00	1.00	Jeannete Hospital	Don Thoma	(724) 527-9341
+8/13/2003	12:00	501	030171	Gaining Access	1.00	1.00	1.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+8/13/2003	19:00	9993	030384	Case Review	3.00	3.00	3.00	Latrobe Hospital	Keith Stouffer	(724) 537-1578
+8/13/2003	8:00	1002	030079	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+8/15/2003	7:45	1003	030325	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+8/20/2003	8:00	1001	030080	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+8/21/2003	7:30	1003	030521	PALS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+8/26/2003	8:00	1001	030081	ACLS	0.00	0.00	16.00	Forbes Regional	Michael Gannon	(412) 359-3923
+8/28/2003	8:00	1004	030082	PALS-R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+9/3/2003	8:00	1003	030083	PALS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+9/5/2003	18:30	9993	030459	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+9/6/2003	8:00	1001	030395	ACLS	0.00	0.00	16.00	Jefferson Hospital	CCAC	(412) 237-2500
+9/7/2003	8:00	1002	030396	ACLS - R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+9/10/2003	12:00	1500	030173	Communications	1.00	1.00	1.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+9/10/2003	11:00	2000	030172	Hazardous Materials Overview	1.00	1.00	1.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+9/10/2003	7:45	1003	030326	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+9/10/2003	8:00	1004	030084	PALS-R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+9/12/2003	8:00	1004	030116	PALS-R	0.00	0.00	8.00	Westmoreland Hospital	Michael Gannon	(412) 359-3923
+9/15/2003	7:00	1044	030515	ACLS for the Experienced Provider	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+9/15/2003	8:00	1002	030085	ACLS - R	0.00	0.00	8.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+9/17/2003	8:00	1002	030086	ACLS - R	0.00	0.00	8.00	Allegheny general	Michael Gannon	(412) 359-3923
+9/18/2003	8:00	1004	030111	PALS-R	0.00	0.00	8.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+9/22/2003	7:00	1002	030511	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+9/24/2003	9:00	253	030403	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAC	(412) 237-2500
+9/24/2003	19:00	253	030400	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAC	(412) 237-2500
+9/26/2003	7:45	1004	030319	PALS-R	0.00	0.00	8.00	Children's Hospital	Prehospital Service	(412) 692-8720
+9/26/2003	7:30	1004	030526	PALS-R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+9/27/2003	8:00	7002	030493	BTLS-R	8.00	8.00	8.00	CEM	Bob Seitz	(412) 647-4671
+9/27/2003	8:00	7003	030087	PHTLS	0.00	16.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+9/29/2003	8:00	1002	030088	ACLS - R	0.00	0.00	8.00	Allegheny general	Michael Gannon	(412) 359-3923
+10/1/2003	8:00	1003	030276	PALS	0.00	0.00	16.00	Sewickley Valley Hospital	MC Nash	(412) 749-7120
+10/1/2003	8:00	1002	030089	ACLS - R	0.00	0.00	8.00	Alle Kiski center	Michael Gannon	(412) 359-3923
+10/2/2003	8:00	1004	030274	PALS-R	0.00	0.00	8.00	Sewickley Valley Hospital	MC Nash	(412) 749-7120
+10/3/2003	18:30	9993	030458	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+10/3/2003	8:00	1002	030112	ACLS - R	0.00	0.00	8.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+10/7/2003	8:00	1004	030090	PALS-R	0.00	0.00	8.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+10/8/2003	11:00	3049	030174	MRSA / VRE & Other Nasty Bugs	2.00	2.00	2.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+10/8/2003	8:00	1002	030091	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+10/10/2003	8:00	1003	030117	PALS	0.00	0.00	16.00	Westmoreland Hospital	Michael Gannon	(412) 359-3923
+10/14/2003	18:00	503	030491	Emergency Vehicle Driver Training	16.00	16.00	16.00	CEM	Walt Stoy	(412) 647-4667
+10/14/2003	8:00	1001	030092	ACLS	0.00	0.00	16.00	West Penn Hospital	Michael Gannon	(412) 359-3923
+10/15/2003	18:30	9993	030453	Case Review	3.00	3.00	3.00	Medical Center Beaver	Joe Campbell	(724) 773-3433
+10/15/2003	19:00	4007	030385	Poisoning & Overdose Emergencies	2.00	2.00	2.00	Latrobe Hospital	Kieth Stouffer	(724) 537-1578
+10/15/2003	8:00	1004	030145	PALS-R	0.00	0.00	8.00	Medical Rescue Team South	Adella Mueller	(724) 356-7381
+10/16/2003	8:00	1003	030394	PALS	0.00	0.00	16.00	St Clair Hospital	CCAC	(412) 237-2500
+10/16/2003	8:00	1002	030093	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+10/17/2003	7:45	1003	030327	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+10/17/2003	8:00	1004	030393	PALS-R	0.00	0.00	8.00	St Clair Hospital	CCAC	(412) 237-2500
+10/18/2003	8:00	1001	030496	ACLS	0.00	0.00	16.00	CEM	Dave Hostler	(412) 647-3643
+10/21/2003	8:00	1001	030094	ACLS	0.00	0.00	16.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+10/22/2003	17:30	1015	030268	PALS Refresher - Accelerated			5.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+10/23/2003	7:00	1001	030503	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+10/25/2003	8:00	4069	030489	Advanced Medical Life Support(AMLS)	9.50	9.50	15.50	CEM	Tom Platt	(412) 647-4665
+10/25/2003	8:00	1002	030397	ACLS - R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+10/25/2003	8:00	7002	030095	BTLS-R	8.00	8.00	8.00	Alle Kiski Center	Michael Gannon	(412) 359-3923
+10/26/2003	8:00	1004	030399	PALS-R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+10/27/2003	8:00	1014	030283	ACLS Refresher - Accelerated			6.00	Valley Ambulance	MC Nash	(412) 749-7120
+10/30/2003	8:00	1003	030096	PALS	0.00	0.00	16.00	Forbes Regional	Michael Gannon	(412) 359-3923
+11/3/2003	8:00	1002	030097	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+11/6/2003	8:00	1004	030098	PALS-R	0.00	0.00	8.00	Forbes Regional	Michael Gannon	(412) 359-3923
+11/8/2003	8:00	7004	030272	PHTLS-R	0.00	8.00	8.00	Valley Ambulance	MC Nash	(412) 749-7120
+11/10/2003	7:00	1044	030516	ACLS for the Experienced Provider	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+11/12/2003	11:00	7802	030175	Head Injuries	2.00	2.00	2.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+11/12/2003	7:45	1004	030320	PALS-R	0.00	0.00	8.00	Children's Hospital	Prehospital Service	(412) 692-8720
+11/12/2003	8:00	1003	030099	PALS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+11/12/2003	8:00	1002	030142	ACLS - R	0.00	0.00	8.00	Medical Rescue Team South	Adella Mueller	(724) 356-7381
+11/13/2003	7:30	1003	030522	PALS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+11/14/2003	18:30	7006	030497	PBTLS	8.00	8.00	8.00	CEM	Bob Seitz	(412) 647-4671
+11/15/2003	8:00	7004	030113	PHTLS-R	0.00	8.00	8.00	Canonsburg Hospital	Michael Gannon	(412) 359-3923
+11/17/2003	7:30	1004	030527	PALS-R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+11/18/2003	8:00	1001	030100	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+11/19/2003	7:00	1002	030512	ACLS - R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+11/19/2003	8:00	1002	030101	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+11/20/2003	8:00	1003	030102	PALS	0.00	0.00	16.00	Alle Kiski center	Michael Gannon	(412) 359-3923
+11/21/2003	8:00	1002	030398	ACLS - R	0.00	0.00	8.00	Jefferson Hospital	CCAC	(412) 237-2500
+11/22/2003	17:30	1015	030267	PALS Refresher - Accelerated			5.00	Valley Ambulance	Judith Haluka	(412) 262-5736
+11/24/2003	8:00	1002	030103	ACLS - R	0.00	0.00	8.00	Forbes Regional	Michael Gannon	(412) 359-3923
+11/26/2003	18:30	9993	030452	Case Review	3.00	3.00	3.00	The Medical Center Beacver	Joe Campbell	(724) 773-3433
+12/3/2003	9:00	253	030401	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAC	(412) 237-2500
+12/3/2003	19:00	253	030402	SHHS ALS Skills Review			2.50	Jefferson Hospital	CCAC	(412) 237-2500
+12/5/2003	8:00	1001	030280	ACLS	0.00	0.00	16.00	Valley Ambulance	MC Nash	(412) 749-7120
+12/6/2003	8:00	1002	030279	ACLS - R	0.00	0.00	8.00	Valley Ambulance	MC Nash	(412) 749-7120
+12/10/2003	11:00	1750	030176	Environmental Emergencies	2.00	2.00	2.00	Jeannette Hospital	Don Thoma	(724) 527-9341
+12/10/2003	8:00	1001	030104	ACLS	0.00	0.00	16.00	Allegheny General	Michael Gannon	(412) 359-3923
+12/11/2003	7:00	1001	030504	ACLS	0.00	0.00	16.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+12/12/2003	7:45	1003	030328	PALS	0.00	0.00	16.00	Children's Hospital	Prehospital Service	(412) 692-8720
+12/12/2003	19:00	4741	030386	ALS Skills Review			4.00	Latrobe Hospital	Keith Stouffer	(724) 537-1578
+12/13/2003	8:00	4741	030387	ALS Skills Review			4.00	Latrobe Hospital	Kieth Stouffer	(724) 537-1578
+12/17/2003	7:30	1004	030528	PALS-R	0.00	0.00	8.00	Mercy Hospital	Jim Blosser	(412) 232-5906
+12/17/2003	8:00	1002	030105	ACLS - R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
+12/19/2003	8:00	1004	030106	PALS-R	0.00	0.00	8.00	Allegheny General	Michael Gannon	(412) 359-3923
