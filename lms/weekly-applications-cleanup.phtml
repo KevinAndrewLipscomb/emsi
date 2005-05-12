@@ -37,10 +37,17 @@ if (ConnectSelectDb("localhost","kalipso",Password(),"emsi") != "TRUE")
    }
 else
    {
-   mysql_query("delete from " . $mode . "lms_applicant where batch_id='$batch_id' ")
-      or die("Deletion failed with error: " . mysql_error());
+   $done_timestamp = time();
    //
-   echo "<p><b>Deleted " . mysql_affected_rows() . " rows.</b></p>\n";
+   mysql_query
+      (
+      "update " . $mode . "lms_applicant "
+      .  "set done_timestamp='$done_timestamp' "
+      .  "where batch_id='$batch_id' "
+      )
+      or die("Processing failed with error: " . mysql_error());
+   //
+   echo "<p><b>Marked " . mysql_affected_rows() . " rows done.</b></p>\n";
    }
 ?>
 </td></tr></table>

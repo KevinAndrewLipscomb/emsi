@@ -135,7 +135,7 @@ else
             . '"'
             . "\n";
          }
-      $msg .= "\nTo delete this batch from the applicants table, click here:\n"
+      $msg .= "\nTo mark this batch as DONE, click here:\n"
          .  "http://oscarsystem.com/emsi/lms/" . $mode . "weekly-applications-cleanup.phtml?batch_id=" . $batch_id . "\n";
       //
       }
@@ -148,7 +148,7 @@ else
    //
    // Send the report.
    //
-   $email_addr = 'asst-director@emsi04.org';
+   $email_addr = 'lms-registrar@emsi.org';
    $subject_string = 'Weekly LMS Applications Report';
    $result = mail($email_addr,$subject_string,$msg);
    }
