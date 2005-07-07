@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Basic Recertification Requirements - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/prehosp-pers/basic-recert-reqs-->
+      <!--services/prehosp-pers/basic-recert-reqs-->
+      <!--services/prehosp-pers/basic-recert-reqs-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/prehosp-pers">for Prehospital Personnel/Practitioners</a> &gt; <a class="crumbTrail" href="services/prehosp-pers/basic-recert-reqs">Basic Recertification Requirements-->
+      <!--36"><a name="36-->
+      <h1>Basic Recertification Requirements</h1>
+      <TABLE cellSpacing=0 cellPadding=10 border=1>
+        <TBODY>
+          <TR>
+            <TH>To continue functioning at this level...</TH>
+            <TH align=middle>...you have this long...</TH>
+            <TH align=middle>...to complete this many total hours of con ed...</TH>
+            <TH align=middle>...of which at least this many hours must be in the Medical/Trauma category...</TH>
+          </TR>
+          <TR>
+            <TD>First Responder</TD>
+            <TD align=middle>3 years</TD>
+            <TD align=middle>16</TD>
+            <TD align=middle>8</TD>
+          </TR>
+          <TR>
+            <TD>EMT</TD>
+            <TD align=middle>3 years</TD>
+            <TD align=middle>24</TD>
+            <TD align=middle>12</TD>
+          </TR>
+          <TR>
+            <TD>Paramedic or PHRN<SUP>*</SUP></TD>
+            <TD align=middle>1 year</TD>
+            <TD align=middle>18</TD>
+            <TD align=middle>9</TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <P><SMALL><SUP>*</SUP>Technically, Pennsylvania paramedics and PHRNs are certified for life, but they must complete these requirements to become eligible to receive Medical Command Authorization.&nbsp; An ALS practitioner who loses Medical Command Authorization must either initiate the Downgrade Process or stop practicing entirely.</P>
+      <SMALL></SMALL></SMALL>
+      <H3>Other resources:</H3>
+      <UL>
+        <LI>Check your con ed online using <A href="/resources/tech-help/emsams/index.shtml">EMSAMS</A>. </LI>
+      </UL>
+      <p />
+      <!--services/prehosp-pers/basic-recert-reqs361053services/prehosp-pers/basic-recert-reqs361053-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/web-template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Drill Reimbursement</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+<!-- InstanceBeginEditable name="EMSI Content" -->
+<h1>Drill Reimbursement</h1>
+<p><a href="http://www.health.state.pa.us/ems">PA DOH EMSO</a>, using funds from a <a href="http://www.hrsa.gov/">HRSA</a> grant, is providing limited reimbursements for EMS agencies who participate in certain tabletop or field exercises.</p>
+<p>A full description of this program and required forms, are available here:</p>
+<ul>
+  <li><a href="../../documents/EMS_Reimb-_Exercises.doc"><img src="images/doc.gif" width="16" height="16" align="middle"> Drill Reimbursement Program description</a> (<u>note deadlines</u>)
+    <li><a href="../../documents/Exercise_Reimbursement_Invoice.doc"><img src="images/doc_000.gif" width="16" height="16" align="middle"> Drill Reimbursement Program invoice form</a>*
+    <li><a href="http://www.irs.gov/pub/irs-pdf/fw9.pdf">IRS Form W-9 (PDF) Request for Taxpayer Identification Number and Certification (with instructions)</a>*</li>
+</ul>
+<p>*Complete these two forms only, and submit them to EMSI.</p>
+<!-- InstanceEndEditable -->
+<!--#include  virtual="/template-suffix.ssi"-->
+</body>
+<!-- InstanceEnd --></html>

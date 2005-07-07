@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Researchers - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/researchers-->
+      <!--for Researchers-->
+      <!--services/researchers-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/researchers">for Researchers-->
+      <!--86"><a name="86-->
+      <h1>Services and Resources for Researchers</h1>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Our Medical Advisory Committee (MAC) reviews proposed research and makes recommendations to the Department <B>in accordance with the regulations and processes shown on the right</B>.</TD>
+            <TD vAlign=top align=left><P><SMALL><A href="http://www.pacode.com/secure/data/028/chapter1001/s1001.161.html"><U>28 Pa. Code §§ 1001.161</U><BR>
+                Research in Prehospital Care </A></P>
+              <P><a href="/documents/rc-2002-034.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Submission Process for EMS Research...</a></P>
+              <P><A href="http://www.pabulletin.com/secure/data/vol32/32-34/1485.html"><U>32 Pa.B. 4205</U><BR>
+                Emergency Medical Services Patient Care Report Data Elements, Confidential and Nonconfidential Data Elements and Essential Patient Information for Transmission for Patient Care</A></P>
+              <P><A href="/resources/process/importing-emscan-data-into-msaccess">Process for importing EMScan data into Microsoft Access 2002</A></P>
+              <P><A href="../../resources/Specialcodes.shtml">Special codes</A> (MCDs, hospitals, medical command facilities, etc)</P>
+              </SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--services/researchers861131services/researchers861131-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

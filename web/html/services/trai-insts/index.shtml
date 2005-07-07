@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Training Institutes - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/trai-insts-->
+      <!--for Training Institutes-->
+      <!--services/trai-insts-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/trai-insts">for Training Institutes-->
+      <!--85"><a name="85-->
+      <h1>Services and Resources for Training Institutes</h1>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left>The services and resources that we make available to Con Ed Sponsors are also available to Training Institutes.</TD>
+            <TD vAlign=top align=left><SMALL>
+              <P><A 
+href="../con-ed-sponsors/index.shtml">Service and Resources for Con Ed Sponsors</A></P>
+              </SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>» </TD>
+            <TD vAlign=top align=left>We distribute EMSOF money to Training Institutes in our region.</TD>
+            <TD vAlign=top align=left><SMALL><A 
+href="../../programs/emsof">EMSOF Program</A></small></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--services/trai-insts851129services/trai-insts851129-->
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right><P>&nbsp;</P></TD>
+            <TD vAlign=top align=left>First Responder  classes registered  in Pennsylvania must utilize the Pennsylvania First Responder 2002 Curriculum </TD>
+            <TD vAlign=top align=left><SMALL>
+              <P><a href="documents/PennsylvaniaFirstResponder2002curriculum.doc">Pennsylvania First Responder 2002 Curriculum </a></P>
+            </SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>&nbsp; </TD>
+            <TD vAlign=top align=left>EMT classes registered in Pennsylvania must utilize the EMT - Basic National Standard Curriculum </TD>
+            <TD vAlign=top align=left><SMALL><a href="http://www.nhtsa.dot.gov/people/injury/ems/pub/emtbnsc.pdf">EMT - Basic National Standard Curriculum </a></small></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>&nbsp;</TD>
+            <TD vAlign=top align=left>Paramedic classes registered in Pennsylvania must utilize the Emergency Medical Technician Paramedic: National Standard Curriculum (EMT-P) Release of 1998 Curriculum </TD>
+            <TD vAlign=top align=left><a href="http://www.nhtsa.dot.gov/people/injury/ems/nsc.htm#ptor">National Standard Curriculum (EMT-P) Release of 1998 Curriculum </a></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

@@ -1,13 +1,128 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - Services and Resources - Ambulance Services</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Ambulance Services - Emergency Medical Service Institute</title>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/amb-svc-->
+      <!--for Ambulance Services-->
+      <!--services/amb-svc-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/amb-svc">for Ambulance Services-->
+      <!--60"><a name="60-->
+      <h1>Services and Resources for Ambulance Services</h1>
+      <SMALL>
+      <UL>
+        <LI>Air Ambulance Services
+        <LI>Advanced Life Support Ambulance Services
+        <LI>Basic Life Support Ambulance Services
+        <LI>Quick Response Services </LI>
+      </UL>
+      </SMALL>
+      <HR>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>» </TD>
+            <TD vAlign=top align=left>We distribute EMSOF money to EMS services in our region.</TD>
+            <TD vAlign=top align=left><SMALL><A href="../../programs/emsof/">EMSOF Program</A></SMALL>
+              <P></P>
+              <P><A href="http://www.surveymonkey.com/s.asp?u=71426357068"><SMALL>Annual Survey of EMS Services</SMALL></A> </P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left>We accept and process EMS patient care report filings from ambulance services for calls taken by ambulances based in our region.</TD>
+            <TD vAlign=top align=left><P><SMALL><A href="PCRSoftware.shtml">PCR software</A></SMALL></P>
+              <P><A href="mailto:tripsheets@emsi.org"><SMALL>Email the EMSI Tripsheet Coordinator</SMALL></A></P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left>We provide paper EMS patient care report forms.</TD>
+            <TD vAlign=top align=left><P><SMALL><a href="../../documents/pcr.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Sample paper PCR</a></SMALL></P>
+              <P><A href="mailto:tripsheets@emsi.org"><SMALL>Email the EMSI Tripsheet Coordinator</SMALL></A></P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left>We provide ambulance services with data summary reports.</TD>
+            <TD vAlign=top align=left><SMALL><A href="mailto:tripsheets@emsi.org">Email the EMSI Tripsheet Coordinator</A></SMALL> </TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left>We help ambulance services to meet licensure, certification, recertification, recognition, and registration requirements.</TD>
+            <TD vAlign=top align=left></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right></TD>
+            <TD vAlign=top align=left colSpan=2><BLOCKQUOTE>
+                <TABLE cellSpacing=0 cellPadding=10 align=center border=0>
+                  <TBODY>
+                    <TR>
+                      <TD align=middle><SMALL><A href="https://app1.health.state.pa.us/emso/login.asp">Online EMS Applications Entry system</A></SMALL></TD>
+                      <TD align=middle><SMALL><a href="http://www.dsf.health.state.pa.us/health/lib/health/ems/ambulance_licensure_manual.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Ambulance / ALS Squad Service Licensure Manual</a></SMALL></TD>
+                      <TD align=middle><p><SMALL><a href="documents/ALSBLS.XLS"><img src="../../images/pdf.gif" align="middle" border="0" /></a> <a href="http://www.pabulletin.com/secure/data/vol33/33-39/1904.html">Required Ground and Air Ambulance Equipment and Supplies </a></SMALL></p>
+                      </TD>
+                    </TR>
+                    <TR>
+                      <TD align=middle><SMALL><a href="../../documents/pa-doh-emso-air-svc-pol-doc-checklist.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> </a><a href="../../documents/pa-doh-emso-ground-svc-pol-doc-checklist.pdf"> Ground Service Policies and Documents Checklist</a></SMALL></TD>
+                      <TD align=middle><SMALL><a href="../../documents/qrs-overview.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> </a><a href="../../documents/pa-doh-emso-air-svc-pol-doc-checklist.pdf">Air Service Policies and Documents Checklist</a></SMALL></TD>
+                      <TD align=middle><SMALL><a href="../../documents/mod-ambulance-fleet-form.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /></a> <a href="../../documents/qrs-overview.pdf">QRS recognition manual and application form</a></SMALL></TD>
+                    </TR>
+                    <TR>
+                      <TD align=middle><SMALL><a href="../../documents/mod-ambulance-fleet-form.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> </a><a href="../../documents/mod-ambulance-fleet-form.pdf">Modification of Ambulance Fleet / Temporary Change of Vehicle form (standalone)</a></SMALL></TD>
+                      <TD align=middle><SMALL><a href="http://www.pacode.com/secure/data/028/partVIItoc.html">Pennsylvania Code Title 28. Health and Safety </a></SMALL></TD>
+                      <TD align=middle><p><SMALL><A href="../../documents/sample-policies.doc">Sample policies</A></SMALL></p>
+                      </TD>
+                    </TR>
+                    <TR>
+                      <TD align=middle><p><SMALL><a href="http://www.dsf.health.state.pa.us/health/cwp/view.asp?A=170&Q=237303">Emergency Preparedness Links </a></SMALL></p></TD>
+                      <TD align=middle><SMALL></SMALL></TD>
+                      <TD align=middle><p>&nbsp;</p></TD>
+                    </TR>
+                  </TBODY>
+                </TABLE>
+                  <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                </BLOCKQUOTE></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left>We apprise medical command facilities and ALS ambulance services in the region when an EMT-paramedic or prehospital registered nurse has had medical command authorization removed by an ALS service medical director for an ALS ambulance service in the region.</TD>
+            <TD vAlign=top align=left></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <P>Other resources:</P>
+      <UL>
+        <LI><A href="http://www.surveymonkey.com/s.asp?u=71426357068">Annual Survey of EMS Services</A>
+        <LI>
+          <FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+            <INPUT type=hidden value="approved NEAR drugs NEAR als NEAR ambulance NEAR services" name=keywords>
+            <INPUT type=hidden value=33 name=volume>
+            <INPUT type=hidden value=01/01/2003 name=sdate>
+            Approved Drugs for ALS Ambulance Services
+            <INPUT type=submit value=Go! name=send>
+          </FORM>
+        <LI><A href="http://www.dsf.health.state.pa.us/health/lib/health/ems/emsib_13.pdf">EMS Vehicle Accident Report form</A>
+        <LI><A href="../../resources/tech-help/fred/index.shtml">FRED </A>
+        <LI><A href="HIPAAGuidance.shtml">HIPAA guidance</A>
+        <LI><a href="../../documents/hospital-ed-status-policy.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Hospital Emergency Department Status Policy</a>
+        <LI><A href="https://epatch.state.pa.us/Home.jsp">PATCH (Pennsylvania Access To Criminal History)</A>
+        <LI>
+          <FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+            <INPUT type=hidden value="prehospital AND practitioners AND scope AND practice" name=keywords>
+            <INPUT type=hidden value=33 name=volume>
+            <INPUT type=hidden value=01/01/2003 name=sdate>
+            Prehospital Practitioners Scope of Practice Notices
+            <INPUT type=submit value=Go! name=send>
+          </FORM>
+        </LI>
+      </UL>
+      <UL>
+        <LI><A href="../../resources/Specialcodes.shtml">Special codes</A>&nbsp;(MCDs, hospitals, medical command facilities, etc) </LI>
+      </UL>
+      <p />
+      <!--services/amb-svc601085services/amb-svc601085-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

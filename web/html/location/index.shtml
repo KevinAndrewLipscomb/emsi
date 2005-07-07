@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Location - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--location-->
+      <!--location-->
+      <!--location">Location-->
+      <!--26"><a name="26-->
+      <h1>Our Location</h1>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top width="50%">We are located on the Pittsburgh/<B>Wilkinsburg</B> line&nbsp;...
+              <UL>
+                <LI><B>not</B> Downtown
+                <LI><B>not</B> Mt. Oliver / Southside </LI>
+              </UL>
+              Hints:
+              <UL>
+                <LI>We are in a modern three-story brown brick office building behind a Sunoco gas station.
+                <LI>Our building is a west wing of the LifeCare hospital (formerly Forbes Metro Hospital).
+                <LI>The signs outside our parking lot say, "Metropolitan Professional Offices". </LI>
+              </UL>
+              <P>&nbsp;</P></TD>
+            <TD vAlign=top width="50%"><img src="/images/headquarters.jpg" height=278 width=430 border=2 /></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+ 
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top width="50%"><P><A 
+href="http://mappoint.msn.com/(nh2pb555udaotn455o3nozzh)/map.aspx?L=USA&amp;C=40.44633%2c-79.89226&amp;A=7.16667&amp;P=|40.44633%2c-79.89226|1|221+Penn+Ave%2c+Pittsburgh%2c+PA+15221|L1|">Click here for a full set of map controls, and for driving directions.</A></P>
+              <BLOCKQUOTE>
+                <P><A 
+href="http://mappoint.msn.com/(nh2pb555udaotn455o3nozzh)/map.aspx?L=USA&amp;C=40.44633%2c-79.89226&amp;A=7.16667&amp;P=|40.44633%2c-79.89226|1|221+Penn+Ave%2c+Pittsburgh%2c+PA+15221|L1|"><img src="/images/static-map.gif" height=320 width=405 border=2 /></A> </P>
+              </BLOCKQUOTE></TD>
+            <TD vAlign=top width="50%">The following <A 
+href="http://www.portauthority.org">Port Authority</A> bus routes stop right in front of LifeCare Hospital, next door to us:
+              <UL>
+                <LI>67A (Monroeville)
+                <LI>67C (Laketon Road)
+                <LI>67E (Greensburg Pike)
+                <LI>67F (Trafford)
+                <LI>67J (Lincoln Hwy)
+                <LI>71C (Wilkinsburg - E.Lib.)
+                <LI>W (Wilkins Ave) </LI>
+              </UL>
+              <P>Also, Wilkinsburg Station (on the East Bus Way) is a 0.4 mile walk from our office.&nbsp; From the station, walk along the busway toward Edgewood / Swissvale, go down the stairs at Penn Avenue, then double back along Penn Avenue toward our building. </P></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--location261035location261035-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

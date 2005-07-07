@@ -1,0 +1,45 @@
+<?php
+//
+// $Id$
+//
+function BeValidEmailAddress
+   (
+   $Email,
+   $mode = ""
+   )
+{
+   //Do the basic Reg Exp Matching for simple validation
+   if (eregi("^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]", $Email)) { 
+           return FALSE; 
+   }
+   
+   //split the Email Up for Server validation
+   @list($Username, $Domain) = explode("@",$Email);
+   
+   //If you get an mx record then this is a valid email domain
+   if(getmxrr($Domain, $MXHost)) {
+       return TRUE;
+       if($mode) { echo "$Domain<BR>getmxrr worked."; }
+   }
+   else {    
+       //else use the domain given to try and connect on port 25
+       //if you can connect then it's a valid domain and that's good enough
+       if(checkdnsrr($Domain.'.', "A")) {
+           $ip = gethostbyname($Domain);
+
+           //This is to counteract the effects of the Verisign .com .net unregistered email grab
+           if($ip == "64.94.110.11") {
+               if($mode) { echo "$Domain<BR>is invalid. Verisign returned."; }
+               return FALSE;
+           }
+           else {
+               if($mode) { echo "$Domain<BR>fsockopen worked. Verisign wasn't the IP."; }
+               return TRUE;
+           }
+       }
+       else {
+           return FALSE; 
+       }
+   }
+}
+?>

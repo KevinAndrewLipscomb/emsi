@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for PSAPs - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/psaps-->
+      <!--for PSAPs-->
+      <!--services/psaps-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/psaps">for PSAPs-->
+      <!--88"><a name="88-->
+      <h1>Services and Resources for PSAPs</h1>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We are empowered to advise PSAPs, and municipal and county governments, as to EMS resources available for dispatching and recommended dispatching criteria.</TD>
+            <TD vAlign=top align=left><SMALL>
+              <P><A href="http://hospitalstatus.emsi.org/">Hospital Status Monitor</A></P>
+              <P><a href="/documents/hospital-ed-status-policy.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Hospital Emergency Department Status Policy</a></P>
+              <P><A href="/resources/tech-help/fred/index.shtml">FRED</A></P>
+              </SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <P>Other resources:</P>
+      <UL>
+        <LI><A href="http://app1.health.state.pa.us/EMSEventSystem/">Safety Event Reporting System</A> </LI>
+      </UL>
+      <p />
+      <!--services/psaps881135services/psaps881135-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Medical Directors - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/medical-directors-->
+      <!--services/medical-directors-->
+      <!--services/medical-directors-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/medical-directors">for Medical Directors-->
+      <!--75"><a name="75-->
+      <h1>Services and Resources for Medical Directors</h1>
+      <UL>
+        <SMALL>
+        <LI>Air Ambulance Medical Directors
+        <LI>ALS Service Medical Directors
+        <LI>Medical Command Facility Medical Directors </SMALL></LI>
+      </UL>
+      <HR>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We develop and implement a regional EMS quality improvement program to monitor the delivery of EMS.</TD>
+            <TD vAlign=top align=left><SMALL><A href="/qi/index.shtml">Quality Improvement program</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We develop (in consultation with the regional EMS council&#8217;s medical advisory committee) and implement regional protocols for the triage, treatment, transport and transfer of patients to the most appropriate facility.</TD>
+            <TD vAlign=top align=left><FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+                <INPUT type=hidden value="approved NEAR drugs NEAR als NEAR ambulance NEAR services" name=keywords>
+                <INPUT type=hidden value=33 name=volume>
+                <INPUT type=hidden value=01/01/2003 name=sdate>
+                <SMALL>Approved Drugs for ALS Ambulance Services</SMALL><BR>
+                <INPUT type=submit value=Go! name=send>
+              </FORM>
+              <FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+                <INPUT type=hidden value="prehospital AND practitioners AND scope AND practice" name=keywords>
+                <INPUT type=hidden value=33 name=volume>
+                <INPUT type=hidden value=01/01/2003 name=sdate>
+                <SMALL>Prehospital Practitioners Scope of Practice Notices</SMALL><BR>
+                <INPUT type=submit value=Go! name=send>
+              </FORM>
+              <SMALL>
+              <P><a href="/documents/hospital-ed-status-policy.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Hospital Emergency Department Status Policy</a></P>
+              </SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We apprise medical command facilities and ALS ambulance services in the region when an EMT-paramedic or prehospital registered nurse has had medical command authorization removed by an ALS service medical director for an ALS ambulance service in the region.</TD>
+            <TD vAlign=top align=left></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--services/medical-directors751109services/medical-directors751109-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

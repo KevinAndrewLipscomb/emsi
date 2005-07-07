@@ -1,13 +1,126 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - Services and Resources for Prehospital Personnel/Practitioners</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Prehospital Personnel/Practitioners - Emergency Medical Service Institute</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 13px;
+	font-weight: bold;
+}
+.style2 {font-size: 13px}
+-->
+</style>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/prehosp-pers-->
+      <!--for Prehospital Personnel/Practitioners-->
+      <!--services/prehosp-pers-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/prehosp-pers">for Prehospital Personnel/Practitioners-->
+      <!--30"><a name="30-->
+      <h1>Services and Resources for Prehospital Personnel/Practitioners</h1>
+      <SMALL>
+      <UL>
+        <LI>Ambulance Attendants
+        <LI>First Responders
+        <LI>EMTs
+        <LI>EMT-paramedics
+        <LI>Prehospital Registered Nurses
+        <LI>Health Professional Physicians </LI>
+      </UL>
+      </SMALL>
+      <HR>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We assure the reasonable availability of training programs for emergency medical technicians and EMT-paramedics.</TD>
+            <TD vAlign=top align=left><SMALL><A href="con-ed/index.shtml"><B>Con Ed</B></A></SMALL> </TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We provide for input from local emergency medical services providers, in decisions which include, but are not limited to, membership on its governing body.</TD>
+            <TD vAlign=top align=left><A href="../../staff/index.shtml"><SMALL>Contact our Staff</SMALL></A>
+              <P><A href="http://app1.health.state.pa.us/EMSEventSystem/"><SMALL>Safety Event Reporting System</SMALL></A></P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We develop and implement additional educational programs.</TD>
+            <TD vAlign=top align=left><SMALL><A href="http://www.emsupdate.com">EMS Update Conference</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We develop (in consultation with the regional EMS council&#8217;s medical advisory committee) and implement regional protocols for the triage, treatment, transport and transfer of patients to the most appropriate facility.</TD>
+            <TD vAlign=top align=left><FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+                <INPUT type=hidden value="prehospital AND practitioners AND scope AND practice" name=keywords>
+                <INPUT type=hidden value=33 name=volume>
+                <INPUT type=hidden value=01/01/2003 name=sdate>
+                <SMALL>Prehospital Practitioners Scope of Practice Notices</SMALL><BR>
+                <INPUT type=submit value=Go! name=send>
+              </FORM>
+              <SMALL>
+              <P><a href="../../documents/hospital-ed-status-policy.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Hospital Emergency Department Status Policy</a></P>
+              </SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We help prehospital personnel to meet licensure, certification, recertification, recognition, registration and continuing education requirements.</TD>
+            <TD vAlign=top align=left></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right></TD>
+            <TD vAlign=top align=left colSpan=2><DIV align=right>
+                <TABLE cellSpacing=0 cellPadding=10 border=0>
+                  <TBODY>
+                    <TR>
+                      <TD vAlign=center align=middle colSpan=2><span class="style1"><SMALL><A href="con-ed/index.shtml">Con Ed</A></SMALL> </span></TD>
+                      <TD vAlign=center align=middle><span class="style2"><SMALL><A href="cert-written-exams/index.shtml">Certification written examinations</A></SMALL> </span></TD>
+                      <TD vAlign=center align=middle colSpan=2><span class="style2"><SMALL><a href="../../documents/medical-command-authorization-form.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Medical Command Authorization Form</a></SMALL></span></TD>
+                    </TR>
+                    <TR>
+                      <TD vAlign=center align=middle><span class="style2"><FONT color=#c0c0c0><A href="reciprocity/index.shtml"><SMALL>Reciprocity ("Certification By Endorsement")</SMALL></A></FONT> </span></TD>
+                      <TD vAlign=center align=middle colSpan=3><A href="reinstatement/index.shtml" class="style2"><SMALL>Reinstatement process</SMALL></A> </TD>
+                      <TD vAlign=center align=middle><span class="style2"><SMALL><a href="../../documents/att-policy.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Recertification / Reauthorization for Active Duty Military</a></SMALL></span></TD>
+                    </TR>
+                    <TR>
+                      <TD vAlign=center align=middle><A href="http://www.health.state.pa.us/HPA/EMS/prehosp/default.htm" class="style2"><SMALL>Prehospital Personnel Manual</SMALL></A> </TD>
+                      <TD vAlign=center align=middle colSpan=3><span class="style2"><A href="../../documents/phrn-application-process.pdf"><SMALL><a href="/documents/phrn-application-process.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> PHRN Application Process</a></SMALL></A> </span></TD>
+                      <TD vAlign=center align=middle><span class="style2"><SMALL><A href="md-to-hpmd/index.shtml">MD to HP Physician process</A></SMALL> </span></TD>
+                    </TR>
+                    <TR>
+                      <TD vAlign=center align=middle><span class="style2"><A href="http://www.dsf.health.state.pa.us/health/lib/health/EMS/medicexam.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /></a> <a href="http://www.dsf.health.state.pa.us/health/lib/health/EMS/medicexam.pdf">Pennsylvania National Registry Paramedic exam schedule </a></span></TD>
+                      <TD vAlign=center align=middle colSpan=3><span class="style2"><A href="http://www.dsf.health.state.pa.us/health/lib/health/ems/bls_protocols_2004.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /></a> <a href="http://www.dsf.health.state.pa.us/health/lib/health/ems/bls_protocols_2004.pdf">Pennsylvania Statewide Basic Life Support Protocols </a></span></TD>
+                      <TD vAlign=center align=middle><span class="style2"><A href="http://www.dsf.health.state.pa.us/health/lib/health/ems/ems_ib_5.pdf"><img src="../../images/pdf.gif" align="middle" border="0" /> Antidotes for Agents of Chemical Terrorism</a></span></TD>
+                    </TR>
+                  </TBODY>
+                </TABLE>
+              </DIV></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Our Regional Medical Director considers and processes appeals from any individual whose medical command authorization has been denied by an ALS service medical director.</TD>
+            <TD vAlign=top align=left><A href="http://www.pacode.com/secure/data/028/chapter1003/s1003.28.html"><SMALL><U>28 Pa. Code §§ 1003.28</U><BR>
+              Medical Command Authorization</SMALL></A></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We accept, process, and attempt to resolve discrepancies involving continuing education credits.</TD>
+            <TD vAlign=top align=left><A href="con-ed-discrepancies/index.shtml"><SMALL>Resolving Con Ed Discrepancies</SMALL></A></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <P>Other resources:</P>
+      <UL>
+        <LI><A href="../../documents/act-59-ems-dnr.ppt"><a href="/documents/act-59-ems-dnr.ppt"><img src="../../images/ppt.gif" align="middle" border="0" /> Act 59 (EMS DNR) powerpoint presentation</a></A>
+        <LI><A href="http://www.dsf.health.state.pa.us/health/lib/health/ems/emsib_13.pdf">EMS Vehicle Accident Report form</A>
+        <LI><A href="http://hospitalstatus.emsi.org/">Hospital Status Monitor</A>
+        <LI><A href="http://www.hrm.state.pa.us/oahrm/cwp/view.asp?a=139&amp;Q=98381&amp;papowerPNavCtr=|#30685">Line Of Duty Death and Disability Benefits</A> </LI>
+        <LI><a href="http://www.nremt.org/about/nremt_news.asp">National Registry of Emergency Medical Technicians website</a></LI>
+      </UL>
+      <p />
+      <!--services/prehosp-pers301041services/prehosp-pers301041-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

@@ -1,0 +1,151 @@
+<!-- BEGIN EMSI STANDARD TEMPLATE PREFIX -->
+<table width="80%">
+   <tr> 
+      <td valign=top width=1>
+         <img src="/images/logo_left.gif" align="center" valign="middle" width="113" height="99" />
+      </td>
+      <td align="left" valign="top" width=1>
+         <img src="/images/logo_right.gif" align="left" valign="top" width="135" height="100" />
+      </td>
+      <td nowrap valign=top> 
+         <p>
+		    <small>
+			   221-2500 Penn Avenue </small>
+            <a href="/location/index.shtml"><b><span style="font-variant: small-caps"><small>(map)</small></span></b></a>
+		    <small>
+               <br>
+               Pittsburgh, PA 15221-2166<br>
+               tel:+1-412-242-7322<br>
+               tel:+1-866-827-EMSI (3674)<br>
+               fax:+1-412-242-7434<br>
+               <a href="mailto:info@emsi.org">info@emsi.org</a>
+            </small>
+         </p>
+      </td>
+      <td>
+         <table>
+            <tr>
+               <td align="center" nowrap valign="middle" colspan="2">
+                  
+
+<!-- INSERT SEARCH FORM HERE -->&nbsp;
+
+
+               </td>
+	         </tr>
+	         <tr>
+	            <td align="center" valign="top">
+                <p align="right">
+	            <small><small>To read PDF files<br>
+                on this site...</small></small><br>
+                </p>
+	            </td>
+	            <td align="center" valign="top">
+                <a href="http://www.adobe.com/products/acrobat/readermain.html"><img src="/images/getacro.gif" alt="Get Acrobat Reader" border="2" width="88" height="31" align="left" /></a>
+	            </td>
+	         </tr>
+	      </table>
+	   </td>
+   </tr>
+</table>
+
+<table width="80%" cellspacing="0">
+   <tr>
+      <td valign="top" width="12%">
+         <table border="0" cellpadding="10">
+            <tr>
+               <td align="center">
+                  
+                  <small><a href="/">Home</a></small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center">
+                  <small>
+                     <a href="/about/index.shtml">About</a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/services/index.shtml">
+                        SERVICES
+                     </a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/programs/index.shtml">
+                        Programs
+                     </a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/protocols/index.shtml">
+                        Protocols
+                     </a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/policies/index.shtml">
+                        Policies
+                     </a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/tasking/index.shtml">Tasking</a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/partners/index.shtml">Partners</a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/staff/index.shtml">Staff</a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>
+                     <a href="/corporate/index.shtml">Corporate</a>
+                  </small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center"> 
+                  <small>Site map</small>
+               </td>
+            </tr>
+            <tr> 
+               <td align="center" bgcolor="#E8E8E8"> 
+               <a href="/qi/index.shtml" target="_blank"> 
+               <img src="/images/Picture2.JPG" height="69" width="72" align="top" vspace="-2" border="2" />
+               </a>
+               <a href="/qi/index.shtml" target="_blank"> 
+               <br>
+               <i><small><small><b>Quality Dashboard</b></small></small></i></a>
+               </td>
+            </tr>
+         </table>
+      </td>
+      <td align="left" valign="top" width="88%">
+<!-- END EMSI STANDARD TEMPLATE PREFIX -->

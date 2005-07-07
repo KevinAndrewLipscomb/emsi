@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+title>Web-based Con Ed - Emergency Medical Service Institute
+</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+<
+      <!--services/prehosp-pers/web-con-ed-->
+      <!--Web-based Con Ed-->
+      <!--services/prehosp-pers/web-con-ed-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/prehosp-pers">for Prehospital Personnel/Practitioners</a> &gt; <a class="crumbTrail" href="services/prehosp-pers/web-con-ed">Web-based Con Ed-->
+      <!--46"><a name="46-->
+      <h1>Web-based Con Ed</h1>
+      <TABLE cellSpacing=0 cellPadding=5 border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top><P align=right>»</P></TD>
+            <TD vAlign=top><B>Some</B> (not all) of the classes on the commonwealth's CentreLearn Learning Management System (LMS) are approved for Con Ed.&nbsp; The LMS is <B>free</B> for Pennsylvania EMS practitioners. </TD>
+            <TD vAlign=top><SMALL><B><A 
+href="/services/prehosp-pers/lms/index.shtml">LMS</A></B></SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top><P align=right>»</P></TD>
+            <TD vAlign=top><P>Pennsylvania recognizes the EMInet line of Internet-based continuing education courses.&nbsp; To receive credit for EMInet course completions, practioners must use the Continuing Education By Endorsement process.</P>
+              <TABLE cellSpacing=0 cellPadding=5 width="80%" align=center border=1>
+                <TBODY>
+                  <TR>
+                    <TD width="100%"><P align=center><U><SPAN style="FONT-VARIANT: small-caps"><B>Warning!&nbsp; Read This!</B></SPAN></U></P>
+                      <OL>
+                        <LI>
+                          <P align=left>EMInet is not the same as EMSI.&nbsp; EMSI is a nonprofit regional council.&nbsp; EMInet is a line of commercial online training products.</P>
+                        <LI>
+                          <P align=left>EMInet is offered by a company called HealthStream.&nbsp; To use EMInet, you must establish an account with HealthStream.</P>
+                        <LI>
+                          <P align=left>Once you establish an account with HealthStream, you should go to <B>EMInet.com</B> for all your training.&nbsp; Do <B>not</B> take courses branded "HealthStream EMS".&nbsp; They are not yet suitable for use in Pennsylvania.</P>
+                        <LI>
+                          <P align=left>The credit hours listed for an EMInet course are often <B>split</B> between the Medical/Trauma category and the Other category.&nbsp; To find out how they are split, you should look the course number up in <A 
+href="/resources/tech-help/emsams/index.shtml">EMSAMS</A>.</P>
+                        <LI>
+                          <P align=left>You must submit a Continuing Education By Endorsement form to EMSI for each EMInet course that you complete.</P>
+                        </LI>
+                      </OL>
+                      <P align=center><SPAN style="FONT-VARIANT: small-caps"><B>If you don't understand this, call EMSI.</B></SPAN></P></TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <P>NOTE:&nbsp; Pennsylvania does <B>not</B> recognize Internet-based con-ed from myWebCE.com nor from any other Internet-based source than the LMS and EMInet.</P>
+              <P>For more information about obtaining con ed using <B>EMInet</B>, visit their web site and contact the EMSI Regional Education Coordinator.</P></TD>
+            <TD vAlign=top><SMALL>
+              <P><A href="http://www.healthstream.com/ems">HealthStream.com<BR>
+                (Establish an account here but <B>do not</B> take courses here.)</A></P>
+              <P><A href="http://www.eminet.com"><B>EMInet.com<BR>
+                (Take approved courses here.)</SMALL></B></A></P>
+              <SMALL>
+              <P><a href="/documents/app-h.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Continuing Education By Endorsement form</a></P>
+              <P><A href="../../../staff/reim/index.shtml">Regional Education Coordinator </A> </P>
+              </SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <H3>Other resources:</H3>
+      <UL>
+        <LI><A href="/services/prehosp-pers/con-ed-discrepancies/index.shtml">Resolving Con Ed Discrepancies</A> </LI>
+      </UL>
+      <p />
+      <!--services/prehosp-pers/web-con-ed461065services/prehosp-pers/web-con-ed461065-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>About this web site - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--About this web site-->
+      <!--about-the-site">About this web site-->
+      <!--38"><a name="38-->
+      <h1>About this web site</h1>
+      <H3>Development philosophy</H3>
+      <BLOCKQUOTE>
+        <P>A good philosophy for a modern service organization is that its web site is a critical component of its success, and that its web site should always be considered to be under development.&nbsp; There is little point in placing "Under Construction" banners on the site's pages, because constant construction is implied.</P>
+        <P>In March 2003, the pace of this site's development picked up drastically, and has stayed high ever since.&nbsp; In that time, changes have occurred in two major phases:</P>
+        <H4>Phase I - Foundation build-out based on charter, bylaws, policies, regulations, and statutes.</H4>
+        <BLOCKQUOTE>
+          <P>The web site was expanded to reflect the products, programs, and services offered by the organization as dictated by the relatively immutable documents listed above.&nbsp; Determination of each element was made by conducting thorough document reviews and with an abundance of input from employees and other stakeholders about existing processes and perceived or measured customer needs.</P>
+        </BLOCKQUOTE>
+        <H4>Phase II - Recursive updates based on measured demand</H4>
+        <BLOCKQUOTE>
+          <P>This phase never ends.&nbsp; The web site gets revised according to what the organization measures, and therefore knows, about the true needs of its customers.&nbsp; New measurement methods are constantly devised.</P>
+        </BLOCKQUOTE>
+      </BLOCKQUOTE>
+      <H3>Statistics</H3>
+      <BLOCKQUOTE>
+        <P>Of particular value during Phase II are easily-gathered statistics showing page hits and searches.&nbsp; For our web site, that information is provided by our <a href="../webalizer/index.html">WebAlizer</a> and <a href="../modlogan/index.html">ModLogAn</a> tools.</P>
+      </BLOCKQUOTE>
+      <p />
+      <!--about-the-site381057about-the-site381057-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

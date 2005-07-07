@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Protocols - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--protocols-->
+      <!--protocols">Protocols-->
+      <!--15"><a name="15-->
+      <h1>Protocols</h1>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left><P>Basic Life Support (BLS) <FONT face="Times New Roman">&#9658;</FONT></P>
+              <P>All services in the region are held to the Pennsylvania Statewide BLS Protocols.&nbsp; Along with these protocols, the commonwealth also provides Guidelines that the region or any of its services may adopt as protocol.</P></TD>
+            <TD vAlign=top align=left><SMALL><A 
+href="http://www.dsf.health.state.pa.us/health/lib/health/ems/bls_protocols_2004.pdf">Statewide BLS Protocols and Guidelines</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right><P>»</P></TD>
+            <TD vAlign=top align=left><P>Advanced Life Support (ALS) <FONT face="Times New Roman">&#9658;</FONT></P>
+              <P>In the EMSI region, ALS protocols are developed and maintained by the Medical Command Facilities (MCFs).&nbsp; Each ALS Ambulance Service is held to the ALS protocols of its chosen MCF.</P>
+              <P>EMSI is happy to provide copies of, or links to, an MCF's ALS protocols whenever possible.</P></TD>
+            <TD vAlign=top align=left><SMALL>
+              <p><A 
+href="http://www.upmc.edu/prehospitalcare/Protocols/default.htm">UPMC</A></p>
+              <p><a href="http://www.pitt.edu/~roth1/Protocols/">City of Pittsburgh Bureau of EMS</a></p>
+              </SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <p />
+      </div>
+      </div>
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>
