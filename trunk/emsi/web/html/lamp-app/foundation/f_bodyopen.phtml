@@ -1,0 +1,21 @@
+<?php
+//
+// $Id$
+//
+function BodyOpen
+   (
+   $focus_target = "",
+   $text_color = "",
+   $link_color = "",
+   $visited_link_color = "",
+   $background_color = "#ffffff"
+   )
+   {
+   echo "<body text=\"$text_color\" link=\"$link_color\" vlink=\"$visited_link_color\" bgcolor=\"$background_color\" ";
+   if ($focus_target)
+      {
+      echo "onload=\"if(document.forms.length>0){document.$focus_target.focus();document.$focus_target.select();}\" ";
+      }
+   echo ">\n";
+   }
+?>

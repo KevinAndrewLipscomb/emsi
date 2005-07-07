@@ -1,0 +1,43 @@
+<?php
+//
+// $Id$
+//
+function FoundValid
+   (
+   $cert_num,
+   $first_name,
+   $last_name,
+   $mode = ""
+   )
+   {
+   $saved_error_level = error_reporting(E_ALL);
+   //
+   $value = FALSE;
+   $cert_level_code = "";
+   //
+   $result = mysql_query
+      (
+      "select cert_level_code from " . $mode . "valid_for_lms "
+      .  "   where short_cert_num='$cert_num'"
+      .  "      and ((first_name='$first_name') or (first_name like '$first_name %')) "
+      .  "      and last_name='$last_name' "
+      )
+      or die("FoundValid query failed with error:  " . mysql_error());
+   //
+   if (mysql_num_rows($result))
+      {
+      $value = TRUE;
+      extract(mysql_fetch_array($result));
+      }
+   else
+      {
+      $value = FALSE;
+      }
+   error_reporting($saved_error_level);
+   return array
+      (
+      "value" => $value,
+      "cert_level_code" => $cert_level_code
+      );
+   }
+?>

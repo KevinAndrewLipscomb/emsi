@@ -1,0 +1,22 @@
+<?
+//
+// $Id$
+//
+function ConnectSelectDb
+   (
+   $hostname,
+   $username,
+   $password,
+   $database_name
+   )
+   {
+   $saved_error_level = error_reporting(E_ALL);
+   $success = FALSE;
+   if (@mysql_connect($hostname,$username,$password))
+      {
+      $success = @mysql_select_db($database_name);
+      }
+   error_reporting($saved_error_level);
+   return $success;
+   }
+?>

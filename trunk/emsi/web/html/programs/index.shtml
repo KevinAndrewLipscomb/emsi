@@ -1,13 +1,32 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>Emergency Medical Service Institute - Programs</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Programs - Emergency Medical Service Institute</title>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--programs-->
+      <!--programs-->
+      <!--programs">Programs-->
+      <!--22"><a name="22-->
+      <h1>Programs</h1>
+      <UL>
+        <LI><A href="drill-reimbursement/index.shtml"><STRONG>Drill Reimbursement</STRONG></A><BR>
+          We&nbsp;verify participation in, and process reimbursement applications for, certain tabletop and field exercises.<BR>
+          <STRONG>&nbsp;</STRONG>
+        <LI><U><B><A href="emsof/index.shtml">EMSOF</A><BR>
+          </B></U>We distribute money that the state allocates to our region from the Emergency Medical Service Operating Fund.<BR>
+&nbsp;
+        <LI><B><A name=QI></A><A href="/qi/index.shtml">Quality Improvement</A><BR>
+          </B>We develop and implement a regional EMS quality improvement program to monitor the delivery of EMS.<BR>
+&nbsp;
+        <LI><B><A name=RuralAed></A><A href="rural-aed/index.shtml">Rural AED Grant Program</A><BR>
+          </B>We distribute RAED money to successful applicants in our region.<BR>
+&nbsp;</LI>
+      </UL>
+      <p />
+      <!--programs221027programs221027-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

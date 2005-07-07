@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>MD to HP Physician Process - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/prehosp-pers/md-to-hpmd-->
+      <!--MD to HP Physician Process-->
+      <!--services/prehosp-pers/md-to-hpmd-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/prehosp-pers">for Prehospital Personnel/Practitioners</a> &gt; <a class="crumbTrail" href="services/prehosp-pers/md-to-hpmd">MD to HP Physician Process-->
+      <!--64"><a name="64-->
+      <h1>MD to HP Physician process</h1>
+      <TABLE cellSpacing=0 cellPadding=5 border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top>We process applications from physicians wishing to attain the DOH Health Profession Physician certification, which allows the physician to function as a member an ambulance crew.
+              <P>To begin the process, contact the EMSI Reciprocity Coordinator (right).
+              <P>NOTE:&nbsp; Parts of this process cannot be conducted online.&nbsp; For instance, the Student Application form must be completed with a Number 2 pencil, and must be fed manually into an OpScan&#8482; machine.&nbsp; Where appropriate, we have provided other parts online so that you can start completing them now.
+              <P><B>The definitive way to get this process rolling is to contact the EMSI Reciprocity Coordinator.</B></P></TD>
+            <TD vAlign=top><FORM action=http://www.pacode.com/secure/search_results.asp? method=post>
+                <INPUT 
+type=hidden value='"health professional physician"' name=searchstring>
+                <INPUT 
+type=hidden value=28 name=titles>
+                <INPUT type=submit value="Relevant regulations" name=send>
+              </FORM>
+              <P><SMALL><A href="mailto:reciprocity@emsi.org">EMSI Reciprocity Coordinator</A></SMALL></P>
+              <P><SMALL><a href="/documents/app-i.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Instructions for Completing Student Application Form</a> (See note, left)</SMALL></P>
+              <P><SMALL><a href="/documents/student-app-opscan-form.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Student Application Opscan Form</a></SMALL> <SMALL>(Completed sample -- see note, left)</SMALL> </P>
+              <P><SMALL><a href="/documents/medical-command-authorization-form.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Medical Command Authorization Form</a> (recommended)</SMALL></P>
+              <P><SMALL><a href="/documents/app-j.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Criminal History Reporting Form</a></SMALL></P>
+              <P><SMALL>Also submit copies of your medical license, CPR card, and any BLS or ALS certifications you may have.</SMALL></P></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--services/prehosp-pers/md-to-hpmd641093services/prehosp-pers/md-to-hpmd641093-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

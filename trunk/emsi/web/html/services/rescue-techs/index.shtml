@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Rescue Technicians - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/rescue-techs-->
+      <!--for Rescue Technicians-->
+      <!--services/rescue-techs-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/rescue-techs">for Rescue Technicians-->
+      <!--59"><a name="59-->
+      <h1>Services and Resources for Rescue Technicians</h1>
+      <SMALL>
+      <UL>
+        <LI>Basic Rescue Practices Technicians
+        <LI>Basic Vehicle Rescue Technicians
+        <LI>Special Vehicle Rescue Technicians </LI>
+      </UL>
+      </SMALL>
+      <HR>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We help prehospital personnel to meet licensure, certification, recertification, recognition, registration and continuing education requirements.</TD>
+            <TD vAlign=top align=left><SMALL><A 
+href="/services/prehosp-pers/cert-written-exams/index.shtml">Certification written examinations</A></SMALL>
+              <P><SMALL><a href="/documents/vrsr-manual.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Voluntary Rescue Service Recognition manual and application form</a></SMALL> </P></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <P>Other resources:</P>
+      <UL>
+        <LI><A href="http://app1.health.state.pa.us/EMSEventSystem/">Safety Event Reporting System</A> </LI>
+      </UL>
+      <p />
+      <!--services/rescue-techs591083services/rescue-techs591083-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

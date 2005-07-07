@@ -1,13 +1,156 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - Staff</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Staff - Emergency Medical Service Institute</title>
+<style type="text/css">
+<!--
+.style1 {color: #CCCCCC}
+.style2 {color: #000000}
+-->
+</style>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--staff-->
+      <!--Staff-->
+      <!--staff">Staff-->
+      <!--25"><a name="25-->
+      <h1>Staff directory</h1>
+      <SMALL>
+      <P>Open for business weekdays 8:30am-5:00pm except holidays.</P>
+      </SMALL>
+      <TABLE cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD><DIV align=left>Executive Director and General Counsel</DIV></TD>
+            <TD>Tom McElree, Esq, NREMT-P</TD>
+            <TD><SMALL><A href="mailto:director@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="mcelree/index.shtml">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Deputy Director</DIV></TD>
+            <TD>Kevin Lipscomb, BS, NREMT-P</TD>
+            <TD><SMALL><A href="mailto:deputy-director@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="lipscomb/index.shtml">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Regional Medical Director</DIV></TD>
+            <TD>Paul Paris, MD, FACEP</TD>
+            <TD><SMALL><A href="mailto:md@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A 
+href="http://newsbureau.upmc.com/Bios/BioParis.htm">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD>Associate Regional Medical Director </TD>
+            <TD>Rick Wadas, MD </TD>
+            <TD><span class="style2"><SMALL><a href="mailto:md2@emsi.org">email</a></SMALL></span></TD>
+            <TD><span class="style1 style2"><SMALL><a href="wadas/index.shtml">details</a></SMALL></span></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Accountant</DIV></TD>
+            <TD>Gloria Arrington</TD>
+            <TD><SMALL><A href="mailto:accountant@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="arrington/index.shtml">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Regional Clinical Coordinator</DIV></TD>
+            <TD>Joseph Ponko, MBA, EMT</TD>
+            <TD><SMALL><A href="mailto:jponko@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="ponko/index.shtml">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Regional Operations Coordinator</DIV></TD>
+            <TD>Amos P. Cameron, AS, EMT-P</TD>
+            <TD><SMALL><A href="mailto:operations@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="cameron/index.shtml">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD>Regional Education Coordinator </TD>
+            <TD>Jeff Reim, EMT-P </TD>
+            <TD><SMALL><A href="mailto:education@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><a href="reim/index.shtml">details</a></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Regional Licensing Manager </DIV></TD>
+            <TD>Scott Crawford, EMT-P</TD>
+            <TD><SMALL><A href="mailto:scrawford@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="crawford/index.shtml">details</A></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left> Clinical Education Specialist </DIV></TD>
+            <TD>Jim Husar, EMT-P </TD>
+            <TD><SMALL><A href="mailto:jhusar@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><a href="husar/index.shtml">details</a></SMALL></TD>
+          </TR>
+          <TR>
+            <TD><DIV align=left>Education and Information Specialist </DIV></TD>
+            <TD>Jessika Brown, NREMT-B </TD>
+            <TD><SMALL><A href="mailto:jbrown@emsi.org">email</A></SMALL></TD>
+            <TD><SMALL><A href="brown/index.shtml">details</A></SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <H2><A name=CTCs></A>County Training Coordinators</H2>
+      <TABLE cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD width="33%">Allegheny</TD>
+            <TD width="34%">Curt Neill (EMSOF only)</TD>
+            <TD width="33%"><A href="mailto:cneill@baldwinems.com">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Armstrong</TD>
+            <TD width="34%">William Hamilton, EMT-P</TD>
+            <TD width="33%"><A href="mailto:hamiltonb@acmh.org">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Beaver</TD>
+            <TD width="34%">James Campese, EMT-P</TD>
+            <TD width="33%"><A href="mailto:jim.campese@ccbc.cc.pa.us">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Butler</TD>
+            <TD width="34%">Jay Grinnell, EMT-P</TD>
+            <TD width="33%"><A href="mailto:harems@zbzoom.net">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Fayette</TD>
+            <TD width="34%">Ted Mellors, EMT-P</TD>
+            <TD width="33%"><A href="mailto:tam5@psu.edu">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Greene</TD>
+            <TD width="34%">Jeffrey Marshall</TD>
+            <TD width="33%"><A href="mailto:gclepc@greenepa.net">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Indiana</TD>
+            <TD width="34%">Danny Sacco, EMT-P</TD>
+            <TD width="33%"><A href="mailto:dsacco@indianarmc.org">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Lawrence</TD>
+            <TD width="34%">Tina Marshall, EMT-P</TD>
+            <TD width="33%"><A 
+href="mailto:emslawrencecounty@earthlink.net">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Washington</TD>
+            <TD width="34%">Ronald Sicchitano, EMT-P</TD>
+            <TD width="33%"><A 
+href="mailto:sicchitr@co.washington.pa.us">email</A></TD>
+          </TR>
+          <TR>
+            <TD width="33%">Westmoreland</TD>
+            <TD width="34%">Donald Thoma, EMT-P</TD>
+            <TD width="33%"><A 
+href="mailto:director900@yahoo.com">email</A></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--staff251033staff251033-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

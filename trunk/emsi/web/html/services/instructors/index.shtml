@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for EMS/EMT Instructors - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/instructors-->
+      <!--for EMS/EMT Instructors-->
+      <!--services/instructors-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/instructors">for EMS/EMT Instructors-->
+      <!--83"><a name="83-->
+      <h1>Services and Resources for EMS/EMT Instructors</h1>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>EMSI assists its region's EMS Instructors (and candidates).</TD>
+            <TD vAlign=top align=left><SMALL><A href="http://www.pacode.com/secure/data/028/chapter1003/s1003.23a.html"><U>28 Pa. Code §§ 1003.23a:</U><BR>
+              EMS instructor certification</A></SMALL>
+              <P><SMALL><A href="http://www.naemse.org">National Association of EMS Educators</A></SMALL></P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Initial certification<SMALL>
+              <P>For initial certification as an EMS Instructor, you must complete an approved instructor course from an accredited Training Institute.&nbsp; The course should cover all the objectives of the National Guidelines For Educating EMS Instructors.&nbsp; As part of the course, the candidate's performance as an instructor must be monitored for 12 hours by a certified instructor, and that instructor must complete a written evaluation of the candidate's performance, along with an indication of the number of hours that the instructor candidate was monitored.</P>
+              <P>&nbsp;</P>
+              </SMALL></TD>
+            <TD vAlign=top align=left><p><SMALL><A href="http://www.nhtsa.dot.gov/people/injury/ems/Instructor/instructor_ems/2002_national_guidelines.htm">2002 National Guidelines For Educating EMS Instructors</A> </SMALL></p>
+            <p>&nbsp;</p>
+            <p><SMALL><a href="documents/RequirementsforInitialcertificationasanEMSInstructor.doc">Required documentation for initial EMT Instructor certification </a></SMALL></p></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Renewal of EMS Instructor <SMALL>
+              <P>To renew your EMS Instructor certification, you must complete an approved EMS Instructor Update.</P>
+              <P>An approved EMS Instructor Update is available on the LMS.&nbsp; Other approved updates may be available elsewhere.</P>
+              <P>&nbsp;</P>
+            </SMALL></TD>
+            <TD vAlign=top align=left><SMALL>
+              <P><A href="http://www.dsf.health.state.pa.us/health/lib/health/ems/ems_ib_4.pdf">EMS Information Bulleting #4:<BR>
+                EMS Instructor Update Requirement</A></P>
+              <P><A href="../prehosp-pers/lms/index.shtml">Learning Management System (LMS)</A></P>
+              <P><a href="documents/EMSInstructorRecertificationprocess.doc">Required documentation for EMT Instructor renewal </a></P>
+            </SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--services/instructors831125services/instructors831125-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

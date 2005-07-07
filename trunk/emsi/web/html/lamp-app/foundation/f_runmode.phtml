@@ -1,0 +1,15 @@
+<?
+//
+// $Id$
+//
+function RunMode($the_php_self)
+   {
+   $saved_error_level = error_reporting(E_ALL);
+   //
+   $run_mode = "";
+   if (substr(strrchr($the_php_self,"/"),0,3) == "/x_") $run_mode = "x_";
+   //
+   error_reporting($saved_error_level);
+   return $run_mode;
+   }
+?>

@@ -1,13 +1,96 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - About the Learning Management System (LMS)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>LMS - Emergency Medical Service Institute</title>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/prehosp-pers/lms-->
+      <!--LMS-->
+      <!--services/prehosp-pers/lms-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/prehosp-pers">for Prehospital Personnel/Practitioners</a> &gt; <a class="crumbTrail" href="services/prehosp-pers/lms">LMS-->
+      <!--32"><a name="32-->
+      <h1>About the Learning Management System</h1>
+      <TABLE cellSpacing=0 cellPadding=10 border=1>
+        <TBODY>
+          <TR>
+            <TD align=left width="20%"><U><B>Step 1:&nbsp; Register</B></U></TD>
+            <TD align=middle width="60%"><U><B>Step 2:&nbsp; USE IT!</B></U></TD>
+            <TD align=right width="20%"><U><B>Other resources</B></U></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top><SMALL>Register for the LMS by completing and submitting this form.
+              <FORM action=http://www.emsi.org/lamp-app/lms-applicant/perform-registration.php method=post>
+                <TABLE cellSpacing=0 cellPadding=5 border=0>
+                  <TBODY>
+                    <TR>
+                      <TD noWrap align=right><SMALL><SMALL>First name:</SMALL></SMALL></TD>
+                      <TD><INPUT maxLength=15 size=10 name=first_name></TD>
+                    </TR>
+                    <TR>
+                      <TD noWrap align=right><SMALL><SMALL>Last name:</SMALL></SMALL></TD>
+                      <TD><INPUT maxLength=20 size=12 name=last_name></TD>
+                    </TR>
+                    <TR>
+                      <TD noWrap align=right><SMALL><SMALL>Email address:</SMALL></SMALL></TD>
+                      <TD><INPUT maxLength=60 size=15 name=email_address></TD>
+                    </TR>
+                    <TR>
+                      <TD noWrap align=right><SMALL><SMALL>Certification #:</SMALL></SMALL></TD>
+                      <TD><INPUT maxLength=6 size=6 name=cert_num></TD>
+                    </TR>
+                    <TR>
+                      <TD vAlign=top noWrap align=right><SMALL><SMALL>Note:</SMALL></SMALL></TD>
+                      <TD vAlign=top><SMALL><SMALL>If you are registered in CETAC as an Instructor, your LMS account will have access to the Instructor Update.&nbsp; Further action on your part is <U>no longer required</U>.</SMALL></SMALL></TD>
+                    </TR>
+                  </TBODY>
+                </TABLE>
+                <P align=center>
+                  <INPUT type=submit value=Submit>
+                </P>
+              </FORM>
+              </SMALL></TD>
+            <TD vAlign=top><P align=center>Once you receive your username and password, visit...</P>
+              <H2 align=center><U><B><A 
+href="http://www.pahealthinfo.net">www.PaHealthInfo.net</A></B></U></H2>
+              <P>&nbsp;</P>
+              <TABLE cellSpacing=0 cellPadding=5 width="100%" border=3>
+                <TBODY>
+                  <TR>
+                    <TD><H4 align=center><U>NOTE</U></H4>
+                      <SMALL>
+                      <P>When you complete a con-ed course on <A 
+href="http://www.PaHealthInfo.net">www.PaHealthInfo.net</A>, the system will give you a <B><I>completion certificate</I></B>.&nbsp; You can find your completion certificate in the PROFILE / My Certificates area. You must fax the completion certificate to <STRONG>your</STRONG> regional EMS council to get credit for taking the course.</P>
+                      </SMALL></TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+              <P>&nbsp;</P>
+              <SMALL>
+              <P><B>Here's some terminology you should know, especially if you call for help:</B></P>
+              <DL>
+                <DT><I>LMS</I>
+                <DD>Learning Management System.&nbsp; A generic name for any self-paced instructional web site.<BR>
+&nbsp;
+                <DT><I>PaHealthInfo.net</I>
+                <DD>The web address of the LMS provided by the Pennsylvania Department of Health.<BR>
+&nbsp;
+                <DT><I>EMSEd</I>
+                <DD>The company that the PA DOH has hired to run PaHealthInfo.net.<BR>
+&nbsp;
+                <DT><I>CentreLearn</I>
+                <DD>The technology that EMSed has chosen to implement PaHealthInfo.net. </DD>
+              </DL>
+              </SMALL>
+              <P>&nbsp;</P></TD>
+            <TD vAlign=top align=right><A href="/services/prehosp-pers/web-con-ed/index.shtml">Web-based Con Ed</A></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--services/prehosp-pers/lms321045">View Responses (1)</a></td>
+  <td align="center" width="50%" class="tableMenu"><a href="services/prehosp-pers/lms321045-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

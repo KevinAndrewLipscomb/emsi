@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/web-template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Hospital Emergency Department Partners</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+<!-- InstanceBeginEditable name="EMSI Content" -->
+<h1>Hospital Emergency Department Partners</h1>
+<p>The following 41 hospitals in our region operate Emergency Departments: </p>
+<table cellspacing="0" cellpadding="5">
+  <tr> County &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hospital &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trauma rating</tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="20">Allegheny (20)</td>
+    <td valign="top"></td>
+    <td valign="top">Allegheny General</td>
+    <td valign="top"></td>
+    <td valign="top">Level I</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Allegheny Valley</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Braddock</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Children's</td>
+    <td valign="top"></td>
+    <td valign="top">Pediatric Level I</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Forbes Regional</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Jefferson</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Magee-Womens</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">McKeesport</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Mercy Hospital Of Pittsburgh</td>
+    <td valign="top"></td>
+    <td valign="top">Level I</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Ohio Valley</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Passavant</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Presbyterian</td>
+    <td valign="top"></td>
+    <td valign="top">Level I</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Sewickley Valley</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Shadyside</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">South Side</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">St Clair</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">St Margaret</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Suburban General</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">VA Oakland</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">West Penn</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top">Armstrong (1)</td>
+    <td valign="top"></td>
+    <td valign="top">Armstrong County Memorial</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="2">Beaver (2)</td>
+    <td valign="top"></td>
+    <td valign="top">Aliquippa</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Medical Center Beaver</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="3">Butler (3)</td>
+    <td valign="top"></td>
+    <td valign="top">Butler Memorial</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Passavant Cranberry</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">VA Butler</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="3">Fayette (3)</td>
+    <td valign="top"></td>
+    <td valign="top">Brownsville</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Highlands</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Uniontown</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top">Greene (1)</td>
+    <td valign="top"></td>
+    <td valign="top">Greene County Memorial</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top">Indiana (1)</td>
+    <td valign="top"></td>
+    <td valign="top">Indiana</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="2">Lawrence (2)</td>
+    <td valign="top"></td>
+    <td valign="top">Ellwood City</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Jameson Memorial</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="3">Washington (3)</td>
+    <td valign="top"></td>
+    <td valign="top">Canonsburg</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Monongahela Valley</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Washington</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="5"></td>
+  </tr>
+  <tr>
+    <td valign="top" rowspan="5">Westmoreland (5)</td>
+    <td valign="top"></td>
+    <td valign="top">Frick</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Jeannette</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Latrobe</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Monsour Medical Center</td>
+    <td valign="top"></td>
+    <td valign="top"></td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td valign="top">Westmoreland Regional</td>
+  </tr>
+</table>
+<!-- InstanceEndEditable -->
+<!--#include  virtual="/template-suffix.ssi"-->
+</body>
+<!-- InstanceEnd --></html>

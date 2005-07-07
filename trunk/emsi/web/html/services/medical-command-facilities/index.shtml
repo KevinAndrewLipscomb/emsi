@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>for Medical Command Facilities - Emergency Medical Service Institute</title>
+</head>
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--services/medical-command-facilities-->
+      <!--for Medical Command Facilities-->
+      <!--services/medical-command-facilities-->
+      <!--services">Services</a> &gt; <a class="crumbTrail" href="services/medical-command-facilities">for Medical Command Facilities-->
+      <!--76"><a name="76-->
+      <h1>Services and Resources for Medical Command Facilities</h1>
+      <TABLE cellSpacing=0 cellPadding=10 width="80%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We facilitate the integration of medical command facilities into the regional EMS system.</TD>
+            <TD vAlign=top align=left><SMALL><A href="https://app1.health.state.pa.us/emso/login.asp">EMSAMS</A></SMALL>
+              <P><SMALL><A href="/resources/tech-help/fred/index.shtml">FRED</A></SMALL></P>
+              <P><SMALL><a href="/documents/med-cmd-fac-reaccred-checklist.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Medical Command Facility Reaccreditation Checklist</a></SMALL></P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We develop (in consultation with the regional EMS council&#8217;s medical advisory committee) and implement regional protocols for the triage, treatment, transport and transfer of patients to the most appropriate facility.</TD>
+            <TD vAlign=top align=left><FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+                <INPUT type=hidden value="approved NEAR drugs NEAR als NEAR ambulance NEAR services" name=keywords>
+                <INPUT type=hidden value=33 name=volume>
+                <INPUT type=hidden value=01/01/2003 name=sdate>
+                <SMALL>Approved Drugs for ALS Ambulance Services</SMALL><BR>
+                <INPUT type=submit value=Go! name=send>
+              </FORM>
+              <FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+                <INPUT type=hidden value="prehospital AND practitioners AND scope AND practice" name=keywords>
+                <INPUT type=hidden value=33 name=volume>
+                <INPUT type=hidden value=01/01/2003 name=sdate>
+                <SMALL>Prehospital Practitioners Scope of Practice Notices</SMALL><BR>
+                <INPUT type=submit value=Go! name=send>
+              </FORM>
+              <SMALL>
+              <P><a href="/documents/hospital-ed-status-policy.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Hospital Emergency Department Status Policy</a></P>
+              </SMALL></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We apprise medical command facilities and ALS ambulance services in the region when an EMT-paramedic or prehospital registered nurse has had medical command authorization removed by an ALS service medical director for an ALS ambulance service in the region.</TD>
+            <TD vAlign=top align=left></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>We approve medical command physicians.</TD>
+            <TD vAlign=top align=left><SMALL><A href="https://app1.health.state.pa.us/emso/login.asp">EMSAMS</A></SMALL></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <P>Other resources:</P>
+      <UL>
+        <LI><A href="http://app1.health.state.pa.us/EMSEventSystem/">Safety Event Reporting System</A> </LI>
+      </UL>
+      <p />
+      <!--services/medical-command-facilities761111services/medical-command-facilities761111-->
+      <!--#include  virtual="/template-suffix.ssi"-->
+</body>
+</html>

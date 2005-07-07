@@ -1,58 +1,138 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>Emergency Medical Service Institute - Home</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="KeyWords" content="EMERGENCY MEDICAL SERVICE INSTITUTE, EMSI, EMS, PENNSYLVANIA, REGIONAL EMS COUNCIL,
-OFFICE, EMSOF, PARAMEDIC, 911, EMT, MEDIC, MEDICAL, AMBULANCE, RESCUE, SQUAD, QRS, PREHOSPITAL, HOSPITAL,
-HOSPITAL STATUS, EMSAMS, FRED, METRICS, MEASUREEMS, QI, LEARNING MANAGEMENT SYSTEM, LMS, HEALTH, FIRST AID, TRAINING, QUALITY, COMMUNICATIONS, CONTINUING EDUCATION, CON ED, RECIPROCITY,
-LICENSE, LICENSURE, CERTIFICATION, PITTSBURGH, ALLEGHENY, ARMSTRONG, BEAVER, BUTLER, FAYETTE, GREENE,
-INDIANA, LAWRENCE, WASHINGTON, WESTMORELAND, SOUTHWEST, PA, PENNSYLVANIA, CRASH, ACCIDENT, TRAUMA,
-GUNSHOT, CARDIAC, DEFIBRILLATE, DEFIBRILLATION, LIFEPAK, INTUBATE, INTUBATION, EMERGENCY, SCANNER,
-SCANNING, NONPROFIT, CHARITY, DONATION">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Home - Emergency Medical Service Institute</title>
+<style type="text/css">
+<!--
+.style1 {font-size: 13px}
+-->
+</style>
 </head>
-
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="/description-and-mission.html" -->
-<!--#include virtual="/hot-links.html" -->
-<!--#include virtual="/news.html" -->
-<table width="100%">
-   <tr>
-      <td valign="top" align="left">
-         <table border="0" width="100%">
-            <tr>
-               <td width="1%"><big><big><b><i>Meta</i><span style="font-variant: small-caps; font-weight:700">Navigation</span></b></big></big></td>
-               <td width="99%"><hr color="#B3CBFF" size="5"></td>
-            </tr>
-         </table>
-      </td>
-   </tr>
-   <tr>
-      <td align="center" nowrap>
-         <p><a href="http://www.health.state.pa.us/ems"><b>&#9650;<br>State<br>
-            EMS Office</b></a>
-         <p><a href="http://webserver.health.state.pa.us/health/cwp/view.asp?A=170&amp;Q=203381&amp;pp=3"><b>
-            &#9668; Other Regional EMS Councils &#9658;
-            </b></a><br>
-         <a href="http://webserver.health.state.pa.us/health/cwp/view.asp?A=170&Q=203514&pp=3">[map]</a>
-      </td>
-   </tr>
-   <tr>
-      <td align=right>
-         <p align="left">&nbsp;</p>
-         <p align="left">
-         <small>
-            <small>
-               <i>
-               <a href="about-the-site.shtml">
-               About this web site</a></i>
-            </small>
-         </small>
-         </p>
-      </td>
-   </tr>
-</table>
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=left><TABLE width="100%" border=0>
+                <TBODY>
+                  <TR>
+                    <TD width="1%"><BIG><BIG><SPAN style="FONT-WEIGHT: 700; FONT-VARIANT: small-caps">Welcome&nbsp;to&nbsp;EMSI</SPAN></BIG></BIG></TD>
+                    <TD width="99%"><HR color=#b3cbff SIZE=5>
+                    </TD>
+                  </TR>
+                </TBODY>
+              </TABLE></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=left><BLOCKQUOTE>
+                <P><SMALL>EMSI is the Regional EMS Council serving <B>Pittsburgh</B> and surrounding counties including Allegheny, Armstrong, Beaver, Butler, Fayette, Greene, Indiana, Lawrence, Washington, Westmoreland.</SMALL></P>
+                <center><small><i>Join the <a href=emsi-direct.shtml><b>EMSI-Direct yahoogroup</b></a> to get announcements first-hand!</i></small></center>
+              </BLOCKQUOTE></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=left><TABLE width="100%" border=0>
+                <TBODY>
+                  <TR>
+                    <TD width="1%"><BIG><BIG><SPAN style="FONT-WEIGHT: 700; FONT-VARIANT: small-caps">Our&nbsp;Mission</SPAN></BIG></BIG></TD>
+                    <TD width="99%"><HR color=#b3cbff SIZE=5>
+                    </TD>
+                  </TR>
+                </TBODY>
+              </TABLE></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=left><BLOCKQUOTE>
+                <P><SMALL>To promote a reduction in morbidity and mortality in the prehospital care setting in this 10-county region.&nbsp; <SMALL><I><A href="description-and-mission-elaborated/index.shtml">More...</A></I></SMALL></SMALL></P>
+              </BLOCKQUOTE></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      </div>
+      </div>
+      <div class="wobject">
+        <div class="wobjectItem" id="wobjectId2"><a name="2"></a>
+          <TABLE cellSpacing=0 width="100%" valign="top">
+            <TBODY>
+              <TR>
+                <TD vAlign=top align=left><TABLE width="100%" border=0>
+                    <TBODY>
+                      <TR>
+                        <TD width="1%"><BIG><BIG><SPAN 
+style="FONT-WEIGHT: 700; FONT-VARIANT: small-caps">Hot&nbsp;Links</SPAN></BIG></BIG></TD>
+                        <TD width="99%"><HR color=#b3cbff SIZE=5>
+                        </TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE></TD>
+              </TR>
+              <TR>
+                <TD align=middle><TABLE borderColor=#ffffff cellSpacing=2 cellPadding=10 width="75%" border=1>
+                    <TBODY>
+                      <TR>
+                        <TD vAlign=center borderColor=#ff9955 align=middle width="33%" bgColor=#ffccaa 
+border><B><A href="programs/recruitment-retention/pa-ems-certs/"><B>Initial Certification</B><BR>
+                          <SMALL>classes &amp; exams</SMALL></A></TD>
+                        <TD borderColor=#ff9955 align=middle width="34%" bgColor=#ffccaa border><B><A 
+href="services/prehosp-pers/con-ed/index.shtml">CON&nbsp;ED</A></B> </TD>
+                        <TD vAlign=center borderColor=#ff9955 align=middle width="33%" bgColor=#ffccaa 
+border><A href="resources/tech-help/emsams/index.shtml"><B>EMSAMS</B></A> </TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE>
+                  <TABLE borderColor=#ffffff cellSpacing=2 cellPadding=10 width="75%" border=1>
+                    <TBODY>
+                      <TR>
+                        <TD vAlign=center borderColor=#ff9955 align=middle width="25%" bgColor=#ffccaa 
+border><B><A href="services/prehosp-pers/lms/index.shtml">Learning Management System</A></B> </TD>
+                        <TD vAlign=center borderColor=#ff9955 align=middle width="25%" bgColor=#ffccaa 
+border><B><A href="http://www.emsupdate.com">EMS Update conference</A></B> </TD>
+                        <TD vAlign=center borderColor=#ff9955 align=middle width="25%" bgColor=#ffccaa 
+border><p><B><a href="http://hospitalstatus.emsi.org">Hospital Status Monitor</a></B></p>
+                        </TD>
+                        <TD vAlign=center borderColor=#ff9955 align=middle width="25%" bgColor=#ffccaa 
+border><B><A href="resources/tech-help/fred/index.shtml">FRED</A></B> </TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE></TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+        </div>
+      </div>
+      <div class="wobject">
+        <div class="wobjectItem" id="wobjectId7"><a name="7"></a>
+          <TABLE width="100%">
+            <TBODY>
+              <TR>
+                <TD vAlign=top align=left><TABLE width="100%" border=0>
+                    <TBODY>
+                      <TR>
+                        <TD width="1%"><BIG><BIG><B><I>Meta</I><SPAN 
+style="FONT-WEIGHT: 700; FONT-VARIANT: small-caps">Navigation</SPAN></B></BIG></BIG></TD>
+                        <TD width="99%"><HR color=#b3cbff SIZE=5>
+                        </TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE></TD>
+              </TR>
+              <TR>
+                <TD noWrap align=center><P><A href="http://www.health.state.pa.us/ems"><B>&#9650;<BR>
+                    State<BR>
+                    EMS Office</B></A>
+                  <P><A 
+href="http://webserver.health.state.pa.us/health/cwp/view.asp?A=170&amp;Q=203381&amp;pp=3"><B>&#9668; Other Regional EMS Councils &#9658; </B></A><BR>
+                    <A 
+href="http://webserver.health.state.pa.us/health/cwp/view.asp?A=170&amp;Q=203514&amp;pp=3">[map]</A> </P></TD>
+              </TR>
+              <TR>
+                <TD align=right><P align=left>&nbsp;</P>
+                  <P align=left><SMALL><SMALL><I><A href="about-the-site/">About this web site</A></I> </SMALL></SMALL></P></TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+        </div>
+      </div>
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
+</html>

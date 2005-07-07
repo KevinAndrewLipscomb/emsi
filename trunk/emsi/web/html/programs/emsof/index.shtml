@@ -1,13 +1,174 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - EMSOF</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>EMSOF - Emergency Medical Service Institute</title>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--programs/emsof-->
+      <!--programs">Programs</a> &gt; <a class="crumbTrail" href="programs/emsof">EMSOF-->
+      <!--53"><a name="53-->
+      <h1>EMSOF</h1>
+      <P>The Emergency Medical Service Operating Fund (EMSOF) accumulates money from fines imposed on certain traffic violations, and is used for the initiation, expansion, maintenance and improvement of emergency medical services.</P>
+      <TABLE cellSpacing=0 cellPadding=10 border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Background
+              <BLOCKQUOTE>
+                <P><SMALL>EMSOF is established and affected by various sections (right) of the <A href="/tasking/ems_act_evolution/index.shtml">Pennsylvania EMS Act</A>.</SMALL></P>
+              </BLOCKQUOTE></TD>
+            <TD vAlign=top align=left><P><SMALL><A href="EMSActSection14SupportofEmergencyMedicalServices.shtml">Section&nbsp;14</A></SMALL></P>
+              <P><SMALL><A href="EMSActSection17Allocations.shtml">Section&nbsp;17</A></SMALL></P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Funding Priorities
+              <BLOCKQUOTE>
+                <P><SMALL>When using the button to the right, be sure to navigate to the <I>latest</I> (highest numbered) relevant hit.</SMALL></P>
+              </BLOCKQUOTE></TD>
+            <TD vAlign=top align=left><FORM action=http://www.pabulletin.com/search_results.asp? method=post>
+                <INPUT type=hidden value="Emergency NEAR Medical NEAR Services NEAR Operating NEAR Fund NEAR Funding NEAR Priorities" name=keywords>
+                <INPUT type=hidden value=Health name=agency>
+                <INPUT type=submit value="PA Bulletin Notices" name=send>
+              </FORM></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left colSpan=2><P><B>Process and Forms</B></P>
+              <TABLE cellSpacing=0 cellPadding=20 border=0>
+                <TBODY>
+                  <TR>
+                    <TD vAlign=top>»</TD>
+                    <TD><B>For EMS Services</B><BR>
+&nbsp;
+                      <TABLE cellSpacing=0 cellPadding=5 border=1>
+                        <TBODY>
+                          <TR>
+                            <TD vAlign=bottom><SMALL><B>When this milestone occurs...</B></SMALL></TD>
+                            <TD vAlign=bottom><B><SMALL>...EMS Service must complete this item...</SMALL></B></TD>
+                            <TD vAlign=bottom><SMALL><B>...and submit it...</B></SMALL></TD>
+                            <TD vAlign=bottom><SMALL><B>...by this date...</B></SMALL></TD>
+                          </TR>
+                          <TR bgColor=#ffccaa>
+                            <TD vAlign=top><SMALL>EMS Service receives EMSOF Allottment Notice from <A href="/staff/index.shtml#CTCs">County Coordinator</A></SMALL></TD>
+                            <TD vAlign=top><P align=center><SMALL>all initial parts of</SMALL><BR>
+                                <BIG><B><A href="request-packet/index.shtml">REQUEST PACKET</A></B></BIG></P></TD>
+                            <TD vAlign=top><SMALL>to the appropriate <A href="/staff/index.shtml#CTCs">County Coordinator</A></SMALL></TD>
+                            <TD vAlign=top><SMALL>(determined by <A href="/staff/index.shtml#CTCs">County Coordinator</A>)</SMALL></TD>
+                          </TR>
+                          <TR>
+                            <TD vAlign=top><SMALL>EMS Service receives approved Request Packet from EMSI</SMALL></TD>
+                            <TD vAlign=top><P align=center><SMALL>final parts of Request Packet</SMALL></P></TD>
+                            <TD vAlign=top><SMALL>to EMSI</SMALL></TD>
+                            <TD vAlign=top><SMALL>May 15th<SUP>*</SUP></SMALL></TD>
+                          </TR>
+                        </TBODY>
+                      </TABLE>
+                      <P><SMALL><SUP>*</SUP>Hardship extensions may be granted by <A href="mailto:director@emsi.org">EMSI's Executive Director</A></SMALL></P></TD>
+                  </TR>
+                  <TR>
+                    <TD vAlign=top>»</TD>
+                    <TD>For County Coordinators<BR>
+&nbsp;
+                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                        <TBODY>
+                          <TR>
+                            <TD><TABLE cellSpacing=0 cellPadding=5 width="100%" border=1>
+                                <TBODY>
+                                  <TR>
+                                    <TD vAlign=bottom><SMALL><B>When this milestone occurs...</B></SMALL></TD>
+                                    <TD vAlign=bottom><B><SMALL>...County Coordinator must complete this item...</SMALL></B></TD>
+                                    <TD vAlign=bottom><SMALL><B>...and submit it...</B></SMALL></TD>
+                                    <TD vAlign=bottom><SMALL><B>...by this date...</B></SMALL></TD>
+                                  </TR>
+                                  <TR>
+                                    <TD vAlign=top><SMALL>July 1st</SMALL> </TD>
+                                    <TD vAlign=top><SMALL><a href="/documents/trai-coord-agreement.doc"><img src="/images/doc.gif" align="middle" border="0" /> Training Coordinator Contract</a></SMALL></TD>
+                                    <TD vAlign=top><SMALL>to <A href="mailto:deputy-director@emsi.org">deputy-director@emsi.org</A></SMALL></TD>
+                                    <TD rowSpan=2><SMALL>May 15th<SUP>*</SUP></SMALL></TD>
+                                  </TR>
+                                  <TR>
+                                    <TD vAlign=top><SMALL><A href="/staff/index.shtml#CTCs">County Coordinator</A> receives a Request Packet</SMALL></TD>
+                                    <TD vAlign=top><SMALL><a href="/documents/request-tracking-form.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> Request Tracking Form</a></SMALL></TD>
+                                    <TD vAlign=top><SMALL>with Request Packet to <A href="mailto:deputy-director@emsi.org">deputy-director@emsi.org</A></SMALL></TD>
+                                  </TR>
+                                </TBODY>
+                              </TABLE>
+                              <P><SMALL><SUP>*</SUP>Hardship extensions may be granted by <A href="mailto:director@emsi.org">EMSI's Executive Director</A></SMALL></P></TD>
+                          </TR>
+                        </TBODY>
+                      </TABLE></TD>
+                  </TR>
+                  <TR>
+                    <TD vAlign=top>»</TD>
+                    <TD>For Training Institutes<BR>
+&nbsp;
+                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                        <TBODY>
+                          <TR>
+                            <TD><TABLE cellSpacing=0 cellPadding=5 width="100%" border=1>
+                                <TBODY>
+                                  <TR>
+                                    <TD vAlign=bottom><SMALL><B>When this milestone occurs...</B></SMALL></TD>
+                                    <TD vAlign=bottom><B><SMALL>...Training Institute must complete this item...</SMALL></B></TD>
+                                    <TD vAlign=bottom><SMALL><B>...and submit it...</B></SMALL></TD>
+                                    <TD vAlign=bottom><SMALL><B>...by this date...</B></SMALL></TD>
+                                  </TR>
+                                  <TR>
+                                    <TD vAlign=top><SMALL>July 1st</SMALL></TD>
+                                    <TD vAlign=top><SMALL>Training Grant Application Form (contact EMSI)</SMALL></TD>
+                                    <TD vAlign=top><SMALL>to <A href="mailto:deputy-director@emsi.org">deputy-director@emsi.org</A></SMALL></TD>
+                                    <TD><SMALL>May 15th<SUP>*</SUP></SMALL></TD>
+                                  </TR>
+                                </TBODY>
+                              </TABLE>
+                              <P><SMALL><SUP>*</SUP>Hardship extensions may be granted by <A href="mailto:director@emsi.org">EMSI's Executive Director</A></SMALL></P></TD>
+                          </TR>
+                        </TBODY>
+                      </TABLE></TD>
+                  </TR>
+                  <TR>
+                    <TD vAlign=top>»</TD>
+                    <TD>For EMSI<BR>
+&nbsp;
+                      <TABLE cellSpacing=0 cellPadding=0 border=0>
+                        <TBODY>
+                          <TR>
+                            <TD><TABLE cellSpacing=0 cellPadding=5 width="100%" border=1>
+                                <TBODY>
+                                  <TR>
+                                    <TD vAlign=bottom><SMALL><B>When EMSI receives...</B></SMALL></TD>
+                                    <TD vAlign=bottom><B><SMALL>...EMSI must...</SMALL></B></TD>
+                                    <TD vAlign=bottom><SMALL><B>...and submit it...</B></SMALL></TD>
+                                    <TD vAlign=bottom><SMALL><B>...by this date...</B></SMALL></TD>
+                                  </TR>
+                                  <TR>
+                                    <TD vAlign=top><SMALL>a Request Tracking Form and Request Packet from <A href="/staff/index.shtml#CTCs">County Coordinator</A></SMALL></TD>
+                                    <TD vAlign=top><SMALL>forward the request on pro forma spreadsheet</SMALL></TD>
+                                    <TD vAlign=top><SMALL>to EMSO</SMALL></TD>
+                                    <TD rowSpan=2><SMALL>June 30th<SUP>*</SUP></SMALL></TD>
+                                  </TR>
+                                  <TR>
+                                    <TD vAlign=top><SMALL>a Request Packet with invoices and canceled checks from an EMS Service</SMALL></TD>
+                                    <TD vAlign=top><SMALL>issue a reimbursement check</SMALL></TD>
+                                    <TD vAlign=top><SMALL>to the EMS Service</SMALL></TD>
+                                  </TR>
+                                </TBODY>
+                              </TABLE>
+                              <P><SMALL><SUP>*</SUP>Hardship extensions may be granted by EMSO</SMALL></P></TD>
+                          </TR>
+                        </TBODY>
+                      </TABLE></TD>
+                  </TR>
+                </TBODY>
+              </TABLE></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--programs/emsof531077programs/emsof531077-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

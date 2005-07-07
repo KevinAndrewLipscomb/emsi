@@ -1,13 +1,46 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - Rural AED Grant Program</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Rural AED Grants - Emergency Medical Service Institute</title>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <!--programs/rural-aed-->
+      <!--programs/rural-aed-->
+      <!--programs">Programs</a> &gt; <a class="crumbTrail" href="programs/rural-aed">Rural AED Grants-->
+      <!--102"><a name="102-->
+      <h1>Rural AED Grants</h1>
+      <P>Officially known as the "Rural Access to Emergency Devices Grant Program", the aim is to place Automated External Defibrillators in the hands of community partnerships, including police, fire, and EMS agencies, to better serve the needs of the state's rural population.</P>
+      <TABLE cellSpacing=0 cellPadding=10 border=0>
+        <TBODY>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Eligible areas in the EMSI region:
+              <UL>
+                <LI><B>Armstrong County</B> in its entirety
+                <LI><B>Beaver County</B>:&nbsp; 16120 zip code only
+                <LI><B>Butler County</B>:&nbsp; 16001, 16002, 16020, 16021, 16022, 16025, 16027, 16029, 16030, 16034, 16035, 16038, 16039, 16040, 16041, 16045, 16048, 16049, 16050, 16051, 16052, 16053, 16057, 16061, 16373 zip codes only
+                <LI><B>Fayette County</B>:&nbsp; 15401, 15410, 15415, 15416, 15420, 15421, 15422, 15422, 15424, 15425, 15430, 15431, 15435, 15436, 15437, 15439, 15440, 15442, 15443, 15445, 15446, 15449, 15451, 15454, 15455, 15456, 15458, 15459, 15460, 15461, 15462, 15463, 15464, 15465, 15467, 15468, 15469, 15470, 15472, 15474, 15476, 15478, 15480, 15484, 15486, 15488, 15489, 15490, 15610 zip codes only
+                <LI><B>Greene County</B> in its entirety
+                <LI><B>Indiana County</B> in its entirety
+                <LI><B>Lawrence County</B> in its entirety
+                <LI><B>Westmoreland County</B>:&nbsp; 15610, 15620, 15627, 15655, 15658, 15661, 15670, 15671, 15677, 15681, 15693, 15696, 15717, 15779, 15923, 15944, 15954 zip codes only </LI>
+              </UL></TD>
+            <TD vAlign=top align=left rowSpan=2><SMALL><A href="http://ruralhealth.hrsa.gov/funding/aed.htm">RAED homepage</A>
+              <P><A href="http://www.cfda.gov/public/viewprog.asp?progid=1625">RAED entry in the GSA's <I>Catalog of Federal Domestic Assistance</I></A></P>
+              </SMALL>
+              <P><B><SMALL><a href="/documents/rural-aed-grant-app-packet.pdf"><img src="/images/pdf.gif" align="middle" border="0" /> PA DOH EMSO Application packet</a></SMALL></B>
+              <P><SMALL>Return all RAED applications to our <A href="../../staff/husar/index.shtml">AED Coordinator</A>.</SMALL> </P></TD>
+          </TR>
+          <TR>
+            <TD vAlign=top align=right>»</TD>
+            <TD vAlign=top align=left>Applications are being accepted.&nbsp; Statewide, the first 130 applications meeting minimum requirements will be approved. </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <p />
+      <!--programs/rural-aed1021163programs/rural-aed1021163-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>

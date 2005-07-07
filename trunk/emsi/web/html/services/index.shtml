@@ -1,13 +1,115 @@
-<!-- $Id$ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>EMSI - Services</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Home - Emergency Medical Service Institute</title>
 </head>
-<body bgcolor="#FFFFFF" text="#000000">
-<!--#include virtual="/std-header.html" -->
-<!--#include virtual="/std-pre-content.html" -->
-<!--#include virtual="/services/index.html" -->
-<!--#include virtual="/std-post-content.html" -->
+<body>
+<!--#include  virtual="/template-prefix.ssi"-->
+      <title>Services - Emergency Medical Service Institute</title>
+      <!--services-->
+      <!--Services, Emergency Medical Service Institute" /><meta http-equiv="Description" name="Description" content="Directory of services offered" />
+                <meta http-equiv="Content-Type"
+                content="text/html; charset=ISO-8859-1" />
+                <link rel="icon" href="/images/favicon.png" type="image/png" />
+                <link rel="SHORTCUT ICON" href="/images/favicon.ico" />
+        <body>
+<!--services-->
+      <!--services-->
+      <!--services">Services-->
+      <!--13"><a name="13-->
+      <h1>Services</h1>
+      <BLOCKQUOTE>
+        <P>EMSI provides services to the following constituents:</P>
+        <BLOCKQUOTE>
+          <TABLE cellSpacing=0 cellPadding=5 width="60%" border=0>
+            <TBODY>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/public/index.shtml">The Public</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/prehosp-pers/index.shtml">Prehospital Personnel/Practitioners</A></H3>
+                  <UL>
+                    <LI>Ambulance Attendants
+                    <LI>First Responders
+                    <LI>EMTs
+                    <LI>EMT-paramedics
+                    <LI>Health Professional Physicians
+                    <LI>Prehospital Registered Nurses </LI>
+                  </UL></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/rescue-techs/index.shtml">Rescue technicians</A></H3>
+                  <UL>
+                    <LI>Basic Rescue Practices Technicians
+                    <LI>Basic Vehicle Rescue Technicians
+                    <LI>Special Vehicle Rescue Technicians </LI>
+                  </UL></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/amb-svc/">Ambulance Services</A></H3>
+                  <UL>
+                    <LI>Air Ambulance Services
+                    <LI>Advanced Life Support Ambulance Services
+                    <LI>Basic Life Support Ambulance Services
+                    <LI>Quick Response Services </LI>
+                  </UL></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/medical-directors/index.shtml">Medical Directors</A></H3>
+                  <UL>
+                    <LI>Air Ambulance Medical Directors
+                    <LI>ALS Service Medical Directors
+                    <LI>Medical Command Facility Medical Directors </LI>
+                  </UL></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/medical-command-facilities/index.shtml">Medical Command Facilities</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/medical-command-docs/index.shtml">Medical Command Physicians</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/con-ed-sponsors/index.shtml">Continuing Education Sponsors</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/instructors/index.shtml">EMS/EMT Instructors</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/trai-insts/index.shtml">EMS Training Institutes</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/researchers/index.shtml">Researchers</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/psaps/index.shtml">Public Safety Answering Points (PSAPs)</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/government/index.shtml">Government</A></H3></TD>
+              </TR>
+              <TR>
+                <TD vAlign=top align=right><H3>»</H3></TD>
+                <TD><H3><A href="/services/emso/index.shtml">Pennsylvania Department of Health Emergency Medical Services Office</A></H3></TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+        </BLOCKQUOTE>
+      </BLOCKQUOTE>
+      <p />
+      <!--services131011services131011-->
+      <!--#include  virtual="/template-suffix.ssi"-->
 </body>
 </html>
