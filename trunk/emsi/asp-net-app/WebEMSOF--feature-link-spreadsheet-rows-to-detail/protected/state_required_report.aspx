@@ -1,0 +1,206 @@
+<%@ Register TagPrefix="sstchur" Namespace="sstchur.web.SmartNav" Assembly="sstchur.web.smartnav" %><%@ Page language="c#" Debug="true" Codebehind="state_required_report.pas" AutoEventWireup="false" Inherits="state_required_report.TWebForm_state_required_report" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title id="Title" runat="server"></title><!-- $Id$ -->
+  </head>
+  <body>
+    <form runat="server">
+      <asp:placeholder id="PlaceHolder_precontent" runat="server"></asp:placeholder>
+	  <p>
+		<small>[
+		  <ASP:LinkButton id="LinkButton_logout" runat="server" causesvalidation="False">Logout</ASP:LinkButton>&nbsp;]
+			                                                                 [ Back to <ASP:LinkButton id="LinkButton_back" runat="server" causesvalidation="False">previous</ASP:LinkButton>&nbsp;form ]&nbsp;
+			                                                                 [ Change your <asp:LinkButton id="LinkButton_change_password" runat="server">password</asp:LinkButton>&nbsp;
+			|
+			<asp:LinkButton id="LinkButton_change_email_address" runat="server">email address</asp:LinkButton>&nbsp;]
+		</small>
+	  </p>
+	  <p><asp:label id="Label_account_descriptor" runat="server" font-bold="True" font-size="Large"></asp:label></p>
+	  <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
+        <tr>
+          <td>
+            <table cellspacing="0" cellpadding="10" border="0">
+              <tr>
+                <td bgcolor="#f5f5f5">
+                  <table cellspacing="0" cellpadding="5" width="75%" border="0">
+                    <tr>
+                      <td>
+                        <strong>State-required report</strong>
+					  </td>
+					  <td>
+                              <p align="center"><ASP:LinkButton id="LinkButton_export_scratch_copy" runat="server" enabled="False">Export scratch copy</ASP:LinkButton>
+					  </p></td>
+					  <td>
+							  <div align="center">
+						<asp:linkbutton id="LinkButton_transmit_to_state" runat="server" enabled="False" font-bold="True">TRANSMIT TO STATE</asp:linkbutton>
+							  </div>
+					  </td>
+					</tr>
+					<tr>
+					  <td colspan="3"><small>A total of <ASP:Label id="Label_total_num_requests" runat="server" font-bold="True"></ASP:Label>&nbsp;requests are ready to be transmitted to the state.</small></td>
+					</tr>
+					<tr id="TableRow_this_is_everything" runat="server" visible="False">
+					  <td colspan="3"><small>This report includes request items from all&nbsp;<ASP:Label id="Label_total_num_requests_2" runat="server" font-bold="True"></ASP:Label> requests.</small></td>
+					</tr>
+					<tr id="TableRow_this_is_just_some" runat="server" visible="False">
+					  <td colspan="3"><small>This report only includes items from the&nbsp;<ASP:Label id="Label_num_filtered_requests" runat="server" font-bold="True"></ASP:Label>&nbsp;requests made against
+					   <ASP:DropDownList id="DropDownList_amendment" runat="server" autopostback="True"></ASP:DropDownList>.</small></td>
+					</tr>
+				  </table>
+				</td>
+              </tr>
+              <tr>
+                <td>
+                  <table cellspacing="0" cellpadding="5" border="0" id="Table_report" runat="server">
+                    <tr>
+                      <td>
+                        Regional EMS council name: <strong>EMERGENCY MEDICAL SERVICE INSTITUTE</strong>
+                      </td>
+                    </tr>
+                    <tr id="TableRow_none" runat="server">
+                      <td>
+                        <em>-- NONE --</em>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <asp:datagrid id="DataGrid_state_export_batch" runat="server" autogeneratecolumns="False" visible="False"
+                        font-size="X-Small" showfooter="True" bordercolor="Gainsboro">
+                          <footerstyle font-bold="True" backcolor="LightGray"></footerstyle>
+                          <alternatingitemstyle backcolor="WhiteSmoke"></alternatingitemstyle>
+                          <headerstyle backcolor="LightGray"></headerstyle>
+                          <columns>
+                            <asp:boundcolumn datafield="service_name" readonly="true" headertext="Organization Name">
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="life_support_level" readonly="true" headertext="Type of Organization">
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="equipment_description" readonly="true" headertext="Equipment/Program">
+                              <footerstyle horizontalalign="Right"></footerstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="quantity" readonly="true" headertext="# Units">
+                              <itemstyle horizontalalign="Right"></itemstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="unit_cost" readonly="true" headertext="Unit Cost" dataformatstring="{0:C}">
+                              <itemstyle horizontalalign="Right"></itemstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="total_cost" readonly="true" headertext="Total Cost Amount"
+                            dataformatstring="{0:C}">
+                              <headerstyle horizontalalign="Center"></headerstyle>
+                              <itemstyle horizontalalign="Right"></itemstyle>
+                              <footerstyle horizontalalign="Right"></footerstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="emsof_ante" readonly="true" headertext="EMSOF Amount" dataformatstring="{0:C}">
+                              <headerstyle horizontalalign="Center"></headerstyle>
+                              <itemstyle horizontalalign="Right"></itemstyle>
+                              <footerstyle horizontalalign="Right"></footerstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="provider_match" readonly="true" headertext="Provider Match"
+                            dataformatstring="{0:C}">
+                              <headerstyle horizontalalign="Center"></headerstyle>
+                              <itemstyle horizontalalign="Right"></itemstyle>
+                              <footerstyle horizontalalign="Right"></footerstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn datafield="recommendation" readonly="true" headertext="Recomm">
+                              <headerstyle horizontalalign="Center"></headerstyle>
+                              <itemstyle horizontalalign="Center"></itemstyle>
+                            </asp:boundcolumn>
+                            <asp:boundcolumn readonly="true" headertext="EMSOF Approved"></asp:boundcolumn>
+                            <asp:boundcolumn readonly="true" headertext="Actual Total Cost" dataformatstring="{0:C}">
+                              <headerstyle horizontalalign="Center"></headerstyle>
+                              <itemstyle horizontalalign="Right"></itemstyle>
+                              <footerstyle horizontalalign="Right"></footerstyle>
+                            </asp:boundcolumn>
+                          </columns>
+                        </asp:datagrid>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table cellspacing="0" cellpadding="5" border="0">
+                          <tr>
+                            <td align="right" valign="top">
+                              Reviewed and Recommended by Regional EMS Council (name):
+                            </td>
+                            <td></td>
+                            <td valign="top">
+                              <strong>William E. Groft</strong><br>
+                              President
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td valign="top">
+                              <strong>Thomas J. McElree</strong><br>Regional EMS Council Director 
+
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Funding Round:
+                            </td>
+                            <td></td>
+                            <td>
+                              <asp:label id="Label_funding_round" runat="server"></asp:label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Submission Date:
+                            </td>
+                            <td></td>
+                            <td>
+                              <asp:label id="Label_submission_date" runat="server"></asp:label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Review Date:
+                            </td>
+                            <td></td>
+                            <td>
+                              __________________________________
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Approval Date:
+                            </td>
+                            <td></td>
+                            <td>
+                              __________________________________
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              DOH Approval:
+                            </td>
+                            <td></td>
+                            <td>
+                              __________________________________
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Date:
+                            </td>
+                            <td></td>
+                            <td>
+                              __________________________________
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <asp:placeholder id="PlaceHolder_postcontent" runat="server"></asp:placeholder>
+    <sstchur:SmartScroller runat="server" /></form>
+  </body>
+</html>
