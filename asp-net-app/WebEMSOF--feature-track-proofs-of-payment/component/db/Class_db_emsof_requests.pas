@@ -107,6 +107,11 @@ type
       be_order_ascending: boolean;
       target: system.object
       );
+    procedure BindProofsOfPayment
+      (
+      request_id: string;
+      target: system.object
+      );
     procedure BindStateExportBatch
       (
       target: system.object;
@@ -562,6 +567,31 @@ procedure TClass_db_emsof_requests.BindOverviewByStatus
   );
 begin
   BindOverview(order_by_field_name,be_order_ascending,target,'status_code = ' + status.tostring);
+end;
+
+procedure TClass_db_emsof_requests.BindProofsOfPayment
+  (
+  request_id: string;
+  target: system.object
+  );
+begin
+  self.Open;
+  DataGrid(target).datasource := bdpcommand.Create
+    (
+    'select emsof_purchase_payment.id' // column 0
+    + ' , `date`'                      // column 1
+    + ' , method_code'                 // column 2
+    + ' , amount'                      // column 3
+    + ' , note'                        // column 4
+    + ' from emsof_purchase_payment'
+    + ' where master_id = ' + request_id
+    + ' order by `date` asc',
+    connection
+    )
+    .ExecuteReader;
+  DataGrid(target).DataBind;
+  bdpdatareader(DataGrid(target).datasource).Close;
+  self.Close;
 end;
 
 procedure TClass_db_emsof_requests.BindStateExportBatch

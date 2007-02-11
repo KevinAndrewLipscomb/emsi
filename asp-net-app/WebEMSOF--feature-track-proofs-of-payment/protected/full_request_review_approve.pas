@@ -20,6 +20,7 @@ type
     display_actuals: boolean;
     modify_actuals: boolean;
     num_items: cardinal;
+    num_proofs_of_payment: cardinal;
     parent_appropriation_amount: decimal;
     request_id: string;
     status: Class_biz_emsof_requests.status_type;
@@ -42,9 +43,13 @@ type
     procedure DataGrid_items_EditCommand(source: System.Object; e: System.Web.UI.WebControls.DataGridCommandEventArgs);
     procedure DataGrid_items_CancelCommand(source: System.Object; e: System.Web.UI.WebControls.DataGridCommandEventArgs);
     procedure DataGrid_items_UpdateCommand(source: System.Object; e: System.Web.UI.WebControls.DataGridCommandEventArgs);
+    procedure DataGrid_proofs_of_payment_ItemDataBound(sender: System.Object; 
+      e: System.Web.UI.WebControls.DataGridItemEventArgs);
+    procedure LinkButton_new_proof_of_payment_Click(sender: System.Object; e: System.EventArgs);
   {$ENDREGION}
   strict private
     p: p_type;
+    procedure BindProofsOfPayment;
     procedure Page_Load(sender: System.Object; e: System.EventArgs);
   strict protected
     Title: System.Web.UI.HtmlControls.HtmlGenericControl;
@@ -92,6 +97,10 @@ type
     Label_region_name_2: System.Web.UI.WebControls.Label;
     Label_state_approval_timestamp: System.Web.UI.WebControls.Label;
     TableRow_state_approval_timestamp: System.Web.UI.HtmlControls.HtmlTableRow;
+    Table_proofs_of_payment: System.Web.UI.HtmlControls.HtmlTable;
+    TableRow_proofs_of_payment_none: System.Web.UI.HtmlControls.HtmlTableRow;
+    LinkButton_new_proof_of_payment: System.Web.UI.WebControls.LinkButton;
+    DataGrid_proofs_of_payment: System.Web.UI.WebControls.DataGrid;
     procedure OnInit(e: EventArgs); override;
   private
     { Private Declarations }
@@ -124,6 +133,8 @@ begin
   Include(Self.DataGrid_items.EditCommand, Self.DataGrid_items_EditCommand);
   Include(Self.DataGrid_items.UpdateCommand, Self.DataGrid_items_UpdateCommand);
   Include(Self.DataGrid_items.ItemDataBound, Self.DataGrid_items_ItemDataBound);
+  Include(Self.LinkButton_new_proof_of_payment.Click, Self.LinkButton_new_proof_of_payment_Click);
+  Include(Self.DataGrid_proofs_of_payment.ItemDataBound, Self.DataGrid_proofs_of_payment_ItemDataBound);
   Include(Self.LinkButton_back_2.Click, Self.LinkButton_back_Click);
   Include(Self.Button_approve.Click, Self.Button_approve_Click);
   Include(Self.Button_disapprove.Click, Self.Button_disapprove_Click);
@@ -213,6 +224,11 @@ begin
     Label_unused_amount.text := (p.parent_appropriation_amount - p.total_emsof_ante).tostring('C');
     Label_num_items.text := p.num_items.tostring;
     //
+    Table_proofs_of_payment.Visible := (p.status = NEEDS_CANCELED_CHECK_COLLECTION);
+    if Table_proofs_of_payment.Visible then begin
+      BindProofsOfPayment;
+    end;
+    //
     if p.biz_emsof_requests.BeOkToApproveEmsofRequest(p.status) then begin
       Label_next_reviewer.text :=
         p.biz_emsof_requests.NextReviewer(p.status);
@@ -245,6 +261,13 @@ begin
   //
   InitializeComponent;
   inherited OnInit(e);
+end;
+
+procedure TWebForm_full_request_review_approve.LinkButton_new_proof_of_payment_Click(sender: System.Object;
+  e: System.EventArgs);
+begin
+  stack(session['waypoint_stack']).Push('full_request_review_approve.aspx');
+  server.Transfer('add_proof_of_payment.aspx');
 end;
 
 procedure TWebForm_full_request_review_approve.DataGrid_items_UpdateCommand
@@ -383,6 +406,45 @@ begin
   formsauthentication.SignOut;
   session.Clear;
   server.Transfer('../Default.aspx');
+end;
+
+procedure TWebForm_full_request_review_approve.DataGrid_proofs_of_payment_ItemDataBound
+  (
+  sender: System.Object;
+  e: System.Web.UI.WebControls.DataGridItemEventArgs
+  );
+begin
+  //
+  if (e.item.itemtype = listitemtype.alternatingitem)
+    or (e.item.itemtype = listitemtype.edititem)
+    or (e.item.itemtype = listitemtype.item)
+    or (e.item.itemtype = listitemtype.selecteditem)
+  then begin
+    //
+    // We are dealing with a data row, not a header or footer row.
+    //
+    p.num_proofs_of_payment := p.num_proofs_of_payment + 1;
+    //
+  end;
+end;
+
+procedure TWebForm_full_request_review_approve.BindProofsOfPayment;
+var
+  be_datagrid_empty: boolean;
+begin
+  //
+  p.biz_emsof_requests.BindProofsOfPayment(p.request_id,DataGrid_proofs_of_payment);
+  //
+  // Manage control visibilities.
+  //
+  be_datagrid_empty := (p.num_proofs_of_payment = 0);
+  TableRow_proofs_of_payment_none.visible := be_datagrid_empty;
+  Datagrid_proofs_of_payment.visible := not be_datagrid_empty;
+  //
+  // Clear aggregation vars for next bind, if any.
+  //
+  p.num_proofs_of_payment := 0;
+  //
 end;
 
 end.
