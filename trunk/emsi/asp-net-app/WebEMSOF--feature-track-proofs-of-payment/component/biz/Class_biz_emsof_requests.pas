@@ -134,6 +134,11 @@ type
       be_order_ascending: boolean;
       target: system.object
       );
+    procedure BindProofsOfPayment
+      (
+      request_id: string;
+      target: system.object
+      );
     procedure BindStateExportBatch
       (
       target: system.object;
@@ -495,6 +500,15 @@ end;
 function TClass_biz_emsof_requests.CountyApprovalTimestampOf(master_id: string): system.datetime;
 begin
   CountyApprovalTimestampOf := db_emsof_requests.CountyApprovalTimestampOf(master_id);
+end;
+
+procedure TClass_biz_emsof_requests.BindProofsOfPayment
+  (
+  request_id: string;
+  target: system.object
+  );
+begin
+  db_emsof_requests.BindProofsOfPayment(request_id,target);
 end;
 
 procedure TClass_biz_emsof_requests.BindStateExportBatch
