@@ -4,7 +4,7 @@ using Class_db_practitioners;
 using kix;
 using System;
 using System.Collections;
-using WebEMSOF.component.ss;
+using ConEdLink.component.ss;
 
 namespace Class_biz_practitioners
   {

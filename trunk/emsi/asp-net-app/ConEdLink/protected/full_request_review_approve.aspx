@@ -383,7 +383,7 @@
 			  </tr>
 			  <tr>
 				<td>
-				  <p>The current status of this request in WebEMSOF is <ASP:Label id="Label_current_status" runat="server" font-bold="True"></ASP:Label>.</p>
+				  <p>The current status of this request in ConEdLink is <ASP:Label id="Label_current_status" runat="server" font-bold="True"></ASP:Label>.</p>
 				</td>
 			  </tr>
 			  <tr>

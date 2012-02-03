@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebEMSOF.Properties {
+namespace ConEdLink.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -27,9 +27,9 @@ namespace WebEMSOF.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://ems.health.state.pa.us/emsregwebservices/EMSREGWebServices.asmx")]
-        public string WebEMSOF_WebReference_emsrs_EMSREGWebServices {
+        public string ConEdLink_WebReference_emsrs_EMSREGWebServices {
             get {
-                return ((string)(this["WebEMSOF_WebReference_emsrs_EMSREGWebServices"]));
+                return ((string)(this["ConEdLink_WebReference_emsrs_EMSREGWebServices"]));
             }
         }
     }

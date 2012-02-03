@@ -84,7 +84,7 @@
 \begin_layout Title
 Using 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
 
 \begin_inset Newline newline
@@ -225,18 +225,18 @@ February
 \begin_layout Abstract
 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  is an interface to the state's existing EMS Registry System (EMSRS).
  
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  supports the creation, validation, and processing of attendance rosters
  for Continuing Education (Con-Ed) classes.
  This document describes how Con-Ed Sponsors can use 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
 .
 \end_layout
@@ -280,7 +280,7 @@ Introduction
 \end_layout
 
 \begin_layout Subsection
-Motivation for WebEMSOF Con-Ed
+Motivation for ConEdLink
 \end_layout
 
 \begin_layout Standard
@@ -303,7 +303,7 @@ but not to record and submit practitioner attendance records
  and spreadsheets, or by complex and expensive third-party computer products.
  
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  provides a straightforward, efficient, and cost-effective web-based solution
  instead.
@@ -316,12 +316,12 @@ Interface to the state's EMSRS
 \begin_layout Standard
 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  is an adjunct to EMSRS.
  
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  does not replace any of the functions of EMSRS.
  EMSRS remains the system of record for tracking Con-Ed Sponsors, classes,
@@ -329,7 +329,7 @@ WebEMSOF Con-Ed
  EMSRS is the source of all the lists (of Con-Ed Sponsors, classes, and
  practitioners) that show up in 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
 .
  To get approval to conduct a Con-Ed class, or to change the status or attribute
@@ -347,7 +347,7 @@ target "https://ems.health.state.pa.us/emsportal"
 \begin_layout Standard
 Use 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  to generate class rosters, and to submit those rosters for credit.
 \end_layout
@@ -375,7 +375,7 @@ target "https://ems.health.state.pa.us/emsportal"
 .
  Otherwise, 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  will be unable to send new passwords or notifications to a Con-Ed Sponsor
  when appropriate.
@@ -390,7 +390,7 @@ target "https://ems.health.state.pa.us/emsportal"
 .
  The change will automatically be reflected in 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  within one calendar day.
 \end_layout
@@ -408,7 +408,7 @@ Getting a password
 \begin_layout Standard
 A 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  account has already been established for each approved or provisional Con-Ed
  Sponsor.
@@ -419,68 +419,12 @@ WebEMSOF Con-Ed
 In your web browser, visit 
 \begin_inset CommandInset href
 LatexCommand href
-name "frompaper2web.com/WebEMSOF"
-target "http://frompaper2web.com/WebEMSOF"
+name "frompaper2web.com/ConEdLink"
+target "http://frompaper2web.com/ConEdLink"
 
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\bar under
-
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "75text%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\bar under
-NOTE
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\series bold
-WebEMSOF Con-Ed
-\series default
- is built upon the successful WebEMSOF application that has powered the
- Category IV Provider Equipment (Cat4PE) grant process for the EMSI region
- since 2006.
- The various features of the application are partitioned according to how
- a user logs in.
- A user logging in as a Con-Ed Sponsor will only see Con-Ed features.
- Users logging in as a Service or a County Coordinator will only see the
- Cat4PE features.
- If you have dual responsibilities (that is, if you are both a Con-Ed Sponsor
- and either a Service or a County Coordinator), you must log in as a Con-Ed
- Sponsor to see the Con-Ed features.
-\end_layout
-
-\end_inset
-
-
-\bar default
-
 \begin_inset Newline newline
 \end_inset
 
@@ -649,7 +593,7 @@ Logging on
 \begin_layout Standard
 To log into 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
 , follow steps 1-2 of section 
 \begin_inset CommandInset ref
@@ -686,7 +630,7 @@ Enter
 \begin_layout Standard
 If you use a temporary password, 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  will prompt you to choose a preferred password.
  You will use your preferred password for all subsequent logins.
@@ -746,7 +690,7 @@ password
  links.
  To log out of 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
 , click 
 \emph on
@@ -862,7 +806,7 @@ Back
 \emph default
  button to get back to previous 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  pages.
  Use the 
@@ -890,7 +834,7 @@ Search>
  field.
  Whenever you stop typing for at least one second, 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  will retrieve and display a list of possible matches, as shown here:
 \end_layout
@@ -1045,7 +989,7 @@ The following attributes are taken from the state's existing EMSRS
 status collapsed
 
 \begin_layout Plain Layout
-Practitioner attributes are currently imported from EMSRS into WebEMSOF
+Practitioner attributes are currently imported from EMSRS into ConEdLink
  on a weekly basis.
 \end_layout
 
@@ -1053,7 +997,7 @@ Practitioner attributes are currently imported from EMSRS into WebEMSOF
 
 , and cannot be edited in 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
 .
  Changes to these attributes must be made in EMSRS:
@@ -1097,7 +1041,7 @@ County
  attribute should be set to the attendee's county of residence.
  
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  will default this attribute to the county in which the class is being given,
  as registered in EMSRS.
@@ -1113,7 +1057,7 @@ Email address
  attribute is desired, but not required.
  If supplied correctly, 
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  can email course completion documentation to the attendee after the class
  has been closed and submitted for credit
@@ -1169,7 +1113,7 @@ If data associated with an attendee is missing or incorrect, click the pencil
 ) on the right side of the attendee's row.
  
 \series bold
-WebEMSOF Con-Ed
+ConEdLink
 \series default
  will put the row in 
 \bar under

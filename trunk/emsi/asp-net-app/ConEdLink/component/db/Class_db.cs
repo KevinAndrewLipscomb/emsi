@@ -12,7 +12,7 @@ namespace Class_db
     public class TClass_db
     {
         public MySqlConnection connection = null;
-        // The connection member should be protected rather than public once all db operations in WebEMSOF are performed via
+        // The connection member should be protected rather than public once all db operations in ConEdLink are performed via
         // descendants of this class.
         //Constructor  Create()
         public TClass_db() : base()

@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Cache;
 using System.Web;
 
-namespace WebEMSOF.component.ss
+namespace ConEdLink.component.ss
   {
   public static class Class_ss_emsams_Static
     {

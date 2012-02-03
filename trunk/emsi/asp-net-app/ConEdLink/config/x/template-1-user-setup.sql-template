@@ -4,4 +4,4 @@ grant select
  , delete
  , create
   on emsidb_x.*
-  to 'ki-webemsof-x'@'localhost' identified by '~ki-webemsof-x-password~'
+  to 'ki-conedlink-x'@'localhost' identified by '~ki-conedlink-x-password~'

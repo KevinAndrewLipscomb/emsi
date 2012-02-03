@@ -214,9 +214,9 @@ namespace Class_biz_accounts
             message_text = service_name + " has missed the regional deadline to " + deadline_description + k.SPACE + "associated with an allocation from " + county_name + " County." + k.NEW_LINE + k.NEW_LINE;
             if (be_advice_valuable)
             {
-                message_text = message_text + "WebEMSOF has advised the service not to proceed with any activity related to that request." + k.NEW_LINE + k.NEW_LINE;
+                message_text = message_text + "ConEdLink has advised the service not to proceed with any activity related to that request." + k.NEW_LINE + k.NEW_LINE;
             }
-            message_text = message_text + "You can use WebEMSOF by visiting:" + k.NEW_LINE + k.NEW_LINE + "   http://" + ConfigurationManager.AppSettings["host_domain_name"] + "/" + ConfigurationManager.AppSettings["application_name"] + k.NEW_LINE + k.NEW_LINE + "You can contact the affected service at:" + k.NEW_LINE + k.NEW_LINE + "   " + service_email_address + "  (mailto:" + service_email_address + ")" + k.NEW_LINE + k.NEW_LINE + "-- " + ConfigurationManager.AppSettings["application_name"];
+            message_text = message_text + "You can use ConEdLink by visiting:" + k.NEW_LINE + k.NEW_LINE + "   http://" + ConfigurationManager.AppSettings["host_domain_name"] + "/" + ConfigurationManager.AppSettings["application_name"] + k.NEW_LINE + k.NEW_LINE + "You can contact the affected service at:" + k.NEW_LINE + k.NEW_LINE + "   " + service_email_address + "  (mailto:" + service_email_address + ")" + k.NEW_LINE + k.NEW_LINE + "-- " + ConfigurationManager.AppSettings["application_name"];
             k.SmtpMailSend(ConfigurationManager.AppSettings["sender_email_address"], county_coord_email_address + k.COMMA + EmailTargetByRole("emsof-coordinator"), "Service missed deadline", message_text);
         }
 
@@ -390,7 +390,7 @@ namespace Class_biz_accounts
             // cc
             // bcc
             // reply_to
-            k.SmtpMailSend(ConfigurationManager.AppSettings["sender_email_address"], EmailTargetByRole("emsof-coordinator"), "POC has assumed EMSOF resposibility for Service", "Dear Regional Council EMSOF Coordinator," + k.NEW_LINE + k.NEW_LINE + contact_person_name + " has successfully logged into WebEMSOF and has agreed to assume EMSOF Point Of Contact responsibilities " + "for " + service_name + ".  Furthermore, " + contact_person_name + " has agreed to give " + "reasonable advance notice to both the service and the regional council if it becomes necessary to relinquish such " + "responsibilities." + k.NEW_LINE + k.NEW_LINE + "You can contact " + contact_person_name + " at:" + k.NEW_LINE + k.NEW_LINE + "   " + poc_email_address + "  (mailto:" + poc_email_address + ")" + k.NEW_LINE + k.NEW_LINE + "-- " + ConfigurationManager.AppSettings["application_name"], false, k.EMPTY, k.EMPTY, poc_email_address);
+            k.SmtpMailSend(ConfigurationManager.AppSettings["sender_email_address"], EmailTargetByRole("emsof-coordinator"), "POC has assumed EMSOF resposibility for Service", "Dear Regional Council EMSOF Coordinator," + k.NEW_LINE + k.NEW_LINE + contact_person_name + " has successfully logged into ConEdLink and has agreed to assume EMSOF Point Of Contact responsibilities " + "for " + service_name + ".  Furthermore, " + contact_person_name + " has agreed to give " + "reasonable advance notice to both the service and the regional council if it becomes necessary to relinquish such " + "responsibilities." + k.NEW_LINE + k.NEW_LINE + "You can contact " + contact_person_name + " at:" + k.NEW_LINE + k.NEW_LINE + "   " + poc_email_address + "  (mailto:" + poc_email_address + ")" + k.NEW_LINE + k.NEW_LINE + "-- " + ConfigurationManager.AppSettings["application_name"], false, k.EMPTY, k.EMPTY, poc_email_address);
         }
 
         public void Remind(milestone_type milestone, uint num_days_left, DateTime deadline_date, string service_id)
@@ -416,18 +416,18 @@ namespace Class_biz_accounts
               }
             else if (milestone == milestone_type.SERVICE_ANNUAL_SURVEY_SUBMISSION_DEADLINE)
               {
-              task_description = "use WebEMSOF to submit your Annual Survey to the regional EMS council";
+              task_description = "use ConEdLink to submit your Annual Survey to the regional EMS council";
               }
             k.SmtpMailSend
               (
               ConfigurationManager.AppSettings["sender_email_address"],
               service_email_address,
               "Reminder of approaching deadline",
-              "This is an automated reminder from WebEMSOF." + k.NEW_LINE
+              "This is an automated reminder from ConEdLink." + k.NEW_LINE
               + k.NEW_LINE
               + "You have " + num_days_left.ToString() + " days to " + task_description + ".  The deadline is " + deadline_date.ToString("HH:mm:ss dddd, MMMM d, yyyy") + k.PERIOD + k.NEW_LINE
               + k.NEW_LINE
-              + "You can access WebEMSOF by visiting:" + k.NEW_LINE
+              + "You can access ConEdLink by visiting:" + k.NEW_LINE
               + k.NEW_LINE
               + "   http://" + ConfigurationManager.AppSettings["host_domain_name"] + "/" + ConfigurationManager.AppSettings["application_name"] + k.NEW_LINE
               + k.NEW_LINE

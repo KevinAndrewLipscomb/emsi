@@ -84,12 +84,12 @@ namespace service_overview
                     var service_annual_survey_submission_deadline_string = service_annual_survey_submission_deadline.ToString("yyyy-MM-dd HH:mm:ss");
                     if (DateTime.Now <= service_annual_survey_submission_deadline)
                       {
-                      Literal_relation_to_annual_survey.Text = "By reviewing and submitting your WebEMSOF profile by " + service_annual_survey_submission_deadline_string + ", you will be responding to the Annual Survey.";
+                      Literal_relation_to_annual_survey.Text = "By reviewing and submitting your ConEdLink profile by " + service_annual_survey_submission_deadline_string + ", you will be responding to the Annual Survey.";
                       }
                     else
                       {
-                      Literal_relation_to_annual_survey.Text = "You can review and submit your WebEMSOF profile at any time, but because the Annual Survey submission deadline of " + service_annual_survey_submission_deadline_string + " has passed, the status of your "
-                      + "WebEMSOF profile will not change, and you will not be eligible for allocations in this cycle.";
+                      Literal_relation_to_annual_survey.Text = "You can review and submit your ConEdLink profile at any time, but because the Annual Survey submission deadline of " + service_annual_survey_submission_deadline_string + " has passed, the status of your "
+                      + "ConEdLink profile will not change, and you will not be eligible for allocations in this cycle.";
                       }
                     Table_item_requests_section.Visible = false;
                     p.db.Close();
@@ -98,7 +98,7 @@ namespace service_overview
                 {
                     Label_profile_status.Text = "Is saved.";
                     LinkButton_profile_action.Text = "[Edit]";
-                    Literal_relation_to_annual_survey.Text = "Your WebEMSOF profile has been accepted as your Annual Survey response.";
+                    Literal_relation_to_annual_survey.Text = "Your ConEdLink profile has been accepted as your Annual Survey response.";
                     TableData_profile_printable.Visible = true;
                     // Determine current fiscal year
                     p.max_fiscal_year_id_string = new MySqlCommand("SELECT max(id) as max_id FROM fiscal_year", p.db.connection).ExecuteScalar().ToString();

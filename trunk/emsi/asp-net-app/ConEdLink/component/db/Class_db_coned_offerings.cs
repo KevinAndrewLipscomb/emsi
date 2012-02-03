@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Web.UI.WebControls;
-using WebEMSOF.component.ss;
+using ConEdLink.component.ss;
 
 namespace Class_db_coned_offerings
   {

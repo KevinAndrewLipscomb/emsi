@@ -118,7 +118,7 @@
           <table cellspacing="0" cellpadding="0" width="100%" border="0">
 						<tr>
 						  <td valign="middle"><ASP:TextBox id="TextBox_additional_service_ante" runat="server" width="6pc"></ASP:TextBox></td>
-						  <td valign="middle"><small>(If unsure, LEAVE BLANK unless directed otherwise by WebEMSOF)</small></td>
+						  <td valign="middle"><small>(If unsure, LEAVE BLANK unless directed otherwise by ConEdLink)</small></td>
 						  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						  <td align="right" valign="middle"><ASP:LinkButton id="LinkButton_recalculate_3" runat="server" font-size="Small" onclick="LinkButton_recalculate_3_Click">Recalculate</ASP:LinkButton></td>
 						</tr>

@@ -153,7 +153,7 @@
                                           <SelectedItemStyle font-bold="True" forecolor="White" backcolor="#CC3333"></SelectedItemStyle>
                                           <HeaderStyle forecolor="Blue" backcolor="WhiteSmoke"></HeaderStyle>
                                           <Columns>
-                                            <ASP:BoundColumn visible="False" datafield="id" sortexpression="id" readonly="True" headertext="WebEMSOF ID#">
+                                            <ASP:BoundColumn visible="False" datafield="id" sortexpression="id" readonly="True" headertext="ConEdLink ID#">
                                               <ItemStyle horizontalalign="Center" forecolor="Gray"></ItemStyle>
                                             </ASP:BoundColumn>
                                             <ASP:BoundColumn visible="False" datafield="password_reset_email_address" sortexpression="password_reset_email_address" readonly="True"></ASP:BoundColumn>
