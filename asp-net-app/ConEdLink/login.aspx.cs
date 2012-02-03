@@ -111,20 +111,10 @@ namespace login
         {
             SessionSet("target_user_table", k.Safe(DropDownList_user_kind.SelectedValue, k.safe_hint_type.ECMASCRIPT_WORD));
             Label_user.Enabled = true;
-            if (DropDownList_user_kind.SelectedValue == "service")
-            {
-                Label_user.Text = "Service";
-                p.biz_accounts.BindServicesInRegion(p.region_code,DropDownList_user);
-            }
-            else if (DropDownList_user_kind.SelectedValue == "coned_sponsor")
+            if (DropDownList_user_kind.SelectedValue == "coned_sponsor")
             {
                 Label_user.Text = "Con Ed Sponsor";
                 p.biz_accounts.BindConedSponsorsInRegion(p.region_code,DropDownList_user);
-            }
-            else if (DropDownList_user_kind.SelectedValue == "county")
-            {
-                Label_user.Text = "County";
-                p.biz_accounts.BindCountiesInRegion(p.region_code,DropDownList_user);
             }
             else if (DropDownList_user_kind.SelectedValue == "regional_staffer")
             {
