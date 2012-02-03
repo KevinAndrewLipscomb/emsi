@@ -16,5 +16,3 @@
 #
 # Yearly
 #
-30 19 03 06 * wget --output-document=/dev/null --no-check-certificate https://localhost/ConEdLink/noninteractive/report_fy_allocations_reimbursements_nonspends.aspx
-31 19 03 06 * wget --output-document=/dev/null --no-check-certificate https://localhost/ConEdLink/noninteractive/report_equipment_procurement_overview.aspx
