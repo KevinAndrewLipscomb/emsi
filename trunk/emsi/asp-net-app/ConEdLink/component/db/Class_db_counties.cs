@@ -1,5 +1,4 @@
 using Class_db;
-using Class_db_fiscal_years;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
@@ -18,13 +17,11 @@ namespace Class_db_counties
     public class TClass_db_counties: TClass_db
     {
 
-        private TClass_db_fiscal_years db_fiscal_years;
         private TClass_db_trail db_trail;
 
         //Constructor  Create()
         public TClass_db_counties() : base()
           {
-          db_fiscal_years = new TClass_db_fiscal_years();
           db_trail = new TClass_db_trail();
           }
 

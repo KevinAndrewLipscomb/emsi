@@ -91,26 +91,14 @@
     <Compile Include="component\biz\Class_biz_coned_offering_rosters.cs" />
     <Compile Include="component\biz\Class_biz_coned_offering_statuses.cs" />
     <Compile Include="component\biz\Class_biz_coned_sponsor_statuses.cs" />
-    <Compile Include="component\biz\Class_biz_emsof_extra_service_county_dependencies.cs" />
     <Compile Include="component\biz\Class_biz_accounts.cs" />
-    <Compile Include="component\biz\Class_biz_appropriations.cs" />
-    <Compile Include="component\biz\Class_biz_charter_kinds.cs" />
     <Compile Include="component\biz\Class_biz_counties.cs" />
-    <Compile Include="component\biz\Class_biz_emsof_requests.cs" />
-    <Compile Include="component\biz\Class_biz_emsof_request_return_comments.cs" />
-    <Compile Include="component\biz\Class_biz_equipment.cs" />
-    <Compile Include="component\biz\Class_biz_fiscal_years.cs" />
-    <Compile Include="component\biz\Class_biz_fy_calendar.cs" />
-    <Compile Include="component\biz\Class_biz_match_level.cs" />
-    <Compile Include="component\biz\Class_biz_milestones.cs" />
     <Compile Include="component\biz\Class_biz_notifications.cs" />
-    <Compile Include="component\biz\Class_biz_payment_proof_methods.cs" />
     <Compile Include="component\biz\Class_biz_practitioners.cs" />
     <Compile Include="component\biz\Class_biz_practitioner_levels.cs" />
     <Compile Include="component\biz\Class_biz_regional_staffers.cs" />
     <Compile Include="component\biz\Class_biz_regions.cs" />
     <Compile Include="component\biz\Class_biz_scheduled_tasks.cs" />
-    <Compile Include="component\biz\Class_biz_services.cs" />
     <Compile Include="component\biz\Class_biz_teaching_entities.cs" />
     <Compile Include="component\biz\Class_biz_teaching_entity_business_types.cs" />
     <Compile Include="component\biz\Class_biz_teaching_entity_levels.cs" />
@@ -118,8 +106,6 @@
     <Compile Include="component\biz\Class_biz_user.cs" />
     <Compile Include="component\db\Class_db.cs" />
     <Compile Include="component\db\Class_db_accounts.cs" />
-    <Compile Include="component\db\Class_db_appropriations.cs" />
-    <Compile Include="component\db\Class_db_charter_kinds.cs" />
     <Compile Include="component\db\Class_db_coned_offerings.cs" />
     <Compile Include="component\db\Class_db_coned_offering_class_final_statuses.cs" />
     <Compile Include="component\db\Class_db_coned_offering_document_statuses.cs" />
@@ -127,20 +113,10 @@
     <Compile Include="component\db\Class_db_coned_offering_statuses.cs" />
     <Compile Include="component\db\Class_db_coned_sponsor_statuses.cs" />
     <Compile Include="component\db\Class_db_counties.cs" />
-    <Compile Include="component\db\Class_db_emsof_extra_service_county_dependencies.cs" />
-    <Compile Include="component\db\Class_db_emsof_requests.cs" />
-    <Compile Include="component\db\Class_db_emsof_request_return_comments.cs" />
-    <Compile Include="component\db\Class_db_equipment.cs" />
-    <Compile Include="component\db\Class_db_fiscal_years.cs" />
-    <Compile Include="component\db\Class_db_fy_calendar.cs" />
-    <Compile Include="component\db\Class_db_match_level.cs" />
-    <Compile Include="component\db\Class_db_milestones.cs" />
-    <Compile Include="component\db\Class_db_payment_proof_methods.cs" />
     <Compile Include="component\db\Class_db_practitioners.cs" />
     <Compile Include="component\db\Class_db_practitioner_levels.cs" />
     <Compile Include="component\db\Class_db_regional_staffers.cs" />
     <Compile Include="component\db\Class_db_regions.cs" />
-    <Compile Include="component\db\Class_db_services.cs" />
     <Compile Include="component\db\Class_db_teaching_entities.cs" />
     <Compile Include="component\db\Class_db_teaching_entity_business_types.cs" />
     <Compile Include="component\db\Class_db_teaching_entity_levels.cs" />
@@ -202,13 +178,6 @@
     <Compile Include="noninteractive\import_latest_practitioners_from_emsrs.aspx.designer.cs">
       <DependentUpon>import_latest_practitioners_from_emsrs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="noninteractive\milestone_sweep.aspx.cs">
-      <DependentUpon>milestone_sweep.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="noninteractive\milestone_sweep.aspx.designer.cs">
-      <DependentUpon>milestone_sweep.aspx</DependentUpon>
-    </Compile>
     <Compile Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx.cs">
       <DependentUpon>import_latest_coned_offerings_from_emsrs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,53 +185,11 @@
     <Compile Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx.designer.cs">
       <DependentUpon>import_latest_coned_offerings_from_emsrs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="noninteractive\report_equipment_procurement_overview.aspx.cs">
-      <DependentUpon>report_equipment_procurement_overview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="noninteractive\report_equipment_procurement_overview.aspx.designer.cs">
-      <DependentUpon>report_equipment_procurement_overview.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="noninteractive\report_fy_allocations_reimbursements_nonspends.aspx.cs">
-      <DependentUpon>report_fy_allocations_reimbursements_nonspends.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="noninteractive\report_fy_allocations_reimbursements_nonspends.aspx.designer.cs">
-      <DependentUpon>report_fy_allocations_reimbursements_nonspends.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="protected\add_proof_of_payment.aspx.cs">
-      <DependentUpon>add_proof_of_payment.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\add_proof_of_payment.aspx.designer.cs">
-      <DependentUpon>add_proof_of_payment.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\administer_service_email_address.aspx.cs">
-      <DependentUpon>administer_service_email_address.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\administer_service_email_address.aspx.designer.cs">
-      <DependentUpon>administer_service_email_address.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\all_emsof_requests.aspx.cs">
-      <DependentUpon>all_emsof_requests.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\all_emsof_requests.aspx.designer.cs">
-      <DependentUpon>all_emsof_requests.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\analyses.aspx.cs">
-      <DependentUpon>analyses.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\analyses.aspx.designer.cs">
-      <DependentUpon>analyses.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\change_email_address.aspx.cs">
       <DependentUpon>change_email_address.aspx</DependentUpon>
@@ -277,13 +204,6 @@
     </Compile>
     <Compile Include="protected\change_password.aspx.designer.cs">
       <DependentUpon>change_password.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\charter_kinds.aspx.cs">
-      <DependentUpon>charter_kinds.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\charter_kinds.aspx.designer.cs">
-      <DependentUpon>charter_kinds.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\Class_msg_protected.cs" />
     <Compile Include="protected\coned_offering_detail.aspx.cs">
@@ -314,103 +234,12 @@
     <Compile Include="protected\coned_sponsor_overview.aspx.designer.cs">
       <DependentUpon>coned_sponsor_overview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="protected\county_detail.aspx.cs">
-      <DependentUpon>county_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\county_detail.aspx.designer.cs">
-      <DependentUpon>county_detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\county_dictated_appropriations.aspx.cs">
-      <DependentUpon>county_dictated_appropriations.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\county_dictated_appropriations.aspx.designer.cs">
-      <DependentUpon>county_dictated_appropriations.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\county_dictated_deadline.aspx.cs">
-      <DependentUpon>county_dictated_deadline.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\county_dictated_deadline.aspx.designer.cs">
-      <DependentUpon>county_dictated_deadline.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\county_overview.aspx.cs">
-      <DependentUpon>county_overview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\county_overview.aspx.designer.cs">
-      <DependentUpon>county_overview.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\county_unrejection.aspx.cs">
-      <DependentUpon>county_unrejection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\county_unrejection.aspx.designer.cs">
-      <DependentUpon>county_unrejection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\create_new_service_appropriation.aspx.cs">
-      <DependentUpon>create_new_service_appropriation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\create_new_service_appropriation.aspx.designer.cs">
-      <DependentUpon>create_new_service_appropriation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\delete_service_appropriation.aspx.cs">
-      <DependentUpon>delete_service_appropriation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\delete_service_appropriation.aspx.designer.cs">
-      <DependentUpon>delete_service_appropriation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\emsof_request_status_filter.aspx.cs">
-      <DependentUpon>emsof_request_status_filter.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\emsof_request_status_filter.aspx.designer.cs">
-      <DependentUpon>emsof_request_status_filter.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\equipment_procurement_detail.aspx.cs">
-      <DependentUpon>equipment_procurement_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\equipment_procurement_detail.aspx.designer.cs">
-      <DependentUpon>equipment_procurement_detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\finalize.aspx.cs">
-      <DependentUpon>finalize.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\finalize.aspx.designer.cs">
-      <DependentUpon>finalize.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\full_request_review_approve.aspx.cs">
-      <DependentUpon>full_request_review_approve.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\full_request_review_approve.aspx.designer.cs">
-      <DependentUpon>full_request_review_approve.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\profile.aspx.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\profile.aspx.designer.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
-    </Compile>
     <Compile Include="protected\ready_roster_detail.aspx.cs">
       <DependentUpon>ready_roster_detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="protected\ready_roster_detail.aspx.designer.cs">
       <DependentUpon>ready_roster_detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\regional_staffer_fiscal_year_selection.aspx.cs">
-      <DependentUpon>regional_staffer_fiscal_year_selection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\regional_staffer_fiscal_year_selection.aspx.designer.cs">
-      <DependentUpon>regional_staffer_fiscal_year_selection.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\regional_staffer_overview.aspx.cs">
       <DependentUpon>regional_staffer_overview.aspx</DependentUpon>
@@ -419,75 +248,12 @@
     <Compile Include="protected\regional_staffer_overview.aspx.designer.cs">
       <DependentUpon>regional_staffer_overview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="protected\region_dictated_appropriations.aspx.cs">
-      <DependentUpon>region_dictated_appropriations.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\region_dictated_appropriations.aspx.designer.cs">
-      <DependentUpon>region_dictated_appropriations.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\request_item_detail.aspx.cs">
-      <DependentUpon>request_item_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\request_item_detail.aspx.designer.cs">
-      <DependentUpon>request_item_detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\request_overview.aspx.cs">
-      <DependentUpon>request_overview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\request_overview.aspx.designer.cs">
-      <DependentUpon>request_overview.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\responding_services_detail.aspx.cs">
-      <DependentUpon>responding_services_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\responding_services_detail.aspx.designer.cs">
-      <DependentUpon>responding_services_detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\service_overview.aspx.cs">
-      <DependentUpon>service_overview.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\service_overview.aspx.designer.cs">
-      <DependentUpon>service_overview.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\state_required_report.aspx.cs">
-      <DependentUpon>state_required_report.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\state_required_report.aspx.designer.cs">
-      <DependentUpon>state_required_report.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\state_transmittal_complete.aspx.cs">
-      <DependentUpon>state_transmittal_complete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\state_transmittal_complete.aspx.designer.cs">
-      <DependentUpon>state_transmittal_complete.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="protected\withdraw_request_item.aspx.cs">
-      <DependentUpon>withdraw_request_item.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\withdraw_request_item.aspx.designer.cs">
-      <DependentUpon>withdraw_request_item.aspx</DependentUpon>
-    </Compile>
     <Compile Include="salogin.aspx.cs">
       <DependentUpon>salogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="salogin.aspx.designer.cs">
       <DependentUpon>salogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="serial_indicator_control_chart.aspx.cs">
-      <DependentUpon>serial_indicator_control_chart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="serial_indicator_control_chart.aspx.designer.cs">
-      <DependentUpon>serial_indicator_control_chart.aspx</DependentUpon>
     </Compile>
     <Compile Include="timeout.aspx.cs">
       <DependentUpon>timeout.aspx</DependentUpon>
@@ -502,27 +268,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_about.ascx.designer.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_analyses_binder.ascx.cs">
-      <DependentUpon>UserControl_analyses_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_analyses_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_analyses_binder.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_annual_cycle_setup.ascx.cs">
-      <DependentUpon>UserControl_annual_cycle_setup.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_annual_cycle_setup.ascx.designer.cs">
-      <DependentUpon>UserControl_annual_cycle_setup.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_charter_kind.ascx.cs">
-      <DependentUpon>UserControl_charter_kind.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_charter_kind.ascx.designer.cs">
-      <DependentUpon>UserControl_charter_kind.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_class_catalog.ascx.cs">
       <DependentUpon>UserControl_class_catalog.ascx</DependentUpon>
@@ -597,68 +342,12 @@
     <Compile Include="usercontrol\app\UserControl_coned_sponsor_status.ascx.designer.cs">
       <DependentUpon>UserControl_coned_sponsor_status.ascx</DependentUpon>
     </Compile>
-    <Compile Include="usercontrol\app\UserControl_config_binder.ascx.cs">
-      <DependentUpon>UserControl_config_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_config_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_config_binder.ascx</DependentUpon>
-    </Compile>
     <Compile Include="usercontrol\app\UserControl_counties.ascx.cs">
       <DependentUpon>UserControl_counties.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_counties.ascx.designer.cs">
       <DependentUpon>UserControl_counties.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_equipment_procurement_binder.ascx.cs">
-      <DependentUpon>UserControl_equipment_procurement_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_equipment_procurement_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_equipment_procurement_binder.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_equipment_procurement_overview.ascx.cs">
-      <DependentUpon>UserControl_equipment_procurement_overview.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_equipment_procurement_overview.ascx.designer.cs">
-      <DependentUpon>UserControl_equipment_procurement_overview.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_financial_snapshot.ascx.cs">
-      <DependentUpon>UserControl_financial_snapshot.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_financial_snapshot.ascx.designer.cs">
-      <DependentUpon>UserControl_financial_snapshot.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_fy_allocations_reimbursements_returns.ascx.cs">
-      <DependentUpon>UserControl_fy_allocations_reimbursements_returns.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_fy_allocations_reimbursements_returns.ascx.designer.cs">
-      <DependentUpon>UserControl_fy_allocations_reimbursements_returns.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_match_level.ascx.cs">
-      <DependentUpon>UserControl_match_level.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_match_level.ascx.designer.cs">
-      <DependentUpon>UserControl_match_level.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_new_service.ascx.cs">
-      <DependentUpon>UserControl_new_service.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_new_service.ascx.designer.cs">
-      <DependentUpon>UserControl_new_service.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_outcomes.ascx.cs">
-      <DependentUpon>UserControl_outcomes.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_outcomes.ascx.designer.cs">
-      <DependentUpon>UserControl_outcomes.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_postcontent.ascx.cs">
       <DependentUpon>UserControl_postcontent.ascx</DependentUpon>
@@ -702,68 +391,12 @@
     <Compile Include="usercontrol\app\UserControl_regional_staffer_binder.ascx.designer.cs">
       <DependentUpon>UserControl_regional_staffer_binder.ascx</DependentUpon>
     </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_cat4pe_binder.ascx.cs">
-      <DependentUpon>UserControl_regional_staffer_cat4pe_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_cat4pe_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_regional_staffer_cat4pe_binder.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_current_binder.ascx.cs">
-      <DependentUpon>UserControl_regional_staffer_current_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_current_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_regional_staffer_current_binder.ascx</DependentUpon>
-    </Compile>
     <Compile Include="usercontrol\app\UserControl_regional_staffer_emsrs_gateway_binder.ascx.cs">
       <DependentUpon>UserControl_regional_staffer_emsrs_gateway_binder.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_regional_staffer_emsrs_gateway_binder.ascx.designer.cs">
       <DependentUpon>UserControl_regional_staffer_emsrs_gateway_binder.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_new_binder.ascx.cs">
-      <DependentUpon>UserControl_regional_staffer_new_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_new_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_regional_staffer_new_binder.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_old_binder.ascx.cs">
-      <DependentUpon>UserControl_regional_staffer_old_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_regional_staffer_old_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_regional_staffer_old_binder.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_region_dictated_appropriations.ascx.cs">
-      <DependentUpon>UserControl_region_dictated_appropriations.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_region_dictated_appropriations.ascx.designer.cs">
-      <DependentUpon>UserControl_region_dictated_appropriations.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_responding_services.ascx.cs">
-      <DependentUpon>UserControl_responding_services.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_responding_services.ascx.designer.cs">
-      <DependentUpon>UserControl_responding_services.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_serial_indicator_equipment_quantities.ascx.cs">
-      <DependentUpon>UserControl_serial_indicator_equipment_quantities.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_serial_indicator_equipment_quantities.ascx.designer.cs">
-      <DependentUpon>UserControl_serial_indicator_equipment_quantities.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_service_profile.ascx.cs">
-      <DependentUpon>UserControl_service_profile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_service_profile.ascx.designer.cs">
-      <DependentUpon>UserControl_service_profile.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_teaching_entity.ascx.cs">
       <DependentUpon>UserControl_teaching_entity.ascx</DependentUpon>
@@ -799,27 +432,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_update_progress_blocker.ascx.designer.cs">
       <DependentUpon>UserControl_update_progress_blocker.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_values_to_region.ascx.cs">
-      <DependentUpon>UserControl_values_to_region.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_values_to_region.ascx.designer.cs">
-      <DependentUpon>UserControl_values_to_region.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_values_to_services.ascx.cs">
-      <DependentUpon>UserControl_values_to_services.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_values_to_services.ascx.designer.cs">
-      <DependentUpon>UserControl_values_to_services.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_workflow.ascx.cs">
-      <DependentUpon>UserControl_workflow.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_workflow.ascx.designer.cs">
-      <DependentUpon>UserControl_workflow.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_about_by.ascx.cs">
       <DependentUpon>UserControl_about_by.ascx</DependentUpon>
@@ -893,13 +505,10 @@
     <Content Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
-    <Content Include="noninteractive\report_fy_allocations_reimbursements_nonspends.aspx" />
-    <Content Include="protected\administer_service_email_address.aspx" />
     <Content Include="protected\coned_offering_detail.aspx" />
     <Content Include="protected\coned_offering_roster.aspx" />
     <Content Include="protected\coned_sponsor_detail.aspx" />
     <Content Include="protected\coned_sponsor_overview.aspx" />
-    <Content Include="protected\county_detail.aspx" />
     <Content Include="protected\image\delete_x16_h.png" />
     <Content Include="protected\image\document-save-5.png" />
     <Content Include="protected\image\edit-undo-8.png" />
@@ -907,7 +516,6 @@
     <Content Include="protected\ready_roster_detail.aspx" />
     <Content Include="protected\template\notification\roster_ready.txt" />
     <Content Include="salogin.aspx" />
-    <Content Include="serial_indicator_control_chart.aspx" />
     <Content Include="timeout.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -918,24 +526,8 @@
     <Content Include="js\ErrorHandler.js" />
     <Content Include="js\gradient.js" />
     <Content Include="noninteractive\daily_tasks.aspx" />
-    <Content Include="noninteractive\milestone_sweep.aspx" />
-    <Content Include="noninteractive\report_equipment_procurement_overview.aspx" />
-    <Content Include="protected\add_proof_of_payment.aspx" />
-    <Content Include="protected\all_emsof_requests.aspx" />
-    <Content Include="protected\analyses.aspx" />
     <Content Include="protected\change_email_address.aspx" />
     <Content Include="protected\change_password.aspx" />
-    <Content Include="protected\charter_kinds.aspx" />
-    <Content Include="protected\county_dictated_appropriations.aspx" />
-    <Content Include="protected\county_dictated_deadline.aspx" />
-    <Content Include="protected\county_overview.aspx" />
-    <Content Include="protected\county_unrejection.aspx" />
-    <Content Include="protected\create_new_service_appropriation.aspx" />
-    <Content Include="protected\delete_service_appropriation.aspx" />
-    <Content Include="protected\emsof_request_status_filter.aspx" />
-    <Content Include="protected\equipment_procurement_detail.aspx" />
-    <Content Include="protected\finalize.aspx" />
-    <Content Include="protected\full_request_review_approve.aspx" />
     <Content Include="protected\image\first_track_blue16_h.png" />
     <Content Include="protected\image\last_track_blue16_h.png" />
     <Content Include="protected\image\logo_left.gif" />
@@ -945,25 +537,12 @@
     <Content Include="protected\image\play_blue16_h.png" />
     <Content Include="protected\image\print16_h.png" />
     <Content Include="protected\image\processing-indicator.gif" />
-    <Content Include="protected\profile.aspx" />
-    <Content Include="protected\regional_staffer_fiscal_year_selection.aspx" />
     <Content Include="protected\regional_staffer_overview.aspx" />
-    <Content Include="protected\region_dictated_appropriations.aspx" />
-    <Content Include="protected\request_item_detail.aspx" />
-    <Content Include="protected\request_overview.aspx" />
-    <Content Include="protected\responding_services_detail.aspx" />
-    <Content Include="protected\service_overview.aspx" />
-    <Content Include="protected\state_required_report.aspx" />
-    <Content Include="protected\state_transmittal_complete.aspx" />
     <Content Include="protected\template\notification\corruption_notification.txt" />
-    <Content Include="protected\withdraw_request_item.aspx" />
     <Content Include="unpublished.config" />
     <None Include="noninteractive\.crontab" />
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
-    <Content Include="usercontrol\app\UserControl_analyses_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_annual_cycle_setup.ascx" />
-    <Content Include="usercontrol\app\UserControl_charter_kind.ascx" />
     <Content Include="usercontrol\app\UserControl_class_catalog.ascx" />
     <Content Include="usercontrol\app\UserControl_common_header_bar.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_binder.ascx" />
@@ -975,38 +554,19 @@
     <Content Include="usercontrol\app\UserControl_coned_sponsors.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_sponsor_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_sponsor_status.ascx" />
-    <Content Include="usercontrol\app\UserControl_config_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_counties.ascx" />
-    <Content Include="usercontrol\app\UserControl_equipment_procurement_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_equipment_procurement_overview.ascx" />
-    <Content Include="usercontrol\app\UserControl_financial_snapshot.ascx" />
-    <Content Include="usercontrol\app\UserControl_fy_allocations_reimbursements_returns.ascx" />
-    <Content Include="usercontrol\app\UserControl_match_level.ascx" />
-    <Content Include="usercontrol\app\UserControl_new_service.ascx" />
-    <Content Include="usercontrol\app\UserControl_outcomes.ascx" />
     <Content Include="usercontrol\app\UserControl_postcontent.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner_level.ascx" />
     <Content Include="usercontrol\app\UserControl_precontent.ascx" />
     <Content Include="usercontrol\app\UserControl_ready_rosters.ascx" />
     <Content Include="usercontrol\app\UserControl_regional_staffer_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_regional_staffer_cat4pe_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_regional_staffer_current_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_regional_staffer_emsrs_gateway_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_regional_staffer_new_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_regional_staffer_old_binder.ascx" />
-    <Content Include="usercontrol\app\UserControl_region_dictated_appropriations.ascx" />
-    <Content Include="usercontrol\app\UserControl_responding_services.ascx" />
-    <Content Include="usercontrol\app\UserControl_serial_indicator_equipment_quantities.ascx" />
-    <Content Include="usercontrol\app\UserControl_service_profile.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_business_type.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_level.ascx" />
     <Content Include="usercontrol\app\UserControl_training_institute_status.ascx" />
     <Content Include="usercontrol\app\UserControl_update_progress_blocker.ascx" />
-    <Content Include="usercontrol\app\UserControl_values_to_region.ascx" />
-    <Content Include="usercontrol\app\UserControl_values_to_services.ascx" />
-    <Content Include="usercontrol\app\UserControl_workflow.ascx" />
     <Content Include="usercontrol\ki\image\delete_x16_h.png" />
     <Content Include="usercontrol\ki\image\paperclip_16x16.gif" />
     <Content Include="usercontrol\ki\UserControl_about_by.ascx" />
@@ -1039,9 +599,6 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferenceUrl Include="http://ems.health.state.pa.us/emsregwebservices/EMSREGWebServices.asmx">
