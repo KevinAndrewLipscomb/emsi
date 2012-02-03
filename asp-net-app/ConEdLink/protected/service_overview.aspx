@@ -21,7 +21,7 @@
                   <td>
                     <table cellspacing="0" cellpadding="10" border="0">
                       <tr>
-                        <td bgcolor="#f5f5f5">Your service's WebEMSOF profile:</td>
+                        <td bgcolor="#f5f5f5">Your service's ConEdLink profile:</td>
                         <td><ASP:Label id="Label_profile_status" runat="server"></ASP:Label></td>
                         <td><ASP:LinkButton id="LinkButton_profile_action" runat="server" font-size="Small" onclick="LinkButton_profile_action_Click"></ASP:LinkButton></td>
                         <td id="TableData_profile_printable" runat="server" visible="false"><ASP:LinkButton id="LinkButton_profile_printable" runat="server" font-size="Small" onclick="LinkButton_profile_printable_Click">[View printable report]</ASP:LinkButton></td>
@@ -62,7 +62,7 @@
                       autogeneratecolumns="False">
                       <HeaderStyle font-bold="True" backcolor="#F5F5F5"></HeaderStyle>
                       <Columns>
-                        <ASP:BoundColumn visible="False" datafield="id" readonly="True" headertext="WebEMSOF ID#">
+                        <ASP:BoundColumn visible="False" datafield="id" readonly="True" headertext="ConEdLink ID#">
                           <ItemStyle horizontalalign="Center" forecolor="Gray"></ItemStyle>
                         </ASP:BoundColumn>
                         <ASP:BoundColumn datafield="fy_designator" readonly="True" headertext="Cycle"></ASP:BoundColumn>

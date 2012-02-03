@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace WebEMSOF.component.os
+namespace ConEdLink.component.os
   {
   public static class Class_os_Static
     {

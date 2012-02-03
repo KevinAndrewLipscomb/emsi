@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebEMSOF</RootNamespace>
-    <AssemblyName>WebEMSOF</AssemblyName>
+    <RootNamespace>ConEdLink</RootNamespace>
+    <AssemblyName>ConEdLink</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -1053,7 +1053,7 @@
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WebEMSOF_WebReference_emsrs_EMSREGWebServices</CachedSettingsPropName>
+      <CachedSettingsPropName>ConEdLink_WebReference_emsrs_EMSREGWebServices</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -1073,7 +1073,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2636</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/WebEMSOF</IISUrl>
+          <IISUrl>http://localhost/ConEdLink</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -65,28 +65,21 @@
 									  <td valign="top">•
 </td>
 									  <td>
-										<small><a href="/WebEMSOF/resource/funding-priorities-epel.pdf" target="_blank">Funding Priorities and Eligible Provider Equipment List</a></small>
+										<small><a href="https://ems.health.state.pa.us/emsportal" target="_blank">EMS Registry System (EMSRS)</a></small>
 									  </td>
 									</tr>
 									<tr>
 									  <td valign="top">•
 </td>
 									  <td>
-										<small><a href="/WebEMSOF/resource/emsi-emsof-allocations-memo.pdf" target="_blank">Regional announcement</a></small>
+										<small><a href="/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf" target="_blank">Use Guide for Con Ed Sponsors</a></small>
 									  </td>
 									</tr>
 									<tr>
 									  <td valign="top">•
 </td>
 									  <td>
-										<small><a href="/WebEMSOF/resource/terms-and-conditions.pdf" target="_blank">Terms and Conditions</a></small>
-									  </td>
-									</tr>
-									<tr>
-									  <td valign="top">•
-</td>
-									  <td>
-										<small><a href="/WebEMSOF/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small>
+										<small><a href="/ConEdLink/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small>
 									  </td>
 									</tr>
 								  </table>
@@ -140,7 +133,7 @@
                               </tr>
                               <tr>
                                 <td>
-                                  <small>Send suggestions <a href="mailto:feedback@frompaper2web.com?subject=WebEMSOF%20suggestion">here
+                                  <small>Send suggestions <a href="mailto:feedback@frompaper2web.com?subject=ConEdLink%20suggestion">here
 </a>.
 </small>
                                 </td>

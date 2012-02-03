@@ -1,7 +1,7 @@
 using Class_biz_coned_offerings;
 using Class_biz_teaching_entities;
 using Class_biz_practitioners;
-using WebEMSOF.component.os;
+using ConEdLink.component.os;
 
 namespace Class_biz_scheduled_tasks
   {

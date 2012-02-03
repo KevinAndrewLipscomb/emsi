@@ -8,7 +8,7 @@ using System;
 using System.Collections;
 using System.Text;
 using System.Web.UI.WebControls;
-using WebEMSOF.component.ss;
+using ConEdLink.component.ss;
 
 namespace Class_db_practitioners
   {

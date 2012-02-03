@@ -34,7 +34,7 @@
 						  <SelectedItemStyle font-bold="True" forecolor="White" backcolor="#CC3333"></SelectedItemStyle>
 						  <HeaderStyle forecolor="Blue" backcolor="WhiteSmoke"></HeaderStyle>
 						  <Columns>
-							<ASP:BoundColumn visible="False" datafield="id" sortexpression="id" readonly="True" headertext="WebEMSOF ID#">
+							<ASP:BoundColumn visible="False" datafield="id" sortexpression="id" readonly="True" headertext="ConEdLink ID#">
 							  <ItemStyle horizontalalign="Center" forecolor="Gray"></ItemStyle>
 							</ASP:BoundColumn>
 							<ASP:BoundColumn visible="False" datafield="service_id" sortexpression="service_id" readonly="True"></ASP:BoundColumn>

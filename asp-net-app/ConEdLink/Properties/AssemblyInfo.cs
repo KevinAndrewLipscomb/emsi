@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebEMSOF")]
+[assembly: AssemblyTitle("ConEdLink")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kalips'o Infogistics LLC")]
-[assembly: AssemblyProduct("WebEMSOF")]
+[assembly: AssemblyProduct("ConEdLink")]
 [assembly: AssemblyCopyright("Copyright © Kalips'o Infogistics LLC 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

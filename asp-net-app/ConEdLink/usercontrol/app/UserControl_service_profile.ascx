@@ -35,7 +35,7 @@
                               <asp:RadioButtonList id="RadioButtonList_be_valid_profile" runat="server">
                                 <asp:ListItem value="FALSE">has NOT yet been accepted</asp:ListItem>
                                 <asp:ListItem value="TRUE">HAS been accepted</asp:ListItem>
-                              </asp:RadioButtonList><br/>...by WebEMSOF and the Regional Council.</p></li>
+                              </asp:RadioButtonList><br/>...by ConEdLink and the Regional Council.</p></li>
                             <li><p>This service...<br/>
                               <asp:RadioButtonList id="RadioButtonList_be_distressed" runat="server">
                                 <asp:ListItem value="FALSE">does NOT qualify</asp:ListItem>
@@ -1152,7 +1152,7 @@
                       <table cellspacing="0" cellpadding="5" border="0"><!-- + -->
                         <tr>
                           <td colspan="3">
-                            <p>By submitting this form to WebEMSOF, you are affirming that you are the contact person listed above, and you are agreeing to serve as the above service's EMSOF point of contact for this EMSOF cycle.&nbsp; You further affirm that if you must relinquish your responsibilities as the service's EMSOF point of contact during this cycle, you will give reasonable advanced notice to the service and to the regional council.</p>
+                            <p>By submitting this form to ConEdLink, you are affirming that you are the contact person listed above, and you are agreeing to serve as the above service's EMSOF point of contact for this EMSOF cycle.&nbsp; You further affirm that if you must relinquish your responsibilities as the service's EMSOF point of contact during this cycle, you will give reasonable advanced notice to the service and to the regional council.</p>
                           </td>
                         </tr>
                       </table>

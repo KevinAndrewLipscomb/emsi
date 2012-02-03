@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WebEMSOF.WebReference_emsrs {
+namespace ConEdLink.WebReference_emsrs {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -41,7 +41,7 @@ namespace WebEMSOF.WebReference_emsrs {
         
         /// <remarks/>
         public EMSREGWebServices() {
-            this.Url = global::WebEMSOF.Properties.Settings.Default.WebEMSOF_WebReference_emsrs_EMSREGWebServices;
+            this.Url = global::ConEdLink.Properties.Settings.Default.ConEdLink_WebReference_emsrs_EMSREGWebServices;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
