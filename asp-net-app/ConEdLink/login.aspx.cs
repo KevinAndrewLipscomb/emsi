@@ -69,11 +69,11 @@ namespace login
                 p.biz_accounts = new TClass_biz_accounts();
                 p.biz_regions = new TClass_biz_regions();
                 //
-                var coned_sponsor_go_live_date = DateTime.Parse("2012-02-07");
-                if (DateTime.Today < coned_sponsor_go_live_date)
-                  {
-                  DropDownList_user_kind.Items.FindByValue("coned_sponsor").Enabled = false;
-                  }
+                //var coned_sponsor_go_live_date = DateTime.Parse("2012-02-07");
+                //if (DateTime.Today < coned_sponsor_go_live_date)
+                //  {
+                //  DropDownList_user_kind.Items.FindByValue("coned_sponsor").Enabled = false;
+                //  }
                 //
             }
             InjectPersistentClientSideScript();
