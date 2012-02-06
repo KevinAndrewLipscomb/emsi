@@ -94,9 +94,9 @@
                             <asp:BoundColumn DataField="lcds_instructor_hours" HeaderText="HOURS" ReadOnly="True"></asp:BoundColumn>
                             <asp:BoundColumn DataField="end_date" HeaderText="DATEFINAL" ReadOnly="true"></asp:BoundColumn>
                             <asp:TemplateColumn HeaderText="SSN"><ItemTemplate></ItemTemplate></asp:TemplateColumn>
-                            <asp:TemplateColumn HeaderText="REMED"><ItemTemplate></ItemTemplate></asp:TemplateColumn>
+                            <asp:TemplateColumn HeaderText="REMED"><ItemTemplate>0</ItemTemplate></asp:TemplateColumn>
                             <asp:BoundColumn datafield="practitioner_county_emsrs_code" HeaderText="COUNTY" ReadOnly="True"></asp:BoundColumn>
-                            <asp:TemplateColumn HeaderText="SEND"><ItemTemplate></ItemTemplate></asp:TemplateColumn>
+                            <asp:TemplateColumn HeaderText="SEND"><ItemTemplate>0</ItemTemplate></asp:TemplateColumn>
                             <asp:BoundColumn DataField="sponsor_number" HeaderText="SPONSORID" ReadOnly="true"></asp:BoundColumn>
                             <asp:TemplateColumn HeaderText="DATETIMESTAMP"><ItemTemplate></ItemTemplate></asp:TemplateColumn>
                             <asp:TemplateColumn HeaderText="FORM_TYPE_ID"><ItemTemplate></ItemTemplate></asp:TemplateColumn>
@@ -114,10 +114,16 @@
                               <br />
                               ...then...<br />
                               <br />
-                              <asp:Button ID="Button_mark_done" runat="server" Text="Mark done" onclick="Button_mark_done_Click"/>
+                              <asp:Button ID="Button_mark_done" runat="server" Text="Mark done and go back" onclick="Button_mark_done_Click"/>
                             </td>
                             <td><b><i>OR</i></b></td>
-                            <td style="border:1px solid Gray"><asp:Button ID="Button_submit_to_emsrs" runat="server" Text="Submit to EMSRS and mark done" onclick="Button_submit_to_emsrs_Click" Enabled="False" /></td>
+                            <td align="center" style="border:1px solid Gray">
+                              <asp:Button ID="Button_submit_to_emsrs" runat="server" Text="Submit to EMSRS and mark done" onclick="Button_submit_to_emsrs_Click" /><br />
+                              <br />
+                              ...then...<br />
+                              <br />
+                              <asp:Button ID="Button_go_back" runat="server" Text="Go back" enabled="false" onclick="Button_go_back_Click"/>
+                            </td>
                           </tr>
                         </table>
                       </td>

@@ -101,6 +101,11 @@ namespace ready_roster_detail
     //
     //==
 
+    protected void Button_go_back_Click(object sender, EventArgs e)
+      {
+      BackTrack();
+      }
+
     protected void Button_mark_done_Click(object sender, EventArgs e)
       {
       p.biz_coned_offerings.Archive(p.incoming.summary);
@@ -109,7 +114,39 @@ namespace ready_roster_detail
 
     protected void Button_submit_to_emsrs_Click(object sender, EventArgs e)
       {
-      var s = new EMSREGWebServices().ProcessConed("<lcds><table1>" + p.lcds_content_xml + "</table1></lcds>");
+      var response = new EMSREGWebServices().ProcessConed("<CONEDRAW>" + p.lcds_content_xml + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
+      if (response.Contains("Errors Found: 0"))
+        {
+        Alert
+          (
+          cause:k.alert_cause_type.NETWORK,
+          state:k.alert_state_type.SUCCESS,
+          key:"okfromemsrs",
+          value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
+          be_using_scriptmanager:true
+          );
+        p.biz_coned_offerings.Archive(p.incoming.summary);
+        Button_mark_done.Enabled = false;
+        Button_submit_to_emsrs.Enabled = false;
+        Button_go_back.Enabled = true;
+        }
+      else
+        {
+        k.SmtpMailSend
+          (
+          from:ConfigurationManager.AppSettings["sender_email_address"],
+          to:ConfigurationManager.AppSettings["failsafe_recipient_email_address"],
+          subject:"EMSRS coned cards submission response",
+          message_string:"[response]" + k.NEW_LINE + response + k.NEW_LINE + k.NEW_LINE + "[p.lcds_content_xml]" + k.NEW_LINE + p.lcds_content_xml.Replace("</Table><Table>","</Table>" + k.NEW_LINE + "<Table>")
+          );
+        Alert
+          (
+          cause:k.alert_cause_type.NETWORK,
+          state:k.alert_state_type.WARNING,
+          key:"emsrsnotok",
+          value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
+          be_using_scriptmanager:true);
+        }
       }
 
     protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -133,28 +170,22 @@ namespace ready_roster_detail
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
         p.lcds_content_xml +=
-          "<row>"
-        +   "<SecurityString>2216CC72-55A7-47ED-A693-2343BCEB5BA</SecurityString>"
-        +   "<ID>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_ID].Text + "</ID>"
+          "<Table>"
         +   "<HEADER>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HEADER].Text + "</HEADER>"
         +   "<DOB>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DOB].Text + "</DOB>"
         +   "<VALID>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_VALID].Text + "</VALID>"
         +   "<OLDCERT>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OLDCERT].Text + "</OLDCERT>"
         +   "<LEVEL1>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_LEVEL1].Text + "</LEVEL1>"
-        +   "<REGION>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REGION].Text + "</REGION>"
-        +   "<COURSE>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Text + "</COURSE>"
-        +   "<OUTOFSTATE>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OUTOFSTATE].Text + "</OUTOFSTATE>"
+        +   "<REGION>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REGION].Text,k.safe_hint_type.NUM) + "</REGION>"
+        +   "<COURSE>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Text,k.safe_hint_type.NUM) + "</COURSE>"
         +   "<CLASS>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_CLASS].Text + "</CLASS>"
-        +   "<HOURS>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HOURS].Text + "</HOURS>"
+        +   "<HOURS>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HOURS].Text,k.safe_hint_type.NUM) + "</HOURS>"
         +   "<DATEFINAL>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DATEFINAL].Text + "</DATEFINAL>"
-        +   "<SSN>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_SSN].Text + "</SSN>"
+        +   "<SSN />"
         +   "<REMED>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REMED].Text + "</REMED>"
-        +   "<COUNTY>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COUNTY].Text + "</COUNTY>"
+        +   "<COUNTY>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COUNTY].Text,k.safe_hint_type.NUM) + "</COUNTY>"
         +   "<SEND>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_SEND].Text + "</SEND>"
-        +   "<SPONSORID>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_SPONSORID].Text + "</SPONSORID>"
-        +   "<DATETIMESTAMP>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DATETIMESTAMP].Text + "</DATETIMESTAMP>"
-        +   "<FORM_TYPE_ID>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_FORM_TYPE_ID].Text + "</FORM_TYPE_ID>"
-        + "</row>";
+        + "</Table>";
         }
       }
 

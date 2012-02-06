@@ -408,6 +408,7 @@ namespace coned_offering_roster
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_offering_roster";
+        Panel_input_method.Visible = p.biz_coned_offering_rosters.BeOkToInputBatch();
         var max_spec_length = p.biz_practitioners.MaxSpecLength(Session["region_code"].ToString(),k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
@@ -431,6 +432,13 @@ namespace coned_offering_roster
           );
         }
       InjectPersistentClientSideScript();
+      }
+
+    protected void RadioButtonList_input_method_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      var be_batch = (RadioButtonList_input_method.SelectedValue == "Batch");
+      Panel_one_at_a_time.Visible = !be_batch;
+      Panel_batch.Visible = be_batch;
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)
