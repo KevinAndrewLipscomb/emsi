@@ -1,19 +1,31 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
+using Class_biz_user;
 using Class_db_coned_offering_rosters;
+using Class_db_teaching_entities;
 using kix;
-using System;
 using System.Collections;
+using System.Configuration;
 
 namespace Class_biz_coned_offering_rosters
   {
   public class TClass_biz_coned_offering_rosters
     {
+
+    private TClass_biz_user biz_user = null;
     private TClass_db_coned_offering_rosters db_coned_offering_rosters = null;
+    private TClass_db_teaching_entities db_teaching_entities = null;
 
     public TClass_biz_coned_offering_rosters() : base()
       {
+      biz_user = new TClass_biz_user();
       db_coned_offering_rosters = new TClass_db_coned_offering_rosters();
+      db_teaching_entities = new TClass_db_teaching_entities();
+      }
+
+    internal bool BeOkToInputBatch()
+      {
+      return ((biz_user.Kind() == "coned_sponsor") && (biz_user.IdNum() == db_teaching_entities.IdOfPublicContactName("EMSI")));
       }
 
     public bool Bind(string partial_spec, object target)

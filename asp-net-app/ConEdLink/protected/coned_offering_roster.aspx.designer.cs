@@ -31,6 +31,33 @@ namespace coned_offering_roster {
         protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
         
         /// <summary>
+        /// Panel_input_method control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_input_method;
+        
+        /// <summary>
+        /// RadioButtonList_input_method control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList_input_method;
+        
+        /// <summary>
+        /// Panel_one_at_a_time control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_one_at_a_time;
+        
+        /// <summary>
         /// UpdatePanel_search_upper control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,42 @@ namespace coned_offering_roster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
+        
+        /// <summary>
+        /// Panel_batch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_batch;
+        
+        /// <summary>
+        /// RequiredFieldValidator_certification_number_batch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_certification_number_batch;
+        
+        /// <summary>
+        /// RegularExpressionValidator_certification_number_batch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_certification_number_batch;
+        
+        /// <summary>
+        /// TextBox_certification_number_batch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_certification_number_batch;
         
         /// <summary>
         /// Literal_course_title control.
