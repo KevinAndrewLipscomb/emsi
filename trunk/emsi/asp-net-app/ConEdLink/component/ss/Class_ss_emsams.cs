@@ -600,6 +600,42 @@ namespace ConEdLink.component.ss
 	    return true;
     }
 
+    private bool Request_ems_health_state_pa_us_EmsregActivepractitioners
+      (
+      CookieContainer cookie_container,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/emsreg/ActivePractitioners.aspx");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)");
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
     private bool Request_ems_health_state_pa_us_EmsregActivepractitioners_3000
       (
       CookieContainer cookie_container,
@@ -994,47 +1030,51 @@ namespace ConEdLink.component.ss
         context.cookie_container = new CookieContainer();
         context.disposition = new k.int_sign_range();
         }
-      if (Request_ems_health_state_pa_us_EmsregActivepractitioners_3000(context.cookie_container,context.view_state,context.event_validation,context.next_page_ctl_num,out response))
+      if (Request_ems_health_state_pa_us_EmsregActivepractitioners(context.cookie_container,out response))
         {
-        var html_document = HtmlDocumentOf(ConsumedStreamOf(response));
-        //
-        // The initial XPaths are determined by visiting the page in IE9, selecting "F12 developer tools", setting Document Mode to IE9 Standards, navigating to the node of interest, and disregarding any form or tbody tags.
-        //
-        var hn_target_table = html_document.GetElementbyId("_ctl0__ctl0_SessionLinkBar_Content_dgActivePractitioners"); 
-        //
-        var hnc_last_name = hn_target_table.SelectNodes("tr/td[1]/span");
-        var hnc_first_name = hn_target_table.SelectNodes("tr/td[2]/span");
-        var hnc_middle_initial = hn_target_table.SelectNodes("tr/td[3]/span");
-        var hnc_certification_number = hn_target_table.SelectNodes("tr/td[4]/span");
-        var hnc_level = hn_target_table.SelectNodes("tr/td[5]/span");
-        var hnc_regional_council = hn_target_table.SelectNodes("tr/td[6]/span");
-        //
-        for (var i = new k.subtype<int>(1,hnc_last_name.Count - 1); i.val < i.LAST; i.val++)  //limits take into account non-data header & page index rows
+        context.view_state = ViewstateOf(HtmlDocumentOf(ConsumedStreamOf(response)));
+        if (Request_ems_health_state_pa_us_EmsregActivepractitioners_3000(context.cookie_container,context.view_state,context.event_validation,context.next_page_ctl_num,out response))
           {
-          var practitioner = new Practitioner();
-          practitioner.last_name = k.Safe(hnc_last_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-          practitioner.first_name = k.Safe(hnc_first_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-          practitioner.middle_initial = k.Safe(hnc_middle_initial[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-          practitioner.certification_number = k.Safe(hnc_certification_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-          practitioner.level = k.Safe(hnc_level[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-          practitioner.regional_council = k.Safe(hnc_regional_council[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-          active_practitioners.Add(practitioner);
-          }
-        //
-        context.view_state = html_document.GetElementbyId("__VIEWSTATE").Attributes["value"].Value;
-        context.event_validation = html_document.GetElementbyId("__EVENTVALIDATION").Attributes["value"].Value;
-        //
-        var hn_current_page_num_node_next_sibling = hnc_last_name[hnc_last_name.Count - 1].NextSibling;
-        if (hn_current_page_num_node_next_sibling == null)
-          {
-          context.disposition.val = 1;
-          }
-        else
-          {
-          context.next_page_ctl_num = hn_current_page_num_node_next_sibling.NextSibling.Attributes["href"].Value
-            .Replace("javascript:__doPostBack(&#39;_ctl0$_ctl0$SessionLinkBar$Content$dgActivePractitioners$_ctl3004$_ctl",k.EMPTY)
-            .Replace("&#39;,&#39;&#39;)",k.EMPTY);
-          context.disposition.val = 0;
+          var html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+          //
+          // The initial XPaths are determined by visiting the page in IE9, selecting "F12 developer tools", setting Document Mode to IE9 Standards, navigating to the node of interest, and disregarding any form or tbody tags.
+          //
+          var hn_target_table = html_document.GetElementbyId("_ctl0__ctl0_SessionLinkBar_Content_dgActivePractitioners"); 
+          //
+          var hnc_last_name = hn_target_table.SelectNodes("tr/td[1]/span");
+          var hnc_first_name = hn_target_table.SelectNodes("tr/td[2]/span");
+          var hnc_middle_initial = hn_target_table.SelectNodes("tr/td[3]/span");
+          var hnc_certification_number = hn_target_table.SelectNodes("tr/td[4]/span");
+          var hnc_level = hn_target_table.SelectNodes("tr/td[5]/span");
+          var hnc_regional_council = hn_target_table.SelectNodes("tr/td[6]/span");
+          //
+          for (var i = new k.subtype<int>(1,hnc_last_name.Count - 1); i.val < i.LAST; i.val++)  //limits take into account non-data header & page index rows
+            {
+            var practitioner = new Practitioner();
+            practitioner.last_name = k.Safe(hnc_last_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+            practitioner.first_name = k.Safe(hnc_first_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+            practitioner.middle_initial = k.Safe(hnc_middle_initial[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+            practitioner.certification_number = k.Safe(hnc_certification_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+            practitioner.level = k.Safe(hnc_level[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+            practitioner.regional_council = k.Safe(hnc_regional_council[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+            active_practitioners.Add(practitioner);
+            }
+          //
+          context.view_state = html_document.GetElementbyId("__VIEWSTATE").Attributes["value"].Value;
+          context.event_validation = html_document.GetElementbyId("__EVENTVALIDATION").Attributes["value"].Value;
+          //
+          var hn_current_page_num_node_next_sibling = hnc_last_name[hnc_last_name.Count - 1].NextSibling;
+          if (hn_current_page_num_node_next_sibling == null)
+            {
+            context.disposition.val = 1;
+            }
+          else
+            {
+            context.next_page_ctl_num = hn_current_page_num_node_next_sibling.NextSibling.Attributes["href"].Value
+              .Replace("javascript:__doPostBack(&#39;_ctl0$_ctl0$SessionLinkBar$Content$dgActivePractitioners$_ctl3004$_ctl",k.EMPTY)
+              .Replace("&#39;,&#39;&#39;)",k.EMPTY);
+            context.disposition.val = 0;
+            }
           }
         }
       return active_practitioners;
