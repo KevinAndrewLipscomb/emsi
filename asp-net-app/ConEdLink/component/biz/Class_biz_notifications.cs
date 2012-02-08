@@ -1,9 +1,9 @@
 using Class_biz_accounts;
-using Class_biz_teaching_entities;
 using kix;
 using System;
 using System.Configuration;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Class_biz_notifications
@@ -105,7 +105,7 @@ namespace Class_biz_notifications
         subject:Merge(template_reader.ReadLine()),
         message_string:Merge(template_reader.ReadToEnd()),
         be_html:false,
-        cc:(coned_offering_public_contact_email + k.COMMA + sponsor_email + k.COMMA + sponsor_contact_email + k.COMMA + sponsor_public_contact_email).Trim(new char[] {Convert.ToChar(k.COMMA)}).Replace(",,",k.COMMA),
+        cc:Regex.Replace((coned_offering_public_contact_email + k.COMMA + sponsor_email + k.COMMA + sponsor_contact_email + k.COMMA + sponsor_public_contact_email).Trim(new char[] {Convert.ToChar(k.COMMA)}),",,+",k.COMMA),
         bcc:k.EMPTY,
         reply_to:sponsor_email
         );
