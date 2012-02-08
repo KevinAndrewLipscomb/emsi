@@ -35,8 +35,9 @@ namespace UserControl_coned_offering
 
     private void Clear()
       {
+      TextBox_id.Text = k.EMPTY;
+      DropDownList_id.Visible = false;
       TextBox_class_id.Text = k.EMPTY;
-      DropDownList_class_id.Visible = false;
       TextBox_course_id.Text = k.EMPTY;
       TextBox_class_number.Text = k.EMPTY;
       TextBox_created_by.Text = k.EMPTY;
@@ -196,7 +197,7 @@ namespace UserControl_coned_offering
       {
       if (!p.be_loaded)
         {
-        TableRow_class_id.Visible = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator")|| HttpContext.Current.User.IsInRole("education-specialist");
+        TableRow_id.Visible = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator")|| HttpContext.Current.User.IsInRole("education-specialist");
         p.biz_coned_offering_document_statuses.BindDirectToListControl(DropDownList_document_status);
         p.biz_coned_offering_class_final_statuses.BindDirectToListControl(DropDownList_class_final_status,"- - -");
         p.biz_regions.BindEmsrsToListControl(DropDownList_region_council);
@@ -218,10 +219,11 @@ namespace UserControl_coned_offering
       InjectPersistentClientSideScript();
       }
 
-    private bool PresentRecord(string class_id)
+    private bool PresentRecord(string id)
       {
-      Literal_match_index.Text = DropDownList_class_id.SelectedIndex.ToString();
+      Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
+      string class_id;
       string course_id;
       string class_number;
       string created_by;
@@ -291,7 +293,8 @@ namespace UserControl_coned_offering
         (
         p.biz_coned_offerings.Get
           (
-          class_id,
+          id,
+          out class_id,
           out course_id,
           out class_number,
           out created_by,
@@ -359,8 +362,9 @@ namespace UserControl_coned_offering
           )
         )
         {
+        TextBox_id.Text = id;
+        TextBox_id.Enabled = false;
         TextBox_class_id.Text = class_id;
-        TextBox_class_id.Enabled = false;
         TextBox_course_id.Text = course_id;
         TextBox_class_number.Text = class_number;
         TextBox_created_by.Text = created_by;
@@ -440,7 +444,8 @@ namespace UserControl_coned_offering
     private void SetDataEntryMode()
       {
       Clear();
-      TextBox_class_id.Enabled = false;
+      TextBox_id.Text = "*";
+      TextBox_id.Enabled = false;
       Button_lookup.Enabled = false;
       Label_lookup_arrow.Enabled = false;
       Label_lookup_hint.Enabled = false;
@@ -449,19 +454,19 @@ namespace UserControl_coned_offering
       SetDependentFieldAblements(p.be_ok_to_config_coned_offerings);
       Button_submit.Enabled = p.be_ok_to_config_coned_offerings;
       Button_delete.Enabled = false;
-      Focus(TextBox_class_id, true);
+      TextBox_id.Focus();
       }
 
     private void SetLookupMode()
       {
       Clear();
-      TextBox_class_id.Enabled = true;
+      TextBox_id.Enabled = true;
       Button_lookup.Enabled = true;
       Label_lookup_arrow.Enabled = true;
       Label_lookup_hint.Enabled = true;
       LinkButton_reset.Enabled = false;
       LinkButton_new_record.Enabled = true;
-      Focus(TextBox_class_id, true);
+      TextBox_id.Focus();
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -529,6 +534,7 @@ namespace UserControl_coned_offering
         {
         p.biz_coned_offerings.Set
           (
+          k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_class_id.Text,k.safe_hint_type.NUM).Trim(),
           k.Safe(TextBox_course_id.Text,k.safe_hint_type.NUM).Trim(),
           k.Safe(TextBox_class_number.Text,k.safe_hint_type.NUM).Trim(),
@@ -604,38 +610,38 @@ namespace UserControl_coned_offering
         }
       }
 
-    protected void DropDownList_class_id_SelectedIndexChanged(object sender, System.EventArgs e)
+    protected void DropDownList_id_SelectedIndexChanged(object sender, System.EventArgs e)
       {
-      PresentRecord(k.Safe(DropDownList_class_id.SelectedValue, k.safe_hint_type.NUM));
+      PresentRecord(k.Safe(DropDownList_id.SelectedValue, k.safe_hint_type.NUM));
       }
 
     protected void LinkButton_go_to_match_first_Click(object sender, System.EventArgs e)
       {
-      DropDownList_class_id.SelectedIndex = 1;
-      PresentRecord(k.Safe(DropDownList_class_id.SelectedValue, k.safe_hint_type.NUM));
+      DropDownList_id.SelectedIndex = 1;
+      PresentRecord(k.Safe(DropDownList_id.SelectedValue, k.safe_hint_type.NUM));
       }
 
     protected void LinkButton_go_to_match_prior_Click(object sender, System.EventArgs e)
       {
-      DropDownList_class_id.SelectedIndex = Math.Max(1, (DropDownList_class_id.SelectedIndex - 1));
-      PresentRecord(k.Safe(DropDownList_class_id.SelectedValue, k.safe_hint_type.NUM));
+      DropDownList_id.SelectedIndex = Math.Max(1, (DropDownList_id.SelectedIndex - 1));
+      PresentRecord(k.Safe(DropDownList_id.SelectedValue, k.safe_hint_type.NUM));
       }
 
     protected void LinkButton_go_to_match_next_Click(object sender, System.EventArgs e)
       {
-      DropDownList_class_id.SelectedIndex = Math.Min((DropDownList_class_id.SelectedIndex + 1), (DropDownList_class_id.Items.Count - 1));
-      PresentRecord(k.Safe(DropDownList_class_id.SelectedValue, k.safe_hint_type.NUM));
+      DropDownList_id.SelectedIndex = Math.Min((DropDownList_id.SelectedIndex + 1), (DropDownList_id.Items.Count - 1));
+      PresentRecord(k.Safe(DropDownList_id.SelectedValue, k.safe_hint_type.NUM));
       }
 
     protected void LinkButton_go_to_match_last_Click(object sender, System.EventArgs e)
       {
-      DropDownList_class_id.SelectedIndex = DropDownList_class_id.Items.Count - 1;
-      PresentRecord(k.Safe(DropDownList_class_id.SelectedValue, k.safe_hint_type.NUM));
+      DropDownList_id.SelectedIndex = DropDownList_id.Items.Count - 1;
+      PresentRecord(k.Safe(DropDownList_id.SelectedValue, k.safe_hint_type.NUM));
       }
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_coned_offerings.Delete(k.Safe(TextBox_class_id.Text, k.safe_hint_type.ALPHANUM)))
+      if (p.biz_coned_offerings.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.NUM)))
         {
         SetLookupMode();
         }
@@ -657,6 +663,7 @@ namespace UserControl_coned_offering
 
     private void SetDependentFieldAblements(bool ablement)
       {
+      TextBox_class_id.Enabled = ablement;
       TextBox_course_id.Enabled = ablement;
       TextBox_class_number.Enabled = ablement;
       TextBox_created_by.Enabled = ablement;
@@ -726,20 +733,20 @@ namespace UserControl_coned_offering
     protected void Button_lookup_Click(object sender, System.EventArgs e)
       {
       uint num_matches;
-      string saved_class_id;
-      saved_class_id = k.Safe(TextBox_class_id.Text,k.safe_hint_type.PUNCTUATED);
+      string saved_id;
+      saved_id = k.Safe(TextBox_id.Text,k.safe_hint_type.PUNCTUATED);
       Clear();
-      if (!PresentRecord(saved_class_id))
+      if (!PresentRecord(saved_id))
         {
-        TextBox_class_id.Text = saved_class_id;
-        p.biz_coned_offerings.Bind(saved_class_id, DropDownList_class_id);
-        num_matches = (uint)(DropDownList_class_id.Items.Count);
+        TextBox_id.Text = saved_id;
+        p.biz_coned_offerings.Bind(saved_id, DropDownList_id);
+        num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {
-          DropDownList_class_id.Visible = true;
+          DropDownList_id.Visible = true;
           if (num_matches == 1)
             {
-            PresentRecord(k.Safe(DropDownList_class_id.SelectedValue, k.safe_hint_type.NUM));
+            PresentRecord(k.Safe(DropDownList_id.SelectedValue, k.safe_hint_type.NUM));
             }
           else
             {
@@ -750,7 +757,7 @@ namespace UserControl_coned_offering
             LinkButton_go_to_match_next.Visible = true;
             LinkButton_go_to_match_last.Visible = true;
             LinkButton_go_to_match_first.Visible = true;
-            DropDownList_class_id.Items.Insert(0, new ListItem("-- Select --", k.EMPTY));
+            DropDownList_id.Items.Insert(0, new ListItem("-- Select --", k.EMPTY));
             }
           }
         }
@@ -758,7 +765,7 @@ namespace UserControl_coned_offering
 
     internal void SetFilter(object summary)
       {
-      SessionSet("mode:goto","/coned_offering/" + p.biz_coned_offerings.ClassIdOf(summary));
+      SessionSet("mode:goto","/coned_offering/" + p.biz_coned_offerings.IdOf(summary));
       }
 
     } // end TWebUserControl_coned_offering

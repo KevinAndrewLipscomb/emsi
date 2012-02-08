@@ -65,12 +65,12 @@ namespace Class_db_coned_offering_rosters
       Close();
       }
 
-    public void BindBaseDataListByClassId
+    public void BindBaseDataListByConedOfferingId
       (
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string class_id
+      string id
       )
       {
       Open();
@@ -82,7 +82,7 @@ namespace Class_db_coned_offering_rosters
         + " , first_name"
         + " , middle_initial"
         + " , practitioner_level.short_description as level"
-        + " , certification_number"
+        + " , concat('''',LPAD(certification_number,6,'0')) as certification_number"
         + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
         + " , be_birth_date_confirmed"
         + " , IFNULL(practitioner_county_code_name_map.code,coned_offering_county_code_name_map.code) as county_code"
@@ -101,10 +101,10 @@ namespace Class_db_coned_offering_rosters
         + " from coned_offering_roster"
         +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
-        +   " join coned_offering on (coned_offering.class_id=coned_offering_roster.coned_offering_class_id)"
+        +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join county_code_name_map coned_offering_county_code_name_map on (coned_offering_county_code_name_map.emsrs_code=coned_offering.class_county_code)"
         +   " left join county_code_name_map practitioner_county_code_name_map on (practitioner_county_code_name_map.code=practitioner.residence_county_code)"
-        + " where coned_offering_class_id = '" + class_id + "'"
+        + " where coned_offering.id = '" + id + "'"
         + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
@@ -131,7 +131,7 @@ namespace Class_db_coned_offering_rosters
             +     " select description"
             +     " from coned_offering"
             +       " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
-            +     " where coned_offering.class_id = coned_offering_roster.coned_offering_class_id"
+            +     " where coned_offering.id = coned_offering_roster.coned_offering_id"
             +     " )"
             ),
           connection
@@ -156,12 +156,12 @@ namespace Class_db_coned_offering_rosters
     public bool Get
       (
       string id,
-      out string coned_offering_class_id,
+      out string coned_offering_id,
       out string practitioner_id,
       out string instructor_hours
       )
       {
-      coned_offering_class_id = k.EMPTY;
+      coned_offering_id = k.EMPTY;
       practitioner_id = k.EMPTY;
       instructor_hours = k.EMPTY;
       var result = false;
@@ -170,7 +170,7 @@ namespace Class_db_coned_offering_rosters
       var dr = new MySqlCommand("select * from coned_offering_roster where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
       if (dr.Read())
         {
-        coned_offering_class_id = dr["coned_offering_class_id"].ToString();
+        coned_offering_id = dr["coned_offering_id"].ToString();
         practitioner_id = dr["practitioner_id"].ToString();
         instructor_hours = dr["instructor_hours"].ToString();
         result = true;
@@ -183,13 +183,13 @@ namespace Class_db_coned_offering_rosters
     public void Set
       (
       string id,
-      string coned_offering_class_id,
+      string coned_offering_id,
       string practitioner_id,
       string instructor_hours
       )
       {
       var childless_field_assignments_clause = k.EMPTY
-      + "coned_offering_class_id = NULLIF('" + coned_offering_class_id + "','')"
+      + "coned_offering_id = NULLIF('" + coned_offering_id + "','')"
       + " , practitioner_id = NULLIF('" + practitioner_id + "','')"
       + " , instructor_hours = NULLIF('" + instructor_hours + "','')"
       + k.EMPTY;
@@ -198,14 +198,14 @@ namespace Class_db_coned_offering_rosters
         (
         db_trail.Saved
           (
-          "insert coned_offering_roster (id,coned_offering_class_id,practitioner_id,instructor_hours)"
+          "insert coned_offering_roster (id,coned_offering_id,practitioner_id,instructor_hours)"
           + " select NULLIF('" + id + "','') as id"
-          + " , NULLIF('" + coned_offering_class_id + "','') as coned_offering_class_id"
+          + " , NULLIF('" + coned_offering_id + "','') as coned_offering_id"
           + " , NULLIF('" + practitioner_id + "','') as practitioner_id"
           + " , NULLIF('" + instructor_hours + "','') as instructor_hours"
           + " from coned_offering"
           +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
-          + " where coned_offering.class_id = '" + coned_offering_class_id + "'"
+          + " where coned_offering.id = '" + coned_offering_id + "'"
           +   " and coned_offering_status.description = 'NEEDS_CONED_SPONSOR_FINALIZATION'"
           + " on duplicate key update "
           + childless_field_assignments_clause

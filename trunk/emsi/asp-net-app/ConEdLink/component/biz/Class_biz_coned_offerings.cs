@@ -30,9 +30,9 @@ namespace Class_biz_coned_offerings
       {
       if (db_coned_offerings.StatusOf(summary) == coned_offering_status_enumeration.NEEDS_REGIONAL_PROCESSING)
         {
-        var class_id = db_coned_offerings.ClassIdOf(summary);
-        db_practitioners.MarkDobsConfirmed(class_id);
-        db_coned_offerings.SetStatus(class_id,coned_offering_status_enumeration.ARCHIVED);
+        var id = db_coned_offerings.IdOf(summary);
+        db_practitioners.MarkDobsConfirmed(id);
+        db_coned_offerings.SetStatus(id,coned_offering_status_enumeration.ARCHIVED);
         }
       }
 
@@ -92,11 +92,6 @@ namespace Class_biz_coned_offerings
       db_coned_offerings.BindDirectToListControl(target);
       }
 
-    internal string ClassIdOf(object summary)
-      {
-      return db_coned_offerings.ClassIdOf(summary);
-      }
-
     internal string ClassNumberOf(object summary)
       {
       return db_coned_offerings.ClassNumberOf(summary);
@@ -110,7 +105,7 @@ namespace Class_biz_coned_offerings
       {
       if (db_coned_offerings.StatusOf(summary) == coned_offering_status_enumeration.NEEDS_CONED_SPONSOR_FINALIZATION)
         {
-        db_coned_offerings.SetStatus(db_coned_offerings.ClassIdOf(summary),coned_offering_status_enumeration.NEEDS_REGIONAL_PROCESSING);
+        db_coned_offerings.SetStatus(db_coned_offerings.IdOf(summary),coned_offering_status_enumeration.NEEDS_REGIONAL_PROCESSING);
         biz_notifications.IssueForClassClosed
           (
           sponsor_id:db_coned_offerings.SponsorIdOf(summary),
@@ -149,7 +144,8 @@ namespace Class_biz_coned_offerings
 
     public bool Get
       (
-      string class_id,
+      string id,
+      out string class_id,
       out string course_id,
       out string class_number,
       out string created_by,
@@ -218,7 +214,8 @@ namespace Class_biz_coned_offerings
       {
       return db_coned_offerings.Get
         (
-        class_id,
+        id,
+        out class_id,
         out course_id,
         out class_number,
         out created_by,
@@ -286,6 +283,11 @@ namespace Class_biz_coned_offerings
         );
       }
 
+    internal string IdOf(object summary)
+      {
+      return db_coned_offerings.IdOf(summary);
+      }
+
     internal void ImportLatestFromEmsrs()
       {
       db_coned_offerings.ImportLatestFromEmsrs(ss_emsams.ClassSearchUnlimited());
@@ -298,6 +300,7 @@ namespace Class_biz_coned_offerings
 
     public void Set
       (
+      string id,
       string class_id,
       string course_id,
       string class_number,
@@ -367,6 +370,7 @@ namespace Class_biz_coned_offerings
       {
       db_coned_offerings.Set
         (
+        id,
         class_id,
         course_id,
         class_number,
@@ -440,9 +444,9 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.StartOf(summary);
       }
 
-    public object Summary(string class_id)
+    public object Summary(string id)
       {
-      return db_coned_offerings.Summary(class_id);
+      return db_coned_offerings.Summary(id);
       }
 
     internal k.decimal_nonnegative TotalClassHoursOf(object summary)

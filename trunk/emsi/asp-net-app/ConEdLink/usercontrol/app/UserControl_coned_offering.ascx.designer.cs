@@ -13,22 +13,22 @@ namespace UserControl_coned_offering {
     public partial class TWebUserControl_coned_offering {
         
         /// <summary>
-        /// TableRow_class_id control.
+        /// TableRow_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_class_id;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_id;
         
         /// <summary>
-        /// TextBox_class_id control.
+        /// TextBox_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_class_id;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_id;
         
         /// <summary>
         /// Button_lookup control.
@@ -139,22 +139,31 @@ namespace UserControl_coned_offering {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton_go_to_match_last;
         
         /// <summary>
-        /// DropDownList_class_id control.
+        /// DropDownList_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_class_id;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_id;
         
         /// <summary>
-        /// RequiredFieldValidator_class_id control.
+        /// RequiredFieldValidator_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_class_id;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_id;
+        
+        /// <summary>
+        /// TextBox_class_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_class_id;
         
         /// <summary>
         /// TextBox_class_number control.

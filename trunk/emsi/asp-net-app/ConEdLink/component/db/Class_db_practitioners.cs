@@ -278,7 +278,7 @@ namespace Class_db_practitioners
       Close();
       }
 
-    internal void MarkDobsConfirmed(string class_id)
+    internal void MarkDobsConfirmed(string id)
       {
       Open();
       new MySqlCommand
@@ -288,7 +288,7 @@ namespace Class_db_practitioners
           "update practitioner"
           + " join coned_offering_roster on (coned_offering_roster.practitioner_id=practitioner.id)"
           + " set be_birth_date_confirmed = TRUE"
-          + "  where coned_offering_class_id = '" + class_id + "'"
+          + "  where coned_offering_id = '" + id + "'"
           ),
         connection
         )
