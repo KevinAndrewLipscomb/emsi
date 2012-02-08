@@ -12,7 +12,7 @@ namespace UserControl_class_catalog
   public static class UserControl_class_catalog_Static
     {
     public const int TCI_SELECT = 0;
-    public const int TCI_CLASS_ID = 1;
+    public const int TCI_ID = 1;
     public const int TCI_CLASS_NUM = 2;
     public const int TCI_COURSE_TITLE = 3;
     public const int TCI_LOCATION = 4;
@@ -182,7 +182,7 @@ namespace UserControl_class_catalog
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var summary = p.biz_coned_offerings.Summary(k.Safe(e.Item.Cells[UserControl_class_catalog_Static.TCI_CLASS_ID].Text,k.safe_hint_type.NUM));
+        var summary = p.biz_coned_offerings.Summary(k.Safe(e.Item.Cells[UserControl_class_catalog_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         if (e.CommandName == "Select")
           {
           p.msg_protected_coned_offering_detail.summary = summary;
@@ -216,7 +216,7 @@ namespace UserControl_class_catalog
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_class_catalog_Static.TCI_CLASS_ID].EnableViewState = true;
+          e.Item.Cells[UserControl_class_catalog_Static.TCI_ID].EnableViewState = true;
           //
           p.num_coned_offerings++;
           }

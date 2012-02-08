@@ -38,10 +38,10 @@ namespace Class_biz_coned_offering_rosters
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string class_id
+      string id
       )
       {
-      db_coned_offering_rosters.BindBaseDataListByClassId(sort_order,be_sort_order_ascending,target,class_id);
+      db_coned_offering_rosters.BindBaseDataListByConedOfferingId(sort_order,be_sort_order_ascending,target,id);
       }
 
       public void BindDirectToListControl(object target)

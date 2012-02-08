@@ -23,7 +23,7 @@ namespace coned_offering_roster
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
     public TClass_biz_practitioners biz_practitioners;
-    public string class_id;
+    public string coned_offering_id;
     public TClass_msg_protected.coned_offering_roster incoming;
     public k.int_nonnegative num_attendees;
     public k.int_nonnegative num_attendees_with_known_birth_dates;
@@ -57,7 +57,7 @@ namespace coned_offering_roster
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
-      p.biz_coned_offering_rosters.Set(id:k.EMPTY,coned_offering_id:p.class_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
+      p.biz_coned_offering_rosters.Set(id:k.EMPTY,coned_offering_id:p.coned_offering_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
       Bind();
       TextBox_practitioner.Text = k.EMPTY;
       InitForNewSearch();
@@ -68,7 +68,7 @@ namespace coned_offering_roster
       p.num_attendees.val = 0;
       p.num_attendees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[coned_offering_roster_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
-      p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.class_id);
+      p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
@@ -342,7 +342,7 @@ namespace coned_offering_roster
         p.biz_coned_offering_rosters.Set
           (
           k.Safe(e.Item.Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM),
-          p.class_id,
+          p.coned_offering_id,
           practitioner_id,
           k.Safe((e.Item.Cells[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("TextBox_instructor_hours") as TextBox).Text.Replace("#.#",k.EMPTY),k.safe_hint_type.REAL_NUM)
           );
@@ -391,7 +391,7 @@ namespace coned_offering_roster
         p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
         //
         p.be_ok_to_edit_roster = p.biz_coned_offerings.BeOkToEditRoster(p.incoming.summary);
-        p.class_id = p.biz_coned_offerings.ClassIdOf(p.incoming.summary);
+        p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
         p.total_class_hours = p.biz_coned_offerings.TotalClassHoursOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)

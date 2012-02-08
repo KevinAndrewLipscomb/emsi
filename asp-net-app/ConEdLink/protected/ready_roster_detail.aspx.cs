@@ -23,7 +23,7 @@ namespace ready_roster_detail
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
     public TClass_biz_practitioners biz_practitioners;
-    public string class_id;
+    public string coned_offering_id;
     public TClass_msg_protected.ready_roster_detail incoming;
     public string lcds_content_xml;
     public k.int_nonnegative num_attendees;
@@ -70,10 +70,10 @@ namespace ready_roster_detail
     private void Bind()
       {
       p.num_attendees.val = 0;
-      p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.class_id);
+      p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
-      p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_lcds,p.class_id);
+      p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_lcds,p.coned_offering_id);
       }
 
     // / <summary>
@@ -174,7 +174,7 @@ namespace ready_roster_detail
         +   "<HEADER>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HEADER].Text + "</HEADER>"
         +   "<DOB>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DOB].Text + "</DOB>"
         +   "<VALID>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_VALID].Text + "</VALID>"
-        +   "<OLDCERT>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OLDCERT].Text + "</OLDCERT>"
+        +   "<OLDCERT>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OLDCERT].Text,k.safe_hint_type.NUM) + "</OLDCERT>"
         +   "<LEVEL1>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_LEVEL1].Text + "</LEVEL1>"
         +   "<REGION>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REGION].Text,k.safe_hint_type.NUM) + "</REGION>"
         +   "<COURSE>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Text,k.safe_hint_type.NUM) + "</COURSE>"
@@ -230,7 +230,7 @@ namespace ready_roster_detail
         p.num_attendees = new k.int_nonnegative();
         p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
         //
-        p.class_id = p.biz_coned_offerings.ClassIdOf(p.incoming.summary);
+        p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
         p.total_class_hours = p.biz_coned_offerings.TotalClassHoursOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
