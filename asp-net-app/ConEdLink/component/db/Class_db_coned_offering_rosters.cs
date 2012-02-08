@@ -83,6 +83,7 @@ namespace Class_db_coned_offering_rosters
         + " , middle_initial"
         + " , practitioner_level.short_description as level"
         + " , concat('''',LPAD(certification_number,6,'0')) as certification_number"
+        + " , LPAD(certification_number,6,'0') as certification_number_for_display"
         + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
         + " , be_birth_date_confirmed"
         + " , IFNULL(practitioner_county_code_name_map.code,coned_offering_county_code_name_map.code) as county_code"

@@ -75,6 +75,20 @@ namespace Class_db_practitioners
       {
       Open();
       ((target) as ListControl).Items.Clear();
+      var matching_clause = k.EMPTY;
+      if (starting_with.Length > 0)
+        {
+        matching_clause = k.EMPTY
+        + " ("
+        +   " CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(birth_date,'-')) USING utf8) like '" + starting_with + "%'"
+        + " or"
+        +   " certification_number like '" + starting_with + "%'"
+        + " )";
+        }
+      else
+        {
+        matching_clause = " 1=1";
+        }
       var dr = new MySqlCommand
         (
         "SELECT id"
@@ -82,7 +96,7 @@ namespace Class_db_practitioners
         + " FROM practitioner"
         + " where not be_stale"
         +   " and" + (region_code.Length > 0 ? " regional_council_code = '" + region_code + "'" : " 1=1")
-        +   " and" + (starting_with.Length > 0 ? " CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(birth_date,'-')) USING utf8) like '" + starting_with + "%'" : " 1=1")
+        +   " and" + matching_clause
         + " order by spec",
         connection
         )
