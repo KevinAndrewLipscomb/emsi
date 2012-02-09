@@ -8,17 +8,15 @@
           <table cellspacing="0" cellpadding="10" border="0">
             <tr>
               <td bgcolor="#dcdcdc">
-                <table cellspacing="0" cellpadding="0" border="0">
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
                   <tr>
-                    <!--
-                    --
-                    -- To be implemented
-                    --
                     <td>
-                      <strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong>
+                      <strong>Range:&nbsp;<asp:DropDownList id="DropDownList_range" runat="server" autopostback="True" onselectedindexchanged="DropDownList_range_SelectedIndexChanged">
+                        <asp:ListItem Selected="True" Value="InProcess">In process</asp:ListItem>
+                        <asp:ListItem>All</asp:ListItem>
+                      </asp:DropDownList></strong>
                     </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    -->
                     <td align="right">
                       <asp:Literal ID="Literal_num_coned_offerings" runat="server"></asp:Literal> classes
                     </td>

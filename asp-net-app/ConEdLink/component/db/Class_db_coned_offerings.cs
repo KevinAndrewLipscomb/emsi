@@ -76,6 +76,8 @@ namespace Class_db_coned_offerings
       (
       string region_code,
       string coned_sponsor_user_id,
+      bool be_limited_to_needing_coned_sponsor_finalization,
+      string start_year,
       string sort_order,
       bool be_sort_order_ascending,
       object target
@@ -95,9 +97,12 @@ namespace Class_db_coned_offerings
         +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
         +   " join county_region_map on (county_region_map.county_code=county_code_name_map.code)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         + " where region_code_name_map.code = '" + region_code + "'"
         +   " and county_region_map.region_code = '" + region_code + "'"
-        +   (coned_sponsor_user_id.Length > 0 ? " and teaching_entity.id = '" + coned_sponsor_user_id + "'" : k.EMPTY)
+        +     (be_limited_to_needing_coned_sponsor_finalization ? " and coned_offering_status.description = 'NEEDS_CONED_SPONSOR_FINALIZATION'" : k.EMPTY)
+        +     (start_year.Length > 0 ? " and YEAR(start_date_time) = '" + start_year + "'" : k.EMPTY)
+        +     (coned_sponsor_user_id.Length > 0 ? " and teaching_entity.id = '" + coned_sponsor_user_id + "'" : k.EMPTY)
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
