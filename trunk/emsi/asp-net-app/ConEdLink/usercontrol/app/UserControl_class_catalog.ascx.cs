@@ -3,6 +3,7 @@
 using Class_biz_coned_offerings;
 using Class_msg_protected;
 using kix;
+using System;
 using System.Collections;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -33,6 +34,7 @@ namespace UserControl_class_catalog
       public TClass_msg_protected.coned_offering_detail msg_protected_coned_offering_detail;
       public TClass_msg_protected.coned_offering_roster msg_protected_coned_offering_roster;
       public uint num_coned_offerings;
+      public string range;
       public string sort_order;
       }
 
@@ -125,6 +127,10 @@ namespace UserControl_class_catalog
           {
           DataGrid_control.AllowSorting = false;
           }
+        for (var i = new k.subtype<int>(2011,DateTime.Today.Year + 1); i.val < i.LAST; i.val++)
+          {
+          DropDownList_range.Items.Insert(1,i.val.ToString());
+          }
         Bind();
         p.be_loaded = true;
         }
@@ -139,7 +145,7 @@ namespace UserControl_class_catalog
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_coned_sponsor_binder_PlaceHolder_content"] as string) == "UserControl_class_catalog");
+        p.be_loaded = IsPostBack && ((Session["UserControl_coned_sponsor_binder_control_PlaceHolder_content"] as string) == "UserControl_class_catalog");
         }
       else
         {
@@ -150,6 +156,7 @@ namespace UserControl_class_catalog
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.range = "InProcess";
         p.sort_order = "start%";
         }
       }
@@ -244,12 +251,27 @@ namespace UserControl_class_catalog
 
     private void Bind()
       {
-      p.biz_coned_offerings.BindClassCatalog(Session["region_code"].ToString(),Session["coned_sponsor_user_id"].ToString(),p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.biz_coned_offerings.BindClassCatalog
+        (
+        region_code:Session["region_code"].ToString(),
+        coned_sponsor_user_id:Session["coned_sponsor_user_id"].ToString(),
+        be_limited_to_needing_coned_sponsor_finalization:(p.range == "InProcess"),
+        start_year:(new ArrayList {"InProcess","All"}.Contains(p.range) ? k.EMPTY : p.range),
+        sort_order:p.sort_order,
+        be_sort_order_ascending:p.be_sort_order_ascending,
+        target:DataGrid_control
+        );
       p.be_datagrid_empty = (p.num_coned_offerings == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       Literal_num_coned_offerings.Text = p.num_coned_offerings.ToString();
       p.num_coned_offerings = 0;
+      }
+
+    protected void DropDownList_range_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      p.range = k.Safe(DropDownList_range.SelectedValue,k.safe_hint_type.ALPHANUM);
+      Bind();
       }
 
     } // end TWebUserControl_class_catalog

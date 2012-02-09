@@ -22,13 +22,13 @@ namespace UserControl_class_catalog {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
-        /// DropDownList_filter control.
+        /// DropDownList_range control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_filter;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_range;
         
         /// <summary>
         /// Literal_num_coned_offerings control.
