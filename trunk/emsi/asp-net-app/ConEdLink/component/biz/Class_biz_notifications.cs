@@ -3,6 +3,7 @@ using kix;
 using System;
 using System.Configuration;
 using System.IO;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -30,6 +31,23 @@ namespace Class_biz_notifications
       {
       application_name = ConfigurationManager.AppSettings["application_name"];
       host_domain_name = ConfigurationManager.AppSettings["host_domain_name"];
+      }
+
+    private string EmptyIfInvalid(string e)
+      {
+      var empty_if_invalid = k.EMPTY;
+      try
+        {
+        new MailMessage().To.Add(e); // throws exception if invalid format
+        if (k.BeValidDomainPartOfEmailAddress(e))
+          {
+          empty_if_invalid = e;
+          }
+        }
+      catch
+        {
+        }
+      return empty_if_invalid;
       }
 
     private delegate string IssueCorruptionNotification_Merge(string s);
@@ -105,9 +123,20 @@ namespace Class_biz_notifications
         subject:Merge(template_reader.ReadLine()),
         message_string:Merge(template_reader.ReadToEnd()),
         be_html:false,
-        cc:Regex.Replace((coned_offering_public_contact_email + k.COMMA + sponsor_email + k.COMMA + sponsor_contact_email + k.COMMA + sponsor_public_contact_email).Trim(new char[] {Convert.ToChar(k.COMMA)}),",,+",k.COMMA),
+        cc:Regex.Replace
+          (
+            (
+              EmptyIfInvalid(coned_offering_public_contact_email) + k.COMMA
+              + EmptyIfInvalid(sponsor_email) + k.COMMA
+              + EmptyIfInvalid(sponsor_contact_email) + k.COMMA
+              + EmptyIfInvalid(sponsor_public_contact_email)
+            )
+            .Trim(new char[] {Convert.ToChar(k.COMMA)}),
+            ",,+",
+            k.COMMA
+          ),
         bcc:k.EMPTY,
-        reply_to:sponsor_email
+        reply_to:EmptyIfInvalid(sponsor_email)
         );
       template_reader.Close();
       }
