@@ -47,7 +47,7 @@
                     <td valign="top" bgcolor="Gainsboro">
                       <asp:UpdatePanel ID="UpdatePanel_search_lower" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                          <asp:ListBox ID="ListBox_practitioner" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBox_practitioner_SelectedIndexChanged" Rows="36" Width="100%"></asp:ListBox>
+                          <asp:ListBox ID="ListBox_practitioner" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBox_practitioner_SelectedIndexChanged" Rows="13" Width="100%"></asp:ListBox>
                         </ContentTemplate>
                         <Triggers>
                           <asp:AsyncPostBackTrigger ControlID="TextBox_practitioner" EventName="TextChanged" />
