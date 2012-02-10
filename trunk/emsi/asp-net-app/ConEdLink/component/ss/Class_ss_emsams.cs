@@ -514,6 +514,55 @@ namespace ConEdLink.component.ss
 	    return true;
     }
 
+    private static bool Request_ems_health_state_pa_us_ConedSponsorsearch_StatusSearchnow
+      (
+      CookieContainer cookie_container,
+      string status,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/ConEd/SponsorSearch.asp");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/ConEd/SponsorSearch.asp";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.ContentType = "application/x-www-form-urlencoded";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASPSESSIONIDACBATCSR=GAFPJGNBECCHBGLEJILLKFCL");
+
+		    request.Method = "POST";
+
+		    string postString = @"cmdMove=Search+Now&name=&number=&Region=&CountyCode=&ExpirationDate_Low=&ExpirationDate_High=&Status=" + status + "&ApplicationDate_Low=&ApplicationDate_High=&ProcessDate_Low=&ProcessDate_High=";
+		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
+		    request.ContentLength = postBytes.Length;
+		    Stream stream = request.GetRequestStream();
+		    stream.Write(postBytes, 0, postBytes.Length);
+		    stream.Close();
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
     private static bool Request_ems_health_state_pa_us_ConedUsersearch
       (
       CookieContainer cookie_container,
@@ -690,6 +739,70 @@ namespace ConEdLink.component.ss
 
 	    return true;
     }
+
+    private static void ScrapeConedSponsors
+      (
+      string status,
+      ArrayList teaching_entity_array_list,
+      HttpWebResponse response
+      )
+      {
+      var hn_target_table = HtmlDocumentOf(ConsumedStreamOf(response)).DocumentNode.SelectSingleNode("html/body/font/center[2]/center/table");
+      //
+      var hnc_name = hn_target_table.SelectNodes("tr/td[1]/a");
+      var hnc_location_column = hn_target_table.SelectNodes("tr/td[2]");
+      var hnc_county_name = hn_target_table.SelectNodes("tr/td[2]/table/tr[2]/td[2]");
+      var hnc_teaching_entity_kind = hn_target_table.SelectNodes("tr/td[2]/table/tr[4]/td[1]");
+      var hnc_sponsor_number = hn_target_table.SelectNodes("tr/td[2]/table/tr[4]/td[2]");
+      var hnc_public_contact_name = hn_target_table.SelectNodes("tr/td[3]/table/tr[1]/td[2]");
+      var hnc_public_contact_phone = hn_target_table.SelectNodes("tr/td[3]/table/tr[2]/td[2]");
+      var hnc_public_contact_email = hn_target_table.SelectNodes("tr/td[3]/table/tr[3]/td[2]");
+      var hnc_public_contact_website_cell = hn_target_table.SelectNodes("tr/td[3]/table/tr[4]/td[2]");
+      var hnc_public_contact_notes = hn_target_table.SelectNodes("tr/td[3]/table/tr[5]/td[2]");
+      //
+      for (var i = new k.subtype<int>(0, hnc_name.Count); i.val < i.LAST; i.val++)
+        {
+        var county_name = k.Safe(hnc_county_name[i.val].InnerText.Trim(), k.safe_hint_type.ALPHA);
+        var teaching_entity_kind = k.Safe(hnc_teaching_entity_kind[i.val].InnerText,k.safe_hint_type.ALPHA);
+        if ((county_name != "OutofState") && (teaching_entity_kind == "Sponsor"))
+          {
+          var teaching_entity = new TeachingEntity();
+          var name = hnc_name[i.val];
+          var name_href = name.Attributes["href"].Value;
+          var name_href_index_of_ampersand = name_href.IndexOf("&");
+          teaching_entity.id = k.Safe(name_href.Substring(0, name_href_index_of_ampersand), k.safe_hint_type.NUM);
+          teaching_entity.region = k.Safe(name_href.Substring(name_href_index_of_ampersand), k.safe_hint_type.NUM);
+          teaching_entity.name = k.Safe(name.InnerText.Trim(), k.safe_hint_type.ORG_NAME);
+          teaching_entity.address_1 = k.Safe(hnc_location_column[i.val].ChildNodes[0].InnerText.Trim(), k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          teaching_entity.address_2 = k.Safe(hnc_location_column[i.val].ChildNodes[2].InnerText.Trim(), k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          var city_state_zip = hnc_location_column[i.val].ChildNodes[4].InnerText.Trim();
+          if ((city_state_zip.Length > 0) && (city_state_zip != "&nbsp;"))
+            {
+            var city_state_zip_index_of_comma = city_state_zip.IndexOf(k.COMMA);
+            teaching_entity.city = k.Safe(city_state_zip.Substring(0, city_state_zip_index_of_comma), k.safe_hint_type.POSTAL_CITY);
+            teaching_entity.state = k.Safe(city_state_zip.Substring(city_state_zip_index_of_comma).Replace("&nbsp;",k.EMPTY), k.safe_hint_type.ALPHA);
+            teaching_entity.zip = k.Safe(city_state_zip.Substring(city_state_zip_index_of_comma), k.safe_hint_type.HYPHENATED_NUM);
+            }
+          teaching_entity.county_name = county_name;
+          teaching_entity.sponsor_number = k.Safe(hnc_sponsor_number[i.val].InnerText.Trim(), k.safe_hint_type.HYPHENATED_NUM);
+          teaching_entity.public_contact_name = k.Safe(hnc_public_contact_name[i.val].InnerText.Trim(), k.safe_hint_type.HUMAN_NAME);
+          teaching_entity.public_contact_phone = k.Safe(hnc_public_contact_phone[i.val].InnerText.Trim(), k.safe_hint_type.PHONE_NUM);
+          var hn_public_contact_email = hnc_public_contact_email[i.val].SelectSingleNode("a");
+          if (hn_public_contact_email != null)
+            {
+            teaching_entity.public_contact_email = k.Safe(hn_public_contact_email.InnerText.Trim(), k.safe_hint_type.EMAIL_ADDRESS);
+            }
+          var hn_public_contact_website = hnc_public_contact_website_cell[i.val].SelectSingleNode("a");
+          if (hn_public_contact_website != null)
+            {
+            teaching_entity.public_contact_website = k.Safe(hn_public_contact_website.InnerText.Trim(), k.safe_hint_type.HTTP_TARGET);
+            }
+          teaching_entity.public_contact_notes = k.Safe(hnc_public_contact_notes[i.val].InnerText.Trim(), k.safe_hint_type.PUNCTUATED);
+          teaching_entity.sponsor_status_description = status;
+          teaching_entity_array_list.Add(teaching_entity);
+          }
+        }
+      }
 
     internal class ConedOffering
       {
@@ -909,95 +1022,23 @@ namespace ConEdLink.component.ss
       internal string other_letter = k.EMPTY;
       internal string history = k.EMPTY;
       internal string business_type_description = k.EMPTY;
+      internal string county_name = k.EMPTY;
       }
-    internal ArrayList TeachingEntitySearchUnlimited()
+    internal ArrayList TeachingEntitySearch()
       {
-      var teaching_entity_search_unlimited = new ArrayList();
+      var teaching_entity_search = new ArrayList();
       //
       HttpWebResponse response;
       var cookie_container = new CookieContainer();
-      if(
-          Request_ems_health_state_pa_us_ConedSponsorsearch(cookie_container,out response)
-        &&
-          Request_ems_health_state_pa_us_ConedSponsorsearch_Filedelimited_Searchnow(cookie_container,out response)
-        &&
-          Request_ems_health_state_pa_us_ConedExportSponsorsearchtxt(cookie_container,out response)
-        )
+      if (Request_ems_health_state_pa_us_ConedSponsorsearch_StatusSearchnow(cookie_container,"S1",out response))
         {
-        var stream_reader = new StreamReader(response.GetResponseStream());
-        stream_reader.ReadLine();  //Discard the first line.  It only contains column headings.
-        while (!stream_reader.EndOfStream)
-          {
-          var field_array = stream_reader.ReadLine().Split(new string[] {k.TAB},StringSplitOptions.None);
-          var teaching_entity = new TeachingEntity();
-          teaching_entity.id = k.Safe(field_array[0],k.safe_hint_type.NUM);
-          teaching_entity.date_created = k.Safe(field_array[1],k.safe_hint_type.DATE_TIME);
-          teaching_entity.date_last_edited = k.Safe(field_array[2],k.safe_hint_type.DATE_TIME);
-          teaching_entity.sponsor_number = k.Safe(field_array[3],k.safe_hint_type.HYPHENATED_NUM);
-          teaching_entity.training_ins_accred_num = k.Safe(field_array[4],k.safe_hint_type.HYPHENATED_NUM);
-          teaching_entity.name = k.Safe(field_array[5],k.safe_hint_type.ORG_NAME);
-          teaching_entity.short_name = k.Safe(field_array[6],k.safe_hint_type.ORG_NAME);
-          teaching_entity.address_1 = k.Safe(field_array[7],k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          teaching_entity.address_2 = k.Safe(field_array[8],k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          teaching_entity.city = k.Safe(field_array[9],k.safe_hint_type.POSTAL_CITY);
-          teaching_entity.state = k.Safe(field_array[10],k.safe_hint_type.ALPHA);
-          teaching_entity.zip = k.Safe(field_array[11],k.safe_hint_type.HYPHENATED_NUM);
-          teaching_entity.county_code = k.Safe(field_array[12],k.safe_hint_type.NUM);
-          teaching_entity.region = k.Safe(field_array[13],k.safe_hint_type. NUM);
-          teaching_entity.email = k.Safe(field_array[14],k.safe_hint_type.EMAIL_ADDRESS);
-          teaching_entity.website = k.Safe(field_array[15],k.safe_hint_type.HTTP_TARGET);
-          teaching_entity.daytime_phone = k.Safe(field_array[16],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.evening_phone = k.Safe(field_array[17],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.fax = k.Safe(field_array[18],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.business_type_id = k.Safe(field_array[19],k.safe_hint_type.NUM);
-          teaching_entity.con_ed_level = k.Safe(field_array[20],k.safe_hint_type.PUNCTUATED);
-          teaching_entity.certification_level = k.Safe(field_array[21],k.safe_hint_type.PUNCTUATED);
-          teaching_entity.contact_prefix = k.Safe(field_array[22],k.safe_hint_type.HUMAN_NAME);
-          teaching_entity.contact_first_name = k.Safe(field_array[23],k.safe_hint_type.HUMAN_NAME);
-          teaching_entity.contact_last_name = k.Safe(field_array[24],k.safe_hint_type.HUMAN_NAME);
-          teaching_entity.contact_suffix = k.Safe(field_array[25],k.safe_hint_type.HUMAN_NAME);
-          teaching_entity.contact_title = k.Safe(field_array[26],k.safe_hint_type.MAKE_MODEL);
-          teaching_entity.contact_address_1 = k.Safe(field_array[27],k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          teaching_entity.contact_address_2 = k.Safe(field_array[28],k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          teaching_entity.contact_city = k.Safe(field_array[29],k.safe_hint_type.POSTAL_CITY);
-          teaching_entity.contact_state = k.Safe(field_array[30],k.safe_hint_type.ALPHA);
-          teaching_entity.contact_zip = k.Safe(field_array[31],k.safe_hint_type.HYPHENATED_NUM);
-          teaching_entity.contact_daytime_phone = k.Safe(field_array[32],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.contact_evening_phone = k.Safe(field_array[33],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.contact_fax = k.Safe(field_array[34],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.contact_email = k.Safe(field_array[35],k.safe_hint_type.EMAIL_ADDRESS);
-          teaching_entity.public_contact_name = k.Safe(field_array[36],k.safe_hint_type.HUMAN_NAME);
-          teaching_entity.public_contact_phone = k.Safe(field_array[37],k.safe_hint_type.PHONE_NUM);
-          teaching_entity.public_contact_email = k.Safe(field_array[38],k.safe_hint_type.EMAIL_ADDRESS);
-          teaching_entity.public_contact_website = k.Safe(field_array[39],k.safe_hint_type.HTTP_TARGET);
-          teaching_entity.public_contact_notes = k.Safe(field_array[40],k.safe_hint_type.PUNCTUATED);
-          teaching_entity.application_date = k.Safe(field_array[41],k.safe_hint_type.DATE_TIME);
-          teaching_entity.application_received = k.Safe(field_array[42],k.safe_hint_type.DATE_TIME);
-          teaching_entity.sponsor_status = k.Safe(field_array[43],k.safe_hint_type.NUM);
-          teaching_entity.sponsor_status_description = k.Safe(field_array[44],k.safe_hint_type.ALPHA_WORDS);
-          teaching_entity.training_inst_status = k.Safe(field_array[45],k.safe_hint_type.NUM);
-          teaching_entity.training_inst_status_description = k.Safe(field_array[46],k.safe_hint_type.ALPHA_WORDS);
-          teaching_entity.issue_date = k.Safe(field_array[47],k.safe_hint_type.DATE_TIME);
-          teaching_entity.prev_expiration_date = k.Safe(field_array[48],k.safe_hint_type.DATE_TIME);
-          teaching_entity.expiration_date_sponsor = k.Safe(field_array[49],k.safe_hint_type.DATE_TIME);
-          teaching_entity.expiration_date_training_inst = k.Safe(field_array[50],k.safe_hint_type.DATE_TIME);
-          teaching_entity.process_date = k.Safe(field_array[51],k.safe_hint_type.DATE_TIME);
-          teaching_entity.corrective_action = k.Safe(field_array[52],k.safe_hint_type.PUNCTUATED);
-          teaching_entity.compliance_by_date = k.Safe(field_array[53],k.safe_hint_type.DATE_TIME);
-          teaching_entity.initial_accred_date = k.Safe(field_array[54],k.safe_hint_type.DATE_TIME);
-          teaching_entity.accepted_provisional_date = k.Safe(field_array[55],k.safe_hint_type.DATE_TIME);
-          teaching_entity.completed_provisional_date = k.Safe(field_array[56],k.safe_hint_type.DATE_TIME);
-          teaching_entity.withdrawal_challenge_due_date = k.Safe(field_array[57],k.safe_hint_type.DATE_TIME);
-          teaching_entity.letter_for_expiration = k.Safe(field_array[58],k.safe_hint_type.ALPHA);
-          teaching_entity.letter_f_for_ppwk_non_compliance = k.Safe(field_array[59],k.safe_hint_type.ALPHA);
-          teaching_entity.other_letter = k.Safe(field_array[60],k.safe_hint_type.ALPHA);
-          teaching_entity.history = k.Safe(field_array[61],k.safe_hint_type.MEMO);
-          teaching_entity.business_type_description = k.Safe(field_array[62],k.safe_hint_type.MAKE_MODEL);
-          teaching_entity_search_unlimited.Add(teaching_entity);
-          }
-        stream_reader.Close();
+        ScrapeConedSponsors("Approved",teaching_entity_search,response);
         }
-      return teaching_entity_search_unlimited;
+      if (Request_ems_health_state_pa_us_ConedSponsorsearch_StatusSearchnow(cookie_container,"S3",out response))
+        {
+        ScrapeConedSponsors("Provisional",teaching_entity_search,response);
+        }
+      return teaching_entity_search;
       }
 
     internal class Practitioner

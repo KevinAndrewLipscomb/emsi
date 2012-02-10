@@ -318,81 +318,95 @@ namespace Class_db_teaching_entities
 
     internal void ImportLatestFromEmsrs(ArrayList recs)
       {
-      var childless_field_assignments_clause = k.EMPTY;
-      Open();
-      foreach (var rec in recs)
+      if (recs.Count > 0)
         {
-        childless_field_assignments_clause = k.EMPTY
-        + "date_created = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).date_created + "',''),'%m/%d/%Y')"
-        + " , date_last_edited = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).date_last_edited + "',''),'%m/%d/%Y')"
-        + " , sponsor_number = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).sponsor_number + "','')"
-        + " , training_ins_accred_num = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).training_ins_accred_num + "','')"
-        + " , name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).name + "','')"
-        + " , short_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).short_name + "','')"
-        + " , address_1 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).address_1 + "','')"
-        + " , address_2 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).address_2 + "','')"
-        + " , city = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).city + "','')"
-        + " , state = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).state + "','')"
-        + " , zip = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).zip + "','')"
-        + " , county_code = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).county_code + "','')"
-        + " , region = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).region + "','')"
-        + " , email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).email + "','')"
-        + " , website = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).website + "','')"
-        + " , daytime_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).daytime_phone + "','')"
-        + " , evening_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).evening_phone + "','')"
-        + " , fax = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).fax + "','')"
-        + " , business_type_id = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).business_type_id + "','')"
-        + " , con_ed_level_id = NULLIF(IFNULL((select id from teaching_entity_level where description = '" + (rec as Class_ss_emsams.TeachingEntity).con_ed_level + "'),''),'')"
-        + " , certification_level = NULLIF(IFNULL((select id from teaching_entity_level where description = '" + (rec as Class_ss_emsams.TeachingEntity).certification_level + "'),''),'')"
-        + " , contact_first_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_first_name + "','')"
-        + " , contact_last_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_last_name + "','')"
-        + " , contact_title = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_title + "','')"
-        + " , contact_address_1 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_address_1 + "','')"
-        + " , contact_address_2 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_address_2 + "','')"
-        + " , contact_city = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_city + "','')"
-        + " , contact_state = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_state + "','')"
-        + " , contact_zip = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_zip + "','')"
-        + " , contact_daytime_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_daytime_phone + "','')"
-        + " , contact_evening_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_evening_phone + "','')"
-        + " , contact_fax = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_fax + "','')"
-        + " , contact_email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_email + "','')"
-        + " , public_contact_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_name + "','')"
-        + " , public_contact_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_phone + "','')"
-        + " , public_contact_email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_email + "','')"
-        + " , public_contact_website = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_website + "','')"
-        + " , public_contact_notes = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_notes + "','')"
-        + " , application_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).application_date + "',''),'%m/%d/%Y')"
-        + " , application_received = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).application_received + "',''),'%m/%d/%Y')"
-        + " , coned_sponsor_status_id = NULLIF(IFNULL((select id from coned_sponsor_status where description = '" + (rec as Class_ss_emsams.TeachingEntity).sponsor_status_description + "'),''),'')"
-        + " , training_inst_status_id = NULLIF(IFNULL((select id from training_institute_status where description = '" + (rec as Class_ss_emsams.TeachingEntity).training_inst_status_description + "'),''),'')"
-        + " , issue_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).issue_date + "',''),'%m/%d/%Y')"
-        + " , prev_expiration_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).prev_expiration_date + "',''),'%m/%d/%Y')"
-        + " , expiration_date_sponsor = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).expiration_date_sponsor + "',''),'%m/%d/%Y')"
-        + " , expiration_date_training_inst = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).expiration_date_training_inst + "',''),'%m/%d/%Y')"
-        + " , process_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).process_date + "',''),'%m/%d/%Y')"
-        + " , corrective_action = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).corrective_action + "','')"
-        + " , compliance_by_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).compliance_by_date + "',''),'%m/%d/%Y')"
-        + " , initial_accred_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).initial_accred_date + "',''),'%m/%d/%Y')"
-        + " , accepted_provisional_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).accepted_provisional_date + "',''),'%m/%d/%Y')"
-        + " , completed_provisional_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).completed_provisional_date + "',''),'%m/%d/%Y')"
-        + " , withdrawal_challenge_due_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).withdrawal_challenge_due_date + "',''),'%m/%d/%Y')"
-        + " , letter_for_expiration = " + ((rec as Class_ss_emsams.TeachingEntity).letter_for_expiration.Length > 0 ? (rec as Class_ss_emsams.TeachingEntity).letter_for_expiration : "null")
-        + " , letter_f_for_ppwk_non_compliance = " + ((rec as Class_ss_emsams.TeachingEntity).letter_f_for_ppwk_non_compliance.Length > 0 ? (rec as Class_ss_emsams.TeachingEntity).letter_f_for_ppwk_non_compliance : "null")
-        + " , other_letter = " + ((rec as Class_ss_emsams.TeachingEntity).other_letter.Length > 0 ? (rec as Class_ss_emsams.TeachingEntity).other_letter : "null")
-        + " , history = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).history + "','')"
-        + k.EMPTY;
-        new MySqlCommand
-          (
-          "insert teaching_entity"
-          + " set emsrs_id = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).id + "','')"
-          + " , " + childless_field_assignments_clause
-          + " on duplicate key update "
-          + childless_field_assignments_clause,
-          connection
-          )
-          .ExecuteNonQuery();
+        MySqlTransaction transaction;
+        var emsrs_id = k.EMPTY;
+        var childless_field_assignments_clause = k.EMPTY;
+        Open();
+        foreach (var rec in recs)
+          {
+          emsrs_id = (rec as Class_ss_emsams.TeachingEntity).id;
+          childless_field_assignments_clause = k.EMPTY
+          + "date_created = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).date_created + "',''),'%m/%d/%Y')"
+          + " , date_last_edited = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).date_last_edited + "',''),'%m/%d/%Y')"
+          + " , sponsor_number = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).sponsor_number + "','')"
+          + " , training_ins_accred_num = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).training_ins_accred_num + "','')"
+          + " , name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).name + "','')"
+          + " , short_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).short_name + "','')"
+          + " , address_1 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).address_1 + "','')"
+          + " , address_2 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).address_2 + "','')"
+          + " , city = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).city + "','')"
+          + " , state = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).state + "','')"
+          + " , zip = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).zip + "','')"
+          + " , county_code = NULLIF(IFNULL((select emsrs_code from county_code_name_map where name = '" + (rec as Class_ss_emsams.TeachingEntity).county_name + "'),''),'')"
+          + " , region = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).region + "','')"
+          + " , email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).email + "','')"
+          + " , website = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).website + "','')"
+          + " , daytime_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).daytime_phone + "','')"
+          + " , evening_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).evening_phone + "','')"
+          + " , fax = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).fax + "','')"
+          + " , business_type_id = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).business_type_id + "','')"
+          + " , con_ed_level_id = NULLIF(IFNULL((select id from teaching_entity_level where description = '" + (rec as Class_ss_emsams.TeachingEntity).con_ed_level + "'),''),'')"
+          + " , certification_level = NULLIF(IFNULL((select id from teaching_entity_level where description = '" + (rec as Class_ss_emsams.TeachingEntity).certification_level + "'),''),'')"
+          + " , contact_first_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_first_name + "','')"
+          + " , contact_last_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_last_name + "','')"
+          + " , contact_title = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_title + "','')"
+          + " , contact_address_1 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_address_1 + "','')"
+          + " , contact_address_2 = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_address_2 + "','')"
+          + " , contact_city = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_city + "','')"
+          + " , contact_state = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_state + "','')"
+          + " , contact_zip = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_zip + "','')"
+          + " , contact_daytime_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_daytime_phone + "','')"
+          + " , contact_evening_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_evening_phone + "','')"
+          + " , contact_fax = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_fax + "','')"
+          + " , contact_email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_email + "','')"
+          + " , public_contact_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_name + "','')"
+          + " , public_contact_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_phone + "','')"
+          + " , public_contact_email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_email + "','')"
+          + " , public_contact_website = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_website + "','')"
+          + " , public_contact_notes = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_notes + "','')"
+          + " , application_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).application_date + "',''),'%m/%d/%Y')"
+          + " , application_received = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).application_received + "',''),'%m/%d/%Y')"
+          + " , coned_sponsor_status_id = NULLIF(IFNULL((select id from coned_sponsor_status where description = '" + (rec as Class_ss_emsams.TeachingEntity).sponsor_status_description + "'),''),'')"
+          + " , training_inst_status_id = NULLIF(IFNULL((select id from training_institute_status where description = '" + (rec as Class_ss_emsams.TeachingEntity).training_inst_status_description + "'),''),'')"
+          + " , issue_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).issue_date + "',''),'%m/%d/%Y')"
+          + " , prev_expiration_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).prev_expiration_date + "',''),'%m/%d/%Y')"
+          + " , expiration_date_sponsor = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).expiration_date_sponsor + "',''),'%m/%d/%Y')"
+          + " , expiration_date_training_inst = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).expiration_date_training_inst + "',''),'%m/%d/%Y')"
+          + " , process_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).process_date + "',''),'%m/%d/%Y')"
+          + " , corrective_action = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).corrective_action + "','')"
+          + " , compliance_by_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).compliance_by_date + "',''),'%m/%d/%Y')"
+          + " , initial_accred_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).initial_accred_date + "',''),'%m/%d/%Y')"
+          + " , accepted_provisional_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).accepted_provisional_date + "',''),'%m/%d/%Y')"
+          + " , completed_provisional_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).completed_provisional_date + "',''),'%m/%d/%Y')"
+          + " , withdrawal_challenge_due_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).withdrawal_challenge_due_date + "',''),'%m/%d/%Y')"
+          + " , letter_for_expiration = " + ((rec as Class_ss_emsams.TeachingEntity).letter_for_expiration.Length > 0 ? (rec as Class_ss_emsams.TeachingEntity).letter_for_expiration : "null")
+          + " , letter_f_for_ppwk_non_compliance = " + ((rec as Class_ss_emsams.TeachingEntity).letter_f_for_ppwk_non_compliance.Length > 0 ? (rec as Class_ss_emsams.TeachingEntity).letter_f_for_ppwk_non_compliance : "null")
+          + " , other_letter = " + ((rec as Class_ss_emsams.TeachingEntity).other_letter.Length > 0 ? (rec as Class_ss_emsams.TeachingEntity).other_letter : "null")
+          + " , history = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).history + "','')"
+          + k.EMPTY;
+          transaction = connection.BeginTransaction();
+          try
+            {
+            if (new MySqlCommand("select 1 from teaching_entity where emsrs_id = '" + emsrs_id + "'",connection,transaction).ExecuteScalar() == null)
+              {
+              new MySqlCommand("insert teaching_entity set emsrs_id = NULLIF('" + emsrs_id + "',''), " + childless_field_assignments_clause,connection,transaction).ExecuteNonQuery();
+              }
+            else
+              {
+              new MySqlCommand("update teaching_entity set " + childless_field_assignments_clause + " where emsrs_id = '" + emsrs_id + "'",connection,transaction).ExecuteNonQuery();
+              }
+            transaction.Commit();
+            }
+          catch (Exception e)
+            {
+            transaction.Rollback();
+            throw e;
+            }
+          }
+        Close();
         }
-      Close();
       }
 
     public void Set

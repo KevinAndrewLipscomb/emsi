@@ -174,7 +174,7 @@ namespace Class_biz_teaching_entities
 
     internal void ImportLatestFromEmsrs()
       {
-      db_teaching_entities.ImportLatestFromEmsrs(ss_emsams.TeachingEntitySearchUnlimited());
+      db_teaching_entities.ImportLatestFromEmsrs(ss_emsams.TeachingEntitySearch());
       }
 
     public void Set
