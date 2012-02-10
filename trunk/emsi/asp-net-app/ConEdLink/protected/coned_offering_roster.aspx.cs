@@ -388,7 +388,7 @@ namespace coned_offering_roster
         p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
-        p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
+        p.sort_order = "id desc";
         //
         p.be_ok_to_edit_roster = p.biz_coned_offerings.BeOkToEditRoster(p.incoming.summary);
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
@@ -449,7 +449,7 @@ namespace coned_offering_roster
       UpdatePanel_attendees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
-      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,Session["region_code"].ToString(),practitioner);
+      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,Session["region_code"].ToString(),practitioner,new k.int_positive(10));
       if (practitioner.Length > 0)
         {
         if (ListBox_practitioner.Items.Count > 0)

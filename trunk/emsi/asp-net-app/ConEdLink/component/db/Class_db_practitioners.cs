@@ -70,7 +70,8 @@ namespace Class_db_practitioners
       (
       object target,
       string region_code,
-      string starting_with
+      string starting_with,
+      k.int_positive limit
       )
       {
       Open();
@@ -97,7 +98,8 @@ namespace Class_db_practitioners
         + " where not be_stale"
         +   " and" + (region_code.Length > 0 ? " regional_council_code = '" + region_code + "'" : " 1=1")
         +   " and" + matching_clause
-        + " order by spec",
+        + " order by spec"
+        + " limit " + limit.val,
         connection
         )
         .ExecuteReader();
