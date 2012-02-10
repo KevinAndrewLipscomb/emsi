@@ -33,10 +33,11 @@ namespace Class_biz_practitioners
       (
       object target,
       string region_code,
-      string starting_with
+      string starting_with,
+      k.int_positive limit
       )
       {
-      db_practitioners.BindDirectToListControlForRoster(target,region_code,starting_with);
+      db_practitioners.BindDirectToListControlForRoster(target,region_code,starting_with,limit);
       }
 
     public bool Delete(string id)
