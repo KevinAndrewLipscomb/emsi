@@ -767,20 +767,22 @@ namespace ConEdLink.component.ss
         if ((county_name != "OutofState") && (teaching_entity_kind == "Sponsor"))
           {
           var teaching_entity = new TeachingEntity();
-          var name = hnc_name[i.val];
-          var name_href = name.Attributes["href"].Value;
+          var hn_name = hnc_name[i.val];
+          var name_href = hn_name.Attributes["href"].Value;
           var name_href_index_of_ampersand = name_href.IndexOf("&");
           teaching_entity.id = k.Safe(name_href.Substring(0, name_href_index_of_ampersand), k.safe_hint_type.NUM);
           teaching_entity.region = k.Safe(name_href.Substring(name_href_index_of_ampersand), k.safe_hint_type.NUM);
-          teaching_entity.name = k.Safe(name.InnerText.Trim(), k.safe_hint_type.ORG_NAME);
-          teaching_entity.address_1 = k.Safe(hnc_location_column[i.val].ChildNodes[0].InnerText.Trim(), k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          teaching_entity.address_2 = k.Safe(hnc_location_column[i.val].ChildNodes[2].InnerText.Trim(), k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          var city_state_zip = hnc_location_column[i.val].ChildNodes[4].InnerText.Trim();
-          if ((city_state_zip.Length > 0) && (city_state_zip != "&nbsp;"))
+          teaching_entity.name = k.Safe(hn_name.InnerText.Trim(), k.safe_hint_type.ORG_NAME);
+          var hnc_location_column_children = hnc_location_column[i.val].ChildNodes;
+          var hnc_location_column_children_count = hnc_location_column_children.Count;
+          teaching_entity.address_1 = (hnc_location_column_children_count == 7 ? k.Safe(hnc_location_column_children[0].InnerText.Trim(), k.safe_hint_type.POSTAL_STREET_ADDRESS) : k.EMPTY);
+          teaching_entity.address_2 = (hnc_location_column_children_count == 9 ? k.Safe(hnc_location_column_children[2].InnerText.Trim(), k.safe_hint_type.POSTAL_STREET_ADDRESS) : k.EMPTY);
+          var city_state_zip = hnc_location_column_children[hnc_location_column_children_count - 5].InnerText.Replace("&nbsp;",k.SPACE).Trim();
+          if (city_state_zip.Length > 0)
             {
             var city_state_zip_index_of_comma = city_state_zip.IndexOf(k.COMMA);
             teaching_entity.city = k.Safe(city_state_zip.Substring(0, city_state_zip_index_of_comma), k.safe_hint_type.POSTAL_CITY);
-            teaching_entity.state = k.Safe(city_state_zip.Substring(city_state_zip_index_of_comma).Replace("&nbsp;",k.EMPTY), k.safe_hint_type.ALPHA);
+            teaching_entity.state = k.Safe(city_state_zip.Substring(city_state_zip_index_of_comma), k.safe_hint_type.ALPHA);
             teaching_entity.zip = k.Safe(city_state_zip.Substring(city_state_zip_index_of_comma), k.safe_hint_type.HYPHENATED_NUM);
             }
           teaching_entity.county_name = county_name;
