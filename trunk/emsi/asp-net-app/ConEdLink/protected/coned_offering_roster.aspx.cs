@@ -114,7 +114,7 @@ namespace coned_offering_roster
         + " if (value != El('" + HiddenField_practitioner_saved.ClientID + "').value)"
         +   " {"
         +   " El('" + HiddenField_practitioner_saved.ClientID + "').value = value;"
-        +   " search_as_you_type_post_back_delay_timer = setTimeout('SearchAsYouTypePostBack();',1000);" // 1000 millseconds = 1 second delay
+        +   " search_as_you_type_post_back_delay_timer = setTimeout(SearchAsYouTypePostBack,1000);" // 1000 millseconds = 1 second delay
         +   " }"
         + " else"
         +   " {"
@@ -128,7 +128,9 @@ namespace coned_offering_roster
         (
         "onkeydown",
         k.EMPTY
-        + " if (value != El('" + HiddenField_practitioner_saved.ClientID + "').value) clearTimeout(search_as_you_type_post_back_delay_timer);"
+        + " var new_value;"
+        + " window.setTimeout(function(){new_value = value},1);" // When onkeydown event initially fires, the handlers have not finalized the change to value.  One millisecond should be long enoough of a wait.  God this sucks!
+        + " if (new_value != El('" + HiddenField_practitioner_saved.ClientID + "').value) clearTimeout(search_as_you_type_post_back_delay_timer);"
         );
       }
 
@@ -449,7 +451,7 @@ namespace coned_offering_roster
       UpdatePanel_attendees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
-      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,Session["region_code"].ToString(),practitioner,new k.int_positive(10));
+      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,Session["region_code"].ToString(),practitioner,new k.int_positive(12));
       if (practitioner.Length > 0)
         {
         if (ListBox_practitioner.Items.Count > 0)
