@@ -79,25 +79,21 @@ namespace Class_db_practitioners
       var matching_clause = k.EMPTY;
       if (starting_with.Length > 0)
         {
-        matching_clause = k.EMPTY
-        + " ("
-        +   " CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(birth_date,'-')) USING utf8) like '" + starting_with + "%'"
-        + " or"
-        +   " certification_number like '" + starting_with + "%'"
-        + " )";
-        }
-      else
-        {
-        matching_clause = " 1=1";
+        if ((starting_with[0].CompareTo('0') > -1) && (starting_with[0].CompareTo('9') < 1))
+          {
+          matching_clause = " and certification_number like '" + starting_with + "%'";
+          }
+        else
+          {
+          matching_clause = " and CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(birth_date,'-')) USING utf8) like '" + starting_with + "%'";
+          }
         }
       var dr = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'-')) USING utf8) as spec"
         + " FROM practitioner"
-        + " where not be_stale"
-        +   " and" + (region_code.Length > 0 ? " regional_council_code = '" + region_code + "'" : " 1=1")
-        +   " and" + matching_clause
+        + " where not be_stale" + matching_clause
         + " order by spec"
         + " limit " + limit.val,
         connection
