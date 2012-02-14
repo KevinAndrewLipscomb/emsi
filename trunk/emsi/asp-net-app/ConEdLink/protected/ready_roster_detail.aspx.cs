@@ -180,7 +180,7 @@ namespace ready_roster_detail
         +   "<COURSE>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Text,k.safe_hint_type.NUM) + "</COURSE>"
         +   "<CLASS>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_CLASS].Text + "</CLASS>"
         +   "<HOURS>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HOURS].Text,k.safe_hint_type.NUM) + "</HOURS>"
-        +   "<DATEFINAL>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DATEFINAL].Text + "</DATEFINAL>"
+        +   "<DATEFINAL>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DATEFINAL].Text,k.safe_hint_type.DATE_TIME) + "</DATEFINAL>"
         +   "<SSN />"
         +   "<REMED>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REMED].Text + "</REMED>"
         +   "<COUNTY>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COUNTY].Text,k.safe_hint_type.NUM) + "</COUNTY>"
