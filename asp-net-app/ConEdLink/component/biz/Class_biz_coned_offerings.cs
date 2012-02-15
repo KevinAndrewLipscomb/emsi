@@ -292,7 +292,7 @@ namespace Class_biz_coned_offerings
 
     internal void ImportLatestFromEmsrs()
       {
-      db_coned_offerings.ImportLatestFromEmsrs(ss_emsams.ClassSearchUnlimited());
+      db_coned_offerings.ImportLatestFromEmsrs(ss_emsams.AvailableConedClassesList());
       }
 
     internal string LocationOf(object summary)
