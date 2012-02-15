@@ -61,7 +61,7 @@
                     <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
                     <tr id="TableRow_attendees" runat="server">
                       <td valign="top">
-                        <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%" enabledviewstate="false">
+                        <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%">
                           <Columns>
                             <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
                             <asp:BoundColumn datafield="first_name" headertext="First_name" sortexpression="first_name%,last_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
@@ -79,7 +79,7 @@
                           </Columns>
                           <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                         </asp:DataGrid>
-                        <asp:DataGrid id="DataGrid_lcds" runat="server" autogeneratecolumns="False" onitemdatabound="DataGrid_lcds_ItemDataBound" enabledviewstate="false" style="display:none">
+                        <asp:DataGrid id="DataGrid_lcds" runat="server" autogeneratecolumns="False" onitemdatabound="DataGrid_lcds_ItemDataBound" style="display:none">
                           <Columns>
                             <asp:BoundColumn datafield="first_name" headertext="ID" ReadOnly="True"></asp:BoundColumn>
                             <asp:BoundColumn datafield="last_name" headertext="HEADER" ReadOnly="True"></asp:BoundColumn>
