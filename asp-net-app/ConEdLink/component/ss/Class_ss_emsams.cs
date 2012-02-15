@@ -891,6 +891,14 @@ namespace ConEdLink.component.ss
       internal string class_id_2 = k.EMPTY;
       internal string class_county_name = k.EMPTY;
       internal string region_council_name = k.EMPTY;
+      internal string fr_med_trauma_hours = k.EMPTY;
+      internal string fr_other_hours = k.EMPTY;
+      internal string emt_med_trauma_hours = k.EMPTY;
+      internal string emt_other_hours = k.EMPTY;
+      internal string emtp_med_trauma_hours = k.EMPTY;
+      internal string emtp_other_hours = k.EMPTY;
+      internal string phrn_med_trauma_hours = k.EMPTY;
+      internal string phrn_other_hours = k.EMPTY;
       }
     internal ArrayList ClassSearchUnlimited()
       {
@@ -909,6 +917,14 @@ namespace ConEdLink.component.ss
         var hnc_start_date = hn_target_table.SelectNodes("tr/td[1]"); // This will also catch the horizontal line separator cells that occur every other row, so there'll be twice as many of these as of the rest.
         var hnc_course_title = hn_target_table.SelectNodes("tr/td[2]/table/tr[1]/td[2]/a");
         var hnc_course_number = hn_target_table.SelectNodes("tr/td[2]/table/tr[2]/td[2]");
+        var hnc_fr_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[2]/td[4]");
+        var hnc_fr_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[2]/td[5]");
+        var hnc_emt_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[3]/td[4]");
+        var hnc_emt_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[3]/td[5]");
+        var hnc_emtp_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[4]/td[4]");
+        var hnc_emtp_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[4]/td[5]");
+        var hnc_phrn_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[5]/td[4]");
+        var hnc_phrn_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[5]/td[5]");
         var hnc_total_class_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[7]/td[2]");
         var hnc_closed = hn_target_table.SelectNodes("tr/td[2]/table/tr[8]/td[2]");
         var hnc_student_cost = hn_target_table.SelectNodes("tr/td[2]/table/tr[9]/td[2]");
@@ -935,7 +951,15 @@ namespace ConEdLink.component.ss
             coned_offering.start_date_time = k.Safe(hnc_start_date[i.val*2].FirstChild.InnerText.Trim(),k.safe_hint_type.DATE_TIME);
             coned_offering.course_id = k.Safe(hnc_course_title[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
             coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-            coned_offering.course_number= k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+            coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+            coned_offering.fr_med_trauma_hours = k.Safe(hnc_fr_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.fr_other_hours = k.Safe(hnc_fr_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.emt_med_trauma_hours = k.Safe(hnc_emt_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.emt_other_hours = k.Safe(hnc_emt_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.emtp_med_trauma_hours = k.Safe(hnc_emtp_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.emtp_other_hours = k.Safe(hnc_emtp_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.phrn_med_trauma_hours = k.Safe(hnc_phrn_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+            coned_offering.phrn_other_hours = k.Safe(hnc_phrn_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
             coned_offering.total_class_hours = k.Safe(hnc_total_class_hours[i.val].InnerText.Trim().Replace("&nbsp;hrs.",k.EMPTY),k.safe_hint_type.REAL_NUM);
             coned_offering.closed = k.Safe(hnc_closed[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
             coned_offering.student_cost = k.Safe(hnc_student_cost[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
