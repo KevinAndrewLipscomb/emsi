@@ -498,6 +498,14 @@ namespace Class_db_coned_offerings
           + " , sponsor_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_name + "','')"
           + " , courses_course_number = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).courses_course_number + "','')"
           + " , course_title = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).course_title + "','')"
+          + " , fr_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , fr_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , emt_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , emt_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , emtp_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , emtp_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , phrn_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+          + " , phrn_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
           + k.EMPTY;
           transaction = connection.BeginTransaction();
           try
