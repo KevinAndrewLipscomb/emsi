@@ -1,18 +1,18 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
+using AjaxControlToolkit;
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
 using Class_biz_practitioners;
 using Class_msg_protected;
+using ConEdLink.WebReference_emsrs;
 using kix;
 using System;
 using System.Collections;
 using System.Configuration;
 using System.Drawing;
-using System.IO;
 using System.Web.UI.WebControls;
-using ConEdLink.WebReference_emsrs;
 
 namespace ready_roster_detail
   {
@@ -169,6 +169,12 @@ namespace ready_roster_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
+        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OLDCERT].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REGION].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HOURS].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COUNTY].Attributes.Add("style","mso-number-format:\\@");
+        //
         p.lcds_content_xml +=
           "<Table>"
         +   "<HEADER>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HEADER].Text + "</HEADER>"
