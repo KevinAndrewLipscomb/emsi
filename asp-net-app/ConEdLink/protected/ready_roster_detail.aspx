@@ -118,7 +118,7 @@
                             </td>
                             <td><b><i>OR</i></b></td>
                             <td align="center" style="border:1px solid Gray">
-                              <asp:Button ID="Button_submit_to_emsrs" runat="server" Text="Submit to EMSRS and mark done" onclick="Button_submit_to_emsrs_Click" /><br />
+                              <asp:Button ID="Button_submit_to_emsrs" runat="server" Text="Submit to EMSRS and mark done" onclick="Button_submit_to_emsrs_Click" Enabled="False" /><br />
                               <br />
                               ...then...<br />
                               <br />
