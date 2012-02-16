@@ -31,13 +31,22 @@ namespace new_password {
         protected global::System.Web.UI.WebControls.Label Label_user_name;
         
         /// <summary>
-        /// Label_email_address control.
+        /// Panel_done control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_email_address;
+        protected global::System.Web.UI.WebControls.Panel Panel_done;
+        
+        /// <summary>
+        /// Label_valid_email_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_valid_email_address;
         
         /// <summary>
         /// HyperLink_login control.
@@ -47,6 +56,69 @@ namespace new_password {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink_login;
+        
+        /// <summary>
+        /// Panel_blocked control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_blocked;
+        
+        /// <summary>
+        /// Label_invalid_email_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_invalid_email_address;
+        
+        /// <summary>
+        /// Label_application_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_application_name;
+        
+        /// <summary>
+        /// HyperLink_emsrs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_emsrs;
+        
+        /// <summary>
+        /// Label_application_name_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_application_name_2;
+        
+        /// <summary>
+        /// Label_application_name_3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_application_name_3;
+        
+        /// <summary>
+        /// Label_application_name_4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_application_name_4;
         
         /// <summary>
         /// UserControl_postcontent control.

@@ -554,7 +554,12 @@ namespace Class_db_teaching_entities
       Open();
       new MySqlCommand
         (
-        "insert coned_sponsor_user (id,password_reset_email_address)"
+        "update coned_sponsor_user"
+        + " join teaching_entity using (id)"
+        + " set password_reset_email_address = IFNULL(email,IFNULL(contact_email,public_contact_email))"
+        + " where IFNULL(email,IFNULL(contact_email,public_contact_email)) is not null"
+        + ";"
+        + " insert coned_sponsor_user (id,password_reset_email_address)"
         + " select id"
         + " , IFNULL(email,IFNULL(contact_email,public_contact_email)) as password_reset_email_address"
         + " from teaching_entity left outer join coned_sponsor_user using (id)"
