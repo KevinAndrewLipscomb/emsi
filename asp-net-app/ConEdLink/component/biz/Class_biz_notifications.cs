@@ -33,23 +33,6 @@ namespace Class_biz_notifications
       host_domain_name = ConfigurationManager.AppSettings["host_domain_name"];
       }
 
-    private string EmptyIfInvalid(string e)
-      {
-      var empty_if_invalid = k.EMPTY;
-      try
-        {
-        new MailMessage().To.Add(e); // throws exception if invalid format
-        if (k.BeValidDomainPartOfEmailAddress(e))
-          {
-          empty_if_invalid = e;
-          }
-        }
-      catch
-        {
-        }
-      return empty_if_invalid;
-      }
-
     private delegate string IssueCorruptionNotification_Merge(string s);
     internal void IssueCorruptionNotification(string user_kind, string detection_phase)
       {
@@ -126,17 +109,17 @@ namespace Class_biz_notifications
         cc:Regex.Replace
           (
             (
-              EmptyIfInvalid(coned_offering_public_contact_email) + k.COMMA
-              + EmptyIfInvalid(sponsor_email) + k.COMMA
-              + EmptyIfInvalid(sponsor_contact_email) + k.COMMA
-              + EmptyIfInvalid(sponsor_public_contact_email)
+              k.EmptyIfInvalidEmailAddress(coned_offering_public_contact_email) + k.COMMA
+              + k.EmptyIfInvalidEmailAddress(sponsor_email) + k.COMMA
+              + k.EmptyIfInvalidEmailAddress(sponsor_contact_email) + k.COMMA
+              + k.EmptyIfInvalidEmailAddress(sponsor_public_contact_email)
             )
             .Trim(new char[] {Convert.ToChar(k.COMMA)}),
             ",,+",
             k.COMMA
           ),
         bcc:k.EMPTY,
-        reply_to:EmptyIfInvalid(sponsor_email)
+        reply_to:k.EmptyIfInvalidEmailAddress(sponsor_email)
         );
       template_reader.Close();
       }
