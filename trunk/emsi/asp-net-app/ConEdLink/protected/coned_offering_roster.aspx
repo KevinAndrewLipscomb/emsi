@@ -123,22 +123,35 @@
                           <asp:UpdatePanel ID="UpdatePanel_attendees" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                               <table cellpadding="10" cellspacing="0">
-                                <tr><td style="background-color:WhiteSmoke"><b>Attendees</b></td></tr>
+                                <tr><td style="background-color:WhiteSmoke">
+                                  <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                    <tr>
+                                      <td>
+                                        <b>Attendees</b></td>
+                                      <td align="center">
+                                        <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" />
+                                      </td>
+                                      <td>
+                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and total Hours, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  </td></tr>
                                 <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
                                 <tr id="TableRow_attendees" runat="server">
                                   <td valign="top">
                                     <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%">
                                       <Columns>
-                                        <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
-                                        <asp:TemplateColumn>
+                                        <asp:BoundColumn datafield="id" Visible="False" ReadOnly="True"></asp:BoundColumn>
+                                        <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                          <HeaderTemplate>
+                                            <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all"/>
+                                          </HeaderTemplate>
                                           <ItemTemplate>
                                             <asp:CheckBox ID="CheckBox_selected" runat="server" />
                                           </ItemTemplate>
-                                          <HeaderTemplate>
-                                            <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" />
-                                          </HeaderTemplate>
                                         </asp:TemplateColumn>
-                                        <asp:BoundColumn datafield="id" Visible="False" ReadOnly="True"></asp:BoundColumn>
+                                        <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
                                         <asp:BoundColumn datafield="practitioner_id" Visible="False" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
@@ -194,8 +207,16 @@
                                     </asp:DataGrid>
                                   </td>
                                 </tr>
-                                <tr><td><asp:Button ID="Button_close_and_submit" runat="server" Text="CLOSE CLASS and SUBMIT FOR CREDIT" Font-Bold="True" onclick="Button_close_and_submit_Click" />&nbsp;&nbsp;<asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and total Hours, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate" Font-Bold="true" Display="Dynamic">!ERR!</asp:CustomValidator></td></tr>
-                                <tr><td><asp:Button ID="Button_generate_completion_documentation" runat="server" Text="Generate completion documentation" Enabled="False" /></td></tr>
+                                <tr>
+                                  <td>
+                                    For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) attendees...
+                                    <ul>
+                                      <li><p><asp:HyperLink ID="HyperLink_quickmessage" runat="server" NavigateUrl="#QuickMessage">Send a QuickMessage</asp:HyperLink></p></li>
+                                      <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" Enabled="False" onclick="LinkButton_email_completion_documentation_Click"></asp:LinkButton></p></li>
+                                      <li><p><asp:HyperLink ID="HyperLink_print_completion_documentation" runat="server" Enabled="False" Target="_blank">Print completion documentation</asp:HyperLink></p></li>
+                                    </ul>
+                                    <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small></td>
+                                </tr>
                               </table>
                             </ContentTemplate>
                             <Triggers>

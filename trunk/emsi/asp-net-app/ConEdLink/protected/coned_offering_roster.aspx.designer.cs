@@ -229,6 +229,24 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_attendees;
         
         /// <summary>
+        /// Button_close_and_submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_close_and_submit;
+        
+        /// <summary>
+        /// CustomValidator_close_class_and_submit_for_credit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_close_class_and_submit_for_credit;
+        
+        /// <summary>
         /// TableRow_none control.
         /// </summary>
         /// <remarks>
@@ -256,31 +274,49 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
         
         /// <summary>
-        /// Button_close_and_submit control.
+        /// CheckBox_item_sample control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_close_and_submit;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_item_sample;
         
         /// <summary>
-        /// CustomValidator_close_class_and_submit_for_credit control.
+        /// HyperLink_quickmessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_close_class_and_submit_for_credit;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_quickmessage;
         
         /// <summary>
-        /// Button_generate_completion_documentation control.
+        /// LinkButton_email_completion_documentation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_generate_completion_documentation;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_email_completion_documentation;
+        
+        /// <summary>
+        /// HyperLink_print_completion_documentation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_completion_documentation;
+        
+        /// <summary>
+        /// CheckBox_header_sample control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_header_sample;
         
         /// <summary>
         /// UserControl_postcontent control.
