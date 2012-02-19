@@ -35,9 +35,9 @@ namespace coned_offering_roster
     {
     private class coned_offering_roster_Static
       {
-      public const int TCI_DELETE = 0;
+      public const int TCI_ID = 0;
       public const int TCI_SELECT = 1;
-      public const int TCI_ID = 2;
+      public const int TCI_DELETE = 2;
       public const int TCI_PRACTITIONER_ID = 3;
       public const int TCI_LAST_NAME = 4;
       public const int TCI_FIRST_NAME = 5;
@@ -135,10 +135,10 @@ namespace coned_offering_roster
         );
       }
 
-    private void SetCloseAndSubmitAblements(bool ablement)
+    private void SetCloseAndSubmitVisibilities(bool be_visible)
       {
-      Button_close_and_submit.Enabled = ablement;
-      CustomValidator_close_class_and_submit_for_credit.Enabled = ablement;
+      Button_close_and_submit.Visible = be_visible;
+      CustomValidator_close_class_and_submit_for_credit.Visible = be_visible;
       }
 
     private void TWebForm_coned_offering_roster_PreRender(object sender, System.EventArgs e)
@@ -167,7 +167,7 @@ namespace coned_offering_roster
         p.biz_coned_offerings.CloseAndSubmit(p.incoming.summary,p.num_attendees);
         p.be_ok_to_edit_roster = false;
         Bind();
-        SetCloseAndSubmitAblements(false);
+        SetCloseAndSubmitVisibilities(false);
         }
       else
         {
@@ -212,7 +212,7 @@ namespace coned_offering_roster
       {
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitAblements(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
       }
 
     protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
@@ -222,7 +222,7 @@ namespace coned_offering_roster
         p.biz_coned_offering_rosters.Delete(k.Safe(e.Item.Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
-        SetCloseAndSubmitAblements(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
         }
       }
 
@@ -230,7 +230,7 @@ namespace coned_offering_roster
       {
       DataGrid_control.EditItemIndex = e.Item.ItemIndex;
       Bind();
-      SetCloseAndSubmitAblements(false);
+      SetCloseAndSubmitVisibilities(false);
       }
 
     protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -343,7 +343,7 @@ namespace coned_offering_roster
         }
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitAblements(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
       }
 
     protected void DataGrid_control_UpdateCommand(object source, DataGridCommandEventArgs e)
@@ -367,7 +367,7 @@ namespace coned_offering_roster
           );
         DataGrid_control.EditItemIndex = -1;
         Bind();
-        SetCloseAndSubmitAblements(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
         }
       else
         {
@@ -434,7 +434,7 @@ namespace coned_offering_roster
         Literal_total_class_hours.Text = p.total_class_hours.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();
-        SetCloseAndSubmitAblements(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
         RequireConfirmation
           (
           Button_close_and_submit,
@@ -457,7 +457,7 @@ namespace coned_offering_roster
       {
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitAblements(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
       UpdatePanel_attendees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
@@ -483,6 +483,11 @@ namespace coned_offering_roster
         InitForNewSearch();
         }
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
+      }
+
+    protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
+      {
+
       }
 
     } // end TWebForm_coned_offering_roster
