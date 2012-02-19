@@ -130,6 +130,14 @@
                                     <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%">
                                       <Columns>
                                         <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
+                                        <asp:TemplateColumn>
+                                          <ItemTemplate>
+                                            <asp:CheckBox ID="CheckBox_selected" runat="server" />
+                                          </ItemTemplate>
+                                          <HeaderTemplate>
+                                            <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" />
+                                          </HeaderTemplate>
+                                        </asp:TemplateColumn>
                                         <asp:BoundColumn datafield="id" Visible="False" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="practitioner_id" Visible="False" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>

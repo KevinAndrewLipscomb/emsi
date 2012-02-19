@@ -185,6 +185,13 @@
     <Compile Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx.designer.cs">
       <DependentUpon>import_latest_coned_offerings_from_emsrs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="noninteractive\report_commanded_training_certificate.aspx.cs">
+      <DependentUpon>report_commanded_training_certificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\report_commanded_training_certificate.aspx.designer.cs">
+      <DependentUpon>report_commanded_training_certificate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -512,6 +519,7 @@
     <Content Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
+    <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
     <Content Include="protected\coned_offering_detail.aspx" />
     <Content Include="protected\coned_offering_roster.aspx" />
     <Content Include="protected\coned_sponsor_detail.aspx" />

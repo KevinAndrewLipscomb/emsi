@@ -36,21 +36,22 @@ namespace coned_offering_roster
     private class coned_offering_roster_Static
       {
       public const int TCI_DELETE = 0;
-      public const int TCI_ID = 1;
-      public const int TCI_PRACTITIONER_ID = 2;
-      public const int TCI_LAST_NAME = 3;
-      public const int TCI_FIRST_NAME = 4;
-      public const int TCI_MIDDLE_INITIAL = 5;
-      public const int TCI_LEVEL = 6;
-      public const int TCI_CERT_NUM = 7;
-      public const int TCI_BE_DOB_CONFIRMED = 8;
-      public const int TCI_DOB = 9;
-      public const int TCI_COUNTY_CODE = 10;
-      public const int TCI_COUNTY_NAME = 11;
-      public const int TCI_EMAIL_ADDRESS = 12;
-      public const int TCI_BE_INSTRUCTOR = 13;
-      public const int TCI_INSTRUCTOR_HOURS = 14;
-      public const int TCI_EDIT_UPDATE_CANCEL = 15;
+      public const int TCI_SELECT = 1;
+      public const int TCI_ID = 2;
+      public const int TCI_PRACTITIONER_ID = 3;
+      public const int TCI_LAST_NAME = 4;
+      public const int TCI_FIRST_NAME = 5;
+      public const int TCI_MIDDLE_INITIAL = 6;
+      public const int TCI_LEVEL = 7;
+      public const int TCI_CERT_NUM = 8;
+      public const int TCI_BE_DOB_CONFIRMED = 9;
+      public const int TCI_DOB = 10;
+      public const int TCI_COUNTY_CODE = 11;
+      public const int TCI_COUNTY_NAME = 12;
+      public const int TCI_EMAIL_ADDRESS = 13;
+      public const int TCI_BE_INSTRUCTOR = 14;
+      public const int TCI_INSTRUCTOR_HOURS = 15;
+      public const int TCI_EDIT_UPDATE_CANCEL = 16;
       }
 
     private p_type p;
@@ -171,6 +172,15 @@ namespace coned_offering_roster
       else
         {
         ValidationAlert(be_using_scriptmanager:true);
+        }
+      }
+
+    protected void CheckBox_force_all_CheckedChanged(object sender, EventArgs e)
+      {
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        var item_type = DataGrid_control.Items[i.val].ItemType;
+        (DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       }
 
