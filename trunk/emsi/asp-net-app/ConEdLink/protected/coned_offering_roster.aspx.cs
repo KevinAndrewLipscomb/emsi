@@ -1,10 +1,12 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
 using AjaxControlToolkit;
+using Class_biz_accounts;
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
 using Class_biz_practitioners;
+using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
@@ -19,16 +21,19 @@ namespace coned_offering_roster
     {
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
+    public TClass_biz_accounts biz_accounts;
     public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
     public TClass_biz_practitioners biz_practitioners;
+    public TClass_biz_user biz_user;
     public string coned_offering_id;
     public TClass_msg_protected.coned_offering_roster incoming;
     public k.int_nonnegative num_attendees;
     public k.int_nonnegative num_attendees_with_known_birth_dates;
     public string sort_order;
     public k.decimal_nonnegative total_class_hours;
+    public string user_email_address;
     }
 
   public partial class TWebForm_coned_offering_roster: ki_web_ui.page_class
@@ -172,6 +177,40 @@ namespace coned_offering_roster
       else
         {
         ValidationAlert(be_using_scriptmanager:true);
+        }
+      }
+
+    protected void Button_send_Click(object sender, System.EventArgs e)
+      {
+      var distribution_list = k.EMPTY;
+      var email_address_text = k.EMPTY;
+      TableCellCollection tcc;
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        tcc = DataGrid_control.Items[i.val].Cells;
+        email_address_text = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+        distribution_list += ((email_address_text != "DESIRED") && (tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
+        }
+      if (distribution_list.Length > 0)
+        {
+        k.SmtpMailSend
+          (
+          from:ConfigurationManager.AppSettings["sender_email_address"],
+          to:distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA)}),
+          subject:TextBox_quick_message_subject.Text,
+          message_string:"-- From " + Session[p.biz_user.Kind() + "_name"].ToString() + " (via " + ConfigurationManager.AppSettings["application_name"] + ")" + k.NEW_LINE + k.NEW_LINE + TextBox_quick_message_body.Text,
+          be_html:false,
+          cc:k.EMPTY,
+          bcc:p.user_email_address,
+          reply_to:p.user_email_address
+          );
+        TextBox_quick_message_subject.Text = k.EMPTY;
+        TextBox_quick_message_body.Text = k.EMPTY;
+        Alert(k.alert_cause_type.LOGIC,k.alert_state_type.NORMAL,"messagsnt","Message sent",be_using_scriptmanager:true);
+        }
+      else
+        {
+        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"norecipts","Message *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
         }
       }
 
@@ -391,16 +430,19 @@ namespace coned_offering_roster
         //
         // Initialize p.~ objects here.
         //
+        p.biz_accounts = new TClass_biz_accounts();
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_counties = new TClass_biz_counties();
         p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_user = new TClass_biz_user();
         //
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
         p.sort_order = "id desc";
+        p.user_email_address = p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(),p.biz_user.IdNum());
         //
         p.be_ok_to_edit_roster = p.biz_coned_offerings.BeOkToEditRoster(p.incoming.summary);
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
@@ -442,6 +484,7 @@ namespace coned_offering_roster
           + k.NEW_LINE
           + "To proceed, click OK:"
           );
+        Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
       }

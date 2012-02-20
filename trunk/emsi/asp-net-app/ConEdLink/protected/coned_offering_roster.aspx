@@ -82,7 +82,7 @@
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <table border="1" cellpadding="0" cellspacing="0" style="border-color:Gainsboro; border-width:1px">
+                    <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro">
                       <tr>
                         <td>
                           <table cellpadding="5" cellspacing="0">
@@ -117,7 +117,7 @@
                 <tr><td>&nbsp;</td></tr>
                 <tr>
                   <td>
-                    <table border="1" cellpadding="0" cellspacing="0" style="border-color:Gainsboro; border-width:1px">
+                    <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro">
                       <tr>
                         <td>
                           <asp:UpdatePanel ID="UpdatePanel_attendees" runat="server" UpdateMode="Conditional">
@@ -126,11 +126,10 @@
                                 <tr><td style="background-color:WhiteSmoke">
                                   <table cellpadding="0" cellspacing="0" style="width: 100%">
                                     <tr>
-                                      <td>
-                                        <b>Attendees</b></td>
-                                      <td align="center">
-                                        <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" />
-                                      </td>
+                                      <td><b>Attendees</b></td>
+                                      <td>&nbsp;&nbsp;&nbsp;</td>
+                                      <td align="center"><asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" /></td>
+                                      <td>&nbsp;&nbsp;&nbsp;</td>
                                       <td>
                                         <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and total Hours, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
                                       </td>
@@ -145,10 +144,10 @@
                                         <asp:BoundColumn datafield="id" Visible="False" ReadOnly="True"></asp:BoundColumn>
                                         <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                                           <HeaderTemplate>
-                                            <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all"/>
+                                            <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all" Checked="True" />
                                           </HeaderTemplate>
                                           <ItemTemplate>
-                                            <asp:CheckBox ID="CheckBox_selected" runat="server" />
+                                            <asp:CheckBox ID="CheckBox_selected" runat="server" Checked="True" />
                                           </ItemTemplate>
                                         </asp:TemplateColumn>
                                         <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
@@ -224,6 +223,49 @@
                               <asp:AsyncPostBackTrigger ControlID="ListBox_practitioner" EventName="SelectedIndexChanged" />
                             </Triggers>
                           </asp:UpdatePanel>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
+                      <tr>
+	                      <td>
+	                        <table cellspacing="0" cellpadding="10" border="0">
+		                        <tr><td bgcolor="#f5f5f5"><a id="QuickMessage"><strong>QuickMessage</strong></a></td></tr>
+		                        <tr>
+			                        <td>
+                                <p>Send email to the attendees selected above.</p>
+			                          <table cellspacing="0" cellpadding="10" width="100%" border="0">
+                                  <tr>
+                                    <td>Bcc:</td>
+                                    <td><ASP:Literal id="Literal_author_email_address" runat="server"></ASP:Literal></td>
+                                    <td></td>
+                                  </tr>
+				                          <tr>
+					                          <td>Subject:</td>
+					                          <td><ASP:TextBox id="TextBox_quick_message_subject" runat="server" maxlength="255" columns="72"></ASP:TextBox></td>
+					                          <td></td>
+				                          </tr>
+				                          <tr>
+					                          <td valign="top">Body:</td>
+					                          <td><ASP:TextBox id="TextBox_quick_message_body" runat="server" columns="72" rows="18" textmode="MultiLine"></ASP:TextBox></td>
+					                          <td nowrap="nowrap" valign="top">
+                                      <ASP:RequiredFieldValidator id="RequiredFieldValidator_quick_message_body" runat="server" errormessage="Please enter a message body." font-bold="True" controltovalidate="TextBox_quick_message_body" ValidationGroup="QuickMessage">!ERR!</ASP:RequiredFieldValidator>
+                                    </td>
+				                          </tr>
+				                          <tr>
+					                          <td></td>
+					                          <td><ASP:Button id="Button_send" runat="server" text="Send" onclick="Button_send_Click" ValidationGroup="QuickMessage"></ASP:Button></td>
+					                          <td></td>
+				                          </tr>
+			                          </table>
+                              </td>
+  		                      </tr>
+	                        </table>
                         </td>
                       </tr>
                     </table>
