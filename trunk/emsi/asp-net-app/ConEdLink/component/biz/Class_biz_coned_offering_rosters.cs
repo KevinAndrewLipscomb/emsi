@@ -7,6 +7,7 @@ using kix;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Web;
 
 namespace Class_biz_coned_offering_rosters
   {
@@ -138,21 +139,21 @@ namespace Class_biz_coned_offering_rosters
           + " --post-data"
           +   "=practitioner_email_address=" + attendee.email_address
           +   "&reply_to_email_address=" + reply_to_email_address
-          +   "&sponsor_name=" + sponsor_name
-          +   "&first_name=" + attendee.first_name
-          +   "&middle_initial=" + attendee.middle_initial
-          +   "&last_name=" + attendee.last_name
+          +   "&sponsor_name=" + HttpUtility.UrlEncode(sponsor_name)
+          +   "&first_name=" + HttpUtility.UrlEncode(attendee.first_name)
+          +   "&middle_initial=" + HttpUtility.UrlEncode(attendee.middle_initial)
+          +   "&last_name=" + HttpUtility.UrlEncode(attendee.last_name)
           +   "&certification_number=" + attendee.certification_number
           +   "&level_emsrs_code=" + attendee.level_emsrs_code
           +   "&level_short_description=" + attendee.level_short_description
-          +   "&dob=" + attendee.dob
+          +   "&dob=" + HttpUtility.UrlEncode(attendee.dob)
           +   "&course_number=" + course_number
-          +   "&course_title=" + course_title
+          +   "&course_title=" + HttpUtility.UrlEncode(course_title)
           +   "&total_ceus=" + total_ceus_for_this_practitioner.val.ToString()
           +   "&med_trauma_ceus=" + med_trauma_ceus_for_this_practitioner.val.ToString()
-          +   "&date_final=" + date_final
+          +   "&date_final=" + HttpUtility.UrlEncode(date_final)
           + k.SPACE
-          + "\"" + ConfigurationManager.AppSettings["runtime_root_fullspec"] + "noninteractive/report_commanded_training_certificates.aspx\""
+          + "\"" + ConfigurationManager.AppSettings["runtime_root_fullspec"] + "noninteractive/report_commanded_training_certificate.aspx\""
           );
         }
       k.RunCommandIteratedOverArguments("c:\\cygwin\\bin\\wget",arguments,working_directory,out stdout,out stderr);

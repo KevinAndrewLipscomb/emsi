@@ -129,6 +129,11 @@ namespace Class_biz_coned_offerings
         }
       }
 
+    internal string CourseNumberOf(object summary)
+      {
+      return db_coned_offerings.CourseNumberOf(summary);
+      }
+
     internal string CourseTitleOf(object summary)
       {
       return db_coned_offerings.CourseTitleOf(summary);
@@ -139,9 +144,39 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.Delete(id);
       }
 
+    internal decimal EmtMedTraumaHoursOf(object summary)
+      {
+      return db_coned_offerings.EmtMedTraumaHoursOf(summary);
+      }
+
+    internal decimal EmtOtherHoursOf(object summary)
+      {
+      return db_coned_offerings.EmtOtherHoursOf(summary);
+      }
+
+    internal decimal EmtpMedTraumaHoursOf(object summary)
+      {
+      return db_coned_offerings.EmtpMedTraumaHoursOf(summary);
+      }
+
+    internal decimal EmtpOtherHoursOf(object summary)
+      {
+      return db_coned_offerings.EmtpOtherHoursOf(summary);
+      }
+
     internal string EndOf(object summary)
       {
       return db_coned_offerings.EndOf(summary);
+      }
+
+    internal decimal FrMedTraumaHoursOf(object summary)
+      {
+      return db_coned_offerings.FrMedTraumaHoursOf(summary);
+      }
+
+    internal decimal FrOtherHoursOf(object summary)
+      {
+      return db_coned_offerings.FrOtherHoursOf(summary);
       }
 
     public bool Get
@@ -298,6 +333,16 @@ namespace Class_biz_coned_offerings
     internal string LocationOf(object summary)
       {
       return db_coned_offerings.LocationOf(summary);
+      }
+
+    internal decimal PhrnMedTraumaHoursOf(object summary)
+      {
+      return db_coned_offerings.PhrnMedTraumaHoursOf(summary);
+      }
+
+    internal decimal PhrnOtherHoursOf(object summary)
+      {
+      return db_coned_offerings.PhrnOtherHoursOf(summary);
       }
 
     public void Set
