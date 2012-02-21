@@ -303,11 +303,16 @@ namespace Class_biz_teaching_entities
         history
         );
       }
+    internal string SponsorNumberOfId(string id)
+      {
+      return db_teaching_entities.SponsorNumberOf(id);
+      }
 
     internal void SyncConedSponsorAccounts()
       {
       db_teaching_entities.SyncConedSponsorAccounts();
       }
+
 
     } // end TClass_biz_teaching_entitys
 

@@ -6,6 +6,7 @@ using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
 using Class_biz_practitioners;
+using Class_biz_teaching_entities;
 using Class_biz_user;
 using Class_msg_protected;
 using kix;
@@ -27,6 +28,7 @@ namespace coned_offering_roster
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
     public TClass_biz_practitioners biz_practitioners;
+    public TClass_biz_teaching_entities biz_teaching_entities;
     public TClass_biz_user biz_user;
     public string coned_offering_id;
     public TClass_msg_protected.coned_offering_roster incoming;
@@ -420,7 +422,7 @@ namespace coned_offering_roster
 
     protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
       {
-      var practitioner_q = new Queue<TClass_biz_coned_offering_rosters.attendee_rec>();
+      var attendance_rec_q = new Queue<TClass_biz_coned_offering_rosters.attendance_rec_class>();
       var email_address_text = k.EMPTY;
       TableCellCollection tcc;
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
@@ -429,24 +431,26 @@ namespace coned_offering_roster
         email_address_text = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
         if ((email_address_text != "DESIRED") && (tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          var practitioner = new TClass_biz_coned_offering_rosters.attendee_rec();
-          practitioner.certification_number = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
-          practitioner.dob = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
-          practitioner.first_name = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-          practitioner.last_name = k.Safe(tcc[coned_offering_roster_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-          practitioner.level_emsrs_code = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
-          practitioner.level_short_description = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
-          practitioner.middle_initial = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
-          practitioner.email_address = email_address_text;
-          practitioner_q.Enqueue(practitioner);
+          var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
+          attendance_rec.id = k.Safe(tcc[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          attendance_rec.certification_number = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
+          attendance_rec.dob = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
+          attendance_rec.first_name = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+          attendance_rec.last_name = k.Safe(tcc[coned_offering_roster_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+          attendance_rec.level_emsrs_code = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
+          attendance_rec.level_short_description = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
+          attendance_rec.middle_initial = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
+          attendance_rec.email_address = email_address_text;
+          attendance_rec_q.Enqueue(attendance_rec);
           }
         }
-      if (practitioner_q.Count > 0)
+      if (attendance_rec_q.Count > 0)
         {
         p.biz_coned_offering_rosters.SendTrainingCertificates
           (
-          practitioner_q:practitioner_q,
+          attendance_rec_q:attendance_rec_q,
           sponsor_name:Session["coned_sponsor_name"].ToString(),
+          sponsor_number:p.biz_teaching_entities.SponsorNumberOfId(p.biz_user.IdNum()),
           reply_to_email_address:p.user_email_address,
           course_number:p.biz_coned_offerings.CourseNumberOf(p.incoming.summary),
           course_title:Literal_course_title.Text,
@@ -492,6 +496,7 @@ namespace coned_offering_roster
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_counties = new TClass_biz_counties();
         p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_teaching_entities = new TClass_biz_teaching_entities();
         p.biz_user = new TClass_biz_user();
         //
         p.be_sort_order_ascending = true;

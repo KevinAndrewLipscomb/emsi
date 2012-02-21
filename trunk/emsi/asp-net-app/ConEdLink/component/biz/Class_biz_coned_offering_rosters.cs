@@ -73,8 +73,9 @@ namespace Class_biz_coned_offering_rosters
         );
       }
 
-    internal class attendee_rec
+    internal class attendance_rec_class
       {
+      internal string id = k.EMPTY;
       internal string email_address = k.EMPTY;
       internal string first_name = k.EMPTY;
       internal string middle_initial = k.EMPTY;
@@ -86,8 +87,9 @@ namespace Class_biz_coned_offering_rosters
       }
     internal void SendTrainingCertificates
       (
-      Queue<attendee_rec> practitioner_q,
+      Queue<attendance_rec_class> attendance_rec_q,
       string sponsor_name,
+      string sponsor_number,
       string reply_to_email_address,
       string course_number,
       string course_title,
@@ -106,29 +108,29 @@ namespace Class_biz_coned_offering_rosters
       var arguments = new ArrayList();
       var stdout = k.EMPTY;
       var stderr = k.EMPTY;
-      attendee_rec attendee;
-      var num_practitioners = practitioner_q.Count;
+      attendance_rec_class attendance_rec;
+      var num_practitioners = attendance_rec_q.Count;
       for (var i = new k.subtype<int>(0,num_practitioners); i.val < num_practitioners; i.val++)
         {
-        attendee = practitioner_q.Dequeue() as attendee_rec;
+        attendance_rec = attendance_rec_q.Dequeue() as attendance_rec_class;
         var total_ceus_for_this_practitioner = new k.decimal_nonnegative();
         var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
-        if (attendee.level_short_description == "FR")
+        if (attendance_rec.level_short_description == "FR")
           {
           total_ceus_for_this_practitioner.val = fr_total_ceus.val;
           med_trauma_ceus_for_this_practitioner.val = fr_med_trauma_ceus.val;
           }
-        else if (attendee.level_short_description == "EMT")
+        else if (attendance_rec.level_short_description == "EMT")
           {
           total_ceus_for_this_practitioner.val = emt_total_ceus.val;
           med_trauma_ceus_for_this_practitioner.val = emt_med_trauma_ceus.val;
           }
-        else if (attendee.level_short_description == "EMT-P")
+        else if (attendance_rec.level_short_description == "EMT-P")
           {
           total_ceus_for_this_practitioner.val = emtp_total_ceus.val;
           med_trauma_ceus_for_this_practitioner.val = emtp_med_trauma_ceus.val;
           }
-        else if (attendee.level_short_description == "PHRN")
+        else if (attendance_rec.level_short_description == "PHRN")
           {
           total_ceus_for_this_practitioner.val = phrn_total_ceus.val;
           med_trauma_ceus_for_this_practitioner.val = phrn_med_trauma_ceus.val;
@@ -137,16 +139,18 @@ namespace Class_biz_coned_offering_rosters
           (
           "--output-document=/dev/null --no-check-certificate"
           + " --post-data"
-          +   "=practitioner_email_address=" + attendee.email_address
+          +   "=practitioner_email_address=" + attendance_rec.email_address
           +   "&reply_to_email_address=" + reply_to_email_address
+          +   "&id=" + attendance_rec.id
           +   "&sponsor_name=" + HttpUtility.UrlEncode(sponsor_name)
-          +   "&first_name=" + HttpUtility.UrlEncode(attendee.first_name)
-          +   "&middle_initial=" + HttpUtility.UrlEncode(attendee.middle_initial)
-          +   "&last_name=" + HttpUtility.UrlEncode(attendee.last_name)
-          +   "&certification_number=" + attendee.certification_number
-          +   "&level_emsrs_code=" + attendee.level_emsrs_code
-          +   "&level_short_description=" + attendee.level_short_description
-          +   "&dob=" + HttpUtility.UrlEncode(attendee.dob)
+          +   "&sponsor_number=" + sponsor_number
+          +   "&first_name=" + HttpUtility.UrlEncode(attendance_rec.first_name)
+          +   "&middle_initial=" + HttpUtility.UrlEncode(attendance_rec.middle_initial)
+          +   "&last_name=" + HttpUtility.UrlEncode(attendance_rec.last_name)
+          +   "&certification_number=" + attendance_rec.certification_number
+          +   "&level_emsrs_code=" + attendance_rec.level_emsrs_code
+          +   "&level_short_description=" + attendance_rec.level_short_description
+          +   "&dob=" + HttpUtility.UrlEncode(attendance_rec.dob)
           +   "&course_number=" + course_number
           +   "&course_title=" + HttpUtility.UrlEncode(course_title)
           +   "&total_ceus=" + total_ceus_for_this_practitioner.val.ToString()

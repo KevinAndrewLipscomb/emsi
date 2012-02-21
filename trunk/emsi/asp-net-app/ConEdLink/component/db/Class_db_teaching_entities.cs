@@ -549,6 +549,14 @@ namespace Class_db_teaching_entities
       Close();
       }
 
+    internal string SponsorNumberOf(string id)
+      {
+      Open();
+      var sponsor_number_of = new MySqlCommand("select sponsor_number from teaching_entity where id = '" + id + "'",connection).ExecuteScalar().ToString();
+      Close();
+      return sponsor_number_of;
+      }
+
     internal void SyncConedSponsorAccounts()
       {
       Open();

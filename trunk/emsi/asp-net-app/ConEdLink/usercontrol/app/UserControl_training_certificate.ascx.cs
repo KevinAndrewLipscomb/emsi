@@ -1,4 +1,6 @@
+using Class_biz_coned_offering_rosters;
 using kix;
+using System;
 
 namespace UserControl_training_certificate
   {
@@ -6,6 +8,7 @@ namespace UserControl_training_certificate
   public struct p_type
     {
     public bool be_loaded;
+    public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
     }
 
   public partial class TWebUserControl_training_certificate: ki_web_ui.usercontrol_class
@@ -31,6 +34,7 @@ namespace UserControl_training_certificate
       {
       if (!p.be_loaded)
         {
+        Image_banner.ImageUrl = k.ExpandAsperand(Image_banner.ImageUrl);
         p.be_loaded = true;
         }
       }
@@ -47,13 +51,17 @@ namespace UserControl_training_certificate
         }
       else
         {
+        p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
+        //
         p.be_loaded = false;
         }
       }
 
     internal void Set
       (
+      string id,
       string sponsor_name,
+      string sponsor_number,
       string first_name,
       string middle_initial,
       string last_name,
@@ -69,6 +77,7 @@ namespace UserControl_training_certificate
       )
       {
       Literal_sponsor_name.Text = sponsor_name;
+      Literal_sponsor_number.Text = (sponsor_number.Contains(k.HYPHEN) ? sponsor_number : sponsor_number.Substring(0,2) + k.HYPHEN + sponsor_number.Substring(2));
       Literal_practitioner_name.Text = (first_name + k.SPACE + middle_initial + k.SPACE + last_name).Replace(k.SPACE + k.SPACE,k.SPACE);
       Literal_certification_number.Text = certification_number;
       Literal_practitioner_level_emsrs_code.Text = level_emsrs_code;
@@ -78,7 +87,7 @@ namespace UserControl_training_certificate
       Literal_course_title.Text = course_title;
       Literal_total_ce_hours.Text = total_ceus;
       Literal_num_med_trauma_hours.Text = med_trauma_ceus;
-      Literal_date_final.Text = date_final;
+      Literal_date_final.Text = DateTime.Parse(date_final.Substring(0,date_final.IndexOf(k.SPACE))).ToString("dddd d MMMM yyyy");
       }
 
     internal TWebUserControl_training_certificate Fresh()
