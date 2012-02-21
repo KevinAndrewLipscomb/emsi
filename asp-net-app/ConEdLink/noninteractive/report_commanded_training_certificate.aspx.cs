@@ -54,7 +54,9 @@ namespace report_commanded_training_certificate
         //
         UserControl_training_certificate_control.Set
           (
+          k.Safe(Request["id"],k.safe_hint_type.NUM),
           k.Safe(Request["sponsor_name"],k.safe_hint_type.ORG_NAME),
+          k.Safe(Request["sponsor_number"],k.safe_hint_type.NUM),
           k.Safe(Request["first_name"],k.safe_hint_type.HUMAN_NAME),
           k.Safe(Request["middle_initial"],k.safe_hint_type.ALPHA),
           k.Safe(Request["last_name"],k.safe_hint_type.HUMAN_NAME),

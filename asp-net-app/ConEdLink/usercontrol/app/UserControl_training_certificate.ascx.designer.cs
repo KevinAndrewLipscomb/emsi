@@ -13,6 +13,15 @@ namespace UserControl_training_certificate {
     public partial class TWebUserControl_training_certificate {
         
         /// <summary>
+        /// Image_banner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image_banner;
+        
+        /// <summary>
         /// Literal_sponsor_name control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_sponsor_name;
+        
+        /// <summary>
+        /// Literal_sponsor_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_sponsor_number;
         
         /// <summary>
         /// Literal_practitioner_name control.
@@ -67,15 +85,6 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.WebControls.Literal Literal_dob;
         
         /// <summary>
-        /// Literal_course_number control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_course_number;
-        
-        /// <summary>
         /// Literal_course_title control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_course_title;
+        
+        /// <summary>
+        /// Literal_course_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_course_number;
         
         /// <summary>
         /// Literal_total_ce_hours control.
@@ -110,14 +128,5 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_date_final;
-        
-        /// <summary>
-        /// Literal_authentication_hex_code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_authentication_hex_code;
     }
 }

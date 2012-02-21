@@ -504,6 +504,11 @@ namespace Class_biz_coned_offerings
       return total_class_hours;
       }
 
+
+    internal string SponsorNumberOf(object p)
+      {
+    throw new NotImplementedException();
+      }
     } // end TClass_biz_coned_offerings
 
   }
