@@ -11,6 +11,7 @@ using Class_msg_protected;
 using kix;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Web.UI.WebControls;
@@ -48,15 +49,16 @@ namespace coned_offering_roster
       public const int TCI_FIRST_NAME = 5;
       public const int TCI_MIDDLE_INITIAL = 6;
       public const int TCI_LEVEL = 7;
-      public const int TCI_CERT_NUM = 8;
-      public const int TCI_BE_DOB_CONFIRMED = 9;
-      public const int TCI_DOB = 10;
-      public const int TCI_COUNTY_CODE = 11;
-      public const int TCI_COUNTY_NAME = 12;
-      public const int TCI_EMAIL_ADDRESS = 13;
-      public const int TCI_BE_INSTRUCTOR = 14;
-      public const int TCI_INSTRUCTOR_HOURS = 15;
-      public const int TCI_EDIT_UPDATE_CANCEL = 16;
+      public const int TCI_LEVEL_EMSRS_CODE = 8;
+      public const int TCI_CERT_NUM = 9;
+      public const int TCI_BE_DOB_CONFIRMED = 10;
+      public const int TCI_DOB = 11;
+      public const int TCI_COUNTY_CODE = 12;
+      public const int TCI_COUNTY_NAME = 13;
+      public const int TCI_EMAIL_ADDRESS = 14;
+      public const int TCI_BE_INSTRUCTOR = 15;
+      public const int TCI_INSTRUCTOR_HOURS = 16;
+      public const int TCI_EDIT_UPDATE_CANCEL = 17;
       }
 
     private p_type p;
@@ -140,10 +142,12 @@ namespace coned_offering_roster
         );
       }
 
-    private void SetCloseAndSubmitVisibilities(bool be_visible)
+    private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
       {
-      Button_close_and_submit.Visible = be_visible;
-      CustomValidator_close_class_and_submit_for_credit.Visible = be_visible;
+      Button_close_and_submit.Visible = be_open;
+      CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
+      LinkButton_email_completion_documentation.Enabled = !be_open;
+      HyperLink_print_completion_documentation.Enabled = !be_open;
       }
 
     private void TWebForm_coned_offering_roster_PreRender(object sender, System.EventArgs e)
@@ -172,7 +176,7 @@ namespace coned_offering_roster
         p.biz_coned_offerings.CloseAndSubmit(p.incoming.summary,p.num_attendees);
         p.be_ok_to_edit_roster = false;
         Bind();
-        SetCloseAndSubmitVisibilities(false);
+        SetCloseAndSubmitAblementsAndVisibilities(false);
         }
       else
         {
@@ -251,7 +255,7 @@ namespace coned_offering_roster
       {
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
       }
 
     protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
@@ -261,7 +265,7 @@ namespace coned_offering_roster
         p.biz_coned_offering_rosters.Delete(k.Safe(e.Item.Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
-        SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         }
       }
 
@@ -269,7 +273,7 @@ namespace coned_offering_roster
       {
       DataGrid_control.EditItemIndex = e.Item.ItemIndex;
       Bind();
-      SetCloseAndSubmitVisibilities(false);
+      SetCloseAndSubmitAblementsAndVisibilities(false);
       }
 
     protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -382,7 +386,7 @@ namespace coned_offering_roster
         }
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
       }
 
     protected void DataGrid_control_UpdateCommand(object source, DataGridCommandEventArgs e)
@@ -406,11 +410,64 @@ namespace coned_offering_roster
           );
         DataGrid_control.EditItemIndex = -1;
         Bind();
-        SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         }
       else
         {
         ValidationAlert(be_using_scriptmanager:true);
+        }
+      }
+
+    protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
+      {
+      var practitioner_q = new Queue<TClass_biz_coned_offering_rosters.attendee_rec>();
+      var email_address_text = k.EMPTY;
+      TableCellCollection tcc;
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        tcc = DataGrid_control.Items[i.val].Cells;
+        email_address_text = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+        if ((email_address_text != "DESIRED") && (tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+          {
+          var practitioner = new TClass_biz_coned_offering_rosters.attendee_rec();
+          practitioner.certification_number = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
+          practitioner.dob = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
+          practitioner.first_name = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+          practitioner.last_name = k.Safe(tcc[coned_offering_roster_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+          practitioner.level_emsrs_code = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
+          practitioner.level_short_description = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
+          practitioner.middle_initial = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
+          practitioner.email_address = email_address_text;
+          practitioner_q.Enqueue(practitioner);
+          }
+        }
+      if (practitioner_q.Count > 0)
+        {
+        p.biz_coned_offering_rosters.SendTrainingCertificates
+          (
+          practitioner_q:practitioner_q,
+          sponsor_name:Session["coned_sponsor_name"].ToString(),
+          reply_to_email_address:p.user_email_address,
+          course_number:p.biz_coned_offerings.CourseNumberOf(p.incoming.summary),
+          course_title:Literal_course_title.Text,
+          date_final:Literal_end.Text,
+          fr_total_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary)),
+          fr_med_trauma_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary)),
+          emt_total_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary)),
+          emt_med_trauma_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary)),
+          emtp_total_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary)),
+          emtp_med_trauma_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary)),
+          phrn_total_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary)),
+          phrn_med_trauma_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary)),
+          working_directory:Server.MapPath("scratch")
+          );
+        TextBox_quick_message_subject.Text = k.EMPTY;
+        TextBox_quick_message_body.Text = k.EMPTY;
+        Alert(k.alert_cause_type.LOGIC,k.alert_state_type.NORMAL,"messagsnt","Certificates sent",be_using_scriptmanager:true);
+        }
+      else
+        {
+        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"norecipts","Certificates *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
         }
       }
 
@@ -476,7 +533,7 @@ namespace coned_offering_roster
         Literal_total_class_hours.Text = p.total_class_hours.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();
-        SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         RequireConfirmation
           (
           Button_close_and_submit,
@@ -500,7 +557,7 @@ namespace coned_offering_roster
       {
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitVisibilities(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
       UpdatePanel_attendees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
@@ -526,11 +583,6 @@ namespace coned_offering_roster
         InitForNewSearch();
         }
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
-      }
-
-    protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
-      {
-
       }
 
     } // end TWebForm_coned_offering_roster

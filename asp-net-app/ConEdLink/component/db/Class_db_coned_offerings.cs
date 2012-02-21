@@ -20,6 +20,7 @@ namespace Class_db_coned_offerings
       {
       public string id;
       public string class_number;
+      public string course_number;
       public string course_title;
       public string location;
       public string start;
@@ -34,6 +35,14 @@ namespace Class_db_coned_offerings
       public string sponsor_email;
       public string sponsor_contact_email;
       public string sponsor_public_contact_email;
+      public decimal fr_med_trauma_hours;
+      public decimal fr_other_hours;
+      public decimal emt_med_trauma_hours;
+      public decimal emt_other_hours;
+      public decimal emtp_med_trauma_hours;
+      public decimal emtp_other_hours;
+      public decimal phrn_med_trauma_hours;
+      public decimal phrn_other_hours;
       }
 
     private TClass_db_trail db_trail = null;
@@ -172,6 +181,11 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).class_number;
       }
 
+    internal string CourseNumberOf(object summary)
+      {
+      return (summary as coned_offering_summary).course_number;
+      }
+
     internal string CourseTitleOf(object summary)
       {
       return (summary as coned_offering_summary).course_title;
@@ -200,9 +214,39 @@ namespace Class_db_coned_offerings
       return result;
       }
 
+    internal decimal EmtMedTraumaHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).emt_med_trauma_hours;
+      }
+
+    internal decimal EmtOtherHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).emt_other_hours;
+      }
+
+    internal decimal EmtpMedTraumaHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).emtp_med_trauma_hours;
+      }
+
+    internal decimal EmtpOtherHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).emtp_other_hours;
+      }
+
     internal string EndOf(object summary)
       {
       return (summary as coned_offering_summary).end;
+      }
+
+    internal decimal FrMedTraumaHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).fr_med_trauma_hours;
+      }
+
+    internal decimal FrOtherHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).fr_other_hours;
       }
 
     public bool Get
@@ -496,6 +540,16 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).location;
       }
 
+    internal decimal PhrnMedTraumaHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).phrn_med_trauma_hours;
+      }
+
+    internal decimal PhrnOtherHoursOf(object summary)
+      {
+      return (summary as coned_offering_summary).phrn_other_hours;
+      }
+
     internal string PublicContactEmailOf(object summary)
       {
       return (summary as coned_offering_summary).public_contact_email;
@@ -714,6 +768,7 @@ namespace Class_db_coned_offerings
         new MySqlCommand
           (
           "SELECT class_number"
+          + " , course_number"
           + " , course_title"
           + " , location"
           + " , IFNULL(ADDTIME(start_date_time,start_time),DATE_FORMAT(start_date_time,'%Y-%m-%d --:--')) as start"
@@ -728,6 +783,14 @@ namespace Class_db_coned_offerings
           + " , IFNULL(contact_email,'') as sponsor_contact_email"
           + " , IFNULL(teaching_entity.public_contact_email,'') as sponsor_public_contact_email"
           + " , IFNULL(coned_offering.public_contact_email,'') as public_contact_email"
+          + " , fr_med_trauma_hours"
+          + " , fr_other_hours"
+          + " , emt_med_trauma_hours"
+          + " , emt_other_hours"
+          + " , emtp_med_trauma_hours"
+          + " , emtp_other_hours"
+          + " , phrn_med_trauma_hours"
+          + " , phrn_other_hours"
           + " FROM coned_offering"
           +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
           + " where coned_offering.id = '" + id + "'",
@@ -740,6 +803,7 @@ namespace Class_db_coned_offerings
         {
         id = id,
         class_number = dr["class_number"].ToString(),
+        course_number = dr["course_number"].ToString(),
         course_title = dr["course_title"].ToString(),
         location = dr["location"].ToString(),
         start = dr["start"].ToString(),
@@ -753,7 +817,15 @@ namespace Class_db_coned_offerings
         sponsor_email = dr["sponsor_email"].ToString(),
         sponsor_contact_email = dr["sponsor_contact_email"].ToString(),
         sponsor_public_contact_email = dr["sponsor_public_contact_email"].ToString(),
-        public_contact_email = dr["public_contact_email"].ToString()
+        public_contact_email = dr["public_contact_email"].ToString(),
+        fr_med_trauma_hours = decimal.Parse(dr["fr_med_trauma_hours"].ToString()),
+        fr_other_hours = decimal.Parse(dr["fr_other_hours"].ToString()),
+        emt_med_trauma_hours = decimal.Parse(dr["emt_med_trauma_hours"].ToString()),
+        emt_other_hours = decimal.Parse(dr["emt_other_hours"].ToString()),
+        emtp_med_trauma_hours = decimal.Parse(dr["emtp_med_trauma_hours"].ToString()),
+        emtp_other_hours = decimal.Parse(dr["emtp_other_hours"].ToString()),
+        phrn_med_trauma_hours = decimal.Parse(dr["phrn_med_trauma_hours"].ToString()),
+        phrn_other_hours = decimal.Parse(dr["phrn_other_hours"].ToString())
         };
       Close();
       return the_summary;
