@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <appSettings>
   <add key="db_connection_string" value="Server=localhost;Database=emsidb_d;Uid=ki-conedlink-d;Pwd=~ki-conedlink-d-password~;Treat Tiny As Boolean=false;Respect Binary Flags=false;Default Command Timeout=300;Allow User Variables=true;" />
-  <add key="sysadmin_encoded_password" value="~" />
-  <add key="emsportal_login_username" value="~"/>
   <add key="emsportal_login_password" value="~"/>
+  <add key="emsportal_login_username" value="~"/>
+  <add key="query_string_protection_password" value="~"/>
   <add key="strxml_security_string" value="~" />
+  <add key="sysadmin_encoded_password" value="~" />
 </appSettings>
