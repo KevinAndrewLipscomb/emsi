@@ -301,13 +301,13 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton_email_completion_documentation;
         
         /// <summary>
-        /// HyperLink_print_completion_documentation control.
+        /// LinkButton_print_completion_documentation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_completion_documentation;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_print_completion_documentation;
         
         /// <summary>
         /// CheckBox_header_sample control.

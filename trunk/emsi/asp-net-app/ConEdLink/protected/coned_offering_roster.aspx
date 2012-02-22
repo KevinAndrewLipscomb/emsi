@@ -18,7 +18,7 @@
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td valign="top">
-              <asp:Panel ID="Panel_input_method" runat="server" Visible="False" style="border:1px solid Gainsboro">
+              <asp:Panel ID="Panel_input_method" runat="server" Visible="false" style="border:1px solid Gainsboro">
                 <span style="font-size: small">Input:</span>
                 <asp:RadioButtonList ID="RadioButtonList_input_method" runat="server" AutoPostBack="True" Font-Size="Smaller" RepeatDirection="Horizontal" RepeatLayout="Flow" onselectedindexchanged="RadioButtonList_input_method_SelectedIndexChanged">
                   <asp:ListItem Selected="True">Standard</asp:ListItem>
@@ -33,7 +33,7 @@
                         <ContentTemplate>
                           <asp:HiddenField ID="HiddenField_practitioner_saved" runat="server" />
                           <b>Search></b>&nbsp;<asp:TextBox ID="TextBox_practitioner" runat="server" OnTextChanged="TextBox_practitioner_TextChanged" autocomplete="off"></asp:TextBox>
-                          <asp:Button ID="Button_add" runat="server" Text="" style="display:none; visibility:hidden" CausesValidation="False" OnClick="Button_add_Click"/>
+                          <asp:Button ID="Button_add" runat="server" Text="" style="display:none; visibility:hidden" CausesValidation="false" OnClick="Button_add_Click"/>
                           <br />
                           <small><i><asp:Literal ID="Literal_click_to_add" runat="server"></asp:Literal></i></small>
                         </ContentTemplate>
@@ -139,9 +139,9 @@
                                 <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
                                 <tr id="TableRow_attendees" runat="server">
                                   <td valign="top">
-                                    <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%">
+                                    <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="false" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%">
                                       <Columns>
-                                        <asp:BoundColumn datafield="id" Visible="False" ReadOnly="True"></asp:BoundColumn>
+                                        <asp:BoundColumn datafield="id" Visible="false" ReadOnly="True"></asp:BoundColumn>
                                         <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                                           <HeaderTemplate>
                                             <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all" Checked="True" />
@@ -150,28 +150,28 @@
                                             <asp:CheckBox ID="CheckBox_selected" runat="server" Checked="True" />
                                           </ItemTemplate>
                                         </asp:TemplateColumn>
-                                        <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
-                                        <asp:BoundColumn datafield="practitioner_id" Visible="False" ReadOnly="True"></asp:BoundColumn>
+                                        <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="false"></asp:ButtonColumn>
+                                        <asp:BoundColumn datafield="practitioner_id" Visible="false" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="middle_initial" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn DataField="level" HeaderText="Level" ReadOnly="True" SortExpression="practitioner_level.pecking_order%,last_name,first_name,middle_initial,certification_number,birth_date desc">
-                                          <ItemStyle Wrap="False" />
+                                          <ItemStyle Wrap="false" />
                                         </asp:BoundColumn>
                                         <asp:BoundColumn DataField="level_emsrs_code" Visible="false" ReadOnly="True"></asp:BoundColumn>
                                         <asp:BoundColumn datafield="certification_number_for_display" headertext="Cert#" sortexpression="certification_number%,last_name,first_name,middle_initial,practitioner_level.pecking_order,birth_date desc" ReadOnly="True"></asp:BoundColumn>
-                                        <asp:BoundColumn DataField="be_birth_date_confirmed" ReadOnly="True" Visible="False"></asp:BoundColumn>
+                                        <asp:BoundColumn DataField="be_birth_date_confirmed" ReadOnly="True" Visible="false"></asp:BoundColumn>
                                         <asp:TemplateColumn HeaderText="DOB" SortExpression="birth_date%,last_name,first_name,middle_initial,practitioner_level.pecking_order,certification_number">
                                           <ItemTemplate><asp:Label ID="Label_dob" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.birth_date") %>'></asp:Label></ItemTemplate>
                                           <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox_dob" runat="server" Columns="9" MaxLength="10" Text='<%# DataBinder.Eval(Container, "DataItem.birth_date") %>' enabled="False"></asp:TextBox>
+                                            <asp:TextBox ID="TextBox_dob" runat="server" Columns="9" MaxLength="10" Text='<%# DataBinder.Eval(Container, "DataItem.birth_date") %>' enabled="false"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a Birth date." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a valid Birth date using the m/d/yyyy format." Font-Bold="True" ValidationExpression="\d{1,2}[-/]\d{1,2}[-/]\d{4}">!ERR!</asp:RegularExpressionValidator>
                                             <asp:CustomValidator ID="CustomValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a valid Birth date consistent with an age of 16-130 years." Font-Bold="True" onservervalidate="CustomValidator_dob_ServerValidate">!ERR!</asp:CustomValidator>
                                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender_dob" runat="server" TargetControlID="TextBox_dob" WatermarkText="m/d/yyyy" WatermarkCssClass="textbox_watermark"></asp:TextBoxWatermarkExtender>
                                           </EditItemTemplate>
                                         </asp:TemplateColumn>
-                                        <asp:BoundColumn DataField="county_code" ReadOnly="True" Visible="False"></asp:BoundColumn>
+                                        <asp:BoundColumn DataField="county_code" ReadOnly="True" Visible="false"></asp:BoundColumn>
                                         <asp:TemplateColumn HeaderText="County" SortExpression="county_name%,last_name,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc">
                                           <ItemTemplate><asp:Label ID="Label_county" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.county_name") %>'></asp:Label></ItemTemplate>
                                           <EditItemTemplate>
@@ -187,20 +187,20 @@
                                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender_email_address" runat="server" TargetControlID="TextBox_email_address" WatermarkText="user@domain.tld" WatermarkCssClass="textbox_watermark"></asp:TextBoxWatermarkExtender>
                                           </EditItemTemplate>
                                         </asp:TemplateColumn>
-                                        <asp:BoundColumn DataField="be_instructor" ReadOnly="True" Visible="False"></asp:BoundColumn>
+                                        <asp:BoundColumn DataField="be_instructor" ReadOnly="True" Visible="false"></asp:BoundColumn>
                                         <asp:TemplateColumn headertext="InstHrs" sortexpression="instructor_hours%,last_name,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc">
                                           <HeaderStyle HorizontalAlign="Center" />
                                           <ItemTemplate><asp:Label ID="Label_instructor_hours" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.instructor_hours") %>' Visible="false"></asp:Label></ItemTemplate>
-                                          <ItemStyle HorizontalAlign="Right" Wrap="False" />
+                                          <ItemStyle HorizontalAlign="Right" Wrap="false" />
                                           <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox_instructor_hours" runat="server" Columns="3" MaxLength="5" Text='<%# DataBinder.Eval(Container, "DataItem.instructor_hours") %>' visible="False"></asp:TextBox>
+                                            <asp:TextBox ID="TextBox_instructor_hours" runat="server" Columns="3" MaxLength="5" Text='<%# DataBinder.Eval(Container, "DataItem.instructor_hours") %>' visible="false"></asp:TextBox>
                                             <asp:CustomValidator ID="CustomValidator_instructor_hours" runat="server" ControlToValidate="TextBox_instructor_hours" Display="Dynamic" ErrorMessage='Please enter a valid Instructor hours value that does not exceed the Total class hours value.' Font-Bold="True" onservervalidate="CustomValidator_instructor_hours_ServerValidate">!ERR!</asp:CustomValidator>
                                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender_instructor_hours" runat="server" TargetControlID="TextBox_instructor_hours" FilterType="Numbers,Custom" ValidChars="."></asp:FilteredTextBoxExtender>
                                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender_instructor_hours" runat="server" TargetControlID="TextBox_instructor_hours" WatermarkText="#.#" WatermarkCssClass="textbox_watermark"></asp:TextBoxWatermarkExtender>
                                           </EditItemTemplate>
                                         </asp:TemplateColumn>
                                         <asp:EditCommandColumn CancelText="&lt;IMG src=&quot;~/protected/image/edit-undo-8.png&quot; alt=&quot;Cancel&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" EditText="&lt;IMG src=&quot;~/protected/image/draw_freehand_16_h.png&quot; alt=&quot;Edit&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" UpdateText="&lt;IMG src=&quot;~/protected/image/document-save-5.png&quot; alt=&quot;Update&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;">
-                                          <ItemStyle Wrap="False" />
+                                          <ItemStyle Wrap="false" />
                                         </asp:EditCommandColumn>
                                       </Columns>
                                       <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
@@ -211,9 +211,9 @@
                                   <td>
                                     For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) attendees...
                                     <ul>
-                                      <li><p><asp:HyperLink ID="HyperLink_quickmessage" runat="server" NavigateUrl="#QuickMessage">Send a QuickMessage</asp:HyperLink></p></li>
-                                      <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" Enabled="False" onclick="LinkButton_email_completion_documentation_Click"></asp:LinkButton></p></li>
-                                      <li><p><asp:HyperLink ID="HyperLink_print_completion_documentation" runat="server" Enabled="False" Target="_blank">Print completion documentation</asp:HyperLink></p></li>
+                                      <li><p><asp:HyperLink ID="HyperLink_quickmessage" runat="server" NavigateUrl="#QuickMessage" Text="Send a QuickMessage"></asp:HyperLink></p></li>
+                                      <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" Enabled="false" onclick="LinkButton_email_completion_documentation_Click"></asp:LinkButton></p></li>
+                                      <li><p><asp:LinkButton ID="LinkButton_print_completion_documentation" runat="server" Text="Print completion documentation" Enabled="false" onclick="LinkButton_print_completion_documentation_Click"></asp:LinkButton></p></li>
                                     </ul>
                                     <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small></td>
                                 </tr>

@@ -149,7 +149,7 @@ namespace coned_offering_roster
       Button_close_and_submit.Visible = be_open;
       CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
       LinkButton_email_completion_documentation.Enabled = !be_open;
-      HyperLink_print_completion_documentation.Enabled = !be_open;
+      LinkButton_print_completion_documentation.Enabled = !be_open;
       }
 
     private void TWebForm_coned_offering_roster_PreRender(object sender, System.EventArgs e)
@@ -216,7 +216,7 @@ namespace coned_offering_roster
         }
       else
         {
-        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"norecipts","Message *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
+        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"noqmrecips","Message *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
         }
       }
 
@@ -465,13 +465,68 @@ namespace coned_offering_roster
           phrn_med_trauma_ceus:new k.decimal_nonnegative(p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary)),
           working_directory:Server.MapPath("scratch")
           );
-        TextBox_quick_message_subject.Text = k.EMPTY;
-        TextBox_quick_message_body.Text = k.EMPTY;
-        Alert(k.alert_cause_type.LOGIC,k.alert_state_type.NORMAL,"messagsnt","Certificates sent",be_using_scriptmanager:true);
+        Alert(k.alert_cause_type.LOGIC,k.alert_state_type.NORMAL,"certssent","Certificate(s) sent",be_using_scriptmanager:true);
         }
       else
         {
-        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"norecipts","Certificates *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
+        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"norecipts","Certificate(s) *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
+        }
+      }
+
+    protected void LinkButton_print_completion_documentation_Click(object sender, EventArgs e)
+      {
+      var attendance_rec_input_clause = k.EMPTY;
+      TableCellCollection tcc;
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        tcc = DataGrid_control.Items[i.val].Cells;
+        if ((tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+          {
+          var attendance_rec_hashtable = new Hashtable();
+          attendance_rec_hashtable["certification_number"] = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
+          attendance_rec_hashtable["dob"] = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
+          attendance_rec_hashtable["first_name"] = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+          attendance_rec_hashtable["last_name"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+          attendance_rec_hashtable["level_emsrs_code"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
+          attendance_rec_hashtable["level_short_description"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
+          attendance_rec_hashtable["middle_initial"] = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
+          attendance_rec_hashtable["email_address"] = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+          attendance_rec_input_clause += "<input type=\"hidden\" name=\"" + k.Safe(tcc[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM) + "\" value=\"" + ShieldedValueOfHashtable(attendance_rec_hashtable) + "\">";
+          }
+        }
+      if (attendance_rec_input_clause.Length > 0)
+        {
+        var meta_hashtable = new Hashtable();
+        meta_hashtable["sponsor_name"] = Session["coned_sponsor_name"].ToString();
+        meta_hashtable["sponsor_number"] = p.biz_teaching_entities.SponsorNumberOfId(p.biz_user.IdNum());
+        meta_hashtable["reply_to_email_address"] = p.user_email_address;
+        meta_hashtable["course_number"] = p.biz_coned_offerings.CourseNumberOf(p.incoming.summary);
+        meta_hashtable["course_title"] = Literal_course_title.Text;
+        meta_hashtable["date_final"] = Literal_end.Text;
+        meta_hashtable["fr_total_ceus"] = (p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary)).ToString();
+        meta_hashtable["fr_med_trauma_ceus"] = p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary).ToString();
+        meta_hashtable["emt_total_ceus"] = (p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary)).ToString();
+        meta_hashtable["emt_med_trauma_ceus"] = p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary).ToString();
+        meta_hashtable["emtp_total_ceus"] = (p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary)).ToString();
+        meta_hashtable["emtp_med_trauma_ceus"] = p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary).ToString();
+        meta_hashtable["phrn_total_ceus"] = (p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary) + p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary)).ToString();
+        meta_hashtable["phrn_med_trauma_ceus"] = p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary).ToString();
+        //
+        var hidden_input_clause = "<input type=\"hidden\" name=\"q\" value=\"" + ShieldedValueOfHashtable(meta_hashtable) + "\">" + attendance_rec_input_clause;
+        ToolkitScriptManager.RegisterStartupScript
+          (
+          control:Page,
+          type:Page.GetType(),
+          key:"training_certificate_package",
+          script:k.EMPTY
+          + " document.body.innerHTML += '<form id=\"Form_dynamic\" action=\"training_certificate_package.aspx\" method=\"post\">" + hidden_input_clause + "</form>';"
+          + " document.getElementById(\"Form_dynamic\").submit();",
+          addScriptTags:true
+          );
+        }
+      else
+        {
+        Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"noselctns","No attendees are selected for which to print certificates.",be_using_scriptmanager:true);
         }
       }
 
