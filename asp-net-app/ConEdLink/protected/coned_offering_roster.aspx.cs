@@ -519,7 +519,7 @@ namespace coned_offering_roster
           type:Page.GetType(),
           key:"training_certificate_package",
           script:k.EMPTY
-          + " document.body.innerHTML += '<form id=\"Form_dynamic\" action=\"training_certificate_package.aspx\" method=\"post\">" + hidden_input_clause + "</form>';"
+          + " document.body.innerHTML += '<form id=\"Form_dynamic\" action=\"training_certificate_package.aspx\" method=\"post\" target=\"_blank\">" + hidden_input_clause + "</form>';"
           + " document.getElementById(\"Form_dynamic\").submit();",
           addScriptTags:true
           );
