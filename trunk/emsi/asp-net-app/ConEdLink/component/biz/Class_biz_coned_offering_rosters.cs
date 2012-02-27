@@ -75,14 +75,14 @@ namespace Class_biz_coned_offering_rosters
 
     internal void GetAppropriateCeuValuesForPractitioner
       (
-      k.decimal_nonnegative fr_total_ceus,
-      k.decimal_nonnegative fr_med_trauma_ceus,
-      k.decimal_nonnegative emt_total_ceus,
-      k.decimal_nonnegative emt_med_trauma_ceus,
-      k.decimal_nonnegative emtp_total_ceus,
-      k.decimal_nonnegative emtp_med_trauma_ceus,
-      k.decimal_nonnegative phrn_total_ceus,
-      k.decimal_nonnegative phrn_med_trauma_ceus,
+      decimal fr_total_ceus,
+      decimal fr_med_trauma_ceus,
+      decimal emt_total_ceus,
+      decimal emt_med_trauma_ceus,
+      decimal emtp_total_ceus,
+      decimal emtp_med_trauma_ceus,
+      decimal phrn_total_ceus,
+      decimal phrn_med_trauma_ceus,
       attendance_rec_class attendance_rec,
       ref k.decimal_nonnegative total_ceus_for_this_practitioner,
       ref k.decimal_nonnegative med_trauma_ceus_for_this_practitioner
@@ -90,23 +90,23 @@ namespace Class_biz_coned_offering_rosters
       {
       if (attendance_rec.level_short_description == "FR")
         {
-        total_ceus_for_this_practitioner.val = fr_total_ceus.val;
-        med_trauma_ceus_for_this_practitioner.val = fr_med_trauma_ceus.val;
+        total_ceus_for_this_practitioner.val = fr_total_ceus;
+        med_trauma_ceus_for_this_practitioner.val = fr_med_trauma_ceus;
         }
       else if (attendance_rec.level_short_description == "EMT")
         {
-        total_ceus_for_this_practitioner.val = emt_total_ceus.val;
-        med_trauma_ceus_for_this_practitioner.val = emt_med_trauma_ceus.val;
+        total_ceus_for_this_practitioner.val = emt_total_ceus;
+        med_trauma_ceus_for_this_practitioner.val = emt_med_trauma_ceus;
         }
       else if (attendance_rec.level_short_description == "EMT-P")
         {
-        total_ceus_for_this_practitioner.val = emtp_total_ceus.val;
-        med_trauma_ceus_for_this_practitioner.val = emtp_med_trauma_ceus.val;
+        total_ceus_for_this_practitioner.val = emtp_total_ceus;
+        med_trauma_ceus_for_this_practitioner.val = emtp_med_trauma_ceus;
         }
       else if (attendance_rec.level_short_description == "PHRN")
         {
-        total_ceus_for_this_practitioner.val = phrn_total_ceus.val;
-        med_trauma_ceus_for_this_practitioner.val = phrn_med_trauma_ceus.val;
+        total_ceus_for_this_practitioner.val = phrn_total_ceus;
+        med_trauma_ceus_for_this_practitioner.val = phrn_med_trauma_ceus;
         }
       }
 
@@ -131,14 +131,14 @@ namespace Class_biz_coned_offering_rosters
       string course_number,
       string course_title,
       string date_final,
-      k.decimal_nonnegative fr_total_ceus,
-      k.decimal_nonnegative fr_med_trauma_ceus,
-      k.decimal_nonnegative emt_total_ceus,
-      k.decimal_nonnegative emt_med_trauma_ceus,
-      k.decimal_nonnegative emtp_total_ceus,
-      k.decimal_nonnegative emtp_med_trauma_ceus,
-      k.decimal_nonnegative phrn_total_ceus,
-      k.decimal_nonnegative phrn_med_trauma_ceus,
+      decimal fr_total_ceus,
+      decimal fr_med_trauma_ceus,
+      decimal emt_total_ceus,
+      decimal emt_med_trauma_ceus,
+      decimal emtp_total_ceus,
+      decimal emtp_med_trauma_ceus,
+      decimal phrn_total_ceus,
+      decimal phrn_med_trauma_ceus,
       string working_directory
       )
       {

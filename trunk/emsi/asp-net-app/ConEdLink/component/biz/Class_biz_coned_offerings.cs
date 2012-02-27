@@ -41,6 +41,20 @@ namespace Class_biz_coned_offerings
       return (db_coned_offerings.ApprovedOf(summary) == "1");
       }
 
+    internal bool BeCeuBreakdownValid(object summary)
+      {
+      return true
+      && (FrMedTraumaHoursOf(summary).Length > 0)
+      && (FrOtherHoursOf(summary).Length > 0)
+      && (EmtMedTraumaHoursOf(summary).Length > 0)
+      && (EmtOtherHoursOf(summary).Length > 0)
+      && (EmtpMedTraumaHoursOf(summary).Length > 0)
+      && (EmtpOtherHoursOf(summary).Length > 0)
+      && (PhrnMedTraumaHoursOf(summary).Length > 0)
+      && (PhrnOtherHoursOf(summary).Length > 0)
+      ;
+      }
+
     internal bool BeOkToCloseClassAndSubmitForCredit
       (
       object summary,
@@ -144,22 +158,22 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.Delete(id);
       }
 
-    internal decimal EmtMedTraumaHoursOf(object summary)
+    internal string EmtMedTraumaHoursOf(object summary)
       {
       return db_coned_offerings.EmtMedTraumaHoursOf(summary);
       }
 
-    internal decimal EmtOtherHoursOf(object summary)
+    internal string EmtOtherHoursOf(object summary)
       {
       return db_coned_offerings.EmtOtherHoursOf(summary);
       }
 
-    internal decimal EmtpMedTraumaHoursOf(object summary)
+    internal string EmtpMedTraumaHoursOf(object summary)
       {
       return db_coned_offerings.EmtpMedTraumaHoursOf(summary);
       }
 
-    internal decimal EmtpOtherHoursOf(object summary)
+    internal string EmtpOtherHoursOf(object summary)
       {
       return db_coned_offerings.EmtpOtherHoursOf(summary);
       }
@@ -169,12 +183,12 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.EndOf(summary);
       }
 
-    internal decimal FrMedTraumaHoursOf(object summary)
+    internal string FrMedTraumaHoursOf(object summary)
       {
       return db_coned_offerings.FrMedTraumaHoursOf(summary);
       }
 
-    internal decimal FrOtherHoursOf(object summary)
+    internal string FrOtherHoursOf(object summary)
       {
       return db_coned_offerings.FrOtherHoursOf(summary);
       }
@@ -335,12 +349,12 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.LocationOf(summary);
       }
 
-    internal decimal PhrnMedTraumaHoursOf(object summary)
+    internal string PhrnMedTraumaHoursOf(object summary)
       {
       return db_coned_offerings.PhrnMedTraumaHoursOf(summary);
       }
 
-    internal decimal PhrnOtherHoursOf(object summary)
+    internal string PhrnOtherHoursOf(object summary)
       {
       return db_coned_offerings.PhrnOtherHoursOf(summary);
       }
@@ -503,7 +517,6 @@ namespace Class_biz_coned_offerings
       total_class_hours.val = (total_class_hours_string.Length > 0 ? decimal.Parse(total_class_hours_string) : 0);
       return total_class_hours;
       }
-
 
     internal string SponsorNumberOf(object p)
       {
