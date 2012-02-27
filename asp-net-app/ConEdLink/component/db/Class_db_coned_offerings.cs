@@ -35,14 +35,14 @@ namespace Class_db_coned_offerings
       public string sponsor_email;
       public string sponsor_contact_email;
       public string sponsor_public_contact_email;
-      public decimal fr_med_trauma_hours;
-      public decimal fr_other_hours;
-      public decimal emt_med_trauma_hours;
-      public decimal emt_other_hours;
-      public decimal emtp_med_trauma_hours;
-      public decimal emtp_other_hours;
-      public decimal phrn_med_trauma_hours;
-      public decimal phrn_other_hours;
+      public string fr_med_trauma_hours;
+      public string fr_other_hours;
+      public string emt_med_trauma_hours;
+      public string emt_other_hours;
+      public string emtp_med_trauma_hours;
+      public string emtp_other_hours;
+      public string phrn_med_trauma_hours;
+      public string phrn_other_hours;
       }
 
     private TClass_db_trail db_trail = null;
@@ -214,22 +214,22 @@ namespace Class_db_coned_offerings
       return result;
       }
 
-    internal decimal EmtMedTraumaHoursOf(object summary)
+    internal string EmtMedTraumaHoursOf(object summary)
       {
       return (summary as coned_offering_summary).emt_med_trauma_hours;
       }
 
-    internal decimal EmtOtherHoursOf(object summary)
+    internal string EmtOtherHoursOf(object summary)
       {
       return (summary as coned_offering_summary).emt_other_hours;
       }
 
-    internal decimal EmtpMedTraumaHoursOf(object summary)
+    internal string EmtpMedTraumaHoursOf(object summary)
       {
       return (summary as coned_offering_summary).emtp_med_trauma_hours;
       }
 
-    internal decimal EmtpOtherHoursOf(object summary)
+    internal string EmtpOtherHoursOf(object summary)
       {
       return (summary as coned_offering_summary).emtp_other_hours;
       }
@@ -239,12 +239,12 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).end;
       }
 
-    internal decimal FrMedTraumaHoursOf(object summary)
+    internal string FrMedTraumaHoursOf(object summary)
       {
       return (summary as coned_offering_summary).fr_med_trauma_hours;
       }
 
-    internal decimal FrOtherHoursOf(object summary)
+    internal string FrOtherHoursOf(object summary)
       {
       return (summary as coned_offering_summary).fr_other_hours;
       }
@@ -490,14 +490,14 @@ namespace Class_db_coned_offerings
           + " , end_date_time = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).class_end_date + "',''),'%m/%d/%Y')"
           + " , end_time = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).class_end_time + "','')"
           + " , total_class_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','')"
-          + " , fr_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_ce_trauma + "','')"
-          + " , fr_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_ce_other + "','')"
-          + " , emt_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).emt_ce_trauma + "','')"
-          + " , emt_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).emt_ce_other + "','')"
-          + " , emtp_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','')"
-          + " , phrn_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','')"
-          + " , emtp_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','')"
-          + " , phrn_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','')"
+          + " , fr_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).fr_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).fr_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , fr_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).fr_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).fr_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , emt_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).emt_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).emt_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , emt_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).emt_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).emt_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , emtp_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , phrn_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , emtp_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          + " , phrn_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
           + " , student_cost = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).tuition + "','')"
           + " , sponsor_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_name + "','')"
           + " , sponsor_number = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_number + "','')"
@@ -540,12 +540,12 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).location;
       }
 
-    internal decimal PhrnMedTraumaHoursOf(object summary)
+    internal string PhrnMedTraumaHoursOf(object summary)
       {
       return (summary as coned_offering_summary).phrn_med_trauma_hours;
       }
 
-    internal decimal PhrnOtherHoursOf(object summary)
+    internal string PhrnOtherHoursOf(object summary)
       {
       return (summary as coned_offering_summary).phrn_other_hours;
       }
@@ -818,14 +818,14 @@ namespace Class_db_coned_offerings
         sponsor_contact_email = dr["sponsor_contact_email"].ToString(),
         sponsor_public_contact_email = dr["sponsor_public_contact_email"].ToString(),
         public_contact_email = dr["public_contact_email"].ToString(),
-        fr_med_trauma_hours = decimal.Parse(dr["fr_med_trauma_hours"].ToString()),
-        fr_other_hours = decimal.Parse(dr["fr_other_hours"].ToString()),
-        emt_med_trauma_hours = decimal.Parse(dr["emt_med_trauma_hours"].ToString()),
-        emt_other_hours = decimal.Parse(dr["emt_other_hours"].ToString()),
-        emtp_med_trauma_hours = decimal.Parse(dr["emtp_med_trauma_hours"].ToString()),
-        emtp_other_hours = decimal.Parse(dr["emtp_other_hours"].ToString()),
-        phrn_med_trauma_hours = decimal.Parse(dr["phrn_med_trauma_hours"].ToString()),
-        phrn_other_hours = decimal.Parse(dr["phrn_other_hours"].ToString())
+        fr_med_trauma_hours = dr["fr_med_trauma_hours"].ToString(),
+        fr_other_hours = dr["fr_other_hours"].ToString(),
+        emt_med_trauma_hours = dr["emt_med_trauma_hours"].ToString(),
+        emt_other_hours = dr["emt_other_hours"].ToString(),
+        emtp_med_trauma_hours = dr["emtp_med_trauma_hours"].ToString(),
+        emtp_other_hours = dr["emtp_other_hours"].ToString(),
+        phrn_med_trauma_hours = dr["phrn_med_trauma_hours"].ToString(),
+        phrn_other_hours = dr["phrn_other_hours"].ToString()
         };
       Close();
       return the_summary;

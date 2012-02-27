@@ -49,14 +49,14 @@ namespace training_certificate_package
           attendance_rec.middle_initial = attendance_rec_hashtable["middle_initial"].ToString();
           p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
             (
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["fr_total_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["fr_med_trauma_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["emt_total_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["emt_med_trauma_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["emtp_total_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["emtp_med_trauma_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["phrn_total_ceus"].ToString())),
-            new k.decimal_nonnegative(decimal.Parse(meta_hashtable["phrn_med_trauma_ceus"].ToString())),
+            decimal.Parse(meta_hashtable["fr_total_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["fr_med_trauma_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["emt_total_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["emt_med_trauma_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["emtp_total_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["emtp_med_trauma_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["phrn_total_ceus"].ToString()),
+            decimal.Parse(meta_hashtable["phrn_med_trauma_ceus"].ToString()),
             attendance_rec,
             ref total_ceus_for_this_practitioner,
             ref med_trauma_ceus_for_this_practitioner
