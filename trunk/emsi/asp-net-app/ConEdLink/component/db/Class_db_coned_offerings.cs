@@ -499,6 +499,7 @@ namespace Class_db_coned_offerings
           + " , emtp_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
           + " , phrn_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
           + " , student_cost = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).tuition + "','')"
+          + " , sponsor_id = (select emsrs_id from teaching_entity where REPLACE(sponsor_number,'-','') = '" + (rec as Class_ss_emsams.ConedOffering).sponsor_number + "')"
           + " , sponsor_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_name + "','')"
           + " , sponsor_number = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_number + "','')"
           + " , instructors = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).instructor_name + "','')"
