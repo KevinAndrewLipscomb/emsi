@@ -68,7 +68,8 @@ namespace report_commanded_training_certificate
           k.Safe(Request["course_title"],k.safe_hint_type.PUNCTUATED),
           k.Safe(Request["total_ceus"],k.safe_hint_type.REAL_NUM),
           k.Safe(Request["med_trauma_ceus"],k.safe_hint_type.REAL_NUM),
-          k.Safe(Request["date_final"],k.safe_hint_type.DATE_TIME)
+          k.Safe(Request["date_final"],k.safe_hint_type.DATE_TIME),
+          k.Safe(Request["instructor_hours"],k.safe_hint_type.REAL_NUM)
           );
         }
       else if (nature_of_visit_unlimited == nature_of_visit_type.VISIT_POSTBACK_STANDARD)

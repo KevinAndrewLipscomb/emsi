@@ -73,7 +73,8 @@ namespace UserControl_training_certificate
       string course_title,
       string total_ceus,
       string med_trauma_ceus,
-      string date_final
+      string date_final,
+      string instructor_hours
       )
       {
       Literal_sponsor_name.Text = sponsor_name;
@@ -83,10 +84,21 @@ namespace UserControl_training_certificate
       Literal_practitioner_level_emsrs_code.Text = level_emsrs_code;
       Literal_practitioner_level_short_description.Text = level_short_description;
       Literal_dob.Text = dob;
+      if (instructor_hours.Length == 0)
+        {
+        Literal_completed.Visible = true;
+        Literal_total_ce_hours.Text = total_ceus;
+        Literal_num_med_trauma_hours.Text = med_trauma_ceus;
+        TableRow_ceus.Visible = true;
+        }
+      else
+        {
+        Literal_taught.Visible = true;
+        Literal_instructor_hours.Text = instructor_hours;
+        TableRow_instructor_hours.Visible = true;
+        }
       Literal_course_number.Text = course_number;
       Literal_course_title.Text = course_title;
-      Literal_total_ce_hours.Text = total_ceus;
-      Literal_num_med_trauma_hours.Text = med_trauma_ceus;
       Literal_date_final.Text = DateTime.Parse(date_final.Substring(0,date_final.IndexOf(k.SPACE))).ToString("dddd d MMMM yyyy");
       }
 

@@ -85,6 +85,24 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.WebControls.Literal Literal_dob;
         
         /// <summary>
+        /// Literal_completed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_completed;
+        
+        /// <summary>
+        /// Literal_taught control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_taught;
+        
+        /// <summary>
         /// Literal_course_title control.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,15 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.WebControls.Literal Literal_course_number;
         
         /// <summary>
+        /// TableRow_ceus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_ceus;
+        
+        /// <summary>
         /// Literal_total_ce_hours control.
         /// </summary>
         /// <remarks>
@@ -119,6 +146,24 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_num_med_trauma_hours;
+        
+        /// <summary>
+        /// TableRow_instructor_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_instructor_hours;
+        
+        /// <summary>
+        /// Literal_instructor_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_instructor_hours;
         
         /// <summary>
         /// Literal_date_final control.
