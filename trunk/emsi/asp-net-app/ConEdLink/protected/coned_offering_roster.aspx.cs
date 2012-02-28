@@ -442,6 +442,7 @@ namespace coned_offering_roster
             attendance_rec.level_emsrs_code = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
             attendance_rec.level_short_description = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
             attendance_rec.middle_initial = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
+            attendance_rec.instructor_hours = k.Safe((tcc[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label).Text,k.safe_hint_type.REAL_NUM);
             attendance_rec.email_address = email_address_text;
             attendance_rec_q.Enqueue(attendance_rec);
             }
@@ -503,6 +504,7 @@ namespace coned_offering_roster
             attendance_rec_hashtable["level_emsrs_code"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
             attendance_rec_hashtable["level_short_description"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
             attendance_rec_hashtable["middle_initial"] = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text.Replace("&nbsp;",k.EMPTY),k.safe_hint_type.ALPHA);
+            attendance_rec_hashtable["instructor_hours"] = k.Safe((tcc[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label).Text,k.safe_hint_type.REAL_NUM);
             attendance_rec_hashtable["email_address"] = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
             attendance_rec_input_clause += "<input type=\"hidden\" name=\"" + k.Safe(tcc[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM) + "\" value=\"" + ShieldedValueOfHashtable(attendance_rec_hashtable) + "\">";
             }

@@ -47,6 +47,7 @@ namespace training_certificate_package
           attendance_rec.level_emsrs_code = attendance_rec_hashtable["level_emsrs_code"].ToString();
           attendance_rec.level_short_description = attendance_rec_hashtable["level_short_description"].ToString();
           attendance_rec.middle_initial = attendance_rec_hashtable["middle_initial"].ToString();
+          attendance_rec.instructor_hours = attendance_rec_hashtable["instructor_hours"].ToString();
           p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
             (
             decimal.Parse(meta_hashtable["fr_total_ceus"].ToString()),
@@ -77,7 +78,8 @@ namespace training_certificate_package
             meta_hashtable["course_title"].ToString(),
             total_ceus_for_this_practitioner.val.ToString(),
             med_trauma_ceus_for_this_practitioner.val.ToString(),
-            meta_hashtable["date_final"].ToString()
+            meta_hashtable["date_final"].ToString(),
+            attendance_rec.instructor_hours
             );
           if (i.val > i.FIRST)
             {

@@ -35,7 +35,15 @@
       </table>
     </td>
   </tr>
-  <tr align="center"><td><em>successfully completed the following Continuing Education Course:</em></td></tr>
+  <tr align="center">
+    <td>
+      <em>
+        <asp:Literal ID="Literal_completed" runat="server" Visible="false">successfully completed</asp:Literal>
+        <asp:Literal ID="Literal_taught" runat="server" Visible="false">participated as an Instructor for</asp:Literal>
+        the following Continuing Education Course:
+      </em>
+    </td>
+  </tr>
   <tr align="center">
     <td>
       <table cellpadding="10" cellspacing="0" style="border-left:1px solid gainsboro; border-right:1px solid gainsboro">
@@ -49,7 +57,10 @@
     </td>
   </tr>
   <tr align="center"><td><em>for</em></td></tr>
-  <tr align="center"><td><strong><asp:Literal ID="Literal_total_ce_hours" runat="server"></asp:Literal></strong> CEUs (<strong><asp:Literal ID="Literal_num_med_trauma_hours" runat="server"></asp:Literal></strong> Med/Trauma)</td></tr>
+  <tr id="TableRow_ceus" runat="server" align="center" visible="false">
+    <td><strong><asp:Literal ID="Literal_total_ce_hours" runat="server"></asp:Literal></strong> CEUs (<strong><asp:Literal ID="Literal_num_med_trauma_hours" runat="server"></asp:Literal></strong> Med/Trauma)</td>
+  </tr>
+  <tr id="TableRow_instructor_hours" runat="server" align="center" visible="false"><td><strong><asp:Literal ID="Literal_instructor_hours" runat="server"></asp:Literal></strong> Instructor hours</td></tr>
   <tr align="center"><td><em>on</em></td></tr>
   <tr align="center"><td><strong><asp:Literal ID="Literal_date_final" runat="server"></asp:Literal></strong></td></tr>
 </table>

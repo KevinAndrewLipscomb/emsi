@@ -121,6 +121,7 @@ namespace Class_biz_coned_offering_rosters
       internal string level_emsrs_code = k.EMPTY;
       internal string level_short_description = k.EMPTY;
       internal string dob = k.EMPTY;
+      internal string instructor_hours = k.EMPTY;
       }
     internal void SendTrainingCertificates
       (
@@ -187,6 +188,7 @@ namespace Class_biz_coned_offering_rosters
           +   "&total_ceus=" + total_ceus_for_this_practitioner.val.ToString()
           +   "&med_trauma_ceus=" + med_trauma_ceus_for_this_practitioner.val.ToString()
           +   "&date_final=" + HttpUtility.UrlEncode(date_final)
+          +   "&instructor_hours=" + attendance_rec.instructor_hours
           + k.SPACE
           + "\"" + ConfigurationManager.AppSettings["runtime_root_fullspec"] + "noninteractive/report_commanded_training_certificate.aspx\""
           );
