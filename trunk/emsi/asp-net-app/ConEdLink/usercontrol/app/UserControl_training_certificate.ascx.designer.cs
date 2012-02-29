@@ -112,13 +112,13 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.WebControls.Literal Literal_course_title;
         
         /// <summary>
-        /// Literal_course_number control.
+        /// Literal_class_number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_course_number;
+        protected global::System.Web.UI.WebControls.Literal Literal_class_number;
         
         /// <summary>
         /// TableRow_ceus control.

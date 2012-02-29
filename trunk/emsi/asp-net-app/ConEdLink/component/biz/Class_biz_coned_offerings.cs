@@ -334,6 +334,43 @@ namespace Class_biz_coned_offerings
         );
       }
 
+    internal void GetForTrainingCertificates
+      (
+      string id,
+      out string class_number,
+      out string sponsor_number,
+      out string sponsor_name,
+      out string course_title,
+      out string date_final,
+      ref k.decimal_nonnegative fr_total_ceus,
+      ref k.decimal_nonnegative fr_med_trauma_ceus,
+      ref k.decimal_nonnegative emt_total_ceus,
+      ref k.decimal_nonnegative emt_med_trauma_ceus,
+      ref k.decimal_nonnegative emtp_total_ceus,
+      ref k.decimal_nonnegative emtp_med_trauma_ceus,
+      ref k.decimal_nonnegative phrn_total_ceus,
+      ref k.decimal_nonnegative phrn_med_trauma_ceus
+      )
+      {
+      db_coned_offerings.GetForTrainingCertificates
+        (
+        id,
+        out class_number,
+        out sponsor_number,
+        out sponsor_name,
+        out course_title,
+        out date_final,
+        ref fr_total_ceus,
+        ref fr_med_trauma_ceus,
+        ref emt_total_ceus,
+        ref emt_med_trauma_ceus,
+        ref emtp_total_ceus,
+        ref emtp_med_trauma_ceus,
+        ref phrn_total_ceus,
+        ref phrn_med_trauma_ceus
+        );
+      }
+
     internal string IdOf(object summary)
       {
       return db_coned_offerings.IdOf(summary);
@@ -500,6 +537,16 @@ namespace Class_biz_coned_offerings
         );
       }
 
+    internal string SponsorNumberOf(object summary)
+      {
+      return db_coned_offerings.SponsorNumberOf(summary);
+      }
+
+    internal string StandardSafeRenditionOf(string class_number)
+      {
+      return k.Safe(class_number,k.safe_hint_type.NUM).Insert(8,k.HYPHEN).Insert(2,k.HYPHEN);
+      }
+
     internal string StartOf(object summary)
       {
       return db_coned_offerings.StartOf(summary);
@@ -516,11 +563,6 @@ namespace Class_biz_coned_offerings
       var total_class_hours_string = db_coned_offerings.TotalClassHoursOf(summary);
       total_class_hours.val = (total_class_hours_string.Length > 0 ? decimal.Parse(total_class_hours_string) : 0);
       return total_class_hours;
-      }
-
-    internal string SponsorNumberOf(object p)
-      {
-    throw new NotImplementedException();
       }
     } // end TClass_biz_coned_offerings
 

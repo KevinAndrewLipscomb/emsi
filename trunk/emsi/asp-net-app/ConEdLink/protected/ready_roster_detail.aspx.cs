@@ -211,7 +211,7 @@ namespace ready_roster_detail
 
     protected void LinkButton_gen_lcds_Click(object sender, EventArgs e)
       {
-      ExportToExcel(Page,p.biz_coned_offerings.ClassNumberOf(p.incoming.summary).Insert(8,k.HYPHEN).Insert(2,k.HYPHEN),StringOfControl(DataGrid_lcds));
+      ExportToExcel(Page,p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary)),StringOfControl(DataGrid_lcds));
       }
 
     protected override void OnInit(EventArgs e)

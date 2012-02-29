@@ -2,6 +2,7 @@
 
 using Class_biz_user;
 using Class_db_coned_offering_rosters;
+using Class_db_practitioners;
 using Class_db_teaching_entities;
 using kix;
 using System.Collections;
@@ -16,13 +17,28 @@ namespace Class_biz_coned_offering_rosters
 
     private TClass_biz_user biz_user = null;
     private TClass_db_coned_offering_rosters db_coned_offering_rosters = null;
+    private TClass_db_practitioners db_practitioners = null;
     private TClass_db_teaching_entities db_teaching_entities = null;
 
     public TClass_biz_coned_offering_rosters() : base()
       {
       biz_user = new TClass_biz_user();
       db_coned_offering_rosters = new TClass_db_coned_offering_rosters();
+      db_practitioners = new TClass_db_practitioners();
       db_teaching_entities = new TClass_db_teaching_entities();
+      }
+
+    internal class attendance_rec_class
+      {
+      internal string email_address = k.EMPTY;
+      internal string first_name = k.EMPTY;
+      internal string middle_initial = k.EMPTY;
+      internal string last_name = k.EMPTY;
+      internal string certification_number = k.EMPTY;
+      internal string level_emsrs_code = k.EMPTY;
+      internal string level_short_description = k.EMPTY;
+      internal string dob = k.EMPTY;
+      internal string instructor_hours = k.EMPTY;
       }
 
     internal bool BeOkToInputBatch()
@@ -83,53 +99,61 @@ namespace Class_biz_coned_offering_rosters
       decimal emtp_med_trauma_ceus,
       decimal phrn_total_ceus,
       decimal phrn_med_trauma_ceus,
-      attendance_rec_class attendance_rec,
+      string level_short_description,
       ref k.decimal_nonnegative total_ceus_for_this_practitioner,
       ref k.decimal_nonnegative med_trauma_ceus_for_this_practitioner
       )
       {
-      if (attendance_rec.level_short_description == "FR")
+      if (level_short_description == "FR")
         {
         total_ceus_for_this_practitioner.val = fr_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = fr_med_trauma_ceus;
         }
-      else if (attendance_rec.level_short_description == "EMT")
+      else if (level_short_description == "EMT")
         {
         total_ceus_for_this_practitioner.val = emt_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = emt_med_trauma_ceus;
         }
-      else if (attendance_rec.level_short_description == "EMT-P")
+      else if (level_short_description == "EMT-P")
         {
         total_ceus_for_this_practitioner.val = emtp_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = emtp_med_trauma_ceus;
         }
-      else if (attendance_rec.level_short_description == "PHRN")
+      else if (level_short_description == "PHRN")
         {
         total_ceus_for_this_practitioner.val = phrn_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = phrn_med_trauma_ceus;
         }
       }
 
-    internal class attendance_rec_class
+    internal attendance_rec_class GetAttendanceRec(string id)
       {
-      internal string id = k.EMPTY;
-      internal string email_address = k.EMPTY;
-      internal string first_name = k.EMPTY;
-      internal string middle_initial = k.EMPTY;
-      internal string last_name = k.EMPTY;
-      internal string certification_number = k.EMPTY;
-      internal string level_emsrs_code = k.EMPTY;
-      internal string level_short_description = k.EMPTY;
-      internal string dob = k.EMPTY;
-      internal string instructor_hours = k.EMPTY;
+      var attendance_rec = new attendance_rec_class();
+      var dummy_string = k.EMPTY;
+      var practitioner_id = k.EMPTY;
+      db_coned_offering_rosters.Get(id,out dummy_string,out practitioner_id,out attendance_rec.instructor_hours);
+      db_practitioners.GetForAttendanceRec
+        (
+        practitioner_id,
+        out attendance_rec.certification_number,
+        out attendance_rec.dob,
+        out attendance_rec.email_address,
+        out attendance_rec.first_name,
+        out attendance_rec.last_name,
+        out attendance_rec.level_emsrs_code,
+        out attendance_rec.level_short_description,
+        out attendance_rec.middle_initial
+        );
+      return attendance_rec;
       }
+
     internal void SendTrainingCertificates
       (
       Queue<attendance_rec_class> attendance_rec_q,
       string sponsor_name,
       string sponsor_number,
       string reply_to_email_address,
-      string course_number,
+      string class_number,
       string course_title,
       string date_final,
       decimal fr_total_ceus,
@@ -163,7 +187,7 @@ namespace Class_biz_coned_offering_rosters
           emtp_med_trauma_ceus,
           phrn_total_ceus,
           phrn_med_trauma_ceus,
-          attendance_rec,
+          attendance_rec.level_short_description,
           ref total_ceus_for_this_practitioner,
           ref med_trauma_ceus_for_this_practitioner
           );
@@ -173,7 +197,6 @@ namespace Class_biz_coned_offering_rosters
           + " --post-data"
           +   "=practitioner_email_address=" + attendance_rec.email_address
           +   "&reply_to_email_address=" + reply_to_email_address
-          +   "&id=" + attendance_rec.id
           +   "&sponsor_name=" + HttpUtility.UrlEncode(sponsor_name)
           +   "&sponsor_number=" + sponsor_number
           +   "&first_name=" + HttpUtility.UrlEncode(attendance_rec.first_name)
@@ -183,7 +206,7 @@ namespace Class_biz_coned_offering_rosters
           +   "&level_emsrs_code=" + attendance_rec.level_emsrs_code
           +   "&level_short_description=" + attendance_rec.level_short_description
           +   "&dob=" + HttpUtility.UrlEncode(attendance_rec.dob)
-          +   "&course_number=" + course_number
+          +   "&class_number=" + class_number
           +   "&course_title=" + HttpUtility.UrlEncode(course_title)
           +   "&total_ceus=" + total_ceus_for_this_practitioner.val.ToString()
           +   "&med_trauma_ceus=" + med_trauma_ceus_for_this_practitioner.val.ToString()

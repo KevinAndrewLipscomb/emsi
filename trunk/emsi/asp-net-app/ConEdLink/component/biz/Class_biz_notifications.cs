@@ -1,4 +1,5 @@
 using Class_biz_accounts;
+using Class_biz_coned_offerings;
 using kix;
 using System;
 using System.Configuration;
@@ -80,7 +81,7 @@ namespace Class_biz_notifications
         return s
           .Replace("<application_name/>",application_name)
           .Replace("<host_domain_name/>",host_domain_name)
-          .Replace("<class_number/>",class_number.Insert(8,k.HYPHEN).Insert(2,k.HYPHEN))
+          .Replace("<class_number/>",new TClass_biz_coned_offerings().StandardSafeRenditionOf(class_number))
           .Replace("<sponsor_number/>",sponsor_number)
           .Replace("<sponsor_name/>",sponsor_name)
           .Replace("<status_description/>",status_description)

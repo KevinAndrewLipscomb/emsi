@@ -1,3 +1,4 @@
+using Class_biz_coned_offerings;
 using Class_biz_coned_offering_rosters;
 using kix;
 using System;
@@ -8,6 +9,7 @@ namespace UserControl_training_certificate
   public struct p_type
     {
     public bool be_loaded;
+    public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
     }
 
@@ -51,6 +53,7 @@ namespace UserControl_training_certificate
         }
       else
         {
+        p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         //
         p.be_loaded = false;
@@ -59,7 +62,6 @@ namespace UserControl_training_certificate
 
     internal void Set
       (
-      string id,
       string sponsor_name,
       string sponsor_number,
       string first_name,
@@ -69,7 +71,7 @@ namespace UserControl_training_certificate
       string level_emsrs_code,
       string level_short_description,
       string dob,
-      string course_number,
+      string class_number,
       string course_title,
       string total_ceus,
       string med_trauma_ceus,
@@ -79,7 +81,7 @@ namespace UserControl_training_certificate
       {
       Literal_sponsor_name.Text = sponsor_name;
       Literal_sponsor_number.Text = (sponsor_number.Contains(k.HYPHEN) ? sponsor_number : sponsor_number.Substring(0,2) + k.HYPHEN + sponsor_number.Substring(2));
-      Literal_practitioner_name.Text = (first_name + k.SPACE + middle_initial + k.SPACE + last_name).Replace(k.SPACE + k.SPACE,k.SPACE);
+      Literal_practitioner_name.Text = (first_name + k.SPACE + middle_initial.Replace("nbsp",k.EMPTY) + k.SPACE + last_name).Replace(k.SPACE + k.SPACE,k.SPACE);
       Literal_certification_number.Text = certification_number;
       Literal_practitioner_level_emsrs_code.Text = level_emsrs_code;
       Literal_practitioner_level_short_description.Text = level_short_description;
@@ -97,7 +99,7 @@ namespace UserControl_training_certificate
         Literal_instructor_hours.Text = instructor_hours;
         TableRow_instructor_hours.Visible = true;
         }
-      Literal_course_number.Text = course_number;
+      Literal_class_number.Text = class_number;
       Literal_course_title.Text = course_title;
       Literal_date_final.Text = DateTime.Parse(date_final.Substring(0,date_final.IndexOf(k.SPACE))).ToString("dddd d MMMM yyyy");
       }

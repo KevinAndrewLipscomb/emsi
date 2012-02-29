@@ -207,6 +207,9 @@ namespace UserControl_ready_rosters
           link_button = ((e.Item.Cells[UserControl_ready_rosters_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          //
+          e.Item.Cells[UserControl_ready_rosters_Static.TCI_CLASS_NUM].Text = p.biz_coned_offerings.StandardSafeRenditionOf(e.Item.Cells[UserControl_ready_rosters_Static.TCI_CLASS_NUM].Text);
+          //
           link_button = ((e.Item.Cells[UserControl_ready_rosters_Static.TCI_ROSTER].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);

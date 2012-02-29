@@ -1,5 +1,6 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
+using Class_biz_coned_offerings;
 using kix;
 using System;
 using System.Configuration;
@@ -15,6 +16,7 @@ namespace report_commanded_training_certificate
 
     private struct p_type
       {
+      internal TClass_biz_coned_offerings biz_coned_offerings;
       internal string practitioner_email_address;
       internal string reply_to_email_address;
       }
@@ -47,6 +49,8 @@ namespace report_commanded_training_certificate
           (nature_of_visit_unlimited == nature_of_visit_type.VISIT_INITIAL)
         )
         {
+        p.biz_coned_offerings = new TClass_biz_coned_offerings();
+        //
         p.practitioner_email_address = k.Safe(Request["practitioner_email_address"],k.safe_hint_type.EMAIL_ADDRESS);
         p.reply_to_email_address = k.Safe(Request["reply_to_email_address"],k.safe_hint_type.EMAIL_ADDRESS);
         //
@@ -54,7 +58,6 @@ namespace report_commanded_training_certificate
         //
         UserControl_training_certificate_control.Set
           (
-          k.Safe(Request["id"],k.safe_hint_type.NUM),
           k.Safe(Request["sponsor_name"],k.safe_hint_type.ORG_NAME),
           k.Safe(Request["sponsor_number"],k.safe_hint_type.NUM),
           k.Safe(Request["first_name"],k.safe_hint_type.HUMAN_NAME),
@@ -64,7 +67,7 @@ namespace report_commanded_training_certificate
           k.Safe(Request["level_emsrs_code"],k.safe_hint_type.NUM),
           k.Safe(Request["level_short_description"],k.safe_hint_type.HYPHENATED_ALPHA),
           k.Safe(Request["dob"],k.safe_hint_type.DATE_TIME),
-          k.Safe(Request["course_number"],k.safe_hint_type.NUM),
+          p.biz_coned_offerings.StandardSafeRenditionOf(Request["class_number"]),
           k.Safe(Request["course_title"],k.safe_hint_type.PUNCTUATED),
           k.Safe(Request["total_ceus"],k.safe_hint_type.REAL_NUM),
           k.Safe(Request["med_trauma_ceus"],k.safe_hint_type.REAL_NUM),

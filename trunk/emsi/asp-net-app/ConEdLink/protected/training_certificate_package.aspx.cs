@@ -1,3 +1,4 @@
+using Class_biz_coned_offerings;
 using Class_biz_coned_offering_rosters;
 using kix;
 using System;
@@ -24,49 +25,68 @@ namespace training_certificate_package
           (nature_of_visit_unlimited == nature_of_visit_type.VISIT_INITIAL)
         )
         {
+        p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         //
-        var meta_hashtable = HashtableOfShieldedRequest();
+        var hash_table = HashtableOfShieldedRequest();
         //
-        var nvc = Request.Form;
+        var class_number = k.EMPTY;
+        var sponsor_number = k.EMPTY;
+        var sponsor_name = k.EMPTY;
+        var course_title = k.EMPTY;
+        var date_final = k.EMPTY;
+        var fr_total_ceus = new k.decimal_nonnegative();
+        var fr_med_trauma_ceus = new k.decimal_nonnegative();
+        var emt_total_ceus = new k.decimal_nonnegative();
+        var emt_med_trauma_ceus = new k.decimal_nonnegative();
+        var emtp_total_ceus = new k.decimal_nonnegative();
+        var emtp_med_trauma_ceus = new k.decimal_nonnegative();
+        var phrn_total_ceus = new k.decimal_nonnegative();
+        var phrn_med_trauma_ceus = new k.decimal_nonnegative();
+        p.biz_coned_offerings.GetForTrainingCertificates
+          (
+          hash_table["coned_offering_id"].ToString(),
+          out class_number,
+          out sponsor_number,
+          out sponsor_name,
+          out course_title,
+          out date_final,
+          ref fr_total_ceus,
+          ref fr_med_trauma_ceus,
+          ref emt_total_ceus,
+          ref emt_med_trauma_ceus,
+          ref emtp_total_ceus,
+          ref emtp_med_trauma_ceus,
+          ref phrn_total_ceus,
+          ref phrn_med_trauma_ceus
+          );
         //
-        Hashtable attendance_rec_hashtable;
-        for (var i = new k.subtype<int>(1,nvc.Count); i.val < i.LAST; i.val++)
+        var roster_ids = (hash_table["coned_offering_roster_ids"] as Object[]);
+        for (var i = new k.subtype<int>(0,roster_ids.Length); i.val < i.LAST; i.val++)
           {
           var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
           var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
           var total_ceus_for_this_practitioner = new k.decimal_nonnegative();
           var UserControl_training_certificate = ((LoadControl("~/usercontrol/app/UserControl_training_certificate.ascx") as TWebUserControl_training_certificate));
-          attendance_rec.id = nvc.GetKey(i.val);
-          attendance_rec_hashtable = HashtableOfShieldedRequest(attendance_rec.id);
-          attendance_rec.certification_number = attendance_rec_hashtable["certification_number"].ToString();
-          attendance_rec.dob = attendance_rec_hashtable["dob"].ToString();
-          attendance_rec.email_address = attendance_rec_hashtable["email_address"].ToString();
-          attendance_rec.first_name = attendance_rec_hashtable["first_name"].ToString();
-          attendance_rec.last_name = attendance_rec_hashtable["last_name"].ToString();
-          attendance_rec.level_emsrs_code = attendance_rec_hashtable["level_emsrs_code"].ToString();
-          attendance_rec.level_short_description = attendance_rec_hashtable["level_short_description"].ToString();
-          attendance_rec.middle_initial = attendance_rec_hashtable["middle_initial"].ToString();
-          attendance_rec.instructor_hours = attendance_rec_hashtable["instructor_hours"].ToString();
+          attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
           p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
             (
-            decimal.Parse(meta_hashtable["fr_total_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["fr_med_trauma_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["emt_total_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["emt_med_trauma_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["emtp_total_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["emtp_med_trauma_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["phrn_total_ceus"].ToString()),
-            decimal.Parse(meta_hashtable["phrn_med_trauma_ceus"].ToString()),
-            attendance_rec,
+            fr_total_ceus.val,
+            fr_med_trauma_ceus.val,
+            emt_total_ceus.val,
+            emt_med_trauma_ceus.val,
+            emtp_total_ceus.val,
+            emtp_med_trauma_ceus.val,
+            phrn_total_ceus.val,
+            phrn_med_trauma_ceus.val,
+            attendance_rec.level_short_description,
             ref total_ceus_for_this_practitioner,
             ref med_trauma_ceus_for_this_practitioner
             );
           UserControl_training_certificate.Set
             (
-            attendance_rec.id,
-            meta_hashtable["sponsor_name"].ToString(),
-            meta_hashtable["sponsor_number"].ToString(),
+            sponsor_name,
+            sponsor_number,
             attendance_rec.first_name,
             attendance_rec.middle_initial,
             attendance_rec.last_name,
@@ -74,11 +94,11 @@ namespace training_certificate_package
             attendance_rec.level_emsrs_code,
             attendance_rec.level_short_description,
             attendance_rec.dob,
-            meta_hashtable["course_number"].ToString(),
-            meta_hashtable["course_title"].ToString(),
+            p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
+            course_title,
             total_ceus_for_this_practitioner.val.ToString(),
             med_trauma_ceus_for_this_practitioner.val.ToString(),
-            meta_hashtable["date_final"].ToString(),
+            date_final,
             attendance_rec.instructor_hours
             );
           if (i.val > i.FIRST)
@@ -112,6 +132,7 @@ namespace training_certificate_package
 
     private struct p_type
       {
+      public TClass_biz_coned_offerings biz_coned_offerings;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
       }
 
