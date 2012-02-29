@@ -262,7 +262,16 @@
 				                          </tr>
 				                          <tr>
 					                          <td></td>
-					                          <td><ASP:Button id="Button_send" runat="server" text="Send" onclick="Button_send_Click" ValidationGroup="QuickMessage"></ASP:Button></td>
+					                          <td>
+                                      <asp:UpdatePanel ID="UpdatePanel_send_button" runat="server" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                          <ASP:Button id="Button_send" runat="server" text="Send" onclick="Button_send_Click" ValidationGroup="QuickMessage"></ASP:Button>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                          <asp:AsyncPostBackTrigger ControlID="DataGrid_control" EventName="ItemCommand" />
+                                        </Triggers>
+                                      </asp:UpdatePanel>
+                                    </td>
 					                          <td></td>
 				                          </tr>
 			                          </table>
