@@ -150,9 +150,12 @@ namespace coned_offering_roster
     private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
       {
       Button_close_and_submit.Visible = be_open;
+      Button_close_and_submit.Enabled = (DataGrid_control.EditItemIndex == -1);
       CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
-      LinkButton_email_completion_documentation.Enabled = !be_open;
-      HyperLink_print_completion_documentation.Enabled = !be_open && p.be_ceu_breakdown_valid;
+      HyperLink_quickmessage.Enabled = (DataGrid_control.EditItemIndex == -1);
+      LinkButton_email_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1);
+      HyperLink_print_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1) && p.be_ceu_breakdown_valid;
+      Button_send.Enabled = (DataGrid_control.EditItemIndex == -1);
       }
 
     private void SetHyperlinkPrintCompletionDocumentation()

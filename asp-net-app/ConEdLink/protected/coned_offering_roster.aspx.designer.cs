@@ -355,6 +355,15 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_quick_message_body;
         
         /// <summary>
+        /// UpdatePanel_send_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_send_button;
+        
+        /// <summary>
         /// Button_send control.
         /// </summary>
         /// <remarks>
