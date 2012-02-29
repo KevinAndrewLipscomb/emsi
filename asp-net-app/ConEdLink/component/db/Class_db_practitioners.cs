@@ -178,7 +178,7 @@ namespace Class_db_practitioners
         level_id = dr["level_id"].ToString();
         regional_council_code = dr["regional_council_code"].ToString();
         birth_date = DateTime.Parse(dr["birth_date"].ToString());
-        email_address = dr["birth_date"].ToString();
+        email_address = dr["email_address"].ToString();
         be_stale = (dr["be_stale"].ToString() == "1");
         residence_county_code = dr["residence_county_code"].ToString();
         be_birth_date_confirmed = (dr["be_birth_date_confirmed"].ToString() == "1");
@@ -191,6 +191,49 @@ namespace Class_db_practitioners
       dr.Close();
       Close();
       return result;
+      }
+
+    internal void GetForAttendanceRec
+      (
+      string id,
+      out string certification_number,
+      out string birth_date,
+      out string email_address,
+      out string first_name,
+      out string last_name,
+      out string level_emsrs_code,
+      out string level_short_description,
+      out string middle_initial
+      )
+      {
+      Open();
+      var dr = new MySqlCommand
+        (
+        "select certification_number"
+        + " , DATE_FORMAT(birth_date,'%m/%d/%Y') as birth_date"
+        + " , email_address"
+        + " , first_name"
+        + " , last_name"
+        + " , middle_initial"
+        + " , emsrs_code as level_emsrs_code"
+        + " , short_description as level_short_description"
+        + " from practitioner"
+        +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+        + " where CAST(practitioner.id AS CHAR) = '" + id + "'",
+        connection
+        )
+        .ExecuteReader();
+      dr.Read();
+      certification_number = dr["certification_number"].ToString();
+      birth_date = dr["birth_date"].ToString();
+      email_address = dr["email_address"].ToString();
+      first_name = dr["first_name"].ToString();
+      last_name = dr["last_name"].ToString();
+      level_emsrs_code = dr["level_emsrs_code"].ToString();
+      level_short_description = dr["level_short_description"].ToString();
+      middle_initial = dr["middle_initial"].ToString();
+      dr.Close();
+      Close();
       }
 
     internal void ImportLatestFromEmsrs(ArrayList recs)

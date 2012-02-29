@@ -147,8 +147,10 @@
                                             <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all" Checked="True" />
                                           </HeaderTemplate>
                                           <ItemTemplate>
-                                            <asp:CheckBox ID="CheckBox_selected" runat="server" Checked="True" />
+                                            <asp:CheckBox ID="CheckBox_selected" runat="server" Checked="True" AutoPostBack="True" oncheckedchanged="CheckBox_selected_CheckedChanged" />
                                           </ItemTemplate>
+                                          <HeaderStyle HorizontalAlign="Center" />
+                                          <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateColumn>
                                         <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="false"></asp:ButtonColumn>
                                         <asp:BoundColumn datafield="practitioner_id" Visible="false" ReadOnly="True"></asp:BoundColumn>
@@ -213,7 +215,7 @@
                                     <ul>
                                       <li><p><asp:HyperLink ID="HyperLink_quickmessage" runat="server" NavigateUrl="#QuickMessage" Text="Send a QuickMessage"></asp:HyperLink></p></li>
                                       <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" Enabled="false" onclick="LinkButton_email_completion_documentation_Click"></asp:LinkButton></p></li>
-                                      <li><p><asp:LinkButton ID="LinkButton_print_completion_documentation" runat="server" Text="Print completion documentation" Enabled="false" onclick="LinkButton_print_completion_documentation_Click"></asp:LinkButton></p></li>
+                                      <li><p><asp:HyperLink ID="HyperLink_print_completion_documentation" runat="server" Text="Print completion documentation" Enabled="false" Target="_blank"></asp:HyperLink></p></li>
                                     </ul>
                                     <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small></td>
                                 </tr>

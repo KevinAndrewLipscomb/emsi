@@ -462,6 +462,63 @@ namespace Class_db_coned_offerings
       return result;
       }
 
+    internal void GetForTrainingCertificates
+      (
+      string id,
+      out string class_number,
+      out string sponsor_number,
+      out string sponsor_name,
+      out string course_title,
+      out string date_final,
+      ref k.decimal_nonnegative fr_total_ceus,
+      ref k.decimal_nonnegative fr_med_trauma_ceus,
+      ref k.decimal_nonnegative emt_total_ceus,
+      ref k.decimal_nonnegative emt_med_trauma_ceus,
+      ref k.decimal_nonnegative emtp_total_ceus,
+      ref k.decimal_nonnegative emtp_med_trauma_ceus,
+      ref k.decimal_nonnegative phrn_total_ceus,
+      ref k.decimal_nonnegative phrn_med_trauma_ceus
+      )
+      {
+      Open();
+      var dr = new MySqlCommand
+        (
+        "select class_number"
+        + " , sponsor_number"
+        + " , sponsor_name"
+        + " , course_title"
+        + " , end_date_time"
+        + " , fr_med_trauma_hours + fr_other_hours as fr_total_hours"
+        + " , fr_med_trauma_hours"
+        + " , emt_med_trauma_hours + emt_other_hours as emt_total_hours"
+        + " , emt_med_trauma_hours"
+        + " , emtp_med_trauma_hours + emtp_other_hours as emtp_total_hours"
+        + " , emtp_med_trauma_hours"
+        + " , phrn_med_trauma_hours + phrn_other_hours as phrn_total_hours"
+        + " , phrn_med_trauma_hours"
+        + " from coned_offering"
+        + " where CAST(id AS CHAR) = '" + id + "'",
+        connection
+        )
+        .ExecuteReader();
+      dr.Read();
+      class_number = dr["class_number"].ToString();
+      sponsor_number = dr["sponsor_number"].ToString();
+      sponsor_name = dr["sponsor_name"].ToString();
+      course_title = dr["course_title"].ToString();
+      date_final = dr["end_date_time"].ToString();
+      fr_total_ceus.val = decimal.Parse(dr["fr_total_hours"].ToString());
+      fr_med_trauma_ceus.val = decimal.Parse(dr["fr_med_trauma_hours"].ToString());
+      emt_total_ceus.val = decimal.Parse(dr["emt_total_hours"].ToString());
+      emt_med_trauma_ceus.val = decimal.Parse(dr["emt_med_trauma_hours"].ToString());
+      emtp_total_ceus.val = decimal.Parse(dr["emtp_total_hours"].ToString());
+      emtp_med_trauma_ceus.val = decimal.Parse(dr["emtp_med_trauma_hours"].ToString());
+      phrn_total_ceus.val = decimal.Parse(dr["phrn_total_hours"].ToString());
+      phrn_med_trauma_ceus.val = decimal.Parse(dr["phrn_med_trauma_hours"].ToString());
+      dr.Close();
+      Close();
+      }
+
     internal string IdOf(object summary)
       {
       return (summary as coned_offering_summary).id;

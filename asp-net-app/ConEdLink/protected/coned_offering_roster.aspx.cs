@@ -21,6 +21,7 @@ namespace coned_offering_roster
   {
   public struct p_type
     {
+    public bool be_ceu_breakdown_valid;
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
     public TClass_biz_accounts biz_accounts;
@@ -34,6 +35,7 @@ namespace coned_offering_roster
     public TClass_msg_protected.coned_offering_roster incoming;
     public k.int_nonnegative num_attendees;
     public k.int_nonnegative num_attendees_with_known_birth_dates;
+    public ArrayList roster_id_arraylist;
     public string sort_order;
     public k.decimal_nonnegative total_class_hours;
     public string user_email_address;
@@ -81,6 +83,7 @@ namespace coned_offering_roster
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
+      SetHyperlinkPrintCompletionDocumentation();
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
       }
 
@@ -149,7 +152,27 @@ namespace coned_offering_roster
       Button_close_and_submit.Visible = be_open;
       CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
       LinkButton_email_completion_documentation.Enabled = !be_open;
-      LinkButton_print_completion_documentation.Enabled = !be_open;
+      HyperLink_print_completion_documentation.Enabled = !be_open && p.be_ceu_breakdown_valid;
+      }
+
+    private void SetHyperlinkPrintCompletionDocumentation()
+      {
+      HyperLink_print_completion_documentation.NavigateUrl = k.EMPTY;
+      p.roster_id_arraylist.Clear();
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        if ((DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+          {
+          p.roster_id_arraylist.Add(k.Safe(DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+          }
+        }
+      if (p.roster_id_arraylist.Count > 0)
+        {
+        var hash_table = new Hashtable();
+        hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        hash_table["coned_offering_roster_ids"] = p.roster_id_arraylist;
+        HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_package.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        }
       }
 
     private void TWebForm_coned_offering_roster_PreRender(object sender, System.EventArgs e)
@@ -224,9 +247,14 @@ namespace coned_offering_roster
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        var item_type = DataGrid_control.Items[i.val].ItemType;
         (DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
+      SetHyperlinkPrintCompletionDocumentation();
+      }
+
+    protected void CheckBox_selected_CheckedChanged(object sender, EventArgs e)
+      {
+      SetHyperlinkPrintCompletionDocumentation();
       }
 
     protected void CustomValidator_close_class_and_submit_for_credit_ServerValidate(object source, ServerValidateEventArgs args)
@@ -422,7 +450,7 @@ namespace coned_offering_roster
 
     protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
       {
-      if (p.biz_coned_offerings.BeCeuBreakdownValid(p.incoming.summary))
+      if (p.be_ceu_breakdown_valid)
         {
         var attendance_rec_q = new Queue<TClass_biz_coned_offering_rosters.attendance_rec_class>();
         var email_address_text = k.EMPTY;
@@ -434,7 +462,6 @@ namespace coned_offering_roster
           if ((email_address_text != "DESIRED") && (tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
             {
             var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
-            attendance_rec.id = k.Safe(tcc[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM);
             attendance_rec.certification_number = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
             attendance_rec.dob = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
             attendance_rec.first_name = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
@@ -459,7 +486,7 @@ namespace coned_offering_roster
             sponsor_name:Session["coned_sponsor_name"].ToString(),
             sponsor_number:p.biz_teaching_entities.SponsorNumberOfId(p.biz_user.IdNum()),
             reply_to_email_address:p.user_email_address,
-            course_number:p.biz_coned_offerings.CourseNumberOf(p.incoming.summary),
+            class_number:p.biz_coned_offerings.ClassNumberOf(p.incoming.summary),
             course_title:Literal_course_title.Text,
             date_final:Literal_end.Text,
             fr_total_ceus:fr_med_trauma_hours_of_decimal + decimal.Parse(p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary)),
@@ -477,71 +504,6 @@ namespace coned_offering_roster
         else
           {
           Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"norecipts","Certificate(s) *NOT* sent.  No recipients are selected.",be_using_scriptmanager:true);
-          }
-        }
-      else
-        {
-        Alert(k.alert_cause_type.APPDATA,k.alert_state_type.WARNING,"badceudata","The breakdown of CEUs as imported from EMSRS is invalid.  No certificates can be generated.",be_using_scriptmanager:true);
-        }
-      }
-
-    protected void LinkButton_print_completion_documentation_Click(object sender, EventArgs e)
-      {
-      if (p.biz_coned_offerings.BeCeuBreakdownValid(p.incoming.summary))
-        {
-        var attendance_rec_input_clause = k.EMPTY;
-        TableCellCollection tcc;
-        for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
-          {
-          tcc = DataGrid_control.Items[i.val].Cells;
-          if ((tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
-            {
-            var attendance_rec_hashtable = new Hashtable();
-            attendance_rec_hashtable["certification_number"] = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
-            attendance_rec_hashtable["dob"] = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
-            attendance_rec_hashtable["first_name"] = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-            attendance_rec_hashtable["last_name"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-            attendance_rec_hashtable["level_emsrs_code"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
-            attendance_rec_hashtable["level_short_description"] = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
-            attendance_rec_hashtable["middle_initial"] = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text.Replace("&nbsp;",k.EMPTY),k.safe_hint_type.ALPHA);
-            attendance_rec_hashtable["instructor_hours"] = k.Safe((tcc[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label).Text,k.safe_hint_type.REAL_NUM);
-            attendance_rec_hashtable["email_address"] = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-            attendance_rec_input_clause += "<input type=\"hidden\" name=\"" + k.Safe(tcc[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM) + "\" value=\"" + ShieldedValueOfHashtable(attendance_rec_hashtable) + "\">";
-            }
-          }
-        if (attendance_rec_input_clause.Length > 0)
-          {
-          var meta_hashtable = new Hashtable();
-          meta_hashtable["sponsor_name"] = Session["coned_sponsor_name"].ToString();
-          meta_hashtable["sponsor_number"] = p.biz_teaching_entities.SponsorNumberOfId(p.biz_user.IdNum());
-          meta_hashtable["reply_to_email_address"] = p.user_email_address;
-          meta_hashtable["course_number"] = p.biz_coned_offerings.CourseNumberOf(p.incoming.summary);
-          meta_hashtable["course_title"] = Literal_course_title.Text;
-          meta_hashtable["date_final"] = Literal_end.Text;
-          meta_hashtable["fr_total_ceus"] = (decimal.Parse(p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary)) + decimal.Parse(p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary))).ToString();
-          meta_hashtable["fr_med_trauma_ceus"] = p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary);
-          meta_hashtable["emt_total_ceus"] = (decimal.Parse(p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary)) + decimal.Parse(p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary))).ToString();
-          meta_hashtable["emt_med_trauma_ceus"] = p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary);
-          meta_hashtable["emtp_total_ceus"] = (decimal.Parse(p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary)) + decimal.Parse(p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary))).ToString();
-          meta_hashtable["emtp_med_trauma_ceus"] = p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary);
-          meta_hashtable["phrn_total_ceus"] = (decimal.Parse(p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary)) + decimal.Parse(p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary))).ToString();
-          meta_hashtable["phrn_med_trauma_ceus"] = p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary);
-          //
-          var hidden_input_clause = "<input type=\"hidden\" name=\"q\" value=\"" + ShieldedValueOfHashtable(meta_hashtable) + "\">" + attendance_rec_input_clause;
-          ToolkitScriptManager.RegisterStartupScript
-            (
-            control:Page,
-            type:Page.GetType(),
-            key:"training_certificate_package",
-            script:k.EMPTY
-            + " document.body.innerHTML += '<form id=\"Form_dynamic\" action=\"training_certificate_package.aspx\" method=\"post\" target=\"_blank\">" + hidden_input_clause + "</form>';"
-            + " document.getElementById(\"Form_dynamic\").submit();",
-            addScriptTags:true
-            );
-          }
-        else
-          {
-          Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"noselctns","No attendees are selected for which to print certificates.",be_using_scriptmanager:true);
           }
         }
       else
@@ -578,9 +540,11 @@ namespace coned_offering_roster
         p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
+        p.roster_id_arraylist = new ArrayList();
         p.sort_order = "id desc";
         p.user_email_address = p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(),p.biz_user.IdNum());
         //
+        p.be_ceu_breakdown_valid = p.biz_coned_offerings.BeCeuBreakdownValid(p.incoming.summary);
         p.be_ok_to_edit_roster = p.biz_coned_offerings.BeOkToEditRoster(p.incoming.summary);
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
         p.total_class_hours = p.biz_coned_offerings.TotalClassHoursOf(p.incoming.summary);
@@ -605,8 +569,7 @@ namespace coned_offering_roster
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         InitForNewSearch();
         Literal_course_title.Text = p.biz_coned_offerings.CourseTitleOf(p.incoming.summary);
-        var raw_class_number = p.biz_coned_offerings.ClassNumberOf(p.incoming.summary);
-        Literal_class_number.Text = raw_class_number.Substring(0,2) + k.SPACE + raw_class_number.Substring(2,6) + k.SPACE + raw_class_number.Substring(8,6);
+        Literal_class_number.Text = p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary));
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
         Literal_start.Text = p.biz_coned_offerings.StartOf(p.incoming.summary);
         Literal_end.Text = p.biz_coned_offerings.EndOf(p.incoming.summary);

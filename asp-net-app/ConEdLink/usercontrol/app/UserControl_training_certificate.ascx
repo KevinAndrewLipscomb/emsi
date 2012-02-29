@@ -50,7 +50,7 @@
         <tr>
           <td align="center">
             <big><big><big><strong><asp:Literal ID="Literal_course_title" runat="server"></asp:Literal></strong></big></big></big>
-            <table cellpadding="5" cellspacing="0"><tr align="center"><td><small># <asp:Literal ID="Literal_course_number" runat="server"></asp:Literal></small></td></tr></table>
+            <table cellpadding="5" cellspacing="0"><tr align="center"><td><small># <asp:Literal ID="Literal_class_number" runat="server"></asp:Literal></small></td></tr></table>
           </td>
         </tr>
       </table>
