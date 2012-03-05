@@ -269,14 +269,14 @@ This document assumes that:
 \begin_layout Itemize
 In all cases, you are using a barcode scanner that runs the Windows Mobile
  operating system, and that has Internet Explorer and Excel Mobile installed.
- Where this document mentions Excel Mobile, any another application that
- takes and holds text input, like Word Mobile, may be used instead.
+ Where this document mentions Excel Mobile, any other application that takes
+ and holds text input, like Word Mobile, may be used instead.
 \end_layout
 
 \begin_layout Itemize
-If you are using an option that requires a PC, the PC runs the Microsoft
- Windows operating system, and that Windows Mobile Device Center and My
- Mobiler are installed.
+If you are using (as recommended) an option that requires a PC, the PC runs
+ the Microsoft Windows operating system, and that Windows Mobile Device
+ Center and My Mobiler are installed.
  My Mobiler is free software available at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -286,6 +286,10 @@ target "http://mymobiler.com/wp-content/plugins/download-monitor/download.php?id
 \end_inset
 
 .
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part
@@ -367,7 +371,11 @@ Excel Mobile
 
 \end_inset
 
- 
+
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
 	filename mobile-start-menu-excel-mobile.png
 
@@ -418,7 +426,11 @@ g data item) for which the Room Monitor is about to scan badges:
 
 \end_inset
 
- 
+
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
 	filename mobile-excel-class-num-entered.png
 
@@ -773,6 +785,10 @@ Click the
 \end_inset
 
  button.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part
@@ -829,19 +845,82 @@ Before the Room Monitor heads to the classroom
 \end_layout
 
 \begin_layout Enumerate
-Activate the barcode scanner's browser:
+On the barcode scanner, tap the Start menu, then tap 
+\begin_inset Quotes eld
+\end_inset
+
+Internet Explorer
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-home-screen.png
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-start-menu-ie.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
 In the browser, navigate to http://frompaper2web.com/ConEdLink:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-login.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-Log into ConEdLink using the appropriate Con Ed Sponsor credentials:
+Log into ConEdLink using the appropriate Con Ed Sponsor credentials.
+ You'll see something like this:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-class-catalog.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-In ConEdLink, click the 
+In ConEdLink, scroll the page down (1) until you find the class (2) for
+ which the Room Monitor is about to scan badges, then scroll the page over
+ (3) and click the class's 
 \begin_inset Quotes eld
 \end_inset
 
@@ -849,7 +928,70 @@ Roster
 \begin_inset Quotes erd
 \end_inset
 
- link next to the class for which the Room Monitor is about to scan badges:
+ link (4):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-target-class-num-and-name.png
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-target-class-roster-link.png
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+You'll see something like the following.
+ Note that the 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+ field is set to 
+\begin_inset Quotes eld
+\end_inset
+
+Standard
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-class-roster-standard.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -869,7 +1011,21 @@ Barcode scan batch
 \begin_inset Quotes erd
 \end_inset
 
- circle.
+ circle:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-class-roster-batch.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -939,6 +1095,10 @@ CLOSE CLASS AND SUBMIT FOR CREDIT
 \end_inset
 
  button.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part
