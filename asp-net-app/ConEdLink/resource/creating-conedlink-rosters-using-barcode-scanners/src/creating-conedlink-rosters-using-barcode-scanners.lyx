@@ -1,0 +1,1056 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\date{}
+
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\headheight 0cm
+\headsep 0.25cm
+\footskip 0.25cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Creating 
+\series bold
+ConEdLink
+\series default
+ rosters using barcode scanners
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="50line%">
+<column alignment="left" valignment="top" width="50line%">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Description
+
+\size footnotesize
+Prepared
+\begin_inset space ~
+\end_inset
+
+by 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+FromPaper2Web.com, Kalips'o Infogistics LLC, 4325 Hudgins Drive, Virginia
+ Beach VA 23455-6512
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+Prepared
+\begin_inset space ~
+\end_inset
+
+for 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The Regional EMS Councils of the Pennsylvania state EMS system
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+5
+\begin_inset space ~
+\end_inset
+
+March
+\begin_inset space ~
+\end_inset
+
+2012
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Documents and Settings/KevinAndrewLipscomb/My Documents/SANDBOX/vocational/kalipso-infogistics/logo/png_transparent/FromPaper2Web.png
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Modern barcode scanners can serve as dumb input devices and as smart stand-alone
+ network-connected computing platforms; Network connections can vary in
+ speed and reliability; and 
+\series bold
+ConEdLink
+\series default
+ can add practitioners to rosters one-at-a-time or in bulk.
+ These factors provide choices for how to create 
+\series bold
+ConEdLink
+\series default
+ rosters using barcode scanners.
+ This document surveys such choices, and makes recommendations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Assumptions
+\end_layout
+
+\begin_layout Standard
+This document assumes that:
+\end_layout
+
+\begin_layout Itemize
+In all cases, you are using a barcode scanner that runs the Windows Mobile
+ operating system, and that has Internet Explorer and Excel Mobile installed.
+ Where this document mentions Excel Mobile, any another application that
+ takes and holds text input, like Word Mobile, may be used instead.
+\end_layout
+
+\begin_layout Itemize
+If you are using an option that requires a PC, the PC runs the Microsoft
+ Windows operating system, and that Windows Mobile Device Center and My
+ Mobiler are installed.
+ My Mobiler is free software available at 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://mymobiler.com/wp-content/plugins/download-monitor/download.php?id=2"
+target "http://mymobiler.com/wp-content/plugins/download-monitor/download.php?id=2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Part
+RECOMMENDED: Scan dumb, disconnected, and fast; perform all other processing
+ on PC
+\end_layout
+
+\begin_layout Standard
+This option:
+\end_layout
+
+\begin_layout Itemize
+Requires access, before and after the Room Monitor is at the classroom,
+ to a PC with the following characteristics:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The PC has a reliable Internet connection.
+\end_layout
+
+\begin_layout Enumerate
+A barcode scanner cradle is connected to the PC.
+\end_layout
+
+\begin_layout Enumerate
+Windows Mobile Device Center is installed.
+\end_layout
+
+\begin_layout Enumerate
+My Mobiler software is installed.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Does not require the barcode scanner to have any Internet connection at
+ all.
+\end_layout
+
+\begin_layout Itemize
+Allows the Room Monitor to scan badges without pausing for any intense processin
+g or network transactions.
+\end_layout
+
+\begin_layout Itemize
+The barcode scanner is only used for scanning; all other processing occurs
+ on a PC with a full keyboard, a large screen, and a mouse.
+\end_layout
+
+\begin_layout Itemize
+Does not give the Room Monitor access that they wouldn't otherwise have
+ to the Con Ed Sponsor's ConEdLink account.
+\end_layout
+
+\begin_layout Section
+Before the Room Monitor heads to the classroom
+\end_layout
+
+\begin_layout Enumerate
+On the barcode scanner, tap the Start menu, then tap 
+\begin_inset Quotes eld
+\end_inset
+
+Excel Mobile
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-home-screen.png
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename mobile-start-menu-excel-mobile.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tap 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-new.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tap cell A1, then enter the class number (or title, or other uniquely identifyin
+g data item) for which the Room Monitor is about to scan badges:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-enter-class-num.png
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename mobile-excel-class-num-entered.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Make sure that cell A2 (or other nearby cell) is selected to receive the
+ first scanned attendee certification number:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-a2-selected.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+When the Room Monitor is at the classroom
+\end_layout
+
+\begin_layout Enumerate
+The Room Monitor should confirm that the cursor is 
+\series bold
+not
+\series default
+ in or above the cell that contains the class number.
+ By way of example, this document recommends having cell A2 selected:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-a2-selected.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The Room Monitor should scan each attendee's badge.
+ There is no need to pause between scanning operations.
+ Leading zeros may not appear in the spreadsheet, and that's okay.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename attendee-1.png
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-attendee-1.png
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename attendee-2.png
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-attendee-2.png
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename attendee-3.png
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename mobile-excel-attendee-3.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+When all attendee badges have been scanned, the Room Monitor should report
+ immediately to the processing station.
+ The Room Monitor should not perform any other operations on the barcode
+ scanner, nor remove the battery.
+\end_layout
+
+\begin_layout Section
+After the Room Monitor returns from the classroom
+\end_layout
+
+\begin_layout Enumerate
+Drop the barcode scanner into the cradle connected to the PC:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename barcode-scanner-in-cradle.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The barcode scanner's display will be duplicated on the PC's display and
+ the Excel Mobile spreadsheet containing the just-scanned attendee certification
+ numbers should be visible:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename my-mobiler-active-w-excel-mobile-showing.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Using the PC's mouse, in the MyMobiler window, scroll the Excel Mobile spreadshe
+et, if necessary, until you can see the class number that you previously
+ entered into the spreadsheet:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename my-mobiler-scroll-spreadsheet.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+On the PC, open a browser, browse to 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://frompaper2web.com/ConEdLink"
+target "http://frompaper2web.com/ConEdLink"
+
+\end_inset
+
+, and log into your Con Ed Sponsor account.
+ Find the class corresponding to the one indicated in the Excel Mobile spreadshe
+et, and click its 
+\begin_inset Quotes eld
+\end_inset
+
+Roster
+\begin_inset Quotes erd
+\end_inset
+
+ link.
+ Set the Input field to 
+\begin_inset Quotes eld
+\end_inset
+
+Barcode scan batch
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Not all of the steps are shown here, and the class numbers in these examples
+ may not match the way you would need them to in real life.
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-browser-target-conedlink-roster-screen.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Using the PC's mouse, in the MyMobiler window, select the scanned attendee
+ certification numbers from the Excel Mobile spreadsheet.
+ Do not select the class number:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename my-mobiler-cert-nums-selected.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In the MyMobiler window, select Edit / Copy:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename my-mobiler-edit-copy.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+On the PC, in the browser, in ConEdLink, paste the attendee certification
+ numbers into the 
+\begin_inset Quotes eld
+\end_inset
+
+Paste collected certification numbers here
+\begin_inset Quotes erd
+\end_inset
+
+ text box, then click the 
+\begin_inset Quotes eld
+\end_inset
+
+Add batch
+\begin_inset Quotes erd
+\end_inset
+
+ button:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+<INSERT>
+\end_layout
+
+\begin_layout Enumerate
+In the 
+\begin_inset Quotes eld
+\end_inset
+
+Attendees
+\begin_inset Quotes erd
+\end_inset
+
+ block, enter or change practitioner birth dates, email addresses, and instructo
+r hours as necessary:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+<INSERT>
+\end_layout
+
+\begin_layout Enumerate
+Click the 
+\begin_inset Graphics
+	filename close-class-button.png
+
+\end_inset
+
+ button.
+\end_layout
+
+\begin_layout Part
+Scan and process using ConEdLink's batch mode, without PC
+\end_layout
+
+\begin_layout Standard
+This option:
+\end_layout
+
+\begin_layout Itemize
+Is only recommended if it is 
+\series bold
+not
+\series default
+ feasible to have a PC available with the following characteristics:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The PC has a reliable Internet connection.
+\end_layout
+
+\begin_layout Enumerate
+A barcode scanner cradle is connected to the PC.
+\end_layout
+
+\begin_layout Enumerate
+Windows Mobile Device Center is installedon the PC.
+\end_layout
+
+\begin_layout Enumerate
+My Mobiler software is installed on the PC.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Allows the Room Monitor to scan badges without pausing for any intense processin
+g or network transactions.
+\end_layout
+
+\begin_layout Itemize
+Requires the barcode scanner to establish a reliable Internet connection
+ before and after the Room Monitor is at the classroom.
+\end_layout
+
+\begin_layout Itemize
+Gives the Room Monitor unfettered access to the Con Ed Sponsor's ConEdLink
+ account if the barcode scanner has a wireless Internet connection.
+\end_layout
+
+\begin_layout Section
+Before the Room Monitor heads to the classroom
+\end_layout
+
+\begin_layout Enumerate
+Activate the barcode scanner's browser:
+\end_layout
+
+\begin_layout Enumerate
+In the browser, navigate to http://frompaper2web.com/ConEdLink:
+\end_layout
+
+\begin_layout Enumerate
+Log into ConEdLink using the appropriate Con Ed Sponsor credentials:
+\end_layout
+
+\begin_layout Enumerate
+In ConEdLink, click the 
+\begin_inset Quotes eld
+\end_inset
+
+Roster
+\begin_inset Quotes erd
+\end_inset
+
+ link next to the class for which the Room Monitor is about to scan badges:
+\end_layout
+
+\begin_layout Enumerate
+In the 
+\begin_inset Quotes eld
+\end_inset
+
+Input
+\begin_inset Quotes erd
+\end_inset
+
+ field, tap the 
+\begin_inset Quotes eld
+\end_inset
+
+Barcode scan batch
+\begin_inset Quotes erd
+\end_inset
+
+ circle.
+\end_layout
+
+\begin_layout Section
+When the Room Monitor is at the classroom
+\end_layout
+
+\begin_layout Enumerate
+The Room Monitor should confirm that the cursor is in the 
+\begin_inset Quotes eld
+\end_inset
+
+Paste collected certification numbers here
+\begin_inset Quotes erd
+\end_inset
+
+ text box:
+\end_layout
+
+\begin_layout Enumerate
+The Room Monitor should scan each attendee's badge.
+ There is no need to pause between scanning operations.
+\end_layout
+
+\begin_layout Enumerate
+When all attendee badges have been scanned, the Room Monitor should report
+ immediately to the processing station.
+ The Room Monitor should not perform any other operations on the barcode
+ scanner, nor remove the battery.
+\end_layout
+
+\begin_layout Section
+After the Room Monitor returns from the classroom
+\end_layout
+
+\begin_layout Enumerate
+On the barcode scanner, in the browser, in ConEdLink, tap the 
+\begin_inset Quotes eld
+\end_inset
+
+Add batch
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+\end_layout
+
+\begin_layout Enumerate
+In the 
+\begin_inset Quotes eld
+\end_inset
+
+Attendees
+\begin_inset Quotes erd
+\end_inset
+
+ block, enter or change practitioner birth dates, email addresses, and instructo
+r hours as necessary:
+\end_layout
+
+\begin_layout Enumerate
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+CLOSE CLASS AND SUBMIT FOR CREDIT
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+\end_layout
+
+\begin_layout Part
+Scan and process using ConEdLink's one-at-a-time mode, without PC
+\end_layout
+
+\begin_layout Standard
+This option:
+\end_layout
+
+\begin_layout Itemize
+Is not recommended, but is the only option that provides an immediate indication
+ when 
+\series bold
+ConEdLink
+\series default
+ will be unable to add a specific attendee to a roster.
+\end_layout
+
+\begin_layout Itemize
+Requires the barcode scanner to maintain a reliable and fast wireless Internet
+ connection at all times.
+\end_layout
+
+\begin_layout Itemize
+Requires the Room Monitor to wait for ConEdLink to process each attendee
+ before the Room Monitor scans the next attendee.
+\end_layout
+
+\begin_layout Itemize
+Gives the Room Monitor unfettered access to the Con Ed Sponsor's ConEdLink
+ account.
+\end_layout
+
+\begin_layout Section
+Before the Room Monitor heads to the classroom
+\end_layout
+
+\begin_layout Enumerate
+Activate the barcode scanner's browser:
+\end_layout
+
+\begin_layout Enumerate
+In the browser, navigate to http://frompaper2web.com/ConEdLink:
+\end_layout
+
+\begin_layout Enumerate
+Log into ConEdLink using the appropriate Con Ed Sponsor credentials:
+\end_layout
+
+\begin_layout Enumerate
+In ConEdLink, click the 
+\begin_inset Quotes eld
+\end_inset
+
+Roster
+\begin_inset Quotes erd
+\end_inset
+
+ link next to the class for which the Room Monitor is about to scan badges:
+\end_layout
+
+\begin_layout Section
+When the Room Monitor is at the classroom
+\end_layout
+
+\begin_layout Enumerate
+The Room Monitor should confirm that the cursor is in the 
+\begin_inset Quotes eld
+\end_inset
+
+Search>
+\begin_inset Quotes erd
+\end_inset
+
+ text box:
+\end_layout
+
+\begin_layout Enumerate
+The Room Monitor should scan a badge, wait for ConEdLink to finish its one-at-a-
+time processing, then confirm that ConEdLink has added the attendee to the
+ top of the roster.
+ The Room Monitor should repeat this step for each attendee:
+\end_layout
+
+\begin_layout Enumerate
+When all attendee badges have been scanned, the Room Monitor should report
+ immediately to the processing station.
+ The Room Monitor should not perform any other operations on the barcode
+ scanner, nor remove the battery.
+\end_layout
+
+\begin_layout Section
+After the Room Monitor returns from the classroom
+\end_layout
+
+\begin_layout Enumerate
+On the barcode scanner, in the browser, in ConEdLink, enter or change practition
+er birth dates, email addresses, and instructor hours as necessary:
+\end_layout
+
+\begin_layout Enumerate
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+CLOSE CLASS AND SUBMIT FOR CREDIT
+\begin_inset Quotes erd
+\end_inset
+
+ button:
+\end_layout
+
+\end_body
+\end_document
