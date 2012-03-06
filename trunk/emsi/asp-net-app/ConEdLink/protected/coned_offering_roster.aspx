@@ -19,11 +19,17 @@
           <tr>
             <td valign="top">
               <asp:Panel ID="Panel_input_method" runat="server" Visible="false" style="border:1px solid Gainsboro">
-                <span style="font-size: small">Input:</span>
-                <asp:RadioButtonList ID="RadioButtonList_input_method" runat="server" AutoPostBack="True" Font-Size="Smaller" RepeatDirection="Horizontal" RepeatLayout="Flow" onselectedindexchanged="RadioButtonList_input_method_SelectedIndexChanged">
-                  <asp:ListItem Selected="True">Standard</asp:ListItem>
-                  <asp:ListItem Value="Batch">Barcode scan batch</asp:ListItem>
-                </asp:RadioButtonList>
+                <table cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td valign="top"><small>Input:</small></td>
+                    <td nowrap="nowrap">
+                      <asp:RadioButtonList ID="RadioButtonList_input_method" runat="server" AutoPostBack="True" Font-Size="Smaller" RepeatDirection="Vertical" RepeatLayout="Flow" onselectedindexchanged="RadioButtonList_input_method_SelectedIndexChanged">
+                        <asp:ListItem Selected="True">Standard</asp:ListItem>
+                        <asp:ListItem Value="Batch">Scan batch</asp:ListItem>
+                      </asp:RadioButtonList>
+                    </td>
+                  </tr>
+                </table>
               </asp:Panel>
               <asp:Panel ID="Panel_one_at_a_time" runat="server">
                 <table cellpadding="3" cellspacing="0" style="font-size:85%">
@@ -62,18 +68,16 @@
                 <table align="right">
                   <tr>
                     <td valign="top" align="right">
-                      Paste<br />
+                      Enter<br />
                       collected<br />
                       certification<br />
                       numbers<br />here:<br />
                       <br />
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator_certification_number_batch" runat="server" ErrorMessage="Please enter one or more certification numbers." Display="Dynamic" Font-Bold="True" Text="!ERR!" ControlToValidate="TextBox_certification_number_batch"></asp:RequiredFieldValidator>
-                      <asp:RegularExpressionValidator ID="RegularExpressionValidator_certification_number_batch" runat="server" ErrorMessage="Please enter valid certification numbers." Display="Dynamic" Font-Bold="True" Text="!ERR!" ControlToValidate="TextBox_certification_number_batch"></asp:RegularExpressionValidator>
                     </td>
-                    <td valign="top">
-                      <asp:TextBox ID="TextBox_certification_number_batch" runat="server" MaxLength="6" Columns="6" Rows="25" TextMode="MultiLine"></asp:TextBox>
-                    </td>
+                    <td valign="top"><asp:TextBox ID="TextBox_certification_number_batch" runat="server" Columns="7" Rows="25" TextMode="MultiLine"></asp:TextBox></td>
                   </tr>
+                  <tr><td align="right" colspan="2"><asp:Button ID="Button_add_batch" runat="server" onclick="Button_add_batch_Click" Text="Add batch" CausesValidation="False" /></td></tr>
                 </table>
               </asp:Panel>
             </td>

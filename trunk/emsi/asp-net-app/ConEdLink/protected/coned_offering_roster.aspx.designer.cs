@@ -139,15 +139,6 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_certification_number_batch;
         
         /// <summary>
-        /// RegularExpressionValidator_certification_number_batch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_certification_number_batch;
-        
-        /// <summary>
         /// TextBox_certification_number_batch control.
         /// </summary>
         /// <remarks>
@@ -155,6 +146,15 @@ namespace coned_offering_roster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_certification_number_batch;
+        
+        /// <summary>
+        /// Button_add_batch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_add_batch;
         
         /// <summary>
         /// Literal_course_title control.
