@@ -236,6 +236,15 @@ namespace Class_biz_coned_offering_rosters
         );
       }
 
+    internal bool SetFromBatch
+      (
+      string coned_offering_id,
+      string cert_num
+      )
+      {
+      return db_coned_offering_rosters.SetFromBatch(coned_offering_id,cert_num);
+      }
+
     } // end TClass_biz_coned_offering_rosters
 
   }

@@ -84,7 +84,10 @@ namespace coned_offering_roster
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
       SetHyperlinkPrintCompletionDocumentation();
-      Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
+      if (RadioButtonList_input_method.SelectedValue == "Standard")
+        {
+        Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
+        }
       }
 
     private void InitForNewSearch()
@@ -118,7 +121,7 @@ namespace coned_offering_roster
         (
         "onkeypress",
         k.EMPTY
-        + " return (event.keyCode != 13)"  // Prevent default behavior of performing a postback when enter key is pressed since we want to evaluate the situation first in the TextBox_practitioner onkeyup event.
+        + " return (document.activeElement.name != 'TextBox_practitioner' || event.keyCode != 13)"  // Prevent default behavior of performing a postback when enter key is pressed since we want to evaluate the situation first in the TextBox_practitioner onkeyup event.
         );
       TextBox_practitioner.Attributes.Add
         (
@@ -195,6 +198,21 @@ namespace coned_offering_roster
         {
         AddPractitionerToRosterAndInitForNewSearch(ListBox_practitioner.Items[0]);
         }
+      }
+
+    protected void Button_add_batch_Click(object sender, EventArgs e)
+      {
+      var cert_num_array = TextBox_certification_number_batch.Text.Trim().Split(new string[] {k.NEW_LINE,k.SPACE,k.COMMA,k.TAB,k.SEMICOLON},StringSplitOptions.RemoveEmptyEntries);
+      TextBox_certification_number_batch.Text = k.EMPTY;
+      for (var i = new k.subtype<int>(0,cert_num_array.Length); i.val < i.LAST; i.val++)
+        {
+        var cert_num = k.Safe(cert_num_array[i.val],k.safe_hint_type.NUM).PadLeft(6,'0');
+        if (!p.biz_coned_offering_rosters.SetFromBatch(p.coned_offering_id,cert_num))
+          {
+          TextBox_certification_number_batch.Text += cert_num + k.NEW_LINE;
+          }
+        }
+      Bind();
       }
 
     protected void Button_close_and_submit_Click(object sender, EventArgs e)
@@ -597,6 +615,10 @@ namespace coned_offering_roster
       var be_batch = (RadioButtonList_input_method.SelectedValue == "Batch");
       Panel_one_at_a_time.Visible = !be_batch;
       Panel_batch.Visible = be_batch;
+      if (be_batch)
+        {
+        TextBox_certification_number_batch.Focus();
+        }
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)

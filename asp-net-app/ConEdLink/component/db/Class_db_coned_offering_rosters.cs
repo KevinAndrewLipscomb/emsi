@@ -217,6 +217,39 @@ namespace Class_db_coned_offering_rosters
       Close();
       }
 
+    internal bool SetFromBatch
+      (
+      string coned_offering_id,
+      string cert_num
+      )
+      {
+      var childless_field_assignments_clause = k.EMPTY
+      + "coned_offering_id = NULLIF('" + coned_offering_id + "','')"
+      + " , practitioner_id = practitioner.id"
+      + k.EMPTY;
+      Open();
+      var num_rows_affected = new MySqlCommand
+        (
+        db_trail.Saved
+          (
+          "insert ignore coned_offering_roster (coned_offering_id,practitioner_id)"
+          + " select NULLIF('" + coned_offering_id + "','') as coned_offering_id"
+          + " , practitioner.id as practitioner_id"
+          + " from coned_offering"
+          +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
+          +   " join practitioner on (practitioner.certification_number='" + cert_num + "')"
+          + " where coned_offering.id = '" + coned_offering_id + "'"
+          +   " and coned_offering_status.description = 'NEEDS_CONED_SPONSOR_FINALIZATION'"
+          + " on duplicate key update "
+          + childless_field_assignments_clause
+          ),
+          connection
+        )
+        .ExecuteNonQuery();
+      Close();
+      return (num_rows_affected == 1);
+      }
+
     } // end TClass_db_coned_offering_rosters
 
   }
