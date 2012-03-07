@@ -162,7 +162,7 @@ The Regional EMS Councils of the Pennsylvania state EMS system
 \begin_layout Description
 
 \size footnotesize
-5
+7
 \begin_inset space ~
 \end_inset
 
@@ -671,7 +671,7 @@ Roster
 \begin_inset Quotes eld
 \end_inset
 
-Barcode scan batch
+Scan batch
 \begin_inset Quotes erd
 \end_inset
 
@@ -767,11 +767,30 @@ On the PC, in the browser, in ConEdLink, paste the attendee certification
 \begin_inset Quotes eld
 \end_inset
 
-Paste collected certification numbers here
+Enter collected certification numbers here
 \begin_inset Quotes erd
 \end_inset
 
- text box, then click the 
+ text box:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-browser-conedlink-batch-paste.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Scroll down (1) and click the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -779,7 +798,7 @@ Add batch
 \begin_inset Quotes erd
 \end_inset
 
- button:
+ button (2):
 \begin_inset Newline newline
 \end_inset
 
@@ -787,7 +806,14 @@ Add batch
 \begin_inset Newline newline
 \end_inset
 
-<INSERT>
+
+\begin_inset Graphics
+	filename pc-browser-conedlink-batch-add.png
+	width 100text%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -822,7 +848,7 @@ target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponso
 \end_layout
 
 \begin_layout Enumerate
-Click the 
+If ready, click the 
 \begin_inset Graphics
 	filename close-class-button.png
 
@@ -839,7 +865,7 @@ Click the
 \end_layout
 
 \begin_layout Part
-Scan and process using ConEdLink's batch mode, without PC
+ALTERNATIVE: Scan and process using ConEdLink's batch mode, without PC
 \end_layout
 
 \begin_layout Standard
@@ -1039,7 +1065,7 @@ Input
 \begin_inset Quotes eld
 \end_inset
 
-Barcode scan batch
+Scan batch
 \begin_inset Quotes erd
 \end_inset
 
@@ -1069,7 +1095,7 @@ The Room Monitor should confirm that the cursor is in the
 \begin_inset Quotes eld
 \end_inset
 
-Paste collected certification numbers here
+Enter collected certification numbers here
 \begin_inset Quotes erd
 \end_inset
 
@@ -1179,7 +1205,8 @@ After the Room Monitor returns from the classroom
 \end_layout
 
 \begin_layout Enumerate
-On the barcode scanner, in the browser, in ConEdLink, tap the 
+On the barcode scanner, in the browser, in ConEdLink, scroll down (1) and
+ tap the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1187,7 +1214,7 @@ Add batch
 \begin_inset Quotes erd
 \end_inset
 
- button:
+ button (2):
 \begin_inset Newline newline
 \end_inset
 
@@ -1195,7 +1222,13 @@ Add batch
 \begin_inset Newline newline
 \end_inset
 
-<INSERT>
+
+\begin_inset Graphics
+	filename mobile-ie-conedlink-class-roster-add-batch.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1230,7 +1263,7 @@ target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponso
 \end_layout
 
 \begin_layout Enumerate
-Click the 
+If ready, click the 
 \begin_inset Graphics
 	filename close-class-button.png
 
