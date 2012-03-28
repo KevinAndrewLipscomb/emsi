@@ -33,11 +33,11 @@ namespace coned_offering_roster
     public TClass_biz_user biz_user;
     public string coned_offering_id;
     public TClass_msg_protected.coned_offering_roster incoming;
+    public k.decimal_nonnegative length;
     public k.int_nonnegative num_attendees;
     public k.int_nonnegative num_attendees_with_known_birth_dates;
     public ArrayList roster_id_arraylist;
     public string sort_order;
-    public k.decimal_nonnegative total_class_hours;
     public string user_email_address;
     }
 
@@ -299,7 +299,7 @@ namespace coned_offering_roster
       {
       var args_value = k.Safe(args.Value.Replace("#.#",k.EMPTY),k.safe_hint_type.REAL_NUM);
       decimal instructor_hours;
-      args.IsValid = (args_value.Length == 0) || (decimal.TryParse(args_value,out instructor_hours) && (instructor_hours > 0) && (instructor_hours <= p.total_class_hours.val));
+      args.IsValid = (args_value.Length == 0) || (decimal.TryParse(args_value,out instructor_hours) && (instructor_hours > 0) && (instructor_hours <= p.length.val));
       }
 
     protected void DataGrid_control_CancelCommand(object source, DataGridCommandEventArgs e)
@@ -497,10 +497,6 @@ namespace coned_offering_roster
           }
         if (attendance_rec_q.Count > 0)
           {
-          var fr_med_trauma_hours_of_decimal = decimal.Parse(p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary));
-          var emt_med_trauma_hours_of_decimal = decimal.Parse(p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary));
-          var emtp_med_trauma_hours_of_decimal = decimal.Parse(p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary));
-          var phrn_med_trauma_hours_of_decimal = decimal.Parse(p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary));
           p.biz_coned_offering_rosters.SendTrainingCertificates
             (
             attendance_rec_q:attendance_rec_q,
@@ -510,14 +506,14 @@ namespace coned_offering_roster
             class_number:p.biz_coned_offerings.ClassNumberOf(p.incoming.summary),
             course_title:Literal_course_title.Text,
             date_final:Literal_end.Text,
-            fr_total_ceus:fr_med_trauma_hours_of_decimal + decimal.Parse(p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary)),
-            fr_med_trauma_ceus:fr_med_trauma_hours_of_decimal,
-            emt_total_ceus:emt_med_trauma_hours_of_decimal + decimal.Parse(p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary)),
-            emt_med_trauma_ceus:emt_med_trauma_hours_of_decimal,
-            emtp_total_ceus:emtp_med_trauma_hours_of_decimal + decimal.Parse(p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary)),
-            emtp_med_trauma_ceus:emtp_med_trauma_hours_of_decimal,
-            phrn_total_ceus:phrn_med_trauma_hours_of_decimal + decimal.Parse(p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary)),
-            phrn_med_trauma_ceus:phrn_med_trauma_hours_of_decimal,
+            fr_med_trauma_ceus:decimal.Parse(p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary)),
+            fr_other_ceus:decimal.Parse(p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary)),
+            emt_med_trauma_ceus:decimal.Parse(p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary)),
+            emt_other_ceus:decimal.Parse(p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary)),
+            emtp_med_trauma_ceus:decimal.Parse(p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary)),
+            emtp_other_ceus:decimal.Parse(p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary)),
+            phrn_med_trauma_ceus:decimal.Parse(p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary)),
+            phrn_other_ceus:decimal.Parse(p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary)),
             working_directory:Server.MapPath("scratch")
             );
           Alert(k.alert_cause_type.LOGIC,k.alert_state_type.NORMAL,"certssent","Certificate(s) sent",be_using_scriptmanager:true);
@@ -568,7 +564,7 @@ namespace coned_offering_roster
         p.be_ceu_breakdown_valid = p.biz_coned_offerings.BeCeuBreakdownValid(p.incoming.summary);
         p.be_ok_to_edit_roster = p.biz_coned_offerings.BeOkToEditRoster(p.incoming.summary);
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
-        p.total_class_hours = p.biz_coned_offerings.TotalClassHoursOf(p.incoming.summary);
+        p.length = p.biz_coned_offerings.LengthOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -594,7 +590,7 @@ namespace coned_offering_roster
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
         Literal_start.Text = p.biz_coned_offerings.StartOf(p.incoming.summary);
         Literal_end.Text = p.biz_coned_offerings.EndOf(p.incoming.summary);
-        Literal_total_class_hours.Text = p.total_class_hours.val.ToString();
+        Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);

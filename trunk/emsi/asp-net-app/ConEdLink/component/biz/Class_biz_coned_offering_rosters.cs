@@ -91,38 +91,38 @@ namespace Class_biz_coned_offering_rosters
 
     internal void GetAppropriateCeuValuesForPractitioner
       (
-      decimal fr_total_ceus,
       decimal fr_med_trauma_ceus,
-      decimal emt_total_ceus,
+      decimal fr_other_ceus,
       decimal emt_med_trauma_ceus,
-      decimal emtp_total_ceus,
+      decimal emt_other_ceus,
       decimal emtp_med_trauma_ceus,
-      decimal phrn_total_ceus,
+      decimal emtp_other_ceus,
       decimal phrn_med_trauma_ceus,
+      decimal phrn_other_ceus,
       string level_short_description,
-      ref k.decimal_nonnegative total_ceus_for_this_practitioner,
-      ref k.decimal_nonnegative med_trauma_ceus_for_this_practitioner
+      ref k.decimal_nonnegative med_trauma_ceus_for_this_practitioner,
+      ref k.decimal_nonnegative other_ceus_for_this_practitioner
       )
       {
       if (level_short_description == "FR")
         {
-        total_ceus_for_this_practitioner.val = fr_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = fr_med_trauma_ceus;
+        other_ceus_for_this_practitioner.val = fr_other_ceus;
         }
       else if (level_short_description == "EMT")
         {
-        total_ceus_for_this_practitioner.val = emt_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = emt_med_trauma_ceus;
+        other_ceus_for_this_practitioner.val = emt_other_ceus;
         }
       else if (level_short_description == "EMT-P")
         {
-        total_ceus_for_this_practitioner.val = emtp_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = emtp_med_trauma_ceus;
+        other_ceus_for_this_practitioner.val = emtp_other_ceus;
         }
       else if (level_short_description == "PHRN")
         {
-        total_ceus_for_this_practitioner.val = phrn_total_ceus;
         med_trauma_ceus_for_this_practitioner.val = phrn_med_trauma_ceus;
+        other_ceus_for_this_practitioner.val = phrn_other_ceus;
         }
       }
 
@@ -156,14 +156,14 @@ namespace Class_biz_coned_offering_rosters
       string class_number,
       string course_title,
       string date_final,
-      decimal fr_total_ceus,
       decimal fr_med_trauma_ceus,
-      decimal emt_total_ceus,
+      decimal fr_other_ceus,
       decimal emt_med_trauma_ceus,
-      decimal emtp_total_ceus,
+      decimal emt_other_ceus,
       decimal emtp_med_trauma_ceus,
-      decimal phrn_total_ceus,
+      decimal emtp_other_ceus,
       decimal phrn_med_trauma_ceus,
+      decimal phrn_other_ceus,
       string working_directory
       )
       {
@@ -172,24 +172,24 @@ namespace Class_biz_coned_offering_rosters
       var stderr = k.EMPTY;
       attendance_rec_class attendance_rec;
       var num_practitioners = attendance_rec_q.Count;
-      var total_ceus_for_this_practitioner = new k.decimal_nonnegative();
       var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
+      var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
       for (var i = new k.subtype<int>(0,num_practitioners); i.val < num_practitioners; i.val++)
         {
         attendance_rec = attendance_rec_q.Dequeue() as attendance_rec_class;
         GetAppropriateCeuValuesForPractitioner
           (
-          fr_total_ceus,
           fr_med_trauma_ceus,
-          emt_total_ceus,
+          fr_other_ceus,
           emt_med_trauma_ceus,
-          emtp_total_ceus,
+          emt_other_ceus,
           emtp_med_trauma_ceus,
-          phrn_total_ceus,
+          emtp_other_ceus,
           phrn_med_trauma_ceus,
+          phrn_other_ceus,
           attendance_rec.level_short_description,
-          ref total_ceus_for_this_practitioner,
-          ref med_trauma_ceus_for_this_practitioner
+          ref med_trauma_ceus_for_this_practitioner,
+          ref other_ceus_for_this_practitioner
           );
         arguments.Add
           (
@@ -208,8 +208,8 @@ namespace Class_biz_coned_offering_rosters
           +   "&dob=" + HttpUtility.UrlEncode(attendance_rec.dob)
           +   "&class_number=" + class_number
           +   "&course_title=" + HttpUtility.UrlEncode(course_title)
-          +   "&total_ceus=" + total_ceus_for_this_practitioner.val.ToString()
           +   "&med_trauma_ceus=" + med_trauma_ceus_for_this_practitioner.val.ToString()
+          +   "&other_ceus=" + other_ceus_for_this_practitioner.val.ToString()
           +   "&date_final=" + HttpUtility.UrlEncode(date_final)
           +   "&instructor_hours=" + attendance_rec.instructor_hours
           + k.SPACE

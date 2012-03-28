@@ -25,7 +25,7 @@ namespace Class_db_coned_offerings
       public string location;
       public string start;
       public string end;
-      public string total_class_hours;
+      public string length;
       public string approved;
       public coned_offering_status_enumeration status;
       public string public_contact_email;
@@ -470,14 +470,14 @@ namespace Class_db_coned_offerings
       out string sponsor_name,
       out string course_title,
       out string date_final,
-      ref k.decimal_nonnegative fr_total_ceus,
       ref k.decimal_nonnegative fr_med_trauma_ceus,
-      ref k.decimal_nonnegative emt_total_ceus,
+      ref k.decimal_nonnegative fr_other_ceus,
       ref k.decimal_nonnegative emt_med_trauma_ceus,
-      ref k.decimal_nonnegative emtp_total_ceus,
+      ref k.decimal_nonnegative emt_other_ceus,
       ref k.decimal_nonnegative emtp_med_trauma_ceus,
-      ref k.decimal_nonnegative phrn_total_ceus,
-      ref k.decimal_nonnegative phrn_med_trauma_ceus
+      ref k.decimal_nonnegative emtp_other_ceus,
+      ref k.decimal_nonnegative phrn_med_trauma_ceus,
+      ref k.decimal_nonnegative phrn_other_ceus
       )
       {
       Open();
@@ -488,14 +488,14 @@ namespace Class_db_coned_offerings
         + " , sponsor_name"
         + " , course_title"
         + " , end_date_time"
-        + " , fr_med_trauma_hours + fr_other_hours as fr_total_hours"
         + " , fr_med_trauma_hours"
-        + " , emt_med_trauma_hours + emt_other_hours as emt_total_hours"
+        + " , fr_other_hours"
         + " , emt_med_trauma_hours"
-        + " , emtp_med_trauma_hours + emtp_other_hours as emtp_total_hours"
+        + " , emt_other_hours"
         + " , emtp_med_trauma_hours"
-        + " , phrn_med_trauma_hours + phrn_other_hours as phrn_total_hours"
+        + " , emtp_other_hours"
         + " , phrn_med_trauma_hours"
+        + " , phrn_other_hours"
         + " from coned_offering"
         + " where CAST(id AS CHAR) = '" + id + "'",
         connection
@@ -507,14 +507,14 @@ namespace Class_db_coned_offerings
       sponsor_name = dr["sponsor_name"].ToString();
       course_title = dr["course_title"].ToString();
       date_final = dr["end_date_time"].ToString();
-      fr_total_ceus.val = decimal.Parse(dr["fr_total_hours"].ToString());
       fr_med_trauma_ceus.val = decimal.Parse(dr["fr_med_trauma_hours"].ToString());
-      emt_total_ceus.val = decimal.Parse(dr["emt_total_hours"].ToString());
+      fr_other_ceus.val = decimal.Parse(dr["fr_other_hours"].ToString());
       emt_med_trauma_ceus.val = decimal.Parse(dr["emt_med_trauma_hours"].ToString());
-      emtp_total_ceus.val = decimal.Parse(dr["emtp_total_hours"].ToString());
+      emt_other_ceus.val = decimal.Parse(dr["emt_other_hours"].ToString());
       emtp_med_trauma_ceus.val = decimal.Parse(dr["emtp_med_trauma_hours"].ToString());
-      phrn_total_ceus.val = decimal.Parse(dr["phrn_total_hours"].ToString());
+      emtp_other_ceus.val = decimal.Parse(dr["emtp_other_hours"].ToString());
       phrn_med_trauma_ceus.val = decimal.Parse(dr["phrn_med_trauma_hours"].ToString());
+      phrn_other_ceus.val = decimal.Parse(dr["phrn_other_hours"].ToString());
       dr.Close();
       Close();
       }
@@ -524,7 +524,7 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).id;
       }
 
-    internal void ImportLatestFromEmsrs(ArrayList recs)
+    internal void ImportLatestFromEmsrsAvailableConedClassesList(ArrayList recs)
       {
       if (recs.Count > 0)
         {
@@ -551,10 +551,14 @@ namespace Class_db_coned_offerings
           + " , fr_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).fr_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).fr_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
           + " , emt_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).emt_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).emt_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
           + " , emt_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).emt_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).emt_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
-          + " , emtp_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
-          + " , phrn_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
-          + " , emtp_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
-          + " , phrn_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          //
+          // Commented out because values reported by EMSRS for these columns are unreliable.  They appear to be double the correct values.
+          //
+          //+ " , emtp_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          //+ " , phrn_other_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_other + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          //+ " , emtp_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          //+ " , phrn_med_trauma_hours = NULLIF(IF(0+'" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "' <= 0+'" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "','" + (rec as Class_ss_emsams.ConedOffering).als_ce_trauma + "','" + (rec as Class_ss_emsams.ConedOffering).total_ceus + "'),'')"
+          //
           + " , student_cost = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).tuition + "','')"
           + " , sponsor_id = (select emsrs_id from teaching_entity where REPLACE(sponsor_number,'-','') = '" + (rec as Class_ss_emsams.ConedOffering).sponsor_number + "')"
           + " , sponsor_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_name + "','')"
@@ -591,6 +595,138 @@ namespace Class_db_coned_offerings
           }
         Close();
         }
+      }
+
+    internal void ImportLatestFromEmsrs(ArrayList recs)
+      {
+      if (recs.Count > 0)
+        {
+        MySqlTransaction transaction;
+        var class_number = k.EMPTY;
+        var childless_field_assignments_clause = k.EMPTY;
+        Open();
+        foreach (var rec in recs)
+          {
+          class_number = k.Safe((rec as Class_ss_emsams.ConedOffering).class_number,k.safe_hint_type.NUM);
+          childless_field_assignments_clause = k.EMPTY
+          + "class_id = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).class_id_1 + "','')"
+          + " , course_id = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).course_id + "','')"
+          + " , created_by = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).created_by + "','')"
+          + " , date_created = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_created + "',''),'%m/%d/%Y')"
+          + " , last_edited_by = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).last_edited_by + "','')"
+          + " , date_last_edited = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_last_edited + "',''),'%m/%d/%Y')"
+          + " , sponsor_id = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_id + "','')"
+          + " , sponsor_number = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_number + "','')"
+          + " , document_status = NULLIF(IFNULL((select id from coned_offering_document_status where description = '" + (rec as Class_ss_emsams.ConedOffering).document_status + "'),''),'')"
+          + " , class_final_status_id = NULLIF(IFNULL((select id from coned_offering_class_final_status where short_description = '" + (rec as Class_ss_emsams.ConedOffering).class_final_status + "'),''),'')"
+          + " , course_number = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).course_number + "','')"
+          + " , location = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location + "','')"
+          + " , student_cost = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).student_cost + "','')"
+          + " , tuition_includes = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).tuition_includes + "','')"
+          + " , closed = " + (rec as Class_ss_emsams.ConedOffering).closed
+          + " , estimated_students = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).estimated_students + "','')"
+          + " , start_date_time = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).start_date_time + "',''),'%m/%d/%Y')"
+          + " , end_date_time = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).end_date_time + "',''),'%m/%d/%Y')"
+          + " , start_time = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).start_time + "','')"
+          + " , end_time = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).end_time + "','')"
+          + " , other_dates_and_times = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).other_dates_and_times + "','')"
+          + " , instructors = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).instructors + "','')"
+          + " , instructor_qualifications = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).instructor_qualifications + "','')"
+          + " , public_contact_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_name + "','')"
+          + " , public_contact_phone = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_phone + "','')"
+          + " , public_contact_email = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_email + "','')"
+          + " , public_contact_website = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_website + "','')"
+          + " , public_contact_notes = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_notes + "','')"
+          + " , date_submitted_to_region = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_submitted_to_region + "',''),'%m/%d/%Y')"
+          + " , date_received_by_region = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_received_by_region + "',''),'%m/%d/%Y')"
+          + " , date_sponsor_notified = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_sponsor_notified + "',''),'%m/%d/%Y')"
+          + " , date_registration_sent_to_state = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_registration_sent_to_state + "',''),'%m/%d/%Y')"
+          + " , date_cards_sent_to_sponsor = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_cards_sent_to_sponsor + "',''),'%m/%d/%Y')"
+          + " , date_materials_to_be_returned = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_materials_to_be_returned + "',''),'%m/%d/%Y')"
+          + " , approved = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).approved + "','')"
+          + " , region_comments = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).region_comments + "','')"
+          + " , region_council_num = IFNULL(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).region_council_num + "',''),0)"
+          + " , class_county_code = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).class_county_code + "','')"
+          + " , total_class_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).total_class_hours + "','')"
+          + " , location_address_1 = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_address_1 + "','')"
+          + " , location_address_2 = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_address_2 + "','')"
+          + " , location_city = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_city + "','')"
+          + " , location_state = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_state + "','')"
+          + " , location_zip = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_zip + "','')"
+          + " , location_zip_plus_4 = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_zip_plus_4 + "','')"
+          + " , location_phone = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_phone + "','')"
+          + " , location_email = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_email + "','')"
+          + " , location_of_registration = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_of_registration + "','')"
+          + " , primary_text = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).primary_text + "','')"
+          + " , additional_texts = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).additional_texts + "','')"
+          + " , final_registration_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).final_registration_date + "',''),'%m/%d/%Y')"
+          + " , offered_as_college_credit = " + (rec as Class_ss_emsams.ConedOffering).offered_as_college_credit
+          + " , practical_exam_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).practical_exam_date + "',''),'%m/%d/%Y')"
+          + " , written_exam_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).written_exam_date + "',''),'%m/%d/%Y')"
+          + " , disapproval_reason_id = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).disapproval_reason_id + "','')"
+          + " , date_final_paperwork_received = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_final_paperwork_received + "',''),'%m/%d/%Y')"
+          + " , signed_hardcopy = " + (rec as Class_ss_emsams.ConedOffering).signed_hard_copy
+          + " , created_by_first_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).created_by_first_name + "','')"
+          + " , created_by_last_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).created_by_last_name + "','')"
+          + " , class_disapproval_reason_description = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).class_disapproval_reason_description + "','')"
+          + " , sponsor_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).sponsor_name + "','')"
+          + " , courses_course_number = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).courses_course_number + "','')"
+          + " , course_title = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).course_title + "','')"
+          + k.EMPTY;
+          transaction = connection.BeginTransaction();
+          try
+            {
+            if (new MySqlCommand("select 1 from coned_offering where class_number = '" + class_number + "'",connection,transaction).ExecuteScalar() == null)
+              {
+              new MySqlCommand
+                ("insert coned_offering set class_number = NULLIF('" + class_number + "',''), " + childless_field_assignments_clause,connection,transaction)
+                .ExecuteNonQuery();
+              }
+            else
+              {
+              new MySqlCommand("update coned_offering set " + childless_field_assignments_clause + " where class_number = '" + class_number + "'",connection,transaction).ExecuteNonQuery();
+              }
+            transaction.Commit();
+            }
+          catch (Exception e)
+            {
+            transaction.Rollback();
+            throw e;
+            }
+          }
+        Close();
+        }
+      }
+
+    internal void ImportLatestFromEmsrs_RelatedHours(ArrayList recs)
+      {
+      if (recs.Count > 0)
+        {
+        Open();
+        foreach (var rec in recs)
+          {
+          new MySqlCommand
+            (
+            "update coned_offering set fr_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_med_trauma_hours + "','')"
+            + " , fr_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).fr_other_hours + "','')"
+            + " , emt_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).emt_med_trauma_hours + "','')"
+            + " , emt_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).emt_other_hours + "','')"
+            + " , emtp_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).emtp_med_trauma_hours + "','')"
+            + " , emtp_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).emtp_other_hours + "','')"
+            + " , phrn_med_trauma_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).phrn_med_trauma_hours + "','')"
+            + " , phrn_other_hours = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).phrn_other_hours + "','')"
+            + " , length = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).length + "','')"
+            + " where class_id = '" + (rec as Class_ss_emsams.ConedOffering).class_id_1 + "'",
+            connection)
+            .ExecuteNonQuery();
+          }
+        Close();
+        }
+      }
+
+    internal string LengthOf(object summary)
+      {
+      return (summary as coned_offering_summary).length;
       }
 
     internal string LocationOf(object summary)
@@ -831,7 +967,7 @@ namespace Class_db_coned_offerings
           + " , location"
           + " , IFNULL(ADDTIME(start_date_time,start_time),DATE_FORMAT(start_date_time,'%Y-%m-%d --:--')) as start"
           + " , IFNULL(ADDTIME(end_date_time,end_time),DATE_FORMAT(end_date_time,'%Y-%m-%d --:--')) as end"
-          + " , IFNULL(total_class_hours,'') as total_class_hours"
+          + " , IFNULL(length,'') as length"
           + " , approved"
           + " , status_id"
           + " , sponsor_id"
@@ -866,7 +1002,7 @@ namespace Class_db_coned_offerings
         location = dr["location"].ToString(),
         start = dr["start"].ToString(),
         end = dr["end"].ToString(),
-        total_class_hours = dr["total_class_hours"].ToString(),
+        length = dr["length"].ToString(),
         approved = dr["approved"].ToString(),
         status = (coned_offering_status_enumeration)Enum.Parse(typeof(coned_offering_status_enumeration),dr["status_id"].ToString()),
         sponsor_id = dr["sponsor_id"].ToString(),
@@ -887,11 +1023,6 @@ namespace Class_db_coned_offerings
         };
       Close();
       return the_summary;
-      }
-
-    internal string TotalClassHoursOf(object summary)
-      {
-      return (summary as coned_offering_summary).total_class_hours;
       }
 
     } // end TClass_db_coned_offerings

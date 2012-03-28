@@ -58,7 +58,7 @@
   </tr>
   <tr align="center"><td><em>for</em></td></tr>
   <tr id="TableRow_ceus" runat="server" align="center" visible="false">
-    <td><strong><asp:Literal ID="Literal_total_ce_hours" runat="server"></asp:Literal></strong> CEUs (<strong><asp:Literal ID="Literal_num_med_trauma_hours" runat="server"></asp:Literal></strong> Med/Trauma)</td>
+    <td><strong><asp:Literal ID="Literal_num_med_trauma_hours" runat="server"></asp:Literal></strong> Med/Trauma hours + <strong><asp:Literal ID="Literal_num_other_hours" runat="server"></asp:Literal></strong> Other hours</td>
   </tr>
   <tr id="TableRow_instructor_hours" runat="server" align="center" visible="false"><td><strong><asp:Literal ID="Literal_instructor_hours" runat="server"></asp:Literal></strong> Instructor hours</td></tr>
   <tr align="center"><td><em>on</em></td></tr>

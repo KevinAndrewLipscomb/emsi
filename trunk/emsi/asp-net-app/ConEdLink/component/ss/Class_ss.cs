@@ -56,6 +56,11 @@ namespace Class_ss
       return consumed_stream_of;
       }
 
+    protected static string TitleOf(HtmlDocument html_document)
+      {
+      return html_document.DocumentNode.SelectSingleNode("/html/head/title").InnerText.Trim();
+      }
+
     protected static string ViewstateOf(HtmlDocument html_document)
       {
       return html_document.GetElementbyId("__VIEWSTATE").Attributes["value"].Value;

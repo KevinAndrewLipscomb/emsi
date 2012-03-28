@@ -69,8 +69,8 @@ namespace report_commanded_training_certificate
           k.Safe(Request["dob"],k.safe_hint_type.DATE_TIME),
           p.biz_coned_offerings.StandardSafeRenditionOf(Request["class_number"]),
           k.Safe(Request["course_title"],k.safe_hint_type.PUNCTUATED),
-          k.Safe(Request["total_ceus"],k.safe_hint_type.REAL_NUM),
           k.Safe(Request["med_trauma_ceus"],k.safe_hint_type.REAL_NUM),
+          k.Safe(Request["other_ceus"],k.safe_hint_type.REAL_NUM),
           k.Safe(Request["date_final"],k.safe_hint_type.DATE_TIME),
           k.Safe(Request["instructor_hours"],k.safe_hint_type.REAL_NUM)
           );

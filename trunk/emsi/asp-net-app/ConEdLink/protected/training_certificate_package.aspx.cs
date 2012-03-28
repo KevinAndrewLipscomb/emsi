@@ -35,14 +35,14 @@ namespace training_certificate_package
         var sponsor_name = k.EMPTY;
         var course_title = k.EMPTY;
         var date_final = k.EMPTY;
-        var fr_total_ceus = new k.decimal_nonnegative();
         var fr_med_trauma_ceus = new k.decimal_nonnegative();
-        var emt_total_ceus = new k.decimal_nonnegative();
+        var fr_other_ceus = new k.decimal_nonnegative();
         var emt_med_trauma_ceus = new k.decimal_nonnegative();
-        var emtp_total_ceus = new k.decimal_nonnegative();
+        var emt_other_ceus = new k.decimal_nonnegative();
         var emtp_med_trauma_ceus = new k.decimal_nonnegative();
-        var phrn_total_ceus = new k.decimal_nonnegative();
+        var emtp_other_ceus = new k.decimal_nonnegative();
         var phrn_med_trauma_ceus = new k.decimal_nonnegative();
+        var phrn_other_ceus = new k.decimal_nonnegative();
         p.biz_coned_offerings.GetForTrainingCertificates
           (
           hash_table["coned_offering_id"].ToString(),
@@ -51,14 +51,14 @@ namespace training_certificate_package
           out sponsor_name,
           out course_title,
           out date_final,
-          ref fr_total_ceus,
           ref fr_med_trauma_ceus,
-          ref emt_total_ceus,
+          ref fr_other_ceus,
           ref emt_med_trauma_ceus,
-          ref emtp_total_ceus,
+          ref emt_other_ceus,
           ref emtp_med_trauma_ceus,
-          ref phrn_total_ceus,
-          ref phrn_med_trauma_ceus
+          ref emtp_other_ceus,
+          ref phrn_med_trauma_ceus,
+          ref phrn_other_ceus
           );
         //
         var roster_ids = (hash_table["coned_offering_roster_ids"] as Object[]);
@@ -66,22 +66,22 @@ namespace training_certificate_package
           {
           var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
           var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
-          var total_ceus_for_this_practitioner = new k.decimal_nonnegative();
+          var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
           var UserControl_training_certificate = ((LoadControl("~/usercontrol/app/UserControl_training_certificate.ascx") as TWebUserControl_training_certificate));
           attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
           p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
             (
-            fr_total_ceus.val,
             fr_med_trauma_ceus.val,
-            emt_total_ceus.val,
+            fr_other_ceus.val,
             emt_med_trauma_ceus.val,
-            emtp_total_ceus.val,
+            emt_other_ceus.val,
             emtp_med_trauma_ceus.val,
-            phrn_total_ceus.val,
+            emtp_other_ceus.val,
             phrn_med_trauma_ceus.val,
+            phrn_other_ceus.val,
             attendance_rec.level_short_description,
-            ref total_ceus_for_this_practitioner,
-            ref med_trauma_ceus_for_this_practitioner
+            ref med_trauma_ceus_for_this_practitioner,
+            ref other_ceus_for_this_practitioner
             );
           UserControl_training_certificate.Set
             (
@@ -96,8 +96,8 @@ namespace training_certificate_package
             attendance_rec.dob,
             p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
             course_title,
-            total_ceus_for_this_practitioner.val.ToString(),
             med_trauma_ceus_for_this_practitioner.val.ToString(),
+            other_ceus_for_this_practitioner.val.ToString(),
             date_final,
             attendance_rec.instructor_hours
             );

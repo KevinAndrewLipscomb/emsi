@@ -11,8 +11,8 @@ Continuing Education Sponsor <sponsor_number/>, <sponsor_name/>, has completed a
       <start/>
    End:
       <end/>
-   Hours:
-      <total_class_hours/>
+   Length:
+      <length/>
    Number of attendees:
       <num_attendees/>
    Location:

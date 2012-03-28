@@ -73,8 +73,8 @@ namespace UserControl_training_certificate
       string dob,
       string class_number,
       string course_title,
-      string total_ceus,
       string med_trauma_ceus,
+      string other_ceus,
       string date_final,
       string instructor_hours
       )
@@ -89,8 +89,8 @@ namespace UserControl_training_certificate
       if (instructor_hours.Length == 0)
         {
         Literal_completed.Visible = true;
-        Literal_total_ce_hours.Text = total_ceus;
         Literal_num_med_trauma_hours.Text = med_trauma_ceus;
+        Literal_num_other_hours.Text = other_ceus;
         TableRow_ceus.Visible = true;
         }
       else

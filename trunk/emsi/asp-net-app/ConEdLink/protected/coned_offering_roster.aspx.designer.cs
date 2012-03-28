@@ -202,13 +202,13 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Literal Literal_end;
         
         /// <summary>
-        /// Literal_total_class_hours control.
+        /// Literal_length control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_total_class_hours;
+        protected global::System.Web.UI.WebControls.Literal Literal_length;
         
         /// <summary>
         /// Literal_location control.
