@@ -63,7 +63,7 @@ namespace Class_biz_coned_offerings
       )
       {
       return BeApprovedOf(summary)
-      && (DateTime.Now > DateTime.Parse(db_coned_offerings.StartOf(summary).Replace(" --:--",k.EMPTY)).AddHours(double.Parse(db_coned_offerings.LengthOf(summary))))
+      && (DateTime.Now > DateTime.Parse(db_coned_offerings.StartOf(summary).Replace(" --:--",k.EMPTY)).AddHours((double)FullHourDurationOf(summary)))
       && (num_attendees.val > 0)
       && (num_attendees_with_known_birth_dates.val == num_attendees.val);
       }
@@ -394,6 +394,25 @@ namespace Class_biz_coned_offerings
     internal string LocationOf(object summary)
       {
       return db_coned_offerings.LocationOf(summary);
+      }
+
+    internal decimal FullHourDurationOf(object summary)
+      {
+      var fr_med_trauma_hours_string = FrMedTraumaHoursOf(summary);
+      var fr_other_hours_string = FrOtherHoursOf(summary);
+      var emt_med_trauma_hours_string = EmtMedTraumaHoursOf(summary);
+      var emt_other_hours_string = EmtOtherHoursOf(summary);
+      var emtp_med_trauma_hours_string = EmtpMedTraumaHoursOf(summary);
+      var emtp_other_hours_string = EmtpOtherHoursOf(summary);
+      var phrn_med_trauma_hours_string = PhrnMedTraumaHoursOf(summary);
+      var phrn_other_hours_string = PhrnOtherHoursOf(summary);
+      //
+      var fr_total_hours = (fr_med_trauma_hours_string.Length > 0 ? decimal.Parse(fr_med_trauma_hours_string) : 0) + (fr_other_hours_string.Length > 0 ? decimal.Parse(fr_other_hours_string) : 0);
+      var emt_total_hours = (emt_med_trauma_hours_string.Length > 0 ? decimal.Parse(emt_med_trauma_hours_string) : 0) + (emt_other_hours_string.Length > 0 ? decimal.Parse(emt_other_hours_string) : 0);
+      var emtp_total_hours = (emtp_med_trauma_hours_string.Length > 0 ? decimal.Parse(emtp_med_trauma_hours_string) : 0) + (emtp_other_hours_string.Length > 0 ? decimal.Parse(emtp_other_hours_string) : 0);
+      var phrn_total_hours = (phrn_med_trauma_hours_string.Length > 0 ? decimal.Parse(phrn_med_trauma_hours_string) : 0) + (phrn_other_hours_string.Length > 0 ? decimal.Parse(phrn_other_hours_string) : 0);
+      //
+      return Math.Max(Math.Max(Math.Max(fr_total_hours,emt_total_hours),emtp_total_hours),phrn_total_hours);
       }
 
     internal string PhrnMedTraumaHoursOf(object summary)

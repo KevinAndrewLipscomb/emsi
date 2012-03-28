@@ -1776,5 +1776,119 @@ namespace ConEdLink.component.ss
       return active_practitioners;
       }
 
+    internal ArrayList DetailedActivePractitioners()
+      {
+      var available_coned_classes_list = new ArrayList();
+      var cookie_container = new CookieContainer();
+      //
+      Login(cookie_container);
+      //
+      HttpWebResponse response;
+      if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregDefault(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregDefault() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregPractitionerHome(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerHome() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregReportsReportlist(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsReportlist() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch() returned FALSE.");
+        }
+      var html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+      if(!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_From
+          (
+          cookie_container,
+          ViewstateOf(html_document),
+          EventValidationOf(html_document),
+          DateTime.Today.AddMonths(-2).ToString(),
+          out response
+          )
+        )
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_FromToFormatGenerateReport() returned FALSE.");
+        }
+      var stream_string = ConsumedStreamOf(response).Replace("&nbsp;",k.EMPTY);
+      var hn_target_table = HtmlDocumentOf(stream_string).DocumentNode.SelectSingleNode("table");
+      //
+      var hnc_course_number = hn_target_table.SelectNodes("tr/td[1]");
+      var hnc_course_title = hn_target_table.SelectNodes("tr/td[2]");
+      var hnc_class_number = hn_target_table.SelectNodes("tr/td[3]");
+      var hnc_class_start_date = hn_target_table.SelectNodes("tr/td[4]");
+      var hnc_class_start_time = hn_target_table.SelectNodes("tr/td[5]");
+      var hnc_class_end_date = hn_target_table.SelectNodes("tr/td[6]");
+      var hnc_class_end_time = hn_target_table.SelectNodes("tr/td[7]");
+      var hnc_total_ceus = hn_target_table.SelectNodes("tr/td[8]");
+      var hnc_fr_ce_trauma = hn_target_table.SelectNodes("tr/td[9]");
+      var hnc_fr_ce_other = hn_target_table.SelectNodes("tr/td[10]");
+      var hnc_fr_ce_total = hn_target_table.SelectNodes("tr/td[11]");
+      var hnc_emt_ce_trauma = hn_target_table.SelectNodes("tr/td[12]");
+      var hnc_emt_ce_other = hn_target_table.SelectNodes("tr/td[13]");
+      var hnc_emt_ce_total = hn_target_table.SelectNodes("tr/td[14]");
+      //
+      // Values that EMSRS reports in the following columns are unreliable.  They appear to be double the appropriate values.
+      //
+      //var hnc_als_ce_total = hn_target_table.SelectNodes("tr/td[15]");
+      //var hnc_als_ce_other = hn_target_table.SelectNodes("tr/td[16]");
+      //var hnc_als_ce_trauma = hn_target_table.SelectNodes("tr/td[17]");
+      //
+      var hnc_tuition = hn_target_table.SelectNodes("tr/td[18]");
+      var hnc_sponsor_name = hn_target_table.SelectNodes("tr/td[19]");
+      var hnc_sponsor_number = hn_target_table.SelectNodes("tr/td[20]");
+      var hnc_instructor_name = hn_target_table.SelectNodes("tr/td[21]");
+      var hnc_contact_name = hn_target_table.SelectNodes("tr/td[22]");
+      var hnc_contact_name_1 = hn_target_table.SelectNodes("tr/td[23]");
+      var hnc_location = hn_target_table.SelectNodes("tr/td[24]");
+      var hnc_class_location = hn_target_table.SelectNodes("tr/td[25]");
+      var hnc_class_city_state = hn_target_table.SelectNodes("tr/td[26]");
+      var hnc_class_county_code = hn_target_table.SelectNodes("tr/td[27]");
+      var hnc_class_region_code = hn_target_table.SelectNodes("tr/td[28]");
+      //
+      for (var i = new k.subtype<int>(1,hnc_course_number.Count); i.val < i.LAST; i.val++)
+        {
+        var coned_offering = new ConedOffering();
+        coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.class_start_date = k.Safe(hnc_class_start_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        coned_offering.class_start_time = k.Safe(hnc_class_start_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.class_end_date = k.Safe(hnc_class_end_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        coned_offering.class_end_time = k.Safe(hnc_class_end_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.total_ceus = k.Safe(hnc_total_ceus[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_ce_trauma = k.Safe(hnc_fr_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_ce_other = k.Safe(hnc_fr_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_ce_total = k.Safe(hnc_fr_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_ce_trauma = k.Safe(hnc_emt_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_ce_other = k.Safe(hnc_emt_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_ce_total = k.Safe(hnc_emt_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        //coned_offering.als_ce_total = k.Safe(hnc_als_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        //coned_offering.als_ce_trauma = k.Safe(hnc_als_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        //coned_offering.als_ce_other = k.Safe(hnc_als_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.tuition = k.Safe(hnc_tuition[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        coned_offering.sponsor_number = k.Safe(hnc_sponsor_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.instructor_name = k.Safe(hnc_instructor_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME_CSV);
+        coned_offering.contact_name = k.Safe(hnc_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+        coned_offering.contact_name_1 = k.Safe(hnc_contact_name_1[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+        coned_offering.location = k.Safe(hnc_location[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        coned_offering.class_location = k.Safe(hnc_class_location[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
+        coned_offering.class_city_state = k.Safe(hnc_class_city_state[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
+        coned_offering.class_county_code = k.Safe(hnc_class_county_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.class_region_code = k.Safe(hnc_class_region_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        //
+        available_coned_classes_list.Add(coned_offering);
+        }
+      return available_coned_classes_list;
+      }
+
     }
   }
