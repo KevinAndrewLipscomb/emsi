@@ -63,7 +63,7 @@ namespace Class_biz_coned_offerings
       )
       {
       return BeApprovedOf(summary)
-      && (DateTime.Now > DateTime.Parse(db_coned_offerings.StartOf(summary).Replace(" --:--",k.EMPTY)).AddHours(double.Parse(db_coned_offerings.TotalClassHoursOf(summary))))
+      && (DateTime.Now > DateTime.Parse(db_coned_offerings.StartOf(summary).Replace(" --:--",k.EMPTY)).AddHours(double.Parse(db_coned_offerings.LengthOf(summary))))
       && (num_attendees.val > 0)
       && (num_attendees_with_known_birth_dates.val == num_attendees.val);
       }
@@ -135,7 +135,7 @@ namespace Class_biz_coned_offerings
           course_title:db_coned_offerings.CourseTitleOf(summary),
           start:db_coned_offerings.StartOf(summary),
           end:db_coned_offerings.EndOf(summary),
-          total_class_hours:db_coned_offerings.TotalClassHoursOf(summary),
+          length:db_coned_offerings.LengthOf(summary),
           location:db_coned_offerings.LocationOf(summary),
           num_attendees:num_attendees,
           status_description:coned_offering_status_enumeration.NEEDS_REGIONAL_PROCESSING.ToString()
@@ -342,14 +342,14 @@ namespace Class_biz_coned_offerings
       out string sponsor_name,
       out string course_title,
       out string date_final,
-      ref k.decimal_nonnegative fr_total_ceus,
       ref k.decimal_nonnegative fr_med_trauma_ceus,
-      ref k.decimal_nonnegative emt_total_ceus,
+      ref k.decimal_nonnegative fr_other_ceus,
       ref k.decimal_nonnegative emt_med_trauma_ceus,
-      ref k.decimal_nonnegative emtp_total_ceus,
+      ref k.decimal_nonnegative emt_other_ceus,
       ref k.decimal_nonnegative emtp_med_trauma_ceus,
-      ref k.decimal_nonnegative phrn_total_ceus,
-      ref k.decimal_nonnegative phrn_med_trauma_ceus
+      ref k.decimal_nonnegative emtp_other_ceus,
+      ref k.decimal_nonnegative phrn_med_trauma_ceus,
+      ref k.decimal_nonnegative phrn_other_ceus
       )
       {
       db_coned_offerings.GetForTrainingCertificates
@@ -360,14 +360,14 @@ namespace Class_biz_coned_offerings
         out sponsor_name,
         out course_title,
         out date_final,
-        ref fr_total_ceus,
         ref fr_med_trauma_ceus,
-        ref emt_total_ceus,
+        ref fr_other_ceus,
         ref emt_med_trauma_ceus,
-        ref emtp_total_ceus,
+        ref emt_other_ceus,
         ref emtp_med_trauma_ceus,
-        ref phrn_total_ceus,
-        ref phrn_med_trauma_ceus
+        ref emtp_other_ceus,
+        ref phrn_med_trauma_ceus,
+        ref phrn_other_ceus
         );
       }
 
@@ -378,7 +378,17 @@ namespace Class_biz_coned_offerings
 
     internal void ImportLatestFromEmsrs()
       {
-      db_coned_offerings.ImportLatestFromEmsrs(ss_emsams.AvailableConedClassesList());
+      db_coned_offerings.ImportLatestFromEmsrs(ss_emsams.ClassSearchTabDelimited());
+      db_coned_offerings.ImportLatestFromEmsrs_RelatedHours(ss_emsams.ClassSearchScreen());
+      //db_coned_offerings.ImportLatestFromEmsrsAvailableConedClassesList(ss_emsams.AvailableConedClassesList());
+      }
+
+    internal k.decimal_nonnegative LengthOf(object summary)
+      {
+      var length = new k.decimal_nonnegative();
+      var length_string = db_coned_offerings.LengthOf(summary);
+      length.val = (length_string.Length > 0 ? decimal.Parse(length_string) : 0);
+      return length;
       }
 
     internal string LocationOf(object summary)
@@ -557,13 +567,6 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.Summary(id);
       }
 
-    internal k.decimal_nonnegative TotalClassHoursOf(object summary)
-      {
-      var total_class_hours = new k.decimal_nonnegative();
-      var total_class_hours_string = db_coned_offerings.TotalClassHoursOf(summary);
-      total_class_hours.val = (total_class_hours_string.Length > 0 ? decimal.Parse(total_class_hours_string) : 0);
-      return total_class_hours;
-      }
     } // end TClass_biz_coned_offerings
 
   }

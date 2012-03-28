@@ -70,7 +70,7 @@ namespace Class_biz_notifications
       string course_title,
       string start,
       string end,
-      string total_class_hours,
+      string length,
       string location,
       k.int_nonnegative num_attendees,
       string status_description
@@ -88,7 +88,7 @@ namespace Class_biz_notifications
           .Replace("<course_title/>",course_title)
           .Replace("<start/>",start)
           .Replace("<end/>",end)
-          .Replace("<total_class_hours/>",total_class_hours.ToString())
+          .Replace("<length/>",length)
           .Replace("<num_attendees/>",num_attendees.val.ToString())
           .Replace("<location/>",location)
           .Replace("<coned_offering_public_contact_email/>",coned_offering_public_contact_email)

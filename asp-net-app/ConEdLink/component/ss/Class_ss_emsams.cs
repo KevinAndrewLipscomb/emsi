@@ -456,6 +456,7 @@ namespace ConEdLink.component.ss
     private static bool Request_ems_health_state_pa_us_ConedClasssearch_Coned_Filedelimited_Searchnow
       (
       CookieContainer cookie_container,
+      string date_from,
       out HttpWebResponse response
       )
     {
@@ -478,7 +479,7 @@ namespace ConEdLink.component.ss
 
 		    request.Method = "POST";
 
-		    string postString = @"SearchMode=&cmdMove=Search+Now&ClassType=CONED&CourseNumber=&CourseTitle=&CourseCode=&StartDate_Low=&StartDate_High=&ClassCountyCode=&RegionCouncilNum=&ClassNumber=&IncludeDisapprovedClasses=0&OutputFormat=FileDelimited";
+		    string postString = @"SearchMode=&cmdMove=Search+Now&ClassType=CONED&CourseNumber=&CourseTitle=&CourseCode=&StartDate_Low=" + HttpUtility.UrlEncode(date_from) + "&StartDate_High=&ClassCountyCode=&RegionCouncilNum=&ClassNumber=&IncludeDisapprovedClasses=0&OutputFormat=FileDelimited";
 		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
 		    request.ContentLength = postBytes.Length;
 		    Stream stream = request.GetRequestStream();
@@ -504,6 +505,7 @@ namespace ConEdLink.component.ss
     private static bool Request_ems_health_state_pa_us_ConedClasssearch_Coned_Searchnow
       (
       CookieContainer cookie_container,
+      string date_from,
       out HttpWebResponse response
       )
     {
@@ -526,7 +528,7 @@ namespace ConEdLink.component.ss
 
 		    request.Method = "POST";
 
-		    string postString = @"SearchMode=&cmdMove=Search+Now&ClassType=CONED&CourseNumber=&CourseTitle=&CourseCode=&StartDate_Low=&StartDate_High=&ClassCountyCode=&RegionCouncilNum=&ClassNumber=&IncludeDisapprovedClasses=0&OutputFormat=Screen";
+		    string postString = @"SearchMode=&cmdMove=Search+Now&ClassType=CONED&CourseNumber=&CourseTitle=&CourseCode=&StartDate_Low=" + HttpUtility.UrlEncode(date_from) + "&StartDate_High=&ClassCountyCode=&RegionCouncilNum=&ClassNumber=&IncludeDisapprovedClasses=0&OutputFormat=Screen";
 		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
 		    request.ContentLength = postBytes.Length;
 		    Stream stream = request.GetRequestStream();
@@ -552,6 +554,7 @@ namespace ConEdLink.component.ss
     private static bool Request_ems_health_state_pa_us_ConedExportClasssearchtxt
       (
       CookieContainer cookie_container,
+      string user_id,
       out HttpWebResponse response
       )
     {
@@ -559,7 +562,7 @@ namespace ConEdLink.component.ss
 
 	    try
 	    {
-		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/ConEd/Export/ClassSearch_345.txt");
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/ConEd/Export/ClassSearch_" + user_id + ".txt");
         request.CookieContainer = cookie_container;
         request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
 
@@ -1056,6 +1059,37 @@ namespace ConEdLink.component.ss
 	    return true;
     }
 
+    internal void Login(CookieContainer cookie_container)
+      {
+      HttpWebResponse response;
+      if (!Request_ems_health_state_pa_us_Emsportal(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_Emsportal() returned FALSE.");
+        }
+      var html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+      if(!Request_ems_health_state_pa_us_Emsportal_Login
+          (
+          cookie_container,
+          ViewstateOf(html_document),
+          EventValidationOf(html_document),
+          ConfigurationManager.AppSettings["emsportal_login_username"],
+          ConfigurationManager.AppSettings["emsportal_login_password"],
+          out response
+          )
+        )
+        {
+        throw new Exception("Request_ems_health_state_pa_us_Emsportal_Login() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsportalApplicationlist(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationlist() returned FALSE.");
+        }
+      if (TitleOf(HtmlDocumentOf(ConsumedStreamOf(response))) != "EMS Login | Application List")
+        {
+        throw new Exception("Unexpected response from Request_ems_health_state_pa_us_EmsportalApplicationlist().");
+        }
+      }
+
     private static void ScrapeConedSponsors
       (
       string status,
@@ -1124,9 +1158,100 @@ namespace ConEdLink.component.ss
 
     internal class ConedOffering
       {
-      internal string course_number = k.EMPTY;
-      internal string course_title = k.EMPTY;
+      internal string class_id_1 = k.EMPTY;
+      internal string class_type = k.EMPTY;
+      internal string course_id = k.EMPTY;
       internal string class_number = k.EMPTY;
+      internal string course_code = k.EMPTY;
+      internal string created_by = k.EMPTY;
+      internal string date_created = k.EMPTY;
+      internal string last_edited_by = k.EMPTY;
+      internal string date_last_edited = k.EMPTY;
+      internal string sponsor_id = k.EMPTY;
+      internal string sponsor_number = k.EMPTY;
+      internal string training_ins_accred_num = k.EMPTY;
+      internal string document_status = k.EMPTY;
+      internal string class_final_status = k.EMPTY;
+      internal string course_number = k.EMPTY;
+      internal string location = k.EMPTY;
+      internal string student_cost = k.EMPTY;
+      internal string tuition_includes = k.EMPTY;
+      internal string closed = k.EMPTY;
+      internal string estimated_students = k.EMPTY;
+      internal string start_date_time = k.EMPTY;
+      internal string end_date_time = k.EMPTY;
+      internal string start_time = k.EMPTY;
+      internal string end_time = k.EMPTY;
+      internal string other_dates_and_times = k.EMPTY;
+      internal string instructors = k.EMPTY;
+      internal string instructor_qualifications = k.EMPTY;
+      internal string verification_name = k.EMPTY;
+      internal string contact_name = k.EMPTY;
+      internal string contact_address_1 = k.EMPTY;
+      internal string contact_address_2 = k.EMPTY;
+      internal string contact_city = k.EMPTY;
+      internal string contact_state = k.EMPTY;
+      internal string contact_zip = k.EMPTY;
+      internal string contact_daytime_phone = k.EMPTY;
+      internal string contact_evening_phone = k.EMPTY;
+      internal string contact_email = k.EMPTY;
+      internal string public_contact_name = k.EMPTY;
+      internal string public_contact_phone = k.EMPTY;
+      internal string public_contact_email = k.EMPTY;
+      internal string public_contact_website = k.EMPTY;
+      internal string public_contact_notes = k.EMPTY;
+      internal string date_submitted_to_region = k.EMPTY;
+      internal string date_received_by_region = k.EMPTY;
+      internal string date_sponsor_notified = k.EMPTY;
+      internal string date_registration_sent_to_state = k.EMPTY;
+      internal string date_cards_sent_to_sponsor = k.EMPTY;
+      internal string date_materials_to_be_returned = k.EMPTY;
+      internal string approved = k.EMPTY;
+      internal string region_comments = k.EMPTY;
+      internal string region_council_num = k.EMPTY;
+      internal string class_county_code = k.EMPTY;
+      internal string total_class_hours = k.EMPTY;
+      internal string location_address_1 = k.EMPTY;
+      internal string location_address_2 = k.EMPTY;
+      internal string location_city = k.EMPTY;
+      internal string location_state = k.EMPTY;
+      internal string location_zip = k.EMPTY;
+      internal string location_zip_plus_4 = k.EMPTY;
+      internal string location_phone = k.EMPTY;
+      internal string location_email = k.EMPTY;
+      internal string location_of_registration = k.EMPTY;
+      internal string primary_text = k.EMPTY;
+      internal string additional_texts = k.EMPTY;
+      internal string final_registration_date = k.EMPTY;
+      internal string offered_as_college_credit = k.EMPTY;
+      internal string practical_exam_date = k.EMPTY;
+      internal string written_exam_date = k.EMPTY;
+      internal string disapproval_reason_id = k.EMPTY;
+      internal string date_final_paperwork_received = k.EMPTY;
+      internal string signed_hard_copy = k.EMPTY;
+      internal string created_by_first_name = k.EMPTY;
+      internal string created_by_last_name = k.EMPTY;
+      internal string class_disapproval_reason_description = k.EMPTY;
+      internal string class_final_status_description = k.EMPTY;
+      internal string sponsor_name = k.EMPTY;
+      internal string courses_course_number = k.EMPTY;
+      internal string course_title = k.EMPTY;
+      internal string cert_course_code = k.EMPTY;
+      internal string cert_course_description = k.EMPTY;
+      internal string class_id_2 = k.EMPTY;
+      //
+      internal string fr_med_trauma_hours = k.EMPTY;
+      internal string fr_other_hours = k.EMPTY;
+      internal string emt_med_trauma_hours = k.EMPTY;
+      internal string emt_other_hours = k.EMPTY;
+      internal string emtp_med_trauma_hours = k.EMPTY;
+      internal string emtp_other_hours = k.EMPTY;
+      internal string phrn_med_trauma_hours = k.EMPTY;
+      internal string phrn_other_hours = k.EMPTY;
+      internal string length = k.EMPTY;
+      internal string region_council_name = k.EMPTY;
+      internal string class_county_name = k.EMPTY;
+      //
       internal string class_start_date = k.EMPTY;
       internal string class_start_time = k.EMPTY;
       internal string class_end_date = k.EMPTY;
@@ -1142,181 +1267,347 @@ namespace ConEdLink.component.ss
       internal string als_ce_trauma = k.EMPTY;
       internal string als_ce_other = k.EMPTY;
       internal string tuition = k.EMPTY;
-      internal string sponsor_name = k.EMPTY;
-      internal string sponsor_number = k.EMPTY;
       internal string instructor_name = k.EMPTY;
-      internal string contact_name = k.EMPTY;
       internal string contact_name_1 = k.EMPTY;
-      internal string location = k.EMPTY;
       internal string class_location = k.EMPTY;
       internal string class_city_state = k.EMPTY;
-      internal string class_county_code = k.EMPTY;
       internal string class_region_code = k.EMPTY;
       }
     internal ArrayList AvailableConedClassesList()
       {
-      var class_search_unlimited = new ArrayList();
-      //
+      var available_coned_classes_list = new ArrayList();
       var cookie_container = new CookieContainer();
-      var stream_string = k.EMPTY;
-      var html_document = new HtmlDocument();
-      HttpWebResponse response;
       //
-      if (!Request_ems_health_state_pa_us_Emsportal(cookie_container,out response))
+      Login(cookie_container);
+      //
+      HttpWebResponse response;
+      if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(cookie_container,out response))
         {
-        throw new Exception("Request_ems_health_state_pa_us_Emsportal() returned FALSE.");
+        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg() returned FALSE.");
         }
-      else
+      if (!Request_ems_health_state_pa_us_EmsregDefault(cookie_container,out response))
         {
-        html_document = HtmlDocumentOf(ConsumedStreamOf(response));
-        if(!Request_ems_health_state_pa_us_Emsportal_Login
-            (
-            cookie_container,
-            ViewstateOf(html_document),
-            EventValidationOf(html_document),
-            ConfigurationManager.AppSettings["emsportal_login_username"],
-            ConfigurationManager.AppSettings["emsportal_login_password"],
-            out response
-            )
+        throw new Exception("Request_ems_health_state_pa_us_EmsregDefault() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregPractitionerHome(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerHome() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregReportsReportlist(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsReportlist() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch() returned FALSE.");
+        }
+      var html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+      if(!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_From
+          (
+          cookie_container,
+          ViewstateOf(html_document),
+          EventValidationOf(html_document),
+          DateTime.Today.AddMonths(-2).ToString(),
+          out response
           )
+        )
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_FromToFormatGenerateReport() returned FALSE.");
+        }
+      var stream_string = ConsumedStreamOf(response).Replace("&nbsp;",k.EMPTY);
+      var hn_target_table = HtmlDocumentOf(stream_string).DocumentNode.SelectSingleNode("table");
+      //
+      var hnc_course_number = hn_target_table.SelectNodes("tr/td[1]");
+      var hnc_course_title = hn_target_table.SelectNodes("tr/td[2]");
+      var hnc_class_number = hn_target_table.SelectNodes("tr/td[3]");
+      var hnc_class_start_date = hn_target_table.SelectNodes("tr/td[4]");
+      var hnc_class_start_time = hn_target_table.SelectNodes("tr/td[5]");
+      var hnc_class_end_date = hn_target_table.SelectNodes("tr/td[6]");
+      var hnc_class_end_time = hn_target_table.SelectNodes("tr/td[7]");
+      var hnc_total_ceus = hn_target_table.SelectNodes("tr/td[8]");
+      var hnc_fr_ce_trauma = hn_target_table.SelectNodes("tr/td[9]");
+      var hnc_fr_ce_other = hn_target_table.SelectNodes("tr/td[10]");
+      var hnc_fr_ce_total = hn_target_table.SelectNodes("tr/td[11]");
+      var hnc_emt_ce_trauma = hn_target_table.SelectNodes("tr/td[12]");
+      var hnc_emt_ce_other = hn_target_table.SelectNodes("tr/td[13]");
+      var hnc_emt_ce_total = hn_target_table.SelectNodes("tr/td[14]");
+      //
+      // Values that EMSRS reports in the following columns are unreliable.  They appear to be double the appropriate values.
+      //
+      //var hnc_als_ce_total = hn_target_table.SelectNodes("tr/td[15]");
+      //var hnc_als_ce_other = hn_target_table.SelectNodes("tr/td[16]");
+      //var hnc_als_ce_trauma = hn_target_table.SelectNodes("tr/td[17]");
+      //
+      var hnc_tuition = hn_target_table.SelectNodes("tr/td[18]");
+      var hnc_sponsor_name = hn_target_table.SelectNodes("tr/td[19]");
+      var hnc_sponsor_number = hn_target_table.SelectNodes("tr/td[20]");
+      var hnc_instructor_name = hn_target_table.SelectNodes("tr/td[21]");
+      var hnc_contact_name = hn_target_table.SelectNodes("tr/td[22]");
+      var hnc_contact_name_1 = hn_target_table.SelectNodes("tr/td[23]");
+      var hnc_location = hn_target_table.SelectNodes("tr/td[24]");
+      var hnc_class_location = hn_target_table.SelectNodes("tr/td[25]");
+      var hnc_class_city_state = hn_target_table.SelectNodes("tr/td[26]");
+      var hnc_class_county_code = hn_target_table.SelectNodes("tr/td[27]");
+      var hnc_class_region_code = hn_target_table.SelectNodes("tr/td[28]");
+      //
+      for (var i = new k.subtype<int>(1,hnc_course_number.Count); i.val < i.LAST; i.val++)
+        {
+        var coned_offering = new ConedOffering();
+        coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.class_start_date = k.Safe(hnc_class_start_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        coned_offering.class_start_time = k.Safe(hnc_class_start_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.class_end_date = k.Safe(hnc_class_end_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        coned_offering.class_end_time = k.Safe(hnc_class_end_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.total_ceus = k.Safe(hnc_total_ceus[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_ce_trauma = k.Safe(hnc_fr_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_ce_other = k.Safe(hnc_fr_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_ce_total = k.Safe(hnc_fr_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_ce_trauma = k.Safe(hnc_emt_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_ce_other = k.Safe(hnc_emt_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_ce_total = k.Safe(hnc_emt_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        //coned_offering.als_ce_total = k.Safe(hnc_als_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        //coned_offering.als_ce_trauma = k.Safe(hnc_als_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        //coned_offering.als_ce_other = k.Safe(hnc_als_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.tuition = k.Safe(hnc_tuition[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        coned_offering.sponsor_number = k.Safe(hnc_sponsor_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.instructor_name = k.Safe(hnc_instructor_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME_CSV);
+        coned_offering.contact_name = k.Safe(hnc_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+        coned_offering.contact_name_1 = k.Safe(hnc_contact_name_1[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+        coned_offering.location = k.Safe(hnc_location[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        coned_offering.class_location = k.Safe(hnc_class_location[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
+        coned_offering.class_city_state = k.Safe(hnc_class_city_state[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
+        coned_offering.class_county_code = k.Safe(hnc_class_county_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.class_region_code = k.Safe(hnc_class_region_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        //
+        available_coned_classes_list.Add(coned_offering);
+        }
+      return available_coned_classes_list;
+      }
+
+    internal ArrayList ClassSearchScreen()
+      {
+      var class_search_screen = new ArrayList();
+      var cookie_container = new CookieContainer();
+      //
+      Login(cookie_container);
+      //
+      HttpWebResponse response;
+      if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_ConedClasssearch(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClasssearch() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_ConedClasssearch_Coned_Searchnow(cookie_container,DateTime.Today.AddMonths(-2).ToString(),out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClasssearch_Coned_Searchnow() returned FALSE.");
+        }
+      //
+      var hn_target_table = HtmlDocumentOf(ConsumedStreamOf(response)).DocumentNode.SelectSingleNode("html/body/font/center/table");
+      //
+      var hnc_start_date = hn_target_table.SelectNodes("tr/td[1]"); // This will also catch the horizontal line separator cells that occur every other row, so there'll be twice as many of these as of the rest.
+      var hnc_course_title = hn_target_table.SelectNodes("tr/td[2]/table/tr[1]/td[2]/a");
+      var hnc_course_number = hn_target_table.SelectNodes("tr/td[2]/table/tr[2]/td[2]");
+      var hnc_fr_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[2]/td[4]");
+      var hnc_fr_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[2]/td[5]");
+      var hnc_emt_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[3]/td[4]");
+      var hnc_emt_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[3]/td[5]");
+      var hnc_emtp_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[4]/td[4]");
+      var hnc_emtp_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[4]/td[5]");
+      var hnc_phrn_med_trauma_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[5]/td[4]");
+      var hnc_phrn_other_hours = hn_target_table.SelectNodes("tr/td[2]/table/tr[5]/td/table/tr[5]/td[5]");
+      var hnc_length = hn_target_table.SelectNodes("tr/td[2]/table/tr[7]/td[2]");
+      var hnc_closed = hn_target_table.SelectNodes("tr/td[2]/table/tr[8]/td[2]");
+      var hnc_student_cost = hn_target_table.SelectNodes("tr/td[2]/table/tr[9]/td[2]");
+      var hnc_class_number = hn_target_table.SelectNodes("tr/td[3]/table/tr[2]/td[2]/a");
+      var hnc_sponsor_name = hn_target_table.SelectNodes("tr/td[3]/table/tr[4]/td[2]");
+      var hnc_sponsor_id = hn_target_table.SelectNodes("tr/td[3]/table/tr[4]/td[2]/input");
+      var hnc_region_council_name = hn_target_table.SelectNodes("tr/td[3]/table/tr[5]/td[2]");
+      var hnc_region_council_num = hn_target_table.SelectNodes("tr/td[3]/table/tr[5]/td[2]/input");
+      var hnc_class_county_name = hn_target_table.SelectNodes("tr/td[3]/table/tr[6]/td[2]");
+      var hnc_location = hn_target_table.SelectNodes("tr/td[3]/table/tr[7]/td[2]");
+      var hnc_public_contact_name = hn_target_table.SelectNodes("tr/td[3]/table/tr[9]/td[2]");
+      var hnc_public_contact_phone = hn_target_table.SelectNodes("tr/td[3]/table/tr[10]/td[2]");
+      //var hnc_public_contact_email = hn_target_table.SelectNodes("tr/td[3]/table/tr[11]/td[2]/a");
+      var hnc_public_contact_website = hn_target_table.SelectNodes("tr/td[3]/table/tr[12]/td[2]");
+      var hnc_public_contact_notes = hn_target_table.SelectNodes("tr/td[3]/table/tr[13]/td[2]");
+      //
+      for (var i = new k.subtype<int>(0,hnc_course_title.Count); i.val < i.LAST; i.val++)
+        {
+        var class_county_name = k.Safe(hnc_class_county_name[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+        if (class_county_name != "OutofState")
           {
-          throw new Exception("Request_ems_health_state_pa_us_Emsportal_Login() returned FALSE.");
-          }
-        else
-          {
-          stream_string = ConsumedStreamOf(response);
-          if (!Request_ems_health_state_pa_us_EmsportalApplicationlist(cookie_container,out response))
-            {
-            throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationlist() returned FALSE.");
-            }
-          else
-            {
-            stream_string = ConsumedStreamOf(response);
-            if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(cookie_container,out response))
-              {
-              throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg() returned FALSE.");
-              }
-            else
-              {
-              stream_string = ConsumedStreamOf(response);
-              if (!Request_ems_health_state_pa_us_EmsregDefault(cookie_container,out response))
-                {
-                throw new Exception("Request_ems_health_state_pa_us_EmsregDefault() returned FALSE.");
-                }
-              else
-                {
-                stream_string = ConsumedStreamOf(response);
-                if (!Request_ems_health_state_pa_us_EmsregPractitionerHome(cookie_container,out response))
-                  {
-                  throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerHome() returned FALSE.");
-                  }
-                else
-                  {
-                  stream_string = ConsumedStreamOf(response);
-                  if (!Request_ems_health_state_pa_us_EmsregReportsReportlist(cookie_container,out response))
-                    {
-                    throw new Exception("Request_ems_health_state_pa_us_EmsregReportsReportlist() returned FALSE.");
-                    }
-                  else
-                    {
-                    stream_string = ConsumedStreamOf(response);
-                    if (!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch(cookie_container,out response))
-                      {
-                      throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch() returned FALSE.");
-                      }
-                    else
-                      {
-                      html_document = HtmlDocumentOf(ConsumedStreamOf(response));
-                      if(!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_From
-                          (
-                          cookie_container,
-                          ViewstateOf(html_document),
-                          EventValidationOf(html_document),
-                          DateTime.Today.AddMonths(-2).ToString(),
-                          out response
-                          )
-                        )
-                        {
-                        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_FromToFormatGenerateReport() returned FALSE.");
-                        }
-                      else
-                        {
-                        stream_string = ConsumedStreamOf(response).Replace("&nbsp;",k.EMPTY);
-                        var hn_target_table = HtmlDocumentOf(stream_string).DocumentNode.SelectSingleNode("table");
-                        //
-                        var hnc_course_number = hn_target_table.SelectNodes("tr/td[1]");
-                        var hnc_course_title = hn_target_table.SelectNodes("tr/td[2]");
-                        var hnc_class_number = hn_target_table.SelectNodes("tr/td[3]");
-                        var hnc_class_start_date = hn_target_table.SelectNodes("tr/td[4]");
-                        var hnc_class_start_time = hn_target_table.SelectNodes("tr/td[5]");
-                        var hnc_class_end_date = hn_target_table.SelectNodes("tr/td[6]");
-                        var hnc_class_end_time = hn_target_table.SelectNodes("tr/td[7]");
-                        var hnc_total_ceus = hn_target_table.SelectNodes("tr/td[8]");
-                        var hnc_fr_ce_trauma = hn_target_table.SelectNodes("tr/td[9]");
-                        var hnc_fr_ce_other = hn_target_table.SelectNodes("tr/td[10]");
-                        var hnc_fr_ce_total = hn_target_table.SelectNodes("tr/td[11]");
-                        var hnc_emt_ce_trauma = hn_target_table.SelectNodes("tr/td[12]");
-                        var hnc_emt_ce_other = hn_target_table.SelectNodes("tr/td[13]");
-                        var hnc_emt_ce_total = hn_target_table.SelectNodes("tr/td[14]");
-                        var hnc_als_ce_total = hn_target_table.SelectNodes("tr/td[15]");
-                        var hnc_als_ce_other = hn_target_table.SelectNodes("tr/td[16]");
-                        var hnc_als_ce_trauma = hn_target_table.SelectNodes("tr/td[17]");
-                        var hnc_tuition = hn_target_table.SelectNodes("tr/td[18]");
-                        var hnc_sponsor_name = hn_target_table.SelectNodes("tr/td[19]");
-                        var hnc_sponsor_number = hn_target_table.SelectNodes("tr/td[20]");
-                        var hnc_instructor_name = hn_target_table.SelectNodes("tr/td[21]");
-                        var hnc_contact_name = hn_target_table.SelectNodes("tr/td[22]");
-                        var hnc_contact_name_1 = hn_target_table.SelectNodes("tr/td[23]");
-                        var hnc_location = hn_target_table.SelectNodes("tr/td[24]");
-                        var hnc_class_location = hn_target_table.SelectNodes("tr/td[25]");
-                        var hnc_class_city_state = hn_target_table.SelectNodes("tr/td[26]");
-                        var hnc_class_county_code = hn_target_table.SelectNodes("tr/td[27]");
-                        var hnc_class_region_code = hn_target_table.SelectNodes("tr/td[28]");
-                        //
-                        for (var i = new k.subtype<int>(1,hnc_course_number.Count); i.val < i.LAST; i.val++)
-                          {
-                          var coned_offering = new ConedOffering();
-                          coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-                          coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-                          coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-                          coned_offering.class_start_date = k.Safe(hnc_class_start_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
-                          coned_offering.class_start_time = k.Safe(hnc_class_start_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-                          coned_offering.class_end_date = k.Safe(hnc_class_end_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
-                          coned_offering.class_end_time = k.Safe(hnc_class_end_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-                          coned_offering.total_ceus = k.Safe(hnc_total_ceus[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.fr_ce_trauma = k.Safe(hnc_fr_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.fr_ce_other = k.Safe(hnc_fr_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.fr_ce_total = k.Safe(hnc_fr_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.emt_ce_trauma = k.Safe(hnc_emt_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.emt_ce_other = k.Safe(hnc_emt_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.emt_ce_total = k.Safe(hnc_emt_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.als_ce_total = k.Safe(hnc_als_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.als_ce_trauma = k.Safe(hnc_als_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.als_ce_other = k.Safe(hnc_als_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.tuition = k.Safe(hnc_tuition[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-                          coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-                          coned_offering.sponsor_number = k.Safe(hnc_sponsor_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-                          coned_offering.instructor_name = k.Safe(hnc_instructor_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME_CSV);
-                          coned_offering.contact_name = k.Safe(hnc_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-                          coned_offering.contact_name_1 = k.Safe(hnc_contact_name_1[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-                          coned_offering.location = k.Safe(hnc_location[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-                          coned_offering.class_location = k.Safe(hnc_class_location[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
-                          coned_offering.class_city_state = k.Safe(hnc_class_city_state[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
-                          coned_offering.class_county_code = k.Safe(hnc_class_county_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-                          coned_offering.class_region_code = k.Safe(hnc_class_region_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-                          //
-                          class_search_unlimited.Add(coned_offering);
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+          var coned_offering = new ConedOffering();
+          coned_offering.approved = "1";
+          coned_offering.start_date_time = k.Safe(hnc_start_date[i.val*2].FirstChild.InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+          coned_offering.course_id = k.Safe(hnc_course_title[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
+          coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+          coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+          coned_offering.fr_med_trauma_hours = k.Safe(hnc_fr_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.fr_other_hours = k.Safe(hnc_fr_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.emt_med_trauma_hours = k.Safe(hnc_emt_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.emt_other_hours = k.Safe(hnc_emt_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.emtp_med_trauma_hours = k.Safe(hnc_emtp_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.emtp_other_hours = k.Safe(hnc_emtp_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.phrn_med_trauma_hours = k.Safe(hnc_phrn_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.phrn_other_hours = k.Safe(hnc_phrn_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+          coned_offering.length = k.Safe(hnc_length[i.val].InnerText.Trim().Replace("&nbsp;hrs.",k.EMPTY),k.safe_hint_type.REAL_NUM);
+          coned_offering.closed = k.Safe(hnc_closed[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+          coned_offering.student_cost = k.Safe(hnc_student_cost[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+          coned_offering.class_id_1 = k.Safe(hnc_class_number[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
+          coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+          coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+          coned_offering.sponsor_id = k.Safe(hnc_sponsor_id[i.val].Attributes["value"].Value,k.safe_hint_type.NUM);
+          coned_offering.region_council_name = k.Safe(hnc_region_council_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+          coned_offering.region_council_num = k.Safe(hnc_region_council_num[i.val].Attributes["value"].Value,k.safe_hint_type.NUM);
+          coned_offering.class_county_name = class_county_name.Replace("Northhampton","Northampton");
+          coned_offering.location = k.Safe(hnc_location[i.val].FirstChild.InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          coned_offering.public_contact_name = k.Safe(hnc_public_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+          coned_offering.public_contact_phone = k.Safe(hnc_public_contact_phone[i.val].InnerText.Trim(),k.safe_hint_type.PHONE_NUM);
+          //coned_offering.public_contact_email = k.Safe(hnc_public_contact_email[i.val].InnerText.Trim(),k.safe_hint_type.EMAIL_ADDRESS);
+          coned_offering.public_contact_website = k.Safe(hnc_public_contact_website[i.val].InnerText.Trim(),k.safe_hint_type.HTTP_TARGET);
+          coned_offering.public_contact_notes = k.Safe(hnc_public_contact_notes[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+          class_search_screen.Add(coned_offering);
           }
         }
-      return class_search_unlimited;
+      return class_search_screen;
+      }
+
+    internal ArrayList ClassSearchTabDelimited()
+      {
+      var class_search_tab_delimited = new ArrayList();
+      var cookie_container = new CookieContainer();
+      //
+      Login(cookie_container);
+      //
+      HttpWebResponse response;
+      if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_ConedClasssearch(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClasssearch() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_ConedClasssearch_Coned_Filedelimited_Searchnow(cookie_container,DateTime.Today.AddMonths(-2).ToString(),out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClasssearch_Coned_Filedelimited_Searchnow() returned FALSE.");
+        }
+      var dn = HtmlDocumentOf(ConsumedStreamOf(response)).DocumentNode;
+      if(!Request_ems_health_state_pa_us_ConedExportClasssearchtxt
+          (
+          cookie_container,
+          k.Safe
+            (
+            dn.SelectSingleNode("/html/body/font[2]/a[1]").Attributes["href"].Value.Replace("Export/ClassSearch_",k.EMPTY).Replace(".txt",k.EMPTY),
+            k.safe_hint_type.NUM
+            ),
+          out response
+          )
+        )
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedExportClasssearchtxt() returned FALSE.");
+        }
+      var stream_reader = new StreamReader(response.GetResponseStream());
+      stream_reader.ReadLine();  //Discard the first line.  It only contains column headings.
+      while (!stream_reader.EndOfStream)
+        {
+        var field_array = stream_reader.ReadLine().Split(new string[] {k.TAB},StringSplitOptions.None);
+        var course_title = k.Safe(field_array[77],k.safe_hint_type.PUNCTUATED);
+        if (course_title.Trim().Length > 0)
+          {
+          var coned_offering = new ConedOffering();
+          coned_offering.class_id_1 = k.Safe(field_array[0],k.safe_hint_type.NUM);
+          coned_offering.class_type = k.Safe(field_array[1],k.safe_hint_type.ALPHA);
+          coned_offering.course_id = k.Safe(field_array[2],k.safe_hint_type.NUM);
+          coned_offering.class_number = k.Safe(field_array[3],k.safe_hint_type.NUM);
+          coned_offering.course_code = k.Safe(field_array[4],k.safe_hint_type.NUM);
+          coned_offering.created_by = k.Safe(field_array[5],k.safe_hint_type.NUM);
+          coned_offering.date_created = k.Safe(field_array[6],k.safe_hint_type.DATE_TIME);
+          coned_offering.last_edited_by = k.Safe(field_array[7],k.safe_hint_type.NUM);
+          coned_offering.date_last_edited = k.Safe(field_array[8],k.safe_hint_type.DATE_TIME);
+          coned_offering.sponsor_id = k.Safe(field_array[9],k.safe_hint_type.NUM);
+          coned_offering.sponsor_number = k.Safe(field_array[10],k.safe_hint_type.HYPHENATED_NUM);
+          coned_offering.training_ins_accred_num = k.Safe(field_array[11],k.safe_hint_type.NUM);
+          coned_offering.document_status = k.Safe(field_array[12],k.safe_hint_type.ALPHA);
+          coned_offering.class_final_status = k.Safe(field_array[13],k.safe_hint_type.ALPHA);
+          coned_offering.course_number = k.Safe(field_array[14],k.safe_hint_type.NUM);
+          coned_offering.location = k.Safe(field_array[15],k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          coned_offering.student_cost = k.Safe(field_array[16],k.safe_hint_type.CURRENCY_USA);
+          coned_offering.tuition_includes = k.Safe(field_array[17],k.safe_hint_type.PUNCTUATED);
+          coned_offering.closed = k.Safe(field_array[18],k.safe_hint_type.ALPHA);
+          coned_offering.estimated_students = k.Safe(field_array[19],k.safe_hint_type.NUM);
+          coned_offering.start_date_time = k.Safe(field_array[20],k.safe_hint_type.DATE_TIME);
+          coned_offering.end_date_time = k.Safe(field_array[21],k.safe_hint_type.DATE_TIME);
+          coned_offering.start_time = k.Safe(field_array[22],k.safe_hint_type.PUNCTUATED);
+          coned_offering.end_time = k.Safe(field_array[23],k.safe_hint_type.PUNCTUATED);
+          coned_offering.other_dates_and_times = k.Safe(field_array[24],k.safe_hint_type.PUNCTUATED);
+          coned_offering.instructors = k.Safe(field_array[25],k.safe_hint_type.PUNCTUATED);
+          coned_offering.instructor_qualifications = k.Safe(field_array[26],k.safe_hint_type.PUNCTUATED);
+          coned_offering.verification_name = k.Safe(field_array[27],k.safe_hint_type.HUMAN_NAME);
+          coned_offering.contact_name = k.Safe(field_array[28],k.safe_hint_type.HUMAN_NAME);
+          coned_offering.contact_address_1 = k.Safe(field_array[29],k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          coned_offering.contact_address_2 = k.Safe(field_array[30],k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          coned_offering.contact_city = k.Safe(field_array[31],k.safe_hint_type.POSTAL_CITY);
+          coned_offering.contact_state = k.Safe(field_array[32],k.safe_hint_type.ALPHA);
+          coned_offering.contact_zip = k.Safe(field_array[33],k.safe_hint_type.NUM);
+          coned_offering.contact_daytime_phone = k.Safe(field_array[34],k.safe_hint_type.PHONE_NUM);
+          coned_offering.contact_evening_phone = k.Safe(field_array[35],k.safe_hint_type.PHONE_NUM);
+          coned_offering.contact_email = k.Safe(field_array[36],k.safe_hint_type.EMAIL_ADDRESS);
+          coned_offering.public_contact_name = k.Safe(field_array[37],k.safe_hint_type.HUMAN_NAME);
+          coned_offering.public_contact_phone = k.Safe(field_array[38],k.safe_hint_type.PHONE_NUM);
+          coned_offering.public_contact_email = k.Safe(field_array[39],k.safe_hint_type.EMAIL_ADDRESS);
+          coned_offering.public_contact_website = k.Safe(field_array[40],k.safe_hint_type.HTTP_TARGET);
+          coned_offering.public_contact_notes = k.Safe(field_array[41],k.safe_hint_type.PUNCTUATED);
+          coned_offering.date_submitted_to_region = k.Safe(field_array[42],k.safe_hint_type.DATE_TIME);
+          coned_offering.date_received_by_region = k.Safe(field_array[43],k.safe_hint_type.DATE_TIME);
+          coned_offering.date_sponsor_notified = k.Safe(field_array[44],k.safe_hint_type.DATE_TIME);
+          coned_offering.date_registration_sent_to_state = k.Safe(field_array[45],k.safe_hint_type.DATE_TIME);
+          coned_offering.date_cards_sent_to_sponsor = k.Safe(field_array[46],k.safe_hint_type.DATE_TIME);
+          coned_offering.date_materials_to_be_returned = k.Safe(field_array[47],k.safe_hint_type.DATE_TIME);
+          coned_offering.approved = k.Safe(field_array[48],k.safe_hint_type.NUM);
+          coned_offering.region_comments = k.Safe(field_array[49],k.safe_hint_type.PUNCTUATED);
+          coned_offering.region_council_num = k.Safe(field_array[50],k.safe_hint_type.NUM);
+          coned_offering.class_county_code = k.Safe(field_array[51],k.safe_hint_type.NUM);
+          coned_offering.total_class_hours = k.Safe(field_array[52],k.safe_hint_type.REAL_NUM);
+          coned_offering.location_address_1 = k.Safe(field_array[53],k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          coned_offering.location_address_2 = k.Safe(field_array[54],k.safe_hint_type.POSTAL_STREET_ADDRESS);
+          coned_offering.location_city = k.Safe(field_array[55],k.safe_hint_type.POSTAL_CITY);
+          coned_offering.location_state = k.Safe(field_array[56],k.safe_hint_type.ALPHA);
+          coned_offering.location_zip = k.Safe(field_array[57],k.safe_hint_type.NUM);
+          coned_offering.location_zip_plus_4 = k.Safe(field_array[58],k.safe_hint_type.NUM);
+          coned_offering.location_phone = k.Safe(field_array[59],k.safe_hint_type.PHONE_NUM);
+          coned_offering.location_email = k.Safe(field_array[60],k.safe_hint_type.EMAIL_ADDRESS);
+          coned_offering.location_of_registration = k.Safe(field_array[61],k.safe_hint_type.PUNCTUATED);
+          coned_offering.primary_text = k.Safe(field_array[62],k.safe_hint_type.PUNCTUATED);
+          coned_offering.additional_texts = k.Safe(field_array[63],k.safe_hint_type.NUM);
+          coned_offering.final_registration_date = k.Safe(field_array[64],k.safe_hint_type.DATE_TIME);
+          coned_offering.offered_as_college_credit = k.Safe(field_array[65],k.safe_hint_type.ALPHA);
+          coned_offering.practical_exam_date = k.Safe(field_array[66],k.safe_hint_type.DATE_TIME);
+          coned_offering.written_exam_date = k.Safe(field_array[67],k.safe_hint_type.DATE_TIME);
+          coned_offering.disapproval_reason_id = k.Safe(field_array[68],k.safe_hint_type.NUM);
+          coned_offering.date_final_paperwork_received = k.Safe(field_array[69],k.safe_hint_type.DATE_TIME);
+          coned_offering.signed_hard_copy = k.Safe(field_array[70],k.safe_hint_type.ALPHA);
+          coned_offering.created_by_first_name = k.Safe(field_array[71],k.safe_hint_type.HUMAN_NAME);
+          coned_offering.created_by_last_name = k.Safe(field_array[72],k.safe_hint_type.HUMAN_NAME);
+          coned_offering.class_disapproval_reason_description = k.Safe(field_array[73],k.safe_hint_type.PUNCTUATED);
+          coned_offering.class_final_status_description = k.Safe(field_array[74],k.safe_hint_type.ALPHA_WORDS);
+          coned_offering.sponsor_name = k.Safe(field_array[75],k.safe_hint_type.ORG_NAME);
+          coned_offering.courses_course_number = k.Safe(field_array[76],k.safe_hint_type.NUM);
+          coned_offering.course_title = course_title;
+          coned_offering.cert_course_code = k.Safe(field_array[78],k.safe_hint_type.NUM);
+          coned_offering.cert_course_description = k.Safe(field_array[79],k.safe_hint_type.NUM);
+          coned_offering.class_id_2 = k.Safe(field_array[80],k.safe_hint_type.NUM);
+          class_search_tab_delimited.Add(coned_offering);
+          }
+        }
+      stream_reader.Close();
+      return class_search_tab_delimited;
       }
 
     internal class TeachingEntity

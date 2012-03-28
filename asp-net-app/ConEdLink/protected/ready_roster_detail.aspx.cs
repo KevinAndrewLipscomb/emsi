@@ -26,9 +26,9 @@ namespace ready_roster_detail
     public string coned_offering_id;
     public TClass_msg_protected.ready_roster_detail incoming;
     public string lcds_content_xml;
+    public k.decimal_nonnegative length;
     public k.int_nonnegative num_attendees;
     public string sort_order;
-    public k.decimal_nonnegative total_class_hours;
     }
 
   public partial class TWebForm_ready_roster_detail: ki_web_ui.page_class
@@ -237,7 +237,7 @@ namespace ready_roster_detail
         p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
         //
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
-        p.total_class_hours = p.biz_coned_offerings.TotalClassHoursOf(p.incoming.summary);
+        p.length = p.biz_coned_offerings.LengthOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -260,7 +260,7 @@ namespace ready_roster_detail
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
         Literal_start.Text = p.biz_coned_offerings.StartOf(p.incoming.summary);
         Literal_end.Text = p.biz_coned_offerings.EndOf(p.incoming.summary);
-        Literal_total_class_hours.Text = p.total_class_hours.val.ToString();
+        Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();
         }

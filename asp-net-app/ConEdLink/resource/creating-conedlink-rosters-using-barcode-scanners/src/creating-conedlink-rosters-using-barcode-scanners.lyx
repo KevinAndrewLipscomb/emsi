@@ -276,8 +276,9 @@ You are using a barcode scanner that runs the Windows Mobile operating system,
 
 \begin_layout Itemize
 If you are using (as recommended) an option that requires a PC, the PC runs
- the Microsoft Windows operating system, and that Windows Mobile Device
- Center and My Mobiler are installed.
+ the Microsoft Windows operating system, and that ActiveSync (on Windows
+ XP) or Windows Mobile Device Center (on Windows Vista or higher) and My
+ Mobiler are installed.
  My Mobiler is free software that allows you to manipulate a cradle-connected
  barcode scanner via your PC.
  My Mobiler is available at:

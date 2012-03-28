@@ -130,15 +130,6 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_ceus;
         
         /// <summary>
-        /// Literal_total_ce_hours control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_total_ce_hours;
-        
-        /// <summary>
         /// Literal_num_med_trauma_hours control.
         /// </summary>
         /// <remarks>
@@ -146,6 +137,15 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_num_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_num_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_num_other_hours;
         
         /// <summary>
         /// TableRow_instructor_hours control.

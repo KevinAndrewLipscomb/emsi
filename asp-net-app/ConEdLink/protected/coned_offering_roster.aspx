@@ -105,8 +105,8 @@
                               <td nowrap="nowrap" valign="top"><b>End:</b></td>
                               <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_end" runat="server"></asp:Literal></td>
                               <td>&nbsp;</td>
-                              <td nowrap="nowrap" valign="top"><b>Hours:</b></td>
-                              <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_total_class_hours" runat="server"></asp:Literal></td>
+                              <td nowrap="nowrap" valign="top"><b>Length:</b></td>
+                              <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_length" runat="server"></asp:Literal></td>
                             </tr>
                             <tr>
                               <td nowrap="nowrap" valign="top"><b>Location:</b></td>
