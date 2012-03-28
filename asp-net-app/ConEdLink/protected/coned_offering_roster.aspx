@@ -135,7 +135,7 @@
                                       <td align="center"><asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" /></td>
                                       <td>&nbsp;&nbsp;&nbsp;</td>
                                       <td>
-                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and total Hours, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
+                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
                                       </td>
                                     </tr>
                                   </table>
