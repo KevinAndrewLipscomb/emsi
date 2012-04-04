@@ -90,10 +90,10 @@ namespace Class_biz_practitioners
       {
       db_practitioners.MarkAllStale();
       //
-      var context = new Class_ss_emsams.ActivePractitionersContext();
+      var context = new Class_ss_emsams.DetailedCurrentPractitionersContext();
       do
         {
-        db_practitioners.ImportLatestFromEmsrs(ss_emsams.ActivePractitioners(context));
+        db_practitioners.ImportLatestFromEmsrs(ss_emsams.DetailedCurrentPractitioners(context));
         }
       while (context.disposition.val == 0);
       //
