@@ -299,7 +299,7 @@ namespace coned_offering_roster
       {
       var args_value = k.Safe(args.Value.Replace("#.#",k.EMPTY),k.safe_hint_type.REAL_NUM);
       decimal instructor_hours;
-      args.IsValid = (args_value.Length == 0) || (decimal.TryParse(args_value,out instructor_hours) && (instructor_hours > 0) && (instructor_hours <= p.length.val));
+      args.IsValid = (args_value.Length == 0) || (decimal.TryParse(args_value,out instructor_hours) && (instructor_hours > 0) && (instructor_hours <= p.biz_coned_offerings.FullHourDurationOf(p.incoming.summary)));
       }
 
     protected void DataGrid_control_CancelCommand(object source, DataGridCommandEventArgs e)
