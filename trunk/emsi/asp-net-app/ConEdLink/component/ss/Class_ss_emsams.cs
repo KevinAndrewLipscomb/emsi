@@ -328,6 +328,143 @@ namespace ConEdLink.component.ss
 	    return true;
     }
 
+    private bool Request_ems_health_state_pa_us_emsregPractitionerSearch
+      (
+      CookieContainer cookie_container,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/emsreg/Practitioner/Search.aspx");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/emsreg/practitioner/home.aspx";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=btnrbmjo5ihgflf00aqbxlyl; loginid=rekaufman; EMSREG=B1BF1B5210B9C7326C2C0D2B2C566A56A406A7E2CD432CC141C424A6E197A883CF957FE0B233FC685E6150505D2FC3941597E7605CAAA778960081568FB39AA636C60BD0390BE888BBC8098B1A5108E444BA03748AC45D01E5EC1A698A9C3784D6E373BCA46BDC8421DD7E6F4A9CFAAFE892663C71D1707412D958B0CBD158AA2BF625B630BAD5F562BA2D648F07A26220AC497369FDACCC6AFD9B566C2F8DC26C938E9467FC39C409C32FC420F6A0E7250F1F69E2C78A89827B84FACCB5E398D376C7C929D4726DFB8392D2A5D7825CB19C0E27D0A66C62DE7DB0698317218CB9C4AC63A6E29AF370FE9AA10F5D260C");
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
+    private bool Request_ems_health_state_pa_us_EmsregPractitionerSearchresults_1000recordsperpage
+      (
+      CookieContainer cookie_container,
+      string view_state,
+      string event_validation,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/emsreg/Practitioner/SearchResults.aspx");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/emsreg/Practitioner/Search.aspx";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.ContentType = "application/x-www-form-urlencoded";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=btnrbmjo5ihgflf00aqbxlyl; loginid=rekaufman; EMSREG=C6E92B9D3CBD2E228B7028CD94B52A6436B9E5EC4EFAF747CDBED5FA2E8498C03A68B334239783CF452EC81BC18E4987FCB5AB36E5539428ACA5C5156A8DB2199E42BA163632E976E84E6A34F9A987D68F33C5C40FE0C5900C8A97433945851B50C07A4AC3BC02B95E6F0ADDD44E28548E54482E26C54088CBFC8CB0045301A6668D7084091BC0A497532FC06C76FC1A568D9345F9D683AD4AE4355DD8ADEB1C9EA68A9260D3130CAA52934632D2C344F2B39A4F3C8717947D60A794A79CE1FA271EC4C1EB452334D806FA38E850F8C9E6E36A7BA3F9B407DE31748591C88FE412B31C2677ED67676599135B45CA6297");
+
+		    request.Method = "POST";
+
+		    string postString = @"__EVENTTARGET=_ctl0%24_ctl0%24SessionLinkBar%24Content%24ddlPageSize&__EVENTARGUMENT=&__LASTFOCUS=&__VIEWSTATE=" + HttpUtility.UrlEncode(view_state) + "&__EVENTVALIDATION=" + HttpUtility.UrlEncode(event_validation) + "&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlLabelOutputFormat=Avery5161&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AhdnURL=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlPageSize=1000";
+		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
+		    request.ContentLength = postBytes.Length;
+		    Stream stream = request.GetRequestStream();
+		    stream.Write(postBytes, 0, postBytes.Length);
+		    stream.Close();
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
+    private bool Request_ems_health_state_pa_us_EmsregPractitionerSearchresults_Next
+      (
+      CookieContainer cookie_container,
+      string view_state,
+      string event_validation,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/emsreg/Practitioner/SearchResults.aspx");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/emsreg/Practitioner/SearchResults.aspx";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.ContentType = "application/x-www-form-urlencoded";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=uba1m11szlslr032q0ezipu5; loginid=rekaufman; EMSREG=0783FC16E1C8604CE576855A7756621CDAD8E0D16C47B10DB2325A72EEDE0DF61096302540CB48EB863D9ED97C2E645F3E733D2F7CB8A16237735A0753B2102818AAFA65A5FCF027D2982B7AE52AE50E77A4A2E29F7174F45E2CC76A2D6C805925AA473DC68EC2DD8097E738FE8CE4C2EF3F60A6E0B1CEEE7303940E6C9D0D4C9B957BD046F5D0920A8860DDC2CE2876C92A803481861CA47A9FFCDA474C154E47C6E586E88301D61CDF9E1E1457A4DB64FDA186B64F08424C6871BF5B7FD7B445AB75BCC29D5573B2FCC4BE5E01C5BDAD4A780A472BCCA8F8F007F8819E3717EE22A53D73157A089D631B9B44D81E5E");
+
+		    request.Method = "POST";
+
+		    string postString = @"__EVENTTARGET=_ctl0%24_ctl0%24SessionLinkBar%24Content%24lbtnNext&__EVENTARGUMENT=&__LASTFOCUS=&__VIEWSTATE=" + HttpUtility.UrlEncode(view_state) + "&__EVENTVALIDATION=" + HttpUtility.UrlEncode(event_validation) + "&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlLabelOutputFormat=Avery5161&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AhdnURL=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlPageSize=1000";
+		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
+		    request.ContentLength = postBytes.Length;
+		    Stream stream = request.GetRequestStream();
+		    stream.Write(postBytes, 0, postBytes.Length);
+		    stream.Close();
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
     private bool Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch
       (
       CookieContainer cookie_container,
@@ -348,6 +485,56 @@ namespace ConEdLink.component.ss
 		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
 		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
 		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=gra35ekc4fbgr4yn5umh2oii; loginid=Rekaufman; EMSREG=A91AB0CB7AB6A388CBC1664AEFB890AA8816CBEF1748B3D6D49C1D92F6988868DA7ACAE842B48004CF52E8A9A91CD3A0582CBFDF8C87D1BAEE31B4894F684484455FE1FBA0CFDAA855AA3117CF2CBA903CAABFCE2759417082B51258F468F133082D8EE27AA3F45534ABAE3E553C522DF79BF19ED36EEC805F45A016EBB9B72FF0144E83DF6B6A8AF60F63FD9B0012744A1E62C36164DA09E965405523E79B0A0ABEDEAAA2267E88F86F7D8BCE167CC2381F138948BC25B53589445951D7CB344A95F6DE4A9B9793EC89779E5C70E076F5957E0DF3EFAF9BB0E34828207FCA9E449E0FFED42543F03E198D16131C9B67");
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
+    private bool Request_ems_health_state_pa_us_EmsregPractitionerSearch_PractitionerstatusActiveSuspended_Submit
+      (
+      CookieContainer cookie_container,
+      string view_state,
+      string event_validation,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/emsreg/Practitioner/Search.aspx");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/emsreg/Practitioner/Search.aspx";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.ContentType = "application/x-www-form-urlencoded";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=btnrbmjo5ihgflf00aqbxlyl; loginid=rekaufman; EMSREG=B1BF1B5210B9C7326C2C0D2B2C566A56A406A7E2CD432CC141C424A6E197A883CF957FE0B233FC685E6150505D2FC3941597E7605CAAA778960081568FB39AA636C60BD0390BE888BBC8098B1A5108E444BA03748AC45D01E5EC1A698A9C3784D6E373BCA46BDC8421DD7E6F4A9CFAAFE892663C71D1707412D958B0CBD158AA2BF625B630BAD5F562BA2D648F07A26220AC497369FDACCC6AFD9B566C2F8DC26C938E9467FC39C409C32FC420F6A0E7250F1F69E2C78A89827B84FACCB5E398D376C7C929D4726DFB8392D2A5D7825CB19C0E27D0A66C62DE7DB0698317218CB9C4AC63A6E29AF370FE9AA10F5D260C");
+
+		    request.Method = "POST";
+
+		    string postString = @"__EVENTTARGET=&__EVENTARGUMENT=&__LASTFOCUS=&__VIEWSTATE=" + HttpUtility.UrlEncode(view_state) + "&__EVENTVALIDATION=" + HttpUtility.UrlEncode(event_validation) + "&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxLastName=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxFirstName=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlGender=0&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlBirthdateOperator=%3E&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxBirthDateStart=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxBirthDateEnd=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxCertificationNumber=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AlbxPractitionerStatus=1&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AlbxPractitionerStatus=4&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlCertificationDateOperator=%3E&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxCertificationDate=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlExpirationDateOperator=%3E&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AtbxExpirationDate=&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AddlRegion=-1&_ctl0%3A_ctl0%3ASessionLinkBar%3AContent%3AbtnSubmit=Submit";
+		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
+		    request.ContentLength = postBytes.Length;
+		    Stream stream = request.GetRequestStream();
+		    stream.Write(postBytes, 0, postBytes.Length);
+		    stream.Close();
 
 		    response = (HttpWebResponse)request.GetResponse();
 	    }
@@ -1776,118 +1963,122 @@ namespace ConEdLink.component.ss
       return active_practitioners;
       }
 
-    internal ArrayList DetailedActivePractitioners()
+    internal class DetailedPractitioner
       {
-      var available_coned_classes_list = new ArrayList();
-      var cookie_container = new CookieContainer();
+      internal string certification_number = k.EMPTY;
+      internal string name = k.EMPTY;
+      internal string level = k.EMPTY;
+      internal string issue_date = k.EMPTY;
+      internal string expiration_date = k.EMPTY;
+      internal string region = k.EMPTY;
+      internal string county = k.EMPTY;
+      internal string birth_date = k.EMPTY;
+      internal string gender = k.EMPTY;
+      internal string status = k.EMPTY;
+      }
+    internal class DetailedCurrentPractitionersContext
+      {
+      internal CookieContainer cookie_container = null;
+      internal k.int_sign_range disposition = null;
+      internal string event_validation = k.EMPTY;
+      internal string view_state = k.EMPTY;
       //
-      Login(cookie_container);
-      //
+      public DetailedCurrentPractitionersContext()
+        {
+        cookie_container = new CookieContainer();
+        disposition = new k.int_sign_range();
+        }
+      }
+    internal ArrayList DetailedCurrentPractitioners
+      (
+      DetailedCurrentPractitionersContext context
+      )
+      {
+      var detailed_current_practitioners = new ArrayList();
+      HtmlDocument html_document;
       HttpWebResponse response;
-      if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(cookie_container,out response))
-        {
-        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg() returned FALSE.");
-        }
-      if (!Request_ems_health_state_pa_us_EmsregDefault(cookie_container,out response))
-        {
-        throw new Exception("Request_ems_health_state_pa_us_EmsregDefault() returned FALSE.");
-        }
-      if (!Request_ems_health_state_pa_us_EmsregPractitionerHome(cookie_container,out response))
-        {
-        throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerHome() returned FALSE.");
-        }
-      if (!Request_ems_health_state_pa_us_EmsregReportsReportlist(cookie_container,out response))
-        {
-        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsReportlist() returned FALSE.");
-        }
-      if (!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch(cookie_container,out response))
-        {
-        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch() returned FALSE.");
-        }
-      var html_document = HtmlDocumentOf(ConsumedStreamOf(response));
-      if(!Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_From
-          (
-          cookie_container,
-          ViewstateOf(html_document),
-          EventValidationOf(html_document),
-          DateTime.Today.AddMonths(-2).ToString(),
-          out response
-          )
-        )
-        {
-        throw new Exception("Request_ems_health_state_pa_us_EmsregReportsAvailablececlasseslistsearch_FromToFormatGenerateReport() returned FALSE.");
-        }
-      var stream_string = ConsumedStreamOf(response).Replace("&nbsp;",k.EMPTY);
-      var hn_target_table = HtmlDocumentOf(stream_string).DocumentNode.SelectSingleNode("table");
       //
-      var hnc_course_number = hn_target_table.SelectNodes("tr/td[1]");
-      var hnc_course_title = hn_target_table.SelectNodes("tr/td[2]");
-      var hnc_class_number = hn_target_table.SelectNodes("tr/td[3]");
-      var hnc_class_start_date = hn_target_table.SelectNodes("tr/td[4]");
-      var hnc_class_start_time = hn_target_table.SelectNodes("tr/td[5]");
-      var hnc_class_end_date = hn_target_table.SelectNodes("tr/td[6]");
-      var hnc_class_end_time = hn_target_table.SelectNodes("tr/td[7]");
-      var hnc_total_ceus = hn_target_table.SelectNodes("tr/td[8]");
-      var hnc_fr_ce_trauma = hn_target_table.SelectNodes("tr/td[9]");
-      var hnc_fr_ce_other = hn_target_table.SelectNodes("tr/td[10]");
-      var hnc_fr_ce_total = hn_target_table.SelectNodes("tr/td[11]");
-      var hnc_emt_ce_trauma = hn_target_table.SelectNodes("tr/td[12]");
-      var hnc_emt_ce_other = hn_target_table.SelectNodes("tr/td[13]");
-      var hnc_emt_ce_total = hn_target_table.SelectNodes("tr/td[14]");
-      //
-      // Values that EMSRS reports in the following columns are unreliable.  They appear to be double the appropriate values.
-      //
-      //var hnc_als_ce_total = hn_target_table.SelectNodes("tr/td[15]");
-      //var hnc_als_ce_other = hn_target_table.SelectNodes("tr/td[16]");
-      //var hnc_als_ce_trauma = hn_target_table.SelectNodes("tr/td[17]");
-      //
-      var hnc_tuition = hn_target_table.SelectNodes("tr/td[18]");
-      var hnc_sponsor_name = hn_target_table.SelectNodes("tr/td[19]");
-      var hnc_sponsor_number = hn_target_table.SelectNodes("tr/td[20]");
-      var hnc_instructor_name = hn_target_table.SelectNodes("tr/td[21]");
-      var hnc_contact_name = hn_target_table.SelectNodes("tr/td[22]");
-      var hnc_contact_name_1 = hn_target_table.SelectNodes("tr/td[23]");
-      var hnc_location = hn_target_table.SelectNodes("tr/td[24]");
-      var hnc_class_location = hn_target_table.SelectNodes("tr/td[25]");
-      var hnc_class_city_state = hn_target_table.SelectNodes("tr/td[26]");
-      var hnc_class_county_code = hn_target_table.SelectNodes("tr/td[27]");
-      var hnc_class_region_code = hn_target_table.SelectNodes("tr/td[28]");
-      //
-      for (var i = new k.subtype<int>(1,hnc_course_number.Count); i.val < i.LAST; i.val++)
+      if (context.disposition.val == -1)
         {
-        var coned_offering = new ConedOffering();
-        coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-        coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-        coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-        coned_offering.class_start_date = k.Safe(hnc_class_start_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
-        coned_offering.class_start_time = k.Safe(hnc_class_start_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-        coned_offering.class_end_date = k.Safe(hnc_class_end_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
-        coned_offering.class_end_time = k.Safe(hnc_class_end_time[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-        coned_offering.total_ceus = k.Safe(hnc_total_ceus[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.fr_ce_trauma = k.Safe(hnc_fr_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.fr_ce_other = k.Safe(hnc_fr_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.fr_ce_total = k.Safe(hnc_fr_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.emt_ce_trauma = k.Safe(hnc_emt_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.emt_ce_other = k.Safe(hnc_emt_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.emt_ce_total = k.Safe(hnc_emt_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        //coned_offering.als_ce_total = k.Safe(hnc_als_ce_total[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        //coned_offering.als_ce_trauma = k.Safe(hnc_als_ce_trauma[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        //coned_offering.als_ce_other = k.Safe(hnc_als_ce_other[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.tuition = k.Safe(hnc_tuition[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-        coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-        coned_offering.sponsor_number = k.Safe(hnc_sponsor_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-        coned_offering.instructor_name = k.Safe(hnc_instructor_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME_CSV);
-        coned_offering.contact_name = k.Safe(hnc_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-        coned_offering.contact_name_1 = k.Safe(hnc_contact_name_1[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-        coned_offering.location = k.Safe(hnc_location[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-        coned_offering.class_location = k.Safe(hnc_class_location[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
-        coned_offering.class_city_state = k.Safe(hnc_class_city_state[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
-        coned_offering.class_county_code = k.Safe(hnc_class_county_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-        coned_offering.class_region_code = k.Safe(hnc_class_region_code[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        Login(context.cookie_container);
         //
-        available_coned_classes_list.Add(coned_offering);
+        if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(context.cookie_container,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg() returned FALSE.");
+          }
+        if (!Request_ems_health_state_pa_us_EmsregDefault(context.cookie_container,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_EmsregDefault() returned FALSE.");
+          }
+        if (!Request_ems_health_state_pa_us_EmsregPractitionerHome(context.cookie_container,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerHome() returned FALSE.");
+          }
+        if (!Request_ems_health_state_pa_us_emsregPractitionerSearch(context.cookie_container,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_emsregPractitionerSearch() returned FALSE.");
+          }
+        html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+        context.view_state = ViewstateOf(html_document);
+        context.event_validation = EventValidationOf(html_document);
+        if (!Request_ems_health_state_pa_us_EmsregPractitionerSearch_PractitionerstatusActiveSuspended_Submit(context.cookie_container,context.view_state,context.event_validation,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerSearch_PractitionerstatusActiveSuspended_Submit() returned FALSE.");
+          }
+        html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+        context.view_state = ViewstateOf(html_document);
+        context.event_validation = EventValidationOf(html_document);
+        if (!Request_ems_health_state_pa_us_EmsregPractitionerSearchresults_1000recordsperpage(context.cookie_container,context.view_state,context.event_validation,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerSearchresults_1000recordsperpage() returned FALSE.");
+          }
         }
-      return available_coned_classes_list;
+      else
+        {
+        if (!Request_ems_health_state_pa_us_EmsregPractitionerSearchresults_Next(context.cookie_container,context.view_state,context.event_validation,out response))
+          {
+          throw new Exception("Request_ems_health_state_pa_us_EmsregPractitionerSearchresults_Next() returned FALSE.");
+          }
+        }
+      html_document = HtmlDocumentOf(ConsumedStreamOf(response));
+      //
+      // The initial XPaths are determined by visiting the page in IE9, selecting "F12 developer tools", setting Document Mode to IE9 Standards, navigating to the node of interest, and disregarding any form or tbody tags.
+      //
+      var hn_target_table = html_document.GetElementbyId("_ctl0__ctl0_SessionLinkBar_Content_dgSearchResults"); 
+      //
+      var hnc_certification_number = hn_target_table.SelectNodes("tr/td[1]/a");
+      var hnc_name = hn_target_table.SelectNodes("tr/td[2]");
+      var hnc_level = hn_target_table.SelectNodes("tr/td[3]");
+      var hnc_issue_date = hn_target_table.SelectNodes("tr/td[4]");
+      var hnc_expiration_date = hn_target_table.SelectNodes("tr/td[5]");
+      var hnc_region = hn_target_table.SelectNodes("tr/td[6]");
+      var hnc_county = hn_target_table.SelectNodes("tr/td[7]");
+      var hnc_birth_date = hn_target_table.SelectNodes("tr/td[8]");
+      var hnc_gender = hn_target_table.SelectNodes("tr/td[9]");
+      var hnc_status = hn_target_table.SelectNodes("tr/td[10]");
+      //
+      for (var i = new k.subtype<int>(1,hnc_certification_number.Count); i.val < i.LAST; i.val++)  //limits take into account non-data header & page index rows
+        {
+        var detailed_practitioner = new DetailedPractitioner();
+        detailed_practitioner.certification_number = k.Safe(hnc_certification_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        detailed_practitioner.name = k.Safe(hnc_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME_CSV);
+        detailed_practitioner.level = k.Safe(hnc_level[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+        detailed_practitioner.issue_date = k.Safe(hnc_issue_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        detailed_practitioner.expiration_date = k.Safe(hnc_expiration_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        detailed_practitioner.region = k.Safe(hnc_region[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        detailed_practitioner.county = k.Safe(hnc_county[i.val].InnerText.Trim(),k.safe_hint_type.POSTAL_CITY);
+        detailed_practitioner.birth_date = k.Safe(hnc_birth_date[i.val].InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        detailed_practitioner.gender = k.Safe(hnc_gender[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+        detailed_practitioner.status = k.Safe(hnc_status[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+        detailed_current_practitioners.Add(detailed_practitioner);
+        }
+      //
+      context.view_state = ViewstateOf(html_document);
+      context.event_validation = EventValidationOf(html_document);
+      //
+      var hn_Next = html_document.GetElementbyId("_ctl0__ctl0_SessionLinkBar_Content_lbtnNext");
+      context.disposition.val = (hn_Next.Attributes["disabled"] == null ? 0 : 1);
+      return detailed_current_practitioners;
       }
 
     }
