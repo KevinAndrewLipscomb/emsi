@@ -527,6 +527,7 @@
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
+    <Content Include="noninteractive\template\notification\roster_due.txt" />
     <Content Include="protected\coned_offering_detail.aspx" />
     <Content Include="protected\coned_offering_roster.aspx" />
     <Content Include="protected\coned_sponsor_detail.aspx" />

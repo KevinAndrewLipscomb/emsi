@@ -1,13 +1,13 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
 using Class_biz_notifications;
-using Class_db_coned_offerings;
 using Class_db_coned_offering_statuses;
+using Class_db_coned_offerings;
 using Class_db_practitioners;
+using ConEdLink.component.ss;
 using kix;
 using System;
-using System.Collections;
-using ConEdLink.component.ss;
+using System.Collections.Generic;
 
 namespace Class_biz_coned_offerings
   {
@@ -191,6 +191,25 @@ namespace Class_biz_coned_offerings
     internal string FrOtherHoursOf(object summary)
       {
       return db_coned_offerings.FrOtherHoursOf(summary);
+      }
+
+    internal decimal FullHourDurationOf(object summary)
+      {
+      var fr_med_trauma_hours_string = FrMedTraumaHoursOf(summary);
+      var fr_other_hours_string = FrOtherHoursOf(summary);
+      var emt_med_trauma_hours_string = EmtMedTraumaHoursOf(summary);
+      var emt_other_hours_string = EmtOtherHoursOf(summary);
+      var emtp_med_trauma_hours_string = EmtpMedTraumaHoursOf(summary);
+      var emtp_other_hours_string = EmtpOtherHoursOf(summary);
+      var phrn_med_trauma_hours_string = PhrnMedTraumaHoursOf(summary);
+      var phrn_other_hours_string = PhrnOtherHoursOf(summary);
+      //
+      var fr_total_hours = (fr_med_trauma_hours_string.Length > 0 ? decimal.Parse(fr_med_trauma_hours_string) : 0) + (fr_other_hours_string.Length > 0 ? decimal.Parse(fr_other_hours_string) : 0);
+      var emt_total_hours = (emt_med_trauma_hours_string.Length > 0 ? decimal.Parse(emt_med_trauma_hours_string) : 0) + (emt_other_hours_string.Length > 0 ? decimal.Parse(emt_other_hours_string) : 0);
+      var emtp_total_hours = (emtp_med_trauma_hours_string.Length > 0 ? decimal.Parse(emtp_med_trauma_hours_string) : 0) + (emtp_other_hours_string.Length > 0 ? decimal.Parse(emtp_other_hours_string) : 0);
+      var phrn_total_hours = (phrn_med_trauma_hours_string.Length > 0 ? decimal.Parse(phrn_med_trauma_hours_string) : 0) + (phrn_other_hours_string.Length > 0 ? decimal.Parse(phrn_other_hours_string) : 0);
+      //
+      return Math.Max(Math.Max(Math.Max(fr_total_hours,emt_total_hours),emtp_total_hours),phrn_total_hours);
       }
 
     public bool Get
@@ -396,23 +415,17 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.LocationOf(summary);
       }
 
-    internal decimal FullHourDurationOf(object summary)
+    internal void MakeRosterDueNotifications()
       {
-      var fr_med_trauma_hours_string = FrMedTraumaHoursOf(summary);
-      var fr_other_hours_string = FrOtherHoursOf(summary);
-      var emt_med_trauma_hours_string = EmtMedTraumaHoursOf(summary);
-      var emt_other_hours_string = EmtOtherHoursOf(summary);
-      var emtp_med_trauma_hours_string = EmtpMedTraumaHoursOf(summary);
-      var emtp_other_hours_string = EmtpOtherHoursOf(summary);
-      var phrn_med_trauma_hours_string = PhrnMedTraumaHoursOf(summary);
-      var phrn_other_hours_string = PhrnOtherHoursOf(summary);
-      //
-      var fr_total_hours = (fr_med_trauma_hours_string.Length > 0 ? decimal.Parse(fr_med_trauma_hours_string) : 0) + (fr_other_hours_string.Length > 0 ? decimal.Parse(fr_other_hours_string) : 0);
-      var emt_total_hours = (emt_med_trauma_hours_string.Length > 0 ? decimal.Parse(emt_med_trauma_hours_string) : 0) + (emt_other_hours_string.Length > 0 ? decimal.Parse(emt_other_hours_string) : 0);
-      var emtp_total_hours = (emtp_med_trauma_hours_string.Length > 0 ? decimal.Parse(emtp_med_trauma_hours_string) : 0) + (emtp_other_hours_string.Length > 0 ? decimal.Parse(emtp_other_hours_string) : 0);
-      var phrn_total_hours = (phrn_med_trauma_hours_string.Length > 0 ? decimal.Parse(phrn_med_trauma_hours_string) : 0) + (phrn_other_hours_string.Length > 0 ? decimal.Parse(phrn_other_hours_string) : 0);
-      //
-      return Math.Max(Math.Max(Math.Max(fr_total_hours,emt_total_hours),emtp_total_hours),phrn_total_hours);
+      Queue<TClass_db_coned_offerings.RosterDue> roster_due_q;
+      foreach (int days_after in new int[]{1,4,7,9,10})
+        {
+        roster_due_q = db_coned_offerings.RosterDueQueue(new k.int_nonnegative(days_after));
+        while (roster_due_q.Count > 0)
+          {
+          biz_notifications.IssueForRosterDue(roster_due_q.Dequeue());
+          }
+        }
       }
 
     internal string PhrnMedTraumaHoursOf(object summary)
