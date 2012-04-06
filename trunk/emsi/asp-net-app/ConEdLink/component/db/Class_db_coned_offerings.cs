@@ -8,6 +8,7 @@ using kix;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
 namespace Class_db_coned_offerings
@@ -749,6 +750,73 @@ namespace Class_db_coned_offerings
     internal string PublicContactEmailOf(object summary)
       {
       return (summary as coned_offering_summary).public_contact_email;
+      }
+
+    internal struct RosterDue
+      {
+      internal k.int_nonnegative days_after;
+      internal string class_number;
+      internal string sponsor_number;
+      internal string location;
+      internal string start_date_time;
+      internal string start_time;
+      internal string end_date_time;
+      internal string end_time;
+      internal string public_contact_email;
+      internal string county;
+      internal string sponsor_name;
+      internal string course_title;
+      }
+    internal Queue<RosterDue> RosterDueQueue(k.int_nonnegative days_after)
+      {
+      var roster_due_q = new Queue<RosterDue>();
+      Open();
+      var dr = new MySqlCommand
+        (
+        "SELECT class_number"
+        + " , sponsor_number"
+        + " , location"
+        + " , DATE_FORMAT(start_date_time,'%a %d %b %Y') as start_date_time"
+        + " , start_time"
+        + " , DATE_FORMAT(end_date_time,'%a %d %b %Y') as end_date_time"
+        + " , end_time"
+        + " , public_contact_email"
+        + " , county_code_name_map.name as county"
+        + " , sponsor_name"
+        + " , course_title"
+        + " FROM coned_offering"
+        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
+        +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
+        +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        + " where region_code_name_map.be_conedlink_subscriber"
+        +   " and coned_offering_status.description = 'NEEDS_CONED_SPONSOR_FINALIZATION'"
+        +   " and end_date_time + '" + days_after.val + "' = CURDATE()",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        roster_due_q.Enqueue
+          (
+          new RosterDue
+            {
+            days_after = days_after,
+            class_number = dr["class_number"].ToString(),
+            sponsor_number = dr["sponsor_number"].ToString(),
+            location = dr["location"].ToString(),
+            start_date_time = dr["start_date_time"].ToString(),
+            start_time = dr["start_time"].ToString(),
+            end_date_time = dr["end_date_time"].ToString(),
+            end_time = dr["end_time"].ToString(),
+            public_contact_email = dr["public_contact_email"].ToString(),
+            county = dr["county"].ToString(),
+            sponsor_name = dr["sponsor_name"].ToString(),
+            course_title = dr["course_title"].ToString()
+            }
+          );
+        }
+      Close();
+      return roster_due_q;
       }
 
     public void Set

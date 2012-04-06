@@ -1,0 +1,18 @@
+Roster for con-ed class <class_number/> due in <days_left/> more day(s)
+This is an automatic notification from <application_name/>.
+
+Continuing Education Sponsor <sponsor_number/>, <sponsor_name/>, has <days_left/> more day(s) to submit the roster in <application_name/> for the following class:
+
+   Class #:
+      <class_number/>
+   Course title:
+      <course_title/>
+   Start:
+      <start_time/> <start_date_time/>
+   End:
+      <end_time/> <end_date_time/>
+   Location:
+      <location/>
+      <county/> County
+
+-- <application_name/> (http://<host_domain_name/>/<application_name/>)

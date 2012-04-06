@@ -1,10 +1,10 @@
 using Class_biz_accounts;
 using Class_biz_coned_offerings;
+using Class_db_coned_offerings;
 using kix;
 using System;
 using System.Configuration;
 using System.IO;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -121,6 +121,43 @@ namespace Class_biz_notifications
           ),
         bcc:k.EMPTY,
         reply_to:k.EmptyIfInvalidEmailAddress(sponsor_email)
+        );
+      template_reader.Close();
+      }
+
+    private delegate string IssueForRosterDue_Merge(string s);
+    internal void IssueForRosterDue(TClass_db_coned_offerings.RosterDue roster_due)
+      {
+      IssueForClassClosed_Merge Merge = delegate (string s)
+        {
+        return s
+          .Replace("<application_name/>",application_name)
+          .Replace("<host_domain_name/>",host_domain_name)
+          .Replace("<class_number/>",new TClass_biz_coned_offerings().StandardSafeRenditionOf(roster_due.class_number))
+          .Replace("<sponsor_number/>",roster_due.sponsor_number)
+          .Replace("<sponsor_name/>",roster_due.sponsor_name)
+          .Replace("<days_left/>",(int.Parse(ConfigurationManager.AppSettings["num_roster_due_days_after_coned_offering_end"]) - roster_due.days_after.val).ToString())
+          .Replace("<course_title/>",roster_due.course_title)
+          .Replace("<start_date_time/>",roster_due.start_date_time)
+          .Replace("<end_date_time/>",roster_due.end_date_time)
+          .Replace("<start_time/>",roster_due.start_time)
+          .Replace("<end_time/>",roster_due.end_time)
+          .Replace("<location/>",roster_due.location)
+          .Replace("<county/>",roster_due.county)
+          ;
+        };
+
+      var template_reader = File.OpenText(HttpContext.Current.Server.MapPath("template/notification/roster_due.txt"));
+      k.SmtpMailSend
+        (
+        from:ConfigurationManager.AppSettings["sender_email_address"],
+        to:roster_due.public_contact_email,
+        subject:Merge(template_reader.ReadLine()),
+        message_string:Merge(template_reader.ReadToEnd()),
+        be_html:false,
+        cc:k.EMPTY,
+        bcc:k.EMPTY,
+        reply_to:ConfigurationManager.AppSettings["bouncer_email_address"]
         );
       template_reader.Close();
       }
