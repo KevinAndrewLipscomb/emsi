@@ -127,7 +127,7 @@ namespace UserControl_class_catalog
           {
           DataGrid_control.AllowSorting = false;
           }
-        for (var i = new k.subtype<int>(2011,DateTime.Today.Year + 1); i.val < i.LAST; i.val++)
+        for (var i = new k.subtype<int>(2012,DateTime.Today.Year + 1); i.val < i.LAST; i.val++)
           {
           DropDownList_range.Items.Insert(1,i.val.ToString());
           }

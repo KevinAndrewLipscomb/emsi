@@ -588,8 +588,8 @@ namespace coned_offering_roster
         Literal_course_title.Text = p.biz_coned_offerings.CourseTitleOf(p.incoming.summary);
         Literal_class_number.Text = p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary));
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
-        Literal_start.Text = p.biz_coned_offerings.StartOf(p.incoming.summary);
-        Literal_end.Text = p.biz_coned_offerings.EndOf(p.incoming.summary);
+        Literal_start.Text = p.biz_coned_offerings.StartDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.StartOtherOf(p.incoming.summary);
+        Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();
