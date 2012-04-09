@@ -24,8 +24,10 @@ namespace Class_db_coned_offerings
       public string course_number;
       public string course_title;
       public string location;
-      public string start;
-      public string end;
+      public string start_date;
+      public string start_other;
+      public string end_date;
+      public string end_other;
       public string length;
       public string approved;
       public coned_offering_status_enumeration status;
@@ -100,8 +102,8 @@ namespace Class_db_coned_offerings
         + " , class_number"
         + " , course_title"
         + " , location"
-        + " , IFNULL(ADDTIME(start_date_time,start_time),DATE_FORMAT(start_date_time,'%Y-%m-%d --:--')) as start"
-        + " , IFNULL(ADDTIME(end_date_time,end_time),DATE_FORMAT(end_date_time,'%Y-%m-%d --:--')) as end"
+        + " , CONCAT(start_date_time,' ',IFNULL(start_time,'')) as start"
+        + " , CONCAT(end_date_time,' ',IFNULL(end_time,'')) as end"
         + " from coned_offering"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
@@ -139,8 +141,8 @@ namespace Class_db_coned_offerings
         + " , IFNULL(teaching_entity.short_name,teaching_entity.name) as sponsor"
         + " , course_title"
         + " , location"
-        + " , IFNULL(ADDTIME(start_date_time,start_time),DATE_FORMAT(start_date_time,'%Y-%m-%d --:--')) as start"
-        + " , IFNULL(ADDTIME(end_date_time,end_time),DATE_FORMAT(end_date_time,'%Y-%m-%d --:--')) as end"
+        + " , CONCAT(start_date_time,' ',IFNULL(start_time,'')) as start"
+        + " , CONCAT(end_date_time,' ',IFNULL(end_time,'')) as end"
         + " from coned_offering"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
@@ -237,9 +239,14 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).emtp_other_hours;
       }
 
-    internal string EndOf(object summary)
+    internal string EndDateOf(object summary)
       {
-      return (summary as coned_offering_summary).end;
+      return (summary as coned_offering_summary).end_date;
+      }
+
+    internal string EndOtherOf(object summary)
+      {
+      return (summary as coned_offering_summary).end_other;
       }
 
     internal string FrMedTraumaHoursOf(object summary)
@@ -1014,9 +1021,14 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).sponsor_public_contact_email;
       }
 
-    internal string StartOf(object summary)
+    internal string StartDateOf(object summary)
       {
-      return (summary as coned_offering_summary).start;
+      return (summary as coned_offering_summary).start_date;
+      }
+
+    internal string StartOtherOf(object summary)
+      {
+      return (summary as coned_offering_summary).start_other;
       }
 
     internal coned_offering_status_enumeration StatusOf(object summary)
@@ -1035,8 +1047,10 @@ namespace Class_db_coned_offerings
           + " , course_number"
           + " , course_title"
           + " , location"
-          + " , IFNULL(ADDTIME(start_date_time,start_time),DATE_FORMAT(start_date_time,'%Y-%m-%d --:--')) as start"
-          + " , IFNULL(ADDTIME(end_date_time,end_time),DATE_FORMAT(end_date_time,'%Y-%m-%d --:--')) as end"
+          + " , CONCAT(start_date_time) as start_date_time"
+          + " , start_time"
+          + " , CONCAT(end_date_time) as end_date_time"
+          + " , end_time"
           + " , IFNULL(length,'') as length"
           + " , approved"
           + " , status_id"
@@ -1070,8 +1084,10 @@ namespace Class_db_coned_offerings
         course_number = dr["course_number"].ToString(),
         course_title = dr["course_title"].ToString(),
         location = dr["location"].ToString(),
-        start = dr["start"].ToString(),
-        end = dr["end"].ToString(),
+        start_date = dr["start_date_time"].ToString(),
+        start_other = dr["start_time"].ToString(),
+        end_date = dr["end_date_time"].ToString(),
+        end_other = dr["end_time"].ToString(),
         length = dr["length"].ToString(),
         approved = dr["approved"].ToString(),
         status = (coned_offering_status_enumeration)Enum.Parse(typeof(coned_offering_status_enumeration),dr["status_id"].ToString()),

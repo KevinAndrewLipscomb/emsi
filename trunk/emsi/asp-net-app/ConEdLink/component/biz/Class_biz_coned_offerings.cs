@@ -63,7 +63,7 @@ namespace Class_biz_coned_offerings
       )
       {
       return BeApprovedOf(summary)
-      && (DateTime.Now > DateTime.Parse(db_coned_offerings.StartOf(summary).Replace(" --:--",k.EMPTY)).AddHours((double)FullHourDurationOf(summary)))
+      && (DateTime.Now > DateTime.Parse(db_coned_offerings.StartDateOf(summary)).AddHours((double)FullHourDurationOf(summary)))
       && (num_attendees.val > 0)
       && (num_attendees_with_known_birth_dates.val == num_attendees.val);
       }
@@ -133,8 +133,8 @@ namespace Class_biz_coned_offerings
           coned_offering_public_contact_email:db_coned_offerings.PublicContactEmailOf(summary),
           class_number:db_coned_offerings.ClassNumberOf(summary),
           course_title:db_coned_offerings.CourseTitleOf(summary),
-          start:db_coned_offerings.StartOf(summary),
-          end:db_coned_offerings.EndOf(summary),
+          start:db_coned_offerings.StartDateOf(summary) + k.SPACE + db_coned_offerings.StartOtherOf(summary),
+          end:db_coned_offerings.EndDateOf(summary) + k.SPACE + db_coned_offerings.EndOtherOf(summary),
           length:db_coned_offerings.LengthOf(summary),
           location:db_coned_offerings.LocationOf(summary),
           num_attendees:num_attendees,
@@ -178,9 +178,14 @@ namespace Class_biz_coned_offerings
       return db_coned_offerings.EmtpOtherHoursOf(summary);
       }
 
-    internal string EndOf(object summary)
+    internal string EndDateOf(object summary)
       {
-      return db_coned_offerings.EndOf(summary);
+      return db_coned_offerings.EndDateOf(summary);
+      }
+
+    internal string EndOtherOf(object summary)
+      {
+      return db_coned_offerings.EndOtherOf(summary);
       }
 
     internal string FrMedTraumaHoursOf(object summary)
@@ -589,9 +594,14 @@ namespace Class_biz_coned_offerings
       return k.Safe(class_number,k.safe_hint_type.NUM).Insert(8,k.HYPHEN).Insert(2,k.HYPHEN);
       }
 
-    internal string StartOf(object summary)
+    internal string StartDateOf(object summary)
       {
-      return db_coned_offerings.StartOf(summary);
+      return db_coned_offerings.StartDateOf(summary);
+      }
+
+    internal string StartOtherOf(object summary)
+      {
+      return db_coned_offerings.StartOtherOf(summary);
       }
 
     public object Summary(string id)
