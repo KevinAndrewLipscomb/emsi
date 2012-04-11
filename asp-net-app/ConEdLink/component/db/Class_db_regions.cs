@@ -1,8 +1,9 @@
 using Class_db;
 using Class_db_trail;
-using MySql.Data.MySqlClient;
 using kix;
+using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
 namespace Class_db_regions
@@ -144,6 +145,22 @@ namespace Class_db_regions
       return emsrs_code_of_id;
       }
 
+    internal string EmsportalPasswordOf(string code)
+      {
+      Open();
+      var emsportal_password_of = new MySqlCommand("select conedlink_emsportal_password from region_code_name_map where code = '" + code + "'",connection).ExecuteScalar().ToString();
+      Close();
+      return emsportal_password_of;
+      }
+
+    internal string EmsportalUsernameOf(string code)
+      {
+      Open();
+      var emsportal_username_of = new MySqlCommand("select conedlink_emsportal_username from region_code_name_map where code = '" + code + "'",connection).ExecuteScalar().ToString();
+      Close();
+      return emsportal_username_of;
+      }
+
     public bool Get
       (
       string code,
@@ -186,6 +203,20 @@ namespace Class_db_regions
         )
         .ExecuteNonQuery();
       Close();
+      }
+
+    internal Queue<string> SubscriberQ()
+      {
+      var subscriber_q = new Queue<string>();
+      Open();
+      var dr = new MySqlCommand("select code from region_code_name_map where be_conedlink_subscriber",connection).ExecuteReader();
+      while (dr.Read())
+        {
+        subscriber_q.Enqueue(dr["code"].ToString());
+        }
+      dr.Close();
+      Close();
+      return subscriber_q;
       }
 
     } // end TClass_db_regions
