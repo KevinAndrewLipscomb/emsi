@@ -59,6 +59,16 @@ namespace Class_biz_regions
       BindEmsrsToListControl(target, "-- region --");
       }
 
+    internal string EmsportalPasswordOf(string code)
+      {
+      return db_regions.EmsportalPasswordOf(code);
+      }
+
+    internal string EmsportalUsernameOf(string code)
+      {
+      return db_regions.EmsportalUsernameOf(code);
+      }
+
     public bool Delete(string code)
       {
       return db_regions.Delete(code);

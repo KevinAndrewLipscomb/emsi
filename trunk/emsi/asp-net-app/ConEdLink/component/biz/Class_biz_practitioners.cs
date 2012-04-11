@@ -1,21 +1,23 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
 using Class_db_practitioners;
+using Class_db_regions;
+using ConEdLink.component.ss;
 using kix;
 using System;
-using System.Collections;
-using ConEdLink.component.ss;
 
 namespace Class_biz_practitioners
   {
   public class TClass_biz_practitioners
     {
     private TClass_db_practitioners db_practitioners = null;
+    private TClass_db_regions db_regions = null;
     private Class_ss_emsams ss_emsams = null;
 
     public TClass_biz_practitioners() : base()
       {
       db_practitioners = new TClass_db_practitioners();
+      db_regions = new TClass_db_regions();
       ss_emsams = new Class_ss_emsams();
       }
 
@@ -106,7 +108,11 @@ namespace Class_biz_practitioners
     internal void ImportLatestInstructorsFromEmsrs()
       {
       db_practitioners.ClearAllBeInstructorFlags();
-      db_practitioners.ImportLatestInstructorsFromEmsrs(ss_emsams.EmsInstructorsList());
+      var subscriber_region_code_q = db_regions.SubscriberQ();
+      while (subscriber_region_code_q.Count > 0)
+        {
+        db_practitioners.ImportLatestInstructorsFromEmsrs(ss_emsams.EmsInstructorsList(subscriber_region_code_q.Dequeue()));
+        }
       }
 
     internal k.int_nonnegative MaxSpecLength

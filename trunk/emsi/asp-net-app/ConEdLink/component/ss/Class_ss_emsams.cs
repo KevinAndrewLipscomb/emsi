@@ -1,3 +1,4 @@
+using Class_biz_regions;
 using Class_ss;
 using HtmlAgilityPack;
 using kix;
@@ -17,6 +18,13 @@ namespace ConEdLink.component.ss
 
   internal class Class_ss_emsams : TClass_ss
     {
+
+    private TClass_biz_regions biz_regions = null;
+
+    public Class_ss_emsams() : base()
+      {      
+      biz_regions = new TClass_biz_regions();
+      }
 
     private bool Request_ems_health_state_pa_us_Emsportal
       (
@@ -1347,12 +1355,12 @@ namespace ConEdLink.component.ss
       internal string county_code = k.EMPTY;
       internal string region_code = k.EMPTY;
       }
-    internal ArrayList EmsInstructorsList()
+    internal ArrayList EmsInstructorsList(string region_code)
       {
       var ems_instructors_list = new ArrayList();
       var cookie_container = new CookieContainer();
       //
-      Login(cookie_container);
+      Login(region_code,cookie_container);
       //
       HttpWebResponse response;
       if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(cookie_container,out response))
@@ -1414,7 +1422,11 @@ namespace ConEdLink.component.ss
       return ems_instructors_list;
       }
 
-    internal void Login(CookieContainer cookie_container)
+    internal void Login
+      (
+      string region_code,
+      CookieContainer cookie_container
+      )
       {
       HttpWebResponse response;
       if (!Request_ems_health_state_pa_us_Emsportal(cookie_container,out response))
@@ -1427,8 +1439,8 @@ namespace ConEdLink.component.ss
           cookie_container,
           ViewstateOf(html_document),
           EventValidationOf(html_document),
-          ConfigurationManager.AppSettings["emsportal_login_username"],
-          ConfigurationManager.AppSettings["emsportal_login_password"],
+          biz_regions.EmsportalUsernameOf(region_code),
+          biz_regions.EmsportalPasswordOf(region_code),
           out response
           )
         )
@@ -1628,12 +1640,12 @@ namespace ConEdLink.component.ss
       internal string class_city_state = k.EMPTY;
       internal string class_region_code = k.EMPTY;
       }
-    internal ArrayList AvailableConedClassesList()
+    internal ArrayList AvailableConedClassesList(string region_code)
       {
       var available_coned_classes_list = new ArrayList();
       var cookie_container = new CookieContainer();
       //
-      Login(cookie_container);
+      Login(region_code,cookie_container);
       //
       HttpWebResponse response;
       if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(cookie_container,out response))
@@ -1747,7 +1759,7 @@ namespace ConEdLink.component.ss
       var class_search_screen = new ArrayList();
       var cookie_container = new CookieContainer();
       //
-      Login(cookie_container);
+      Login(region_code:"1",cookie_container:cookie_container);
       //
       HttpWebResponse response;
       if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed(cookie_container,out response))
@@ -1838,7 +1850,7 @@ namespace ConEdLink.component.ss
       var class_search_tab_delimited = new ArrayList();
       var cookie_container = new CookieContainer();
       //
-      Login(cookie_container);
+      Login(region_code:"1",cookie_container:cookie_container);
       //
       HttpWebResponse response;
       if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed(cookie_container,out response))
@@ -2168,7 +2180,7 @@ namespace ConEdLink.component.ss
       //
       if (context.disposition.val == -1)
         {
-        Login(context.cookie_container);
+        Login(region_code:"1",cookie_container:context.cookie_container);
         //
         if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoemsreg(context.cookie_container,out response))
           {
