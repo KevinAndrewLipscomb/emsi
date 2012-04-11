@@ -103,6 +103,12 @@ namespace Class_biz_practitioners
         }
       }
 
+    internal void ImportLatestInstructorsFromEmsrs()
+      {
+      db_practitioners.ClearAllBeInstructorFlags();
+      db_practitioners.ImportLatestInstructorsFromEmsrs(ss_emsams.EmsInstructorsList());
+      }
+
     internal k.int_nonnegative MaxSpecLength
       (
       string region_code,

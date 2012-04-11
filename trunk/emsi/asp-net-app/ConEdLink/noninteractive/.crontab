@@ -9,6 +9,7 @@
 40 03  *  * * wget --output-document=/dev/null --no-check-certificate https://localhost/ConEdLink/noninteractive/daily_tasks.aspx
 20 05  *  * * wget --output-document=/dev/null --no-check-certificate https://localhost/ConEdLink/noninteractive/import_latest_coned_offerings_from_emsrs.aspx
 25 05  *  * * wget --output-document=/dev/null --no-check-certificate https://localhost/ConEdLink/noninteractive/import_latest_teaching_entities_from_emsrs.aspx
+45 06  *  * * wget --output-document=/dev/null --no-check-certificate https://localhost/ConEdLink/noninteractive/import_latest_instructors_from_emsrs.aspx
 #
 # Weekly
 #

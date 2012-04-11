@@ -164,6 +164,13 @@
     <Compile Include="noninteractive\daily_tasks.aspx.designer.cs">
       <DependentUpon>daily_tasks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="noninteractive\import_latest_instructors_from_emsrs.aspx.cs">
+      <DependentUpon>import_latest_instructors_from_emsrs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\import_latest_instructors_from_emsrs.aspx.designer.cs">
+      <DependentUpon>import_latest_instructors_from_emsrs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx.cs">
       <DependentUpon>import_latest_teaching_entities_from_emsrs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -524,6 +531,7 @@
     <Content Include="login.aspx" />
     <Content Include="new_password.aspx" />
     <Content Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx" />
+    <Content Include="noninteractive\import_latest_instructors_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
