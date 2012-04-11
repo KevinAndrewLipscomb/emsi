@@ -107,6 +107,13 @@ namespace Class_db_practitioners
       Close();
       }
 
+    internal void ClearAllBeInstructorFlags()
+      {
+      Open();
+      new MySqlCommand("update practitioner set be_instructor = FALSE",connection).ExecuteNonQuery();
+      Close();
+      }
+
     public bool Delete(string id)
       {
       var result = true;
@@ -362,6 +369,23 @@ namespace Class_db_practitioners
             )
             .ExecuteNonQuery();
           }
+        Close();
+        }
+      }
+
+    internal void ImportLatestInstructorsFromEmsrs(ArrayList recs)
+      {
+      if (recs.Count > 0)
+        {
+        var built_instructor_certification_numbers_list = new StringBuilder();
+        foreach (var rec in recs)
+          {
+          built_instructor_certification_numbers_list.Append((rec as Class_ss_emsams.EmsInstructor).certification_number + k.COMMA);
+          }
+        Open();
+        new MySqlCommand
+          ("update practitioner set be_instructor = TRUE where certification_number in (" + built_instructor_certification_numbers_list.ToString().TrimEnd(new char[] {Convert.ToChar(k.COMMA)}) + ")",connection)
+          .ExecuteNonQuery();
         Close();
         }
       }
