@@ -1479,9 +1479,9 @@ namespace ConEdLink.component.ss
       //
       for (var i = new k.subtype<int>(0, hnc_name.Count); i.val < i.LAST; i.val++)
         {
-        var county_name = k.Safe(hnc_county_name[i.val].InnerText.Trim(), k.safe_hint_type.ALPHA);
+        var county_name = k.Safe(hnc_county_name[i.val].InnerText.Trim(), k.safe_hint_type.ALPHA_WORDS);
         var teaching_entity_kind = k.Safe(hnc_teaching_entity_kind[i.val].InnerText,k.safe_hint_type.ALPHA);
-        if ((county_name != "OutofState") && (teaching_entity_kind == "Sponsor"))
+        if (teaching_entity_kind == "Sponsor")
           {
           var teaching_entity = new TeachingEntity();
           var hn_name = hnc_name[i.val];
@@ -1807,40 +1807,37 @@ namespace ConEdLink.component.ss
       for (var i = new k.subtype<int>(0,hnc_course_title.Count); i.val < i.LAST; i.val++)
         {
         var class_county_name = k.Safe(hnc_class_county_name[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
-        if (class_county_name != "OutofState")
-          {
-          var coned_offering = new ConedOffering();
-          coned_offering.approved = "1";
-          coned_offering.start_date_time = k.Safe(hnc_start_date[i.val*2].FirstChild.InnerText.Trim(),k.safe_hint_type.DATE_TIME);
-          coned_offering.course_id = k.Safe(hnc_course_title[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
-          coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-          coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-          coned_offering.fr_med_trauma_hours = k.Safe(hnc_fr_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.fr_other_hours = k.Safe(hnc_fr_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.emt_med_trauma_hours = k.Safe(hnc_emt_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.emt_other_hours = k.Safe(hnc_emt_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.emtp_med_trauma_hours = k.Safe(hnc_emtp_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.emtp_other_hours = k.Safe(hnc_emtp_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.phrn_med_trauma_hours = k.Safe(hnc_phrn_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.phrn_other_hours = k.Safe(hnc_phrn_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
-          coned_offering.length = k.Safe(hnc_length[i.val].InnerText.Trim().Replace("&nbsp;hrs.",k.EMPTY),k.safe_hint_type.REAL_NUM);
-          coned_offering.closed = k.Safe(hnc_closed[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
-          coned_offering.student_cost = k.Safe(hnc_student_cost[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
-          coned_offering.class_id_1 = k.Safe(hnc_class_number[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
-          coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
-          coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-          coned_offering.sponsor_id = k.Safe(hnc_sponsor_id[i.val].Attributes["value"].Value,k.safe_hint_type.NUM);
-          coned_offering.region_council_name = k.Safe(hnc_region_council_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
-          coned_offering.region_council_num = k.Safe(hnc_region_council_num[i.val].Attributes["value"].Value,k.safe_hint_type.NUM);
-          coned_offering.class_county_name = class_county_name.Replace("Northhampton","Northampton");
-          coned_offering.location = k.Safe(hnc_location[i.val].FirstChild.InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
-          coned_offering.public_contact_name = k.Safe(hnc_public_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
-          coned_offering.public_contact_phone = k.Safe(hnc_public_contact_phone[i.val].InnerText.Trim(),k.safe_hint_type.PHONE_NUM);
-          //coned_offering.public_contact_email = k.Safe(hnc_public_contact_email[i.val].InnerText.Trim(),k.safe_hint_type.EMAIL_ADDRESS);
-          coned_offering.public_contact_website = k.Safe(hnc_public_contact_website[i.val].InnerText.Trim(),k.safe_hint_type.HTTP_TARGET);
-          coned_offering.public_contact_notes = k.Safe(hnc_public_contact_notes[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
-          class_search_screen.Add(coned_offering);
-          }
+        var coned_offering = new ConedOffering();
+        coned_offering.approved = "1";
+        coned_offering.start_date_time = k.Safe(hnc_start_date[i.val*2].FirstChild.InnerText.Trim(),k.safe_hint_type.DATE_TIME);
+        coned_offering.course_id = k.Safe(hnc_course_title[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
+        coned_offering.course_title = k.Safe(hnc_course_title[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        coned_offering.course_number = k.Safe(hnc_course_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.fr_med_trauma_hours = k.Safe(hnc_fr_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.fr_other_hours = k.Safe(hnc_fr_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_med_trauma_hours = k.Safe(hnc_emt_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emt_other_hours = k.Safe(hnc_emt_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emtp_med_trauma_hours = k.Safe(hnc_emtp_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.emtp_other_hours = k.Safe(hnc_emtp_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.phrn_med_trauma_hours = k.Safe(hnc_phrn_med_trauma_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.phrn_other_hours = k.Safe(hnc_phrn_other_hours[i.val].InnerText.Trim(),k.safe_hint_type.REAL_NUM);
+        coned_offering.length = k.Safe(hnc_length[i.val].InnerText.Trim().Replace("&nbsp;hrs.",k.EMPTY),k.safe_hint_type.REAL_NUM);
+        coned_offering.closed = k.Safe(hnc_closed[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+        coned_offering.student_cost = k.Safe(hnc_student_cost[i.val].InnerText.Trim(),k.safe_hint_type.ALPHA);
+        coned_offering.class_id_1 = k.Safe(hnc_class_number[i.val].Attributes["href"].Value,k.safe_hint_type.NUM);
+        coned_offering.class_number = k.Safe(hnc_class_number[i.val].InnerText.Trim(),k.safe_hint_type.NUM);
+        coned_offering.sponsor_name = k.Safe(hnc_sponsor_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        coned_offering.sponsor_id = k.Safe(hnc_sponsor_id[i.val].Attributes["value"].Value,k.safe_hint_type.NUM);
+        coned_offering.region_council_name = k.Safe(hnc_region_council_name[i.val].InnerText.Trim(),k.safe_hint_type.ORG_NAME);
+        coned_offering.region_council_num = k.Safe(hnc_region_council_num[i.val].Attributes["value"].Value,k.safe_hint_type.NUM);
+        coned_offering.class_county_name = class_county_name.Replace("Northhampton","Northampton");
+        coned_offering.location = k.Safe(hnc_location[i.val].FirstChild.InnerText.Trim(),k.safe_hint_type.POSTAL_STREET_ADDRESS);
+        coned_offering.public_contact_name = k.Safe(hnc_public_contact_name[i.val].InnerText.Trim(),k.safe_hint_type.HUMAN_NAME);
+        coned_offering.public_contact_phone = k.Safe(hnc_public_contact_phone[i.val].InnerText.Trim(),k.safe_hint_type.PHONE_NUM);
+        //coned_offering.public_contact_email = k.Safe(hnc_public_contact_email[i.val].InnerText.Trim(),k.safe_hint_type.EMAIL_ADDRESS);
+        coned_offering.public_contact_website = k.Safe(hnc_public_contact_website[i.val].InnerText.Trim(),k.safe_hint_type.HTTP_TARGET);
+        coned_offering.public_contact_notes = k.Safe(hnc_public_contact_notes[i.val].InnerText.Trim(),k.safe_hint_type.PUNCTUATED);
+        class_search_screen.Add(coned_offering);
         }
       return class_search_screen;
       }
