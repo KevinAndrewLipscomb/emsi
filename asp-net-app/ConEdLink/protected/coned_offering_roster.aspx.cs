@@ -600,6 +600,7 @@ namespace coned_offering_roster
         Literal_start.Text = p.biz_coned_offerings.StartDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.StartOtherOf(p.incoming.summary);
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
         RequireConfirmation(Button_mark_class_canceled,"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + " and the class will be marked as CANCELED in the state EMSRS.");
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_canceled);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();
