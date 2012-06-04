@@ -81,8 +81,11 @@ namespace coned_offering_roster
       p.num_attendees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[coned_offering_roster_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
+      Button_mark_class_canceled.Visible = (p.num_attendees.val == 0) || (Session["imitator_designator"] != null);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
+      TableRow_with_attendees.Visible = (p.num_attendees.val > 0);
+      TableRow_quickmessage.Visible = (p.num_attendees.val > 0);
       SetHyperlinkPrintCompletionDocumentation();
       if (RadioButtonList_input_method.SelectedValue == "Standard")
         {
@@ -228,6 +231,12 @@ namespace coned_offering_roster
         {
         ValidationAlert(be_using_scriptmanager:true);
         }
+      }
+
+    protected void Button_mark_class_canceled_Click(object sender, EventArgs e)
+      {
+      p.biz_coned_offerings.MarkCanceled(p.incoming.summary);
+      BackTrack();
       }
 
     protected void Button_send_Click(object sender, System.EventArgs e)
@@ -590,6 +599,7 @@ namespace coned_offering_roster
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
         Literal_start.Text = p.biz_coned_offerings.StartDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.StartOtherOf(p.incoming.summary);
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
+        RequireConfirmation(Button_mark_class_canceled,"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + " and the class will be marked as CANCELED in the state EMSRS.");
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         Bind();

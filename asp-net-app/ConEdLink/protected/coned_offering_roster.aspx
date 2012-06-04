@@ -107,6 +107,8 @@
                               <td>&nbsp;</td>
                               <td nowrap="nowrap" valign="top"><b>Length:</b></td>
                               <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_length" runat="server"></asp:Literal></td>
+                              <td>&nbsp;</td>
+                              <td colspan="2" valign="top" align="center">&nbsp;</td>
                             </tr>
                             <tr>
                               <td nowrap="nowrap" valign="top"><b>Location:</b></td>
@@ -214,6 +216,11 @@
                                   </td>
                                 </tr>
                                 <tr>
+                                  <td align="right">
+                                    <asp:Button ID="Button_mark_class_canceled" runat="server" CausesValidation="False" onclick="Button_mark_class_canceled_Click" Text="Mark class CANCELED" Visible="False" />
+                                  </td>
+                                </tr>
+                                <tr id="TableRow_with_attendees" runat="server">
                                   <td>
                                     For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) attendees...
                                     <ul>
@@ -236,7 +243,7 @@
                   </td>
                 </tr>
                 <tr><td>&nbsp;</td></tr>
-                <tr>
+                <tr id="TableRow_quickmessage" runat="server">
                   <td>
                     <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
                       <tr>

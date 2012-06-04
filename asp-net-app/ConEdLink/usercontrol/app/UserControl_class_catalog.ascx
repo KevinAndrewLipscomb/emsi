@@ -51,6 +51,10 @@
                     <asp:ButtonColumn CommandName="ManageRoster" Text="Roster">
                       <ItemStyle VerticalAlign="Top" />
                     </asp:ButtonColumn>
+                    <asp:BoundColumn DataField="num_attendees" HeaderText="Size" ReadOnly="True" SortExpression="num_attendees%, start">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False"></HeaderStyle>
                 </asp:DataGrid>
