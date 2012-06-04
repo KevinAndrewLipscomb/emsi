@@ -698,6 +698,261 @@ namespace ConEdLink.component.ss
 	    return true;
     }
 
+    private bool Request_ems_health_state_pa_us_ConedClassreg_Classid
+      (
+      CookieContainer cookie_container,
+      string class_id,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/ConEd/ClassReg.asp?ClassID=" + class_id);
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/ConEd/ClassSearch.asp";
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=v2254ib3hqii4mn4rjusga1w; ConEd_EMSOUserID=40491; ASPSESSIONIDASSCBSDR=NJGJEOADMPMJGCDOMGJELBJD");
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
+    private bool Request_ems_health_state_pa_us_ConedClassreg_ClasswascanceledClassmaintenance
+      (
+      CookieContainer cookie_container,
+      string class_id,
+      string created_by,
+      string date_created,
+      string date_last_edited,
+      string date_submitted_to_region,
+      string document_status,
+      string last_edited_by,
+      string region_council_num,
+      string sponsor_id,
+      string course_id,
+      string initial_value_approved,
+      string initial_value_disapproval_reason_id,
+      string debug_session_emso_user_id,
+      string debug_session_user_role,
+      string debug_session_sponsor_id,
+      string debug_sponsor_info_editable,
+      string debug_region_info_editable,
+      string sponsor_name,
+      string sponsor_number,
+      string training_ins_accred_num,
+      string sponsor_county,
+      string course_title,
+      string not_valid_after_date,
+      string course_number,
+      string location,
+      string location_of_registration,
+      string location_address_1,
+      string location_address_2,
+      string location_city,
+      string location_state,
+      string location_zip,
+      string location_zip_plus_4,
+      string county_code,
+      string county_name,
+      string regional_council_name,
+      string location_phone,
+      string location_email,
+      string public_contact_name,
+      string public_contact_email,
+      string public_contact_phone,
+      string public_contact_website,
+      string public_contact_notes,
+      string student_cost,
+      string total_class_hours,
+      string total_class_hours_chk,
+      string length_of_course_in_hours,
+      string tuition_includes,
+      string closed,
+      string estimated_students,
+      string start_date_time,
+      string start_date_time_chk,
+      string start_time,
+      string end_date_time,
+      string end_date_time_chk,
+      string end_time,
+      string final_registration_date,
+      string instructors,
+      string instructor_qualifications,
+      string class_coordinator,
+      string primary_text,
+      string college_credit_awarded,
+      string held_on_sun,
+      string held_on_mon,
+      string held_on_tue,
+      string held_on_wed,
+      string held_on_thu,
+      string held_on_fri,
+      string held_on_sat,
+      string other_dates_and_times,
+      string date_received_by_region,
+      string ret_to_applicant_comment,
+      string date_sponsor_notified,
+      string approved,
+      string class_number,
+      string date_registration_sent_to_state,
+      string date_cards_sent_to_sponsor,
+      string date_materials_to_be_returned,
+      string disapproval_reason_id,
+      string region_comments,
+      string practical_exam_date,
+      string practical_exam_time,
+      string written_exam_date,
+      string written_exam_time,
+      out HttpWebResponse response
+      )
+    {
+	    response = null;
+
+	    try
+	    {
+		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ems.health.state.pa.us/ConEd/ClassReg.asp");
+        request.CookieContainer = cookie_container;
+        request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+		    request.Accept = "image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, */*";
+		    request.Referer = "https://ems.health.state.pa.us/ConEd/ClassReg.asp?ClassID=" + class_id;
+		    request.Headers.Set(HttpRequestHeader.AcceptLanguage, "en-US");
+		    request.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)";
+		    request.ContentType = "application/x-www-form-urlencoded";
+		    request.Headers.Set(HttpRequestHeader.AcceptEncoding, "gzip, deflate");
+		    request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
+		    //request.Headers.Set(HttpRequestHeader.Cookie, @"__utma=106443904.163291999.1326547990.1326547990.1326547990.1; __utmz=106443904.1326547990.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); ASP.NET_SessionId=htmiojbhdxbtnsxptnp4o2pj; ConEd_EMSOUserID=40491; ASPSESSIONIDCSRBBQBT=JJOFNIIAOBLKPDHCJBFAOBBK");
+
+		    request.Method = "POST";
+
+		    string postString = @"ClassID=" + HttpUtility.UrlEncode(class_id)
+        + "&CreatedBy=" + HttpUtility.UrlEncode(created_by)
+        + "&DateCreated=" + HttpUtility.UrlEncode(date_created)
+        + "&DateLastEdited=" + HttpUtility.UrlEncode(date_last_edited)
+        + "&DateSubmittedToRegion=" + HttpUtility.UrlEncode(date_submitted_to_region)
+        + "&DocumentStatus=" + HttpUtility.UrlEncode(document_status)
+        + "&LastEditedBy=" + HttpUtility.UrlEncode(last_edited_by)
+        + "&RegionCouncilNum=" + HttpUtility.UrlEncode(region_council_num)
+        + "&SponsorID=" + HttpUtility.UrlEncode(sponsor_id)
+        + "&CourseID=" + HttpUtility.UrlEncode(course_id)
+        + "&InitialValue_Approved=" + HttpUtility.UrlEncode(initial_value_approved)
+        + "&InitialValue_DisapprovalReasonID=" + HttpUtility.UrlEncode(initial_value_disapproval_reason_id)
+        + "&debug_session_emsoUserid=" + HttpUtility.UrlEncode(debug_session_emso_user_id)
+        + "&debug_session_userRole=" + HttpUtility.UrlEncode(debug_session_user_role)
+        + "&debug_session_SponsorID=" + HttpUtility.UrlEncode(debug_session_sponsor_id)
+        + "&debug_SponsorInfoEditable=" + HttpUtility.UrlEncode(debug_sponsor_info_editable)
+        + "&debug_RegionInfoEditable=" + HttpUtility.UrlEncode(debug_region_info_editable)
+        + "&cmdMove=" + HttpUtility.UrlEncode("Class Maintenance")
+        + "&SponsorName=" + HttpUtility.UrlEncode(sponsor_name)
+        + "&SponsorNumber=" + HttpUtility.UrlEncode(sponsor_number)
+        + "&TrainingInsAccredNum=" + HttpUtility.UrlEncode(training_ins_accred_num)
+        + "&SponsorCounty=" + HttpUtility.UrlEncode(sponsor_county)
+        + "&CourseTitle=" + HttpUtility.UrlEncode(course_title)
+        + "&NotValidAfterDate=" + HttpUtility.UrlEncode(not_valid_after_date)
+        + "&CourseNumber=" + HttpUtility.UrlEncode(course_number)
+        + "&Location=" + HttpUtility.UrlEncode(location)
+        + "&LocationOfRegistration=" + HttpUtility.UrlEncode(location_of_registration)
+        + "&LocationAddress1=" + HttpUtility.UrlEncode(location_address_1)
+        + "&LocationAddress2=" + HttpUtility.UrlEncode(location_address_2)
+        + "&LocationCity=" + HttpUtility.UrlEncode(location_city)
+        + "&LocationState=" + HttpUtility.UrlEncode(location_state)
+        + "&LocationZIP=" + HttpUtility.UrlEncode(location_zip)
+        + "&LocationZipPlus4=" + HttpUtility.UrlEncode(location_zip_plus_4)
+        + "&ClassCountyCode=" + HttpUtility.UrlEncode(county_code)
+        + "&CountyCode=" + HttpUtility.UrlEncode(county_code)
+        + "&CountyName=" + HttpUtility.UrlEncode(county_name)
+        + "&RegionalCouncilName=" + HttpUtility.UrlEncode(regional_council_name)
+        + "&LocationPhone=" + HttpUtility.UrlEncode(location_phone)
+        + "&LocationEmail=" + HttpUtility.UrlEncode(location_email)
+        + "&PublicContactName=" + HttpUtility.UrlEncode(public_contact_name)
+        + "&PublicContactEmail=" + HttpUtility.UrlEncode(public_contact_email)
+        + "&PublicContactPhone=" + HttpUtility.UrlEncode(public_contact_phone)
+        + "&PublicContactWebsite=" + HttpUtility.UrlEncode(public_contact_website)
+        + "&PublicContactNotes=" + HttpUtility.UrlEncode(public_contact_notes)
+        + "&StudentCost=" + HttpUtility.UrlEncode(student_cost)
+        + "&TotalClassHours=" + HttpUtility.UrlEncode(total_class_hours)
+        + "&TotalClassHoursChk=" + HttpUtility.UrlEncode(total_class_hours_chk)
+        + "&LengthOfCourseInHours=" + HttpUtility.UrlEncode(length_of_course_in_hours)
+        + "&TuitionIncludes=" + HttpUtility.UrlEncode(tuition_includes)
+        + "&Closed=" + HttpUtility.UrlEncode(closed)
+        + "&EstimatedStudents=" + HttpUtility.UrlEncode(estimated_students)
+        + "&StartDateTime=" + HttpUtility.UrlEncode(start_date_time)
+        + "&StartDateTimeChk=" + HttpUtility.UrlEncode(start_date_time_chk)
+        + "&StartTime=" + HttpUtility.UrlEncode(start_time)
+        + "&EndDateTime=" + HttpUtility.UrlEncode(end_date_time)
+        + "&EndDateTimeChk=" + HttpUtility.UrlEncode(end_date_time_chk)
+        + "&EndTime=" + HttpUtility.UrlEncode(end_time)
+        + "&FinalRegistrationDate=" + HttpUtility.UrlEncode(final_registration_date)
+        + "&Instructors=" + HttpUtility.UrlEncode(instructors)
+        + "&InstructorQualifications=" + HttpUtility.UrlEncode(instructor_qualifications)
+        + "&ClassCoordinator=" + HttpUtility.UrlEncode(class_coordinator)
+        + "&PrimaryText=" + HttpUtility.UrlEncode(primary_text)
+        + "&CollegeCreditAwarded=" + HttpUtility.UrlEncode(college_credit_awarded)
+        + (held_on_sun.Length > 0 ? "&HeldOnSun=" + HttpUtility.UrlEncode(held_on_sun) : k.EMPTY)
+        + (held_on_mon.Length > 0 ? "&HeldOnMon=" + HttpUtility.UrlEncode(held_on_mon) : k.EMPTY)
+        + (held_on_tue.Length > 0 ? "&HeldOnTue=" + HttpUtility.UrlEncode(held_on_tue) : k.EMPTY)
+        + (held_on_wed.Length > 0 ? "&HeldOnWed=" + HttpUtility.UrlEncode(held_on_wed) : k.EMPTY)
+        + (held_on_thu.Length > 0 ? "&HeldOnThu=" + HttpUtility.UrlEncode(held_on_thu) : k.EMPTY)
+        + (held_on_fri.Length > 0 ? "&HeldOnFri=" + HttpUtility.UrlEncode(held_on_fri) : k.EMPTY)
+        + (held_on_sat.Length > 0 ? "&HeldOnSat=" + HttpUtility.UrlEncode(held_on_sat) : k.EMPTY)
+        + "&OtherDatesAndTimes=" + HttpUtility.UrlEncode(other_dates_and_times)
+        + "&DateReceivedByRegion=" + HttpUtility.UrlEncode(date_received_by_region)
+        + "&RetToApplicantComment=" + HttpUtility.UrlEncode(ret_to_applicant_comment)
+        + "&DateSponsorNotified=" + HttpUtility.UrlEncode(date_sponsor_notified)
+        + "&Approved=" + HttpUtility.UrlEncode(approved)
+        + "&ClassNumber=" + HttpUtility.UrlEncode(class_number)
+        + "&DateRegistrationSentToState=" + HttpUtility.UrlEncode(date_registration_sent_to_state)
+        + "&DateCardsSentToSponsor=" + HttpUtility.UrlEncode(date_cards_sent_to_sponsor)
+        + "&DateMaterialsToBeReturned=" + HttpUtility.UrlEncode(date_materials_to_be_returned)
+        + "&DisapprovalReasonID=" + HttpUtility.UrlEncode(disapproval_reason_id)
+        + "&RegionComments=" + HttpUtility.UrlEncode(region_comments + k.NEW_LINE + "-- Class CANCELED via ConEdLink at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm"))
+        + "&PracticalExamDate=" + HttpUtility.UrlEncode(practical_exam_date)
+        + "&PracticalExamTime=" + HttpUtility.UrlEncode(practical_exam_time)
+        + "&WrittenExamDate=" + HttpUtility.UrlEncode(written_exam_date)
+        + "&WrittenExamTime=" + HttpUtility.UrlEncode(written_exam_time)
+        + "&ClassFinalStatus=CANCELED"
+        ;
+		    byte[] postBytes = System.Text.Encoding.UTF8.GetBytes(postString);
+		    request.ContentLength = postBytes.Length;
+		    Stream stream = request.GetRequestStream();
+		    stream.Write(postBytes, 0, postBytes.Length);
+		    stream.Close();
+
+		    response = (HttpWebResponse)request.GetResponse();
+	    }
+	    catch (WebException e)
+	    {
+		    if (e.Status == WebExceptionStatus.ProtocolError) response = (HttpWebResponse)e.Response;
+		    else return false;
+	    }
+	    catch (Exception)
+	    {
+		    if(response != null) response.Close();
+		    return false;
+	    }
+
+	    return true;
+    }
+
     private static bool Request_ems_health_state_pa_us_ConedClasssearch
       (
       CookieContainer cookie_container,
@@ -2256,6 +2511,128 @@ namespace ConEdLink.component.ss
       var hn_Next = html_document.GetElementbyId("_ctl0__ctl0_SessionLinkBar_Content_lbtnNext");
       context.disposition.val = (hn_Next.Attributes["disabled"] == null ? 0 : 1);
       return detailed_current_practitioners;
+      }
+
+    internal void MarkClassCanceled(string class_id)
+      {
+      var cookie_container = new CookieContainer();
+      //
+      Login(region_code:"1",cookie_container:cookie_container);
+      //
+      HttpWebResponse response;
+      if (!Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_EmsportalApplicationtransfersTransfertoconed() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_ConedClasssearch(cookie_container,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClasssearch() returned FALSE.");
+        }
+      if (!Request_ems_health_state_pa_us_ConedClassreg_Classid(cookie_container,class_id,out response))
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClassreg_Classid() returned FALSE.");
+        }
+      var hdn = HtmlDocumentOf(ConsumedStreamOf(response)).DocumentNode;
+      //
+      // The initial XPaths are determined by visiting the page in IE9, selecting "F12 developer tools", setting Document Mode to IE9 Standards, navigating to the node of interest, and disregarding any form or tbody tags.
+      //
+      var hn_disapproval_reason_id = hdn.SelectSingleNode("//select[@name='DisapprovalReasonID']/option[@selected]");
+      var hn_college_credit_awarded = hdn.SelectSingleNode("//input[@name='CollegeCreditAwarded' and @checked]");
+      //
+      if(
+        !Request_ems_health_state_pa_us_ConedClassreg_ClasswascanceledClassmaintenance
+          (
+          cookie_container:cookie_container,
+          class_id:class_id,
+          created_by:hdn.SelectSingleNode("//input[@name='CreatedBy']").Attributes["value"].Value,
+          date_created:hdn.SelectSingleNode("//input[@name='DateCreated']").Attributes["value"].Value,
+          date_last_edited:hdn.SelectSingleNode("//input[@name='DateLastEdited']").Attributes["value"].Value,
+          date_submitted_to_region:hdn.SelectSingleNode("//input[@name='DateSubmittedToRegion']").Attributes["value"].Value,
+          document_status:hdn.SelectSingleNode("//input[@name='DocumentStatus']").Attributes["value"].Value,
+          last_edited_by:hdn.SelectSingleNode("//input[@name='LastEditedBy']").Attributes["value"].Value,
+          region_council_num:hdn.SelectSingleNode("//input[@name='RegionCouncilNum']").Attributes["value"].Value,
+          sponsor_id:hdn.SelectSingleNode("//input[@name='SponsorID']").Attributes["value"].Value,
+          course_id:hdn.SelectSingleNode("//input[@name='CourseID']").Attributes["value"].Value,
+          initial_value_approved:hdn.SelectSingleNode("//input[@name='InitialValue_Approved']").Attributes["value"].Value,
+          initial_value_disapproval_reason_id:hdn.SelectSingleNode("//input[@name='InitialValue_DisapprovalReasonID']").Attributes["value"].Value,
+          debug_session_emso_user_id:hdn.SelectSingleNode("//input[@name='debug_session_emsoUserid']").Attributes["value"].Value,
+          debug_session_user_role:hdn.SelectSingleNode("//input[@name='debug_session_userRole']").Attributes["value"].Value,
+          debug_session_sponsor_id:hdn.SelectSingleNode("//input[@name='debug_session_SponsorID']").Attributes["value"].Value,
+          debug_sponsor_info_editable:hdn.SelectSingleNode("//input[@name='debug_SponsorInfoEditable']").Attributes["value"].Value,
+          debug_region_info_editable:hdn.SelectSingleNode("//input[@name='debug_RegionInfoEditable']").Attributes["value"].Value,
+          sponsor_name:hdn.SelectSingleNode("//input[@name='SponsorName']").Attributes["value"].Value,
+          sponsor_number:hdn.SelectSingleNode("//input[@name='SponsorNumber']").Attributes["value"].Value,
+          training_ins_accred_num:hdn.SelectSingleNode("//input[@name='TrainingInsAccredNum']").Attributes["value"].Value,
+          sponsor_county:hdn.SelectSingleNode("//input[@name='SponsorCounty']").Attributes["value"].Value,
+          course_title:hdn.SelectSingleNode("//input[@name='CourseTitle']").Attributes["value"].Value,
+          not_valid_after_date:hdn.SelectSingleNode("//input[@name='NotValidAfterDate']").Attributes["value"].Value,
+          course_number:hdn.SelectSingleNode("//input[@name='CourseNumber']").Attributes["value"].Value,
+          location:hdn.SelectSingleNode("//input[@name='Location']").Attributes["value"].Value,
+          location_of_registration:hdn.SelectSingleNode("//input[@name='LocationOfRegistration']").Attributes["value"].Value,
+          location_address_1:hdn.SelectSingleNode("//input[@name='LocationAddress1']").Attributes["value"].Value,
+          location_address_2:hdn.SelectSingleNode("//input[@name='LocationAddress2']").Attributes["value"].Value,
+          location_city:hdn.SelectSingleNode("//input[@name='LocationCity']").Attributes["value"].Value,
+          location_state:hdn.SelectSingleNode("//input[@name='LocationState']").Attributes["value"].Value,
+          location_zip:hdn.SelectSingleNode("//input[@name='LocationZIP']").Attributes["value"].Value,
+          location_zip_plus_4:hdn.SelectSingleNode("//input[@name='LocationZipPlus4']").Attributes["value"].Value,
+          county_code:hdn.SelectSingleNode("//input[@name='CountyCode']").Attributes["value"].Value,
+          county_name:hdn.SelectSingleNode("//input[@name='CountyName']").Attributes["value"].Value,
+          regional_council_name:hdn.SelectSingleNode("//input[@name='RegionalCouncilName']").Attributes["value"].Value,
+          location_phone:hdn.SelectSingleNode("//input[@name='LocationPhone']").Attributes["value"].Value,
+          location_email:hdn.SelectSingleNode("//input[@name='LocationEmail']").Attributes["value"].Value,
+          public_contact_name:hdn.SelectSingleNode("//input[@name='PublicContactName']").Attributes["value"].Value,
+          public_contact_email:hdn.SelectSingleNode("//input[@name='PublicContactEmail']").Attributes["value"].Value,
+          public_contact_phone:hdn.SelectSingleNode("//input[@name='PublicContactPhone']").Attributes["value"].Value,
+          public_contact_website:hdn.SelectSingleNode("//input[@name='PublicContactWebsite']").Attributes["value"].Value,
+          public_contact_notes:hdn.SelectSingleNode("//textarea[@name='PublicContactNotes']").InnerText,
+          student_cost:hdn.SelectSingleNode("//input[@name='StudentCost']").Attributes["value"].Value,
+          total_class_hours:hdn.SelectSingleNode("//input[@name='TotalClassHours']").Attributes["value"].Value,
+          total_class_hours_chk:hdn.SelectSingleNode("//input[@name='TotalClassHoursChk']").Attributes["value"].Value,
+          length_of_course_in_hours:hdn.SelectSingleNode("//input[@name='LengthOfCourseInHours']").Attributes["value"].Value,
+          tuition_includes:hdn.SelectSingleNode("//textarea[@name='TuitionIncludes']").InnerText,
+          closed:hdn.SelectSingleNode("//input[@name='Closed']").Attributes["value"].Value,
+          estimated_students:hdn.SelectSingleNode("//input[@name='EstimatedStudents']").Attributes["value"].Value,
+          start_date_time:hdn.SelectSingleNode("//input[@name='StartDateTime']").Attributes["value"].Value,
+          start_date_time_chk:hdn.SelectSingleNode("//input[@name='StartDateTimeChk']").Attributes["value"].Value,
+          start_time:hdn.SelectSingleNode("//input[@name='StartTime']").Attributes["value"].Value,
+          end_date_time:hdn.SelectSingleNode("//input[@name='EndDateTime']").Attributes["value"].Value,
+          end_date_time_chk:hdn.SelectSingleNode("//input[@name='EndDateTimeChk']").Attributes["value"].Value,
+          end_time:hdn.SelectSingleNode("//input[@name='EndTime']").Attributes["value"].Value,
+          final_registration_date:hdn.SelectSingleNode("//input[@name='FinalRegistrationDate']").Attributes["value"].Value,
+          instructors:hdn.SelectSingleNode("//input[@name='Instructors']").Attributes["value"].Value,
+          instructor_qualifications:hdn.SelectSingleNode("//input[@name='InstructorQualifications']").Attributes["value"].Value,
+          class_coordinator:hdn.SelectSingleNode("//input[@name='ClassCoordinator']").Attributes["value"].Value,
+          primary_text:hdn.SelectSingleNode("//input[@name='PrimaryText']").Attributes["value"].Value,
+          college_credit_awarded:(hn_college_credit_awarded == null ? k.EMPTY : hn_college_credit_awarded.Attributes["value"].Value),
+          held_on_sun:(hdn.SelectSingleNode("//input[@name='HeldOnSun' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          held_on_mon:(hdn.SelectSingleNode("//input[@name='HeldOnMon' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          held_on_tue:(hdn.SelectSingleNode("//input[@name='HeldOnTue' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          held_on_wed:(hdn.SelectSingleNode("//input[@name='HeldOnWed' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          held_on_thu:(hdn.SelectSingleNode("//input[@name='HeldOnThu' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          held_on_fri:(hdn.SelectSingleNode("//input[@name='HeldOnFri' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          held_on_sat:(hdn.SelectSingleNode("//input[@name='HeldOnSat' and @checked]") == null ? k.EMPTY : "CHECKED"),
+          other_dates_and_times:hdn.SelectSingleNode("//textarea[@name='OtherDatesAndTimes']").InnerText,
+          date_received_by_region:hdn.SelectSingleNode("//input[@name='DateReceivedByRegion']").Attributes["value"].Value,
+          ret_to_applicant_comment:hdn.SelectSingleNode("//input[@name='RetToApplicantComment']").Attributes["value"].Value,
+          date_sponsor_notified:hdn.SelectSingleNode("//input[@name='DateSponsorNotified']").Attributes["value"].Value,
+          approved:hdn.SelectSingleNode("//input[@name='Approved']").Attributes["value"].Value,
+          class_number:hdn.SelectSingleNode("//input[@name='ClassNumber']").Attributes["value"].Value,
+          date_registration_sent_to_state:hdn.SelectSingleNode("//input[@name='DateRegistrationSentToState']").Attributes["value"].Value,
+          date_cards_sent_to_sponsor:hdn.SelectSingleNode("//input[@name='DateCardsSentToSponsor']").Attributes["value"].Value,
+          date_materials_to_be_returned:hdn.SelectSingleNode("//input[@name='DateMaterialsToBeReturned']").Attributes["value"].Value,
+          disapproval_reason_id:(hn_disapproval_reason_id == null ? k.EMPTY : hn_disapproval_reason_id.Attributes["value"].Value),
+          region_comments:hdn.SelectSingleNode("//textarea[@name='RegionComments']").InnerText,
+          practical_exam_date:hdn.SelectSingleNode("//input[@name='PracticalExamDate']").Attributes["value"].Value,
+          practical_exam_time:hdn.SelectSingleNode("//input[@name='PracticalExamTime']").Attributes["value"].Value,
+          written_exam_date:hdn.SelectSingleNode("//input[@name='WrittenExamDate']").Attributes["value"].Value,
+          written_exam_time:hdn.SelectSingleNode("//input[@name='WrittenExamTime']").Attributes["value"].Value,
+          response:out response
+          )
+        )
+      // then
+        {
+        throw new Exception("Request_ems_health_state_pa_us_ConedClassreg_ClasswascanceledClassmaintenance() returned FALSE.");
+        }
       }
 
     }

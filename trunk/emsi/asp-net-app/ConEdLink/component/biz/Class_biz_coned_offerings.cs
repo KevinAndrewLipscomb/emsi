@@ -108,6 +108,11 @@ namespace Class_biz_coned_offerings
       db_coned_offerings.BindDirectToListControl(target);
       }
 
+    internal string ClassIdOf(object summary)
+      {
+      return db_coned_offerings.ClassIdOf(summary);
+      }
+
     internal string ClassNumberOf(object summary)
       {
       return db_coned_offerings.ClassNumberOf(summary);
@@ -431,6 +436,12 @@ namespace Class_biz_coned_offerings
           biz_notifications.IssueForRosterDue(roster_due_q.Dequeue());
           }
         }
+      }
+
+    internal void MarkCanceled(object summary)
+      {
+      ss_emsams.MarkClassCanceled(ClassIdOf(summary));
+      db_coned_offerings.MarkCanceled(IdOf(summary));
       }
 
     internal string PhrnMedTraumaHoursOf(object summary)

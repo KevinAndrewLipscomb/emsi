@@ -20,6 +20,7 @@ namespace Class_db_coned_offerings
     private class coned_offering_summary
       {
       public string id;
+      public string class_id;
       public string class_number;
       public string course_number;
       public string course_title;
@@ -104,6 +105,7 @@ namespace Class_db_coned_offerings
         + " , location"
         + " , CONCAT(start_date_time,' ',IFNULL(start_time,'')) as start"
         + " , CONCAT(end_date_time,' ',IFNULL(end_time,'')) as end"
+        + " , count(coned_offering_roster.id) as num_attendees"
         + " from coned_offering"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
@@ -111,12 +113,14 @@ namespace Class_db_coned_offerings
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " left join coned_offering_class_final_status on (coned_offering_class_final_status.id=coned_offering.class_final_status_id)"
+        +   " left join coned_offering_roster on (coned_offering_roster.coned_offering_id=coned_offering.id)"
         + " where region_code_name_map.code = '" + region_code + "'"
         +   " and county_region_map.region_code = '" + region_code + "'"
         +     (be_limited_to_needing_coned_sponsor_finalization ? " and coned_offering_status.description = 'NEEDS_CONED_SPONSOR_FINALIZATION'" : k.EMPTY)
         +     (start_year.Length > 0 ? " and YEAR(start_date_time) = '" + start_year + "'" : k.EMPTY)
         +     (coned_sponsor_user_id.Length > 0 ? " and teaching_entity.id = '" + coned_sponsor_user_id + "'" : k.EMPTY)
         +   " and ((coned_offering_class_final_status.short_description is null) or (coned_offering_class_final_status.short_description <> 'CANCELED'))"
+        + " group by coned_offering.id"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
@@ -179,6 +183,11 @@ namespace Class_db_coned_offerings
         }
       dr.Close();
       Close();
+      }
+
+    internal string ClassIdOf(object summary)
+      {
+      return (summary as coned_offering_summary).class_id;
       }
 
     internal string ClassNumberOf(object summary)
@@ -744,6 +753,13 @@ namespace Class_db_coned_offerings
       return (summary as coned_offering_summary).location;
       }
 
+    internal void MarkCanceled(string id)
+      {
+      Open();
+      new MySqlCommand("update coned_offering set class_final_status_id = (select id from coned_offering_class_final_status where short_description = 'CANCELED') where id = '" + id + "'",connection).ExecuteNonQuery();
+      Close();
+      }
+
     internal string PhrnMedTraumaHoursOf(object summary)
       {
       return (summary as coned_offering_summary).phrn_med_trauma_hours;
@@ -1043,7 +1059,8 @@ namespace Class_db_coned_offerings
         (
         new MySqlCommand
           (
-          "SELECT class_number"
+          "SELECT class_id"
+          + " , class_number"
           + " , course_number"
           + " , course_title"
           + " , location"
@@ -1080,6 +1097,7 @@ namespace Class_db_coned_offerings
       var the_summary = new coned_offering_summary()
         {
         id = id,
+        class_id = dr["class_id"].ToString(),
         class_number = dr["class_number"].ToString(),
         course_number = dr["course_number"].ToString(),
         course_title = dr["course_title"].ToString(),

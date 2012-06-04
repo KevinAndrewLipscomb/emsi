@@ -289,6 +289,7 @@ namespace Class_db_practitioners
               {
               unparsed_name = unparsed_name.Replace(last_name + k.COMMA_SPACE,k.EMPTY);
               first_name = unparsed_name;
+              middle_initial = k.EMPTY;
               if ((unparsed_name.Contains(k.SPACE)) && (unparsed_name.LastIndexOf(k.SPACE) == unparsed_name.Length - 2))
                 {
                 middle_initial = unparsed_name.Substring(unparsed_name.Length - 1);
