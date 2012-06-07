@@ -924,7 +924,7 @@ namespace ConEdLink.component.ss
         + "&DateCardsSentToSponsor=" + HttpUtility.UrlEncode(date_cards_sent_to_sponsor)
         + "&DateMaterialsToBeReturned=" + HttpUtility.UrlEncode(date_materials_to_be_returned)
         + "&DisapprovalReasonID=" + HttpUtility.UrlEncode(disapproval_reason_id)
-        + "&RegionComments=" + HttpUtility.UrlEncode(region_comments + (region_comments.Length > 0 ? " . . . " : k.EMPTY) + "!Class CANCELED via ConEdLink at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + "!")
+        + "&RegionComments=" + HttpUtility.UrlEncode(region_comments + (region_comments.Length > 0 ? " . . . " : k.EMPTY) + "=Class CANCELED via ConEdLink at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + "=")
         + "&PracticalExamDate=" + HttpUtility.UrlEncode(practical_exam_date)
         + "&PracticalExamTime=" + HttpUtility.UrlEncode(practical_exam_time)
         + "&WrittenExamDate=" + HttpUtility.UrlEncode(written_exam_date)
