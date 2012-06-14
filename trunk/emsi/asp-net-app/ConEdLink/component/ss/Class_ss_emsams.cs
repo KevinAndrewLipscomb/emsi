@@ -2539,94 +2539,177 @@ namespace ConEdLink.component.ss
       var hn_disapproval_reason_id = hdn.SelectSingleNode("//select[@name='DisapprovalReasonID']/option[@selected]");
       var hn_college_credit_awarded = hdn.SelectSingleNode("//input[@name='CollegeCreditAwarded' and @checked]");
       //
+      var created_by = hdn.SelectSingleNode("//input[@name='CreatedBy']").Attributes["value"].Value;
+      var date_created = hdn.SelectSingleNode("//input[@name='DateCreated']").Attributes["value"].Value;
+      var date_last_edited = hdn.SelectSingleNode("//input[@name='DateLastEdited']").Attributes["value"].Value;
+      var date_submitted_to_region = hdn.SelectSingleNode("//input[@name='DateSubmittedToRegion']").Attributes["value"].Value;
+      var document_status = hdn.SelectSingleNode("//input[@name='DocumentStatus']").Attributes["value"].Value;
+      var last_edited_by = hdn.SelectSingleNode("//input[@name='LastEditedBy']").Attributes["value"].Value;
+      var region_council_num = hdn.SelectSingleNode("//input[@name='RegionCouncilNum']").Attributes["value"].Value;
+      var sponsor_id = hdn.SelectSingleNode("//input[@name='SponsorID']").Attributes["value"].Value;
+      var course_id = hdn.SelectSingleNode("//input[@name='CourseID']").Attributes["value"].Value;
+      var initial_value_approved = hdn.SelectSingleNode("//input[@name='InitialValue_Approved']").Attributes["value"].Value;
+      var initial_value_disapproval_reason_id = hdn.SelectSingleNode("//input[@name='InitialValue_DisapprovalReasonID']").Attributes["value"].Value;
+      var debug_session_emso_user_id = hdn.SelectSingleNode("//input[@name='debug_session_emsoUserid']").Attributes["value"].Value;
+      var debug_session_user_role = hdn.SelectSingleNode("//input[@name='debug_session_userRole']").Attributes["value"].Value;
+      var debug_session_sponsor_id = hdn.SelectSingleNode("//input[@name='debug_session_SponsorID']").Attributes["value"].Value;
+      var debug_sponsor_info_editable = hdn.SelectSingleNode("//input[@name='debug_SponsorInfoEditable']").Attributes["value"].Value;
+      var debug_region_info_editable = hdn.SelectSingleNode("//input[@name='debug_RegionInfoEditable']").Attributes["value"].Value;
+      var sponsor_name = hdn.SelectSingleNode("//input[@name='SponsorName']").Attributes["value"].Value;
+      var sponsor_number = hdn.SelectSingleNode("//input[@name='SponsorNumber']").Attributes["value"].Value;
+      var training_ins_accred_num = hdn.SelectSingleNode("//input[@name='TrainingInsAccredNum']").Attributes["value"].Value;
+      var sponsor_county = hdn.SelectSingleNode("//input[@name='SponsorCounty']").Attributes["value"].Value;
+      var course_title = hdn.SelectSingleNode("//input[@name='CourseTitle']").Attributes["value"].Value;
+      var not_valid_after_date = hdn.SelectSingleNode("//input[@name='NotValidAfterDate']").Attributes["value"].Value;
+      var course_number = hdn.SelectSingleNode("//input[@name='CourseNumber']").Attributes["value"].Value;
+      var location = hdn.SelectSingleNode("//input[@name='Location']").Attributes["value"].Value;
+      var location_of_registration = hdn.SelectSingleNode("//input[@name='LocationOfRegistration']").Attributes["value"].Value;
+      var location_address_1 = hdn.SelectSingleNode("//input[@name='LocationAddress1']").Attributes["value"].Value;
+      var location_address_2 = hdn.SelectSingleNode("//input[@name='LocationAddress2']").Attributes["value"].Value;
+      var location_city = hdn.SelectSingleNode("//input[@name='LocationCity']").Attributes["value"].Value;
+      var location_state = hdn.SelectSingleNode("//input[@name='LocationState']").Attributes["value"].Value;
+      var location_zip = hdn.SelectSingleNode("//input[@name='LocationZIP']").Attributes["value"].Value;
+      var location_zip_plus_4 = hdn.SelectSingleNode("//input[@name='LocationZipPlus4']").Attributes["value"].Value;
+      var county_code = hdn.SelectSingleNode("//input[@name='CountyCode']").Attributes["value"].Value;
+      var county_name = hdn.SelectSingleNode("//input[@name='CountyName']").Attributes["value"].Value;
+      var regional_council_name = hdn.SelectSingleNode("//input[@name='RegionalCouncilName']").Attributes["value"].Value;
+      var location_phone = hdn.SelectSingleNode("//input[@name='LocationPhone']").Attributes["value"].Value;
+      var location_email = hdn.SelectSingleNode("//input[@name='LocationEmail']").Attributes["value"].Value;
+      var public_contact_name = hdn.SelectSingleNode("//input[@name='PublicContactName']").Attributes["value"].Value;
+      var public_contact_email = hdn.SelectSingleNode("//input[@name='PublicContactEmail']").Attributes["value"].Value;
+      var public_contact_phone = hdn.SelectSingleNode("//input[@name='PublicContactPhone']").Attributes["value"].Value;
+      var public_contact_website = hdn.SelectSingleNode("//input[@name='PublicContactWebsite']").Attributes["value"].Value;
+      var public_contact_notes = hdn.SelectSingleNode("//textarea[@name='PublicContactNotes']").InnerText;
+      var student_cost = hdn.SelectSingleNode("//input[@name='StudentCost']").Attributes["value"].Value;
+      var total_class_hours = hdn.SelectSingleNode("//input[@name='TotalClassHours']").Attributes["value"].Value;
+      var total_class_hours_chk = hdn.SelectSingleNode("//input[@name='TotalClassHoursChk']").Attributes["value"].Value;
+      var length_of_course_in_hours = hdn.SelectSingleNode("//input[@name='LengthOfCourseInHours']").Attributes["value"].Value;
+      var tuition_includes = hdn.SelectSingleNode("//textarea[@name='TuitionIncludes']").InnerText;
+      var closed = hdn.SelectSingleNode("//input[@name='Closed']").Attributes["value"].Value;
+      var estimated_students = hdn.SelectSingleNode("//input[@name='EstimatedStudents']").Attributes["value"].Value;
+      var start_date_time = hdn.SelectSingleNode("//input[@name='StartDateTime']").Attributes["value"].Value;
+      var start_date_time_chk = hdn.SelectSingleNode("//input[@name='StartDateTimeChk']").Attributes["value"].Value;
+      var start_time = hdn.SelectSingleNode("//input[@name='StartTime']").Attributes["value"].Value;
+      var end_date_time = hdn.SelectSingleNode("//input[@name='EndDateTime']").Attributes["value"].Value;
+      var end_date_time_chk = hdn.SelectSingleNode("//input[@name='EndDateTimeChk']").Attributes["value"].Value;
+      var end_time = hdn.SelectSingleNode("//input[@name='EndTime']").Attributes["value"].Value;
+      var final_registration_date = hdn.SelectSingleNode("//input[@name='FinalRegistrationDate']").Attributes["value"].Value;
+      var instructors = hdn.SelectSingleNode("//input[@name='Instructors']").Attributes["value"].Value;
+      var instructor_qualifications = hdn.SelectSingleNode("//input[@name='InstructorQualifications']").Attributes["value"].Value;
+      var class_coordinator = hdn.SelectSingleNode("//input[@name='ClassCoordinator']").Attributes["value"].Value;
+      var primary_text = hdn.SelectSingleNode("//input[@name='PrimaryText']").Attributes["value"].Value;
+      var college_credit_awarded = (hn_college_credit_awarded == null ? k.EMPTY : hn_college_credit_awarded.Attributes["value"].Value);
+      var held_on_sun = (hdn.SelectSingleNode("//input[@name='HeldOnSun' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var held_on_mon = (hdn.SelectSingleNode("//input[@name='HeldOnMon' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var held_on_tue = (hdn.SelectSingleNode("//input[@name='HeldOnTue' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var held_on_wed = (hdn.SelectSingleNode("//input[@name='HeldOnWed' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var held_on_thu = (hdn.SelectSingleNode("//input[@name='HeldOnThu' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var held_on_fri = (hdn.SelectSingleNode("//input[@name='HeldOnFri' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var held_on_sat = (hdn.SelectSingleNode("//input[@name='HeldOnSat' and @checked]") == null ? k.EMPTY : "CHECKED");
+      var other_dates_and_times = hdn.SelectSingleNode("//textarea[@name='OtherDatesAndTimes']").InnerText;
+      var date_received_by_region = hdn.SelectSingleNode("//input[@name='DateReceivedByRegion']").Attributes["value"].Value;
+      var ret_to_applicant_comment = hdn.SelectSingleNode("//input[@name='RetToApplicantComment']").Attributes["value"].Value;
+      var date_sponsor_notified = hdn.SelectSingleNode("//input[@name='DateSponsorNotified']").Attributes["value"].Value;
+      var approved = hdn.SelectSingleNode("//input[@name='Approved']").Attributes["value"].Value;
+      var class_number = hdn.SelectSingleNode("//input[@name='ClassNumber']").Attributes["value"].Value;
+      var date_registration_sent_to_state = hdn.SelectSingleNode("//input[@name='DateRegistrationSentToState']").Attributes["value"].Value;
+      var date_cards_sent_to_sponsor = hdn.SelectSingleNode("//input[@name='DateCardsSentToSponsor']").Attributes["value"].Value;
+      var date_materials_to_be_returned = hdn.SelectSingleNode("//input[@name='DateMaterialsToBeReturned']").Attributes["value"].Value;
+      var disapproval_reason_id = (hn_disapproval_reason_id == null ? k.EMPTY : hn_disapproval_reason_id.Attributes["value"].Value);
+      var region_comments = hdn.SelectSingleNode("//textarea[@name='RegionComments']").InnerText;
+      var practical_exam_date = hdn.SelectSingleNode("//input[@name='PracticalExamDate']").Attributes["value"].Value;
+      var practical_exam_time = hdn.SelectSingleNode("//input[@name='PracticalExamTime']").Attributes["value"].Value;
+      var written_exam_date = hdn.SelectSingleNode("//input[@name='WrittenExamDate']").Attributes["value"].Value;
+      var written_exam_time = hdn.SelectSingleNode("//input[@name='WrittenExamTime']").Attributes["value"].Value;
+      //
       if(
         !Request_ems_health_state_pa_us_ConedClassreg_ClasswascanceledClassmaintenance
           (
-          cookie_container:cookie_container,
-          class_id:class_id,
-          created_by:hdn.SelectSingleNode("//input[@name='CreatedBy']").Attributes["value"].Value,
-          date_created:hdn.SelectSingleNode("//input[@name='DateCreated']").Attributes["value"].Value,
-          date_last_edited:hdn.SelectSingleNode("//input[@name='DateLastEdited']").Attributes["value"].Value,
-          date_submitted_to_region:hdn.SelectSingleNode("//input[@name='DateSubmittedToRegion']").Attributes["value"].Value,
-          document_status:hdn.SelectSingleNode("//input[@name='DocumentStatus']").Attributes["value"].Value,
-          last_edited_by:hdn.SelectSingleNode("//input[@name='LastEditedBy']").Attributes["value"].Value,
-          region_council_num:hdn.SelectSingleNode("//input[@name='RegionCouncilNum']").Attributes["value"].Value,
-          sponsor_id:hdn.SelectSingleNode("//input[@name='SponsorID']").Attributes["value"].Value,
-          course_id:hdn.SelectSingleNode("//input[@name='CourseID']").Attributes["value"].Value,
-          initial_value_approved:hdn.SelectSingleNode("//input[@name='InitialValue_Approved']").Attributes["value"].Value,
-          initial_value_disapproval_reason_id:hdn.SelectSingleNode("//input[@name='InitialValue_DisapprovalReasonID']").Attributes["value"].Value,
-          debug_session_emso_user_id:hdn.SelectSingleNode("//input[@name='debug_session_emsoUserid']").Attributes["value"].Value,
-          debug_session_user_role:hdn.SelectSingleNode("//input[@name='debug_session_userRole']").Attributes["value"].Value,
-          debug_session_sponsor_id:hdn.SelectSingleNode("//input[@name='debug_session_SponsorID']").Attributes["value"].Value,
-          debug_sponsor_info_editable:hdn.SelectSingleNode("//input[@name='debug_SponsorInfoEditable']").Attributes["value"].Value,
-          debug_region_info_editable:hdn.SelectSingleNode("//input[@name='debug_RegionInfoEditable']").Attributes["value"].Value,
-          sponsor_name:hdn.SelectSingleNode("//input[@name='SponsorName']").Attributes["value"].Value,
-          sponsor_number:hdn.SelectSingleNode("//input[@name='SponsorNumber']").Attributes["value"].Value,
-          training_ins_accred_num:hdn.SelectSingleNode("//input[@name='TrainingInsAccredNum']").Attributes["value"].Value,
-          sponsor_county:hdn.SelectSingleNode("//input[@name='SponsorCounty']").Attributes["value"].Value,
-          course_title:hdn.SelectSingleNode("//input[@name='CourseTitle']").Attributes["value"].Value,
-          not_valid_after_date:hdn.SelectSingleNode("//input[@name='NotValidAfterDate']").Attributes["value"].Value,
-          course_number:hdn.SelectSingleNode("//input[@name='CourseNumber']").Attributes["value"].Value,
-          location:hdn.SelectSingleNode("//input[@name='Location']").Attributes["value"].Value,
-          location_of_registration:hdn.SelectSingleNode("//input[@name='LocationOfRegistration']").Attributes["value"].Value,
-          location_address_1:hdn.SelectSingleNode("//input[@name='LocationAddress1']").Attributes["value"].Value,
-          location_address_2:hdn.SelectSingleNode("//input[@name='LocationAddress2']").Attributes["value"].Value,
-          location_city:hdn.SelectSingleNode("//input[@name='LocationCity']").Attributes["value"].Value,
-          location_state:hdn.SelectSingleNode("//input[@name='LocationState']").Attributes["value"].Value,
-          location_zip:hdn.SelectSingleNode("//input[@name='LocationZIP']").Attributes["value"].Value,
-          location_zip_plus_4:hdn.SelectSingleNode("//input[@name='LocationZipPlus4']").Attributes["value"].Value,
-          county_code:hdn.SelectSingleNode("//input[@name='CountyCode']").Attributes["value"].Value,
-          county_name:hdn.SelectSingleNode("//input[@name='CountyName']").Attributes["value"].Value,
-          regional_council_name:hdn.SelectSingleNode("//input[@name='RegionalCouncilName']").Attributes["value"].Value,
-          location_phone:hdn.SelectSingleNode("//input[@name='LocationPhone']").Attributes["value"].Value,
-          location_email:hdn.SelectSingleNode("//input[@name='LocationEmail']").Attributes["value"].Value,
-          public_contact_name:hdn.SelectSingleNode("//input[@name='PublicContactName']").Attributes["value"].Value,
-          public_contact_email:hdn.SelectSingleNode("//input[@name='PublicContactEmail']").Attributes["value"].Value,
-          public_contact_phone:hdn.SelectSingleNode("//input[@name='PublicContactPhone']").Attributes["value"].Value,
-          public_contact_website:hdn.SelectSingleNode("//input[@name='PublicContactWebsite']").Attributes["value"].Value,
-          public_contact_notes:hdn.SelectSingleNode("//textarea[@name='PublicContactNotes']").InnerText,
-          student_cost:hdn.SelectSingleNode("//input[@name='StudentCost']").Attributes["value"].Value,
-          total_class_hours:hdn.SelectSingleNode("//input[@name='TotalClassHours']").Attributes["value"].Value,
-          total_class_hours_chk:hdn.SelectSingleNode("//input[@name='TotalClassHoursChk']").Attributes["value"].Value,
-          length_of_course_in_hours:hdn.SelectSingleNode("//input[@name='LengthOfCourseInHours']").Attributes["value"].Value,
-          tuition_includes:hdn.SelectSingleNode("//textarea[@name='TuitionIncludes']").InnerText,
-          closed:hdn.SelectSingleNode("//input[@name='Closed']").Attributes["value"].Value,
-          estimated_students:hdn.SelectSingleNode("//input[@name='EstimatedStudents']").Attributes["value"].Value,
-          start_date_time:hdn.SelectSingleNode("//input[@name='StartDateTime']").Attributes["value"].Value,
-          start_date_time_chk:hdn.SelectSingleNode("//input[@name='StartDateTimeChk']").Attributes["value"].Value,
-          start_time:hdn.SelectSingleNode("//input[@name='StartTime']").Attributes["value"].Value,
-          end_date_time:hdn.SelectSingleNode("//input[@name='EndDateTime']").Attributes["value"].Value,
-          end_date_time_chk:hdn.SelectSingleNode("//input[@name='EndDateTimeChk']").Attributes["value"].Value,
-          end_time:hdn.SelectSingleNode("//input[@name='EndTime']").Attributes["value"].Value,
-          final_registration_date:hdn.SelectSingleNode("//input[@name='FinalRegistrationDate']").Attributes["value"].Value,
-          instructors:hdn.SelectSingleNode("//input[@name='Instructors']").Attributes["value"].Value,
-          instructor_qualifications:hdn.SelectSingleNode("//input[@name='InstructorQualifications']").Attributes["value"].Value,
-          class_coordinator:hdn.SelectSingleNode("//input[@name='ClassCoordinator']").Attributes["value"].Value,
-          primary_text:hdn.SelectSingleNode("//input[@name='PrimaryText']").Attributes["value"].Value,
-          college_credit_awarded:(hn_college_credit_awarded == null ? k.EMPTY : hn_college_credit_awarded.Attributes["value"].Value),
-          held_on_sun:(hdn.SelectSingleNode("//input[@name='HeldOnSun' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          held_on_mon:(hdn.SelectSingleNode("//input[@name='HeldOnMon' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          held_on_tue:(hdn.SelectSingleNode("//input[@name='HeldOnTue' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          held_on_wed:(hdn.SelectSingleNode("//input[@name='HeldOnWed' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          held_on_thu:(hdn.SelectSingleNode("//input[@name='HeldOnThu' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          held_on_fri:(hdn.SelectSingleNode("//input[@name='HeldOnFri' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          held_on_sat:(hdn.SelectSingleNode("//input[@name='HeldOnSat' and @checked]") == null ? k.EMPTY : "CHECKED"),
-          other_dates_and_times:hdn.SelectSingleNode("//textarea[@name='OtherDatesAndTimes']").InnerText,
-          date_received_by_region:hdn.SelectSingleNode("//input[@name='DateReceivedByRegion']").Attributes["value"].Value,
-          ret_to_applicant_comment:hdn.SelectSingleNode("//input[@name='RetToApplicantComment']").Attributes["value"].Value,
-          date_sponsor_notified:hdn.SelectSingleNode("//input[@name='DateSponsorNotified']").Attributes["value"].Value,
-          approved:hdn.SelectSingleNode("//input[@name='Approved']").Attributes["value"].Value,
-          class_number:hdn.SelectSingleNode("//input[@name='ClassNumber']").Attributes["value"].Value,
-          date_registration_sent_to_state:hdn.SelectSingleNode("//input[@name='DateRegistrationSentToState']").Attributes["value"].Value,
-          date_cards_sent_to_sponsor:hdn.SelectSingleNode("//input[@name='DateCardsSentToSponsor']").Attributes["value"].Value,
-          date_materials_to_be_returned:hdn.SelectSingleNode("//input[@name='DateMaterialsToBeReturned']").Attributes["value"].Value,
-          disapproval_reason_id:(hn_disapproval_reason_id == null ? k.EMPTY : hn_disapproval_reason_id.Attributes["value"].Value),
-          region_comments:hdn.SelectSingleNode("//textarea[@name='RegionComments']").InnerText,
-          practical_exam_date:hdn.SelectSingleNode("//input[@name='PracticalExamDate']").Attributes["value"].Value,
-          practical_exam_time:hdn.SelectSingleNode("//input[@name='PracticalExamTime']").Attributes["value"].Value,
-          written_exam_date:hdn.SelectSingleNode("//input[@name='WrittenExamDate']").Attributes["value"].Value,
-          written_exam_time:hdn.SelectSingleNode("//input[@name='WrittenExamTime']").Attributes["value"].Value,
-          response:out response
+          cookie_container,
+          class_id,
+          created_by,
+          date_created,
+          date_last_edited,
+          date_submitted_to_region,
+          document_status,
+          last_edited_by,
+          region_council_num,
+          sponsor_id,
+          course_id,
+          initial_value_approved,
+          initial_value_disapproval_reason_id,
+          debug_session_emso_user_id,
+          debug_session_user_role,
+          debug_session_sponsor_id,
+          debug_sponsor_info_editable,
+          debug_region_info_editable,
+          sponsor_name,
+          sponsor_number,
+          training_ins_accred_num,
+          sponsor_county,
+          course_title,
+          not_valid_after_date,
+          course_number,
+          location,
+          location_of_registration,
+          location_address_1,
+          location_address_2,
+          location_city,
+          location_state,
+          location_zip,
+          location_zip_plus_4,
+          county_code,
+          county_name,
+          regional_council_name,
+          location_phone,
+          location_email,
+          public_contact_name,
+          public_contact_email,
+          public_contact_phone,
+          public_contact_website,
+          public_contact_notes,
+          student_cost,
+          total_class_hours,
+          total_class_hours_chk,
+          length_of_course_in_hours,
+          tuition_includes,
+          closed,
+          estimated_students,
+          start_date_time,
+          start_date_time_chk,
+          start_time,
+          end_date_time,
+          end_date_time_chk,
+          end_time,
+          final_registration_date,
+          instructors,
+          instructor_qualifications,
+          class_coordinator,
+          primary_text,
+          college_credit_awarded,
+          held_on_sun,
+          held_on_mon,
+          held_on_tue,
+          held_on_wed,
+          held_on_thu,
+          held_on_fri,
+          held_on_sat,
+          other_dates_and_times,
+          date_received_by_region,
+          ret_to_applicant_comment,
+          date_sponsor_notified,
+          approved,
+          class_number,
+          date_registration_sent_to_state,
+          date_cards_sent_to_sponsor,
+          date_materials_to_be_returned,
+          disapproval_reason_id,
+          region_comments,
+          practical_exam_date,
+          practical_exam_time,
+          written_exam_date,
+          written_exam_time,
+          out response
           )
         )
       // then
