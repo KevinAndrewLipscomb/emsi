@@ -84,8 +84,6 @@ namespace coned_offering_roster
       Button_mark_class_canceled.Visible = (p.num_attendees.val == 0) || (Session["imitator_designator"] != null);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
-      TableRow_with_attendees.Visible = (p.num_attendees.val > 0);
-      TableRow_quickmessage.Visible = (p.num_attendees.val > 0);
       SetHyperlinkPrintCompletionDocumentation();
       if (RadioButtonList_input_method.SelectedValue == "Standard")
         {

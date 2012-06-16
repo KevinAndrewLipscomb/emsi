@@ -283,15 +283,6 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Button Button_mark_class_canceled;
         
         /// <summary>
-        /// TableRow_with_attendees control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_with_attendees;
-        
-        /// <summary>
         /// CheckBox_item_sample control.
         /// </summary>
         /// <remarks>
@@ -335,15 +326,6 @@ namespace coned_offering_roster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_header_sample;
-        
-        /// <summary>
-        /// TableRow_quickmessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_quickmessage;
         
         /// <summary>
         /// Literal_author_email_address control.

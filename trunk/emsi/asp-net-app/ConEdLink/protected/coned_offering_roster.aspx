@@ -220,7 +220,7 @@
                                     <asp:Button ID="Button_mark_class_canceled" runat="server" CausesValidation="False" onclick="Button_mark_class_canceled_Click" Text="Mark class CANCELED" Visible="False" />
                                   </td>
                                 </tr>
-                                <tr id="TableRow_with_attendees" runat="server">
+                                <tr>
                                   <td>
                                     For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) attendees...
                                     <ul>
@@ -243,7 +243,7 @@
                   </td>
                 </tr>
                 <tr><td>&nbsp;</td></tr>
-                <tr id="TableRow_quickmessage" runat="server">
+                <tr>
                   <td>
                     <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
                       <tr>
