@@ -40,16 +40,14 @@
 				<tr>
 				  <td><p align="right">Regional council:</p></td>
 				  <td>
-						<asp:dropdownlist id="DropDownList_region" runat="server" onselectedindexchanged="DropDownList_region_SelectedIndexChanged">
-  						<ASP:ListItem value="1" Selected="True">EMSI</ASP:ListItem>
-            </asp:dropdownlist>
+						<asp:dropdownlist id="DropDownList_region" runat="server" onselectedindexchanged="DropDownList_region_SelectedIndexChanged" AutoPostBack="True"></asp:dropdownlist>
 				    <asp:RequiredFieldValidator ID="RequiredFieldValidator_region" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList_region" Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
 				  </td>
 				</tr>
 				<tr>
-				  <td align="right">Mimic what kind of user?</td>
+				  <td><p align="right"><ASP:Label id="Label_user_kind" runat="server" enabled="False">Mimic what kind of user?</ASP:Label>:</p></td>
 				  <td>
-									  <ASP:DropDownList id="DropDownList_user_kind" runat="server" autopostback="True" onselectedindexchanged="DropDownList_user_kind_SelectedIndexChanged">
+									  <ASP:DropDownList id="DropDownList_user_kind" runat="server" enabled="false" autopostback="True" onselectedindexchanged="DropDownList_user_kind_SelectedIndexChanged">
 								<ASP:ListItem value="0">-- Select --</ASP:ListItem>
 								<ASP:ListItem value="coned_sponsor">Continuing Education Sponsor</ASP:ListItem>
 								<ASP:ListItem value="regional_staffer">Regional staffer</ASP:ListItem></ASP:DropDownList><ASP:RegularExpressionValidator id="RegularExpressionValidator_user_kind" runat="server" errormessage="Please select a user kind." font-bold="True" controltovalidate="DropDownList_user_kind" validationexpression="[a-z_]+">!ERR!</ASP:RegularExpressionValidator>
@@ -61,7 +59,7 @@
 				  </td>
 				  <td>
 							<asp:dropdownlist id="DropDownList_user"
-											  runat="server" onselectedindexchanged="DropDownList_user_SelectedIndexChanged">
+											  runat="server" enabled="false" onselectedindexchanged="DropDownList_user_SelectedIndexChanged">
 							</asp:dropdownlist><ASP:RegularExpressionValidator id="RegularExpressionValidator_user" runat="server" errormessage="Please select a user." font-bold="True" controltovalidate="DropDownList_user" validationexpression="[^0].+">!ERR!</ASP:RegularExpressionValidator>
 				  </td>
 				</tr>
