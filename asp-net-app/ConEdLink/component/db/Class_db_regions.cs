@@ -50,7 +50,8 @@ namespace Class_db_regions
       (
       object target,
       string unselected_literal,
-      string selected_value
+      string selected_value,
+      bool do_limit_to_subscribers
       )
       {
       ((target) as ListControl).Items.Clear();
@@ -59,7 +60,8 @@ namespace Class_db_regions
         ((target) as ListControl).Items.Add(new ListItem(unselected_literal, k.EMPTY));
         }
       Open();
-      var dr = new MySqlCommand("SELECT code,name FROM region_code_name_map where name <> '(none specified)' order by code", connection).ExecuteReader();
+      var dr = new MySqlCommand("SELECT code,name FROM region_code_name_map where name <> '(none specified)'" + (do_limit_to_subscribers ? " and be_conedlink_subscriber" : k.EMPTY) + " order by code", connection)
+        .ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["name"].ToString(), dr["code"].ToString()));
@@ -70,6 +72,10 @@ namespace Class_db_regions
         {
         ((target) as ListControl).SelectedValue = selected_value;
         }
+      }
+    public void BindDirectToListControl(object target,string unselected_literal,string selected_value)
+      {
+      BindDirectToListControl(target, unselected_literal, selected_value, do_limit_to_subscribers:true);
       }
     public void BindDirectToListControl(object target,string unselected_literal)
       {

@@ -69,11 +69,7 @@ namespace login
                 p.biz_accounts = new TClass_biz_accounts();
                 p.biz_regions = new TClass_biz_regions();
                 //
-                var coned_sponsor_go_live_date = DateTime.Parse("2012-02-08");
-                if (DateTime.Today < coned_sponsor_go_live_date)
-                  {
-                  DropDownList_user_kind.Items.FindByValue("coned_sponsor").Enabled = false;
-                  }
+                p.biz_regions.BindDirectToListControl(DropDownList_region);
                 //
             }
             InjectPersistentClientSideScript();
@@ -86,7 +82,7 @@ namespace login
             // Required for Designer support
             InitializeComponent();
             base.OnInit(e);
-            p.region_code = "1";
+            p.region_code = k.EMPTY;
         }
 
         private void TWebForm_login_PreRender(object sender, System.EventArgs e)
@@ -100,17 +96,26 @@ namespace login
         }
 
         protected void DropDownList_user_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            Session.Remove(DropDownList_user_kind.SelectedValue + "_user_id");
-            Session.Add(DropDownList_user_kind.SelectedValue + "_user_id", k.Safe(DropDownList_user.SelectedValue, k.safe_hint_type.NUM));
-            Session.Remove(DropDownList_user_kind.SelectedValue + "_name");
-            Session.Add(DropDownList_user_kind.SelectedValue + "_name", k.Safe(DropDownList_user.SelectedItem.Text, k.safe_hint_type.ORG_NAME));
-        }
+          {
+          if (DropDownList_user_kind.SelectedValue == "0")
+            {
+            Session.Remove("coned_sponsor_user_id");
+            Session.Remove("coned_sponsor_name");
+            Session.Remove("regional_staffer_user_id");
+            Session.Remove("regional_staffer_name");
+            }
+          else
+            {
+            SessionSet(DropDownList_user_kind.SelectedValue + "_user_id", k.Safe(DropDownList_user.SelectedValue, k.safe_hint_type.NUM));
+            SessionSet(DropDownList_user_kind.SelectedValue + "_name", k.Safe(DropDownList_user.SelectedItem.Text, k.safe_hint_type.ORG_NAME));
+            }
+          }
 
         protected void DropDownList_user_kind_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             SessionSet("target_user_table", k.Safe(DropDownList_user_kind.SelectedValue, k.safe_hint_type.ECMASCRIPT_WORD));
             Label_user.Enabled = true;
+            DropDownList_user.Enabled = true;
             if (DropDownList_user_kind.SelectedValue == "coned_sponsor")
             {
                 Label_user.Text = "Con Ed Sponsor";
@@ -123,10 +128,7 @@ namespace login
             }
             else
             {
-                Session.Remove("target_user_table");
-                Label_user.Enabled = false;
-                Label_user.Text = "User";
-                DropDownList_user.Items.Clear();
+                ResetRegionDependencies();
             }
         }
 
@@ -149,6 +151,27 @@ namespace login
         protected void DropDownList_region_SelectedIndexChanged(object sender, EventArgs e)
           {
           p.region_code = k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM);
+          var be_valid_region_selected = (p.region_code.Length > 0);
+          Label_user_kind.Enabled = be_valid_region_selected;
+          DropDownList_user_kind.Enabled = be_valid_region_selected;
+          DropDownList_user_kind.SelectedValue = "0";
+          ResetRegionDependencies();
+          }
+
+        private void ResetRegionDependencies()
+          {
+          if (Session["target_user_table"] != null)
+            {
+            var target_user_table = Session["target_user_table"].ToString();
+            Session.Remove(target_user_table + "_user_id");
+            Session.Remove(target_user_table + "_name");
+            }
+          Session.Remove("target_user_table");
+          Label_user.Enabled = false;
+          Label_user.Text = "User";
+          DropDownList_user.ClearSelection();
+          DropDownList_user.Items.Clear();
+          DropDownList_user.Enabled = false;
           }
 
     } // end TWebForm_login

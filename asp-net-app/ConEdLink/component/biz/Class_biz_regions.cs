@@ -27,10 +27,15 @@ namespace Class_biz_regions
       (
       object target,
       string unselected_literal,
-      string selected_value
+      string selected_value,
+      bool do_limit_to_subscribers
       )
       {
-      db_regions.BindDirectToListControl(target, unselected_literal, selected_value);
+      db_regions.BindDirectToListControl(target, unselected_literal, selected_value, do_limit_to_subscribers);
+      }
+    public void BindDirectToListControl(object target, string unselected_literal, string selected_value)
+      {
+      BindDirectToListControl(target, unselected_literal, selected_value, do_limit_to_subscribers:true);
       }
     public void BindDirectToListControl(object target, string unselected_literal)
       {
