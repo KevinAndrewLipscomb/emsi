@@ -114,7 +114,12 @@ namespace ready_roster_detail
 
     protected void Button_submit_to_emsrs_Click(object sender, EventArgs e)
       {
-      var response = new EMSREGWebServices().ProcessConed("<CONEDRAW>" + p.lcds_content_xml + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
+      var application_name = ConfigurationManager.AppSettings["application_name"];
+      var response = "Errors Found: 0  (Not really.  " + application_name + " is not an instance that actually makes changes to EMSRS.)";
+      if (!(application_name.EndsWith("_d") || application_name.EndsWith("_x")))
+        {
+        response = new EMSREGWebServices().ProcessConed("<CONEDRAW>" + p.lcds_content_xml + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
+        }
       if (response.Contains("Errors Found: 0"))
         {
         Alert
