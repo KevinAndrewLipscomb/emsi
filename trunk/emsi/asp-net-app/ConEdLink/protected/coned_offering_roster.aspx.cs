@@ -233,8 +233,22 @@ namespace coned_offering_roster
 
     protected void Button_mark_class_canceled_Click(object sender, EventArgs e)
       {
-      p.biz_coned_offerings.MarkCanceled(p.incoming.summary);
-      BackTrack();
+      try
+        {
+        p.biz_coned_offerings.MarkCanceled(p.incoming.summary);
+        BackTrack();
+        }
+      catch
+        {
+        Alert
+          (
+          cause:k.alert_cause_type.NETWORK,
+          state:k.alert_state_type.FAILURE,
+          key:"bademsrscancel",
+          value:"ConEdLink was unable to cancel the class.  This may be due to a temporary problem communicating with EMSRS.  Please try again.  If the problem continues, please try later.  If the problem is persistent, please"
+          + " notify your regional council and cite the class number."
+          );
+        }
       }
 
     protected void Button_send_Click(object sender, System.EventArgs e)
