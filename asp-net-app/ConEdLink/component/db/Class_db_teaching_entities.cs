@@ -2,13 +2,13 @@
 
 using Class_db;
 using Class_db_trail;
+using ConEdLink.component.ss;
 using kix;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
+using System.Configuration;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
-using ConEdLink.component.ss;
 
 namespace Class_db_teaching_entities
   {
@@ -327,6 +327,13 @@ namespace Class_db_teaching_entities
         foreach (var rec in recs)
           {
           emsrs_id = (rec as Class_ss_emsams.TeachingEntity).id;
+          //
+          var application_name = ConfigurationManager.AppSettings["application_name"];
+          var be_production_instance = !(application_name.ToLower().EndsWith("_d") || application_name.ToLower().EndsWith("_x"));
+          var email = (be_production_instance ? (rec as Class_ss_emsams.TeachingEntity).email : "TeachingEnt" + emsrs_id + "E@frompaper2web.com");
+          var contact_email = (be_production_instance ? (rec as Class_ss_emsams.TeachingEntity).contact_email : "TeachingEnt" + emsrs_id + "Ce@frompaper2web.com");
+          var public_contact_email = (be_production_instance ? (rec as Class_ss_emsams.TeachingEntity).public_contact_email : "TeachingEnt" + emsrs_id + "Pce@frompaper2web.com");
+          //
           childless_field_assignments_clause = k.EMPTY
           + "date_created = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).date_created + "',''),'%m/%d/%Y')"
           + " , date_last_edited = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).date_last_edited + "',''),'%m/%d/%Y')"
@@ -341,7 +348,7 @@ namespace Class_db_teaching_entities
           + " , zip = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).zip + "','')"
           + " , county_code = NULLIF(IFNULL((select emsrs_code from county_code_name_map where name = '" + (rec as Class_ss_emsams.TeachingEntity).county_name + "'),''),'')"
           + " , region = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).region + "','')"
-          + " , email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).email + "','')"
+          + " , email = NULLIF('" + email + "','')"
           + " , website = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).website + "','')"
           + " , daytime_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).daytime_phone + "','')"
           + " , evening_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).evening_phone + "','')"
@@ -360,10 +367,10 @@ namespace Class_db_teaching_entities
           + " , contact_daytime_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_daytime_phone + "','')"
           + " , contact_evening_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_evening_phone + "','')"
           + " , contact_fax = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_fax + "','')"
-          + " , contact_email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).contact_email + "','')"
+          + " , contact_email = NULLIF('" + contact_email + "','')"
           + " , public_contact_name = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_name + "','')"
           + " , public_contact_phone = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_phone + "','')"
-          + " , public_contact_email = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_email + "','')"
+          + " , public_contact_email = NULLIF('" + public_contact_email + "','')"
           + " , public_contact_website = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_website + "','')"
           + " , public_contact_notes = NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).public_contact_notes + "','')"
           + " , application_date = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.TeachingEntity).application_date + "',''),'%m/%d/%Y')"
