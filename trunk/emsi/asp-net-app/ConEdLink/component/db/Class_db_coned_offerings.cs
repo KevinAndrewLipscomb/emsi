@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.UI.WebControls;
 
 namespace Class_db_coned_offerings
@@ -627,6 +628,12 @@ namespace Class_db_coned_offerings
         foreach (var rec in recs)
           {
           class_number = k.Safe((rec as Class_ss_emsams.ConedOffering).class_number,k.safe_hint_type.NUM);
+          //
+          var application_name = ConfigurationManager.AppSettings["application_name"];
+          var be_production_instance = !(application_name.ToLower().EndsWith("_d") || application_name.ToLower().EndsWith("_x"));
+          var public_contact_email = (be_production_instance ? (rec as Class_ss_emsams.ConedOffering).public_contact_email : "CeOffering" + class_number + "Pce@frompaper2web.com");
+          var location_email = (be_production_instance ? (rec as Class_ss_emsams.ConedOffering).location_email : "CeOffering" + class_number + "Le@frompaper2web.com");
+          //
           childless_field_assignments_clause = k.EMPTY
           + "class_id = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).class_id_1 + "','')"
           + " , course_id = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).course_id + "','')"
@@ -653,7 +660,7 @@ namespace Class_db_coned_offerings
           + " , instructor_qualifications = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).instructor_qualifications + "','')"
           + " , public_contact_name = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_name + "','')"
           + " , public_contact_phone = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_phone + "','')"
-          + " , public_contact_email = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_email + "','')"
+          + " , public_contact_email = NULLIF('" + public_contact_email + "','')"
           + " , public_contact_website = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_website + "','')"
           + " , public_contact_notes = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).public_contact_notes + "','')"
           + " , date_submitted_to_region = STR_TO_DATE(NULLIF('" + (rec as Class_ss_emsams.ConedOffering).date_submitted_to_region + "',''),'%m/%d/%Y')"
@@ -674,7 +681,7 @@ namespace Class_db_coned_offerings
           + " , location_zip = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_zip + "','')"
           + " , location_zip_plus_4 = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_zip_plus_4 + "','')"
           + " , location_phone = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_phone + "','')"
-          + " , location_email = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_email + "','')"
+          + " , location_email = NULLIF('" + location_email + "','')"
           + " , location_of_registration = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).location_of_registration + "','')"
           + " , primary_text = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).primary_text + "','')"
           + " , additional_texts = NULLIF('" + (rec as Class_ss_emsams.ConedOffering).additional_texts + "','')"
