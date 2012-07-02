@@ -176,7 +176,7 @@ The Regional EMS Councils of the Pennsylvania state EMS system
 \begin_layout Description
 
 \size footnotesize
-29
+30
 \begin_inset space ~
 \end_inset
 
@@ -385,10 +385,44 @@ ConEdLink
 ConEdLink
 \series default
  or to notify 
-\noun on
+\emph on
 ConEdLink@FromPaper2Web.com
-\noun default
+\emph default
 .
+\end_layout
+
+\begin_layout Subsection
+Related documents
+\end_layout
+
+\begin_layout Standard
+Regional staffers should also be familiar with the following 
+\series bold
+ConEdLink
+\series default
+ documents:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Use Guide for Con-Ed Sponsors"
+target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Creating ConEdLink rosters using barcode scanners"
+target "https://frompaper2web.com/ConEdLink/resource/creating-conedlink-rosters-using-barcode-scanners/creating-conedlink-rosters-using-barcode-scanners.pdf"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -402,12 +436,12 @@ Getting a password
 \end_layout
 
 \begin_layout Standard
-
+Accounts in 
 \series bold
 ConEdLink
 \series default
- accounts for a regional council's staffers are created at the time the
- regional council subscribes to the 
+ for a regional council's staffers are created at the time the regional
+ council subscribes to the 
 \series bold
 ConEdLink
 \series default
@@ -569,10 +603,64 @@ A temporary password has been sent to
 \end_inset
 
 If the wrong email address is shown, notify 
-\noun on
+\emph on
 ConEdLink@FromPaper2Web.com
-\noun default
+\emph default
 .
+\end_layout
+
+\begin_layout Section
+Ready roster notifications
+\end_layout
+
+\begin_layout Standard
+When a Con-Ed Sponsor uses 
+\series bold
+ConEdLink
+\series default
+ to close a roster and to submit it to the regional council, 
+\series bold
+ConEdLink
+\series default
+ sends an email something like the following to the appropriate regional
+ staffers:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ready-roster-notification.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Click the link at the bottom of the email message to open 
+\series bold
+ConEdLink
+\series default
+ in your browser so that you can process the ready roster.
 \end_layout
 
 \begin_layout Section
@@ -635,21 +723,7 @@ regional_staffer_overview
 \emph on
 Rich Kaufman
 \emph default
- is used as an example.
- If you have no current classes registered, you will simply see the indication,
- 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-NONE
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
-:
+ is used as an example:
 \end_layout
 
 \begin_layout Standard
@@ -672,9 +746,13 @@ account control line
 \emph on
 logout
 \emph default
- and 
+, 
 \emph on
 password
+\emph default
+, and 
+\emph on
+email address
 \emph default
  links.
  To log out of 
@@ -691,6 +769,11 @@ logout
 password
 \emph default
 .
+ To update your email address, click 
+\emph on
+email address
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -699,7 +782,11 @@ Also note that several tabs are available.
 \emph on
 Ready rosters
 \emph default
- tab, but feel free to explore the others.
+ and 
+\emph on
+Sponsors
+\emph default
+ tabs, but feel free to explore the others.
 \end_layout
 
 \begin_layout Section
@@ -709,7 +796,7 @@ name "sec:Reviewing-class-rosters"
 
 \end_inset
 
-Reviewing class rosters
+Reviewing & uploading class rosters
 \end_layout
 
 \begin_layout Standard
@@ -721,13 +808,27 @@ Ready rosters
 \emph on
 Roster
 \emph default
- link to the right of the class whose roster you wish to review.
- You'll see something like this:
+ link to the right of the class whose roster you wish to review, as shown
+ here:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename managing-class-rosters.png
+	filename reviewing-class-rosters-1.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You'll see something like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename reviewing-class-rosters-2.png
 	width 100text%
 
 \end_inset
@@ -798,64 +899,43 @@ breadcrumb trail
 
 \end_layout
 
-\begin_layout Subsection
-Searching for practitioners
-\end_layout
-
 \begin_layout Standard
-To search for a practitioner to add to a roster, just start typing in the
- 
-\emph on
-Search>
-\emph default
- field.
- Whenever you stop typing for at least one second, 
-\series bold
-ConEdLink
-\series default
- will retrieve and display a list of possible matches, as shown here:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename search-as-you-type.png
-	width 100text%
+After you review the details of the roster for appropriateness, you can
+ upload the roster using the three-step process (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-three-step-process"
 
 \end_inset
 
+) or the one-step process (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-one-step-process"
 
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
-Adding a practitioner to a roster
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-three-step-process"
+
+\end_inset
+
+The three-step process (Large Conference Data Sheet)
 \end_layout
 
 \begin_layout Standard
-Once a class attendee appears on the list below the 
-\emph on
-Search>
-\emph default
- field, there are two ways to add the attendee to the roster:
-\end_layout
 
-\begin_layout Enumerate
-If multiple practitioners are shown under the 
-\emph on
-Search>
-\emph default
- field, click the practitioner who you want to add to the roster.
-\end_layout
-
-\begin_layout Enumerate
-If just one practitioner is shown under the 
-\emph on
-Search>
-\emph default
- field, either click the practitioner 
-\bar under
-or just press Enter
-\bar default
-.
+\series bold
+ConEdLink
+\series default
+ can generate the roster as a Large Conference Data Sheet (LCDS) for times
+ when you want to manually manipulate the data, or independently archive
+ it, before submitting it to EMSRS.
 \end_layout
 
 \begin_layout Standard
@@ -868,7 +948,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "75col%"
+width "75text%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -879,218 +959,118 @@ status open
 \align center
 
 \bar under
-HINT
+NOTE
 \end_layout
 
 \begin_layout Plain Layout
 \noindent
 \align center
-If you are a decent typist, a very efficient way to add attendees to a roster
- is to type enough of the attendee's particulars to uniquely identify the
- attendee, then press Enter, then repeat this process for other attendees.
- Using this technique, you can minimize the need to use the mouse.
+
+\series bold
+ConEdLink
+\series default
+ only provides the ability to generate a roster as an LCDS for contingency
+ reasons.
+ If you find that you are only able to accomplish something by exporting
+ an LCDS, notify 
+\emph on
+ConEdLink@FromPaper2Web.com
+\emph default
+ so the capability you need can be incorporated directly into 
+\series bold
+ConEdLink
+\series default
+, where validation, error checking, journaling, and all the other advantages
+ of business logic automation and robust data integrity constraints can
+ be systematically enforced.
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-After using either of these methods, the practitioner will appear as a registere
-d attendee, like this:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename practitioner-added-to-roster.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-When multiple attendees are on a class roster, you can click the heading
- fields to sort by particular columns.
- By default, attendees are listed in order of their last names.
-\end_layout
-
-\begin_layout Subsection
-Removing a practitioner from a roster
-\end_layout
-
-\begin_layout Standard
-To remove a practitioner from a roster, click the red X (
-\begin_inset Graphics
-	filename red-x.png
-
-\end_inset
-
-) to the left of the practitoner's name.
-\end_layout
-
-\begin_layout Standard
-You cannot remove a practitioner from a roster after you have clicked the
- 
-\begin_inset Graphics
-	filename close-class-button.png
-
-\end_inset
-
- button.
-\end_layout
-
-\begin_layout Subsection
-Editing attendee data
-\end_layout
-
-\begin_layout Standard
-Several attributes are associated with each practitioner, as shown here:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename assorted-practitioners-on-roster.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The following attributes are taken from the state's existing EMSRS
-\begin_inset Foot
-status open
 
 \begin_layout Plain Layout
-Practitioner attributes are currently imported from EMSRS into ConEdLink
- on a weekly basis.
+\noindent
+\align center
+If you don't need to manually manipulate the data or independently archive
+ it, use the one-step process (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-one-step-process"
+
+\end_inset
+
+) instead.
 \end_layout
 
 \end_inset
 
-, and cannot be edited in 
-\series bold
-ConEdLink
-\series default
-.
- Changes to these attributes must be made in EMSRS:
-\end_layout
 
-\begin_layout Itemize
-Last name
-\end_layout
-
-\begin_layout Itemize
-First name
-\end_layout
-
-\begin_layout Itemize
-Middle initial
-\end_layout
-
-\begin_layout Itemize
-Level
-\end_layout
-
-\begin_layout Itemize
-Cert#
 \end_layout
 
 \begin_layout Standard
-The 
-\emph on
-DOB
-\emph default
- (Date Of Birth) attribute is required for all attendees before a class
- roster can be closed and submitted for credit.
- If missing, it must be supplied.
+The three-step process involves these steps:
 \end_layout
 
-\begin_layout Standard
-The 
-\emph on
-County
-\emph default
- attribute should be set to the attendee's county of residence.
+\begin_layout Enumerate
+Generate the LCDS (and optionally make manual changes to it) (see section
  
-\series bold
-ConEdLink
-\series default
- will default this attribute to the county in which the class is being given,
- as registered in EMSRS.
- You can correct it if it has been recorded incorrectly.
- You can change an attendee's county attribute at any time.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Generate-the-LCDS"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Upload the LCDS via the Pearson scanner application (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Upload-the-LCDS-via-the-Pearson-scanner-application"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Mark the process done in ConEdLink (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Mark-the-process-done-in-ConEdLink"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
-The 
+The steps are detailed below.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Generate-the-LCDS"
+
+\end_inset
+
+Generate the LCDS (and optionally make manual changes to it)
+\end_layout
+
+\begin_layout Standard
+From the 
 \emph on
-Email address
+ready_roster_detail
 \emph default
- attribute is desired, but not required.
- If supplied correctly, 
-\series bold
-ConEdLink
-\series default
- can email course completion documentation to the attendee after the class
- has been closed and submitted for credit, and email-based communications
- between practitioners and the regional council may be facilitated.
- You can supply or change an attendee's email address at any time.
-\end_layout
-
-\begin_layout Standard
-The 
+ page, click the 
 \emph on
-InstrHrs
+Generate Large Conference Data Sheet
 \emph default
- (INSTRuctor HouRS) attribute is only enabled for certified EMS Instructors,
- and defaults to 
-\begin_inset Quotes eld
-\end_inset
-
-none
-\begin_inset Quotes erd
-\end_inset
-
-.
- You should change it if the attendee should receive Instructor Hours credit
- for the class.
- This attribute cannot be changed after you have clicked the 
-\begin_inset Graphics
-	filename close-class-button.png
-
-\end_inset
-
- button.
-\end_layout
-
-\begin_layout Standard
-If data associated with an attendee is missing or incorrect, click the pencil
- icon (
-\begin_inset Graphics
-	filename pencil-icon.png
-
-\end_inset
-
-) on the right side of the attendee's row.
- 
-\series bold
-ConEdLink
-\series default
- will put the row in 
-\bar under
-edit mode
-\bar default
-, and you'll see something like this:
+ link as shown below:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename editing-attendee-data.png
+	filename 3-step-process-1.png
 	width 100text%
 
 \end_inset
@@ -1099,82 +1079,460 @@ edit mode
 \end_layout
 
 \begin_layout Standard
-When a row is put into edit mode, the format for missing data is shown in
- grey type until you put the cursor in the corresponding field.
- Supply missing data and/or correct erroneous data, then click the 
-\bar under
-save
-\bar default
- icon (
-\begin_inset Graphics
-	filename save-icon.png
-
-\end_inset
-
-).
- To take the row out of edit mode without saving any changes, click the
- 
-\bar under
-cancel
-\bar default
- icon (
-\begin_inset Graphics
-	filename cancel-icon.png
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsection
-Closing a class and submitting for credit
-\end_layout
-
-\begin_layout Standard
-When you are satisfied that a class roster is correct and complete, simply
- click the
-\end_layout
-
-\begin_layout Quote
-\begin_inset Graphics
-	filename close-class-button.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-button.
- The regional council will be notified by email that the roster is ready
- for processing.
-\end_layout
-
-\begin_layout Standard
-Remember to use the 
-\bar under
-breadcrumb trail
-\bar default
- (see section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Reviewing-class-rosters"
-
-\end_inset
-
+Your browser should display a pop-up window or a special bar giving you
+ options to 
+\emph on
+Open
+\emph default
 , 
-\begin_inset Quotes eld
+\emph on
+Save
+\emph default
+, 
+\emph on
+Cancel
+\emph default
+, etc, something like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename 3-step-process-2.png
+	width 100text%
+
 \end_inset
 
-Reviewing class rosters
-\begin_inset Quotes erd
+
+\end_layout
+
+\begin_layout Standard
+Choose 
+\emph on
+Open
+\emph default
+ or 
+\emph on
+Save
+\emph default
+ depending upon your immediate intentions.
+ Note that 
+\series bold
+ConEdLink
+\series default
+ uses the appropriate Class Number for the name of the LCDS.
+\end_layout
+
+\begin_layout Standard
+If you decide to open the LCDS, whether directly from 
+\series bold
+ConEdLink
+\series default
+ or indirectly from your file system, the LCDS should open in your desktop
+ spreadsheet application, like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename 3-step-process-3.png
+	width 100text%
+
 \end_inset
 
-) to get back to the 
+
+\end_layout
+
+\begin_layout Standard
+Examples of making manual changes to the LCDS will not be provided in this
+ guide.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Upload-the-LCDS-via-the-Pearson-scanner-application"
+
+\end_inset
+
+Upload the LCDS via the Pearson scanner application
+\end_layout
+
+\begin_layout Standard
+\noindent
+LCDS's generated by 
+\series bold
+ConEdLink
+\series default
+ can be uploaded to EMSRS via the Pearson scanner application if no changes
+ (or if only appropriate changes) have been made to them.
+ The Pearson scanner application and its use for uploading LCDS's are outside
+ 
+\series bold
+ConEdLink
+\series default
+'s scope, and are not detailed in this guide.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Mark-the-process-done-in-ConEdLink"
+
+\end_inset
+
+Mark the process done in ConEdLink
+\end_layout
+
+\begin_layout Standard
+To advise 
+\series bold
+ConEdLink
+\series default
+ that you have successfully uploaded the LCDS to EMSRS via the Pearson scanner
+ application, and to remove the associated roster from 
+\series bold
+ConEdLink
+\series default
+'s ready roster list, click the 
+\begin_inset Graphics
+	filename mark-done-and-go-back-button.png
+
+\end_inset
+
+ button on the 
+\emph on
+ready_roster_detail
+\emph default
+ page.
+ 
+\series bold
+ConEdLink
+\series default
+ will return you to the 
 \emph on
 regional_staffer_overview
 \emph default
  page.
+ The roster you just uploaded will no longer appear as a ready roster.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-one-step-process"
+
+\end_inset
+
+The one-step process
+\end_layout
+
+\begin_layout Standard
+The one-step process is the quickest, safest, and most straightforward way
+ to upload a roster to EMSRS.
+\end_layout
+
+\begin_layout Standard
+From the 
+\emph on
+ready_roster_detail page
+\emph default
+, click the 
+\begin_inset Graphics
+	filename submit-to-emsrs-and-mark-done-button.png
+
+\end_inset
+
+ button.
+ After a few moments, you should see a pop-up window something like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename okfromemsrs.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above message indicates that EMSRS accepted the roster.
+ Click the 
+\begin_inset Graphics
+	filename ok-button.png
+
+\end_inset
+
+ button to make the pop-up window go away, then click the 
+\begin_inset Graphics
+	filename go-back-button.png
+
+\end_inset
+
+ button on the 
+\emph on
+ready_roster_detail
+\emph default
+ page.
+ 
+\series bold
+ConEdLink
+\series default
+ will return you to the 
+\emph on
+regional_staffer_overview
+\emph default
+ page.
+ The roster you just uploaded will no longer appear as a ready roster.
+\end_layout
+
+\begin_layout Section
+Imitating Con-Ed Sponsors
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+ConEdLink
+\series default
+ allows you to 
+\begin_inset Quotes eld
+\end_inset
+
+imitate
+\begin_inset Quotes erd
+\end_inset
+
+ a Con-Ed Sponsor so you can perform actions that are usually the Con-Ed
+ Sponsor's responsibility.
+\end_layout
+
+\begin_layout Standard
+To imitate a Con-Ed Sponsor, make sure you have navigated to the 
+\emph on
+regional_staffer_overview
+\emph default
+ page, then click the 
+\emph on
+Sponsors
+\emph default
+ tab, shown here:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename imitate-sponsor-1.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You'll see the current list of active and provisional Con-Ed Sponsors in
+ your region, something like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename imitate-sponsor-2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By default, the list of Con-Ed Sponsors is sorted by name.
+ Click a column heading to sort by order of that column.
+ Click the same column heading again, and the sort order will be reversed.
+\end_layout
+
+\begin_layout Standard
+To the right of a Con-Ed Sponsor's name, click the 
+\begin_inset Quotes eld
+\end_inset
+
+Imitate
+\begin_inset Quotes erd
+\end_inset
+
+ icon (
+\begin_inset Graphics
+	filename imitate-icon.png
+
+\end_inset
+
+), which looks like a masquerade party mask, to log into that Con-Ed Sponsor's
+ 
+\series bold
+ConEdLink
+\series default
+ account.
+ You'll see a pop-up warning something like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename imitate-sponsor-3.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When you click the 
+\begin_inset Graphics
+	filename ok-button.png
+
+\end_inset
+
+ button, 
+\series bold
+ConEdLink
+\series default
+ will log you into the Con-Ed Sponsor's account.
+ Because you have already authenticated yourself to the application, you
+ will not be prompted for a password.
+\end_layout
+
+\begin_layout Standard
+For information on using 
+\series bold
+ConEdLink
+\series default
+ while you are logged in as a Con-Ed Sponsor, see the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Use Guide for Con-Ed Sponsors"
+target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To stop imitating a Con-Ed Sponsor, you must log out of the Con-Ed Sponsor's
+ account.
+\end_layout
+
+\begin_layout Section
+ConEdLink internals
+\end_layout
+
+\begin_layout Standard
+Regional staffers should have a basic understanding of how 
+\series bold
+ConEdLink
+\series default
+ works and what it does behind the scenes.
+ This section describes some of the most important concepts of 
+\series bold
+ConEdLink
+\series default
+'s operation.
+\end_layout
+
+\begin_layout Subsection
+Standard features
+\end_layout
+
+\begin_layout Standard
+ConEdLink includes all the features listed under the 
+\emph on
+Features
+\emph default
+ tab of the 
+\begin_inset CommandInset href
+LatexCommand href
+name "FromPaper2Web.com Home page"
+target "https://frompaper2web.com"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Dependence on EMSRS
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+ConEdLink
+\series default
+ can only interact with EMSRS if EMSRS is up and behaving as 
+\series bold
+ConEdLink
+\series default
+ expects.
+ Upgrades to EMSRS may prevent 
+\series bold
+ConEdLink
+\series default
+ from completing such interactions until FromPaper2Web.com can reconfigure
+ 
+\series bold
+ConEdLink
+\series default
+ accordingly.
+\end_layout
+
+\begin_layout Subsection
+Syncs
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+ConEdLink
+\series default
+ periodically refreshes, or 
+\begin_inset Quotes eld
+\end_inset
+
+syncs
+\begin_inset Quotes erd
+\end_inset
+
+, certain data from EMSRS, including data associated with classes, Con-Ed
+ Sponsors, instructors, and practitioners.
+ The syncs occur on the following schedule:
+\end_layout
+
+\begin_layout Itemize
+Once a 
+\series bold
+day
+\series default
+: 
+\emph on
+Classes, Con-Ed Sponsors, Instructors
+\end_layout
+
+\begin_layout Itemize
+Once a 
+\series bold
+week
+\series default
+: 
+\emph on
+Practitioners
+\end_layout
+
+\begin_layout Subsection
+Nags
+\end_layout
+
+\begin_layout Standard
+If, on the 1st, 4th, 7th, 9th, or 10th day after a class's DATE_FINAL, the
+ class has not been closed and submitted to the regional council, 
+\series bold
+ConEdLink
+\series default
+ sends the Con-Ed Sponsor an email nagging them to process the roster.
 \end_layout
 
 \end_body
