@@ -93,7 +93,7 @@ namespace Class_db_practitioners
         "SELECT id"
         + " , CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'-')) USING utf8) as spec"
         + " FROM practitioner"
-        + " where 1=1" + matching_clause
+        + " where not be_past" + matching_clause
         + " order by spec"
         + " limit " + limit.val,
         connection
@@ -296,7 +296,7 @@ namespace Class_db_practitioners
                 first_name = unparsed_name.Substring(0,unparsed_name.Length - 2);
                 }
               //
-              id_obj = new MySqlCommand("select id from practitioner where certification_number = '" + (rec as Class_ss_emsams.DetailedPractitioner).certification_number + "'",connection).ExecuteScalar();
+              id_obj = new MySqlCommand("select id from practitioner where certification_number = '" + (rec as Class_ss_emsams.DetailedPractitioner).certification_number + "' and not be_past",connection).ExecuteScalar();
               if (id_obj == null)
                 {
                 built_insert_values_string.Append
@@ -442,7 +442,18 @@ namespace Class_db_practitioners
     internal void RemoveStale()
       {
       Open();
-      new MySqlCommand("delete from practitioner where be_stale and (select count(*) from coned_offering_roster where practitioner_id = practitioner.id) = 0",connection).ExecuteNonQuery();
+      new MySqlCommand
+        (
+        "START TRANSACTION"
+        + ";"
+        + " delete from practitioner where be_stale and (select count(*) from coned_offering_roster where practitioner_id = practitioner.id) = 0"
+        + ";"
+        + " update practitioner set be_past = TRUE where be_stale"
+        + ";"
+        + " COMMIT",
+        connection
+        )
+        .ExecuteNonQuery();
       Close();
       }
 
