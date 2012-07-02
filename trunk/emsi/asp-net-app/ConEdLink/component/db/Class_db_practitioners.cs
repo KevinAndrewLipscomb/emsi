@@ -93,7 +93,7 @@ namespace Class_db_practitioners
         "SELECT id"
         + " , CONVERT(concat(last_name,', ',first_name,' ',middle_initial,', ',certification_number,', ',IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'-')) USING utf8) as spec"
         + " FROM practitioner"
-        + " where not be_stale" + matching_clause
+        + " where 1=1" + matching_clause
         + " order by spec"
         + " limit " + limit.val,
         connection
