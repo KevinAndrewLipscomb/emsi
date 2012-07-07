@@ -1,0 +1,7 @@
+grant select
+ , insert
+ , update
+ , delete
+ , create
+  on pacratdb_d.*
+  to 'ki-pacrat-d'@'localhost' identified by '~ki-pacrat-d-password~'
