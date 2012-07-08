@@ -8,40 +8,13 @@ START TRANSACTION;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `journal`
---
-
-DROP TABLE IF EXISTS journal;
-CREATE TABLE IF NOT EXISTS journal (
-  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `timestamp` TIMESTAMP NOT NULL,
-  actor VARCHAR(31) NOT NULL,
-  action VARCHAR(2047) NOT NULL,
-  PRIMARY KEY(`id`),
-  KEY actor (actor)
-) ENGINE = InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `member`
 --
-drop table if exists member;
-create table if not exists member
-  (
-  id int unsigned AUTO_INCREMENT,
-  `last_name` VARCHAR(31) NOT NULL,
-  `first_name` VARCHAR(31) NOT NULL,
-  `email_address` VARCHAR(255),
-  `registration_code` VARCHAR(15),
-  PRIMARY KEY  (id),
-  KEY `last_name` (`last_name`),
-  KEY `first_name` (`first_name`),
-  UNIQUE `registration_code`(`registration_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-insert member (last_name,first_name,email_address,registration_code) values
-("Administrator","Application","pacrat@frompaper2web.com","1");
+drop view if exists member;
+create or replace view member as
+select *
+from practitioner
+;
 
 -- --------------------------------------------------------
 
@@ -94,7 +67,7 @@ INSERT INTO role (id,`name`,`soft_hyphenation_text`,`pecking_order`) VALUES
 --
 DROP TABLE IF EXISTS role_member_map;
 CREATE TABLE role_member_map (
-  member_id int unsigned NOT NULL,
+  member_id bigint unsigned NOT NULL,
   role_id int unsigned NOT NULL,
   PRIMARY KEY  (member_id,role_id),
   KEY role_id (role_id)
@@ -130,7 +103,7 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE user (
   id int unsigned NOT NULL AUTO_INCREMENT,
   username char(40) NOT NULL,
-  encoded_password char(40) default NULL,
+  encoded_password_hash char(40) default NULL,
   be_stale_password boolean NOT NULL default 1,
   password_reset_email_address varchar(255) NOT NULL,
   be_active boolean NOT NULL default 1,
@@ -147,19 +120,19 @@ CREATE TABLE user (
 DROP TABLE IF EXISTS user_member_map;
 CREATE TABLE user_member_map (
   user_id int unsigned NOT NULL,
-  member_id int unsigned NOT NULL,
+  member_id bigint unsigned NOT NULL,
   PRIMARY KEY  (user_id),
   UNIQUE (member_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 ALTER TABLE role_member_map
-  ADD CONSTRAINT FOREIGN KEY (member_id) REFERENCES member (id),
+  ADD CONSTRAINT FOREIGN KEY (member_id) REFERENCES practitioner (id),
   ADD CONSTRAINT FOREIGN KEY (role_id) REFERENCES role (id);
 
 ALTER TABLE user_member_map
   ADD CONSTRAINT FOREIGN KEY (user_id) REFERENCES user (id),
-  ADD CONSTRAINT FOREIGN KEY (member_id) REFERENCES member (id);
+  ADD CONSTRAINT FOREIGN KEY (member_id) REFERENCES practitioner (id);
 
 
 SET FOREIGN_KEY_CHECKS=1;

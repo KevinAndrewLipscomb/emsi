@@ -23,12 +23,20 @@ namespace Class_biz_users
             db_members = new TClass_db_members();
             db_users = new TClass_db_users();
         }
-        public bool AcceptAsMember(string shared_secret, string id)
-        {
-            bool result;
-            result = db_users.AcceptAsMember(shared_secret, id);
-            return result;
-        }
+
+        internal bool AcceptAsMember
+          (
+          string certification_number,
+          string level_id,
+          DateTime expiration_date,
+          string regional_council_code,
+          DateTime birth_date,
+          string gender_id,
+          string id
+          )
+          {
+          return db_users.AcceptAsMember(certification_number,level_id,(expiration_date == DateTime.MinValue ? new DateTime(2099,12,31) : expiration_date),regional_council_code,birth_date,gender_id,id);
+          }
 
         public bool BeAuthorized(string username, string encoded_password)
         {

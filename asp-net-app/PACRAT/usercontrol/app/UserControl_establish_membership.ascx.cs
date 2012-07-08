@@ -1,16 +1,25 @@
+using AjaxControlToolkit;
+using Class_biz_genders;
+using Class_biz_practitioner_levels;
+using Class_biz_regions;
 using Class_biz_user;
 using Class_biz_users;
 using kix;
+using System.Collections;
 using System.Configuration;
+using System;
 
 namespace UserControl_establish_membership
 {
     public struct p_type
-    {
-        public bool be_loaded;
-        public TClass_biz_user biz_user;
-        public TClass_biz_users biz_users;
-    } // end p_type
+      {
+      public bool be_loaded;
+      public TClass_biz_genders biz_genders;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
+      public TClass_biz_regions biz_regions;
+      public TClass_biz_user biz_user;
+      public TClass_biz_users biz_users;
+      }
 
     public partial class TWebUserControl_establish_membership: ki_web_ui.usercontrol_class
     {
@@ -20,16 +29,20 @@ namespace UserControl_establish_membership
             if (!p.be_loaded)
             {
                 Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
-                Label_sponsor_1.Text = ConfigurationManager.AppSettings["sponsor"];
-                Label_sponsor_2.Text = ConfigurationManager.AppSettings["sponsor"];
-                Label_sponsor_3.Text = ConfigurationManager.AppSettings["sponsor"];
                 Label_sponsor_4.Text = ConfigurationManager.AppSettings["sponsor"];
                 Label_shared_secret_description_1.Text = ConfigurationManager.AppSettings["shared_secret_description"];
-                Label_shared_secret_description_2.Text = ConfigurationManager.AppSettings["shared_secret_description"];
-                Focus(TextBox_shared_secret, true);
+                p.biz_regions.BindDirectToListControl(target:DropDownList_regional_council);
+                UserControl_drop_down_date_birth.minyear = DateTime.Today.AddYears(-130).Year.ToString();
+                UserControl_drop_down_date_birth.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
+                p.biz_genders.BindDirectToListControl(DropDownList_gender);
+                p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
+                UserControl_drop_down_date_expiration.minyear = DateTime.Today.Year.ToString();
+                UserControl_drop_down_date_expiration.maxyear = DateTime.Today.AddYears(3).Year.ToString();
+                Focus(TextBox_certification_number,true);
                 p.be_loaded = true;
             }
-
+            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_trouble_handler);
+            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_proceed);
         }
 
         protected override void OnInit(System.EventArgs e)
@@ -44,6 +57,9 @@ namespace UserControl_establish_membership
             else
             {
                 p.be_loaded = false;
+                p.biz_genders = new TClass_biz_genders();
+                p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
+                p.biz_regions = new TClass_biz_regions();
                 p.biz_user = new TClass_biz_user();
                 p.biz_users = new TClass_biz_users();
             }
@@ -62,17 +78,29 @@ namespace UserControl_establish_membership
 
         protected void Button_submit_Click(object sender, System.EventArgs e)
         {
-            if (p.biz_users.AcceptAsMember(k.Safe(TextBox_shared_secret.Text, k.safe_hint_type.NUM), p.biz_user.IdNum()))
-            {
-                SessionSet("privilege_array", p.biz_user.Privileges());
-                // User was an unprivileged user until now, so reset privs.
-                Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "memaccept", "Link to membership record established.  Membership privileges granted.", true);
-                Table_proceed.Visible = true;
-            }
+            if(
+              p.biz_users.AcceptAsMember
+                (
+                certification_number:k.Safe(TextBox_certification_number.Text,k.safe_hint_type.NUM),
+                level_id:k.Safe(DropDownList_level.SelectedValue,k.safe_hint_type.NUM),
+                expiration_date:UserControl_drop_down_date_expiration.selectedvalue,
+                regional_council_code:k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM),
+                birth_date:UserControl_drop_down_date_birth.selectedvalue,
+                gender_id:k.Safe(DropDownList_gender.SelectedValue,k.safe_hint_type.NUM),
+                id:p.biz_user.IdNum()
+                )
+              )
+            //
+              {
+              SessionSet("privilege_array", p.biz_user.Privileges());
+              // User was an unprivileged user until now, so reset privs.
+              Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "memaccept", "Link to membership record established.  Membership privileges granted.", true);
+              Table_proceed.Visible = true;
+              }
             else
-            {
-                Alert(k.alert_cause_type.USER, k.alert_state_type.FAILURE, "nosuchmem", "No such membership record could be located.  Please check your submission for accuracy.", true);
-            }
+              {
+              Alert(k.alert_cause_type.USER, k.alert_state_type.FAILURE, "nosuchmem", "No such membership record could be located.  Please check your submission for accuracy.", true);
+              }
         }
 
         // / <summary>
@@ -97,6 +125,13 @@ namespace UserControl_establish_membership
             result = this;
             return result;
         }
+
+        protected void DropDownList_level_SelectedIndexChanged(object sender, System.EventArgs e)
+          {
+          var be_expiration_meaningful = (new ArrayList {"EMT","First Responder"}).Contains(DropDownList_level.SelectedItem.Text);
+          UserControl_drop_down_date_expiration.Visible = be_expiration_meaningful;
+          Label_no_expiration.Visible = !be_expiration_meaningful;
+          }
 
     } // end TWebUserControl_establish_membership
 

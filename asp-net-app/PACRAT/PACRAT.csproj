@@ -87,10 +87,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="component\biz\Class_biz_genders.cs" />
     <Compile Include="component\biz\Class_biz_members.cs" />
     <Compile Include="component\biz\Class_biz_milestones.cs" />
     <Compile Include="component\biz\Class_biz_notifications.cs" />
+    <Compile Include="component\biz\Class_biz_practitioner_levels.cs" />
     <Compile Include="component\biz\Class_biz_privileges.cs" />
+    <Compile Include="component\biz\Class_biz_regions.cs" />
     <Compile Include="component\biz\Class_biz_roles.cs" />
     <Compile Include="component\biz\Class_biz_role_member_map.cs" />
     <Compile Include="component\biz\Class_biz_role_notification_map.cs" />
@@ -100,10 +103,13 @@
     <Compile Include="component\biz\Class_biz_users.cs" />
     <Compile Include="component\biz\Class_biz_user_member_map.cs" />
     <Compile Include="component\db\Class_db.cs" />
+    <Compile Include="component\db\Class_db_genders.cs" />
     <Compile Include="component\db\Class_db_members.cs" />
     <Compile Include="component\db\Class_db_milestones.cs" />
     <Compile Include="component\db\Class_db_notifications.cs" />
+    <Compile Include="component\db\Class_db_practitioner_levels.cs" />
     <Compile Include="component\db\Class_db_privileges.cs" />
+    <Compile Include="component\db\Class_db_regions.cs" />
     <Compile Include="component\db\Class_db_roles.cs" />
     <Compile Include="component\db\Class_db_role_member_map.cs" />
     <Compile Include="component\db\Class_db_role_notification_map.cs" />
@@ -387,8 +393,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="component\biz\Class_biz_template_kicrudhelped_items.pas-template" />
-    <None Include="component\db\Class_db_template_kicrudhelped_items.pas-template" />
     <None Include="deploy.bat" />
     <Content Include="css\standard-overrides-for-ie6.css" />
     <Content Include="css\standard.css" />
@@ -405,9 +409,6 @@
     <Content Include="template\notification\username_reminder.txt" />
     <Content Include="unpublished.config" />
     <None Include="noninteractive\.crontab" />
-    <None Include="protected\template-protected-datagrid-sortable.aspx-template" />
-    <None Include="protected\template-protected-landing.aspx-template" />
-    <None Include="protected\template-protected-nonlanding.aspx-template" />
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
     <Content Include="usercontrol\app\UserControl_common_header_bar.ascx" />
@@ -438,12 +439,6 @@
     <Content Include="usercontrol\ki\UserControl_drop_down_date.ascx" />
     <Content Include="usercontrol\ki\UserControl_print_div.ascx" />
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
-    <None Include="usercontrol\app\UserControl_template_binder.ascx-template" />
-    <None Include="usercontrol\app\UserControl_template_datagrid_sortable.ascx-template" />
-    <None Include="usercontrol\app\UserControl_template_gridview_sortable.ascx-template" />
-    <None Include="usercontrol\app\UserControl_template_kicrudhelped_item.ascx-template" />
-    <None Include="usercontrol\app\UserControl_template_std.ascx-template" />
-    <None Include="usercontrol\app\UserControl_template_trivial_item.ascx-template" />
     <None Include="work.bat" />
   </ItemGroup>
   <ItemGroup>
