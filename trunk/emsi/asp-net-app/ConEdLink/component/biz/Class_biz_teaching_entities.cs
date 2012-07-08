@@ -1,10 +1,8 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
 using Class_db_teaching_entities;
-using kix;
-using System;
-using System.Collections;
 using ConEdLink.component.ss;
+using System;
 
 namespace Class_biz_teaching_entities
   {

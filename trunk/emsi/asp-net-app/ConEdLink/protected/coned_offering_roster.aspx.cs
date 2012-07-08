@@ -409,8 +409,7 @@ namespace coned_offering_roster
           text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[coned_offering_roster_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
           //
           var drop_down_list_county = e.Item.Cells[coned_offering_roster_Static.TCI_COUNTY_NAME].FindControl("DropDownList_county") as DropDownList;
-          p.biz_counties.BindDirectToListControl(drop_down_list_county);
-          drop_down_list_county.SelectedValue = e.Item.Cells[coned_offering_roster_Static.TCI_COUNTY_CODE].Text;
+          p.biz_counties.BindDirectToListControl(drop_down_list_county,"-- County --",e.Item.Cells[coned_offering_roster_Static.TCI_COUNTY_CODE].Text,k.EMPTY);
           //
           var text_box_email_address = (e.Item.Cells[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
           if (text_box_email_address.Text == "DESIRED")
