@@ -11,8 +11,12 @@
     <script type="text/javascript" src="js/sha1.js"></script>
   </head>
   <body bgcolor="white">
-  <form id="Form_control" runat="server">
-<uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent><table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
+    <form id="Form_control" runat="server">
+      <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+      <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
 			  <tr>
 				<td>
 				  <table cellspacing="0" cellpadding="5" border="0">
@@ -92,7 +96,40 @@
 				</td>
 			  </tr>
 		  </table>
-    <input id="Hidden_client_timezone_offset" runat="server" type="hidden" />
-    <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent></form>
+          </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>
+            <table cellpadding="3" cellspacing="0">
+              <tr>
+                <td align="center" bgcolor="#D0D0D0"><h1 style="display:inline;">P</h1></td>
+                <td><h2 style="display:inline;">reparation</h2></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#D0D0D0"><h1 style="display:inline;">A</h1></td>
+                <td><h2 style="display:inline;">nd</h2></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#D0D0D0"><h1 style="display:inline;">C</h1></td>
+                <td><h2 style="display:inline;">oordination</h2></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#D0D0D0"><h1 style="display:inline;">R</h1></td>
+                <td><h2 style="display:inline;">esource</h2></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#D0D0D0"><h1 style="display:inline;">A</h1></td>
+                <td><h2 style="display:inline;">dministration</h2></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#D0D0D0"><h1 style="display:inline;">T</h1></td>
+                <td><h2 style="display:inline;">ool</h2></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <input id="Hidden_client_timezone_offset" runat="server" type="hidden" />
+      <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent>
+    </form>
   </body>
 </html>
