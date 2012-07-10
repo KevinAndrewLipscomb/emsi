@@ -38,7 +38,7 @@ namespace UserControl_establish_membership
                 p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
                 UserControl_drop_down_date_expiration.minyear = DateTime.Today.Year.ToString();
                 UserControl_drop_down_date_expiration.maxyear = DateTime.Today.AddYears(3).Year.ToString();
-                Focus(TextBox_certification_number,true);
+                TextBox_certification_number.Focus();
                 p.be_loaded = true;
             }
             ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_trouble_handler);

@@ -39,7 +39,7 @@ namespace establish_membership_trouble
                 Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
                 Label_application_name_2.Text = ConfigurationManager.AppSettings["application_name"];
                 Label_application_name_3.Text = ConfigurationManager.AppSettings["application_name"];
-                Focus(TextBox_full_name, true);
+                TextBox_full_name.Focus();
             }
         }
 

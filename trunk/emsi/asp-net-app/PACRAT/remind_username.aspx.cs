@@ -42,7 +42,7 @@ namespace remind_username
                     Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
                     Label_application_name_2.Text = ConfigurationManager.AppSettings["application_name"];
                     Label_application_name_3.Text = ConfigurationManager.AppSettings["application_name"];
-                    Focus(TextBox_email_address, true);
+                    TextBox_email_address.Focus();
                     break;
                 case nature_of_visit_type.VISIT_POSTBACK_STANDARD:
                     p = (p_type)(Session[InstanceId() + ".p"]);

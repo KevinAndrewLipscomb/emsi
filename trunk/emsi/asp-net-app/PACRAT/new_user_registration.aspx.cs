@@ -47,7 +47,7 @@ namespace new_user_registration
                     Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - new_user_registration";
                     p.biz_users = new TClass_biz_users();
                     Label_application_name.Text = ConfigurationManager.AppSettings["application_name"];
-                    Focus(TextBox_username, true);
+                    TextBox_username.Focus();
                     break;
                 case nature_of_visit_type.VISIT_POSTBACK_STANDARD:
                     p = (p_type)(Session[InstanceId() + ".p"]);

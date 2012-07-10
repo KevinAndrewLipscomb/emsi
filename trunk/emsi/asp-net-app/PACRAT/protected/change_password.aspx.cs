@@ -49,7 +49,7 @@ namespace change_password
                     Title = ConfigurationManager.AppSettings["application_name"] + " - change_password";
                     p.biz_users = new TClass_biz_users();
                     p.biz_user = new TClass_biz_user();
-                    Focus(TextBox_nominal_password, true);
+                    TextBox_nominal_password.Focus();
                     break;
                 case nature_of_visit_type.VISIT_POSTBACK_STANDARD:
                     p = (p_type)(Session[InstanceId() + ".p"]);
