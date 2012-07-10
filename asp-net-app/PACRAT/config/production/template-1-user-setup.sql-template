@@ -3,5 +3,5 @@ grant select
  , update
  , delete
  , create
-  on pacratdb.*
+  on emsidb.*
   to 'ki-pacrat'@'localhost' identified by '~ki-pacrat-password~'
