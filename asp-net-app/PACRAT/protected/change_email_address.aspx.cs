@@ -50,7 +50,7 @@ namespace change_email_address
                     email_address = p.biz_users.SelfEmailAddress();
                     TextBox_nominal_email_address.Text = email_address;
                     TextBox_confirmation_email_address.Text = email_address;
-                    Focus(TextBox_nominal_email_address, true);
+                    TextBox_nominal_email_address.Focus();
                     break;
                 case nature_of_visit_type.VISIT_POSTBACK_STANDARD:
                     p = (p_type)(Session[InstanceId() + ".p"]);

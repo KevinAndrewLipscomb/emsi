@@ -228,6 +228,9 @@
       <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_member_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_postcontent.ascx.cs">
       <DependentUpon>UserControl_postcontent.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

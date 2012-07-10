@@ -45,7 +45,7 @@ namespace UserControl_user
                 LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
                 LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
                 RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-                Focus(TextBox_username, true);
+                TextBox_username.Focus();
                 p.be_loaded = true;
             }
 
@@ -92,7 +92,7 @@ namespace UserControl_user
             Label_lookup_arrow.Enabled = true;
             Label_lookup_hint.Enabled = true;
             LinkButton_reset.Enabled = false;
-            Focus(TextBox_username, true);
+            TextBox_username.Focus();
         }
 
         protected override void OnInit(System.EventArgs e)
