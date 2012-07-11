@@ -1,5 +1,5 @@
 #
 # $Id$
 #
-00 02 * * * wget --output-document=/dev/null https://sslws038.alentus.com/frompaper2web/PACRAT/noninteractive/milestone_sweep.aspx
-15 02 * * * wget --output-document=/dev/null https://sslws038.alentus.com/frompaper2web/PACRAT/noninteractive/daily_tasks.aspx
+00 02 * * * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/milestone_sweep.aspx
+15 02 * * * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/daily_tasks.aspx
