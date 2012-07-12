@@ -409,7 +409,7 @@ namespace Class_db_teaching_entities
           catch (Exception e)
             {
             transaction.Rollback();
-            throw e;
+            k.EscalatedException(e,"#noninteractive#" + k.NEW_LINE + "emsrs_id = [" + emsrs_id + "]" + k.NEW_LINE + "childless_field_assignments_clause = [" + childless_field_assignments_clause + "]");
             }
           }
         Close();
