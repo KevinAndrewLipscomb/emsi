@@ -115,6 +115,30 @@ namespace Class_db_coned_offering_rosters
       Close();
       }
 
+    internal void Copy
+      (
+      string source_id,
+      string target_id
+      )
+      {
+      Open();
+      new MySqlCommand
+        (
+        db_trail.Saved
+          (
+          "insert ignore coned_offering_roster (coned_offering_id,practitioner_id,instructor_hours)"
+          + " select '" + target_id + "' as coned_offering_id"
+          + " , practitioner_id"
+          + " , instructor_hours"
+          + " from coned_offering_roster"
+          + " where coned_offering_id = '" + source_id + "'"
+          ),
+        connection
+        )
+        .ExecuteNonQuery();
+      Close();
+      }
+
     public bool Delete(string id)
       {
       var result = true;
@@ -211,7 +235,7 @@ namespace Class_db_coned_offering_rosters
           + " on duplicate key update "
           + childless_field_assignments_clause
           ),
-          connection
+        connection
         )
         .ExecuteNonQuery();
       Close();
@@ -243,7 +267,7 @@ namespace Class_db_coned_offering_rosters
           + " on duplicate key update "
           + childless_field_assignments_clause
           ),
-          connection
+        connection
         )
         .ExecuteNonQuery();
       Close();

@@ -41,11 +41,6 @@ namespace Class_biz_coned_offering_rosters
       internal string instructor_hours = k.EMPTY;
       }
 
-    internal bool BeOkToInputBatch()
-      {
-      return ((biz_user.Kind() == "coned_sponsor") && (biz_user.IdNum() == db_teaching_entities.IdOfPublicContactName("EMSI")));
-      }
-
     public bool Bind(string partial_spec, object target)
       {
       return db_coned_offering_rosters.Bind(partial_spec, target);
@@ -65,6 +60,15 @@ namespace Class_biz_coned_offering_rosters
       public void BindDirectToListControl(object target)
       {
       db_coned_offering_rosters.BindDirectToListControl(target);
+      }
+
+    public void Copy
+      (
+      string source_id,
+      string target_id
+      )
+      {
+      db_coned_offering_rosters.Copy(source_id,target_id);
       }
 
     public bool Delete(string id)

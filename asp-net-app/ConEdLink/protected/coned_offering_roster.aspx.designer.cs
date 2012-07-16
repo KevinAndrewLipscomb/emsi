@@ -157,6 +157,42 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Button Button_add_batch;
         
         /// <summary>
+        /// Panel_copy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_copy;
+        
+        /// <summary>
+        /// DropDownList_other_roster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_other_roster;
+        
+        /// <summary>
+        /// Button_copy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_copy;
+        
+        /// <summary>
+        /// RequiredFieldValidator_copy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_copy;
+        
+        /// <summary>
         /// Literal_course_title control.
         /// </summary>
         /// <remarks>
