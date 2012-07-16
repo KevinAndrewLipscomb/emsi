@@ -151,6 +151,18 @@ namespace coned_offering_roster
         );
       }
 
+    private void ManageInputPanels()
+      {
+      Panel_one_at_a_time.Visible = (RadioButtonList_input_method.SelectedValue == "Standard");
+      Panel_batch.Visible = (RadioButtonList_input_method.SelectedValue == "Batch");
+      Panel_copy.Visible = (RadioButtonList_input_method.SelectedValue == "Copy");
+      //
+      if (Panel_batch.Visible)
+        {
+        TextBox_certification_number_batch.Focus();
+        }
+      }
+
     private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
       {
       Button_close_and_submit.Visible = be_open;
@@ -228,6 +240,17 @@ namespace coned_offering_roster
       else
         {
         ValidationAlert(be_using_scriptmanager:true);
+        }
+      }
+
+    protected void Button_copy_Click(object sender, EventArgs e)
+      {
+      if (IsValid)
+        {
+        p.biz_coned_offering_rosters.Copy(source_id:DropDownList_other_roster.SelectedValue,target_id:p.coned_offering_id);
+        Bind();
+        RadioButtonList_input_method.SelectedValue = "Standard";
+        ManageInputPanels();
         }
       }
 
@@ -600,7 +623,12 @@ namespace coned_offering_roster
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_offering_roster";
-        Panel_input_method.Visible = p.biz_coned_offering_rosters.BeOkToInputBatch();
+        var be_ok_to_input_batch = p.biz_accounts.BeOkForConedSponsorToInputRosterByBatch();
+        var be_ok_to_input_copy = p.biz_accounts.BeOkForConedSponsorToInputRosterByCopy();
+        RadioButtonList_input_method.Items.FindByValue("Batch").Enabled = be_ok_to_input_batch;
+        RadioButtonList_input_method.Items.FindByValue("Copy").Enabled = be_ok_to_input_copy;
+        p.biz_coned_offerings.BindDirectToListControlForCopy(p.coned_offering_id,DropDownList_other_roster);
+        Panel_input_method.Visible = (be_ok_to_input_batch || be_ok_to_input_copy);
         var max_spec_length = p.biz_practitioners.MaxSpecLength(Session["region_code"].ToString(),k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
@@ -630,13 +658,7 @@ namespace coned_offering_roster
 
     protected void RadioButtonList_input_method_SelectedIndexChanged(object sender, EventArgs e)
       {
-      var be_batch = (RadioButtonList_input_method.SelectedValue == "Batch");
-      Panel_one_at_a_time.Visible = !be_batch;
-      Panel_batch.Visible = be_batch;
-      if (be_batch)
-        {
-        TextBox_certification_number_batch.Focus();
-        }
+      ManageInputPanels();
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)

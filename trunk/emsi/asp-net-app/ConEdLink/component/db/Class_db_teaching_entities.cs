@@ -308,14 +308,6 @@ namespace Class_db_teaching_entities
       return result;
       }
 
-    internal string IdOfPublicContactName(string public_contact_name)
-      {
-      Open();
-      var id_of_public_contact_name_obj = new MySqlCommand("select id from teaching_entity where public_contact_name = '" + public_contact_name + "'",connection).ExecuteScalar();
-      Close();
-      return (id_of_public_contact_name_obj == null ? k.EMPTY : id_of_public_contact_name_obj.ToString());
-      }
-
     internal void ImportLatestFromEmsrs(ArrayList recs)
       {
       if (recs.Count > 0)

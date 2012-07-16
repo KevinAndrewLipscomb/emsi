@@ -25,7 +25,8 @@
                     <td nowrap="nowrap">
                       <asp:RadioButtonList ID="RadioButtonList_input_method" runat="server" AutoPostBack="True" Font-Size="Smaller" RepeatDirection="Vertical" RepeatLayout="Flow" onselectedindexchanged="RadioButtonList_input_method_SelectedIndexChanged">
                         <asp:ListItem Selected="True">Standard</asp:ListItem>
-                        <asp:ListItem Value="Batch">Scan batch</asp:ListItem>
+                        <asp:ListItem Value="Batch" Enabled="false">Scan batch</asp:ListItem>
+                        <asp:ListItem Value="Copy" Enabled="false">Copy other roster</asp:ListItem>
                       </asp:RadioButtonList>
                     </td>
                   </tr>
@@ -78,6 +79,23 @@
                     <td valign="top"><asp:TextBox ID="TextBox_certification_number_batch" runat="server" Columns="7" Rows="25" TextMode="MultiLine"></asp:TextBox></td>
                   </tr>
                   <tr><td align="right" colspan="2"><asp:Button ID="Button_add_batch" runat="server" onclick="Button_add_batch_Click" Text="Add batch" CausesValidation="False" /></td></tr>
+                </table>
+              </asp:Panel>
+              <asp:Panel ID="Panel_copy" runat="server" Visible="false">
+                <table>
+                  <tr><td>Copy attendees from which other roster?</td></tr>
+                  <tr><td><asp:DropDownList ID="DropDownList_other_roster" runat="server" ValidationGroup="Copy"></asp:DropDownList></td></tr>
+                  <tr>
+                    <td>
+                      <table>
+                        <tr>
+                          <td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td nowrap="nowrap"><asp:Button ID="Button_copy" runat="server" Text="Copy" onclick="Button_copy_Click" ValidationGroup="Copy" /><asp:RequiredFieldValidator ID="RequiredFieldValidator_copy" runat="server" ErrorMessage="Please select another roster from which to copy attendees." Font-Bold="True" Text="!ERR!" ControlToValidate="DropDownList_other_roster" ValidationGroup="Copy"></asp:RequiredFieldValidator></td></tr>
                 </table>
               </asp:Panel>
             </td>
