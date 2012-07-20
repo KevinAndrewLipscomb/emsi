@@ -1,14 +1,16 @@
+using Class_biz_members;
+using Class_biz_user;
 using kix;
 using UserControl_about;
 using UserControl_config_binder;
-//using UserControl_resource;
+using UserControl_practitioner;
 
 namespace UserControl_member_binder
   {
 
   public class UserControl_member_binder_Static
     {
-    public const int TSSI_RESOURCES = 0;
+    public const int TSSI_MEMBER_PROFILE = 0;
     public const int TSSI_CONFIG = 1;
     public const int TSSI_ABOUT = 2;
     }
@@ -25,6 +27,8 @@ namespace UserControl_member_binder
     private struct p_type
       {
       internal bool be_loaded;
+      internal TClass_biz_members biz_members;
+      internal TClass_biz_user biz_user;
       internal string content_id;
       internal uint tab_index;
       }
@@ -37,11 +41,11 @@ namespace UserControl_member_binder
       string target
       )
       {
-      if (p.tab_index == UserControl_member_binder_Static.TSSI_RESOURCES)
+      if (p.tab_index == UserControl_member_binder_Static.TSSI_MEMBER_PROFILE)
         {
-        //var c = ((TWebUserControl_resource)(LoadControl("~/usercontrol/app/UserControl_resource.ascx")));
-        //p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_resource",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        //c.SetTarget(target);
+        var c = ((TWebUserControl_practitioner)(LoadControl("~/usercontrol/app/UserControl_practitioner.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        c.SetTarget(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         }
       else if (p.tab_index == UserControl_member_binder_Static.TSSI_CONFIG)
         {
@@ -73,7 +77,7 @@ namespace UserControl_member_binder
       {
       p.tab_index = (uint)(TabContainer_control.ActiveTabIndex);
       PlaceHolder_content.Controls.Clear();
-      FillPlaceHolder(true);
+      FillPlaceHolder(be_fresh_control_required:(p.tab_index != UserControl_member_binder_Static.TSSI_MEMBER_PROFILE)); // Special case: Never freshen UserControl_practitioner under the MEMBER_PROFILE tab.
       }
 
     private void TWebUserControl_member_binder_PreRender(object sender, System.EventArgs e)
@@ -108,7 +112,10 @@ namespace UserControl_member_binder
         {
         p.be_loaded = false;
         //
-        p.tab_index = UserControl_member_binder_Static.TSSI_RESOURCES;
+        p.biz_members = new TClass_biz_members();
+        p.biz_user = new TClass_biz_user();
+        //
+        p.tab_index = UserControl_member_binder_Static.TSSI_MEMBER_PROFILE;
         FillPlaceHolder(true);
         }
       }
@@ -141,9 +148,9 @@ namespace UserControl_member_binder
       {
       if (target != k.EMPTY)
         {
-        if (target.ToLower().Contains("/resource/"))
+        if (target.ToLower().Contains("/member_profile/"))
           {
-          p.tab_index = UserControl_member_binder_Static.TSSI_RESOURCES;
+          p.tab_index = UserControl_member_binder_Static.TSSI_MEMBER_PROFILE;
           }
         else if (target.ToLower().Contains("/config/"))
           {
