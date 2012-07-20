@@ -86,6 +86,7 @@
     <Content Include="new_user_registration.aspx" />
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
+    <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +238,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_postcontent.ascx.designer.cs">
       <DependentUpon>UserControl_postcontent.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_practitioner.ascx.cs">
+      <DependentUpon>UserControl_practitioner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_practitioner.ascx.designer.cs">
+      <DependentUpon>UserControl_practitioner.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_precontent.ascx.cs">
       <DependentUpon>UserControl_precontent.ascx</DependentUpon>
