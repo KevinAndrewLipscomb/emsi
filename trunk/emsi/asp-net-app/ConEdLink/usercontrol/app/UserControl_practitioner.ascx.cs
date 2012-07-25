@@ -1,14 +1,14 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
+using Class_biz_counties;
+using Class_biz_practitioner_levels;
 using Class_biz_practitioners;
+using Class_biz_regions;
 using kix;
 using System;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Collections;
-using UserControl_drop_down_date;
 
 namespace UserControl_practitioner
   {
@@ -24,17 +24,18 @@ namespace UserControl_practitioner
       TextBox_first_name.Text = k.EMPTY;
       TextBox_middle_initial.Text = k.EMPTY;
       TextBox_certification_number.Text = k.EMPTY;
-      TextBox_level_id.Text = k.EMPTY;
-      TextBox_regional_council_code.Text = k.EMPTY;
+      DropDownList_level.ClearSelection();
+      DropDownList_regional_council.ClearSelection();
       UserControl_drop_down_date_birth_date.Clear();
       TextBox_email_address.Text = k.EMPTY;
       CheckBox_be_stale.Checked = false;
-      TextBox_residence_county_code.Text = k.EMPTY;
+      DropDownList_residence_county.ClearSelection();
       CheckBox_be_birth_date_confirmed.Checked = false;
       TextBox_street_address_1.Text = k.EMPTY;
       TextBox_street_address_2.Text = k.EMPTY;
       TextBox_city_state_zip.Text = k.EMPTY;
       CheckBox_be_instructor.Checked = false;
+      CheckBox_be_past.Checked = false;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -136,18 +137,22 @@ namespace UserControl_practitioner
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
+        p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
+        p.biz_regions.BindDirectToListControl(DropDownList_regional_council);
+        p.biz_counties.BindDirectToListControl(DropDownList_residence_county);
+        UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
+        UserControl_drop_down_date_birth_date.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        if ((Session["mode:goto"] != null) && Session["mode:goto"].ToString().Contains("/practitioner/"))
+        if (p.id.Length > 0)
           {
-          PresentRecord(Session["mode:goto"].ToString().Substring(Session["mode:goto"].ToString().LastIndexOf("/") + 1));
-          Session.Remove("mode:goto");
+          PresentRecord(p.id);
           }
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
       }
 
-    private bool PresentRecord(string id)
+    public bool PresentRecord(string id)
       {
       Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
@@ -166,6 +171,7 @@ namespace UserControl_practitioner
       string street_address_2;
       string city_state_zip;
       bool be_instructor;
+      bool be_past;
       result = false;
       if
         (
@@ -186,7 +192,8 @@ namespace UserControl_practitioner
           out street_address_1,
           out street_address_2,
           out city_state_zip,
-          out be_instructor
+          out be_instructor,
+          out be_past
           )
         )
         {
@@ -196,17 +203,18 @@ namespace UserControl_practitioner
         TextBox_first_name.Text = first_name;
         TextBox_middle_initial.Text = middle_initial;
         TextBox_certification_number.Text = certification_number;
-        TextBox_level_id.Text = level_id;
-        TextBox_regional_council_code.Text = regional_council_code;
+        DropDownList_level.SelectedValue = level_id;
+        DropDownList_regional_council.SelectedValue = regional_council_code;
         UserControl_drop_down_date_birth_date.selectedvalue = birth_date;
         TextBox_email_address.Text = email_address;
         CheckBox_be_stale.Checked = be_stale;
-        TextBox_residence_county_code.Text = residence_county_code;
+        DropDownList_residence_county.SelectedValue = residence_county_code;
         CheckBox_be_birth_date_confirmed.Checked = be_birth_date_confirmed;
         TextBox_street_address_1.Text = street_address_1;
         TextBox_street_address_2.Text = street_address_2;
         TextBox_city_state_zip.Text = city_state_zip;
         CheckBox_be_instructor.Checked = be_instructor;
+        CheckBox_be_past.Checked = be_past;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -247,6 +255,15 @@ namespace UserControl_practitioner
       TextBox_id.Focus();
       }
 
+    internal void SetTarget(string target)
+      {
+      var id = target.Substring(target.LastIndexOf("/") + 1);
+      if (id.Length > 0)
+        {
+        p.id = id;
+        }
+      }
+
     protected override void OnInit(System.EventArgs e)
       {
       // Required for Designer support
@@ -255,13 +272,19 @@ namespace UserControl_practitioner
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_UserControl_config_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
         }
       else
         {
         p.be_loaded = false;
+        //
+        p.biz_counties = new TClass_biz_counties();
         p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
+        p.biz_regions = new TClass_biz_regions();
+        //
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
+        p.id = k.EMPTY;
         }
       }
 
@@ -298,17 +321,18 @@ namespace UserControl_practitioner
           k.Safe(TextBox_first_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
           k.Safe(TextBox_middle_initial.Text,k.safe_hint_type.ALPHA).Trim(),
           k.Safe(TextBox_certification_number.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_level_id.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_regional_council_code.Text,k.safe_hint_type.NUM).Trim(),
+          k.Safe(DropDownList_level.SelectedValue,k.safe_hint_type.NUM).Trim(),
+          k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM).Trim(),
           UserControl_drop_down_date_birth_date.selectedvalue,
           k.Safe(TextBox_email_address.Text,k.safe_hint_type.EMAIL_ADDRESS),
           CheckBox_be_stale.Checked,
-          k.Safe(TextBox_residence_county_code.Text,k.safe_hint_type.EMAIL_ADDRESS),
+          k.Safe(DropDownList_residence_county.SelectedValue,k.safe_hint_type.EMAIL_ADDRESS),
           CheckBox_be_birth_date_confirmed.Checked,
           k.Safe(TextBox_street_address_1.Text,k.safe_hint_type.POSTAL_STREET_ADDRESS),
           k.Safe(TextBox_street_address_2.Text,k.safe_hint_type.POSTAL_STREET_ADDRESS),
           k.Safe(TextBox_city_state_zip.Text,k.safe_hint_type.POSTAL_CITY),
-          CheckBox_be_instructor.Checked
+          CheckBox_be_instructor.Checked,
+          CheckBox_be_past.Checked
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();
@@ -376,17 +400,18 @@ namespace UserControl_practitioner
       TextBox_first_name.Enabled = ablement;
       TextBox_middle_initial.Enabled = ablement;
       TextBox_certification_number.Enabled = ablement;
-      TextBox_level_id.Enabled = ablement;
-      TextBox_regional_council_code.Enabled = ablement;
+      DropDownList_level.Enabled = ablement;
+      DropDownList_regional_council.Enabled = ablement;
       UserControl_drop_down_date_birth_date.enabled = ablement;
       TextBox_email_address.Enabled = ablement;
       CheckBox_be_stale.Enabled = ablement;
-      TextBox_residence_county_code.Enabled = ablement;
+      DropDownList_residence_county.Enabled = ablement;
       CheckBox_be_birth_date_confirmed.Enabled = ablement;
       TextBox_street_address_1.Enabled = ablement;
       TextBox_street_address_2.Enabled = ablement;
       TextBox_city_state_zip.Enabled = ablement;
       CheckBox_be_instructor.Enabled = ablement;
+      CheckBox_be_past.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -430,8 +455,12 @@ namespace UserControl_practitioner
     private struct p_type
       {
       public bool be_loaded;
+      public TClass_biz_counties biz_counties;
       public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
+      public TClass_biz_regions biz_regions;
       public bool be_ok_to_config_practitioners;
+      public string id;
       } // end p_type
 
     } // end TWebUserControl_practitioner

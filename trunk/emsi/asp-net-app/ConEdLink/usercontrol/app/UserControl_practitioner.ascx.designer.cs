@@ -220,13 +220,13 @@ namespace UserControl_practitioner {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_certification_number;
         
         /// <summary>
-        /// TextBox_level_id control.
+        /// DropDownList_level control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_level_id;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_level;
         
         /// <summary>
         /// RequiredFieldValidator_level_id control.
@@ -238,22 +238,13 @@ namespace UserControl_practitioner {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_level_id;
         
         /// <summary>
-        /// RegularExpressionValidator_level_id control.
+        /// DropDownList_regional_council control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_level_id;
-        
-        /// <summary>
-        /// TextBox_regional_council_code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_regional_council_code;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_regional_council;
         
         /// <summary>
         /// RequiredFieldValidator_regional_council_code control.
@@ -265,31 +256,13 @@ namespace UserControl_practitioner {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_regional_council_code;
         
         /// <summary>
-        /// RegularExpressionValidator_regional_council_code control.
+        /// DropDownList_residence_county control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_regional_council_code;
-        
-        /// <summary>
-        /// TextBox_residence_county_code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_residence_county_code;
-        
-        /// <summary>
-        /// RegularExpressionValidator_residence_county_code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_residence_county_code;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_residence_county;
         
         /// <summary>
         /// UserControl_drop_down_date_birth_date control.
@@ -407,6 +380,15 @@ namespace UserControl_practitioner {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_stale;
+        
+        /// <summary>
+        /// CheckBox_be_past control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_past;
         
         /// <summary>
         /// Button_submit control.

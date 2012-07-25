@@ -274,6 +274,15 @@ namespace Class_db_coned_offering_rosters
       return (num_rows_affected == 1);
       }
 
+    internal string SizeOf(string coned_offering_id)
+      {
+      var size_of = k.EMPTY;
+      Open();
+      size_of = new MySqlCommand("select count(id) from coned_offering_roster where coned_offering_id = '" + coned_offering_id + "'",connection).ExecuteScalar().ToString();
+      Close();
+      return size_of;
+      }
+
     } // end TClass_db_coned_offering_rosters
 
   }

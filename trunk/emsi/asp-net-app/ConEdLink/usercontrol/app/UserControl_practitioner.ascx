@@ -96,39 +96,33 @@
     </td>
   </tr>
   <tr>
-    <td><font class="">Level&nbsp;id:</font></td>
+    <td><font class="">Level:</font></td>
     <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_level_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
+      <asp:DropDownList ID="DropDownList_level" runat="server">
+      </asp:DropDownList>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_level_id" runat="server" errormessage="Please enter Level&nbsp;id." font-bold="True" controltovalidate="TextBox_level_id">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_level_id" runat="server" errormessage="Please enter a valid Level&nbsp;id." font-bold="True" controltovalidate="TextBox_level_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_level_id" runat="server" errormessage="Please select a Level." font-bold="True" controltovalidate="DropDownList_level">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">Regional&nbsp;council&nbsp;code:</font></td>
+    <td><font class="">Regional&nbsp;council:</font></td>
     <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_regional_council_code" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
+      <asp:DropDownList ID="DropDownList_regional_council" runat="server">
+      </asp:DropDownList>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_regional_council_code" runat="server" errormessage="Please enter Regional&nbsp;council&nbsp;code." font-bold="True" controltovalidate="TextBox_regional_council_code">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_regional_council_code" runat="server" errormessage="Please enter a valid Regional&nbsp;council&nbsp;code." font-bold="True" controltovalidate="TextBox_regional_council_code" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_regional_council_code" runat="server" errormessage="Please select a Regional&nbsp;council." font-bold="True" controltovalidate="DropDownList_regional_council">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">Residence&nbsp;county&nbsp;code:</font></td>
+    <td><font class="">Residence&nbsp;county:</font></td>
     <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_residence_county_code" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
+      <asp:DropDownList ID="DropDownList_residence_county" runat="server">
+      </asp:DropDownList>
     </td>
     <td nowrap="nowrap">
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_residence_county_code" runat="server" errormessage="Please enter a valid Residence&nbsp;county&nbsp;code." font-bold="True" controltovalidate="TextBox_residence_county_code" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
-    </td>
+      &nbsp;</td>
   </tr>
   <tr>
     <td><font class="">Birth&nbsp;date:</font></td>
@@ -152,7 +146,7 @@
     <td><font class="">Email&nbsp;address:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_email_address" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_email_address" runat="server"  cssclass="" enabled="False" Columns="72"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
@@ -164,7 +158,7 @@
     <td><font class="">Street&nbsp;address&nbsp;1:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_street_address_1" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_street_address_1" runat="server"  cssclass="" enabled="False" Columns="72"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
@@ -175,7 +169,7 @@
     <td><font class="">Street&nbsp;address&nbsp;2:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_street_address_2" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_street_address_2" runat="server"  cssclass="" enabled="False" Columns="72"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
@@ -186,7 +180,7 @@
     <td><font class="">City&nbsp;state&nbsp;zip:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_city_state_zip" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_city_state_zip" runat="server"  cssclass="" enabled="False" Columns="72"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
@@ -205,6 +199,14 @@
     <td><font class="">Be&nbsp;stale:</font></td>
     <td>
       <asp:CheckBox ID="CheckBox_be_stale" runat="server" />
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Be&nbsp;past:</font></td>
+    <td>
+      <asp:CheckBox ID="CheckBox_be_past" runat="server" />
     </td>
     <td nowrap="nowrap">
     </td>

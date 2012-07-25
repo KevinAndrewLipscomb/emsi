@@ -92,7 +92,6 @@
     <Compile Include="component\biz\Class_biz_coned_offering_rosters.cs" />
     <Compile Include="component\biz\Class_biz_coned_offering_statuses.cs" />
     <Compile Include="component\biz\Class_biz_coned_sponsor_statuses.cs" />
-    <Compile Include="component\biz\Class_biz_practitioners.cs" />
     <Compile Include="component\biz\Class_biz_practitioner_levels.cs" />
     <Compile Include="component\biz\Class_biz_scheduled_tasks.cs" />
     <Compile Include="component\biz\Class_biz_teaching_entities.cs" />

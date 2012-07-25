@@ -84,18 +84,12 @@
               <asp:Panel ID="Panel_copy" runat="server" Visible="false">
                 <table>
                   <tr><td>Copy attendees from which other roster?</td></tr>
-                  <tr><td><asp:DropDownList ID="DropDownList_other_roster" runat="server" ValidationGroup="Copy"></asp:DropDownList></td></tr>
                   <tr>
                     <td>
-                      <table>
-                        <tr>
-                          <td>
-                          </td>
-                        </tr>
-                      </table>
+                      <asp:DropDownList ID="DropDownList_other_roster" runat="server" ValidationGroup="Copy" onselectedindexchanged="DropDownList_other_roster_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
                     </td>
                   </tr>
-                  <tr><td nowrap="nowrap"><asp:Button ID="Button_copy" runat="server" Text="Copy" onclick="Button_copy_Click" ValidationGroup="Copy" /><asp:RequiredFieldValidator ID="RequiredFieldValidator_copy" runat="server" ErrorMessage="Please select another roster from which to copy attendees." Font-Bold="True" Text="!ERR!" ControlToValidate="DropDownList_other_roster" ValidationGroup="Copy"></asp:RequiredFieldValidator></td></tr>
+                  <tr><td nowrap="nowrap" align="right"><asp:Button ID="Button_copy" runat="server" Text="Copy attendees &gt;&gt;&gt;" onclick="Button_copy_Click" ValidationGroup="Copy" /><asp:RequiredFieldValidator ID="RequiredFieldValidator_copy" runat="server" ErrorMessage="Please select another roster from which to copy attendees." Font-Bold="True" Text="!ERR!" ControlToValidate="DropDownList_other_roster" ValidationGroup="Copy"></asp:RequiredFieldValidator></td></tr>
                 </table>
               </asp:Panel>
             </td>

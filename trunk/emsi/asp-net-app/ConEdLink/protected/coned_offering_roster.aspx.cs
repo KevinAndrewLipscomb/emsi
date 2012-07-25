@@ -36,6 +36,7 @@ namespace coned_offering_roster
     public k.decimal_nonnegative length;
     public k.int_nonnegative num_attendees;
     public k.int_nonnegative num_attendees_with_known_birth_dates;
+    public string other_roster_id;
     public ArrayList roster_id_arraylist;
     public string sort_order;
     public string user_email_address;
@@ -247,7 +248,7 @@ namespace coned_offering_roster
       {
       if (IsValid)
         {
-        p.biz_coned_offering_rosters.Copy(source_id:DropDownList_other_roster.SelectedValue,target_id:p.coned_offering_id);
+        p.biz_coned_offering_rosters.Copy(source_id:p.other_roster_id,target_id:p.coned_offering_id);
         Bind();
         RadioButtonList_input_method.SelectedValue = "Standard";
         ManageInputPanels();
@@ -512,6 +513,11 @@ namespace coned_offering_roster
         }
       }
 
+    protected void DropDownList_other_roster_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      p.other_roster_id = k.Safe(DropDownList_other_roster.SelectedValue,k.safe_hint_type.NUM);
+      }
+
     protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
       {
       if (p.be_ceu_breakdown_valid)
@@ -600,6 +606,7 @@ namespace coned_offering_roster
         p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
+        p.other_roster_id = k.EMPTY;
         p.roster_id_arraylist = new ArrayList();
         p.sort_order = "id desc";
         p.user_email_address = p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(),p.biz_user.IdNum());
