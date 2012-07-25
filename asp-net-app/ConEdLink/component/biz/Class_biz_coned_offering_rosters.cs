@@ -249,6 +249,11 @@ namespace Class_biz_coned_offering_rosters
       return db_coned_offering_rosters.SetFromBatch(coned_offering_id,cert_num);
       }
 
+    internal string SizeOf(string coned_offering_id)
+      {
+      return db_coned_offering_rosters.SizeOf(coned_offering_id);
+      }
+
     } // end TClass_biz_coned_offering_rosters
 
   }
