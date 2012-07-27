@@ -527,6 +527,7 @@
     <Content Include="protected\image\search_16x16.gif" />
     <Content Include="image\training-certificate-banner.png" />
     <Content Include="protected\ready_roster_detail.aspx" />
+    <Content Include="protected\template\notification\class_unclosed.txt" />
     <Content Include="protected\template\notification\roster_ready.txt" />
     <Content Include="protected\training_certificate_package.aspx" />
     <Content Include="salogin.aspx" />

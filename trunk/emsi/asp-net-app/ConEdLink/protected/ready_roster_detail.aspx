@@ -105,6 +105,7 @@
                         </asp:DataGrid>
                       </td>
                     </tr>
+                    <tr><td style="background-color:WhiteSmoke"><strong>To advance...</strong></td></tr>
                     <tr>
                       <td>
                         <table cellpadding="10" cellspacing="0">
@@ -126,6 +127,18 @@
                             </td>
                           </tr>
                         </table>
+                      </td>
+                    </tr>
+                    <tr><td style="background-color:WhiteSmoke"><strong>To UN-CLOSE...</strong></td></tr>
+                    <tr>
+                      <td>
+						            <table cellspacing="0" cellpadding="5" border="0">
+						              <tr>
+							              <td valign="top" nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter reason:</td>
+							              <td valign="top"><textarea rows="3" cols="30" id="TextArea_disapproval_reason" name="TextArea_disapproval_comment" runat="Server"></textarea></td>
+							              <td valign="top">and <asp:button id="Button_disapprove" runat="server" onclick="Button_disapprove_Click" Text="Return to sponsor"></asp:button>.</td>
+						              </tr>
+						            </table>
                       </td>
                     </tr>
                   </table>
