@@ -1,0 +1,29 @@
+UN-CLOSED: Con-ed class <class_number/>
+This is an automatic notification from <application_name/>.
+
+Regional staffer "<actor/>" has UN-CLOSED the following con-ed class in <application_name/>.  Its status in <application_name/> is now <status_description/>:
+
+   Class #:
+      <class_number/>
+   Course title:
+      <course_title/>
+   Start:
+      <start/>
+   End:
+      <end/>
+   Length:
+      <length/>
+   Number of attendees:
+      <num_attendees/>
+   Location:
+      <location/>
+
+Reason for UN-CLOSING the class and returning the roster to you:
+
+   <reason/>
+
+You can reach "<actor/>" at:
+
+   <actor_email_address/> (mailto:<actor_email_address/>)
+
+-- <application_name/> (http://<host_domain_name/>/<application_name/>)

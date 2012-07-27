@@ -100,6 +100,12 @@ namespace ready_roster_detail
     //
     //==
 
+    protected void Button_disapprove_Click(object sender, EventArgs e)
+      {
+      p.biz_coned_offerings.ReturnToSponsor(p.incoming.summary,p.num_attendees,Session["username"].ToString(),k.Safe(TextArea_disapproval_reason.Value,k.safe_hint_type.PUNCTUATED));
+      BackTrack();
+      }
+
     protected void Button_go_back_Click(object sender, EventArgs e)
       {
       BackTrack();
