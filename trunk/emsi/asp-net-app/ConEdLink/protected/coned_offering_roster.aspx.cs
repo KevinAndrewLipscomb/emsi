@@ -37,6 +37,7 @@ namespace coned_offering_roster
     public k.int_nonnegative num_attendees;
     public k.int_nonnegative num_attendees_with_known_birth_dates;
     public string other_roster_id;
+    public string region_code;
     public ArrayList roster_id_arraylist;
     public string sort_order;
     public string user_email_address;
@@ -607,6 +608,7 @@ namespace coned_offering_roster
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
         p.other_roster_id = k.EMPTY;
+        p.region_code = Session["region_code"].ToString();
         p.roster_id_arraylist = new ArrayList();
         p.sort_order = "id desc";
         p.user_email_address = p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(),p.biz_user.IdNum());
@@ -636,7 +638,7 @@ namespace coned_offering_roster
         RadioButtonList_input_method.Items.FindByValue("Copy").Enabled = be_ok_to_input_copy;
         p.biz_coned_offerings.BindDirectToListControlForCopy(p.coned_offering_id,DropDownList_other_roster);
         Panel_input_method.Visible = (be_ok_to_input_batch || be_ok_to_input_copy);
-        var max_spec_length = p.biz_practitioners.MaxSpecLength(Session["region_code"].ToString(),k.EMPTY);
+        var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         InitForNewSearch();
@@ -676,7 +678,7 @@ namespace coned_offering_roster
       UpdatePanel_attendees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
-      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,Session["region_code"].ToString(),practitioner,new k.int_positive(12));
+      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,p.region_code,practitioner,new k.int_positive(12));
       if (practitioner.Length > 0)
         {
         if (ListBox_practitioner.Items.Count > 0)
