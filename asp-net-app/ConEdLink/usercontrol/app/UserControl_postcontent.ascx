@@ -29,11 +29,11 @@
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a href="/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf" target="_blank">Use Guide for Con Ed Sponsors</a></small></td>
+                                  <td><small><a runat="server" href="~/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf" target="_blank">Use Guide for Con Ed Sponsors</a></small></td>
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a href="/ConEdLink/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small></td>
+                                  <td><small><a runat="server" href="~/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small></td>
                                 </tr>
                               </table>
                             </td>
