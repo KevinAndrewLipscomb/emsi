@@ -187,6 +187,7 @@ namespace UserControl_coned_sponsors
               if (e.CommandName == "select")
                 {
                 p.msg_protected_coned_sponsor_detail.id = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_ID].Text, k.safe_hint_type.NUM);
+                p.msg_protected_coned_sponsor_detail.name = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
                 MessageDropCrumbAndTransferTo(p.msg_protected_coned_sponsor_detail,"protected","coned_sponsor_detail");
                 }
               else if (e.CommandName == "imitate")
@@ -212,7 +213,7 @@ namespace UserControl_coned_sponsors
                 {
                     link_button = ((e.Item.Cells[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
                     link_button.Text = k.ExpandTildePath(link_button.Text);
-                    link_button.ToolTip = "Profile (tabbed)";
+                    link_button.ToolTip = "Profile";
                     ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
                     link_button = ((e.Item.Cells[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
                     link_button.Text = k.ExpandTildePath(link_button.Text);

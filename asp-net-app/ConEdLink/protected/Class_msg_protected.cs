@@ -16,6 +16,7 @@ namespace Class_msg_protected
     public class coned_sponsor_detail
       {
       internal string id = k.EMPTY;
+      internal string name = k.EMPTY;
       }
     public class ready_roster_detail
       {

@@ -22,6 +22,51 @@ namespace coned_sponsor_detail {
         protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
         
         /// <summary>
+        /// Literal_sponsor_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_sponsor_name;
+        
+        /// <summary>
+        /// Literal_application_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
+        
+        /// <summary>
+        /// Literal_application_name_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name_2;
+        
+        /// <summary>
+        /// UserControl_coned_sponsor_user_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_coned_sponsor_user.TWebUserControl_coned_sponsor_user UserControl_coned_sponsor_user_control;
+        
+        /// <summary>
+        /// Literal_application_name_3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name_3;
+        
+        /// <summary>
         /// UserControl_coned_sponsor_control control.
         /// </summary>
         /// <remarks>
