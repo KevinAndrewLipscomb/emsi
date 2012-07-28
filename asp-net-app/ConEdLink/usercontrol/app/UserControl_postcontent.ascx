@@ -14,14 +14,14 @@
                     <tr>
                       <td>
                         <table cellspacing="0" cellpadding="5" border="0">
-                          <tr><td><small><strong><a name="ReferenceMaterial"></a>Reference material </strong></small></td></tr>
+                          <tr><td><small><strong><a name="ReferenceMaterial"></a>Reference material</strong></small></td></tr>
                           <tr>
                             <td>
-                              <small><small>These links open in a new window. </small></small>
+                              <small><small>These links open in a new window.</small></small>
                               <table cellspacing="0" cellpadding="5" border="0">
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a href="http://www.portal.state.pa.us/portal/server.pt?open=514&objID=556974&mode=2" target="_blank">Regional Councils </a></small></td>
+                                  <td><small><a href="http://www.portal.state.pa.us/portal/server.pt?open=514&objID=556974&mode=2" target="_blank">Regional Councils</a></small></td>
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
