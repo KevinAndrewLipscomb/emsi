@@ -55,6 +55,10 @@
                       <HeaderStyle HorizontalAlign="Center" />
                       <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                     </asp:BoundColumn>
+                    <asp:BoundColumn datafield="be_in_process" headertext="In process" sortexpression="be_in_process%" ReadOnly="True" Visible="false">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle VerticalAlign="Top" HorizontalAlign="Center" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False"></HeaderStyle>
                 </asp:DataGrid>

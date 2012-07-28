@@ -20,6 +20,8 @@ namespace UserControl_class_catalog
     public const int TCI_START = 5;
     public const int TCI_END = 6;
     public const int TCI_ROSTER = 7;
+    public const int TCI_SIZE = 8;
+    public const int TCI_IN_PROCESS = 9;
     }
 
   public partial class TWebUserControl_class_catalog: ki_web_ui.usercontrol_class
@@ -131,6 +133,7 @@ namespace UserControl_class_catalog
           {
           DropDownList_range.Items.Insert(1,i.val.ToString());
           }
+        DropDownList_range.SelectedValue = p.range;
         Bind();
         p.be_loaded = true;
         }
@@ -254,6 +257,7 @@ namespace UserControl_class_catalog
 
     private void Bind()
       {
+      DataGrid_control.Columns[UserControl_class_catalog_Static.TCI_IN_PROCESS].Visible = (p.range != "InProcess");
       p.biz_coned_offerings.BindClassCatalog
         (
         region_code:Session["region_code"].ToString(),
