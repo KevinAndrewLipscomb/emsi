@@ -101,13 +101,12 @@ namespace Class_biz_coned_sponsor_users
         public bool Get
           (
           string id,
-          out bool be_stale_password,
           out bool be_active,
           out bool be_ok_to_input_roster_by_batch,
           out bool be_ok_to_input_roster_by_copy
           )
           {
-          return db_coned_sponsor_users.Get(id, out be_stale_password, out be_active, out be_ok_to_input_roster_by_batch, out be_ok_to_input_roster_by_copy);
+          return db_coned_sponsor_users.Get(id, out be_active, out be_ok_to_input_roster_by_batch, out be_ok_to_input_roster_by_copy);
           }
 
         public string IdOf(string username)
@@ -186,13 +185,12 @@ namespace Class_biz_coned_sponsor_users
         public void Set
           (
           string id,
-          bool be_stale_password,
           bool be_active,
           bool be_ok_to_input_roster_by_batch,
           bool be_ok_to_input_roster_by_copy
           )
           {
-          db_coned_sponsor_users.Set(id,be_stale_password,be_active,be_ok_to_input_roster_by_batch,be_ok_to_input_roster_by_copy);
+          db_coned_sponsor_users.Set(id,be_active,be_ok_to_input_roster_by_batch,be_ok_to_input_roster_by_copy);
           }
 
         public void SetEmailAddress(string id, string email_address)
