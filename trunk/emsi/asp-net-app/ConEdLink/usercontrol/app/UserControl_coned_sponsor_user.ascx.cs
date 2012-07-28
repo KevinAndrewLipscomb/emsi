@@ -19,7 +19,6 @@ namespace UserControl_coned_sponsor_user
 
     private void Clear()
       {
-      CheckBox_be_stale_password.Checked = false;
       CheckBox_be_active.Checked = false;
       CheckBox_be_ok_to_input_roster_by_batch.Checked = false;
       CheckBox_be_ok_to_input_roster_by_copy.Checked = false;
@@ -39,14 +38,12 @@ namespace UserControl_coned_sponsor_user
 
     private bool PresentRecord(string id)
       {
-      bool be_stale_password;
       bool be_active;
       bool be_ok_to_input_roster_by_batch;
       bool be_ok_to_input_roster_by_copy;
       var result = false;
-      if (p.biz_coned_sponsor_users.Get(id, out be_stale_password, out be_active, out be_ok_to_input_roster_by_batch, out be_ok_to_input_roster_by_copy))
+      if (p.biz_coned_sponsor_users.Get(id, out be_active, out be_ok_to_input_roster_by_batch, out be_ok_to_input_roster_by_copy))
         {
-        CheckBox_be_stale_password.Checked = be_stale_password;
         CheckBox_be_active.Checked = be_active;
         CheckBox_be_ok_to_input_roster_by_batch.Checked = be_ok_to_input_roster_by_batch;
         CheckBox_be_ok_to_input_roster_by_copy.Checked = be_ok_to_input_roster_by_copy;
@@ -107,7 +104,7 @@ namespace UserControl_coned_sponsor_user
       {
       if (Page.IsValid)
         {
-        p.biz_coned_sponsor_users.Set(p.id,CheckBox_be_stale_password.Checked,CheckBox_be_active.Checked,CheckBox_be_ok_to_input_roster_by_batch.Checked,CheckBox_be_ok_to_input_roster_by_copy.Checked);
+        p.biz_coned_sponsor_users.Set(p.id,CheckBox_be_active.Checked,CheckBox_be_ok_to_input_roster_by_batch.Checked,CheckBox_be_ok_to_input_roster_by_copy.Checked);
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         //SetLookupMode();
         }
@@ -119,7 +116,6 @@ namespace UserControl_coned_sponsor_user
 
     private void SetDependentFieldAblements(bool ablement)
       {
-      CheckBox_be_stale_password.Enabled = ablement;
       CheckBox_be_active.Enabled = ablement;
       CheckBox_be_ok_to_input_roster_by_batch.Enabled = ablement;
       CheckBox_be_ok_to_input_roster_by_copy.Enabled = ablement;

@@ -13,15 +13,6 @@ namespace UserControl_coned_sponsor_user {
     public partial class TWebUserControl_coned_sponsor_user {
         
         /// <summary>
-        /// CheckBox_be_stale_password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_stale_password;
-        
-        /// <summary>
         /// CheckBox_be_active control.
         /// </summary>
         /// <remarks>

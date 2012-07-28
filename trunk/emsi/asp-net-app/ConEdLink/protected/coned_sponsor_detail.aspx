@@ -40,7 +40,7 @@
               <tr>
                 <td bgcolor="whitesmoke">
                   <h3>EMSRS profile attributes</h3>
-                  <small>These are the attributes that <asp:Literal ID="Literal_application_name_3" runat="server"></asp:Literal> has successfully sync from EMSRS.</small>
+                  <small>These are the attributes that <asp:Literal ID="Literal_application_name_3" runat="server"></asp:Literal> has successfully sync'd from EMSRS.</small>
                 </td>
               </tr>
               <tr><td><uc2:UserControl_coned_sponsor ID="UserControl_coned_sponsor_control" runat="server" /></td></tr>

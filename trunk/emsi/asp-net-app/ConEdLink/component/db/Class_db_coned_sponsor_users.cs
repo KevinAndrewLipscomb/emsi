@@ -151,13 +151,11 @@ namespace Class_db_coned_sponsor_users
         public bool Get
           (
           string id,
-          out bool be_stale_password,
           out bool be_active,
           out bool be_ok_to_input_roster_by_batch,
           out bool be_ok_to_input_roster_by_copy
           )
           {
-          be_stale_password = false;
           be_active = false;
           be_ok_to_input_roster_by_batch = false;
           be_ok_to_input_roster_by_copy = false;
@@ -165,8 +163,7 @@ namespace Class_db_coned_sponsor_users
           Open();
           var dr = new MySqlCommand
             (
-            "select be_stale_password"
-            + " , be_active"
+            "select be_active"
             + " , be_ok_to_input_roster_by_batch"
             + " , be_ok_to_input_roster_by_copy"
             + " from coned_sponsor_user"
@@ -176,7 +173,6 @@ namespace Class_db_coned_sponsor_users
             .ExecuteReader();
           if (dr.Read())
             {
-            be_stale_password = (dr["be_stale_password"].ToString() == "1");
             be_active = (dr["be_active"].ToString() == "1");
             be_ok_to_input_roster_by_batch = (dr["be_ok_to_input_roster_by_batch"].ToString() == "1");
             be_ok_to_input_roster_by_copy = (dr["be_ok_to_input_roster_by_copy"].ToString() == "1");
@@ -264,14 +260,12 @@ namespace Class_db_coned_sponsor_users
         public void Set
           (
           string id,
-          bool be_stale_password,
           bool be_active,
           bool be_ok_to_input_roster_by_batch,
           bool be_ok_to_input_roster_by_copy
           )
           {
-          var childless_field_assignments_clause = " be_stale_password = " + be_stale_password.ToString()
-          + " , be_active = " + be_active.ToString()
+          var childless_field_assignments_clause = " be_active = " + be_active.ToString()
           + " , be_ok_to_input_roster_by_batch = " + be_ok_to_input_roster_by_batch.ToString()
           + " , be_ok_to_input_roster_by_copy = " + be_ok_to_input_roster_by_copy.ToString();
           Open();
