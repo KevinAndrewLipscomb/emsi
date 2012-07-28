@@ -1,16 +1,9 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
+using Class_biz_teaching_entities;
 using Class_msg_protected;
-using kix;
 using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Configuration;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 
 namespace coned_sponsor_detail
   {
@@ -19,6 +12,7 @@ namespace coned_sponsor_detail
 
     private struct p_type
       {
+      internal TClass_biz_teaching_entities biz_teaching_entities;
       internal TClass_msg_protected.coned_sponsor_detail incoming;
       }
 
@@ -30,8 +24,7 @@ namespace coned_sponsor_detail
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_coned_sponsor_detail_PreRender;
+      PreRender += TWebForm_coned_sponsor_detail_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)
@@ -39,6 +32,10 @@ namespace coned_sponsor_detail
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_sponsor_detail";
+        Literal_sponsor_name.Text = p.incoming.name;
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        Literal_application_name_2.Text = Literal_application_name.Text;
+        Literal_application_name_3.Text = Literal_application_name.Text;
         }
       }
 
@@ -53,15 +50,18 @@ namespace coned_sponsor_detail
         //
         // Initialize p.~ objects here.
         //
+        p.biz_teaching_entities = new TClass_biz_teaching_entities();
+        //
         p.incoming = Message<TClass_msg_protected.coned_sponsor_detail>("protected","coned_sponsor_detail");
         SessionSet("mode:goto","/coned_sponsor/" + p.incoming.id);
+        UserControl_coned_sponsor_user_control.SetTarget(p.incoming.id);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
       //
-      // ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+      // ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
       //
       }
 
