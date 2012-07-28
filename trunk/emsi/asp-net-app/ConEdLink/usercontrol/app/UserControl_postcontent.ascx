@@ -9,22 +9,7 @@
           <td>
             <table cellspacing="0" cellpadding="5" border="0">
               <tr>
-                <td>
-                  <table bordercolor="lightgrey" cellspacing="0" cellpadding="0" width="1" bgcolor="lightgrey" border="1">
-                    <tr>
-                      <td>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="top">
+                <td style="border-left:2px dashed sandybrown; border-top:2px dashed sandybrown;" valign="top">
                   <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="0">
                     <tr>
                       <td>
@@ -58,22 +43,8 @@
                     </tr>
                   </table>
                 </td>
-                <td>
-                  <table bordercolor="lightgrey" cellspacing="0" cellpadding="0" width="1" bgcolor="#d3d3d3" border="1">
-                    <tr>
-                      <td>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="top">
+                <td>&nbsp;</td>
+                <td style="border-left:2px dashed sandybrown; border-top:2px dashed sandybrown;" valign="top">
                   <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="0">
                     <tr>
                       <td>
