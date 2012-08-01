@@ -265,11 +265,19 @@ namespace Class_db_coned_sponsor_users
           bool be_ok_to_input_roster_by_copy
           )
           {
-          var childless_field_assignments_clause = " be_active = " + be_active.ToString()
-          + " , be_ok_to_input_roster_by_batch = " + be_ok_to_input_roster_by_batch.ToString()
-          + " , be_ok_to_input_roster_by_copy = " + be_ok_to_input_roster_by_copy.ToString();
           Open();
-          new MySqlCommand(db_trail.Saved("update coned_sponsor_user set " + childless_field_assignments_clause),connection).ExecuteNonQuery();
+          new MySqlCommand
+            (
+            db_trail.Saved
+              (
+              "update coned_sponsor_user set be_active = " + be_active.ToString()
+              + " , be_ok_to_input_roster_by_batch = " + be_ok_to_input_roster_by_batch.ToString()
+              + " , be_ok_to_input_roster_by_copy = " + be_ok_to_input_roster_by_copy.ToString()
+              + " where id = '" + id + "'"
+              ),
+            connection
+            )
+            .ExecuteNonQuery();
           Close();
           }
 
