@@ -71,10 +71,16 @@ namespace coned_offering_roster
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
-      p.biz_coned_offering_rosters.Set(id:k.EMPTY,coned_offering_id:p.coned_offering_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
-      Bind();
-      TextBox_practitioner.Text = k.EMPTY;
-      InitForNewSearch();
+      try
+        {
+        p.biz_coned_offering_rosters.Set(id:k.EMPTY,coned_offering_id:p.coned_offering_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
+        Bind();
+        TextBox_practitioner.Text = k.EMPTY;
+        InitForNewSearch();
+        }
+      catch (NullReferenceException)
+        {
+        }
       }
 
     private void Bind()
