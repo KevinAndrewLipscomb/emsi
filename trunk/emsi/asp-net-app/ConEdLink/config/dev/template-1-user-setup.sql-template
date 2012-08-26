@@ -5,3 +5,11 @@ grant select
  , create
   on emsidb_d.*
   to 'ki-conedlink-d'@'localhost' identified by '~ki-conedlink-d-password~'
+;
+--
+-- Must grant PROCESS priv to primary user to include SHOW ENGINE INNODB
+-- STATUS output in MySQL-related exception reports.
+--
+grant process
+  on *.*
+  to 'ki-conedlink-d'@'localhost'
