@@ -3,6 +3,8 @@ grant select
  , update
  , delete
  , create
+ , create routine
+ , alter routine
   on emsidb.*
   to 'ki-pacrat'@'localhost' identified by '~ki-pacrat-password~'
 ;

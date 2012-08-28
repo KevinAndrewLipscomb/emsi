@@ -3,6 +3,8 @@ grant select
  , update
  , delete
  , create
+ , create routine
+ , alter routine
   on emsidb_d.*
   to 'ki-conedlink-d'@'localhost' identified by '~ki-conedlink-d-password~'
 ;
