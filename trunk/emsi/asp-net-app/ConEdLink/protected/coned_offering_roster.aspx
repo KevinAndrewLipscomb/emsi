@@ -74,11 +74,11 @@
                       certification<br />
                       numbers<br />here:<br />
                       <br />
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_certification_number_batch" runat="server" ErrorMessage="Please enter one or more certification numbers." Display="Dynamic" Font-Bold="True" Text="!ERR!" ControlToValidate="TextBox_certification_number_batch"></asp:RequiredFieldValidator>
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_certification_number_batch" runat="server" ErrorMessage="Please enter one or more certification numbers." Display="Dynamic" Font-Bold="True" Text="!ERR!" ControlToValidate="TextBox_certification_number_batch" ValidationGroup="ScanBatch"></asp:RequiredFieldValidator>
                     </td>
-                    <td valign="top"><asp:TextBox ID="TextBox_certification_number_batch" runat="server" Columns="7" Rows="25" TextMode="MultiLine"></asp:TextBox></td>
+                    <td valign="top"><asp:TextBox ID="TextBox_certification_number_batch" runat="server" Columns="7" Rows="25" TextMode="MultiLine" ValidationGroup="ScanBatch"></asp:TextBox></td>
                   </tr>
-                  <tr><td align="right" colspan="2"><asp:Button ID="Button_add_batch" runat="server" onclick="Button_add_batch_Click" Text="Add batch" CausesValidation="False" /></td></tr>
+                  <tr><td align="right" colspan="2"><asp:Button ID="Button_add_batch" runat="server" onclick="Button_add_batch_Click" Text="Add batch" CausesValidation="False" ValidationGroup="ScanBatch" /></td></tr>
                 </table>
               </asp:Panel>
               <asp:Panel ID="Panel_copy" runat="server" Visible="false">
