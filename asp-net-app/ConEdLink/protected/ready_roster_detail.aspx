@@ -76,6 +76,7 @@
                               <HeaderStyle HorizontalAlign="Center" />
                               <ItemStyle HorizontalAlign="Right" Wrap="False" />
                             </asp:BoundColumn>
+                            <asp:BoundColumn datafield="practitioner_status_description" ReadOnly="True" Visible="false"></asp:BoundColumn>
                           </Columns>
                           <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                         </asp:DataGrid>
@@ -103,6 +104,7 @@
                           </Columns>
                           <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                         </asp:DataGrid>
+                        <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
                       </td>
                     </tr>
                     <tr><td style="background-color:WhiteSmoke"><strong>To advance...</strong></td></tr>

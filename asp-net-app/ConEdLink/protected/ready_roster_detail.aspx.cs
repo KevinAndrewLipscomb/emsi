@@ -17,6 +17,7 @@ namespace ready_roster_detail
   {
   public struct p_type
     {
+    public bool be_noncurrent_practitioners_on_roster;
     public bool be_sort_order_ascending;
     public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
     public TClass_biz_coned_offerings biz_coned_offerings;
@@ -32,7 +33,7 @@ namespace ready_roster_detail
 
   public partial class TWebForm_ready_roster_detail: ki_web_ui.page_class
     {
-    private class ready_roster_detail_Static
+    private static class ready_roster_detail_Static
       {
       public const int TCI_LAST_NAME = 0;
       public const int TCI_FIRST_NAME = 1;
@@ -42,6 +43,7 @@ namespace ready_roster_detail
       public const int TCI_DOB = 5;
       public const int TCI_COUNTY = 6;
       public const int TCI_INSTRUCTOR_HOURS = 7;
+      public const int TCI_STATUS_DESCRIPTION = 8;
       //
       internal const int TCI_LCDS_ID = 0;
       internal const int TCI_LCDS_HEADER = 1;
@@ -68,10 +70,12 @@ namespace ready_roster_detail
 
     private void Bind()
       {
+      p.be_noncurrent_practitioners_on_roster = false;
       p.num_attendees.val = 0;
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
+      Label_noncurrent_practitioner_on_roster.Visible = p.be_noncurrent_practitioners_on_roster;
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_lcds,p.coned_offering_id);
       }
 
@@ -168,6 +172,11 @@ namespace ready_roster_detail
           {
           LabelizeAndSetTextForeColor(instructor_hours_cell,Color.LightGray);
           }
+        if (!(new ArrayList {"Active","Suspended"}).Contains(e.Item.Cells[ready_roster_detail_Static.TCI_STATUS_DESCRIPTION].Text))
+          {
+          e.Item.BackColor = Color.Gold;
+          p.be_noncurrent_practitioners_on_roster = true;
+          }
         //
         // This datagrid's viewstate is entirely disabled.
         //
@@ -240,6 +249,7 @@ namespace ready_roster_detail
         p.biz_counties = new TClass_biz_counties();
         p.biz_practitioners = new TClass_biz_practitioners();
         //
+        p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.ready_roster_detail>(folder_name:"protected",aspx_name:"ready_roster_detail");
         p.lcds_content_xml = k.EMPTY;

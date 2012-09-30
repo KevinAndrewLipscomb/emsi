@@ -310,6 +310,15 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
         
         /// <summary>
+        /// Label_noncurrent_practitioner_on_roster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
+        
+        /// <summary>
         /// Button_mark_class_canceled control.
         /// </summary>
         /// <remarks>

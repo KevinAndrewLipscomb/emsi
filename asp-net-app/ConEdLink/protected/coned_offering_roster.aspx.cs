@@ -22,6 +22,7 @@ namespace coned_offering_roster
   public struct p_type
     {
     public bool be_ceu_breakdown_valid;
+    public bool be_noncurrent_practitioners_on_roster;
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
     public TClass_biz_accounts biz_accounts;
@@ -65,6 +66,7 @@ namespace coned_offering_roster
       public const int TCI_BE_INSTRUCTOR = 15;
       public const int TCI_INSTRUCTOR_HOURS = 16;
       public const int TCI_EDIT_UPDATE_CANCEL = 17;
+      public const int TCI_STATUS_DESCRIPTION = 18;
       }
 
     private p_type p;
@@ -85,6 +87,7 @@ namespace coned_offering_roster
 
     private void Bind()
       {
+      p.be_noncurrent_practitioners_on_roster = false;
       p.num_attendees.val = 0;
       p.num_attendees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[coned_offering_roster_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
@@ -92,6 +95,7 @@ namespace coned_offering_roster
       Button_mark_class_canceled.Visible = (p.num_attendees.val == 0) || (Session["imitator_designator"] != null);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
+      Label_noncurrent_practitioner_on_roster.Visible = p.be_noncurrent_practitioners_on_roster;
       SetHyperlinkPrintCompletionDocumentation();
       if (RadioButtonList_input_method.SelectedValue == "Standard")
         {
@@ -459,6 +463,11 @@ namespace coned_offering_roster
             text_box_instructor_hours.Enabled = p.be_ok_to_edit_roster;
             }
           }
+        if (!(new ArrayList {"Active","Suspended"}).Contains(e.Item.Cells[coned_offering_roster_Static.TCI_STATUS_DESCRIPTION].Text))
+          {
+          e.Item.BackColor = Color.Gold;
+          p.be_noncurrent_practitioners_on_roster = true;
+          }
         //--
         // DON'T disable viewstate here since thes server needs it to repopulate bound controls when an update is made to an UpdatePanel other than the one that isolates the DataGrid_control.
         //--
@@ -609,6 +618,7 @@ namespace coned_offering_roster
         p.biz_teaching_entities = new TClass_biz_teaching_entities();
         p.biz_user = new TClass_biz_user();
         //
+        p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
