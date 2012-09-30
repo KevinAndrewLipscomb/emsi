@@ -11,5 +11,23 @@ namespace UserControl_postcontent {
     
     
     public partial class TWebUserControl_postcontent {
+        
+        /// <summary>
+        /// TableRow_creating_rosters_using_barcode_scanners control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_creating_rosters_using_barcode_scanners;
+        
+        /// <summary>
+        /// TableRow_use_guide_for_regional_staffers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_use_guide_for_regional_staffers;
     }
 }

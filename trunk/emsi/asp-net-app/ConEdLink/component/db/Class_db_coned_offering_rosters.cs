@@ -99,12 +99,14 @@ namespace Class_db_coned_offering_rosters
         + " , DATE_FORMAT(end_date_time,'%m/%d/%Y') as end_date"
         + " , LPAD(practitioner_county_code_name_map.emsrs_code,2,'0') as practitioner_county_emsrs_code"
         + " , coned_offering.sponsor_number as sponsor_number"
+        + " , practitioner_status.description as practitioner_status_description"
         + " from coned_offering_roster"
         +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join county_code_name_map coned_offering_county_code_name_map on (coned_offering_county_code_name_map.emsrs_code=coned_offering.class_county_code)"
         +   " left join county_code_name_map practitioner_county_code_name_map on (practitioner_county_code_name_map.code=practitioner.residence_county_code)"
+        +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
         + " where coned_offering.id = '" + id + "'"
         + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
         connection
