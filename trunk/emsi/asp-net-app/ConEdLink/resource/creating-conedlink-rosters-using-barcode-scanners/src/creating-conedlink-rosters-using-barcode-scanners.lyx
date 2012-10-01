@@ -86,7 +86,7 @@ Creating
 \series bold
 ConEdLink
 \series default
- rosters using barcode scanners
+ rosters using Windows Mobile based barcode scanners
 \end_layout
 
 \begin_layout Standard
@@ -162,11 +162,11 @@ The Regional EMS Councils of the Pennsylvania state EMS system
 \begin_layout Description
 
 \size footnotesize
-7
+1
 \begin_inset space ~
 \end_inset
 
-March
+October
 \begin_inset space ~
 \end_inset
 
