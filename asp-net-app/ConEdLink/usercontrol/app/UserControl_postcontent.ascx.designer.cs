@@ -22,12 +22,12 @@ namespace UserControl_postcontent {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_creating_rosters_using_barcode_scanners;
         
         /// <summary>
-        /// TableRow_use_guide_for_regional_staffers control.
+        /// TableRow_creating_rosters_using_cipherlab_barcode_readers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_use_guide_for_regional_staffers;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_creating_rosters_using_cipherlab_barcode_readers;
     }
 }
