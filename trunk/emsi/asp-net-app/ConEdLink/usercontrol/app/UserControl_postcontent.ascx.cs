@@ -39,7 +39,9 @@ namespace UserControl_postcontent
           //
           // then the user is fully logged in and the following tests will be meaningful
           //
-          TableRow_creating_rosters_using_barcode_scanners.Visible = (Session["target_user_table"].ToString() == "regional_staffer") || p.biz_accounts.BeOkForConedSponsorToInputRosterByBatch();
+          var be_ok_to_see_barcoding_manuals = (Session["target_user_table"].ToString() == "regional_staffer") || p.biz_accounts.BeOkForConedSponsorToInputRosterByBatch();
+          TableRow_creating_rosters_using_barcode_scanners.Visible = be_ok_to_see_barcoding_manuals;
+          TableRow_creating_rosters_using_cipherlab_barcode_readers.Visible = be_ok_to_see_barcoding_manuals;
           }
         }
       }

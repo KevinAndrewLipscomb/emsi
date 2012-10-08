@@ -33,7 +33,11 @@
                                 </tr>
                                 <tr id="TableRow_creating_rosters_using_barcode_scanners" runat="server" visible="false">
                                   <td valign="top">&bull;</td>
-                                  <td><small><a runat="server" href="~/resource/creating-conedlink-rosters-using-barcode-scanners/creating-conedlink-rosters-using-barcode-scanners.pdf" target="_blank">Creating rosters using barcode scanners</a></small></td>
+                                  <td><small><a runat="server" href="~/resource/creating-conedlink-rosters-using-barcode-scanners/creating-conedlink-rosters-using-barcode-scanners.pdf" target="_blank">Creating rosters using Windows Mobile barcode scanners</a></small></td>
+                                </tr>
+                                <tr id="TableRow_creating_rosters_using_cipherlab_barcode_readers" runat="server" visible="false">
+                                  <td valign="top">&bull;</td>
+                                  <td><small><a runat="server" href="~/resource/creating-conedlink-rosters-using-cipherlab-barcode-readers/creating-conedlink-rosters-using-cipherlab-based-barcode-readers.pdf" target="_blank">Creating rosters using CipherLab barcode scanners</a></small></td>
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
