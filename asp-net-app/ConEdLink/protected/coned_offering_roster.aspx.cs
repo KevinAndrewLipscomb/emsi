@@ -270,7 +270,7 @@ namespace coned_offering_roster
       {
       try
         {
-        p.biz_coned_offerings.MarkCanceled(p.incoming.summary);
+        p.biz_coned_offerings.MarkCanceled(p.incoming.summary,p.region_code);
         BackTrack();
         }
       catch
