@@ -162,7 +162,7 @@ The Regional EMS Councils of the Pennsylvania state EMS system
 \begin_layout Description
 
 \size footnotesize
-1
+8
 \begin_inset space ~
 \end_inset
 
@@ -272,7 +272,7 @@ This document assumes that:
 
 \begin_layout Itemize
 You are reading badges whose barcodes are comprised solely of validated
- certification numbers belonging to active Pennsylvania EMS practitioners.
+ certification numbers belonging to Pennsylvania EMS practitioners.
 \end_layout
 
 \begin_layout Itemize
@@ -280,10 +280,63 @@ You are using a barcode reader that runs the CipherLab Operating System.
 \end_layout
 
 \begin_layout Itemize
-You are using a PC that runs the Microsoft Windows operating system, and
- that has the IR_Read program installed.
+You are using a PC with the following characteristics:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+It runs the Microsoft Windows operating system.
+\end_layout
+
+\begin_layout Itemize
+It has the 
+\noun on
+IR_Read
+\noun default
+ or 
+\noun on
+Data_Read
+\noun default
+ program installed
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+At least one of these programs should have come with the software that came
+ with your barcode readers.
+ If you are missing these programs, 
+\noun on
+Data_Read
+\noun default
+ is available from CipherLab at 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.cipherlab.com/livefiles/en/Documents/2364/Forge_Batch_Install_1000031.zip"
+target "http://www.cipherlab.com/livefiles/en/Documents/2364/Forge_Batch_Install_1000031.zip"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It has a spreadsheet program like Microsoft Excel installed.
+\end_layout
+
+\begin_layout Itemize
+It has a reliable Internet connection.
+\end_layout
+
+\begin_layout Itemize
+A CipherLab barcode reader cradle is connected to the PC.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -294,37 +347,288 @@ You are using a PC that runs the Microsoft Windows operating system, and
 \begin_layout Part
 \begin_inset CommandInset label
 LatexCommand label
-name "part:Procedure"
+name "part:Initial-communications-&-processing-preparations"
 
 \end_inset
 
-Procedure
+Initial communications & processing preparations
 \end_layout
 
-\begin_layout Standard
-This option:
+\begin_layout Enumerate
+Connect the barcode reader's cradle to the PC.
+ You should see indications that the system recognizes the cradle, something
+ like these:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-found-new-hardware.png
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-found-new-hardware-2.png
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Requires access, before and after the Room Monitor is at the classroom,
- to a PC with the following characteristics:
+\begin_layout Enumerate
+To determine which COM port has been assigned to your cradle, go to the
+ Windows Control Panel and choose "System".
+ In the System Properties dialog box, select the Hardware tab, then click
+ "Device Manager".
+ In the Device Manager, expand the 
+\begin_inset Quotes eld
+\end_inset
+
+Ports (COM & LPT)
+\begin_inset Quotes erd
+\end_inset
+
+ item and look for the item labeled "CP210x USB to UART Bridge Controller".
+ Make a note of the COM port number listed to the right in parentheses:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-device-manager.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Start the 
+\noun on
+IR_Read
+\noun default
+ or 
+\noun on
+Data_Read
+\noun default
+ program.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "75text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\family sans
+\bar under
+NOTE
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+These instructions assume you are using the newer 
+\noun on
+Data_Read
+\noun default
+ program, which does everything the 
+\noun on
+IR_Read
+\noun default
+ program does, and more.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "75text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\bar under
+NOTE
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+If you are running 
+\noun on
+Data_Read
+\noun default
+, in the Communication Parameters section, you may have to set the Interface
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Cradle-IR
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In 
+\noun on
+IR_Read
+\noun default
+ or 
+\noun on
+Data_Read
+\noun default
+, do the following:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-The PC has a reliable Internet connection.
+Adjust the COM port field to match the COM port you identified above:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-data-read-com-port.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-A barcode reader cradle is connected to the PC.
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Adjust-the-Directory"
+
+\end_inset
+
+Adjust the Directory field to point to the folder where you want the raw
+ data from the barcode readers to be saved:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-data-read-directory.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-IR_Read is installed on the PC.
+Click the OK button.
+ You should see an indication that 
+\noun on
+IR_Read
+\noun default
+ or 
+\noun on
+Data_Read
+\noun default
+ is waiting for a connection:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-data-read-waiting.png
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
-\begin_layout Section
+\begin_layout Enumerate
+Open Microsoft Excel.
+\end_layout
+
+\begin_layout Enumerate
+In your browser, log into ConEdLink 
+\bar under
+using your Con-Ed Sponsor account
+\bar default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
 Before the Room Monitor heads to the classroom
 \end_layout
 
@@ -435,7 +739,14 @@ Enter the session number (or title, or other uniquely identifying data item)
  for which the Room Monitor is about to read badges.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
 When the Room Monitor is at the classroom
 \end_layout
 
@@ -453,6 +764,7 @@ The Room Monitor should read each attendee's badge.
 
 \begin_inset Graphics
 	filename attendee-1.png
+	scale 75
 
 \end_inset
 
@@ -463,6 +775,7 @@ The Room Monitor should read each attendee's badge.
 
 \begin_inset Graphics
 	filename attendee-2.png
+	scale 75
 
 \end_inset
 
@@ -473,6 +786,7 @@ The Room Monitor should read each attendee's badge.
 
 \begin_inset Graphics
 	filename attendee-3.png
+	scale 75
 
 \end_inset
 
@@ -486,7 +800,14 @@ When all attendee badges have been read, the Room Monitor should immediately
  reader, nor remove the battery.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
 After the Room Monitor returns from the classroom
 \end_layout
 
@@ -501,7 +822,8 @@ Drop the barcode reader into the cradle connected to the PC:
 
 
 \begin_inset Graphics
-	filename barcode-scanner-in-cradle.png
+	filename 8000-into-cradle.png
+	scale 33
 
 \end_inset
 
@@ -509,9 +831,25 @@ Drop the barcode reader into the cradle connected to the PC:
 \end_layout
 
 \begin_layout Enumerate
-The My Mobiler software will cause the barcode reader's display to be duplicated
- on the PC's display and the Excel Mobile spreadsheet containing the just-readed
- attendee certification numbers should be visible:
+On the barcode reader, press 
+\begin_inset Graphics
+	filename 8000-fn-alpha-key.png
+
+\end_inset
+
+ + 
+\begin_inset Graphics
+	filename 8000-2-abc-key.png
+
+\end_inset
+
+, followed by 
+\begin_inset Graphics
+	filename 8000-esc-key.png
+
+\end_inset
+
+ to reveal the Application Main Menu, which looks something like this:
 \begin_inset Newline newline
 \end_inset
 
@@ -521,7 +859,7 @@ The My Mobiler software will cause the barcode reader's display to be duplicated
 
 
 \begin_inset Graphics
-	filename my-mobiler-active-w-excel-mobile-showing.png
+	filename 8000-application-main-menu.png
 
 \end_inset
 
@@ -529,9 +867,12 @@ The My Mobiler software will cause the barcode reader's display to be duplicated
 \end_layout
 
 \begin_layout Enumerate
-Using the PC's mouse, in the MyMobiler window, scroll the Excel Mobile spreadshe
-et, if necessary, until you can see the class number that you previously
- entered into the spreadsheet:
+Select 
+\series bold
+2.Upload
+\series default
+ to Upload the scanned data to the PC.
+ You should briefly see something like this, then uploading should begin:
 \begin_inset Newline newline
 \end_inset
 
@@ -541,7 +882,7 @@ et, if necessary, until you can see the class number that you previously
 
 
 \begin_inset Graphics
-	filename my-mobiler-scroll-spreadsheet.png
+	filename 8000-uploading.png
 
 \end_inset
 
@@ -549,17 +890,261 @@ et, if necessary, until you can see the class number that you previously
 \end_layout
 
 \begin_layout Enumerate
-On the PC, open a browser, browse to 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://frompaper2web.com/ConEdLink"
-target "http://frompaper2web.com/ConEdLink"
+Once uploading completes, go to Excel.
+ Select the Data tab and the From Text button:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-data-from-text.png
 
 \end_inset
 
-, and log into your Con Ed Sponsor account.
- Find the class corresponding to the one indicated in the Excel Mobile spreadshe
-et, and click its 
+
+\end_layout
+
+\begin_layout Enumerate
+In the Import Text File dialog, navigate to the folder where the raw barcode
+ reader data was saved (see Part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:Initial-communications-&-processing-preparations"
+
+\end_inset
+
+ step 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Adjust-the-Directory"
+
+\end_inset
+
+) and select the file you just uploaded from the barcode reader.
+ Note that you may have to change the the 
+\begin_inset Quotes eld
+\end_inset
+
+Files of type
+\begin_inset Quotes erd
+\end_inset
+
+ drop-down to 
+\begin_inset Quotes eld
+\end_inset
+
+All Files
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Make sure the 
+\begin_inset Quotes eld
+\end_inset
+
+Original data type
+\begin_inset Quotes erd
+\end_inset
+
+ is set to Delimited and click the 
+\begin_inset Quotes eld
+\end_inset
+
+Next >
+\begin_inset Quotes erd
+\end_inset
+
+ button:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-import-delimited.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The raw data from the barcode reader is delimited by the 
+\series bold
+comma
+\series default
+ character.
+ Make sure only the 
+\begin_inset Quotes eld
+\end_inset
+
+Comma
+\begin_inset Quotes erd
+\end_inset
+
+ box is checked in the 
+\begin_inset Quotes eld
+\end_inset
+
+Delimiters
+\begin_inset Quotes erd
+\end_inset
+
+ area, then click the 
+\begin_inset Quotes eld
+\end_inset
+
+Next >
+\begin_inset Quotes erd
+\end_inset
+
+ button:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-import-comma.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In the final step of the Text Import Wizard, leave all options as they are.
+ Just click the 
+\begin_inset Quotes eld
+\end_inset
+
+Finish
+\begin_inset Quotes erd
+\end_inset
+
+ button:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-import-finish.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In the wizard's final dialog box, it is safest to select 
+\begin_inset Quotes eld
+\end_inset
+
+New worksheet
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Then click the 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+ button:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-import-where.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The imported data will appear in your Excel worksheet, something like this:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-import-results.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Select the imported certification numbers.
+ Note that they may not have leading zeros, and that's ok:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-copy-cert-num-column.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Copy the selected data to the clipboard:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pc-excel-copy-cert-num-column-copy.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In ConEdLink, find the class corresponding to the one indicated in the Excel
+ Mobile spreadsheet, and click its 
 \begin_inset Quotes eld
 \end_inset
 
@@ -572,7 +1157,7 @@ Roster
 \begin_inset Quotes eld
 \end_inset
 
-read batch
+Scan batch
 \begin_inset Quotes erd
 \end_inset
 
@@ -591,17 +1176,6 @@ target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponso
 \end_inset
 
  on the ConEdLink site for details.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-The class numbers in these examples may not match the way you would need
- them to in real life.
 \end_layout
 
 \end_inset
@@ -625,46 +1199,7 @@ The class numbers in these examples may not match the way you would need
 \end_layout
 
 \begin_layout Enumerate
-Using the PC's mouse, in the MyMobiler window, select the readed attendee
- certification numbers from the Excel Mobile spreadsheet.
- Do not select the class number:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename my-mobiler-cert-nums-selected.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-In the MyMobiler window, select Edit / Copy:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename my-mobiler-edit-copy.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-On the PC, in the browser, in ConEdLink, paste the attendee certification
- numbers into the 
+Paste the attendee certification numbers into the 
 \begin_inset Quotes eld
 \end_inset
 
