@@ -31,13 +31,31 @@ namespace UserControl_regional_staffer_binder {
         protected global::AjaxControlToolkit.TabContainer TabContainer_control;
         
         /// <summary>
-        /// TabPanel_emsrs_gateway control.
+        /// TabPanel_ready_rosters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_emsrs_gateway;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_ready_rosters;
+        
+        /// <summary>
+        /// TabPanel_sponsors control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel_sponsors;
+        
+        /// <summary>
+        /// TabPanel_practitioners control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel_practitioners;
         
         /// <summary>
         /// TabPanel_about control.

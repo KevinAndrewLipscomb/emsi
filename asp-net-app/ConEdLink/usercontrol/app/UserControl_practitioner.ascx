@@ -17,7 +17,7 @@
       <ASP:TextBox id="TextBox_id" runat="server"  cssclass=""></ASP:TextBox><ASP:Button id="Button_lookup" runat="server" causesvalidation="False" text="LOOKUP" onclick="Button_lookup_Click"></ASP:Button>
                 </td>
                 <td nowrap="nowrap"><small><small><asp:Label id="Label_lookup_arrow" runat="server">&lt;--</asp:Label></small></small></td>
-                <td><small><small><em><asp:Label id="Label_lookup_hint" runat="server">Lookup by partial or full field value</asp:Label></em></small></small></td>
+                <td><small><small><em><asp:Label id="Label_lookup_hint" runat="server">Lookup by partial or full spec</asp:Label></em></small></small></td>
               </tr>
             </table>
           </td>
@@ -184,7 +184,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <asp:RegularExpressionValidator id="RegularExpressionValidator_city_state_zip" runat="server" errormessage="Please enter a valid City state zip." font-bold="True" controltovalidate="TextBox_city_state_zip" validationexpression="[a-zA-Z\-. ]+">!ERR!</asp:RegularExpressionValidator>
+      <asp:RegularExpressionValidator id="RegularExpressionValidator_city_state_zip" runat="server" errormessage="Please enter a valid City state zip." font-bold="True" controltovalidate="TextBox_city_state_zip" validationexpression="[0-9a-zA-Z\-,. ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
   <tr>
@@ -216,4 +216,3 @@
   </tr>
 </table>
 <ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
-
