@@ -12,8 +12,22 @@ using System.Web.UI.WebControls;
 
 namespace UserControl_practitioner
   {
+
   public partial class TWebUserControl_practitioner: ki_web_ui.usercontrol_class
     {
+
+    private struct p_type
+      {
+      public bool be_educational_specialist_or_higher;
+      public bool be_loaded;
+      public bool be_ok_to_config_practitioners;
+      public TClass_biz_counties biz_counties;
+      public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
+      public TClass_biz_regions biz_regions;
+      public string id;
+      }
+
     private p_type p;
 
     private void Clear()
@@ -131,14 +145,20 @@ namespace UserControl_practitioner
       {
       if (!p.be_loaded)
         {
-        TableRow_id.Visible = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator")|| HttpContext.Current.User.IsInRole("education-specialist");
+        TableRow_id.Visible = p.be_educational_specialist_or_higher;
         LinkButton_new_record.Visible = p.be_ok_to_config_practitioners;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
         p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
-        p.biz_regions.BindDirectToListControl(DropDownList_regional_council);
+        p.biz_regions.BindDirectToListControl
+          (
+          target:DropDownList_regional_council,
+          unselected_literal:"-- region --",
+          selected_value:k.EMPTY,
+          do_limit_to_subscribers:false
+          );
         p.biz_counties.BindDirectToListControl(DropDownList_residence_county);
         UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
         UserControl_drop_down_date_birth_date.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
@@ -220,7 +240,10 @@ namespace UserControl_practitioner
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
         SetDependentFieldAblements(p.be_ok_to_config_practitioners);
-        Button_submit.Enabled = p.be_ok_to_config_practitioners;
+        var regional_council = k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM);
+        var be_ok_to_force_instructor_status = (p.be_educational_specialist_or_higher && (regional_council != Session["region_code"].ToString()) && !p.biz_regions.BeConedlinkSubscriber(code:regional_council));
+        CheckBox_be_instructor.Enabled = be_ok_to_force_instructor_status;
+        Button_submit.Enabled = p.be_ok_to_config_practitioners || be_ok_to_force_instructor_status;
         Button_delete.Enabled = p.be_ok_to_config_practitioners;
         result = true;
         }
@@ -272,7 +295,7 @@ namespace UserControl_practitioner
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
         }
       else
         {
@@ -283,6 +306,7 @@ namespace UserControl_practitioner
         p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         p.biz_regions = new TClass_biz_regions();
         //
+        p.be_educational_specialist_or_higher = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator")|| HttpContext.Current.User.IsInRole("education-specialist");
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
         p.id = k.EMPTY;
         }
@@ -416,15 +440,13 @@ namespace UserControl_practitioner
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
       {
-      uint num_matches;
-      string saved_id;
-      saved_id = k.Safe(TextBox_id.Text,k.safe_hint_type.PUNCTUATED);
+      var saved_id = k.Safe(TextBox_id.Text,k.safe_hint_type.PUNCTUATED);
       Clear();
       if (!PresentRecord(saved_id))
         {
         TextBox_id.Text = saved_id;
         p.biz_practitioners.Bind(saved_id, DropDownList_id);
-        num_matches = (uint)(DropDownList_id.Items.Count);
+        var num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {
           DropDownList_id.Visible = true;
@@ -451,17 +473,6 @@ namespace UserControl_practitioner
       {
       args.IsValid = k.BeValidDomainPartOfEmailAddress(k.Safe(TextBox_email_address.Text, k.safe_hint_type.EMAIL_ADDRESS));
       }
-
-    private struct p_type
-      {
-      public bool be_loaded;
-      public TClass_biz_counties biz_counties;
-      public TClass_biz_practitioners biz_practitioners;
-      public TClass_biz_practitioner_levels biz_practitioner_levels;
-      public TClass_biz_regions biz_regions;
-      public bool be_ok_to_config_practitioners;
-      public string id;
-      } // end p_type
 
     } // end TWebUserControl_practitioner
 

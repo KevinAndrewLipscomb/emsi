@@ -140,7 +140,7 @@ namespace UserControl_ready_rosters
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_UserControl_regional_staffer_emsrs_gateway_binder_UserControl_coned_binder_PlaceHolder_content"] as string) == "UserControl_ready_rosters");
+        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_PlaceHolder_content"] as string) == "UserControl_ready_rosters");
         }
       else
         {
