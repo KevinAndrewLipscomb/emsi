@@ -176,11 +176,11 @@ The Regional EMS Councils of the Pennsylvania state EMS system
 \begin_layout Description
 
 \size footnotesize
-30
+16
 \begin_inset space ~
 \end_inset
 
-June
+November
 \begin_inset space ~
 \end_inset
 
@@ -288,7 +288,7 @@ The state's existing
 \begin_inset CommandInset href
 LatexCommand href
 name "EMS Registry System (EMSRS)"
-target "https://ems.health.state.pa.us/emsportal"
+target "http://ems.health.state.pa.us/emsportal"
 
 \end_inset
 
@@ -333,11 +333,28 @@ ConEdLink
 \series default
 .
  To get approval to conduct a Con-Ed class, or to change the status or attribute
-s of a Con-Ed Sponsor, a class, or a practitioner, you must use 
+s of a Con-Ed Sponsor, a class, or a practitioner
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+With one exception: See section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Managing-instructors-from-non-ConEdLink-regions"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, you must use 
 \begin_inset CommandInset href
 LatexCommand href
 name "EMSRS"
-target "https://ems.health.state.pa.us/emsportal"
+target "http://ems.health.state.pa.us/emsportal"
 
 \end_inset
 
@@ -349,7 +366,8 @@ Con-Ed Sponsors use
 \series bold
 ConEdLink
 \series default
- to generate class rosters, and to submit those rosters to regional councils.
+ to generate class rosters, to submit those rosters to regional councils,
+ and to generate class completion certificates.
  Regional staffers use 
 \series bold
 ConEdLink
@@ -407,7 +425,7 @@ ConEdLink
 \begin_inset CommandInset href
 LatexCommand href
 name "Use Guide for Con-Ed Sponsors"
-target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf"
+target "http://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf"
 
 \end_inset
 
@@ -417,8 +435,19 @@ target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponso
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-name "Creating ConEdLink rosters using barcode scanners"
-target "https://frompaper2web.com/ConEdLink/resource/creating-conedlink-rosters-using-barcode-scanners/creating-conedlink-rosters-using-barcode-scanners.pdf"
+name "Creating ConEdLink rosters using Windows Mobile barcode scanners"
+target "http://frompaper2web.com/ConEdLink/resource/creating-conedlink-rosters-using-barcode-scanners/creating-conedlink-rosters-using-barcode-scanners.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Creating ConEdLink rosters using CipherLab barcode scanners"
+target "http://frompaper2web.com/ConEdLink/resource/creating-conedlink-rosters-using-cipherlab-barcode-readers/creating-conedlink-rosters-using-cipherlab-based-barcode-readers.pdf"
 
 \end_inset
 
@@ -782,9 +811,13 @@ Also note that several tabs are available.
 \emph on
 Ready rosters
 \emph default
- and 
+, 
 \emph on
 Sponsors
+\emph default
+, and 
+\emph on
+Practitioners
 \emph default
  tabs, but feel free to explore the others.
 \end_layout
@@ -1405,7 +1438,7 @@ ConEdLink
 \begin_inset CommandInset href
 LatexCommand href
 name "Use Guide for Con-Ed Sponsors"
-target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf"
+target "http://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponsors/use-guide-for-con-ed-sponsors.pdf"
 
 \end_inset
 
@@ -1415,6 +1448,366 @@ target "https://frompaper2web.com/ConEdLink/resource/use-guide-for-con-ed-sponso
 \begin_layout Standard
 To stop imitating a Con-Ed Sponsor, you must log out of the Con-Ed Sponsor's
  account.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Managing-instructors-from-non-ConEdLink-regions"
+
+\end_inset
+
+Managing instructors from non-ConEdLink regions
+\end_layout
+
+\begin_layout Standard
+Occassionally a Con-Ed Sponsor may complain that 
+\series bold
+ConEdLink
+\series default
+ won't allow the assignment of instructor hours to a practitioner who comes
+ from a region that does NOT subscribe to 
+\series bold
+ConEdLink
+\series default
+.
+ The reason this happens is that, because of limitations imposed by EMSRS,
+ 
+\series bold
+ConEdLink
+\series default
+ only knows about instructors who come from regions that DO subscribe to
+ 
+\series bold
+ConEdLink
+\series default
+.
+ To work around these limitations, 
+\series bold
+ConEdLink
+\series default
+ provides a way for you to directly manage the instructor status for a practitio
+ner who comes from a region that does NOT subscribe to 
+\series bold
+ConEdLink
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+The only way to manage the instructor status for a practitioner who comes
+ from a region that DOES subscribe to 
+\series bold
+ConEdLink
+\series default
+ is from within EMSRS.
+ 
+\series bold
+ConEdLink
+\series default
+ will sync the instructor status from EMSRS within 24 hours of a change.
+\end_layout
+
+\begin_layout Standard
+To manage the instructor status for a practitioner who comes from a region
+ that does NOT subscribe to 
+\series bold
+ConEdLink
+\series default
+, make sure you have navigated to the 
+\emph on
+regional_staffer_overview
+\emph default
+ page, then click the 
+\emph on
+Practitioners
+\emph default
+ tab, shown here:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename practitioners-1.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The form under the 
+\emph on
+Practitioners
+\emph default
+ tab allows you to 
+\begin_inset Quotes eld
+\end_inset
+
+look up
+\begin_inset Quotes erd
+\end_inset
+
+ (search for) practitioners by last name, first name, certification number,
+ or birth date.
+ These instructions only describe performing a lookup by last name, but
+ the process is similar when searching by the other attributes.
+\end_layout
+
+\begin_layout Standard
+In the top-most text box (between the 
+\begin_inset Graphics
+	filename lookup-id-block.png
+
+\end_inset
+
+ block and the 
+\begin_inset Graphics
+	filename lookup-button.png
+
+\end_inset
+
+ button), enter the name (or as much of it as you know), then click the
+ 
+\begin_inset Graphics
+	filename lookup-button.png
+
+\end_inset
+
+ button.
+ If 
+\series bold
+ConEdLink
+\series default
+ finds at least one match, you will see the complete set of lookup controls,
+ something like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename complete-lookup-control-set.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\bar under
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "75text%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\bar under
+NOTE
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+If you enter only a small part of a practitioner's name, 
+\series bold
+ConEdLink
+\series default
+ may return such a large number of matching records that 
+\series bold
+ConEdLink
+\series default
+ will become sluggish or seem unresponsive.
+ It is usually better to enter a practitioner's whole name if you are sure
+ how to spell it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the above example, we entered 
+\begin_inset Quotes eld
+\end_inset
+
+holsten
+\begin_inset Quotes erd
+\end_inset
+
+ in the top-most text box and clicked the 
+\begin_inset Graphics
+	filename lookup-button.png
+
+\end_inset
+
+ button.
+ 
+\series bold
+ConEdLink
+\series default
+ found 2 matches.
+ There are two ways to browse through the matches:
+\end_layout
+
+\begin_layout Enumerate
+By clicking any of the four blue and white navigation buttons (
+\begin_inset Graphics
+	filename lookup-navigation-buttons.png
+
+\end_inset
+
+).
+ From left to right, the buttons cause 
+\series bold
+ConEdLink
+\series default
+ to go to the first, previous, next, and last matching records.
+\end_layout
+
+\begin_layout Enumerate
+By selecting from the drop-down list (
+\begin_inset Graphics
+	filename lookup-drop-down-list.png
+
+\end_inset
+
+).
+ The values shown in the drop-down list are shorthand hints that lead to
+ the full matching records.
+\end_layout
+
+\begin_layout Standard
+To continue this example, we have selected 
+\emph on
+Don Holsten
+\emph default
+ from the drop-down list:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename complete-lookup-control-set-w-selection.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\series bold
+ConEdLink
+\series default
+ has populated the rest of the form with Don Holsten's attributes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename lookup-full-record.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fields that are disabled (read-only) hold data that 
+\series bold
+ConEdLink
+\series default
+ always (and only) syncs from EMSRS.
+ However, if the practitioner is from a region that does NOT subscribe to
+ 
+\series bold
+ConEdLink
+\series default
+, you can directly change the 
+\emph on
+Be instructor
+\emph default
+ field as follows:
+\end_layout
+
+\begin_layout Itemize
+Check the 
+\emph on
+Be instructor
+\emph default
+ field if the practitioner IS an instructor.
+\end_layout
+
+\begin_layout Itemize
+Uncheck the 
+\emph on
+Be instructor
+\emph default
+ field if the practitioner is NOT an instructor.
+\end_layout
+
+\begin_layout Standard
+Then click the 
+\begin_inset Graphics
+	filename submit-button.png
+
+\end_inset
+
+ button.
+ You'll see the following pop-up message:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename record-saved.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Your change will take effect immediately.
+ If you checked the 
+\emph on
+Be instructor
+\emph default
+ box, Con-Ed Sponsors will now be able to assign instructor hours to the
+ practitioner.
+\end_layout
+
+\begin_layout Standard
+To start a new lookup operation, click the 
+\emph on
+New lookup
+\emph default
+ link on the right side of the 
+\begin_inset Graphics
+	filename lookup-id-block.png
+
+\end_inset
+
+ block row:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename lookup-new.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1447,7 +1840,7 @@ Features
 \begin_inset CommandInset href
 LatexCommand href
 name "FromPaper2Web.com Home page"
-target "https://frompaper2web.com"
+target "http://frompaper2web.com"
 
 \end_inset
 
