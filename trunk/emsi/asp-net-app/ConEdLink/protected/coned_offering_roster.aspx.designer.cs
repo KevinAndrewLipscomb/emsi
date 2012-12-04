@@ -247,6 +247,15 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Literal Literal_length;
         
         /// <summary>
+        /// HyperLink_print_roster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
+        
+        /// <summary>
         /// Literal_location control.
         /// </summary>
         /// <remarks>

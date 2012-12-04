@@ -231,6 +231,13 @@
     <Compile Include="protected\coned_sponsor_overview.aspx.designer.cs">
       <DependentUpon>coned_sponsor_overview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\hardcopy_roster.aspx.cs">
+      <DependentUpon>hardcopy_roster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\hardcopy_roster.aspx.designer.cs">
+      <DependentUpon>hardcopy_roster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\ready_roster_detail.aspx.cs">
       <DependentUpon>ready_roster_detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -409,6 +416,13 @@
     <Compile Include="usercontrol\app\UserControl_regional_staffer_emsrs_gateway_binder.ascx.designer.cs">
       <DependentUpon>UserControl_regional_staffer_emsrs_gateway_binder.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_roster.ascx.cs">
+      <DependentUpon>UserControl_roster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_roster.ascx.designer.cs">
+      <DependentUpon>UserControl_roster.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_teaching_entity.ascx.cs">
       <DependentUpon>UserControl_teaching_entity.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -530,6 +544,7 @@
     <Content Include="protected\coned_offering_roster.aspx" />
     <Content Include="protected\coned_sponsor_detail.aspx" />
     <Content Include="protected\coned_sponsor_overview.aspx" />
+    <Content Include="protected\hardcopy_roster.aspx" />
     <Content Include="protected\image\delete_x16_h.png" />
     <Content Include="protected\image\document-save-5.png" />
     <Content Include="protected\image\edit-undo-8.png" />
@@ -587,6 +602,7 @@
     <Content Include="usercontrol\app\UserControl_ready_rosters.ascx" />
     <Content Include="usercontrol\app\UserControl_regional_staffer_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_regional_staffer_emsrs_gateway_binder.ascx" />
+    <Content Include="usercontrol\app\UserControl_roster.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_business_type.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_level.ascx" />
