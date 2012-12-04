@@ -3,6 +3,7 @@
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">
   <ContentTemplate>
     <p><strong><asp:Label id="Label_num_coned_sponsors" runat="server"></asp:Label>&nbsp;sponsors</strong></p>
+    <p><small>If one of your sponsors seems to be missing from this list, make sure their EMSRS record includes an email address.</small></p>
     <asp:DataGrid id="DataGrid_control" runat="server" allowsorting="True" autogeneratecolumns="False" cellpadding="10" gridlines="Horizontal">
       <Columns>
         <asp:ButtonColumn commandname="select" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile (tabbed)&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:ButtonColumn>

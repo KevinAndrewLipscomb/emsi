@@ -120,7 +120,9 @@
                               <td nowrap="nowrap" valign="top"><b>Length:</b></td>
                               <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_length" runat="server"></asp:Literal></td>
                               <td>&nbsp;</td>
-                              <td colspan="2" valign="top" align="center">&nbsp;</td>
+                              <td colspan="2" valign="top" align="center">
+                                <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                              </td>
                             </tr>
                             <tr>
                               <td nowrap="nowrap" valign="top"><b>Location:</b></td>
