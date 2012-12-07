@@ -281,6 +281,11 @@ namespace ready_roster_detail
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
+        //
+        var hash_table = new Hashtable();
+        hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        //
         Bind();
         }
       InjectPersistentClientSideScript();
