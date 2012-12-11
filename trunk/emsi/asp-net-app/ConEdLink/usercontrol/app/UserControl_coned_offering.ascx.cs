@@ -197,7 +197,10 @@ namespace UserControl_coned_offering
       {
       if (!p.be_loaded)
         {
-        TableRow_id.Visible = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator")|| HttpContext.Current.User.IsInRole("education-specialist");
+        TableRow_id.Visible = HttpContext.Current.User.IsInRole("director")
+        || HttpContext.Current.User.IsInRole("education-coordinator")
+        || HttpContext.Current.User.IsInRole("education-specialist")
+        || HttpContext.Current.User.IsInRole("education-reservist");
         p.biz_coned_offering_document_statuses.BindDirectToListControl(DropDownList_document_status);
         p.biz_coned_offering_class_final_statuses.BindDirectToListControl(DropDownList_class_final_status,"- - -");
         p.biz_regions.BindEmsrsToListControl(DropDownList_region_council);

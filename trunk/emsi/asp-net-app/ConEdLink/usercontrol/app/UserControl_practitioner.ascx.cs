@@ -18,7 +18,7 @@ namespace UserControl_practitioner
 
     private struct p_type
       {
-      public bool be_educational_specialist_or_higher;
+      public bool be_educational_reservist_or_higher;
       public bool be_loaded;
       public bool be_ok_to_config_practitioners;
       public TClass_biz_counties biz_counties;
@@ -145,7 +145,7 @@ namespace UserControl_practitioner
       {
       if (!p.be_loaded)
         {
-        TableRow_id.Visible = p.be_educational_specialist_or_higher;
+        TableRow_id.Visible = p.be_educational_reservist_or_higher;
         LinkButton_new_record.Visible = p.be_ok_to_config_practitioners;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
@@ -241,7 +241,7 @@ namespace UserControl_practitioner
         LinkButton_reset.Enabled = true;
         SetDependentFieldAblements(p.be_ok_to_config_practitioners);
         var regional_council = k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM);
-        var be_ok_to_force_instructor_status = (p.be_educational_specialist_or_higher && (regional_council != Session["region_code"].ToString()) && !p.biz_regions.BeConedlinkSubscriber(code:regional_council));
+        var be_ok_to_force_instructor_status = (p.be_educational_reservist_or_higher && (regional_council != Session["region_code"].ToString()) && !p.biz_regions.BeConedlinkSubscriber(code:regional_council));
         CheckBox_be_instructor.Enabled = be_ok_to_force_instructor_status;
         Button_submit.Enabled = p.be_ok_to_config_practitioners || be_ok_to_force_instructor_status;
         Button_delete.Enabled = p.be_ok_to_config_practitioners;
@@ -306,7 +306,10 @@ namespace UserControl_practitioner
         p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         p.biz_regions = new TClass_biz_regions();
         //
-        p.be_educational_specialist_or_higher = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator")|| HttpContext.Current.User.IsInRole("education-specialist");
+        p.be_educational_reservist_or_higher = HttpContext.Current.User.IsInRole("director")
+        || HttpContext.Current.User.IsInRole("education-coordinator")
+        || HttpContext.Current.User.IsInRole("education-specialist")
+        || HttpContext.Current.User.IsInRole("education-reservist");
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
         p.id = k.EMPTY;
         }
