@@ -251,7 +251,7 @@ namespace ready_roster_detail
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
-        p.incoming = ConsumedMessage<TClass_msg_protected.ready_roster_detail>(folder_name:"protected",aspx_name:"ready_roster_detail");
+        p.incoming = Message<TClass_msg_protected.ready_roster_detail>(folder_name:"protected",aspx_name:"ready_roster_detail");
         p.lcds_content_xml = k.EMPTY;
         p.num_attendees = new k.int_nonnegative();
         p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
