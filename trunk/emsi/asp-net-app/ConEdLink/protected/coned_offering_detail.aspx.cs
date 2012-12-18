@@ -50,7 +50,7 @@ namespace coned_offering_detail
       var nature_of_visit = NatureOfVisit(InstanceId() + ".p");
       if (nature_of_visit == nature_of_visit_type.VISIT_INITIAL)
         {
-        p.incoming = ConsumedMessage<TClass_msg_protected.coned_offering_detail>("protected","coned_offering_detail");
+        p.incoming = Message<TClass_msg_protected.coned_offering_detail>("protected","coned_offering_detail");
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

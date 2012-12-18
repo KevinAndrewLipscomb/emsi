@@ -620,7 +620,7 @@ namespace coned_offering_roster
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
-        p.incoming = ConsumedMessage<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
+        p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
         p.other_roster_id = k.EMPTY;

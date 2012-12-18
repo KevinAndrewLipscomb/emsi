@@ -52,7 +52,7 @@ namespace coned_sponsor_detail
         //
         p.biz_teaching_entities = new TClass_biz_teaching_entities();
         //
-        p.incoming = ConsumedMessage<TClass_msg_protected.coned_sponsor_detail>("protected","coned_sponsor_detail");
+        p.incoming = Message<TClass_msg_protected.coned_sponsor_detail>("protected","coned_sponsor_detail");
         SessionSet("mode:goto","/coned_sponsor/" + p.incoming.id);
         UserControl_coned_sponsor_user_control.SetTarget(p.incoming.id);
         }
