@@ -121,7 +121,7 @@ namespace UserControl_roster
           {
           LabelizeAndSetTextForeColor(instructor_hours_cell,Color.LightGray);
           }
-        if (!(new ArrayList {"Active","Suspended"}).Contains(e.Item.Cells[UserControl_roster_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[UserControl_roster_Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;

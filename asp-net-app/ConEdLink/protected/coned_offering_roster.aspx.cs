@@ -463,7 +463,7 @@ namespace coned_offering_roster
             text_box_instructor_hours.Enabled = p.be_ok_to_edit_roster;
             }
           }
-        if (!(new ArrayList {"Active","Suspended"}).Contains(e.Item.Cells[coned_offering_roster_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[coned_offering_roster_Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
