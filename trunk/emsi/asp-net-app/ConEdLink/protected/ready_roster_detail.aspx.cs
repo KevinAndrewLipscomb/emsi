@@ -172,7 +172,7 @@ namespace ready_roster_detail
           {
           LabelizeAndSetTextForeColor(instructor_hours_cell,Color.LightGray);
           }
-        if (!(new ArrayList {"Active","Suspended"}).Contains(e.Item.Cells[ready_roster_detail_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[ready_roster_detail_Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
