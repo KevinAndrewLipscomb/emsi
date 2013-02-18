@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dfa3be53-f3e5-4eff-9d05-a6cc912ca8d3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://ems.health.beta.state.pa.us/WcfWebServices/Practitioner.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9b7df84c-5dfb-4c86-83fc-265fe730ec37" SourceId="1" SourceUrl="https://ems.health.beta.state.pa.us/WcfWebServices/Practitioner.svc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2abddb7e-ab0d-4542-a190-338d16f9b346" SourceId="1" SourceUrl="https://ems.health.beta.state.pa.us/WcfWebServices/Practitioner.svc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c5a4e2d8-db8b-4910-8301-c6c5205060db" SourceId="1" SourceUrl="https://ems.health.beta.state.pa.us/WcfWebServices/Practitioner.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
