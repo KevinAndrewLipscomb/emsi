@@ -266,16 +266,6 @@
     <Compile Include="salogin.aspx.designer.cs">
       <DependentUpon>salogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference_emsrs_ConEd\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ServiceReference_emsrs_Practitioner\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="timeout.aspx.cs">
       <DependentUpon>timeout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -565,18 +555,6 @@
     <Content Include="protected\template\notification\roster_ready.txt" />
     <Content Include="protected\training_certificate_package.aspx" />
     <Content Include="salogin.aspx" />
-    <None Include="Service References\ServiceReference_emsrs_ConEd\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference_emsrs_ConEd\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference_emsrs_ConEd\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ServiceReference_emsrs_Practitioner\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference_emsrs_Practitioner\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference_emsrs_Practitioner\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="timeout.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -646,12 +624,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServiceReference_emsrs_ConEd\service.wsdl" />
-    <None Include="Service References\ServiceReference_emsrs_ConEd\service.xsd" />
-    <None Include="Service References\ServiceReference_emsrs_ConEd\service1.xsd" />
-    <None Include="Service References\ServiceReference_emsrs_Practitioner\service.wsdl" />
-    <None Include="Service References\ServiceReference_emsrs_Practitioner\service.xsd" />
-    <None Include="Service References\ServiceReference_emsrs_Practitioner\service1.xsd" />
     <None Include="Web References\WebReference_emsrs\EMSREGWebServices.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -688,13 +660,6 @@
       <Project>{C022DAD1-A109-4DC1-B770-9C4D70B6A39A}</Project>
       <Name>emsi</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference_emsrs_ConEd\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference_emsrs_Practitioner\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
