@@ -92,7 +92,12 @@ namespace coned_offering_roster
       p.num_attendees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[coned_offering_roster_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
-      Button_mark_class_canceled.Visible = (p.num_attendees.val == 0) || (Session["imitator_designator"] != null);
+      Button_mark_class_canceled.Visible =
+        (
+          (p.biz_coned_offerings.RegionCodeOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary)) == p.region_code)
+        &&
+          (p.num_attendees.val == 0) || (Session["imitator_designator"] != null)
+        );
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
       Label_noncurrent_practitioner_on_roster.Visible = p.be_noncurrent_practitioners_on_roster;
