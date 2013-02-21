@@ -131,7 +131,11 @@ namespace UserControl_class_catalog
           }
         for (var i = new k.subtype<int>(2012,DateTime.Today.Year + 1); i.val < i.LAST; i.val++)
           {
-          DropDownList_range.Items.Insert(1,i.val.ToString());
+          DropDownList_range.Items.Insert
+            (
+            index:2,
+            item:i.val.ToString()
+            );
           }
         DropDownList_range.SelectedValue = p.range;
         Bind();
@@ -257,13 +261,12 @@ namespace UserControl_class_catalog
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_class_catalog_Static.TCI_IN_PROCESS].Visible = (p.range != "InProcess");
+      DataGrid_control.Columns[UserControl_class_catalog_Static.TCI_IN_PROCESS].Visible = !new ArrayList() {"InProcess","ClosedLastThreeYears"}.Contains(p.range);
       p.biz_coned_offerings.BindClassCatalog
         (
         region_code:Session["region_code"].ToString(),
         coned_sponsor_user_id:Session["coned_sponsor_user_id"].ToString(),
-        be_limited_to_needing_coned_sponsor_finalization:(p.range == "InProcess"),
-        start_year:(new ArrayList {"InProcess","All"}.Contains(p.range) ? k.EMPTY : p.range),
+        range:p.range,
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control
