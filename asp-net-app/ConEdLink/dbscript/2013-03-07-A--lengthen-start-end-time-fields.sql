@@ -1,0 +1,8 @@
+START TRANSACTION
+;
+ALTER TABLE `coned_offering`
+  CHANGE COLUMN `start_time` `start_time` VARCHAR(31) NULL DEFAULT NULL
+,
+  CHANGE COLUMN `end_time` `end_time` VARCHAR(31) NULL DEFAULT NULL
+;
+COMMIT
