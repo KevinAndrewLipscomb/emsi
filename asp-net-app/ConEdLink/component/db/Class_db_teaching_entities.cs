@@ -318,8 +318,6 @@ namespace Class_db_teaching_entities
         MySqlTransaction transaction;
         var emsrs_id = k.EMPTY;
         var email = k.EMPTY;
-        var contact_email = k.EMPTY;
-        var public_contact_email = k.EMPTY;
         var childless_field_assignments_clause = k.EMPTY;
         Open();
         foreach (var rec in recs)
@@ -328,17 +326,13 @@ namespace Class_db_teaching_entities
             {
             emsrs_id = (rec as SponsorsSponsor).SponsorID.ToString();
             //
-            email = (be_production_instance ? k.Safe((rec as SponsorsSponsor).Email,k.safe_hint_type.EMAIL_ADDRESS) : "TeachingEnt" + emsrs_id + "E@frompaper2web.com");
-            contact_email = (be_production_instance ? k.Safe((rec as SponsorsSponsor).Email,k.safe_hint_type.EMAIL_ADDRESS) : "TeachingEnt" + emsrs_id + "Ce@frompaper2web.com");
-            public_contact_email = (be_production_instance ? k.Safe((rec as SponsorsSponsor).Email,k.safe_hint_type.EMAIL_ADDRESS) : "TeachingEnt" + emsrs_id + "Pce@frompaper2web.com");
+            email = (be_production_instance ? ((rec as SponsorsSponsor).Email == null ? k.EMPTY : k.Safe((rec as SponsorsSponsor).Email,k.safe_hint_type.EMAIL_ADDRESS)) : "TeachingEnt" + emsrs_id + "E@frompaper2web.com");
             //
             childless_field_assignments_clause = k.EMPTY
             + " sponsor_number = NULLIF('" + k.Safe((rec as SponsorsSponsor).SponsorNumber,k.safe_hint_type.HYPHENATED_NUM) + "','')"
             + " , name = NULLIF('" + k.Safe((rec as SponsorsSponsor).Name,k.safe_hint_type.ORG_NAME).Trim() + "','')"
             + " , region = NULLIF('" + (rec as SponsorsSponsor).Region.ToString() + "','')"
             + " , email = NULLIF('" + email + "','')"
-            + " , contact_email = NULLIF('" + contact_email + "','')"
-            + " , public_contact_email = NULLIF('" + public_contact_email + "','')"
             + " , coned_sponsor_status_id = NULLIF(IFNULL((select id from coned_sponsor_status where description = '" + k.Safe((rec as SponsorsSponsor).SponsorStatusDescription,k.safe_hint_type.ALPHA_WORDS) + "'),''),'')"
             + k.EMPTY;
             transaction = connection.BeginTransaction();
