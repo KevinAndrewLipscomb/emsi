@@ -2,7 +2,14 @@
 
 using Class_db_teaching_entities;
 using ConEdLink.component.ss;
+using emsi.ServiceReference_emsams_ConEd;
+using external_data_binding.emsams.ConEdSponsorInfo;
+using external_data_binding.emsams.ConEdSponsorStatusList;
 using System;
+using System.Configuration;
+using System.IO;
+using System.Xml.Serialization;
+using System.Collections;
 
 namespace Class_biz_teaching_entities
   {
@@ -172,7 +179,16 @@ namespace Class_biz_teaching_entities
 
     internal void ImportLatestFromEmsrs()
       {
-      db_teaching_entities.ImportLatestFromEmsrs(ss_emsams.TeachingEntitySearch());
+      var client = new ConedClient();
+      var con_ed_sponsor_status_list_obj = new ConEdSponsorStatusList();
+      con_ed_sponsor_status_list_obj.GUID = ConfigurationManager.AppSettings["emsams_service_references_guid"];
+      con_ed_sponsor_status_list_obj.Items = new Status[] {Status.ApprovedSponsor,Status.ProvisionalSponsor};
+      var con_ed_sponsor_status_list = new StringWriter();
+      new XmlSerializer(typeof(ConEdSponsorStatusList)).Serialize(con_ed_sponsor_status_list,con_ed_sponsor_status_list_obj);
+      var response = client.GetSponsorInfo(statuses:con_ed_sponsor_status_list.ToString());
+      db_teaching_entities.ImportLatestFromEmsrs
+        (recs:ArrayList.Adapter(((Sponsors)new XmlSerializer(typeof(Sponsors)).Deserialize(new StringReader(response))).Sponsor));
+      client.Close();
       }
 
     public void Set
