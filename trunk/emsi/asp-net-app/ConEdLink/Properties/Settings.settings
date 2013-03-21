@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ConEdLink.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ConEdLink_WebReference_emsrs_EMSREGWebServices" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="ConEdLink_WebReference_emsams_EMSREGWebServices" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://ems.health.state.pa.us/emsregwebservices/EMSREGWebServices.asmx</Value>
     </Setting>
   </Settings>

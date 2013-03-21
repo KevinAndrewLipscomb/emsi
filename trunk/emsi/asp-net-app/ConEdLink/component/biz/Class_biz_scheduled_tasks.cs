@@ -25,16 +25,12 @@ namespace Class_biz_scheduled_tasks
       {
       fs.DeleteCondemnedFolders(current_working_directory_spec + "/../protected/attachment");
       biz_coned_offerings.MakeRosterDueNotifications();
+      biz_coned_offerings.PurgeStaleUnused();
       }
 
     public void ImportLatestConedOfferingsFromEmsrs()
       {
       biz_coned_offerings.ImportLatestFromEmsrs();
-      }
-
-    public void ImportLatestInstructorsFromEmsrs()
-      {
-      biz_practitioners.ImportLatestInstructorsFromEmsrs();
       }
 
     public void ImportLatestTeachingEntitiesFromEmsrs()

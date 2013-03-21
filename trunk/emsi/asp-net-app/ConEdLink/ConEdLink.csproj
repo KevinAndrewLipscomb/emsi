@@ -147,13 +147,6 @@
     <Compile Include="noninteractive\daily_tasks.aspx.designer.cs">
       <DependentUpon>daily_tasks.aspx</DependentUpon>
     </Compile>
-    <Compile Include="noninteractive\import_latest_instructors_from_emsrs.aspx.cs">
-      <DependentUpon>import_latest_instructors_from_emsrs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="noninteractive\import_latest_instructors_from_emsrs.aspx.designer.cs">
-      <DependentUpon>import_latest_instructors_from_emsrs.aspx</DependentUpon>
-    </Compile>
     <Compile Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx.cs">
       <DependentUpon>import_latest_teaching_entities_from_emsrs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -521,7 +514,7 @@
     <Compile Include="usercontrol\ki\UserControl_session_interrupted.ascx.designer.cs">
       <DependentUpon>UserControl_session_interrupted.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\WebReference_emsrs\Reference.cs">
+    <Compile Include="Web References\WebReference_emsams\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -535,7 +528,6 @@
     <Content Include="login.aspx" />
     <Content Include="new_password.aspx" />
     <Content Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx" />
-    <Content Include="noninteractive\import_latest_instructors_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
@@ -624,12 +616,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\WebReference_emsrs\EMSREGWebServices.disco" />
+    <None Include="Web References\WebReference_emsams\EMSREGWebServices.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Web References\WebReference_emsrs\EMSREGWebServices.wsdl" />
-    <None Include="Web References\WebReference_emsrs\Reference.map">
+    <None Include="Web References\WebReference_emsams\EMSREGWebServices.wsdl" />
+    <None Include="Web References\WebReference_emsams\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -643,23 +635,23 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="lib\emsi\emsi.csproj">
+      <Project>{C022DAD1-A109-4DC1-B770-9C4D70B6A39A}</Project>
+      <Name>emsi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WebReferenceUrl Include="http://ems.health.state.pa.us/emsregwebservices/EMSREGWebServices.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebReference_emsrs\</RelPath>
+      <RelPath>Web References\WebReference_emsams\</RelPath>
       <UpdateFromURL>http://ems.health.state.pa.us/emsregwebservices/EMSREGWebServices.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ConEdLink_WebReference_emsrs_EMSREGWebServices</CachedSettingsPropName>
+      <CachedSettingsPropName>ConEdLink_WebReference_emsams_EMSREGWebServices</CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="lib\emsi\emsi.csproj">
-      <Project>{C022DAD1-A109-4DC1-B770-9C4D70B6A39A}</Project>
-      <Name>emsi</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
