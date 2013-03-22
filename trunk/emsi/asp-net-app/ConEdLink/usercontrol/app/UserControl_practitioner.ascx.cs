@@ -241,9 +241,7 @@ namespace UserControl_practitioner
         LinkButton_reset.Enabled = true;
         SetDependentFieldAblements(p.be_ok_to_config_practitioners);
         var regional_council = k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM);
-        var be_ok_to_force_instructor_status = (p.be_educational_reservist_or_higher && (regional_council != Session["region_code"].ToString()) && !p.biz_regions.BeConedlinkSubscriber(code:regional_council));
-        CheckBox_be_instructor.Enabled = be_ok_to_force_instructor_status;
-        Button_submit.Enabled = p.be_ok_to_config_practitioners || be_ok_to_force_instructor_status;
+        Button_submit.Enabled = p.be_ok_to_config_practitioners;
         Button_delete.Enabled = p.be_ok_to_config_practitioners;
         result = true;
         }
