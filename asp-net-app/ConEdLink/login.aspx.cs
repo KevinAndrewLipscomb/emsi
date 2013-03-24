@@ -70,6 +70,7 @@ namespace login
                 p.biz_regions = new TClass_biz_regions();
                 //
                 p.biz_regions.BindDirectToListControl(DropDownList_region);
+                RequireConfirmation(Button_new_password,"Are you sure you want a new password?");
                 //
             }
             InjectPersistentClientSideScript();
