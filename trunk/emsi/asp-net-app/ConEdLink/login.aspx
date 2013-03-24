@@ -41,7 +41,7 @@
 				      <td><p align="right">Regional council:</p></td>
 				      <td>
 						    <asp:dropdownlist id="DropDownList_region" runat="server" onselectedindexchanged="DropDownList_region_SelectedIndexChanged" AutoPostBack="True"></asp:dropdownlist>
-				        <asp:RequiredFieldValidator ID="RequiredFieldValidator_region" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList_region" Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+				        <asp:RequiredFieldValidator ID="RequiredFieldValidator_region" runat="server" ErrorMessage="Please select a Regional council." ControlToValidate="DropDownList_region" Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
 				      </td>
 				    </tr>
 				    <tr>
