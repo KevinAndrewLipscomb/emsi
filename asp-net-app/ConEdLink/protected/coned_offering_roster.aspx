@@ -231,9 +231,17 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td><asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label></td>
-                                  <td align="right">
-                                    <asp:Button ID="Button_mark_class_canceled" runat="server" CausesValidation="False" onclick="Button_mark_class_canceled_Click" Text="Mark class CANCELED" Visible="False" />
+                                  <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                      <tr>
+                                        <td>
+                                          <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
+                                        </td>
+                                        <td align="right">
+                                          <asp:Button ID="Button_mark_class_canceled" runat="server" CausesValidation="False" onclick="Button_mark_class_canceled_Click" Text="Mark class CANCELED" Visible="False" />
+                                        </td>
+                                      </tr>
+                                    </table>
                                   </td>
                                 </tr>
                                 <tr>
@@ -244,7 +252,8 @@
                                       <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" Enabled="false" onclick="LinkButton_email_completion_documentation_Click"></asp:LinkButton></p></li>
                                       <li><p><asp:HyperLink ID="HyperLink_print_completion_documentation" runat="server" Text="Print completion documentation" Enabled="false" Target="_blank"></asp:HyperLink></p></li>
                                     </ul>
-                                    <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small></td>
+                                    <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small>
+                                  </td>
                                 </tr>
                               </table>
                             </ContentTemplate>
