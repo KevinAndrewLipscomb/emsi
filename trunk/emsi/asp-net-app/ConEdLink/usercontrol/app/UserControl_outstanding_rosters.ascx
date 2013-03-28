@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_ready_rosters.ascx.cs" Inherits="UserControl_ready_rosters.TWebUserControl_ready_rosters"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_outstanding_rosters.ascx.cs" Inherits="UserControl_outstanding_rosters.TWebUserControl_outstanding_rosters"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~datagrid~sortable.ascx-template -->
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">
   <ContentTemplate>
@@ -20,7 +20,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     -->
                     <td align="right">
-                      <asp:Literal ID="Literal_num_coned_offerings" runat="server"></asp:Literal> classes ready
+                      <asp:Literal ID="Literal_num_coned_offerings" runat="server"></asp:Literal> classes outstanding
                     </td>
                   </tr>
                 </table>
@@ -53,7 +53,7 @@
                     <asp:BoundColumn datafield="end" headertext="End" sortexpression="end%" ReadOnly="True">
                       <ItemStyle VerticalAlign="Top" Wrap="False" />
                     </asp:BoundColumn>
-                    <asp:ButtonColumn CommandName="ManageRoster" Text="Roster">
+                    <asp:ButtonColumn CommandName="ManageRoster" Text="Roster" Visible="false">
                       <ItemStyle VerticalAlign="Top" />
                     </asp:ButtonColumn>
                   </Columns>

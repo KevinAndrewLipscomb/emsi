@@ -2,14 +2,14 @@ using kix;
 using UserControl_about;
 using UserControl_coned_sponsors;
 using UserControl_practitioner;
-using UserControl_ready_rosters;
+using UserControl_roster_binder;
 
 namespace UserControl_regional_staffer_binder
   {
 
   public static class UserControl_regional_staffer_binder_Static
     {
-    public const int TSSI_READY_ROSTERS = 0;
+    public const int TSSI_ROSTERS = 0;
     public const int TSSI_SPONSORS = 1;
     public const int TSSI_PRACTITIONERS = 2;
     public const int TSSI_ABOUT = 3;
@@ -53,7 +53,7 @@ namespace UserControl_regional_staffer_binder
       else
         {
         p.be_loaded = false;
-        p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_READY_ROSTERS;
+        p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_ROSTERS;
         FillPlaceHolder(be_fresh_control_required:true);
         }
       }
@@ -97,10 +97,10 @@ namespace UserControl_regional_staffer_binder
       string target
       )
       {
-      if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_READY_ROSTERS)
+      if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_ROSTERS)
         {
-        var c = ((TWebUserControl_ready_rosters)(LoadControl("~/usercontrol/app/UserControl_ready_rosters.ascx")));
-        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_ready_rosters",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        var c = ((TWebUserControl_roster_binder)(LoadControl("~/usercontrol/app/UserControl_roster_binder.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_roster_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
       else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_SPONSORS)
         {
@@ -127,9 +127,9 @@ namespace UserControl_regional_staffer_binder
       {
       if (target != k.EMPTY)
         {
-        if (target.ToLower().Contains("/ready-rosters/"))
+        if (target.ToLower().Contains("/rosters/"))
           {
-          p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_READY_ROSTERS;
+          p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_ROSTERS;
           }
         else if (target.ToLower().Contains("/sponsors/"))
           {

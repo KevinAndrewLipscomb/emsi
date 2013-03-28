@@ -360,6 +360,13 @@
     <Compile Include="usercontrol\app\UserControl_counties.ascx.designer.cs">
       <DependentUpon>UserControl_counties.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_outstanding_rosters.ascx.cs">
+      <DependentUpon>UserControl_outstanding_rosters.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_outstanding_rosters.ascx.designer.cs">
+      <DependentUpon>UserControl_outstanding_rosters.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_postcontent.ascx.cs">
       <DependentUpon>UserControl_postcontent.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -415,6 +422,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_roster.ascx.designer.cs">
       <DependentUpon>UserControl_roster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_roster_binder.ascx.cs">
+      <DependentUpon>UserControl_roster_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_roster_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_roster_binder.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_teaching_entity.ascx.cs">
       <DependentUpon>UserControl_teaching_entity.ascx</DependentUpon>
@@ -588,6 +602,7 @@
     <Content Include="usercontrol\app\UserControl_coned_sponsor_status.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_sponsor_user.ascx" />
     <Content Include="usercontrol\app\UserControl_counties.ascx" />
+    <Content Include="usercontrol\app\UserControl_outstanding_rosters.ascx" />
     <Content Include="usercontrol\app\UserControl_postcontent.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner_level.ascx" />
@@ -596,6 +611,7 @@
     <Content Include="usercontrol\app\UserControl_regional_staffer_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_regional_staffer_emsrs_gateway_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_roster.ascx" />
+    <Content Include="usercontrol\app\UserControl_roster_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_business_type.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_level.ascx" />
