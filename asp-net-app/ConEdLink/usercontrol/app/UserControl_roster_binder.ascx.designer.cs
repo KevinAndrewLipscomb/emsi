@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_regional_staffer_binder {
+namespace UserControl_roster_binder {
     
     
-    public partial class TWebUserControl_regional_staffer_binder {
+    public partial class TWebUserControl_roster_binder {
         
         /// <summary>
         /// UpdatePanel_control control.
@@ -31,40 +31,22 @@ namespace UserControl_regional_staffer_binder {
         protected global::AjaxControlToolkit.TabContainer TabContainer_control;
         
         /// <summary>
-        /// TabPanel_rosters control.
+        /// TabPanel_outstanding control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_rosters;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_outstanding;
         
         /// <summary>
-        /// TabPanel_sponsors control.
+        /// TabPanel_ready control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_sponsors;
-        
-        /// <summary>
-        /// TabPanel_practitioners control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_practitioners;
-        
-        /// <summary>
-        /// TabPanel_about control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_about;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_ready;
         
         /// <summary>
         /// PlaceHolder_content control.

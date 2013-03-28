@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_regional_staffer_binder {
+namespace UserControl_outstanding_rosters {
     
     
-    public partial class TWebUserControl_regional_staffer_binder {
+    public partial class TWebUserControl_outstanding_rosters {
         
         /// <summary>
         /// UpdatePanel_control control.
@@ -22,57 +22,39 @@ namespace UserControl_regional_staffer_binder {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
-        /// TabContainer_control control.
+        /// DropDownList_filter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainer_control;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_filter;
         
         /// <summary>
-        /// TabPanel_rosters control.
+        /// Literal_num_coned_offerings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_rosters;
+        protected global::System.Web.UI.WebControls.Literal Literal_num_coned_offerings;
         
         /// <summary>
-        /// TabPanel_sponsors control.
+        /// TableRow_none control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_sponsors;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
-        /// TabPanel_practitioners control.
+        /// DataGrid_control control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_practitioners;
-        
-        /// <summary>
-        /// TabPanel_about control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_about;
-        
-        /// <summary>
-        /// PlaceHolder_content control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder_content;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
     }
 }

@@ -7,9 +7,9 @@ using System.Collections;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace UserControl_ready_rosters
+namespace UserControl_outstanding_rosters
   {
-  public static class UserControl_ready_rosters_Static
+  public static class UserControl_outstanding_rosters_Static
     {
     public const int TCI_SELECT = 0;
     public const int TCI_ID = 1;
@@ -22,7 +22,7 @@ namespace UserControl_ready_rosters
     public const int TCI_ROSTER = 8;
     }
 
-  public partial class TWebUserControl_ready_rosters: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_outstanding_rosters: ki_web_ui.usercontrol_class
     {
     private struct p_type
       {
@@ -32,7 +32,7 @@ namespace UserControl_ready_rosters
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offerings biz_coned_offerings;
       public TClass_msg_protected.coned_offering_detail msg_protected_coned_offering_detail;
-      public TClass_msg_protected.ready_roster_detail msg_protected_ready_roster_detail;
+      //public TClass_msg_protected.outstanding_roster_detail msg_protected_outstanding_roster_detail;
       public uint num_coned_offerings;
       public string sort_order;
       }
@@ -140,13 +140,13 @@ namespace UserControl_ready_rosters
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_UserControl_roster_binder_PlaceHolder_content"] as string) == "UserControl_ready_rosters");
+        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_UserControl_roster_binder_PlaceHolder_content"] as string) == "UserControl_outstanding_rosters");
         }
       else
         {
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.msg_protected_coned_offering_detail = new TClass_msg_protected.coned_offering_detail();
-        p.msg_protected_ready_roster_detail = new TClass_msg_protected.ready_roster_detail();
+        //p.msg_protected_outstanding_roster_detail = new TClass_msg_protected.outstanding_roster_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -164,16 +164,16 @@ namespace UserControl_ready_rosters
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
       this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
       this.DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.DataGrid_control_ItemCommand);
-      this.PreRender += this.TWebUserControl_ready_rosters_PreRender;
+      this.PreRender += this.TWebUserControl_outstanding_rosters_PreRender;
       //this.Load += this.Page_Load;
       }
 
-    private void TWebUserControl_ready_rosters_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_outstanding_rosters_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_ready_rosters Fresh()
+    public TWebUserControl_outstanding_rosters Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -183,17 +183,17 @@ namespace UserControl_ready_rosters
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var summary = p.biz_coned_offerings.Summary(k.Safe(e.Item.Cells[UserControl_ready_rosters_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        var summary = p.biz_coned_offerings.Summary(k.Safe(e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         if (e.CommandName == "Select")
           {
           p.msg_protected_coned_offering_detail.summary = summary;
           MessageDropCrumbAndTransferTo(p.msg_protected_coned_offering_detail,"protected","coned_offering_detail");
           }
-        else if (e.CommandName == "ManageRoster")
-          {
-          p.msg_protected_ready_roster_detail.summary = summary;
-          MessageDropCrumbAndTransferTo(p.msg_protected_ready_roster_detail,"protected","ready_roster_detail");
-          }
+        //else if (e.CommandName == "ManageRoster")
+        //  {
+        //  p.msg_protected_outstanding_roster_detail.summary = summary;
+        //  MessageDropCrumbAndTransferTo(p.msg_protected_outstanding_roster_detail,"protected","outstanding_roster_detail");
+        //  }
         }
       }
 
@@ -204,13 +204,13 @@ namespace UserControl_ready_rosters
         {
         if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_ready_rosters_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          e.Item.Cells[UserControl_ready_rosters_Static.TCI_CLASS_NUM].Text = p.biz_coned_offerings.StandardSafeRenditionOf(e.Item.Cells[UserControl_ready_rosters_Static.TCI_CLASS_NUM].Text);
+          e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_CLASS_NUM].Text = p.biz_coned_offerings.StandardSafeRenditionOf(e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_CLASS_NUM].Text);
           //
-          link_button = ((e.Item.Cells[UserControl_ready_rosters_Static.TCI_ROSTER].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_ROSTER].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
@@ -220,14 +220,14 @@ namespace UserControl_ready_rosters
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_ready_rosters_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_ID].EnableViewState = true;
           //
           p.num_coned_offerings++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_ready_rosters_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[UserControl_outstanding_rosters_Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -248,7 +248,7 @@ namespace UserControl_ready_rosters
 
     private void Bind()
       {
-      p.biz_coned_offerings.BindReadyRosters(Session["region_code"].ToString(),p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.biz_coned_offerings.BindOutstandingRosters(Session["region_code"].ToString(),p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       p.be_datagrid_empty = (p.num_coned_offerings == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -256,6 +256,6 @@ namespace UserControl_ready_rosters
       p.num_coned_offerings = 0;
       }
 
-    } // end TWebUserControl_ready_rosters
+    } // end TWebUserControl_outstanding_rosters
 
   }
