@@ -15,7 +15,7 @@ ALTER TABLE `role_member_map`
 ,
   ADD INDEX `role_id` (`role_id` ASC, `member_id` ASC)
 ,
-  ADD CONSTRAINT `role_member_map_member_id` FOREIGN KEY (`member_id` ) REFERENCES `member` (`id` )
+  ADD CONSTRAINT `role_member_map_member_id` FOREIGN KEY (`member_id` ) REFERENCES `practitioner` (`id` )
 ,
   ADD CONSTRAINT `role_member_map_role_id` FOREIGN KEY (`role_id` ) REFERENCES `role` (`id` )
 ;
@@ -32,6 +32,6 @@ ALTER TABLE `user_member_map`
 ALTER TABLE `user_member_map`
   ADD CONSTRAINT `user_member_map_user_id` FOREIGN KEY (`user_id` ) REFERENCES `user` (`id` )
 ,
-  ADD CONSTRAINT `user_member_map_member_id` FOREIGN KEY (`member_id` ) REFERENCES `member` (`id` )
+  ADD CONSTRAINT `user_member_map_member_id` FOREIGN KEY (`member_id` ) REFERENCES `practitioner` (`id` )
 ;
 COMMIT
