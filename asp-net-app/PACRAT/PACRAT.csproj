@@ -86,6 +86,7 @@
     <Content Include="new_user_registration.aspx" />
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
+    <Content Include="timeout.aspx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -199,6 +200,12 @@
     </Compile>
     <Compile Include="salogin.aspx.designer.cs">
       <DependentUpon>salogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="timeout.aspx.cs">
+      <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="timeout.aspx.designer.cs">
+      <DependentUpon>timeout.aspx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_about.ascx.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
