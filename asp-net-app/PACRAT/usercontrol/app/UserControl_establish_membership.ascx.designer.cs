@@ -67,15 +67,6 @@ namespace UserControl_establish_membership {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_birth;
         
         /// <summary>
-        /// DropDownList_gender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_gender;
-        
-        /// <summary>
         /// TextBox_certification_number control.
         /// </summary>
         /// <remarks>
@@ -92,24 +83,6 @@ namespace UserControl_establish_membership {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_level;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_expiration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_expiration;
-        
-        /// <summary>
-        /// Label_no_expiration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_no_expiration;
         
         /// <summary>
         /// Button_submit control.

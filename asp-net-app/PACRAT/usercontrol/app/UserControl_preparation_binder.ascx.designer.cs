@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_member_binder {
+namespace UserControl_preparation_binder {
     
     
-    public partial class TWebUserControl_member_binder {
+    public partial class TWebUserControl_preparation_binder {
         
         /// <summary>
         /// UpdatePanel_control control.
@@ -31,40 +31,31 @@ namespace UserControl_member_binder {
         protected global::AjaxControlToolkit.TabContainer TabContainer_control;
         
         /// <summary>
-        /// TabPanel_member_profile control.
+        /// TabPanel_service control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_member_profile;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_service;
         
         /// <summary>
-        /// TabPanel_preparation control.
+        /// TabPanel_region control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_preparation;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_region;
         
         /// <summary>
-        /// TabPanel_config control.
+        /// TabPanel_state control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_config;
-        
-        /// <summary>
-        /// TabPanel_about control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_about;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_state;
         
         /// <summary>
         /// PlaceHolder_content control.

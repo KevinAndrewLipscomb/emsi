@@ -4,6 +4,7 @@ using kix;
 using UserControl_about;
 using UserControl_config_binder;
 using UserControl_practitioner;
+using UserControl_preparation_binder;
 
 namespace UserControl_member_binder
   {
@@ -11,8 +12,9 @@ namespace UserControl_member_binder
   public class UserControl_member_binder_Static
     {
     public const int TSSI_MEMBER_PROFILE = 0;
-    public const int TSSI_CONFIG = 1;
-    public const int TSSI_ABOUT = 2;
+    public const int TSSI_PREPARATION = 1;
+    public const int TSSI_CONFIG = 2;
+    public const int TSSI_ABOUT = 3;
     }
 
   public partial class TWebUserControl_member_binder: ki_web_ui.usercontrol_class
@@ -46,6 +48,11 @@ namespace UserControl_member_binder
         var c = ((TWebUserControl_practitioner)(LoadControl("~/usercontrol/app/UserControl_practitioner.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.SetTarget(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+        }
+      else if (p.tab_index == UserControl_member_binder_Static.TSSI_PREPARATION)
+        {
+        var c = ((TWebUserControl_preparation_binder)(LoadControl("~/usercontrol/app/UserControl_preparation_binder.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_preparation",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
       else if (p.tab_index == UserControl_member_binder_Static.TSSI_CONFIG)
         {
@@ -124,10 +131,8 @@ namespace UserControl_member_binder
       {
       if (!p.be_loaded)
         {
-        if (k.Has((string[])(Session["privilege_array"]), "config-users") || k.Has((string[])(Session["privilege_array"]), "config-roles-and-matrices"))
-          {
-          TabPanel_config.Enabled = true;
-          }
+        TabPanel_preparation.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
+        TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
         p.be_loaded = true;
         }
       }
@@ -151,6 +156,10 @@ namespace UserControl_member_binder
         if (target.ToLower().Contains("/member_profile/"))
           {
           p.tab_index = UserControl_member_binder_Static.TSSI_MEMBER_PROFILE;
+          }
+        else if (target.ToLower().Contains("/preparation/"))
+          {
+          p.tab_index = UserControl_member_binder_Static.TSSI_PREPARATION;
           }
         else if (target.ToLower().Contains("/config/"))
           {

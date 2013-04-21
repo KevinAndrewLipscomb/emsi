@@ -10,4 +10,5 @@ echo on
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2012-01-24-A--add-missing-integrity-constraints.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2012-01-24-B--improve-consistency.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-04-18-A--recreate-member-view.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-04-21-A--track-pacrat-subscriptions.sql
 pause
