@@ -38,29 +38,12 @@
                               <td><uc1:UserControl_drop_down_date ID="UserControl_drop_down_date_birth" runat="server" /></td>
                             </tr>
                             <tr>
-                              <td align="right">Gender:</td>
-                              <td>
-                                <asp:DropDownList ID="DropDownList_gender" runat="server">
-                                  <asp:ListItem Value=""></asp:ListItem>
-                                  <asp:ListItem Value="1">Male</asp:ListItem>
-                                  <asp:ListItem Value="2">Female</asp:ListItem>
-                                </asp:DropDownList>
-                              </td>
-                            </tr>
-                            <tr>
                               <td align="right">Certification #:</td>
                               <td><asp:TextBox ID="TextBox_certification_number" runat="server" Columns="6" MaxLength="6"></asp:TextBox></td>
                             </tr>
                             <tr>
                               <td align="right">Level:</td>
-                              <td><asp:DropDownList ID="DropDownList_level" runat="server" AutoPostBack="True" onselectedindexchanged="DropDownList_level_SelectedIndexChanged"></asp:DropDownList></td>
-                            </tr>
-                            <tr>
-                              <td align="right">Expiration date:</td>
-                              <td>
-                                <uc1:UserControl_drop_down_date ID="UserControl_drop_down_date_expiration" runat="server" />
-                                <asp:Label ID="Label_no_expiration" runat="server" Text="(none)" Font-Italic="True" Visible="False"></asp:Label>
-                              </td>
+                              <td><asp:DropDownList ID="DropDownList_level" runat="server" AutoPostBack="True"></asp:DropDownList></td>
                             </tr>
                             <tr>
                               <td></td>

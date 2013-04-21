@@ -31,13 +31,10 @@ namespace UserControl_establish_membership
                 Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
                 Label_sponsor_4.Text = ConfigurationManager.AppSettings["sponsor"];
                 Label_shared_secret_description_1.Text = ConfigurationManager.AppSettings["shared_secret_description"];
-                p.biz_regions.BindDirectToListControl(target:DropDownList_regional_council);
+                p.biz_regions.BindDirectToListControl(target:DropDownList_regional_council,unselected_literal:"-- region --",selected_value:"1",application_filter:"pacrat");
                 UserControl_drop_down_date_birth.minyear = DateTime.Today.AddYears(-130).Year.ToString();
                 UserControl_drop_down_date_birth.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
-                p.biz_genders.BindDirectToListControl(DropDownList_gender);
                 p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
-                UserControl_drop_down_date_expiration.minyear = DateTime.Today.Year.ToString();
-                UserControl_drop_down_date_expiration.maxyear = DateTime.Today.AddYears(3).Year.ToString();
                 TextBox_certification_number.Focus();
                 p.be_loaded = true;
             }
@@ -83,10 +80,8 @@ namespace UserControl_establish_membership
                 (
                 certification_number:k.Safe(TextBox_certification_number.Text,k.safe_hint_type.NUM),
                 level_id:k.Safe(DropDownList_level.SelectedValue,k.safe_hint_type.NUM),
-                expiration_date:UserControl_drop_down_date_expiration.selectedvalue,
                 regional_council_code:k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM),
                 birth_date:UserControl_drop_down_date_birth.selectedvalue,
-                gender_id:k.Safe(DropDownList_gender.SelectedValue,k.safe_hint_type.NUM),
                 id:p.biz_user.IdNum()
                 )
               )
@@ -125,13 +120,6 @@ namespace UserControl_establish_membership
             result = this;
             return result;
         }
-
-        protected void DropDownList_level_SelectedIndexChanged(object sender, System.EventArgs e)
-          {
-          var be_expiration_meaningful = (new ArrayList {"EMT","First Responder"}).Contains(DropDownList_level.SelectedItem.Text);
-          UserControl_drop_down_date_expiration.Visible = be_expiration_meaningful;
-          Label_no_expiration.Visible = !be_expiration_meaningful;
-          }
 
     } // end TWebUserControl_establish_membership
 

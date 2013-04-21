@@ -88,6 +88,10 @@
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
+    <Content Include="usercontrol\app\UserControl_preparation_binder.ascx" />
+    <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
+    <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
+    <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +177,7 @@
     <Compile Include="protected\change_password.aspx.designer.cs">
       <DependentUpon>change_password.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\Class_msg_protected.cs" />
     <Compile Include="protected\establish_membership_trouble.aspx.cs">
       <DependentUpon>establish_membership_trouble.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -261,6 +266,20 @@
     <Compile Include="usercontrol\app\UserControl_precontent.ascx.designer.cs">
       <DependentUpon>UserControl_precontent.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_preparation_binder.ascx.cs">
+      <DependentUpon>UserControl_preparation_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_preparation_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_preparation_binder.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_region_affiliation.ascx.cs">
+      <DependentUpon>UserControl_region_affiliation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_region_affiliation.ascx.designer.cs">
+      <DependentUpon>UserControl_region_affiliation.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_role.ascx.cs">
       <DependentUpon>UserControl_role.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,6 +332,20 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_role_privilege_matrix.ascx.designer.cs">
       <DependentUpon>UserControl_role_privilege_matrix.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_service_affiliation.ascx.cs">
+      <DependentUpon>UserControl_service_affiliation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_service_affiliation.ascx.designer.cs">
+      <DependentUpon>UserControl_service_affiliation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_state_affiliation.ascx.cs">
+      <DependentUpon>UserControl_state_affiliation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_state_affiliation.ascx.designer.cs">
+      <DependentUpon>UserControl_state_affiliation.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_update_progress_blocker.ascx.cs">
       <DependentUpon>UserControl_update_progress_blocker.ascx</DependentUpon>
