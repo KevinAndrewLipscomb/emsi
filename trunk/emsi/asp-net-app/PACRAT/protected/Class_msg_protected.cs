@@ -13,6 +13,10 @@ namespace Class_msg_protected
       {
       internal object summary = null;
       }
+    public class region_management
+      {
+      internal object summary = null;
+      }
     public class service_detail
       {
       internal object summary = null;

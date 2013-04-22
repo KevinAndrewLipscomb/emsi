@@ -1,25 +1,25 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using Class_biz_members;
-using Class_biz_services;
-using Class_biz_user;
+using Class_biz_regions;
 using Class_msg_protected;
 using kix;
-using System.Collections;
+using System;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Collections;
 
-namespace UserControl_service_affiliation
+namespace UserControl_state_detail
   {
-  public partial class TWebUserControl_service_affiliation: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_state_detail: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_service_affiliation_Static
+    public class UserControl_state_detail_Static
       {
       public const int TCI_SELECT = 0;
-      public const int TCI_ID = 1;
-      public const int TCI_2 = 2;
-      public const int TCI_3 = 3;
-      public const int TCI_4 = 4;
+      public const int TCI_CODE = 1;
+      public const int TCI_NAME = 2;
+      public const int TCI_PARTICIPANT = 3;
       }
 
     private struct p_type
@@ -28,11 +28,9 @@ namespace UserControl_service_affiliation
       public bool be_interactive;
       public bool be_loaded;
       public bool be_sort_order_ascending;
-      public TClass_biz_members biz_members;
-      public TClass_biz_services biz_services;
-      public TClass_biz_user biz_user;
-      public TClass_msg_protected.service_detail msg_protected_service_detail;
-      public uint num_services;
+      public TClass_biz_regions biz_regions;
+      public TClass_msg_protected.region_management msg_protected_region_management;
+      public uint num_regions;
       public string sort_order;
       }
 
@@ -139,14 +137,12 @@ namespace UserControl_service_affiliation
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_UserControl_preparation_binder_PlaceHolder_content"] as string) == "UserControl_service_affiliation");
+        p.be_loaded = IsPostBack;
         }
       else
         {
-        p.biz_members = new TClass_biz_members();
-        p.biz_services = new TClass_biz_services();
-        p.biz_user = new TClass_biz_user();
-        p.msg_protected_service_detail = new TClass_msg_protected.service_detail();
+        p.biz_regions = new TClass_biz_regions();
+        p.msg_protected_region_management = new TClass_msg_protected.region_management();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -164,16 +160,15 @@ namespace UserControl_service_affiliation
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
       this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
       this.DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.DataGrid_control_ItemCommand);
-      this.PreRender += this.TWebUserControl_service_affiliation_PreRender;
-      //this.Load += this.Page_Load;
+      this.PreRender += this.TWebUserControl_state_detail_PreRender;
       }
 
-    private void TWebUserControl_service_affiliation_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_state_detail_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_service_affiliation Fresh()
+    public TWebUserControl_state_detail Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -183,8 +178,8 @@ namespace UserControl_service_affiliation
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_service_detail.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
-        MessageDropCrumbAndTransferTo(p.msg_protected_service_detail,"protected","service_detail");
+        p.msg_protected_region_management.summary = p.biz_regions.Summary(k.Safe(e.Item.Cells[UserControl_state_detail_Static.TCI_CODE].Text,k.safe_hint_type.NUM));
+        MessageDropCrumbAndTransferTo(p.msg_protected_region_management,"protected","region_management");
         }
       }
 
@@ -195,7 +190,7 @@ namespace UserControl_service_affiliation
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_service_affiliation_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[UserControl_state_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
@@ -205,14 +200,14 @@ namespace UserControl_service_affiliation
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[UserControl_state_detail_Static.TCI_CODE].EnableViewState = true;
           //
-          p.num_services++;
+          p.num_regions++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_service_affiliation_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[UserControl_state_detail_Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -233,19 +228,18 @@ namespace UserControl_service_affiliation
 
     private void Bind()
       {
-      p.biz_services.BindStrikeTeamAffiliationBaseDataList
+      p.biz_regions.BindPacratManagementBaseDataList
         (
-        member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control
         );
-      p.be_datagrid_empty = (p.num_services == 0);
+      p.be_datagrid_empty = (p.num_regions == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      p.num_services = 0;
+      p.num_regions = 0;
       }
 
-    } // end TWebUserControl_service_affiliation
+    } // end TWebUserControl_state_detail
 
   }
