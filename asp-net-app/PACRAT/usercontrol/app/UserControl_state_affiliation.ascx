@@ -7,7 +7,7 @@
         <tr>
           <td bgcolor="#dcdcdc">
             <table cellspacing="0" cellpadding="5" border="0">
-              <tr><td><b>PA DOH EMS Strike Team program</b></td></tr>
+              <tr><td><b>EMS Strike Team program</b></td></tr>
             </table>
           </td>
         </tr>

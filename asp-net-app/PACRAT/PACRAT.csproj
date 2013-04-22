@@ -84,6 +84,7 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="protected\state_detail.aspx" />
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
@@ -92,6 +93,7 @@
     <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
+    <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +193,13 @@
     </Compile>
     <Compile Include="protected\overview.aspx.designer.cs">
       <DependentUpon>overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\state_detail.aspx.cs">
+      <DependentUpon>state_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\state_detail.aspx.designer.cs">
+      <DependentUpon>state_detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="remind_username.aspx.cs">
       <DependentUpon>remind_username.aspx</DependentUpon>
@@ -346,6 +355,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_state_affiliation.ascx.designer.cs">
       <DependentUpon>UserControl_state_affiliation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_state_detail.ascx.cs">
+      <DependentUpon>UserControl_state_detail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_state_detail.ascx.designer.cs">
+      <DependentUpon>UserControl_state_detail.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_update_progress_blocker.ascx.cs">
       <DependentUpon>UserControl_update_progress_blocker.ascx</DependentUpon>

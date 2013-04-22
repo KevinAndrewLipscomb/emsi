@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using AjaxControlToolkit;
 using kix;
 
 namespace UserControl_state_affiliation
@@ -101,6 +102,7 @@ namespace UserControl_state_affiliation
       if (!p.be_loaded)
         {
         LinkButton_control.Text = k.ExpandTildePath(LinkButton_control.Text);
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_control);
         //
         p.be_loaded = true;
         }
