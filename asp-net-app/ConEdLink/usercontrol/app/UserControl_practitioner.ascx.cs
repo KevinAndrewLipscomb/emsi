@@ -157,7 +157,7 @@ namespace UserControl_practitioner
           target:DropDownList_regional_council,
           unselected_literal:"-- region --",
           selected_value:k.EMPTY,
-          do_limit_to_subscribers:false
+          application_filter:k.EMPTY
           );
         p.biz_counties.BindDirectToListControl(DropDownList_residence_county);
         UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
