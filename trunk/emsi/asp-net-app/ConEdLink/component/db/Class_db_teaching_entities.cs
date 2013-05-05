@@ -59,6 +59,7 @@ namespace Class_db_teaching_entities
         "select id"
         + " , sponsor_number"
         + " , IFNULL(teaching_entity.name,IFNULL(teaching_entity.short_name,'')) as name"
+        + " , IFNULL(email,IFNULL(contact_email,public_contact_email)) as email_address"
         + " from teaching_entity"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=teaching_entity.region)"
         + " where sponsor_number is not null"
