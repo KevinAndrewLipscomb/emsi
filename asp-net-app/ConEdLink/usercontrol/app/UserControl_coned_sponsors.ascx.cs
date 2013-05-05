@@ -1,7 +1,12 @@
+using AjaxControlToolkit;
+using Class_biz_accounts;
 using Class_biz_teaching_entities;
+using Class_biz_user;
 using Class_msg_protected;
 using kix;
+using System;
 using System.Collections;
+using System.Configuration;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -16,9 +21,11 @@ namespace UserControl_coned_sponsors
           {
           public const int TCI_SELECT = 0;
           public const int TCI_ID = 1;
-          public const int TCI_SPONSOR_NUMBER = 2;
-          public const int TCI_NAME = 3;
-          public const int TCI_IMITATE = 4;
+          public const int TCI_SELECT_FOR_QUICKMESSAGE = 2;
+          public const int TCI_SPONSOR_NUMBER = 3;
+          public const int TCI_NAME = 4;
+          public const int TCI_EMAIL_ADDRESS = 5;
+          public const int TCI_IMITATE = 6;
           }
 
         private struct p_type
@@ -26,10 +33,14 @@ namespace UserControl_coned_sponsors
           public bool be_interactive;
           public bool be_loaded;
           public bool be_sort_order_ascending;
+          public TClass_biz_accounts biz_accounts;
           public TClass_biz_teaching_entities biz_teaching_entities;
+          public TClass_biz_user biz_user;
+          public string distribution_list;
           public TClass_msg_protected.coned_sponsor_detail msg_protected_coned_sponsor_detail;
           public uint num_teaching_entities;
           public string sort_order;
+          public string user_email_address;
           }
 
         private p_type p;
@@ -118,13 +129,17 @@ namespace UserControl_coned_sponsors
         {
             if (!p.be_loaded)
             {
-                if (!p.be_interactive)
+                if (p.be_interactive)
+                  {
+                  Label_author_email_address.Text = p.user_email_address;
+                  }
+                else
                 {
                     DataGrid_control.AllowSorting = false;
                 }
+                Bind();
                 p.be_loaded = true;
             }
-            Bind();
             InjectPersistentClientSideScript();
 
         }
@@ -141,13 +156,18 @@ namespace UserControl_coned_sponsors
             }
             else
             {
+                p.biz_accounts = new TClass_biz_accounts();
                 p.biz_teaching_entities = new TClass_biz_teaching_entities();
+                p.biz_user = new TClass_biz_user();
+                //
+                p.distribution_list = k.EMPTY;
                 p.msg_protected_coned_sponsor_detail = new TClass_msg_protected.coned_sponsor_detail();
                 p.be_interactive = !(Session["mode:report"] != null);
                 p.be_loaded = false;
                 p.be_sort_order_ascending = true;
                 p.num_teaching_entities = 0;
                 p.sort_order = "name%";
+                p.user_email_address = p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(), p.biz_user.IdNum());
             }
 
         }
@@ -214,12 +234,10 @@ namespace UserControl_coned_sponsors
                     link_button = ((e.Item.Cells[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
                     link_button.Text = k.ExpandTildePath(link_button.Text);
                     link_button.ToolTip = "Profile";
-                    ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
                     link_button = ((e.Item.Cells[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
                     link_button.Text = k.ExpandTildePath(link_button.Text);
                     link_button.ToolTip = "Imitate";
                     RequireConfirmation(link_button,"The application will now allow you to imitate a subordinate user.  When you are done imitating the subordinate user, you must log out and log back in as yourself.");
-                    ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
                     p.num_teaching_entities++;
                 }
             }
@@ -250,8 +268,81 @@ namespace UserControl_coned_sponsors
             p.biz_teaching_entities.BindConedSponsorsBaseDataList(Session["region_code"].ToString(),p.sort_order,p.be_sort_order_ascending,DataGrid_control);
             Label_num_coned_sponsors.Text = p.num_teaching_entities.ToString();
             p.num_teaching_entities = 0;
-
+            BuildDistributionListAndRegisterPostBackControls();
         }
+
+    protected void CheckBox_force_all_CheckedChanged(object sender, EventArgs e)
+      {
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        (DataGrid_control.Items[i.val].Cells[UserControl_coned_sponsors_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        }
+      BuildDistributionListAndRegisterPostBackControls();
+      }
+
+    protected void CheckBox_selected_CheckedChanged(object sender, EventArgs e)
+      {
+      BuildDistributionListAndRegisterPostBackControls();
+      }
+
+    private void BuildDistributionListAndRegisterPostBackControls()
+      {
+      p.distribution_list = k.EMPTY;
+      TableCellCollection tcc;
+      for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        tcc = DataGrid_control.Items[i.val].Cells;
+        if ((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+          {
+          p.distribution_list += tcc[UserControl_coned_sponsors_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
+          }
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
+        }
+      Label_distribution_list.Text = p.distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});;
+      }
+
+    protected void Button_send_Click(object sender, EventArgs e)
+      {
+      if (p.distribution_list.Length > 0)
+        {
+        k.SmtpMailSend
+          (
+          from:ConfigurationManager.AppSettings["sender_email_address"],
+          to:p.distribution_list,
+          subject:TextBox_quick_message_subject.Text,
+          message_string:"-- From " + Session[p.biz_user.Kind() + "_name"].ToString() + " (via " + ConfigurationManager.AppSettings["application_name"] + ")" + k.NEW_LINE
+            + k.NEW_LINE
+            + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
+          be_html:false,
+          cc:k.EMPTY,
+          bcc:p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(), p.biz_user.IdNum()),
+          reply_to:p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(), p.biz_user.IdNum())
+          );
+        TextBox_quick_message_subject.Text = k.EMPTY;
+        TextBox_quick_message_body.Text = k.EMPTY;
+        Alert
+          (
+          cause:k.alert_cause_type.LOGIC,
+          state:k.alert_state_type.NORMAL,
+          key:"messagsnt",
+          value:"Message sent",
+          be_using_scriptmanager:true
+          );
+        }
+      else
+        {
+        Alert
+          (
+          cause:k.alert_cause_type.USER,
+          state:k.alert_state_type.FAILURE,
+          key:"noqmrecips",
+          value:"Message *NOT* sent.  No recipients are selected.",
+          be_using_scriptmanager:true
+          );
+        }
+      BuildDistributionListAndRegisterPostBackControls();
+      }
 
     } // end TWebUserControl_coned_sponsors
 
