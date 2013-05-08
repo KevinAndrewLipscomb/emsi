@@ -84,6 +84,7 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="protected\region_management.aspx" />
     <Content Include="protected\state_detail.aspx" />
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="protected\overview.aspx.designer.cs">
       <DependentUpon>overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\region_management.aspx.cs">
+      <DependentUpon>region_management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\region_management.aspx.designer.cs">
+      <DependentUpon>region_management.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\state_detail.aspx.cs">
       <DependentUpon>state_detail.aspx</DependentUpon>
