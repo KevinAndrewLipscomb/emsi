@@ -449,6 +449,7 @@ namespace region_management
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - region_management";
+        CheckBox_be_pacrat_subscriber.Checked = p.biz_regions.BePacratSubscriberOf(p.incoming.summary);
         var max_spec_length = p.biz_practitioners.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
@@ -497,6 +498,11 @@ namespace region_management
         InitForNewSearch();
         }
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
+      }
+
+    protected void CheckBox_be_pacrat_subscriber_CheckedChanged(object sender, EventArgs e)
+      {
+      p.biz_regions.SetPacratSubscriber(p.region_code,(sender as CheckBox).Checked);
       }
 
     } // end TWebForm_region_management
