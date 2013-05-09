@@ -1,10 +1,12 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
 using AjaxControlToolkit;
+using Class_biz_any_region_role_member_map;
 using Class_biz_counties;
 using Class_biz_members;
 using Class_biz_practitioners;
 using Class_biz_regions;
+using Class_biz_roles;
 using Class_biz_user;
 using Class_msg_protected;
 using kix;
@@ -21,10 +23,12 @@ namespace region_management
     public bool be_noncurrent_practitioners_on_roster;
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
+    public TClass_biz_any_region_role_member_map biz_any_region_role_member_map;
     public TClass_biz_counties biz_counties;
     public TClass_biz_members biz_members;
     public TClass_biz_practitioners biz_practitioners;
     public TClass_biz_regions biz_regions;
+    public TClass_biz_roles biz_roles;
     public TClass_biz_user biz_user;
     public string region_code;
     public TClass_msg_protected.region_management incoming;
@@ -64,7 +68,13 @@ namespace region_management
       {
       try
         {
-//        p.biz_region_managements.Set(id:k.EMPTY,coned_offering_id:p.coned_offering_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
+        p.biz_any_region_role_member_map.Save
+          (
+          region_code:p.region_code,
+          role_name:"Region Strike Team Manager",
+          member_id:list_item.Value,
+          be_granted:true
+          );
         Bind();
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
@@ -80,7 +90,7 @@ namespace region_management
       p.num_attendees.val = 0;
       p.num_attendees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[region_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
-//      p.biz_region_managements.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
+      p.biz_any_region_role_member_map.BindBaseDataListByRegionCode(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.region_code);
       //Button_mark_class_canceled.Visible =
       //  (
       //    (p.biz_coned_offerings.RegionCodeOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary)) == p.region_code)
@@ -262,7 +272,7 @@ namespace region_management
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-//        p.biz_region_managements.Delete(k.Safe(e.Item.Cells[region_management_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.biz_any_region_role_member_map.Delete(k.Safe(e.Item.Cells[region_management_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
@@ -377,7 +387,7 @@ namespace region_management
       if (IsValid)
         {
         var practitioner_id = k.Safe(e.Item.Cells[region_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
-//        p.biz_region_managements.Set
+//        p.biz_any_region_role_member_map.Set
 //          (
 //          k.Safe(e.Item.Cells[region_management_Static.TCI_ID].Text,k.safe_hint_type.NUM),
 //          p.coned_offering_id,
@@ -417,10 +427,12 @@ namespace region_management
         //
         // Initialize p.~ objects here.
         //
+        p.biz_any_region_role_member_map = new TClass_biz_any_region_role_member_map();
         p.biz_counties = new TClass_biz_counties();
         p.biz_members = new TClass_biz_members();
         p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_regions = new TClass_biz_regions();
+        p.biz_roles = new TClass_biz_roles();
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;

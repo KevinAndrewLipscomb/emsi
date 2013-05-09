@@ -11,4 +11,7 @@ mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance%
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2012-01-24-B--improve-consistency.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-04-18-A--recreate-member-view.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-04-21-A--track-pacrat-subscriptions.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-08-A--create-table-any_region_role_member_map.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-08-B--create-table-any_service_role_member_map.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-08-C--add-roles.sql
 pause
