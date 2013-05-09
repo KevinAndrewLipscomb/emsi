@@ -49,15 +49,6 @@ namespace region_management {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_pacrat_subscriber;
         
         /// <summary>
-        /// Panel_affiliations control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_affiliations;
-        
-        /// <summary>
         /// Panel_one_at_a_time control.
         /// </summary>
         /// <remarks>
