@@ -1,14 +1,11 @@
+using Class_biz_role_member_map;
+using Class_db_roles;
 using kix;
 using System;
 using System.Collections;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-using Class_biz_role_member_map;
-using Class_db_roles;
-using Class_db_role_member_map;
 namespace UserControl_role_member_matrix
 {
     // Class_biz_agencies,
@@ -33,18 +30,18 @@ namespace UserControl_role_member_matrix
             crosstab_metadata_rec_type crosstab_metadata_rec;
             int i;
             UpdatePanel update_panel;
-            if (row.Cells.Count > Class_db_role_member_map.Units.Class_db_role_member_map.CI_FIRST_CROSSTAB)
+            if (row.Cells.Count > Class_db_role_member_map.Class_db_role_member_map_Static.CI_FIRST_CROSSTAB)
             {
-                for (i = Class_db_role_member_map.Units.Class_db_role_member_map.CI_FIRST_CROSSTAB; i <= (row.Cells.Count - 1); i ++ )
+                for (i = Class_db_role_member_map.Class_db_role_member_map_Static.CI_FIRST_CROSSTAB; i <= (row.Cells.Count - 1); i ++ )
                 {
                     if (row.RowType == DataControlRowType.DataRow)
                     {
                         row.Cells[i].HorizontalAlign = HorizontalAlign.Center;
-                        crosstab_metadata_rec = ((crosstab_metadata_rec_type)(p.crosstab_metadata_rec_arraylist[i - Class_db_role_member_map.Units.Class_db_role_member_map.CI_FIRST_CROSSTAB]));
+                        crosstab_metadata_rec = ((crosstab_metadata_rec_type)(p.crosstab_metadata_rec_arraylist[i - Class_db_role_member_map.Class_db_role_member_map_Static.CI_FIRST_CROSSTAB]));
                         check_box = new CheckBox();
                         check_box.AutoPostBack = true;
                         check_box.Enabled = p.be_interactive && p.biz_role_member_map.BePrivilegedToModifyTuple(k.Has((string[])(Session["privilege_array"]), "config-roles-and-matrices"), k.Has((string[])(Session["privilege_array"]), "assign-roles-to-members"), crosstab_metadata_rec.natural_text);
-                        check_box.ID = k.EMPTY + Units.UserControl_role_member_matrix.CHECKBOX_ID_PREFIX_MEMBER_ID + row.Cells[Class_db_role_member_map.Units.Class_db_role_member_map.CI_MEMBER_ID].Text + Units.UserControl_role_member_matrix.CHECKBOX_ID_PREFIX_ROLE_ID + crosstab_metadata_rec.id;
+                        check_box.ID = k.EMPTY + Units.UserControl_role_member_matrix.CHECKBOX_ID_PREFIX_MEMBER_ID + row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.CI_MEMBER_ID].Text + Units.UserControl_role_member_matrix.CHECKBOX_ID_PREFIX_ROLE_ID + crosstab_metadata_rec.id;
                         check_box.Checked = (row.Cells[i].Text == "1");
                         check_box.CheckedChanged += new System.EventHandler(Changed);
                         update_panel = new UpdatePanel();
@@ -225,8 +222,8 @@ namespace UserControl_role_member_matrix
         {
             if (e.Row.RowType != DataControlRowType.EmptyDataRow)
             {
-                e.Row.Cells[Class_db_role_member_map.Units.Class_db_role_member_map.CI_MEMBER_ID].Visible = false;
-                e.Row.Cells[Class_db_role_member_map.Units.Class_db_role_member_map.CI_MEMBER_NAME].Wrap = false;
+                e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.CI_MEMBER_ID].Visible = false;
+                e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.CI_MEMBER_NAME].Wrap = false;
                 Checkboxify(e.Row);
             }
 

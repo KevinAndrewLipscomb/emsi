@@ -1,19 +1,13 @@
-using System.Configuration;
-
-using kix;
-
-using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Collections;
-
 using Class_biz_members;
 using Class_biz_role_member_map;
 using Class_biz_roles;
 using Class_biz_user;
-using Class_db_role_member_map;
+using kix;
+using System;
+using System.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
 namespace UserControl_role
 {
     public partial class TWebUserControl_role: ki_web_ui.usercontrol_class
@@ -264,14 +258,14 @@ namespace UserControl_role
 
         private void GridView_holders_RowCreated(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
-            e.Row.Cells[Class_db_role_member_map.Units.Class_db_role_member_map.ROLE_HOLDER_EMAIL_ADDRESS_CI].Visible = false;
+            e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.ROLE_HOLDER_EMAIL_ADDRESS_CI].Visible = false;
         }
 
         private void GridView_holders_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
-            if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.Cells[Class_db_role_member_map.Units.Class_db_role_member_map.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text != "&nbsp;"))
+            if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text != "&nbsp;"))
             {
-                p.distribution_list = p.distribution_list + e.Row.Cells[Class_db_role_member_map.Units.Class_db_role_member_map.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text + k.COMMA_SPACE;
+                p.distribution_list = p.distribution_list + e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text + k.COMMA_SPACE;
                 p.num_gridview_rows = p.num_gridview_rows + 1;
             }
         }

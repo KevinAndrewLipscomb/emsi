@@ -10,6 +10,14 @@ using Class_db_trail;
 using Class_db_roles;
 namespace Class_db_role_member_map
 {
+  public static class Class_db_role_member_map_Static
+    {
+    public const int CI_MEMBER_ID = 0;
+    public const int CI_MEMBER_NAME = 1;
+    public const int CI_FIRST_CROSSTAB = 2;
+    public const int ROLE_HOLDER_EMAIL_ADDRESS_CI = 1;
+    }
+
     public class TClass_db_role_member_map: TClass_db
     {
         private TClass_db_trail db_trail = null;
@@ -76,6 +84,42 @@ namespace Class_db_role_member_map
 
         }
 
+        internal void BindBaseDataListByExplicitRegionCode
+          (
+          string sort_order,
+          bool be_sort_order_ascending,
+          object target,
+          string region_code
+          )
+          {
+          Open();
+          ((target) as BaseDataList).DataSource = new MySqlCommand
+            (
+            "select practitioner.id as practitioner_id"
+            + " , last_name"
+            + " , first_name"
+            + " , middle_initial"
+            + " , practitioner_level.short_description as level"
+            + " , LPAD(certification_number,6,'0') as certification_number_for_display"
+            + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
+            + " , be_birth_date_confirmed"
+            + " , IFNULL(email_address,'DESIRED') as email_address"
+            + " , practitioner_level.emsrs_code as level_emsrs_code"
+            + " , practitioner_status.description as practitioner_status_description"
+            + " from role_member_map"
+            +   " join practitioner on (practitioner.id=role_member_map.member_id)"
+            +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+            +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+            + " where region_code = '" + region_code + "'"
+            + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+            connection
+            )
+            .ExecuteReader();
+          ((target) as BaseDataList).DataBind();
+          (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+          Close();
+          }
+
         public void BindHolders(string role_name, object target, string sort_order, bool be_sort_order_ascending)
         {
             this.Open();
@@ -107,19 +151,27 @@ namespace Class_db_role_member_map
             this.Close();
         }
 
+        internal void SaveForExplicitRegion
+          (
+          string member_id,
+          string role_id,
+          bool be_granted,
+          string region_code
+          )
+          {
+          Open();
+          if (be_granted)
+            {
+            new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = '" + member_id + "', role_id = '" + role_id + "', region_code = '" + region_code + "'"),connection).ExecuteNonQuery();
+            }
+          else
+            {
+            new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and region_code = '" + region_code + "'"),connection).ExecuteNonQuery();
+            }
+          Close();
+          }
+
     } // end TClass_db_role_member_map
-
-}
-
-namespace Class_db_role_member_map.Units
-{
-    public class Class_db_role_member_map
-    {
-        public const int CI_MEMBER_ID = 0;
-        public const int CI_MEMBER_NAME = 1;
-        public const int CI_FIRST_CROSSTAB = 2;
-        public const int ROLE_HOLDER_EMAIL_ADDRESS_CI = 1;
-    } // end Class_db_role_member_map
 
 }
 
