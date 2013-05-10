@@ -1,6 +1,6 @@
 @REM $Id$
 @REM
-set base_db_name=pacratdb
+set base_db_name=emsidb
 set the_host=localhost
 set the_user=root
 if "%COMPUTERNAME%"=="alpha" goto :OPS
