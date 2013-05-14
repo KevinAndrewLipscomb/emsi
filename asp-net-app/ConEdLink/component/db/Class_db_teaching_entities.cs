@@ -327,6 +327,7 @@ namespace Class_db_teaching_entities
             {
             emsrs_id = (rec as SponsorsSponsor).SponsorID.ToString();
             //
+            email = k.EMPTY;
             if (be_production_instance)
               {
               if ((rec as SponsorsSponsor).Email != null)
