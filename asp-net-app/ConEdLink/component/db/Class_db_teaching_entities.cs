@@ -327,7 +327,21 @@ namespace Class_db_teaching_entities
             {
             emsrs_id = (rec as SponsorsSponsor).SponsorID.ToString();
             //
-            email = (be_production_instance ? ((rec as SponsorsSponsor).Email == null ? k.EMPTY : k.Safe((rec as SponsorsSponsor).Email,k.safe_hint_type.EMAIL_ADDRESS)) : "TeachingEnt" + emsrs_id + "E@frompaper2web.com");
+            if (be_production_instance)
+              {
+              if ((rec as SponsorsSponsor).Email != null)
+                {
+                var safe_email = k.Safe((rec as SponsorsSponsor).Email,k.safe_hint_type.EMAIL_ADDRESS);
+                if (k.BeValidFormatEmailAddress(safe_email))
+                  {
+                  email = safe_email;
+                  }
+                }
+              }
+            else
+              {
+              email = "TeachingEnt" + emsrs_id + "E@frompaper2web.com";
+              }
             //
             childless_field_assignments_clause = k.EMPTY
             + " sponsor_number = NULLIF('" + k.Safe((rec as SponsorsSponsor).SponsorNumber,k.safe_hint_type.HYPHENATED_NUM) + "','')"
