@@ -103,6 +103,8 @@ namespace Class_db_role_member_map
             + " , LPAD(certification_number,6,'0') as certification_number_for_display"
             + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
             + " , be_birth_date_confirmed"
+            + " , role_id"
+            + " , role.name as role_name"
             + " , IFNULL(email_address,'DESIRED') as email_address"
             + " , practitioner_level.emsrs_code as level_emsrs_code"
             + " , practitioner_status.description as practitioner_status_description"
@@ -110,6 +112,7 @@ namespace Class_db_role_member_map
             +   " join practitioner on (practitioner.id=role_member_map.member_id)"
             +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
             +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+            +   " join role on (role.id=role_member_map.role_id)"
             + " where region_code = '" + region_code + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
             connection

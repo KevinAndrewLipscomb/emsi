@@ -7,6 +7,7 @@ using Class_biz_practitioners;
 using Class_biz_regions;
 using Class_biz_role_member_map;
 using Class_biz_roles;
+using Class_biz_tiers;
 using Class_biz_user;
 using Class_msg_protected;
 using kix;
@@ -29,12 +30,14 @@ namespace region_management
     public TClass_biz_practitioners biz_practitioners;
     public TClass_biz_regions biz_regions;
     public TClass_biz_roles biz_roles;
+    public TClass_biz_tiers biz_tiers;
     public TClass_biz_user biz_user;
     public string region_code;
     public TClass_msg_protected.region_management incoming;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
     public string region_strike_team_manager_role_id;
+    public string region_tier_id;
     public ArrayList roster_id_arraylist;
     public string sort_order;
     public string user_email_address;
@@ -55,9 +58,11 @@ namespace region_management
       public const int TCI_CERT_NUM = 8;
       public const int TCI_BE_DOB_CONFIRMED = 9;
       public const int TCI_DOB = 10;
-      public const int TCI_EMAIL_ADDRESS = 11;
-      public const int TCI_EDIT_UPDATE_CANCEL = 12;
-      public const int TCI_STATUS_DESCRIPTION = 13;
+      public const int TCI_ROLE_ID = 11;
+      public const int TCI_ROLE_NAME = 12;
+      public const int TCI_EMAIL_ADDRESS = 13;
+      public const int TCI_EDIT_UPDATE_CANCEL = 14;
+      public const int TCI_STATUS_DESCRIPTION = 15;
       }
 
     private p_type p;
@@ -321,6 +326,16 @@ namespace region_management
             }
           text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[region_management_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
           //
+          var drop_down_list_role = e.Item.Cells[region_management_Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList;
+          p.biz_roles.BindDirectToListControl
+            (
+            target:drop_down_list_role,
+            has_config_roles_and_matrices:false,
+            tier_filter:p.region_tier_id,
+            unselected_literal:"-- Role --",
+            selected_value:e.Item.Cells[region_management_Static.TCI_ROLE_ID].Text
+            );
+          //
           var text_box_email_address = (e.Item.Cells[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
           if (text_box_email_address.Text == "DESIRED")
             {
@@ -415,6 +430,7 @@ namespace region_management
         p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_regions = new TClass_biz_regions();
         p.biz_roles = new TClass_biz_roles();
+        p.biz_tiers = new TClass_biz_tiers();
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;
@@ -423,6 +439,7 @@ namespace region_management
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
         p.region_strike_team_manager_role_id = p.biz_roles.IdOfName("Region Strike Team Manager");
+        p.region_tier_id = p.biz_tiers.IdOfName("Region");
         p.roster_id_arraylist = new ArrayList();
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
