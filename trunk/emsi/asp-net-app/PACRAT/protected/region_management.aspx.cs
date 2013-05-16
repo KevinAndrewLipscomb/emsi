@@ -332,7 +332,7 @@ namespace region_management
             target:drop_down_list_role,
             has_config_roles_and_matrices:false,
             tier_filter:p.region_tier_id,
-            unselected_literal:"-- Role --",
+            unselected_literal:k.EMPTY,
             selected_value:e.Item.Cells[region_management_Static.TCI_ROLE_ID].Text
             );
           //
@@ -384,20 +384,19 @@ namespace region_management
       if (IsValid)
         {
         var practitioner_id = k.Safe(e.Item.Cells[region_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
-//        p.biz_role_member_map.Set
-//          (
-//          k.Safe(e.Item.Cells[region_management_Static.TCI_ID].Text,k.safe_hint_type.NUM),
-//          p.region_code,
-//          practitioner_id,
-//          k.Safe((e.Item.Cells[region_management_Static.TCI_INSTRUCTOR_HOURS].FindControl("TextBox_instructor_hours") as TextBox).Text.Replace("#.#",k.EMPTY),k.safe_hint_type.REAL_NUM)
-//          );
-//        p.biz_practitioners.SetFieldsNotImportedFromState
-//          (
-//          practitioner_id,
-//          DateTime.Parse(k.Safe((e.Item.Cells[region_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
-//          k.Safe((e.Item.Cells[region_management_Static.TCI_COUNTY_CODE].FindControl("DropDownList_county") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
-//          k.Safe((e.Item.Cells[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
-//          );
+        p.biz_role_member_map.SaveForExplicitRegion
+          (
+          member_id:practitioner_id,
+          role_id:k.Safe((e.Item.Cells[region_management_Static.TCI_ROLE_ID].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
+          be_granted:true,
+          region_code:p.region_code
+          );
+        p.biz_practitioners.SetFieldsNotImportedFromState
+          (
+          practitioner_id,
+          DateTime.Parse(k.Safe((e.Item.Cells[region_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
+          k.Safe((e.Item.Cells[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
+          );
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
