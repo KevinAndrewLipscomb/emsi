@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace state_detail {
+namespace region_detail {
     
     
-    public partial class TWebForm_state_detail {
+    public partial class TWebForm_region_detail {
         
         /// <summary>
         /// UserControl_precontent control.
@@ -22,13 +22,13 @@ namespace state_detail {
         protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
         
         /// <summary>
-        /// UserControl_state_detail_control control.
+        /// UserControl_region_detail_control control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UserControl_state_detail.TWebUserControl_state_detail UserControl_state_detail_control;
+        protected global::UserControl_region_detail.TWebUserControl_region_detail UserControl_region_detail_control;
         
         /// <summary>
         /// UserControl_postcontent control.
