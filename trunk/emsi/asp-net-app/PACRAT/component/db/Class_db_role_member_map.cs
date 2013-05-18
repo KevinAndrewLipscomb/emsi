@@ -123,6 +123,45 @@ namespace Class_db_role_member_map
           Close();
           }
 
+        internal void BindBaseDataListByExplicitServiceId
+          (
+          string sort_order,
+          bool be_sort_order_ascending,
+          object target,
+          string service_id
+          )
+          {
+          Open();
+          ((target) as BaseDataList).DataSource = new MySqlCommand
+            (
+            "select practitioner.id as practitioner_id"
+            + " , last_name"
+            + " , first_name"
+            + " , middle_initial"
+            + " , practitioner_level.short_description as level"
+            + " , LPAD(certification_number,6,'0') as certification_number_for_display"
+            + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
+            + " , be_birth_date_confirmed"
+            + " , role_id"
+            + " , role.name as role_name"
+            + " , IFNULL(email_address,'DESIRED') as email_address"
+            + " , practitioner_level.emsrs_code as level_emsrs_code"
+            + " , practitioner_status.description as practitioner_status_description"
+            + " from role_member_map"
+            +   " join practitioner on (practitioner.id=role_member_map.member_id)"
+            +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+            +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+            +   " join role on (role.id=role_member_map.role_id)"
+            + " where service_id = '" + service_id + "'"
+            + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+            connection
+            )
+            .ExecuteReader();
+          ((target) as BaseDataList).DataBind();
+          (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+          Close();
+          }
+
         public void BindHolders(string role_name, object target, string sort_order, bool be_sort_order_ascending)
         {
             this.Open();
@@ -170,6 +209,26 @@ namespace Class_db_role_member_map
           else
             {
             new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and region_code = '" + region_code + "'"),connection).ExecuteNonQuery();
+            }
+          Close();
+          }
+
+        internal void SaveForExplicitService
+          (
+          string member_id,
+          string role_id,
+          bool be_granted,
+          string service_id
+          )
+          {
+          Open();
+          if (be_granted)
+            {
+            new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = '" + member_id + "', role_id = '" + role_id + "', service_id = '" + service_id + "'"),connection).ExecuteNonQuery();
+            }
+          else
+            {
+            new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and service_id = '" + service_id + "'"),connection).ExecuteNonQuery();
             }
           Close();
           }

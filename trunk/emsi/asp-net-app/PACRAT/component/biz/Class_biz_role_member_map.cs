@@ -46,6 +46,17 @@ namespace Class_biz_role_member_map
           db_role_member_map.BindBaseDataListByExplicitRegionCode(sort_order,be_sort_order_ascending,target,region_code);
           }
 
+        internal void BindBaseDataListByExplicitServiceId
+          (
+          string sort_order,
+          bool be_sort_order_ascending,
+          object target,
+          string service_id
+          )
+          {
+          db_role_member_map.BindBaseDataListByExplicitServiceId(sort_order,be_sort_order_ascending,target,service_id);
+          }
+
         public void BindHolders(string role_name, object target, string sort_order, bool be_sort_order_ascending)
         {
             db_role_member_map.BindHolders(role_name, target, sort_order, be_sort_order_ascending);
@@ -67,6 +78,18 @@ namespace Class_biz_role_member_map
           {
           db_role_member_map.SaveForExplicitRegion(member_id,role_id,be_granted,region_code);
           biz_notifications.IssueForExplicitRegionRoleChange(member_id,role_id,be_granted,region_code);
+          }
+
+        internal void SaveForExplicitService
+          (
+          string member_id,
+          string role_id,
+          bool be_granted,
+          string service_id
+          )
+          {
+          db_role_member_map.SaveForExplicitService(member_id,role_id,be_granted,service_id);
+          biz_notifications.IssueForExplicitServiceRoleChange(member_id,role_id,be_granted,service_id);
           }
 
     } // end TClass_biz_role_member_map
