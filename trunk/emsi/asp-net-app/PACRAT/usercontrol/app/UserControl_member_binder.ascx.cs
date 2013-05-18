@@ -52,7 +52,7 @@ namespace UserControl_member_binder
       else if (p.tab_index == UserControl_member_binder_Static.TSSI_PREPARATION)
         {
         var c = ((TWebUserControl_preparation_binder)(LoadControl("~/usercontrol/app/UserControl_preparation_binder.ascx")));
-        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_preparation",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_preparation_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
       else if (p.tab_index == UserControl_member_binder_Static.TSSI_CONFIG)
         {
@@ -131,7 +131,14 @@ namespace UserControl_member_binder
       {
       if (!p.be_loaded)
         {
-        TabPanel_preparation.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
+        TabPanel_preparation.Enabled =
+          (
+            k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices")
+          ||
+            k.Has((string[])(Session["privilege_array"]),"config-strike-team-region")
+          ||
+            k.Has((string[])(Session["privilege_array"]),"config-strike-team-service")
+          );
         TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
         p.be_loaded = true;
         }

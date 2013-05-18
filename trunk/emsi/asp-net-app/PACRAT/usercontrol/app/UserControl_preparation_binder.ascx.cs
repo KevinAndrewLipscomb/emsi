@@ -80,8 +80,20 @@ namespace UserControl_preparation_binder
         if (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"))
           {
           TabPanel_state.Enabled = true;
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
+          }
+        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-region"))
+          {
+          TabPanel_region.Enabled = true;
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
+          }
+        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-service"))
+          {
+          TabPanel_region.Enabled = true;
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
           }
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
+        FillPlaceHolder(true);
         p.be_loaded = true;
         }
       }
@@ -127,8 +139,7 @@ namespace UserControl_preparation_binder
         {
         p.be_loaded = false;
         //
-        p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
-        FillPlaceHolder(true);
+        p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
         }
       }
 
