@@ -84,6 +84,7 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="protected\region_detail.aspx" />
     <Content Include="protected\region_management.aspx" />
     <Content Include="protected\state_detail.aspx" />
     <Content Include="remind_username.aspx" />
@@ -92,6 +93,7 @@
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="usercontrol\app\UserControl_preparation_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
+    <Content Include="usercontrol\app\UserControl_region_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
@@ -197,6 +199,13 @@
     <Compile Include="protected\overview.aspx.designer.cs">
       <DependentUpon>overview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\region_detail.aspx.cs">
+      <DependentUpon>region_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\region_detail.aspx.designer.cs">
+      <DependentUpon>region_detail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\region_management.aspx.cs">
       <DependentUpon>region_management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,6 +307,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_region_affiliation.ascx.designer.cs">
       <DependentUpon>UserControl_region_affiliation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_region_detail.ascx.cs">
+      <DependentUpon>UserControl_region_detail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_region_detail.ascx.designer.cs">
+      <DependentUpon>UserControl_region_detail.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_role.ascx.cs">
       <DependentUpon>UserControl_role.ascx</DependentUpon>

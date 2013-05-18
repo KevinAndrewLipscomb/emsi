@@ -21,5 +21,9 @@ namespace Class_msg_protected
       {
       internal object summary = null;
       }
+    public class service_management
+      {
+      internal object summary = null;
+      }
     }
   }
