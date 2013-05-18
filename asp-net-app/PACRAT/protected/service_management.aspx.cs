@@ -4,9 +4,9 @@ using AjaxControlToolkit;
 using Class_biz_counties;
 using Class_biz_members;
 using Class_biz_practitioners;
-using Class_biz_regions;
 using Class_biz_role_member_map;
 using Class_biz_roles;
+using Class_biz_services;
 using Class_biz_tiers;
 using Class_biz_user;
 using Class_msg_protected;
@@ -17,7 +17,7 @@ using System.Configuration;
 using System.Drawing;
 using System.Web.UI.WebControls;
 
-namespace region_management
+namespace service_management
   {
   public struct p_type
     {
@@ -28,24 +28,24 @@ namespace region_management
     public TClass_biz_counties biz_counties;
     public TClass_biz_members biz_members;
     public TClass_biz_practitioners biz_practitioners;
-    public TClass_biz_regions biz_regions;
     public TClass_biz_roles biz_roles;
+    public TClass_biz_services biz_services;
     public TClass_biz_tiers biz_tiers;
     public TClass_biz_user biz_user;
-    public string region_code;
-    public TClass_msg_protected.region_management incoming;
+    public TClass_msg_protected.service_management incoming;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
-    public string region_strike_team_manager_role_id;
-    public string region_tier_id;
+    public string service_strike_team_manager_role_id;
+    public string service_tier_id;
     public ArrayList roster_id_arraylist;
+    public string service_id;
     public string sort_order;
     public string user_email_address;
     }
 
-  public partial class TWebForm_region_management: ki_web_ui.page_class
+  public partial class TWebForm_service_management: ki_web_ui.page_class
     {
-    private class region_management_Static
+    private class service_management_Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_DELETE = 1;
@@ -71,12 +71,12 @@ namespace region_management
       {
 //      try
 //        {
-        p.biz_role_member_map.SaveForExplicitRegion
+        p.biz_role_member_map.SaveForExplicitService
           (
           member_id:list_item.Value,
-          role_id:p.region_strike_team_manager_role_id,
+          role_id:p.service_strike_team_manager_role_id,
           be_granted:true,
-          region_code:p.region_code
+          service_id:p.service_id
           );
         Bind();
         TextBox_practitioner.Text = k.EMPTY;
@@ -92,8 +92,8 @@ namespace region_management
       p.be_noncurrent_practitioners_on_roster = false;
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
-      DataGrid_control.Columns[region_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
-      p.biz_role_member_map.BindBaseDataListByExplicitRegionCode(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.region_code);
+      DataGrid_control.Columns[service_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      p.biz_role_member_map.BindBaseDataListByExplicitServiceId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.service_id);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
       Label_noncurrent_practitioner_on_roster.Visible = p.be_noncurrent_practitioners_on_roster;
@@ -119,7 +119,7 @@ namespace region_management
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebForm_region_management_PreRender;
+      this.PreRender += this.TWebForm_service_management_PreRender;
       }
 
     private void InjectPersistentClientSideScript()
@@ -166,7 +166,7 @@ namespace region_management
       Button_send.Enabled = (DataGrid_control.EditItemIndex == -1);
       }
 
-    private void TWebForm_region_management_PreRender(object sender, System.EventArgs e)
+    private void TWebForm_service_management_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
@@ -193,8 +193,8 @@ namespace region_management
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        email_address_text = k.Safe((tcc[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-        distribution_list += ((email_address_text != "DESIRED") && (tcc[region_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
+        email_address_text = k.Safe((tcc[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+        distribution_list += ((email_address_text != "DESIRED") && (tcc[service_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
         }
       if (distribution_list.Length > 0)
         {
@@ -223,7 +223,7 @@ namespace region_management
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[region_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[service_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       }
 
@@ -250,12 +250,12 @@ namespace region_management
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {        
-        p.biz_role_member_map.SaveForExplicitRegion
+        p.biz_role_member_map.SaveForExplicitService
           (
-          member_id:k.Safe(e.Item.Cells[region_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM),
-          role_id:p.region_strike_team_manager_role_id,
+          member_id:k.Safe(e.Item.Cells[service_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM),
+          role_id:p.service_strike_team_manager_role_id,
           be_granted:false,
-          region_code:p.region_code
+          service_id:p.service_id
           );
         DataGrid_control.EditItemIndex = -1;
         Bind();
@@ -275,14 +275,14 @@ namespace region_management
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        link_button = ((e.Item.Cells[region_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
+        link_button = ((e.Item.Cells[service_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
         //
-        var edit_update_cancel_controls = e.Item.Cells[region_management_Static.TCI_EDIT_UPDATE_CANCEL].Controls;
+        var edit_update_cancel_controls = e.Item.Cells[service_management_Static.TCI_EDIT_UPDATE_CANCEL].Controls;
         if (edit_update_cancel_controls.Count == 1)
           {
-          var label_dob = (e.Item.Cells[region_management_Static.TCI_DOB].FindControl("Label_dob") as Label);
+          var label_dob = (e.Item.Cells[service_management_Static.TCI_DOB].FindControl("Label_dob") as Label);
           if (label_dob.Text == "REQUIRED")
             {
             label_dob.Font.Bold = true;
@@ -293,7 +293,7 @@ namespace region_management
             p.num_assignees_with_known_birth_dates.val++;
             }
           //
-          var label_email_address = (e.Item.Cells[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
+          var label_email_address = (e.Item.Cells[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
           if (label_email_address.Text == "DESIRED")
             {
             label_email_address.ForeColor = Color.DarkOrange;
@@ -313,30 +313,30 @@ namespace region_management
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Cancel edit";
           //
-          var text_box_dob = (e.Item.Cells[region_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
+          var text_box_dob = (e.Item.Cells[service_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
           if (text_box_dob.Text == "REQUIRED")
             {
             text_box_dob.Text = k.EMPTY;
             }
-          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[region_management_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
+          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[service_management_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
           //
-          var drop_down_list_role = e.Item.Cells[region_management_Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList;
+          var drop_down_list_role = e.Item.Cells[service_management_Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList;
           p.biz_roles.BindDirectToListControl
             (
             target:drop_down_list_role,
             has_config_roles_and_matrices:false,
-            tier_filter:p.region_tier_id,
+            tier_filter:p.service_tier_id,
             unselected_literal:k.EMPTY,
-            selected_value:e.Item.Cells[region_management_Static.TCI_ROLE_ID].Text
+            selected_value:e.Item.Cells[service_management_Static.TCI_ROLE_ID].Text
             );
           //
-          var text_box_email_address = (e.Item.Cells[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
+          var text_box_email_address = (e.Item.Cells[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
           if (text_box_email_address.Text == "DESIRED")
             {
             text_box_email_address.Text = k.EMPTY;
             }
           }
-        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[region_management_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[service_management_Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
@@ -351,7 +351,7 @@ namespace region_management
         //  {
         //  cell.EnableViewState = false;
         //  }
-        //e.Item.Cells[region_management_Static.TCI_ID].EnableViewState = true;
+        //e.Item.Cells[service_management_Static.TCI_ID].EnableViewState = true;
         //
         p.num_assignees.val++;
         }
@@ -377,19 +377,19 @@ namespace region_management
       {
       if (IsValid)
         {
-        var practitioner_id = k.Safe(e.Item.Cells[region_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
-        p.biz_role_member_map.SaveForExplicitRegion
+        var practitioner_id = k.Safe(e.Item.Cells[service_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+        p.biz_role_member_map.SaveForExplicitService
           (
           member_id:practitioner_id,
-          role_id:k.Safe((e.Item.Cells[region_management_Static.TCI_ROLE_ID].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
+          role_id:k.Safe((e.Item.Cells[service_management_Static.TCI_ROLE_ID].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
           be_granted:true,
-          region_code:p.region_code
+          service_id:p.service_id
           );
         p.biz_practitioners.SetFieldsNotImportedFromState
           (
           practitioner_id,
-          DateTime.Parse(k.Safe((e.Item.Cells[region_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
-          k.Safe((e.Item.Cells[region_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
+          DateTime.Parse(k.Safe((e.Item.Cells[service_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
+          k.Safe((e.Item.Cells[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
           );
         DataGrid_control.EditItemIndex = -1;
         Bind();
@@ -421,24 +421,24 @@ namespace region_management
         p.biz_counties = new TClass_biz_counties();
         p.biz_members = new TClass_biz_members();
         p.biz_practitioners = new TClass_biz_practitioners();
-        p.biz_regions = new TClass_biz_regions();
         p.biz_roles = new TClass_biz_roles();
+        p.biz_services = new TClass_biz_services();
         p.biz_tiers = new TClass_biz_tiers();
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
-        p.incoming = Message<TClass_msg_protected.region_management>(folder_name:"protected",aspx_name:"region_management");
+        p.incoming = Message<TClass_msg_protected.service_management>(folder_name:"protected",aspx_name:"service_management");
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
-        p.region_strike_team_manager_role_id = p.biz_roles.IdOfName("Region Strike Team Manager");
-        p.region_tier_id = p.biz_tiers.IdOfName("Region");
+        p.service_strike_team_manager_role_id = p.biz_roles.IdOfName("Service Strike Team Manager");
+        p.service_tier_id = p.biz_tiers.IdOfName("Service");
         p.roster_id_arraylist = new ArrayList();
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
-        p.be_ok_to_edit_roster = true; //p.biz_regions.BeOkToEditRoster(p.incoming.summary);
-        p.region_code = p.biz_regions.CodeOf(p.incoming.summary);
+        p.be_ok_to_edit_roster = true; //p.biz_services.BeOkToEditRoster(p.incoming.summary);
+        p.service_id = p.biz_services.IdOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -453,14 +453,14 @@ namespace region_management
       {
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - region_management";
-        CheckBox_be_pacrat_subscriber.Checked = p.biz_regions.BePacratSubscriberOf(p.incoming.summary);
+        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - service_management";
+        CheckBox_be_strike_team_participant.Checked = p.biz_services.BeStrikeTeamParticipantOf(p.incoming.summary);
         var max_spec_length = p.biz_practitioners.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         InitForNewSearch();
-        Literal_region_name.Text = p.biz_regions.EmsrsActivePractitionersNameOf(p.incoming.summary);
-        Literal_emsrs_code.Text = p.biz_regions.EmsrsCodeOf(p.incoming.summary);
+        Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
+        Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
         //
         //var hash_table = new Hashtable();
         //hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
@@ -505,11 +505,11 @@ namespace region_management
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
       }
 
-    protected void CheckBox_be_pacrat_subscriber_CheckedChanged(object sender, EventArgs e)
+    protected void CheckBox_be_strike_team_participant_CheckedChanged(object sender, EventArgs e)
       {
-      p.biz_regions.SetPacratSubscriber(p.region_code,(sender as CheckBox).Checked);
+      p.biz_services.SetStrikeTeamParticipation(p.service_id,(sender as CheckBox).Checked);
       }
 
-    } // end TWebForm_region_management
+    } // end TWebForm_service_management
 
   }
