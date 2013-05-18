@@ -31,7 +31,7 @@ namespace UserControl_service_affiliation
       public TClass_biz_members biz_members;
       public TClass_biz_services biz_services;
       public TClass_biz_user biz_user;
-      public TClass_msg_protected.service_detail msg_protected_service_detail;
+      public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
       public uint num_services;
       public string sort_order;
       }
@@ -146,7 +146,7 @@ namespace UserControl_service_affiliation
         p.biz_members = new TClass_biz_members();
         p.biz_services = new TClass_biz_services();
         p.biz_user = new TClass_biz_user();
-        p.msg_protected_service_detail = new TClass_msg_protected.service_detail();
+        p.msg_protected_practitioner_management = new TClass_msg_protected.practitioner_management();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -183,8 +183,8 @@ namespace UserControl_service_affiliation
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_service_detail.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
-        MessageDropCrumbAndTransferTo(p.msg_protected_service_detail,"protected","service_detail");
+        p.msg_protected_practitioner_management.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","practitioner_management");
         }
       }
 
