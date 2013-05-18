@@ -7,7 +7,7 @@
         <td>
           <table cellspacing="0" cellpadding="10" border="0">
             <tr>
-              <td bgcolor="#dcdcdc"><b>PA DOH EMS Strike Team program</b></td>
+              <td bgcolor="#dcdcdc"><b>EMS Strike Team program</b></td>
             </tr>
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
             <tr>
@@ -15,18 +15,10 @@
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
-                    <asp:BoundColumn datafield="field_0"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_1" headertext="Field 1" sortexpression="field_1%">
+                    <asp:BoundColumn datafield="service_id" Visible="false"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="service_affiliate_num" headertext="#" sortexpression="service_affiliate_num%"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="service_name" headertext="Name" sortexpression="service_name%">
                       <HeaderStyle horizontalalign="Left"></HeaderStyle>
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_2" headertext="Field 2" sortexpression="field_2%">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_3" dataformatstring="{0:C}" headertext="Field 3 $" sortexpression="field_3%">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_4" dataformatstring="{0:C}" headertext="Field 4 $" sortexpression="field_4%">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
                     </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
