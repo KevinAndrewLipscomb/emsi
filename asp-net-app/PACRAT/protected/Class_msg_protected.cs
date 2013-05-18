@@ -9,6 +9,10 @@ namespace Class_msg_protected
       {
       internal string target = k.EMPTY;
       }
+    public class practitioner_management
+      {
+      internal object summary = null;
+      }
     public class region_detail
       {
       internal object summary = null;
