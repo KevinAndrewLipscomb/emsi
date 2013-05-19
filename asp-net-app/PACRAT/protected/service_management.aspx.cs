@@ -33,6 +33,7 @@ namespace service_management
     public TClass_biz_tiers biz_tiers;
     public TClass_biz_user biz_user;
     public TClass_msg_protected.service_management incoming;
+    public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
     public string service_strike_team_manager_role_id;
@@ -429,6 +430,7 @@ namespace service_management
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.service_management>(folder_name:"protected",aspx_name:"service_management");
+        p.msg_protected_practitioner_management = new TClass_msg_protected.practitioner_management();
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
         p.service_strike_team_manager_role_id = p.biz_roles.IdOfName("Service Strike Team Manager");
@@ -472,6 +474,7 @@ namespace service_management
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;
         }
@@ -513,6 +516,17 @@ namespace service_management
     protected void CheckBox_be_strike_team_participant_CheckedChanged(object sender, EventArgs e)
       {
       p.biz_services.SetStrikeTeamParticipation(p.service_id,(sender as CheckBox).Checked);
+      }
+
+    protected void LinkButton_drill_down_Click(object sender, EventArgs e)
+      {
+      p.msg_protected_practitioner_management.summary = p.biz_services.Summary(p.service_id);
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_practitioner_management,
+        folder_name:"protected",
+        aspx_name:"practitioner_management"
+        );
       }
 
     } // end TWebForm_service_management

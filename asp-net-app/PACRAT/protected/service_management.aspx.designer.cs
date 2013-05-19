@@ -193,6 +193,15 @@ namespace service_management {
         protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
         
         /// <summary>
+        /// LinkButton_drill_down control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down;
+        
+        /// <summary>
         /// CheckBox_item_sample control.
         /// </summary>
         /// <remarks>

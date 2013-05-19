@@ -157,6 +157,7 @@
                                       <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
                                     </td>
                                   </tr>
+                                  <tr><td><asp:LinkButton ID="LinkButton_drill_down" runat="server" Font-Bold="True" onclick="LinkButton_drill_down_Click">DRILL DOWN</asp:LinkButton></td></tr>
                                   <tr>
                                     <td>
                                       For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) assignees...

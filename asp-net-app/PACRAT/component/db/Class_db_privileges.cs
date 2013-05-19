@@ -107,7 +107,7 @@ namespace Class_db_privileges
             +   " and region_code = '" + region_code + "'",
             connection
             )
-            .ExecuteScalar().ToString();
+            .ExecuteScalar();
           Close();
           return (has_for_region_obj != null);
           }
@@ -133,7 +133,7 @@ namespace Class_db_privileges
             +   " and service_id = '" + service_id + "'",
             connection
             )
-            .ExecuteScalar().ToString();
+            .ExecuteScalar();
           Close();
           return (has_for_service_obj != null);
           }
