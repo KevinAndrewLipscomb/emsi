@@ -242,6 +242,7 @@ namespace UserControl_region_affiliation
         );
       p.be_datagrid_empty = (p.num_regions == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
+      TableRow_data.Visible = !p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       p.num_regions = 0;
       }

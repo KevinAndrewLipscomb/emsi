@@ -7,9 +7,9 @@
       <tr>
         <td>
           <cc1:TabContainer id="TabContainer_control" runat="server" autopostback="True" cssclass="ajax__tab_ki">
-            <cc1:TabPanel runat="server" headertext="Service" id="TabPanel_service" enabled="False"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Region" id="TabPanel_region" enabled="False"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="State" id="TabPanel_state" enabled="False"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Service" id="TabPanel_service"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Region" id="TabPanel_region"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="State" id="TabPanel_state"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

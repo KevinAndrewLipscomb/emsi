@@ -31,6 +31,15 @@ namespace UserControl_service_affiliation {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
+        /// TableRow_data control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_data;
+        
+        /// <summary>
         /// DataGrid_control control.
         /// </summary>
         /// <remarks>
