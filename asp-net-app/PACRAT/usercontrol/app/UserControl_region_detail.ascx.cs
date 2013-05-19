@@ -152,7 +152,7 @@ namespace UserControl_region_detail
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.sort_order = "name%";
+        p.sort_order = "be_strike_team_participant desc,name";
         p.summary = null;
         }
       }
@@ -184,6 +184,7 @@ namespace UserControl_region_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
+        p.msg_protected_service_management.region_code = p.biz_regions.CodeOf(p.summary);
         p.msg_protected_service_management.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_region_detail_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         MessageDropCrumbAndTransferTo(p.msg_protected_service_management,"protected","service_management");
         }

@@ -27,6 +27,7 @@ namespace Class_msg_protected
       }
     public class service_management
       {
+      internal string region_code = k.EMPTY;
       internal object summary = null;
       }
     }

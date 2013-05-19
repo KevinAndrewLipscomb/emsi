@@ -139,13 +139,13 @@ namespace practitioner_management {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
         
         /// <summary>
-        /// UpdatePanel_attendees control.
+        /// UpdatePanel_assignees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_attendees;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_assignees;
         
         /// <summary>
         /// TableRow_none control.
@@ -157,13 +157,13 @@ namespace practitioner_management {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
-        /// TableRow_attendees control.
+        /// TableRow_assignees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_attendees;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_assignees;
         
         /// <summary>
         /// DataGrid_control control.

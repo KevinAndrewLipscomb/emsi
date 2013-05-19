@@ -478,7 +478,7 @@ namespace region_management
       DataGrid_control.EditItemIndex = -1;
       Bind();
       SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
-      UpdatePanel_attendees.Update();
+      UpdatePanel_assignees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
       p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,k.EMPTY,practitioner,new k.int_positive(12));
