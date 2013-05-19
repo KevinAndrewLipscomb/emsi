@@ -101,8 +101,18 @@ namespace UserControl_state_affiliation
       {
       if (!p.be_loaded)
         {
-        LinkButton_control.Text = k.ExpandTildePath(LinkButton_control.Text);
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_control);
+        if (k.Has(Session["privilege_array"] as string[],"config-roles-and-matrices"))
+          {
+          TableRow_none.Visible = false;
+          TableRow_data.Visible = true;
+          LinkButton_control.Text = k.ExpandTildePath(LinkButton_control.Text);
+          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_control);
+          }
+        else
+          {
+          TableRow_none.Visible = true;
+          TableRow_data.Visible = false;
+          }
         //
         p.be_loaded = true;
         }

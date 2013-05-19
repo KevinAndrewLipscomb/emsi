@@ -4,14 +4,9 @@
   <tr>
     <td>
       <table cellspacing="0" cellpadding="10" border="0">
-        <tr>
-          <td bgcolor="#dcdcdc">
-            <table cellspacing="0" cellpadding="5" border="0">
-              <tr><td><b>EMS Strike Team program</b></td></tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
+        <tr><td bgcolor="#dcdcdc"><b>State EMS Strike Teams that you manage</b></td></tr>
+        <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+        <tr id="TableRow_data" runat="server" visible="false">
           <td>
             <table cellpadding="10" cellspacing="0">
               <tr>

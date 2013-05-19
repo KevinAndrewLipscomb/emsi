@@ -6,11 +6,9 @@
       <tr>
         <td>
           <table cellspacing="0" cellpadding="10" border="0">
-            <tr>
-              <td bgcolor="#dcdcdc"><b>EMS Strike Team program</b></td>
-            </tr>
+            <tr><td bgcolor="#dcdcdc"><b>Region EMS Strike Teams that you manage</b></td></tr>
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
-            <tr>
+            <tr id="TableRow_data" runat="server" visible="false">
               <td>
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
