@@ -33,6 +33,7 @@ namespace region_management
     public TClass_biz_tiers biz_tiers;
     public TClass_biz_user biz_user;
     public string region_code;
+    public TClass_msg_protected.region_detail msg_protected_region_detail;
     public TClass_msg_protected.region_management incoming;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
@@ -429,6 +430,7 @@ namespace region_management
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.region_management>(folder_name:"protected",aspx_name:"region_management");
+        p.msg_protected_region_detail = new TClass_msg_protected.region_detail();
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
         p.region_strike_team_manager_role_id = p.biz_roles.IdOfName("Region Strike Team Manager");
@@ -467,6 +469,7 @@ namespace region_management
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;
         }
@@ -508,6 +511,17 @@ namespace region_management
     protected void CheckBox_be_pacrat_subscriber_CheckedChanged(object sender, EventArgs e)
       {
       p.biz_regions.SetPacratSubscriber(p.region_code,(sender as CheckBox).Checked);
+      }
+
+    protected void LinkButton_drill_down_Click(object sender, EventArgs e)
+      {
+      p.msg_protected_region_detail.summary = p.biz_regions.Summary(p.region_code);
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_region_detail,
+        folder_name:"protected",
+        aspx_name:"region_detail"
+        );
       }
 
     } // end TWebForm_region_management
