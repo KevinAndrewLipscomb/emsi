@@ -1,9 +1,9 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
 using AjaxControlToolkit;
-using Class_biz_counties;
 using Class_biz_members;
 using Class_biz_practitioners;
+using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_roles;
 using Class_biz_services;
@@ -25,9 +25,9 @@ namespace service_management
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
     public TClass_biz_role_member_map biz_role_member_map;
-    public TClass_biz_counties biz_counties;
     public TClass_biz_members biz_members;
     public TClass_biz_practitioners biz_practitioners;
+    public TClass_biz_privileges biz_privileges;
     public TClass_biz_roles biz_roles;
     public TClass_biz_services biz_services;
     public TClass_biz_tiers biz_tiers;
@@ -418,9 +418,9 @@ namespace service_management
         // Initialize p.~ objects here.
         //
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.biz_counties = new TClass_biz_counties();
         p.biz_members = new TClass_biz_members();
         p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_roles = new TClass_biz_roles();
         p.biz_services = new TClass_biz_services();
         p.biz_tiers = new TClass_biz_tiers();
@@ -437,7 +437,12 @@ namespace service_management
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
-        p.be_ok_to_edit_roster = true; //p.biz_services.BeOkToEditRoster(p.incoming.summary);
+        p.be_ok_to_edit_roster = p.biz_privileges.HasForRegion
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"config-strike-team-region",
+          region_code:p.incoming.region_code
+          );
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
@@ -478,7 +483,7 @@ namespace service_management
       DataGrid_control.EditItemIndex = -1;
       Bind();
       SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
-      UpdatePanel_attendees.Update();
+      UpdatePanel_assignees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
       p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,k.EMPTY,practitioner,new k.int_positive(12));

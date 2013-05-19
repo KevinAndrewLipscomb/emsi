@@ -1,6 +1,7 @@
+using Class_db_privileges;
 using kix;
 using System;
-using Class_db_privileges;
+
 namespace Class_biz_privileges
 {
     public class TClass_biz_privileges
@@ -41,6 +42,26 @@ namespace Class_biz_privileges
 
             return result;
         }
+
+        internal bool HasForRegion
+          (
+          string member_id,
+          string privilege_name,
+          string region_code
+          )
+          {
+          return db_privileges.HasForRegion(member_id,privilege_name,region_code);
+          }
+
+        internal bool HasForService
+          (
+          string member_id,
+          string privilege_name,
+          string service_id
+          )
+          {
+          return db_privileges.HasForService(member_id,privilege_name,service_id);
+          }
 
     } // end TClass_biz_privileges
 

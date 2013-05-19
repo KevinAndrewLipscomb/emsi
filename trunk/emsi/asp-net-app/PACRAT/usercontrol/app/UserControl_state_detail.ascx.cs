@@ -147,7 +147,7 @@ namespace UserControl_state_detail
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.sort_order = "name%";
+        p.sort_order = "be_pacrat_subscriber desc,name";
         }
       }
 

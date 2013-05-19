@@ -86,6 +86,58 @@ namespace Class_db_privileges
             return result;
         }
 
+        internal bool HasForRegion
+          (
+          string member_id,
+          string privilege_name,
+          string region_code
+          )
+          {
+          Open();
+          var has_for_region_obj = new MySqlCommand
+            (
+            "select 1"
+            + " from member"
+            +   " join role_member_map on (role_member_map.member_id=member.id)"
+            +   " join role on (role.id=role_member_map.role_id)"
+            +   " join role_privilege_map on (role_privilege_map.role_id=role.id)"
+            +   " join privilege on (privilege.id=role_privilege_map.privilege_id)"
+            + " where member.id = '" + member_id + "'"
+            +   " and privilege.name = '" + privilege_name + "'"
+            +   " and region_code = '" + region_code + "'",
+            connection
+            )
+            .ExecuteScalar().ToString();
+          Close();
+          return (has_for_region_obj != null);
+          }
+
+        internal bool HasForService
+          (
+          string member_id,
+          string privilege_name,
+          string service_id
+          )
+          {
+          Open();
+          var has_for_service_obj = new MySqlCommand
+            (
+            "select 1"
+            + " from member"
+            +   " join role_member_map on (role_member_map.member_id=member.id)"
+            +   " join role on (role.id=role_member_map.role_id)"
+            +   " join role_privilege_map on (role_privilege_map.role_id=role.id)"
+            +   " join privilege on (privilege.id=role_privilege_map.privilege_id)"
+            + " where member.id = '" + member_id + "'"
+            +   " and privilege.name = '" + privilege_name + "'"
+            +   " and service_id = '" + service_id + "'",
+            connection
+            )
+            .ExecuteScalar().ToString();
+          Close();
+          return (has_for_service_obj != null);
+          }
+
     } // end TClass_db_privileges
 
 }

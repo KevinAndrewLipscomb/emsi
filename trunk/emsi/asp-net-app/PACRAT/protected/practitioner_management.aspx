@@ -83,12 +83,12 @@
                       <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro">
                         <tr>
                           <td>
-                            <asp:UpdatePanel ID="UpdatePanel_attendees" runat="server" UpdateMode="Conditional">
+                            <asp:UpdatePanel ID="UpdatePanel_assignees" runat="server" UpdateMode="Conditional">
                               <ContentTemplate>
                                 <table cellpadding="10" cellspacing="0">
                                   <tr><td style="background-color:WhiteSmoke"><b>Members</b></td></tr>
                                   <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
-                                  <tr id="TableRow_attendees" runat="server">
+                                  <tr id="TableRow_assignees" runat="server">
                                     <td valign="top">
                                       <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%">
                                         <Columns>
@@ -149,11 +149,11 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) attendees...
+                                      For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) assignees...
                                       <ul>
                                         <li><p><asp:HyperLink ID="HyperLink_quickmessage" runat="server" NavigateUrl="#QuickMessage" Text="Send a QuickMessage"></asp:HyperLink></p></li>
                                       </ul>
-                                      <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small>
+                                      <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all assignees at once.</small>
                                     </td>
                                   </tr>
                                 </table>
@@ -178,7 +178,7 @@
 		                          <tr><td bgcolor="#f5f5f5"><a id="QuickMessage"><strong>QuickMessage</strong></a></td></tr>
 		                          <tr>
 			                          <td>
-                                  <p>Send email to the attendees selected above.</p>
+                                  <p>Send email to the assignees selected above.</p>
 			                            <table cellspacing="0" cellpadding="10" width="100%" border="0">
                                     <tr>
                                       <td>Bcc:</td>
