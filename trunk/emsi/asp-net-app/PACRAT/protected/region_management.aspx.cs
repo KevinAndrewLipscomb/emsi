@@ -469,11 +469,11 @@ namespace region_management
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)

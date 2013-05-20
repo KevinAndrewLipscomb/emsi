@@ -84,6 +84,7 @@ namespace practitioner_management
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[practitioner_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[practitioner_management_Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
       p.biz_strike_team_rosters.BindBaseDataListByServiceId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.service_id);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);

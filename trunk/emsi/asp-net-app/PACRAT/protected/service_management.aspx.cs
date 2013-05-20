@@ -94,6 +94,7 @@ namespace service_management
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[service_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[service_management_Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
       p.biz_role_member_map.BindBaseDataListByExplicitServiceId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.service_id);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
@@ -462,6 +463,7 @@ namespace service_management
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - service_management";
         CheckBox_be_strike_team_participant.Checked = p.biz_services.BeStrikeTeamParticipantOf(p.incoming.summary);
+        CheckBox_be_strike_team_participant.Enabled = p.be_ok_to_edit_roster;
         var max_spec_length = p.biz_practitioners.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
