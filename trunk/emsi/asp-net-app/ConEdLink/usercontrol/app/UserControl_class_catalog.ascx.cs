@@ -133,7 +133,7 @@ namespace UserControl_class_catalog
           {
           DropDownList_range.Items.Insert
             (
-            index:2,
+            index:4,
             item:i.val.ToString()
             );
           }
@@ -163,7 +163,7 @@ namespace UserControl_class_catalog
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.range = "InProcess";
+        p.range = "InProcessExtensive";
         p.sort_order = "start%";
         }
       }

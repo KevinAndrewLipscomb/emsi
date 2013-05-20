@@ -12,7 +12,9 @@
                   <tr>
                     <td>
                       <strong>Range:&nbsp;<asp:DropDownList id="DropDownList_range" runat="server" autopostback="True" onselectedindexchanged="DropDownList_range_SelectedIndexChanged">
-                        <asp:ListItem Selected="True" Value="InProcess">In process</asp:ListItem>
+                        <asp:ListItem>Future</asp:ListItem>
+                        <asp:ListItem Selected="True" Value="InProcessExtensive">In process - extensive</asp:ListItem>
+                        <asp:ListItem Value="InProcessCurrentOrDueOnly">In process - current or due ONLY</asp:ListItem>
                         <asp:ListItem Value="ClosedLastThreeYears">Closed last 3 years</asp:ListItem>
                         <asp:ListItem>All</asp:ListItem>
                       </asp:DropDownList></strong>
