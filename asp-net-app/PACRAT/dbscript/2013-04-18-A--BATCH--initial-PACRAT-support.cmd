@@ -16,4 +16,5 @@ mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance%
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-10-A--establish-tiers.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-17-A--add-strike-team-config-privileges.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-18-A--add-be_strike_team_participant-field-to-service-table.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-18-B--create-strike_team_roster-table.sql
 pause

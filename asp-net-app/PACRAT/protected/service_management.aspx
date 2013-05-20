@@ -17,7 +17,7 @@
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
       <asp:UpdatePanel ID="UpdatePanel_overall" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-          <asp:CheckBox ID="CheckBox_be_strike_team_participant" runat="server" AutoPostBack="True" Text="Participating service" oncheckedchanged="CheckBox_be_strike_team_participant_CheckedChanged" />
+          <asp:CheckBox ID="CheckBox_be_strike_team_participant" runat="server" AutoPostBack="True" Text="Participating service" oncheckedchanged="CheckBox_be_strike_team_participant_CheckedChanged" Enabled="False" />
           <hr noshade="noshade" width="100%" size="1" />
           <table cellpadding="0" cellspacing="0">
             <tr>
