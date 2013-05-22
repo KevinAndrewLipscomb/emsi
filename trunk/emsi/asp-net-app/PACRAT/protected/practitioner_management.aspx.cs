@@ -412,12 +412,13 @@ namespace practitioner_management
         //
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
         //
-        p.be_ok_to_edit_roster = p.biz_privileges.HasForService
-          (
-          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-          privilege_name:"config-strike-team-service",
-          service_id:p.service_id
-          );
+        //p.be_ok_to_edit_roster = p.biz_privileges.HasForService
+        //  (
+        //  member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+        //  privilege_name:"config-strike-team-service",
+        //  service_id:p.service_id
+        //  );
+        p.be_ok_to_edit_roster = true;
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -459,7 +460,14 @@ namespace practitioner_management
       UpdatePanel_assignees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
-      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,k.EMPTY,practitioner,new k.int_positive(12));
+      p.biz_practitioners.BindDirectToListControlForRoster
+        (
+        target:ListBox_practitioner,
+        region_code:k.EMPTY,
+        starting_with:practitioner,
+        limit:new k.int_positive(12),
+        do_limit_to_21_yoa_or_older:true
+        );
       if (practitioner.Length > 0)
         {
         if (ListBox_practitioner.Items.Count > 0)
