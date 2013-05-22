@@ -440,12 +440,13 @@ namespace service_management
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
-        p.be_ok_to_edit_roster = p.biz_privileges.HasForRegion
-          (
-          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-          privilege_name:"config-strike-team-region",
-          region_code:p.incoming.region_code
-          );
+        //p.be_ok_to_edit_roster = p.biz_privileges.HasForRegion
+        //  (
+        //  member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+        //  privilege_name:"config-strike-team-region",
+        //  region_code:p.incoming.region_code
+        //  );
+        p.be_ok_to_edit_roster = true;
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
@@ -476,11 +477,11 @@ namespace service_management
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)
