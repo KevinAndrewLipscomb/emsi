@@ -13,6 +13,10 @@ namespace Class_msg_protected
       {
       internal object summary = null;
       }
+    public class practitioner_profile
+      {
+      internal string id = k.EMPTY;
+      }
     public class region_detail
       {
       internal object summary = null;
