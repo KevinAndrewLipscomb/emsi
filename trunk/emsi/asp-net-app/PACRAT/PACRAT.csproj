@@ -85,6 +85,7 @@
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
+    <Content Include="protected\practitioner_profile.aspx" />
     <Content Include="protected\region_detail.aspx" />
     <Content Include="protected\region_management.aspx" />
     <Content Include="protected\service_management.aspx" />
@@ -209,6 +210,13 @@
     </Compile>
     <Compile Include="protected\practitioner_management.aspx.designer.cs">
       <DependentUpon>practitioner_management.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\practitioner_profile.aspx.cs">
+      <DependentUpon>practitioner_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\practitioner_profile.aspx.designer.cs">
+      <DependentUpon>practitioner_profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\region_detail.aspx.cs">
       <DependentUpon>region_detail.aspx</DependentUpon>

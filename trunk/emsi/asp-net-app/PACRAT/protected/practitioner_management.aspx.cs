@@ -31,6 +31,7 @@ namespace practitioner_management
     public TClass_biz_tiers biz_tiers;
     public TClass_biz_user biz_user;
     public TClass_msg_protected.practitioner_management incoming;
+    public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
     public string service_strike_team_manager_role_id;
@@ -46,20 +47,21 @@ namespace practitioner_management
     private class practitioner_management_Static
       {
       public const int TCI_ID = 0;
-      public const int TCI_SELECT = 1;
-      public const int TCI_DELETE = 2;
-      public const int TCI_PRACTITIONER_ID = 3;
-      public const int TCI_LAST_NAME = 4;
-      public const int TCI_FIRST_NAME = 5;
-      public const int TCI_MIDDLE_INITIAL = 6;
-      public const int TCI_LEVEL = 7;
-      public const int TCI_LEVEL_EMSRS_CODE = 8;
-      public const int TCI_CERT_NUM = 9;
-      public const int TCI_BE_DOB_CONFIRMED = 10;
-      public const int TCI_DOB = 11;
-      public const int TCI_EMAIL_ADDRESS = 12;
-      public const int TCI_EDIT_UPDATE_CANCEL = 13;
-      public const int TCI_STATUS_DESCRIPTION = 14;
+      public const int TCI_PROFILE = 1;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 2;
+      public const int TCI_DELETE = 3;
+      public const int TCI_PRACTITIONER_ID = 4;
+      public const int TCI_LAST_NAME = 5;
+      public const int TCI_FIRST_NAME = 6;
+      public const int TCI_MIDDLE_INITIAL = 7;
+      public const int TCI_LEVEL = 8;
+      public const int TCI_LEVEL_EMSRS_CODE = 9;
+      public const int TCI_CERT_NUM = 10;
+      public const int TCI_BE_DOB_CONFIRMED = 11;
+      public const int TCI_DOB = 12;
+      public const int TCI_EMAIL_ADDRESS = 13;
+      public const int TCI_EDIT_UPDATE_CANCEL = 14;
+      public const int TCI_STATUS_DESCRIPTION = 15;
       }
 
     private p_type p;
@@ -186,7 +188,7 @@ namespace practitioner_management
         {
         tcc = DataGrid_control.Items[i.val].Cells;
         email_address_text = k.Safe((tcc[practitioner_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-        distribution_list += ((email_address_text != "DESIRED") && (tcc[practitioner_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
+        distribution_list += ((email_address_text != "DESIRED") && (tcc[practitioner_management_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
         }
       if (distribution_list.Length > 0)
         {
@@ -215,7 +217,7 @@ namespace practitioner_management
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[practitioner_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[practitioner_management_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       }
 
@@ -241,7 +243,7 @@ namespace practitioner_management
     protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
-        {        
+        {
         p.biz_strike_team_rosters.Delete(k.Safe(e.Item.Cells[practitioner_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
@@ -256,11 +258,33 @@ namespace practitioner_management
       SetCloseAndSubmitAblementsAndVisibilities(false);
       }
 
+    protected void DataGrid_control_ItemCommand(object source, DataGridCommandEventArgs e)
+      {
+      if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
+        {
+        if (e.CommandName == "Profile")
+          {
+          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[practitioner_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+          MessageDropCrumbAndTransferTo
+            (
+            msg:p.msg_protected_practitioner_profile,
+            folder_name:"protected",
+            aspx_name:"practitioner_profile"
+            );
+          }
+        }
+      }
+
     protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
       {
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
+        link_button = ((e.Item.Cells[practitioner_management_Static.TCI_PROFILE].Controls[0]) as LinkButton);
+        link_button.Text = k.ExpandTildePath(link_button.Text);
+        link_button.ToolTip = "Profile";
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+        //
         link_button = ((e.Item.Cells[practitioner_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
@@ -403,6 +427,7 @@ namespace practitioner_management
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.practitioner_management>(folder_name:"protected",aspx_name:"practitioner_management");
+        p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
         p.service_tier_id = p.biz_tiers.IdOfName("Service");
