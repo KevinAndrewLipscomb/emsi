@@ -26,7 +26,7 @@ namespace UserControl_practitioner_strike_team_detail
 
     private p_type p;
 
-    private void Clear()
+    internal void Clear()
       {
       TextBox_practitioner_id.Text = k.EMPTY;
       DropDownList_practitioner_id.Visible = false;
@@ -158,7 +158,7 @@ namespace UserControl_practitioner_strike_team_detail
       InjectPersistentClientSideScript();
       }
 
-    private bool PresentRecord(string practitioner_id)
+    internal bool PresentRecord(string practitioner_id)
       {
       Literal_match_index.Text = DropDownList_practitioner_id.SelectedIndex.ToString();
       bool result;
@@ -239,7 +239,7 @@ namespace UserControl_practitioner_strike_team_detail
       return result;
       }
 
-    private void SetDataEntryMode()
+    internal void SetDataEntryMode()
       {
       Clear();
       TextBox_practitioner_id.Enabled = false;
@@ -254,7 +254,7 @@ namespace UserControl_practitioner_strike_team_detail
       TextBox_practitioner_id.Focus();
       }
 
-    private void SetLookupMode()
+    internal void SetLookupMode()
       {
       Clear();
       TextBox_practitioner_id.Enabled = true;
@@ -316,25 +316,30 @@ namespace UserControl_practitioner_strike_team_detail
 
     protected void Button_submit_Click(object sender, System.EventArgs e)
       {
+      Submit();
+      }
+
+    internal void Submit()
+      {
       if (Page.IsValid)
         {
         p.biz_practitioner_strike_team_details.Set
           (
-          k.Safe(TextBox_practitioner_id.Text,k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_practitioner_id.Text, k.safe_hint_type.NUM).Trim(),
           UserControl_drop_down_date_act_1985_33_date.selectedvalue,
           UserControl_drop_down_date_act_1985_34_date.selectedvalue,
           UserControl_drop_down_date_act_1994_151_date.selectedvalue,
-          k.Safe(TextBox_phone_number.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_phone_service_id.Text,k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_phone_number.Text, k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_phone_service_id.Text, k.safe_hint_type.NUM).Trim(),
           CheckBox_be_immune_hepatits_b.Checked,
           CheckBox_be_immune_diptheria_tetanus.Checked,
-          k.Safe(TextBox_emergency_contact_1_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
-          k.Safe(TextBox_emergency_contact_1_phone_number.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_emergency_contact_2_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
-          k.Safe(TextBox_emergency_contact_2_phone_number.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_meds_doses.Text,k.safe_hint_type.PUNCTUATED).Trim(),
-          k.Safe(TextBox_allergies.Text,k.safe_hint_type.PUNCTUATED).Trim(),
-          k.Safe(TextBox_pcp_name.Text,k.safe_hint_type.PUNCTUATED).Trim(),
+          k.Safe(TextBox_emergency_contact_1_name.Text, k.safe_hint_type.HUMAN_NAME).Trim(),
+          k.Safe(TextBox_emergency_contact_1_phone_number.Text, k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_emergency_contact_2_name.Text, k.safe_hint_type.HUMAN_NAME).Trim(),
+          k.Safe(TextBox_emergency_contact_2_phone_number.Text, k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_meds_doses.Text, k.safe_hint_type.PUNCTUATED).Trim(),
+          k.Safe(TextBox_allergies.Text, k.safe_hint_type.PUNCTUATED).Trim(),
+          k.Safe(TextBox_pcp_name.Text, k.safe_hint_type.PUNCTUATED).Trim(),
           UserControl_drop_down_date_drivers_license_expiration.selectedvalue,
           UserControl_drop_down_date_nims_is_100_date.selectedvalue,
           UserControl_drop_down_date_nims_is_200_date.selectedvalue,
@@ -400,7 +405,7 @@ namespace UserControl_practitioner_strike_team_detail
       SetLookupMode();
       }
 
-    private void SetDependentFieldAblements(bool ablement)
+    internal void SetDependentFieldAblements(bool ablement)
       {
       TextBox_practitioner_id.Enabled = ablement;
       UserControl_drop_down_date_act_1985_33_date.enabled = ablement;

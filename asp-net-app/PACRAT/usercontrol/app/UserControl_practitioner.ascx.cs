@@ -6,6 +6,7 @@ using Class_biz_practitioners;
 using Class_biz_regions;
 using kix;
 using System;
+using System.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,6 +15,17 @@ namespace UserControl_practitioner
   {
   public partial class TWebUserControl_practitioner: ki_web_ui.usercontrol_class
     {
+    private struct p_type
+      {
+      public bool be_loaded;
+      public TClass_biz_counties biz_counties;
+      public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
+      public TClass_biz_regions biz_regions;
+      public bool be_ok_to_config_practitioners;
+      public string id;
+      }
+
     private p_type p;
 
     private void Clear()
@@ -36,6 +48,7 @@ namespace UserControl_practitioner
       TextBox_city_state_zip.Text = k.EMPTY;
       CheckBox_be_instructor.Checked = false;
       CheckBox_be_past.Checked = false;
+      UserControl_practitioner_strike_team_detail_control.Clear();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -147,6 +160,8 @@ namespace UserControl_practitioner
           {
           PresentRecord(p.id);
           }
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        Literal_application_name_2.Text = Literal_application_name.Text;
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -215,6 +230,7 @@ namespace UserControl_practitioner
         TextBox_city_state_zip.Text = city_state_zip;
         CheckBox_be_instructor.Checked = be_instructor;
         CheckBox_be_past.Checked = be_past;
+        UserControl_practitioner_strike_team_detail_control.PresentRecord(id);
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -240,6 +256,7 @@ namespace UserControl_practitioner
       SetDependentFieldAblements(p.be_ok_to_config_practitioners);
       Button_submit.Enabled = p.be_ok_to_config_practitioners;
       Button_delete.Enabled = false;
+      UserControl_practitioner_strike_team_detail_control.SetDataEntryMode();
       TextBox_id.Focus();
       }
 
@@ -252,6 +269,7 @@ namespace UserControl_practitioner
       Label_lookup_hint.Enabled = true;
       LinkButton_reset.Enabled = false;
       LinkButton_new_record.Enabled = true;
+      UserControl_practitioner_strike_team_detail_control.SetLookupMode();
       TextBox_id.Focus();
       }
 
@@ -261,6 +279,7 @@ namespace UserControl_practitioner
       if (id.Length > 0)
         {
         p.id = id;
+        UserControl_practitioner_strike_team_detail_control.SetTarget(target:target);
         }
       }
 
@@ -307,6 +326,7 @@ namespace UserControl_practitioner
       {
       Session.Remove(InstanceId() + ".p");
       UserControl_drop_down_date_birth_date.Fresh();
+      UserControl_practitioner_strike_team_detail_control.Fresh();
       return this;
       }
 
@@ -334,6 +354,7 @@ namespace UserControl_practitioner
           CheckBox_be_instructor.Checked,
           CheckBox_be_past.Checked
           );
+        UserControl_practitioner_strike_team_detail_control.Submit();
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();
         }
@@ -412,6 +433,7 @@ namespace UserControl_practitioner
       TextBox_city_state_zip.Enabled = ablement;
       CheckBox_be_instructor.Enabled = ablement;
       CheckBox_be_past.Enabled = ablement;
+      UserControl_practitioner_strike_team_detail_control.SetDependentFieldAblements(ablement);
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -451,17 +473,6 @@ namespace UserControl_practitioner
       {
       args.IsValid = k.BeValidDomainPartOfEmailAddress(k.Safe(TextBox_email_address.Text, k.safe_hint_type.EMAIL_ADDRESS));
       }
-
-    private struct p_type
-      {
-      public bool be_loaded;
-      public TClass_biz_counties biz_counties;
-      public TClass_biz_practitioners biz_practitioners;
-      public TClass_biz_practitioner_levels biz_practitioner_levels;
-      public TClass_biz_regions biz_regions;
-      public bool be_ok_to_config_practitioners;
-      public string id;
-      } // end p_type
 
     } // end TWebUserControl_practitioner
 
