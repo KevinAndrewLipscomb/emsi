@@ -44,7 +44,9 @@ namespace practitioner_profile
         //
         // Initialize p.~ objects here.
         //
-        UserControl_practitioner_control.SetTarget(target:Message<TClass_msg_protected.practitioner_profile>(folder_name:"protected",aspx_name:"practitioner_profile").id);
+        var incoming = Message<TClass_msg_protected.practitioner_profile>(folder_name:"protected",aspx_name:"practitioner_profile");
+        UserControl_practitioner_control.SetTarget(target:incoming.id);
+        UserControl_practitioner_strike_team_detail_control.SetTarget(target:incoming.id);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

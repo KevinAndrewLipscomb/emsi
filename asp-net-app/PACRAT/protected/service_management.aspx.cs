@@ -471,6 +471,7 @@ namespace service_management
         InitForNewSearch();
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
+        LinkButton_drill_down.Text = k.ExpandTildePath(LinkButton_drill_down.Text);
         //
         //var hash_table = new Hashtable();
         //hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
