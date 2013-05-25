@@ -5,6 +5,7 @@
 <%@ Register TagPrefix="uc1" TagName="UserControl_postcontent" Src="~/usercontrol/app/UserControl_postcontent.ascx" %>
 <%@ Register TagPrefix="uc3" TagName="UserControl_update_progress_blocker" Src="~/usercontrol/app/UserControl_update_progress_blocker.ascx" %>
 <%@ Register src="../usercontrol/app/UserControl_practitioner.ascx" tagname="UserControl_practitioner" tagprefix="uc2" %>
+<%@ Register src="../usercontrol/app/UserControl_practitioner_strike_team_detail.ascx" tagname="UserControl_practitioner_strike_team_detail" tagprefix="uc4" %>
 <html>
   <head runat="server">
     <title></title>
@@ -16,6 +17,7 @@
     <form runat="server">
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
       <uc2:UserControl_practitioner ID="UserControl_practitioner_control" runat="server" />
+      <uc4:UserControl_practitioner_strike_team_detail ID="UserControl_practitioner_strike_team_detail_control" runat="server" />
       <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent>
       <uc3:UserControl_update_progress_blocker id="UserControl_update_progress_blocker_control" runat="server"></uc3:UserControl_update_progress_blocker>
     </form>

@@ -463,6 +463,7 @@ namespace region_management
         InitForNewSearch();
         Literal_region_name.Text = p.biz_regions.EmsrsActivePractitionersNameOf(p.incoming.summary);
         Literal_emsrs_code.Text = p.biz_regions.EmsrsCodeOf(p.incoming.summary);
+        LinkButton_drill_down.Text = k.ExpandTildePath(LinkButton_drill_down.Text);
         //
         //var hash_table = new Hashtable();
         //hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
