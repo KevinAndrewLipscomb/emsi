@@ -190,8 +190,8 @@ namespace Class_db_practitioner_strike_team_details
       + " , act_1994_151_date = '" + act_1994_151_date.ToString("yyyy-MM-dd") + "'"
       + " , phone_number = NULLIF('" + phone_number + "','')"
       + " , phone_service_id = NULLIF('" + phone_service_id + "','')"
-      + " , be_immune_hepatits_b = NULLIF('" + be_immune_hepatits_b.ToString() + "','')"
-      + " , be_immune_diptheria_tetanus = NULLIF('" + be_immune_diptheria_tetanus.ToString() + "','')"
+      + " , be_immune_hepatits_b = " + be_immune_hepatits_b.ToString()
+      + " , be_immune_diptheria_tetanus = " + be_immune_diptheria_tetanus.ToString()
       + " , emergency_contact_1_name = NULLIF('" + emergency_contact_1_name + "','')"
       + " , emergency_contact_1_phone_number = NULLIF('" + emergency_contact_1_phone_number + "','')"
       + " , emergency_contact_2_name = NULLIF('" + emergency_contact_2_name + "','')"

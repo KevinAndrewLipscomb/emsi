@@ -21,7 +21,6 @@ namespace UserControl_practitioner_strike_team_detail
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
       public TClass_biz_role_member_map biz_role_member_map;
       public bool be_ok_to_config_practitioner_strike_team_details;
-      public string practitioner_id;
       }
 
     private p_type p;
@@ -149,9 +148,10 @@ namespace UserControl_practitioner_strike_team_detail
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        if (p.practitioner_id.Length > 0)
+        var practitioner_id = k.Safe(TextBox_practitioner_id.Text,k.safe_hint_type.NUM);
+        if (practitioner_id.Length > 0)
           {
-          PresentRecord(p.practitioner_id);
+          PresentRecord(practitioner_id);
           }
         p.be_loaded = true;
         }
@@ -281,8 +281,7 @@ namespace UserControl_practitioner_strike_team_detail
         p.be_loaded = false;
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner_strike_team_details");
-        p.practitioner_id = k.EMPTY;
+        p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-strike-team-details");
         }
       }
 
@@ -346,7 +345,7 @@ namespace UserControl_practitioner_strike_team_detail
           UserControl_drop_down_date_nims_is_700_date.selectedvalue
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        SetLookupMode();
+        //SetLookupMode();  -- inappropriate when not using lookup feature
         }
       else
         {
@@ -466,7 +465,7 @@ namespace UserControl_practitioner_strike_team_detail
       var practitioner_id = target.Substring(target.LastIndexOf("/") + 1);
       if (practitioner_id.Length > 0)
         {
-        p.practitioner_id = practitioner_id;
+        TextBox_practitioner_id.Text = practitioner_id;
         }
       }
 

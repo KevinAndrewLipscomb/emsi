@@ -23,6 +23,7 @@ namespace UserControl_practitioner
       public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_regions biz_regions;
       public bool be_ok_to_config_practitioners;
+      public bool be_ok_to_config_practitioner_strike_team_details;
       public string id;
       }
 
@@ -57,6 +58,7 @@ namespace UserControl_practitioner
       LinkButton_go_to_match_last.Visible = false;
       LinkButton_go_to_match_first.Visible = false;
       SetDependentFieldAblements(false);
+      UserControl_practitioner_strike_team_detail_control.SetDependentFieldAblements(false);
       Button_submit.Enabled = false;
       Button_delete.Enabled = false;
       }
@@ -236,8 +238,9 @@ namespace UserControl_practitioner
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
         SetDependentFieldAblements(p.be_ok_to_config_practitioners);
-        Button_submit.Enabled = p.be_ok_to_config_practitioners;
-        Button_delete.Enabled = p.be_ok_to_config_practitioners;
+        UserControl_practitioner_strike_team_detail_control.SetDependentFieldAblements(p.be_ok_to_config_practitioner_strike_team_details);
+        Button_submit.Enabled = p.be_ok_to_config_practitioners || p.be_ok_to_config_practitioner_strike_team_details;
+        Button_delete.Enabled = p.be_ok_to_config_practitioners || p.be_ok_to_config_practitioner_strike_team_details;
         result = true;
         }
       return result;
@@ -254,7 +257,8 @@ namespace UserControl_practitioner
       LinkButton_reset.Enabled = true;
       LinkButton_new_record.Enabled = false;
       SetDependentFieldAblements(p.be_ok_to_config_practitioners);
-      Button_submit.Enabled = p.be_ok_to_config_practitioners;
+      UserControl_practitioner_strike_team_detail_control.SetDependentFieldAblements(p.be_ok_to_config_practitioner_strike_team_details);
+      Button_submit.Enabled = p.be_ok_to_config_practitioners || p.be_ok_to_config_practitioner_strike_team_details;
       Button_delete.Enabled = false;
       UserControl_practitioner_strike_team_detail_control.SetDataEntryMode();
       TextBox_id.Focus();
@@ -303,6 +307,7 @@ namespace UserControl_practitioner
         p.biz_regions = new TClass_biz_regions();
         //
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
+        p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-strike-team-details");
         p.id = k.EMPTY;
         }
       }
@@ -356,7 +361,7 @@ namespace UserControl_practitioner
           );
         UserControl_practitioner_strike_team_detail_control.Submit();
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        SetLookupMode();
+        //SetLookupMode();  -- inappropriate when not using lookup feature
         }
       else
         {
@@ -433,7 +438,6 @@ namespace UserControl_practitioner
       TextBox_city_state_zip.Enabled = ablement;
       CheckBox_be_instructor.Enabled = ablement;
       CheckBox_be_past.Enabled = ablement;
-      UserControl_practitioner_strike_team_detail_control.SetDependentFieldAblements(ablement);
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
