@@ -31,15 +31,6 @@ namespace practitioner_profile {
         protected global::UserControl_practitioner.TWebUserControl_practitioner UserControl_practitioner_control;
         
         /// <summary>
-        /// UserControl_practitioner_strike_team_detail_control control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_practitioner_strike_team_detail.TWebUserControl_practitioner_strike_team_detail UserControl_practitioner_strike_team_detail_control;
-        
-        /// <summary>
         /// UserControl_postcontent control.
         /// </summary>
         /// <remarks>

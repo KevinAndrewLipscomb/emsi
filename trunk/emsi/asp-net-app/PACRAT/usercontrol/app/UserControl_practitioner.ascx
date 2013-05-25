@@ -1,6 +1,19 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_practitioner.ascx.cs" Inherits="UserControl_practitioner.TWebUserControl_practitioner"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
+<%@ Register src="~/usercontrol/app/UserControl_practitioner_strike_team_detail.ascx" tagname="UserControl_practitioner_strike_team_detail" tagprefix="uc1" %>
+<table border="1" bordercolor="gainsboro" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+          <td bgcolor="whitesmoke">
+            <h3>EMSRS attributes</h3>
+            <small>These are the attributes that were successfully sync'd from EMSRS.</small>
+          </td>
+        </tr>
+        <tr>
+          <td>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
@@ -215,5 +228,27 @@
     </td>
   </tr>
 </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br />
+<table border="1" bordercolor="gainsboro" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%">
+        <tr>
+          <td bgcolor="whitesmoke">
+            <h3><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> attributes</h3>
+            <small>These attributes are managed in real-time via <asp:Literal ID="Literal_application_name_2" runat="server"></asp:Literal>.</small>
+          </td>
+        </tr>
+        <tr><td><uc1:UserControl_practitioner_strike_team_detail ID="UserControl_practitioner_strike_team_detail_control" runat="server" /></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br />
 <ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
-

@@ -391,6 +391,33 @@ namespace UserControl_practitioner {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_past;
         
         /// <summary>
+        /// Literal_application_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
+        
+        /// <summary>
+        /// Literal_application_name_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name_2;
+        
+        /// <summary>
+        /// UserControl_practitioner_strike_team_detail_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_practitioner_strike_team_detail.TWebUserControl_practitioner_strike_team_detail UserControl_practitioner_strike_team_detail_control;
+        
+        /// <summary>
         /// Button_submit control.
         /// </summary>
         /// <remarks>
