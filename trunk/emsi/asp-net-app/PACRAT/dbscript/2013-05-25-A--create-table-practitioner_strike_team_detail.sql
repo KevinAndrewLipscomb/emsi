@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS practitioner_strike_team_detail (
   act_1994_151_date DATE,
   phone_number VARCHAR(10),
   phone_service_id BIGINT UNSIGNED,
-  be_immune_hepatits_b BOOLEAN DEFAULT FALSE NOT NULL,
+  be_immune_hepatitis_b BOOLEAN DEFAULT FALSE NOT NULL,
   be_immune_diptheria_tetanus BOOLEAN DEFAULT FALSE NOT NULL,
   emergency_contact_1_name VARCHAR(127),
   emergency_contact_1_phone_number VARCHAR(10),

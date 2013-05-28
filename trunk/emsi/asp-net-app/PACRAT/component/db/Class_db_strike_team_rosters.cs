@@ -73,10 +73,29 @@ namespace Class_db_strike_team_rosters
       string id
       )
       {
+      var condition_clause = k.EMPTY
+      +   " (act_1985_33_date >= SUBDATE(CURDATE(),INTERVAL 3 YEAR))"
+      + " and"
+      +   " (act_1985_34_date >= SUBDATE(CURDATE(),INTERVAL 3 YEAR))"
+      + " and"
+      +   " (act_1994_151_date >= SUBDATE(CURDATE(),INTERVAL 3 YEAR))"
+      + " and"
+      +   " be_immune_hepatitis_b"
+      + " and"
+      +   " be_immune_diptheria_tetanus"
+      + " and"
+      +   " (drivers_license_expiration <= CURDATE())"
+      + " and"
+      +   " nims_is_100_date is not null"
+      + " and"
+      +   " nims_is_200_date is not null"
+      + " and"
+      +   " nims_is_700_date is not null";
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select strike_team_roster.id as id"
+        + " , IF(" + condition_clause + ",'Y','N') as be_credentialed"
         + " , practitioner.id as practitioner_id"
         + " , last_name"
         + " , first_name"
@@ -93,6 +112,7 @@ namespace Class_db_strike_team_rosters
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         +   " join service on (service.id=strike_team_roster.service_id)"
         +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+        +   " left join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
         + " where service.id = '" + id + "'"
         + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
         connection
