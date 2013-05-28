@@ -104,10 +104,10 @@
     </td>
   </tr>
   <tr>
-    <td><font class="">Hepatits&nbsp;B immunization:</font></td>
+    <td><font class="">Hepatitis&nbsp;B immunization:</font></td>
     <td>
       <font class="">
-        <ASP:CheckBox id="CheckBox_be_immune_hepatits_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
+        <ASP:CheckBox id="CheckBox_be_immune_hepatitis_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
       </font>
     </td>
     <td nowrap="True">

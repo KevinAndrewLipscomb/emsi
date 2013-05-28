@@ -73,7 +73,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_last_name" runat="server" errormessage="Please enter Last&nbsp;name." font-bold="True" controltovalidate="TextBox_last_name">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_last_name" runat="server" errormessage="Please enter Last&nbsp;name." font-bold="True" controltovalidate="TextBox_last_name" Enabled="False">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
@@ -84,7 +84,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_first_name" runat="server" errormessage="Please enter First&nbsp;name." font-bold="True" controltovalidate="TextBox_first_name">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_first_name" runat="server" errormessage="Please enter First&nbsp;name." font-bold="True" controltovalidate="TextBox_first_name" Enabled="False">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
@@ -105,7 +105,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_certification_number" runat="server" errormessage="Please enter Certification&nbsp;number." font-bold="True" controltovalidate="TextBox_certification_number">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_certification_number" runat="server" errormessage="Please enter Certification&nbsp;number." font-bold="True" controltovalidate="TextBox_certification_number" Enabled="False">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
@@ -115,7 +115,7 @@
       </asp:DropDownList>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_level_id" runat="server" errormessage="Please select a Level." font-bold="True" controltovalidate="DropDownList_level">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_level_id" runat="server" errormessage="Please select a Level." font-bold="True" controltovalidate="DropDownList_level" Enabled="False">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
@@ -125,7 +125,7 @@
       </asp:DropDownList>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_regional_council_code" runat="server" errormessage="Please select a Regional&nbsp;council." font-bold="True" controltovalidate="DropDownList_regional_council">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_regional_council_code" runat="server" errormessage="Please select a Regional&nbsp;council." font-bold="True" controltovalidate="DropDownList_regional_council" Enabled="False">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
@@ -163,8 +163,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <asp:RegularExpressionValidator id="RegularExpressionValidator_email_address" runat="server" errormessage="Please enter a valid Email address." font-bold="True" controltovalidate="TextBox_email_address" validationexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">!ERR!</asp:RegularExpressionValidator>
-      <asp:CustomValidator id="CustomValidator_email_address" runat="server" errormessage='Please enter an Email address with a valid Domain Name (the part after the "@").' font-bold="True" controltovalidate="TextBox_email_address" onservervalidate="CustomValidator_email_address_ServerValidate">!ERR!</asp:CustomValidator>
+      <asp:RegularExpressionValidator id="RegularExpressionValidator_email_address" runat="server" errormessage="Please enter a valid Email address." font-bold="True" controltovalidate="TextBox_email_address" validationexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Enabled="False">!ERR!</asp:RegularExpressionValidator>
+      <asp:CustomValidator id="CustomValidator_email_address" runat="server" errormessage='Please enter an Email address with a valid Domain Name (the part after the "@").' font-bold="True" controltovalidate="TextBox_email_address" onservervalidate="CustomValidator_email_address_ServerValidate" Enabled="False">!ERR!</asp:CustomValidator>
     </td>
   </tr>
   <tr>
@@ -175,7 +175,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_1" runat="server" errormessage="Please enter a valid Street address 1." font-bold="True" controltovalidate="TextBox_street_address_1" validationexpression="[0-9a-zA-Z#\-,(). ]+">!ERR!</asp:RegularExpressionValidator>
+      <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_1" runat="server" errormessage="Please enter a valid Street address 1." font-bold="True" controltovalidate="TextBox_street_address_1" validationexpression="[0-9a-zA-Z#\-,(). ]+" Enabled="False">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
   <tr>
@@ -186,7 +186,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_2" runat="server" errormessage="Please enter a valid Street address 2." font-bold="True" controltovalidate="TextBox_street_address_2" validationexpression="[0-9a-zA-Z#\-,(). ]+">!ERR!</asp:RegularExpressionValidator>
+      <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_2" runat="server" errormessage="Please enter a valid Street address 2." font-bold="True" controltovalidate="TextBox_street_address_2" validationexpression="[0-9a-zA-Z#\-,(). ]+" Enabled="False">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
   <tr>
@@ -197,7 +197,7 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <asp:RegularExpressionValidator id="RegularExpressionValidator_city_state_zip" runat="server" errormessage="Please enter a valid City state zip." font-bold="True" controltovalidate="TextBox_city_state_zip" validationexpression="[a-zA-Z\-. ]+">!ERR!</asp:RegularExpressionValidator>
+      <asp:RegularExpressionValidator id="RegularExpressionValidator_city_state_zip" runat="server" errormessage="Please enter a valid City state zip." font-bold="True" controltovalidate="TextBox_city_state_zip" validationexpression="[a-zA-Z\-. ]+" Enabled="False">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
   <tr>

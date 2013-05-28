@@ -96,7 +96,7 @@ namespace Class_db_practitioner_strike_team_details
       out DateTime act_1994_151_date,
       out string phone_number,
       out string phone_service_id,
-      out bool be_immune_hepatits_b,
+      out bool be_immune_hepatitis_b,
       out bool be_immune_diptheria_tetanus,
       out string emergency_contact_1_name,
       out string emergency_contact_1_phone_number,
@@ -116,7 +116,7 @@ namespace Class_db_practitioner_strike_team_details
       act_1994_151_date = DateTime.MinValue;
       phone_number = k.EMPTY;
       phone_service_id = k.EMPTY;
-      be_immune_hepatits_b = false;
+      be_immune_hepatitis_b = false;
       be_immune_diptheria_tetanus = false;
       emergency_contact_1_name = k.EMPTY;
       emergency_contact_1_phone_number = k.EMPTY;
@@ -141,7 +141,7 @@ namespace Class_db_practitioner_strike_team_details
         act_1994_151_date = DateTime.Parse(dr["act_1994_151_date"].ToString());
         phone_number = dr["phone_number"].ToString();
         phone_service_id = dr["phone_service_id"].ToString();
-        be_immune_hepatits_b = (dr["be_immune_hepatits_b"].ToString() == "1");
+        be_immune_hepatitis_b = (dr["be_immune_hepatitis_b"].ToString() == "1");
         be_immune_diptheria_tetanus = (dr["be_immune_diptheria_tetanus"].ToString() == "1");
         emergency_contact_1_name = dr["emergency_contact_1_name"].ToString();
         emergency_contact_1_phone_number = dr["emergency_contact_1_phone_number"].ToString();
@@ -169,7 +169,7 @@ namespace Class_db_practitioner_strike_team_details
       DateTime act_1994_151_date,
       string phone_number,
       string phone_service_id,
-      bool be_immune_hepatits_b,
+      bool be_immune_hepatitis_b,
       bool be_immune_diptheria_tetanus,
       string emergency_contact_1_name,
       string emergency_contact_1_phone_number,
@@ -190,7 +190,7 @@ namespace Class_db_practitioner_strike_team_details
       + " , act_1994_151_date = '" + act_1994_151_date.ToString("yyyy-MM-dd") + "'"
       + " , phone_number = NULLIF('" + phone_number + "','')"
       + " , phone_service_id = NULLIF('" + phone_service_id + "','')"
-      + " , be_immune_hepatits_b = " + be_immune_hepatits_b.ToString()
+      + " , be_immune_hepatitis_b = " + be_immune_hepatitis_b.ToString()
       + " , be_immune_diptheria_tetanus = " + be_immune_diptheria_tetanus.ToString()
       + " , emergency_contact_1_name = NULLIF('" + emergency_contact_1_name + "','')"
       + " , emergency_contact_1_phone_number = NULLIF('" + emergency_contact_1_phone_number + "','')"

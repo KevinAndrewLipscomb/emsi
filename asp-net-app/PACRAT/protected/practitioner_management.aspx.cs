@@ -47,21 +47,23 @@ namespace practitioner_management
     private class practitioner_management_Static
       {
       public const int TCI_ID = 0;
-      public const int TCI_PROFILE = 1;
-      public const int TCI_SELECT_FOR_QUICKMESSAGE = 2;
-      public const int TCI_DELETE = 3;
-      public const int TCI_PRACTITIONER_ID = 4;
-      public const int TCI_LAST_NAME = 5;
-      public const int TCI_FIRST_NAME = 6;
-      public const int TCI_MIDDLE_INITIAL = 7;
-      public const int TCI_LEVEL = 8;
-      public const int TCI_LEVEL_EMSRS_CODE = 9;
-      public const int TCI_CERT_NUM = 10;
-      public const int TCI_BE_DOB_CONFIRMED = 11;
-      public const int TCI_DOB = 12;
-      public const int TCI_EMAIL_ADDRESS = 13;
-      public const int TCI_EDIT_UPDATE_CANCEL = 14;
-      public const int TCI_STATUS_DESCRIPTION = 15;
+      public const int TCI_BE_CREDENTIALED = 1;
+      public const int TCI_UNCREDENTIALED = 2;
+      public const int TCI_PROFILE = 3;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 4;
+      public const int TCI_DELETE = 5;
+      public const int TCI_PRACTITIONER_ID = 6;
+      public const int TCI_LAST_NAME = 7;
+      public const int TCI_FIRST_NAME = 8;
+      public const int TCI_MIDDLE_INITIAL = 9;
+      public const int TCI_LEVEL = 10;
+      public const int TCI_LEVEL_EMSRS_CODE = 11;
+      public const int TCI_CERT_NUM = 12;
+      public const int TCI_BE_DOB_CONFIRMED = 13;
+      public const int TCI_DOB = 14;
+      public const int TCI_EMAIL_ADDRESS = 15;
+      public const int TCI_EDIT_UPDATE_CANCEL = 16;
+      public const int TCI_STATUS_DESCRIPTION = 17;
       }
 
     private p_type p;
@@ -280,6 +282,19 @@ namespace practitioner_management
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
+        if (e.Item.Cells[practitioner_management_Static.TCI_BE_CREDENTIALED].Text == "Y")
+          {
+          link_button = ((e.Item.Cells[practitioner_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button.Visible = false;
+          }
+        else
+          {
+          link_button = ((e.Item.Cells[practitioner_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button.Text = k.ExpandTildePath(link_button.Text);
+          link_button.ToolTip = "UNCREDENTIALED";
+          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          }
+        //
         link_button = ((e.Item.Cells[practitioner_management_Static.TCI_PROFILE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Profile";

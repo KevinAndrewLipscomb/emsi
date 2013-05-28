@@ -4,12 +4,9 @@ using Class_biz_practitioner_strike_team_details;
 using Class_biz_role_member_map;
 using kix;
 using System;
-using System.Web;
+using System.Configuration;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Collections;
-using UserControl_drop_down_date;
 
 namespace UserControl_practitioner_strike_team_detail
   {
@@ -34,7 +31,7 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_act_1994_151_date.Clear();
       TextBox_phone_number.Text = k.EMPTY;
       TextBox_phone_service_id.Text = k.EMPTY;
-      CheckBox_be_immune_hepatits_b.Checked = false;
+      CheckBox_be_immune_hepatitis_b.Checked = false;
       CheckBox_be_immune_diptheria_tetanus.Checked = false;
       TextBox_emergency_contact_1_name.Text = k.EMPTY;
       TextBox_emergency_contact_1_phone_number.Text = k.EMPTY;
@@ -147,6 +144,24 @@ namespace UserControl_practitioner_strike_team_detail
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
+        //
+        var three_year_ago = DateTime.Now.AddYears(-3).Year.ToString();
+        var this_year = DateTime.Now.Year.ToString();
+        UserControl_drop_down_date_act_1985_33_date.minyear = three_year_ago;
+        UserControl_drop_down_date_act_1985_33_date.maxyear = this_year;
+        UserControl_drop_down_date_act_1985_34_date.minyear = three_year_ago;
+        UserControl_drop_down_date_act_1985_34_date.maxyear = this_year;
+        UserControl_drop_down_date_act_1994_151_date.minyear = three_year_ago;
+        UserControl_drop_down_date_act_1994_151_date.maxyear = this_year;
+        UserControl_drop_down_date_drivers_license_expiration.minyear = this_year;
+        UserControl_drop_down_date_drivers_license_expiration.maxyear = DateTime.Now.AddYears(int.Parse(ConfigurationManager.AppSettings["max_drivers_license_validity_years"])).Year.ToString();
+        UserControl_drop_down_date_nims_is_100_date.minyear = "2004";
+        UserControl_drop_down_date_nims_is_100_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_is_200_date.minyear = "2004";
+        UserControl_drop_down_date_nims_is_200_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_is_700_date.minyear = "2004";
+        UserControl_drop_down_date_nims_is_700_date.maxyear = this_year;
+        //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         var practitioner_id = k.Safe(TextBox_practitioner_id.Text,k.safe_hint_type.NUM);
         if (practitioner_id.Length > 0)
@@ -167,7 +182,7 @@ namespace UserControl_practitioner_strike_team_detail
       DateTime act_1994_151_date;
       string phone_number;
       string phone_service_id;
-      bool be_immune_hepatits_b;
+      bool be_immune_hepatitis_b;
       bool be_immune_diptheria_tetanus;
       string emergency_contact_1_name;
       string emergency_contact_1_phone_number;
@@ -191,7 +206,7 @@ namespace UserControl_practitioner_strike_team_detail
           out act_1994_151_date,
           out phone_number,
           out phone_service_id,
-          out be_immune_hepatits_b,
+          out be_immune_hepatitis_b,
           out be_immune_diptheria_tetanus,
           out emergency_contact_1_name,
           out emergency_contact_1_phone_number,
@@ -214,7 +229,7 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_act_1994_151_date.selectedvalue = act_1994_151_date;
         TextBox_phone_number.Text = phone_number;
         TextBox_phone_service_id.Text = phone_service_id;
-        CheckBox_be_immune_hepatits_b.Checked = be_immune_hepatits_b;
+        CheckBox_be_immune_hepatitis_b.Checked = be_immune_hepatitis_b;
         CheckBox_be_immune_diptheria_tetanus.Checked = be_immune_diptheria_tetanus;
         TextBox_emergency_contact_1_name.Text = emergency_contact_1_name;
         TextBox_emergency_contact_1_phone_number.Text = emergency_contact_1_phone_number;
@@ -330,7 +345,7 @@ namespace UserControl_practitioner_strike_team_detail
           UserControl_drop_down_date_act_1994_151_date.selectedvalue,
           k.Safe(TextBox_phone_number.Text, k.safe_hint_type.NUM).Trim(),
           k.Safe(TextBox_phone_service_id.Text, k.safe_hint_type.NUM).Trim(),
-          CheckBox_be_immune_hepatits_b.Checked,
+          CheckBox_be_immune_hepatitis_b.Checked,
           CheckBox_be_immune_diptheria_tetanus.Checked,
           k.Safe(TextBox_emergency_contact_1_name.Text, k.safe_hint_type.HUMAN_NAME).Trim(),
           k.Safe(TextBox_emergency_contact_1_phone_number.Text, k.safe_hint_type.NUM).Trim(),
@@ -412,7 +427,7 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_act_1994_151_date.enabled = ablement;
       TextBox_phone_number.Enabled = ablement;
       TextBox_phone_service_id.Enabled = ablement;
-      CheckBox_be_immune_hepatits_b.Enabled = ablement;
+      CheckBox_be_immune_hepatitis_b.Enabled = ablement;
       CheckBox_be_immune_diptheria_tetanus.Enabled = ablement;
       TextBox_emergency_contact_1_name.Enabled = ablement;
       TextBox_emergency_contact_1_phone_number.Enabled = ablement;

@@ -339,26 +339,29 @@ namespace UserControl_practitioner
       {
       if (Page.IsValid)
         {
-        p.biz_practitioners.Set
-          (
-          k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_last_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
-          k.Safe(TextBox_first_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
-          k.Safe(TextBox_middle_initial.Text,k.safe_hint_type.ALPHA).Trim(),
-          k.Safe(TextBox_certification_number.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(DropDownList_level.SelectedValue,k.safe_hint_type.NUM).Trim(),
-          k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM).Trim(),
-          UserControl_drop_down_date_birth_date.selectedvalue,
-          k.Safe(TextBox_email_address.Text,k.safe_hint_type.EMAIL_ADDRESS),
-          CheckBox_be_stale.Checked,
-          k.Safe(DropDownList_residence_county.SelectedValue,k.safe_hint_type.EMAIL_ADDRESS),
-          CheckBox_be_birth_date_confirmed.Checked,
-          k.Safe(TextBox_street_address_1.Text,k.safe_hint_type.POSTAL_STREET_ADDRESS),
-          k.Safe(TextBox_street_address_2.Text,k.safe_hint_type.POSTAL_STREET_ADDRESS),
-          k.Safe(TextBox_city_state_zip.Text,k.safe_hint_type.POSTAL_CITY),
-          CheckBox_be_instructor.Checked,
-          CheckBox_be_past.Checked
-          );
+        //
+        // Practitioner record is slaved to EMSRS, so don't perform a Set operation.
+        //
+        //p.biz_practitioners.Set
+        //  (
+        //  k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
+        //  k.Safe(TextBox_last_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
+        //  k.Safe(TextBox_first_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
+        //  k.Safe(TextBox_middle_initial.Text,k.safe_hint_type.ALPHA).Trim(),
+        //  k.Safe(TextBox_certification_number.Text,k.safe_hint_type.NUM).Trim(),
+        //  k.Safe(DropDownList_level.SelectedValue,k.safe_hint_type.NUM).Trim(),
+        //  k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM).Trim(),
+        //  UserControl_drop_down_date_birth_date.selectedvalue,
+        //  k.Safe(TextBox_email_address.Text,k.safe_hint_type.EMAIL_ADDRESS),
+        //  CheckBox_be_stale.Checked,
+        //  k.Safe(DropDownList_residence_county.SelectedValue,k.safe_hint_type.EMAIL_ADDRESS),
+        //  CheckBox_be_birth_date_confirmed.Checked,
+        //  k.Safe(TextBox_street_address_1.Text,k.safe_hint_type.POSTAL_STREET_ADDRESS),
+        //  k.Safe(TextBox_street_address_2.Text,k.safe_hint_type.POSTAL_STREET_ADDRESS),
+        //  k.Safe(TextBox_city_state_zip.Text,k.safe_hint_type.POSTAL_CITY),
+        //  CheckBox_be_instructor.Checked,
+        //  CheckBox_be_past.Checked
+        //  );
         UserControl_practitioner_strike_team_detail_control.Submit();
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         //SetLookupMode();  -- inappropriate when not using lookup feature

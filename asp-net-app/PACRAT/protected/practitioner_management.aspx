@@ -93,6 +93,8 @@
                                       <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%" onitemcommand="DataGrid_control_ItemCommand">
                                         <Columns>
                                           <asp:BoundColumn datafield="id" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                                          <asp:BoundColumn datafield="be_credentialed" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                                          <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/dialog-warning-2.png&quot; alt=&quot;Uncredentialed&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Profile"></asp:ButtonColumn>
                                           <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Profile"></asp:ButtonColumn>
                                           <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                                             <HeaderTemplate>

@@ -211,13 +211,13 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_phone_service_id;
         
         /// <summary>
-        /// CheckBox_be_immune_hepatits_b control.
+        /// CheckBox_be_immune_hepatitis_b control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_immune_hepatits_b;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_immune_hepatitis_b;
         
         /// <summary>
         /// CheckBox_be_immune_diptheria_tetanus control.
