@@ -6,6 +6,7 @@ using Class_biz_practitioners;
 using Class_biz_regions;
 using kix;
 using System;
+using System.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,6 +22,7 @@ namespace UserControl_practitioner
       public bool be_educational_reservist_or_higher;
       public bool be_loaded;
       public bool be_ok_to_config_practitioners;
+      public bool be_ok_to_config_practitioner_coned_details;
       public TClass_biz_counties biz_counties;
       public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_practitioner_levels biz_practitioner_levels;
@@ -162,6 +164,8 @@ namespace UserControl_practitioner
         p.biz_counties.BindDirectToListControl(DropDownList_residence_county);
         UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
         UserControl_drop_down_date_birth_date.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        Literal_application_name_2.Text = Literal_application_name.Text;
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.id.Length > 0)
           {
@@ -235,6 +239,7 @@ namespace UserControl_practitioner
         TextBox_city_state_zip.Text = city_state_zip;
         CheckBox_be_instructor.Checked = be_instructor;
         CheckBox_be_past.Checked = be_past;
+        UserControl_practitioner_coned_detail_control.SetTarget(practitioner_id:id);
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -282,6 +287,7 @@ namespace UserControl_practitioner
       if (id.Length > 0)
         {
         p.id = id;
+        UserControl_practitioner_coned_detail_control.SetTarget(practitioner_id:p.id);
         }
       }
 
@@ -309,6 +315,7 @@ namespace UserControl_practitioner
         || HttpContext.Current.User.IsInRole("education-specialist")
         || HttpContext.Current.User.IsInRole("education-reservist");
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
+        p.be_ok_to_config_practitioner_coned_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-coned-details");
         p.id = k.EMPTY;
         }
       }

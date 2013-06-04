@@ -381,6 +381,13 @@
     <Compile Include="usercontrol\app\UserControl_practitioner.ascx.designer.cs">
       <DependentUpon>UserControl_practitioner.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_practitioner_coned_detail.ascx.cs">
+      <DependentUpon>UserControl_practitioner_coned_detail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_practitioner_coned_detail.ascx.designer.cs">
+      <DependentUpon>UserControl_practitioner_coned_detail.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_practitioner_level.ascx.cs">
       <DependentUpon>UserControl_practitioner_level.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -605,6 +612,7 @@
     <Content Include="usercontrol\app\UserControl_outstanding_rosters.ascx" />
     <Content Include="usercontrol\app\UserControl_postcontent.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
+    <Content Include="usercontrol\app\UserControl_practitioner_coned_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner_level.ascx" />
     <Content Include="usercontrol\app\UserControl_precontent.ascx" />
     <Content Include="usercontrol\app\UserControl_ready_rosters.ascx" />
