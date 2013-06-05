@@ -20,6 +20,9 @@
                     <asp:BoundColumn datafield="be_strike_team_participant" headertext="Participant?" sortexpression="be_strike_team_participant%,name">
                       <ItemStyle horizontalalign="Center"></ItemStyle>
                     </asp:BoundColumn>
+                    <asp:BoundColumn DataField="num_members" HeaderText="#members" ReadOnly="True" SortExpression="num_members%,be_strike_team_participant desc,name">
+                      <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Right" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

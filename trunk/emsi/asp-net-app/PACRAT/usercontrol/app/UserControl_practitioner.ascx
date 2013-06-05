@@ -17,7 +17,7 @@
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
-      <table cellspacing="0" cellpadding="5" border="0">
+      <table cellspacing="0" cellpadding="1" border="0">
   <tr id="TableRow_id" runat="server" visible="false">
     <td bgcolor="gainsboro" valign="top"><font class="">id:</font></td>
     <td valign="top"><font class="">

@@ -21,6 +21,7 @@ namespace UserControl_region_detail
       public const int TCI_ID = 1;
       public const int TCI_NAME = 2;
       public const int TCI_PARTICIPANT = 3;
+      public const int TCI_NUM_MEMBERS = 4;
       }
 
     private struct p_type
