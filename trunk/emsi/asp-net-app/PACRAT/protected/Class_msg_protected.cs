@@ -34,5 +34,9 @@ namespace Class_msg_protected
       internal string region_code = k.EMPTY;
       internal object summary = null;
       }
+    public class strike_team_deployment_detail
+      {
+      internal string id = k.EMPTY;
+      }
     }
   }

@@ -51,6 +51,7 @@ namespace login
                     p.biz_users = new TClass_biz_users();
                     RequireConfirmation(LinkButton_forgot_password,"Are you sure you want a new password?");
                     TextBox_username.Focus();
+                    Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
                     break;
                 case nature_of_visit_type.VISIT_POSTBACK_STANDARD:
                     p = (p_type)(Session[InstanceId() + ".p"]);

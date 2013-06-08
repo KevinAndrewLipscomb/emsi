@@ -3,6 +3,7 @@ using Class_biz_user;
 using kix;
 using UserControl_about;
 using UserControl_config_binder;
+using UserControl_strike_team_deployment_catalog;
 using UserControl_practitioner;
 using UserControl_preparation_binder;
 
@@ -13,8 +14,9 @@ namespace UserControl_member_binder
     {
     public const int TSSI_MEMBER_PROFILE = 0;
     public const int TSSI_PREPARATION = 1;
-    public const int TSSI_CONFIG = 2;
-    public const int TSSI_ABOUT = 3;
+    public const int TSSI_COORDINATION = 2;
+    public const int TSSI_CONFIG = 3;
+    public const int TSSI_ABOUT = 4;
     }
 
   public partial class TWebUserControl_member_binder: ki_web_ui.usercontrol_class
@@ -53,6 +55,11 @@ namespace UserControl_member_binder
         {
         var c = ((TWebUserControl_preparation_binder)(LoadControl("~/usercontrol/app/UserControl_preparation_binder.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_preparation_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        }
+      else if (p.tab_index == UserControl_member_binder_Static.TSSI_COORDINATION)
+        {
+        var c = ((TWebUserControl_strike_team_deployment_catalog)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_catalog.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_catalog",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
       else if (p.tab_index == UserControl_member_binder_Static.TSSI_CONFIG)
         {
@@ -139,6 +146,7 @@ namespace UserControl_member_binder
           ||
             k.Has((string[])(Session["privilege_array"]),"config-strike-team-service")
           );
+        TabPanel_coordination.Enabled = k.Has((string[])(Session["privilege_array"]),"config-strike-team-deployments");
         TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
         p.be_loaded = true;
         }
@@ -167,6 +175,10 @@ namespace UserControl_member_binder
         else if (target.ToLower().Contains("/preparation/"))
           {
           p.tab_index = UserControl_member_binder_Static.TSSI_PREPARATION;
+          }
+        else if (target.ToLower().Contains("/coordination/"))
+          {
+          p.tab_index = UserControl_member_binder_Static.TSSI_COORDINATION;
           }
         else if (target.ToLower().Contains("/config/"))
           {

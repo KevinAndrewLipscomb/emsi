@@ -90,6 +90,7 @@
     <Content Include="protected\region_management.aspx" />
     <Content Include="protected\service_management.aspx" />
     <Content Include="protected\state_detail.aspx" />
+    <Content Include="protected\strike_team_deployment_detail.aspx" />
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
@@ -101,6 +102,7 @@
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
+    <Content Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +114,7 @@
     <Compile Include="component\biz\Class_biz_role_notification_map.cs" />
     <Compile Include="component\biz\Class_biz_role_privilege_map.cs" />
     <Compile Include="component\biz\Class_biz_scheduled_tasks.cs" />
+    <Compile Include="component\biz\Class_biz_strike_team_deployments.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_rosters.cs" />
     <Compile Include="component\biz\Class_biz_tiers.cs" />
     <Compile Include="component\biz\Class_biz_user_member_map.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="component\db\Class_db_role_member_map.cs" />
     <Compile Include="component\db\Class_db_role_notification_map.cs" />
     <Compile Include="component\db\Class_db_role_privilege_map.cs" />
+    <Compile Include="component\db\Class_db_strike_team_deployments.cs" />
     <Compile Include="component\db\Class_db_strike_team_rosters.cs" />
     <Compile Include="component\db\Class_db_tiers.cs" />
     <Compile Include="component\db\Class_db_user_member_map.cs" />
@@ -248,6 +252,13 @@
     </Compile>
     <Compile Include="protected\state_detail.aspx.designer.cs">
       <DependentUpon>state_detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\strike_team_deployment_detail.aspx.cs">
+      <DependentUpon>strike_team_deployment_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\strike_team_deployment_detail.aspx.designer.cs">
+      <DependentUpon>strike_team_deployment_detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="remind_username.aspx.cs">
       <DependentUpon>remind_username.aspx</DependentUpon>
@@ -424,6 +435,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_state_detail.ascx.designer.cs">
       <DependentUpon>UserControl_state_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx.cs">
+      <DependentUpon>UserControl_strike_team_deployment_catalog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx.designer.cs">
+      <DependentUpon>UserControl_strike_team_deployment_catalog.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_update_progress_blocker.ascx.cs">
       <DependentUpon>UserControl_update_progress_blocker.ascx</DependentUpon>
