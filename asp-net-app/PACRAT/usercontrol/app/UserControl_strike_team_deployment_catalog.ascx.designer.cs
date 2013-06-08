@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_member_binder {
+namespace UserControl_strike_team_deployment_catalog {
     
     
-    public partial class TWebUserControl_member_binder {
+    public partial class TWebUserControl_strike_team_deployment_catalog {
         
         /// <summary>
         /// UpdatePanel_control control.
@@ -22,66 +22,66 @@ namespace UserControl_member_binder {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
-        /// TabContainer_control control.
+        /// DropDownList_filter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainer_control;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_filter;
         
         /// <summary>
-        /// TabPanel_member_profile control.
+        /// Literal_num_strike_team_deployments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_member_profile;
+        protected global::System.Web.UI.WebControls.Literal Literal_num_strike_team_deployments;
         
         /// <summary>
-        /// TabPanel_preparation control.
+        /// RequiredFieldValidator_new_deployment_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_preparation;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_new_deployment_name;
         
         /// <summary>
-        /// TabPanel_coordination control.
+        /// TextBox_new_deployment_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_coordination;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_new_deployment_name;
         
         /// <summary>
-        /// TabPanel_config control.
+        /// Button_add control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_config;
+        protected global::System.Web.UI.WebControls.Button Button_add;
         
         /// <summary>
-        /// TabPanel_about control.
+        /// TableRow_none control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_about;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
-        /// PlaceHolder_content control.
+        /// DataGrid_control control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder_content;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
     }
 }

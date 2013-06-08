@@ -18,4 +18,5 @@ mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance%
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-18-A--add-be_strike_team_participant-field-to-service-table.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-18-B--create-strike_team_roster-table.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-05-25-A--create-table-practitioner_strike_team_detail.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-06-06-A--create-table-strike_team_deployment.sql
 pause
