@@ -54,6 +54,7 @@ namespace Class_db_strike_team_deployments
 
     internal void BindBaseDataList
       (
+      string member_id,
       string sort_order,
       bool be_sort_order_ascending,
       object target
@@ -65,7 +66,18 @@ namespace Class_db_strike_team_deployments
         "select strike_team_deployment.id as id"
         + " , DATE_FORMAT(creation_date,'%Y-%m-%d') as creation_date"
         + " , name"
-        + " from strike_team_deployment",
+        + " from strike_team_deployment"
+        + " where region_code in"
+        +   " ("
+        +   " select GROUP_CONCAT(code)"
+        +   " from region_code_name_map"
+        +     " join role_member_map on (role_member_map.region_code=region_code_name_map.code or (role_member_map.region_code is null and role_member_map.service_id is null))"
+        +     " join role_privilege_map on (role_privilege_map.role_id=role_member_map.role_id)"
+        +     " join privilege on (privilege.id=role_privilege_map.privilege_id)"
+        +   " where member_id = '" + member_id + "'"
+        +     " and privilege.name = 'config-strike-team-deployments'"
+        +     " and be_pacrat_subscriber"
+        +   " )",
         connection
         )
         .ExecuteReader();
