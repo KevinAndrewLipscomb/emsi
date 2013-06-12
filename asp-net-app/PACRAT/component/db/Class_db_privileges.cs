@@ -153,7 +153,7 @@ namespace Class_db_privileges
             +   " join privilege on (privilege.id=role_privilege_map.privilege_id)"
             + " where member.id = '" + member_id + "'"
             +   " and privilege.name = '" + privilege_name + "'"
-            +   " and region_code = '" + region_code + "'",
+            +   " and (region_code = '" + region_code + "' or region_code is null)",
             connection
             )
             .ExecuteScalar();
@@ -179,7 +179,7 @@ namespace Class_db_privileges
             +   " join privilege on (privilege.id=role_privilege_map.privilege_id)"
             + " where member.id = '" + member_id + "'"
             +   " and privilege.name = '" + privilege_name + "'"
-            +   " and service_id = '" + service_id + "'",
+            +   " and (service_id = '" + service_id + "' or service_id is null)",
             connection
             )
             .ExecuteScalar();

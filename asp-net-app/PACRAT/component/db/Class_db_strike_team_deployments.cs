@@ -156,6 +156,11 @@ namespace Class_db_strike_team_deployments
       return result;
       }
 
+    internal string RegionCodeOf(object summary)
+      {
+      return (summary as strike_team_deployment_summary).region_code;
+      }
+
     public void Set
       (
       string id,
