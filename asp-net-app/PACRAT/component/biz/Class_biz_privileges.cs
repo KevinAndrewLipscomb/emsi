@@ -35,6 +35,26 @@ namespace Class_biz_privileges
             BindDirectToListControl(target, unselected_literal, k.EMPTY);
         }
 
+        internal void BindRegionsInWhichMemberHasPrivilegeDirectToListControl
+          (
+          string member_id,
+          string privilege_name,
+          object target,
+          string unselected_literal,
+          string selected_value
+          )
+          {
+          db_privileges.BindRegionsInWhichMemberHasPrivilegeDirectToListControl(member_id,privilege_name,target,unselected_literal,selected_value);
+          }
+        internal void BindRegionsInWhichMemberHasPrivilegeDirectToListControl(string member_id,string privilege_name,object target,string unselected_literal)
+          {
+          BindRegionsInWhichMemberHasPrivilegeDirectToListControl(member_id,privilege_name,target,unselected_literal,selected_value:k.EMPTY);
+          }
+        internal void BindRegionsInWhichMemberHasPrivilegeDirectToListControl(string member_id,string privilege_name,object target)
+          {
+          BindRegionsInWhichMemberHasPrivilegeDirectToListControl(member_id,privilege_name,target,unselected_literal:"-- Region --");
+          }
+
         public bool Get(string name, out string soft_hyphenation_text)
         {
             bool result;

@@ -1,15 +1,14 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using Class_biz_strike_team_deployments;
+using Class_biz_members;
+using Class_biz_privileges;
 using Class_biz_role_member_map;
+using Class_biz_strike_team_deployments;
+using Class_biz_user;
 using kix;
 using System;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Collections;
-using UserControl_drop_down_date;
 
 namespace UserControl_strike_team_deployment
   {
@@ -18,8 +17,11 @@ namespace UserControl_strike_team_deployment
     private struct p_type
       {
       public bool be_loaded;
-      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
+      public TClass_biz_members biz_members;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
+      public TClass_biz_user biz_user;
       public bool be_ok_to_config_strike_team_deployments;
       public presentation_mode_enum presentation_mode;
       public object summary;
@@ -33,7 +35,7 @@ namespace UserControl_strike_team_deployment
       DropDownList_id.Visible = false;
       UserControl_drop_down_date_creation_date.Clear();
       TextBox_name.Text = k.EMPTY;
-      TextBox_region_code.Text = k.EMPTY;
+      DropDownList_region.ClearSelection();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -134,8 +136,17 @@ namespace UserControl_strike_team_deployment
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
+        //
+        p.biz_privileges.BindRegionsInWhichMemberHasPrivilegeDirectToListControl
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"config-strike-team-deployments",
+          target:DropDownList_region,
+          unselected_literal:k.EMPTY
+          );
+        //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        if (p.presentation_mode == presentation_mode_enum.ADD)
+        if (p.presentation_mode == presentation_mode_enum.NEW)
           {
           SetDataEntryMode();
           }
@@ -167,7 +178,7 @@ namespace UserControl_strike_team_deployment
         TextBox_id.Enabled = false;
         UserControl_drop_down_date_creation_date.selectedvalue = creation_date;
         TextBox_name.Text = name;
-        TextBox_region_code.Text = region_code;
+        DropDownList_region.SelectedValue = region_code;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -190,7 +201,7 @@ namespace UserControl_strike_team_deployment
       else
         {
         p.summary = null;
-        p.presentation_mode = presentation_mode_enum.ADD;
+        p.presentation_mode = presentation_mode_enum.NEW;
         }
       }
 
@@ -207,7 +218,14 @@ namespace UserControl_strike_team_deployment
       SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployments);
       Button_submit.Enabled = p.be_ok_to_config_strike_team_deployments;
       Button_delete.Enabled = false;
-      TextBox_id.Focus();
+      if (p.presentation_mode == presentation_mode_enum.NEW)
+        {
+        TextBox_name.Focus();
+        }
+      else
+        {
+        TextBox_id.Focus();
+        }
       }
 
     private void SetLookupMode()
@@ -230,15 +248,18 @@ namespace UserControl_strike_team_deployment
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment");
+        p.be_loaded = IsPostBack; // && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment");
         }
       else
         {
-        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
+        p.biz_members = new TClass_biz_members();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
+        p.biz_user = new TClass_biz_user();
         //
         p.be_loaded = false;
-        p.be_ok_to_config_strike_team_deployments = k.Has((string[])(Session["privilege_array"]), "config-strike_team_deployments");
+        p.be_ok_to_config_strike_team_deployments = k.Has((string[])(Session["privilege_array"]), "config-strike-team-deployments");
         p.presentation_mode = presentation_mode_enum.NONE;
         p.summary = null;
         }
@@ -273,12 +294,19 @@ namespace UserControl_strike_team_deployment
         p.biz_strike_team_deployments.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          UserControl_drop_down_date_creation_date.selectedvalue,
+          (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
           k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
-          k.Safe(TextBox_region_code.Text,k.safe_hint_type.NUM).Trim()
+          k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM).Trim()
           );
-        Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        SetLookupMode();
+        if (p.presentation_mode != presentation_mode_enum.NEW)
+          {
+          Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
+          SetLookupMode();
+          }
+        else
+          {
+          BackTrack();
+          }
         }
       else
         {
@@ -341,7 +369,7 @@ namespace UserControl_strike_team_deployment
       {
       UserControl_drop_down_date_creation_date.enabled = ablement;
       TextBox_name.Enabled = ablement;
-      TextBox_region_code.Enabled = ablement;
+      DropDownList_region.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

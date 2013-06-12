@@ -17,9 +17,9 @@ namespace UserControl_strike_team_deployment_catalog
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_2 = 2;
-      public const int TCI_3 = 3;
-      public const int TCI_4 = 4;
+      public const int TCI_CREATION_DATE = 2;
+      public const int TCI_NAME = 3;
+      public const int TCI_DELETE = 4;
       }
 
     private struct p_type
@@ -27,11 +27,11 @@ namespace UserControl_strike_team_deployment_catalog
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_ok_to_config_strike_team_deployments;
       public bool be_sort_order_ascending;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_msg_protected.strike_team_deployment_detail msg_protected_strike_team_deployment_detail;
       public uint num_strike_team_deployments;
-      public string region_code;
       public string sort_order;
       }
 
@@ -124,10 +124,12 @@ namespace UserControl_strike_team_deployment_catalog
           {
           DataGrid_control.AllowSorting = false;
           }
+        LinkButton_add.Visible = p.be_ok_to_config_strike_team_deployments;
         Bind();
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add);
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -147,8 +149,8 @@ namespace UserControl_strike_team_deployment_catalog
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
+        p.be_ok_to_config_strike_team_deployments = k.Has((Session["privilege_array"] as string[]),"config-strike-team-deployments");
         p.be_sort_order_ascending = true;
-        p.region_code = k.EMPTY;
         p.sort_order = "field_0%";
         }
       }
@@ -181,8 +183,11 @@ namespace UserControl_strike_team_deployment_catalog
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_strike_team_deployment_detail.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_ID].Text,k.safe_hint_type.NUM);
-        MessageDropCrumbAndTransferTo(p.msg_protected_strike_team_deployment_detail,"protected","strike_team_deployment_catalog_detail");
+        if (e.CommandName == "Select")
+          {
+          p.msg_protected_strike_team_deployment_detail.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          MessageDropCrumbAndTransferTo(p.msg_protected_strike_team_deployment_detail,"protected","strike_team_deployment_detail");
+          }
         }
       }
 
@@ -196,6 +201,9 @@ namespace UserControl_strike_team_deployment_catalog
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          //
+          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Controls[0]) as LinkButton);
+          link_button.Text = k.ExpandTildePath(link_button.Text);
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
@@ -231,7 +239,7 @@ namespace UserControl_strike_team_deployment_catalog
 
     private void Bind()
       {
-      p.biz_strike_team_deployments.BindBaseDataList(p.region_code,p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.biz_strike_team_deployments.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       p.be_datagrid_empty = (p.num_strike_team_deployments == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -239,31 +247,23 @@ namespace UserControl_strike_team_deployment_catalog
       p.num_strike_team_deployments = 0;
       }
 
-    protected void LinkButton_add_Click(object sender, EventArgs e)
+    protected void LinkButton_new_Click(object sender, EventArgs e)
       {
       MessageDropCrumbAndTransferTo
         (
-        msg:p.msg_protected_strike_team_deployment_detail,
+        msg:new TClass_msg_protected.strike_team_deployment_detail(),
         folder_name:"protected",
         aspx_name:"strike_team_deployment_detail"
         );
       }
 
-    protected void Button_add_Click(object sender, EventArgs e)
+    protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
       {
-      if (Page.IsValid)
+      if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-//        p.biz_strike_team_deployments.Set
-//          (
-//          id:k.EMPTY,
-//          creation_date:DateTime.Now,
-//          name:k.Safe(TextBox_new_deployment_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
-//          region_code:
-//          );
-        }
-      else
-        {
-        ValidationAlert(true);
+        p.biz_strike_team_deployments.Delete(k.Safe(e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        DataGrid_control.EditItemIndex = -1;
+        Bind();
         }
       }
 

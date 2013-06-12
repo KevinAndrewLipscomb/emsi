@@ -62,6 +62,8 @@ namespace strike_team_deployment_detail
           folder_name:"protected",
           aspx_name:"strike_team_deployment_detail"
           );
+        //
+        UserControl_strike_team_deployment_control.Set(id:p.incoming.id);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

@@ -102,6 +102,7 @@
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
+    <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -435,6 +436,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_state_detail.ascx.designer.cs">
       <DependentUpon>UserControl_state_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment.ascx.cs">
+      <DependentUpon>UserControl_strike_team_deployment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment.ascx.designer.cs">
+      <DependentUpon>UserControl_strike_team_deployment.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_catalog.ascx</DependentUpon>
