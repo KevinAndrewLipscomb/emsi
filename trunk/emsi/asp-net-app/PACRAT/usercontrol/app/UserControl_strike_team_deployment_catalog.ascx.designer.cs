@@ -40,31 +40,13 @@ namespace UserControl_strike_team_deployment_catalog {
         protected global::System.Web.UI.WebControls.Literal Literal_num_strike_team_deployments;
         
         /// <summary>
-        /// RequiredFieldValidator_new_deployment_name control.
+        /// LinkButton_add control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_new_deployment_name;
-        
-        /// <summary>
-        /// TextBox_new_deployment_name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_new_deployment_name;
-        
-        /// <summary>
-        /// Button_add control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_add;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_add;
         
         /// <summary>
         /// TableRow_none control.

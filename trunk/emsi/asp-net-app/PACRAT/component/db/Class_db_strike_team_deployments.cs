@@ -54,7 +54,6 @@ namespace Class_db_strike_team_deployments
 
     internal void BindBaseDataList
       (
-      string region_code,
       string sort_order,
       bool be_sort_order_ascending,
       object target
@@ -63,11 +62,10 @@ namespace Class_db_strike_team_deployments
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
-        "select strike_team_deployment.id as strike_team_deployment_id"
-        + " , creation_date"
+        "select strike_team_deployment.id as id"
+        + " , DATE_FORMAT(creation_date,'%Y-%m-%d') as creation_date"
         + " , name"
-        + " from strike_team_deployment"
-        + " where strike_team_deployment.region_code = '" + region_code + "'",
+        + " from strike_team_deployment",
         connection
         )
         .ExecuteReader();

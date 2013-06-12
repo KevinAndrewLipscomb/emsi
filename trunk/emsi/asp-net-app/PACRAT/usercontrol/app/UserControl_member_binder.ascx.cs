@@ -114,7 +114,7 @@ namespace UserControl_member_binder
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (IsPostBack && (Session[InstanceId() + ".p"] != null))
+      if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
         //
@@ -138,18 +138,19 @@ namespace UserControl_member_binder
       {
       if (!p.be_loaded)
         {
-        TabPanel_preparation.Enabled =
-          (
-            k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices")
-          ||
-            k.Has((string[])(Session["privilege_array"]),"config-strike-team-region")
-          ||
-            k.Has((string[])(Session["privilege_array"]),"config-strike-team-service")
-          );
-        TabPanel_coordination.Enabled = k.Has((string[])(Session["privilege_array"]),"config-strike-team-deployments");
-        TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
         p.be_loaded = true;
         }
+      TabPanel_preparation.Enabled =
+        (
+          k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices")
+        ||
+          k.Has((string[])(Session["privilege_array"]),"config-strike-team-region")
+        ||
+          k.Has((string[])(Session["privilege_array"]),"config-strike-team-service")
+        );
+      TabPanel_coordination.Enabled = k.Has((string[])(Session["privilege_array"]),"config-strike-team-deployments");
+      TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
+      TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
       }
 
     //--

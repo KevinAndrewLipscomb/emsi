@@ -11,7 +11,7 @@ namespace Class_biz_strike_team_deployments
     {
     NONE,
     FULL_FUNCTION,
-    ADD,
+    NEW,
     REVIEW_ONLY
     };
 
@@ -31,13 +31,12 @@ namespace Class_biz_strike_team_deployments
 
     public void BindBaseDataList
       (
-      string region_code,
       string sort_order,
       bool be_sort_order_ascending,
       object target
       )
       {
-      db_strike_team_deployments.BindBaseDataList(region_code,sort_order,be_sort_order_ascending,target);
+      db_strike_team_deployments.BindBaseDataList(sort_order,be_sort_order_ascending,target);
       }
 
     public void BindDirectToListControl(object target)

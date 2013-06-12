@@ -22,6 +22,15 @@ namespace strike_team_deployment_detail {
         protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
         
         /// <summary>
+        /// UserControl_strike_team_deployment_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_strike_team_deployment.TWebUserControl_strike_team_deployment UserControl_strike_team_deployment_control;
+        
+        /// <summary>
         /// UserControl_postcontent control.
         /// </summary>
         /// <remarks>

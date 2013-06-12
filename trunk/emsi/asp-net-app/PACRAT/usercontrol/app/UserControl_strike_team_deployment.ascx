@@ -73,21 +73,20 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_name" runat="server" errormessage="Please enter Name." font-bold="True" controltovalidate="TextBox_name">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server">
     <td><font class="">Region&nbsp;code:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_region_code" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <asp:DropDownList ID="DropDownList_region" runat="server"></asp:DropDownList>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_region_code" runat="server" errormessage="Please enter Region&nbsp;code." font-bold="True" controltovalidate="TextBox_region_code">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_region_code" runat="server" errormessage="Please enter a valid Region&nbsp;code." font-bold="True" controltovalidate="TextBox_region_code" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_region" runat="server" errormessage="Please select a Region." font-bold="True" controltovalidate="DropDownList_region">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
       </table>
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
+<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button>
 

@@ -184,31 +184,22 @@ namespace UserControl_strike_team_deployment {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_name;
         
         /// <summary>
-        /// TextBox_region_code control.
+        /// DropDownList_region control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_region_code;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_region;
         
         /// <summary>
-        /// RequiredFieldValidator_region_code control.
+        /// RequiredFieldValidator_region control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_region_code;
-        
-        /// <summary>
-        /// RegularExpressionValidator_region_code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_region_code;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_region;
         
         /// <summary>
         /// Button_submit control.
