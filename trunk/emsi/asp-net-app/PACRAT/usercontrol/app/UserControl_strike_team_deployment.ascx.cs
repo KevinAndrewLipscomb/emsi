@@ -196,7 +196,14 @@ namespace UserControl_strike_team_deployment
       if (id.Length > 0)
         {
         p.summary = p.biz_strike_team_deployments.Summary(id);
-        p.presentation_mode = presentation_mode_enum.REVIEW_ONLY;
+        p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForRegion
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"config-strike-team-deployments",
+          region_code:p.biz_strike_team_deployments.RegionCodeOf(p.summary)
+          );
+        p.presentation_mode = (p.be_ok_to_config_strike_team_deployments ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
+        PresentRecord(id);
         }
       else
         {
@@ -259,7 +266,7 @@ namespace UserControl_strike_team_deployment
         p.biz_user = new TClass_biz_user();
         //
         p.be_loaded = false;
-        p.be_ok_to_config_strike_team_deployments = k.Has((string[])(Session["privilege_array"]), "config-strike-team-deployments");
+        p.be_ok_to_config_strike_team_deployments = false;
         p.presentation_mode = presentation_mode_enum.NONE;
         p.summary = null;
         }
