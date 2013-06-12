@@ -1,7 +1,9 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using AjaxControlToolkit;
+using Class_biz_members;
 using Class_biz_strike_team_deployments;
+using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
@@ -29,7 +31,9 @@ namespace UserControl_strike_team_deployment_catalog
       public bool be_loaded;
       public bool be_ok_to_config_strike_team_deployments;
       public bool be_sort_order_ascending;
+      public TClass_biz_members biz_members;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
+      public TClass_biz_user biz_user;
       public TClass_msg_protected.strike_team_deployment_detail msg_protected_strike_team_deployment_detail;
       public uint num_strike_team_deployments;
       public string sort_order;
@@ -144,7 +148,9 @@ namespace UserControl_strike_team_deployment_catalog
         }
       else
         {
+        p.biz_members = new TClass_biz_members();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
+        p.biz_user = new TClass_biz_user();
         p.msg_protected_strike_team_deployment_detail = new TClass_msg_protected.strike_team_deployment_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
@@ -239,7 +245,7 @@ namespace UserControl_strike_team_deployment_catalog
 
     private void Bind()
       {
-      p.biz_strike_team_deployments.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.biz_strike_team_deployments.BindBaseDataList(p.biz_members.IdOfUserId(p.biz_user.IdNum()),p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       p.be_datagrid_empty = (p.num_strike_team_deployments == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
