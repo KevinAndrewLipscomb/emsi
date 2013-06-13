@@ -19,6 +19,10 @@ namespace UserControl_strike_team_deployment_members
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
       public const int TCI_PRACTITIONER_ID = 2;
+      public const int TCI_MOBILIZED = 3;
+      public const int TCI_LAST_NAME = 4;
+      public const int TCI_FIRST_NAME = 5;
+      public const int TCI_LEVEL = 6;
       }
 
     private struct p_type
@@ -28,6 +32,8 @@ namespace UserControl_strike_team_deployment_members
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
+      public string deployment_id;
+      public bool do_include_all_eligible_practitioners;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public uint num_practitioners;
       public string sort_order;
@@ -146,6 +152,8 @@ namespace UserControl_strike_team_deployment_members
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.deployment_id = k.EMPTY;
+        p.do_include_all_eligible_practitioners = false;
         p.sort_order = "field_practitioner%";
         }
       }
@@ -178,8 +186,29 @@ namespace UserControl_strike_team_deployment_members
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
-        MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_profile,"protected","practitioner_profile");
+        var practitioner_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+        if (e.CommandName == "Select")
+          {
+          p.msg_protected_practitioner_profile.id = practitioner_id;
+          MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_profile,"protected","practitioner_profile");
+          }
+        else if (e.CommandName == "ToggleMobilization")
+          {
+          var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          if (id.Length == 0)
+            {
+            p.biz_strike_team_deployment_members.Set
+              (
+              id:k.EMPTY,
+              deployment_id:p.deployment_id,
+              practitioner_id:practitioner_id
+              );
+            }
+          else
+            {
+            p.biz_strike_team_deployment_members.Delete(id);
+            }
+          }
         }
       }
 
@@ -193,6 +222,9 @@ namespace UserControl_strike_team_deployment_members
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          //
+          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
+          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? "YES" : "no");
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
@@ -228,12 +260,24 @@ namespace UserControl_strike_team_deployment_members
 
     private void Bind()
       {
-      p.biz_strike_team_deployment_members.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Visible = p.do_include_all_eligible_practitioners;
+      p.biz_strike_team_deployment_members.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_practitioners);
       p.be_datagrid_empty = (p.num_practitioners == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      Literal_num_members.Text = p.num_practitioners.ToString();
+      Literal_num_practitioners.Text = p.num_practitioners.ToString();
       p.num_practitioners = 0;
+      }
+
+    protected void CheckBox_do_include_all_eligible_practitioners_CheckedChanged(object sender, EventArgs e)
+      {
+      p.do_include_all_eligible_practitioners = CheckBox_do_include_all_eligible_practitioners.Checked;
+      Bind();
+      }
+
+    internal void Set(string deployment_id)
+      {
+      p.deployment_id = deployment_id;
       }
 
     } // end TWebUserControl_strike_team_deployment_members
