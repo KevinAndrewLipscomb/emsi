@@ -28,6 +28,7 @@ namespace UserControl_strike_team_deployment_binder
       {
       internal bool be_loaded;
       internal string content_id;
+      internal string deployment_id;
       internal uint tab_index;
       }
 
@@ -43,7 +44,7 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_members)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_members.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_members",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        //c.SetTarget(target);
+        c.Set(p.deployment_id);
         }
       else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_VEHICLES)
         {
@@ -123,9 +124,21 @@ namespace UserControl_strike_team_deployment_binder
         {
         p.be_loaded = false;
         //
+        p.deployment_id = k.EMPTY;
         p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL;
         FillPlaceHolder(true);
         }
+      }
+
+    //--
+    //
+    // INTERNAL
+    //
+    //--
+
+    internal void Set(string deployment_id)
+      {
+      p.deployment_id = deployment_id;
       }
 
     //--

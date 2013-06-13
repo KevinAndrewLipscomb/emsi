@@ -22,22 +22,22 @@ namespace UserControl_strike_team_deployment_members {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
-        /// DropDownList_filter control.
+        /// CheckBox_do_include_all_eligible_practitioners control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_filter;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_do_include_all_eligible_practitioners;
         
         /// <summary>
-        /// Literal_num_members control.
+        /// Literal_num_practitioners control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_num_members;
+        protected global::System.Web.UI.WebControls.Literal Literal_num_practitioners;
         
         /// <summary>
         /// TableRow_none control.

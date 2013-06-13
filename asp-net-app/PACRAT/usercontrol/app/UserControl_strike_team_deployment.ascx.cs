@@ -23,6 +23,7 @@ namespace UserControl_strike_team_deployment
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public bool be_ok_to_config_strike_team_deployments;
+      public string id;
       public presentation_mode_enum presentation_mode;
       public object summary;
       }
@@ -154,6 +155,7 @@ namespace UserControl_strike_team_deployment
           {
           Button_submit.Text = "Rename this deployment";
           Panel_active_deployment_detail.Visible = true;
+          UserControl_strike_team_deployment_binder_control.Set(p.id);
           }
         p.be_loaded = true;
         }
@@ -200,6 +202,7 @@ namespace UserControl_strike_team_deployment
       {
       if (id.Length > 0)
         {
+        p.id = id;
         p.summary = p.biz_strike_team_deployments.Summary(id);
         p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForRegion
           (
@@ -212,6 +215,7 @@ namespace UserControl_strike_team_deployment
         }
       else
         {
+        p.id = k.EMPTY;
         p.summary = null;
         p.presentation_mode = presentation_mode_enum.NEW;
         }
@@ -272,6 +276,7 @@ namespace UserControl_strike_team_deployment
         //
         p.be_loaded = false;
         p.be_ok_to_config_strike_team_deployments = false;
+        p.id = k.EMPTY;
         p.presentation_mode = presentation_mode_enum.NONE;
         p.summary = null;
         }

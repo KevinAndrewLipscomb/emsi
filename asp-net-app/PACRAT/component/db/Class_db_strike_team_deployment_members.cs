@@ -53,14 +53,26 @@ namespace Class_db_strike_team_deployment_members
       (
       string sort_order,
       bool be_sort_order_ascending,
-      object target
+      object target,
+      string deployment_id,
+      bool do_include_all_eligible_practitioners
       )
       {
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select strike_team_deployment_member.id as id"
-        + " from strike_team_deployment_member",
+        + " , practitioner.id as practitioner_id"
+        + " , last_name"
+        + " , first_name"
+        + " , short_description as level"
+        + " from strike_team_roster"
+        +   " join service on (service.id=strike_team_roster.service_id)"
+        +   " join county_region_map on (county_region_map.county_code=service.county_code)"
+        +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code)"
+        +   " join practitioner on (practitioner.id=strike_team_roster.practitioner_id)"
+        +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+        +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')",
         connection
         )
         .ExecuteReader();
