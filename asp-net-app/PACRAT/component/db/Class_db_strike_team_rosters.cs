@@ -1,13 +1,11 @@
 // Derived from KiAspdotnetFramework/component/db/Class~db~template~kicrudhelped~items.cs~template
 
 using Class_db;
+using Class_db_practitioner_strike_team_details;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_rosters
   {
@@ -73,37 +71,11 @@ namespace Class_db_strike_team_rosters
       string id
       )
       {
-      var condition_clause = k.EMPTY
-      +   " (act_1985_33_date is not null)"
-      + " and"
-      +   " (act_1985_34_date is not null)"
-      + " and"
-      +   " (act_1994_151_date is not null)"
-      + " and"
-      +   " (phone_number is not null)"
-      + " and"
-      +   " (phone_service_id is not null)"
-      + " and"
-      +   " be_immune_hepatitis_b"
-      + " and"
-      +   " be_immune_diptheria_tetanus"
-      + " and"
-      +   " (emergency_contact_1_name is not null)"
-      + " and"
-      +   " (emergency_contact_1_phone_number is not null)"
-      + " and"
-      +   " (drivers_license_expiration <= CURDATE())"
-      + " and"
-      +   " nims_is_100_date is not null"
-      + " and"
-      +   " nims_is_200_date is not null"
-      + " and"
-      +   " nims_is_700_date is not null";
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select strike_team_roster.id as id"
-        + " , IF(" + condition_clause + ",'Y','N') as be_credentialed"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ",'Y','N') as be_credentialed"
         + " , practitioner.id as practitioner_id"
         + " , last_name"
         + " , first_name"

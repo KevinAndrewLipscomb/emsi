@@ -11,6 +11,38 @@ using UserControl_drop_down_date;
 
 namespace Class_db_practitioner_strike_team_details
   {
+  public static class Class_db_practitioner_strike_team_details_Static
+    {
+    public const string BE_CREDENTIALED_EXPRESSION = k.EMPTY
+    + " ("
+    +   " (act_1985_33_date is not null)"
+    + " and"
+    +   " (act_1985_34_date is not null)"
+    + " and"
+    +   " (act_1994_151_date is not null)"
+    + " and"
+    +   " (phone_number is not null)"
+    + " and"
+    +   " (phone_service_id is not null)"
+    + " and"
+    +   " be_immune_hepatitis_b"
+    + " and"
+    +   " be_immune_diptheria_tetanus"
+    + " and"
+    +   " (emergency_contact_1_name is not null)"
+    + " and"
+    +   " (emergency_contact_1_phone_number is not null)"
+    + " and"
+    +   " (drivers_license_expiration <= CURDATE())"
+    + " and"
+    +   " nims_is_100_date is not null"
+    + " and"
+    +   " nims_is_200_date is not null"
+    + " and"
+    +   " nims_is_700_date is not null"
+    + " )";
+    }
+
   public class TClass_db_practitioner_strike_team_details: TClass_db
     {
     private TClass_db_trail db_trail = null;
