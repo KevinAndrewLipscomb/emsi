@@ -77,20 +77,7 @@ namespace UserControl_preparation_binder
       {
       if (!p.be_loaded)
         {
-        if (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"))
-          {
-          p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
-          }
-        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-region"))
-          {
-          p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
-          }
-        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-service"))
-          {
-          p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
-          }
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
-        FillPlaceHolder(true);
         p.be_loaded = true;
         }
       }
@@ -136,7 +123,19 @@ namespace UserControl_preparation_binder
         {
         p.be_loaded = false;
         //
-        p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
+        if (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"))
+          {
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
+          }
+        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-region"))
+          {
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
+          }
+        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-service"))
+          {
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
+          }
+        FillPlaceHolder(true);
         }
       }
 
