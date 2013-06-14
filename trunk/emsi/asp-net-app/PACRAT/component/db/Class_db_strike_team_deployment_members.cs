@@ -1,6 +1,7 @@
 // Derived from KiAspdotnetFramework/component/db/Class~db~template~kicrudhelped~items.cs~template
 
 using Class_db;
+using Class_db_practitioner_strike_team_details;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
@@ -72,7 +73,10 @@ namespace Class_db_strike_team_deployment_members
         +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code)"
         +   " join practitioner on (practitioner.id=strike_team_roster.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
-        +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')",
+        +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
+        +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
+        + (do_include_all_eligible_practitioners ? " where " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
+        ,
         connection
         )
         .ExecuteReader();
