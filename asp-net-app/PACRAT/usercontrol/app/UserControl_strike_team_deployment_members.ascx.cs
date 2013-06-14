@@ -208,6 +208,7 @@ namespace UserControl_strike_team_deployment_members
             {
             p.biz_strike_team_deployment_members.Delete(id);
             }
+          Bind();
           }
         }
       }
