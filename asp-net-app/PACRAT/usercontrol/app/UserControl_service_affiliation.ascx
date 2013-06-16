@@ -12,7 +12,8 @@
               <td>
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
-                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
+                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;Personnel" commandname="ManagePersonnel"></asp:ButtonColumn>
+                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;Vehicles" commandname="ManageVehicles"></asp:ButtonColumn>
                     <asp:BoundColumn datafield="service_id" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service_affiliate_num" headertext="#" sortexpression="service_affiliate_num%"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service_name" headertext="Name" sortexpression="service_name%">

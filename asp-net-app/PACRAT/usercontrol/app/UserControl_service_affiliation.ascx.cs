@@ -32,6 +32,7 @@ namespace UserControl_service_affiliation
       public TClass_biz_services biz_services;
       public TClass_biz_user biz_user;
       public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
+      public TClass_msg_protected.vehicle_management msg_protected_vehicle_management;
       public uint num_services;
       public string sort_order;
       }
@@ -147,6 +148,7 @@ namespace UserControl_service_affiliation
         p.biz_services = new TClass_biz_services();
         p.biz_user = new TClass_biz_user();
         p.msg_protected_practitioner_management = new TClass_msg_protected.practitioner_management();
+        p.msg_protected_vehicle_management = new TClass_msg_protected.vehicle_management();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -183,8 +185,17 @@ namespace UserControl_service_affiliation
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_practitioner_management.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
-        MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","practitioner_management");
+        var service_summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        if (e.CommandName == "ManagePersonnel")
+          {
+          p.msg_protected_practitioner_management.summary = service_summary;
+          MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","practitioner_management");
+          }
+        else if (e.CommandName == "ManageVehicles")
+          {
+          p.msg_protected_vehicle_management.summary = service_summary;
+          MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","vehicle_management");
+          }
         }
       }
 
