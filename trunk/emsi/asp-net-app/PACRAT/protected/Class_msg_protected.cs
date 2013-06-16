@@ -41,5 +41,9 @@ namespace Class_msg_protected
       {
       internal string id = k.EMPTY;
       }
+    public class vehicle_management
+      {
+      internal object summary = null;
+      }
     }
   }
