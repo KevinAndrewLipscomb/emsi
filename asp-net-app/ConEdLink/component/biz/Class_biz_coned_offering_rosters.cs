@@ -108,7 +108,7 @@ namespace Class_biz_coned_offering_rosters
       ref k.decimal_nonnegative other_ceus_for_this_practitioner
       )
       {
-      if (level_short_description == "FR")
+      if (level_short_description == "EMR")
         {
         med_trauma_ceus_for_this_practitioner.val = fr_med_trauma_ceus;
         other_ceus_for_this_practitioner.val = fr_other_ceus;
