@@ -24,10 +24,6 @@ namespace Class_msg_protected
       {
       internal object summary = null;
       }
-    public class service_detail
-      {
-      internal object summary = null;
-      }
     public class service_management
       {
       internal string region_code = k.EMPTY;
@@ -37,9 +33,10 @@ namespace Class_msg_protected
       {
       internal string id = k.EMPTY;
       }
-    public class strike_team_deployment_vehicle_detail
+    public class vehicle_detail
       {
       internal string id = k.EMPTY;
+      internal string service_id = k.EMPTY;
       }
     public class vehicle_management
       {

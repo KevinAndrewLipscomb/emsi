@@ -34,6 +34,7 @@ namespace service_management
     public TClass_biz_user biz_user;
     public TClass_msg_protected.service_management incoming;
     public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
+    public TClass_msg_protected.vehicle_management msg_protected_vehicle_management;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
     public string service_strike_team_manager_role_id;
@@ -432,6 +433,7 @@ namespace service_management
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.service_management>(folder_name:"protected",aspx_name:"service_management");
         p.msg_protected_practitioner_management = new TClass_msg_protected.practitioner_management();
+        p.msg_protected_vehicle_management = new TClass_msg_protected.vehicle_management();
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
         p.service_strike_team_manager_role_id = p.biz_roles.IdOfName("Service Strike Team Manager");
@@ -471,7 +473,8 @@ namespace service_management
         InitForNewSearch();
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
-        LinkButton_drill_down.Text = k.ExpandTildePath(LinkButton_drill_down.Text);
+        LinkButton_drill_down_to_members.Text = k.ExpandTildePath(LinkButton_drill_down_to_members.Text);
+        LinkButton_drill_down_to_vehicles.Text = k.ExpandTildePath(LinkButton_drill_down_to_vehicles.Text);
         //
         //var hash_table = new Hashtable();
         //hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
@@ -482,7 +485,8 @@ namespace service_management
         Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down_to_members);
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down_to_vehicles);
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)
@@ -522,7 +526,7 @@ namespace service_management
       p.biz_services.SetStrikeTeamParticipation(p.service_id,(sender as CheckBox).Checked);
       }
 
-    protected void LinkButton_drill_down_Click(object sender, EventArgs e)
+    protected void LinkButton_drill_down_to_members_Click(object sender, EventArgs e)
       {
       p.msg_protected_practitioner_management.summary = p.biz_services.Summary(p.service_id);
       MessageDropCrumbAndTransferTo
@@ -530,6 +534,17 @@ namespace service_management
         msg:p.msg_protected_practitioner_management,
         folder_name:"protected",
         aspx_name:"practitioner_management"
+        );
+      }
+
+    protected void LinkButton_drill_down_to_vehicles_Click(object sender, EventArgs e)
+      {
+      p.msg_protected_vehicle_management.summary = p.biz_services.Summary(p.service_id);
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_vehicle_management,
+        folder_name:"protected",
+        aspx_name:"vehicle_management"
         );
       }
 

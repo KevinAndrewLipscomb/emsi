@@ -28,7 +28,7 @@ namespace UserControl_strike_team_deployment_vehicles
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
-      public TClass_msg_protected.strike_team_deployment_vehicle_detail msg_protected_strike_team_deployment_vehicle_detail;
+      public TClass_msg_protected.vehicle_detail msg_protected_vehicle_detail;
       public uint num_strike_team_deployment_vehicles;
       public string sort_order;
       }
@@ -141,7 +141,7 @@ namespace UserControl_strike_team_deployment_vehicles
       else
         {
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
-        p.msg_protected_strike_team_deployment_vehicle_detail = new TClass_msg_protected.strike_team_deployment_vehicle_detail();
+        p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -178,8 +178,8 @@ namespace UserControl_strike_team_deployment_vehicles
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_strike_team_deployment_vehicle_detail.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_VEHICLE_ID].Text,k.safe_hint_type.NUM);
-        MessageDropCrumbAndTransferTo(p.msg_protected_strike_team_deployment_vehicle_detail,"protected","vehicle_detail");
+        p.msg_protected_vehicle_detail.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_VEHICLE_ID].Text,k.safe_hint_type.NUM);
+        MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_detail");
         }
       }
 

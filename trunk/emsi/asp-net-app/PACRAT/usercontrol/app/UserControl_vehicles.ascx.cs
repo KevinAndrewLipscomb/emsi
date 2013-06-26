@@ -1,25 +1,30 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using Class_biz_members;
-using Class_biz_services;
+using Class_biz_privileges;
 using Class_biz_user;
+using Class_biz_vehicles;
 using Class_msg_protected;
 using kix;
-using System.Collections;
+using System;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Collections;
+using AjaxControlToolkit;
 
-namespace UserControl_service_affiliation
+namespace UserControl_vehicles
   {
-  public partial class TWebUserControl_service_affiliation: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_vehicles: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_service_affiliation_Static
+    public class UserControl_vehicles_Static
       {
-      public const int TCI_PERSONNEL = 0;
-      public const int TCI_VEHICLES = 1;
-      public const int TCI_ID = 2;
-      public const int TCI_AFFILIATE_NUM = 3;
-      public const int TCI_NAME = 4;
+      public const int TCI_SELECT = 0;
+      public const int TCI_ID = 1;
+      public const int TCI_2 = 2;
+      public const int TCI_3 = 3;
+      public const int TCI_4 = 4;
       }
 
     private struct p_type
@@ -29,11 +34,12 @@ namespace UserControl_service_affiliation
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
-      public TClass_biz_services biz_services;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_user biz_user;
-      public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
-      public TClass_msg_protected.vehicle_management msg_protected_vehicle_management;
-      public uint num_services;
+      public TClass_biz_vehicles biz_vehicles;
+      public TClass_msg_protected.vehicle_detail msg_protected_vehicle_detail;
+      public uint num_vehicles;
+      public string service_id;
       public string sort_order;
       }
 
@@ -122,6 +128,12 @@ namespace UserControl_service_affiliation
       {
       if (!p.be_loaded)
         {
+        LinkButton_new.Visible = p.biz_privileges.HasForService
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"add-vehicles",
+          service_id:p.service_id
+          );
         if (!p.be_interactive)
           {
           DataGrid_control.AllowSorting = false;
@@ -129,6 +141,7 @@ namespace UserControl_service_affiliation
         Bind();
         p.be_loaded = true;
         }
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
       InjectPersistentClientSideScript();
       }
 
@@ -140,20 +153,22 @@ namespace UserControl_service_affiliation
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_UserControl_preparation_binder_PlaceHolder_content"] as string) == "UserControl_service_affiliation");
+#warning Revise the ClientID path to this control appropriately.
+        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_vehicles");
         }
       else
         {
         p.biz_members = new TClass_biz_members();
-        p.biz_services = new TClass_biz_services();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_user = new TClass_biz_user();
-        p.msg_protected_practitioner_management = new TClass_msg_protected.practitioner_management();
-        p.msg_protected_vehicle_management = new TClass_msg_protected.vehicle_management();
+        p.biz_vehicles = new TClass_biz_vehicles();
+        p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.sort_order = "service_name%";
+        p.service_id = k.EMPTY;
+        p.sort_order = "name%";
         }
       }
 
@@ -166,16 +181,16 @@ namespace UserControl_service_affiliation
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
       this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
       this.DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.DataGrid_control_ItemCommand);
-      this.PreRender += this.TWebUserControl_service_affiliation_PreRender;
+      this.PreRender += this.TWebUserControl_vehicles_PreRender;
       //this.Load += this.Page_Load;
       }
 
-    private void TWebUserControl_service_affiliation_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_vehicles_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_service_affiliation Fresh()
+    public TWebUserControl_vehicles Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -185,17 +200,8 @@ namespace UserControl_service_affiliation
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var service_summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
-        if (e.CommandName == "ManagePersonnel")
-          {
-          p.msg_protected_practitioner_management.summary = service_summary;
-          MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","practitioner_management");
-          }
-        else if (e.CommandName == "ManageVehicles")
-          {
-          p.msg_protected_vehicle_management.summary = service_summary;
-          MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","vehicle_management");
-          }
+        p.msg_protected_vehicle_detail.id = k.Safe(e.Item.Cells[UserControl_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+        MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_detail");
         }
       }
 
@@ -206,11 +212,7 @@ namespace UserControl_service_affiliation
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_service_affiliation_Static.TCI_PERSONNEL].Controls[0]) as LinkButton);
-          link_button.Text = k.ExpandTildePath(link_button.Text);
-          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
-          //
-          link_button = ((e.Item.Cells[UserControl_service_affiliation_Static.TCI_VEHICLES].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[UserControl_vehicles_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
@@ -220,15 +222,14 @@ namespace UserControl_service_affiliation
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[UserControl_vehicles_Static.TCI_ID].EnableViewState = true;
           //
-          p.num_services++;
+          p.num_vehicles++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_service_affiliation_Static.TCI_PERSONNEL].Visible = false;
-        e.Item.Cells[UserControl_service_affiliation_Static.TCI_VEHICLES].Visible = false;
+        e.Item.Cells[UserControl_vehicles_Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -249,20 +250,31 @@ namespace UserControl_service_affiliation
 
     private void Bind()
       {
-      p.biz_services.BindStrikeTeamAffiliationBaseDataList
-        (
-        member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-        sort_order:p.sort_order,
-        be_sort_order_ascending:p.be_sort_order_ascending,
-        target:DataGrid_control
-        );
-      p.be_datagrid_empty = (p.num_services == 0);
+      p.biz_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.be_datagrid_empty = (p.num_vehicles == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
-      TableRow_data.Visible = !p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      p.num_services = 0;
+      Literal_num_vehicles.Text = p.num_vehicles.ToString();
+      p.num_vehicles = 0;
       }
 
-    } // end TWebUserControl_service_affiliation
+    protected void LinkButton_new_Click(object sender, EventArgs e)
+    {
+    p.msg_protected_vehicle_detail.id = k.EMPTY;
+    p.msg_protected_vehicle_detail.service_id = p.service_id;
+    MessageDropCrumbAndTransferTo
+      (
+      msg:p.msg_protected_vehicle_detail,
+      folder_name:"protected",
+      aspx_name:"vehicle_detail"
+      );
+    }
+
+    internal void Set(string service_id)
+      {
+      p.service_id = service_id;
+      }
+
+    } // end TWebUserControl_vehicles
 
   }
