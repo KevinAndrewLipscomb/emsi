@@ -1,7 +1,6 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_strike_team_deployment.ascx.cs" Inherits="UserControl_strike_team_deployment.TWebUserControl_strike_team_deployment"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_vehicle.ascx.cs" Inherits="UserControl_vehicle.TWebUserControl_vehicle"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
-<%@ Register src="UserControl_strike_team_deployment_binder.ascx" tagname="UserControl_strike_team_deployment_binder" tagprefix="uc2" %>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
@@ -53,44 +52,74 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_id" runat="server" errormessage="Please enter id." font-bold="True" controltovalidate="TextBox_id">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
-  <tr runat="server" visible="false">
-    <td><font class="">Creation&nbsp;date:</font></td>
+  <tr runat="server" id="TableRow_service" visible="false">
+    <td><font class="">Service&nbsp;id:</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_creation_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <ASP:TextBox id="TextBox_service_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-    </td>
-  </tr>
-  <tr runat="server">
-    <td><font class="">Region:</font></td>
-    <td>
-      <font class="">
-        <asp:DropDownList ID="DropDownList_region" runat="server"></asp:DropDownList>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_region" runat="server" errormessage="Please select a Region." font-bold="True" controltovalidate="DropDownList_region">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_service_id" runat="server" errormessage="Please enter Service&nbsp;id." font-bold="True" controltovalidate="TextBox_service_id">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_service_id" runat="server" errormessage="Please enter a valid Service&nbsp;id." font-bold="True" controltovalidate="TextBox_service_id" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
   <tr>
     <td><font class="">Name:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_name" runat="server" columns="63" maxlength="63" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_name" runat="server" errormessage="Please enter Name." font-bold="True" controltovalidate="TextBox_name">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
+  <tr>
+    <td><font class="">Kind:</font></td>
+    <td>
+      <font class="">
+        <ASP:DropDownList id="DropDownList_kind" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_kind_id" runat="server" errormessage="Please selected a vehicle Kind." font-bold="True" controltovalidate="DropDownList_kind">!ERR!</ASP:RequiredFieldValidator>
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Fuel:</font></td>
+    <td>
+      <font class="">
+        <ASP:DropDownList id="DropDownList_fuel" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_fuel_id" runat="server" errormessage="Please select a Fuel." font-bold="True" controltovalidate="DropDownList_fuel">!ERR!</ASP:RequiredFieldValidator>
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">License&nbsp;plate:</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_license_plate" runat="server" columns="15" maxlength="15" cssclass="" enabled="False"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Be&nbsp;four&nbsp;or&nbsp;all&nbsp;wheel&nbsp;drive:</font></td>
+    <td>
+      <font class="">
+        <ASP:CheckBox id="CheckBox_be_four_or_all_wheel_drive" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
       </table>
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button>
-<asp:Panel ID="Panel_active_deployment_detail" runat="server" Visible="false">
-  <br />
-  <uc2:UserControl_strike_team_deployment_binder ID="UserControl_strike_team_deployment_binder_control" runat="server" />
-</asp:Panel>
+<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
+

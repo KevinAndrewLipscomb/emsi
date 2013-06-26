@@ -7,306 +7,279 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace service_management {
+namespace UserControl_vehicle {
     
     
-    public partial class TWebForm_service_management {
+    public partial class TWebUserControl_vehicle {
         
         /// <summary>
-        /// Body_control control.
+        /// TableRow_record_navigation_controls control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Body_control;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_record_navigation_controls;
         
         /// <summary>
-        /// UserControl_precontent control.
+        /// TextBox_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_id;
         
         /// <summary>
-        /// UpdatePanel_overall control.
+        /// Button_lookup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_overall;
+        protected global::System.Web.UI.WebControls.Button Button_lookup;
         
         /// <summary>
-        /// CheckBox_be_strike_team_participant control.
+        /// Label_lookup_arrow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_strike_team_participant;
+        protected global::System.Web.UI.WebControls.Label Label_lookup_arrow;
         
         /// <summary>
-        /// Panel_one_at_a_time control.
+        /// Label_lookup_hint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_one_at_a_time;
+        protected global::System.Web.UI.WebControls.Label Label_lookup_hint;
         
         /// <summary>
-        /// UpdatePanel_search_upper control.
+        /// LinkButton_reset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_search_upper;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_reset;
         
         /// <summary>
-        /// HiddenField_practitioner_saved control.
+        /// LinkButton_new_record control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField_practitioner_saved;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_new_record;
         
         /// <summary>
-        /// TextBox_practitioner control.
+        /// Panel_match_numbers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_practitioner;
+        protected global::System.Web.UI.WebControls.Panel Panel_match_numbers;
         
         /// <summary>
-        /// Button_add control.
+        /// Literal_match_index control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_add;
+        protected global::System.Web.UI.WebControls.Literal Literal_match_index;
         
         /// <summary>
-        /// Literal_click_to_add control.
+        /// Literal_num_matches control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_click_to_add;
+        protected global::System.Web.UI.WebControls.Literal Literal_num_matches;
         
         /// <summary>
-        /// UpdatePanel_search_lower control.
+        /// LinkButton_go_to_match_first control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_search_lower;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_go_to_match_first;
         
         /// <summary>
-        /// ListBox_practitioner control.
+        /// LinkButton_go_to_match_prior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_go_to_match_prior;
         
         /// <summary>
-        /// Literal_service_name control.
+        /// LinkButton_go_to_match_next control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_service_name;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_go_to_match_next;
         
         /// <summary>
-        /// Literal_affiliate_num control.
+        /// LinkButton_go_to_match_last control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_affiliate_num;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_go_to_match_last;
         
         /// <summary>
-        /// HyperLink_print_roster control.
+        /// DropDownList_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_id;
         
         /// <summary>
-        /// UpdatePanel_assignees control.
+        /// RequiredFieldValidator_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_assignees;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_id;
         
         /// <summary>
-        /// TableRow_none control.
+        /// TableRow_service control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_service;
         
         /// <summary>
-        /// TableRow_assignees control.
+        /// TextBox_service_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_assignees;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_service_id;
         
         /// <summary>
-        /// DataGrid_control control.
+        /// RequiredFieldValidator_service_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_service_id;
         
         /// <summary>
-        /// Label_noncurrent_practitioner_on_roster control.
+        /// RegularExpressionValidator_service_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_service_id;
         
         /// <summary>
-        /// LinkButton_drill_down_to_members control.
+        /// TextBox_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down_to_members;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_name;
         
         /// <summary>
-        /// LinkButton_drill_down_to_vehicles control.
+        /// RequiredFieldValidator_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down_to_vehicles;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_name;
         
         /// <summary>
-        /// CheckBox_item_sample control.
+        /// DropDownList_kind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_item_sample;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_kind;
         
         /// <summary>
-        /// HyperLink_quickmessage control.
+        /// RequiredFieldValidator_kind_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_quickmessage;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind_id;
         
         /// <summary>
-        /// CheckBox_header_sample control.
+        /// DropDownList_fuel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_header_sample;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_fuel;
         
         /// <summary>
-        /// Literal_author_email_address control.
+        /// RequiredFieldValidator_fuel_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_author_email_address;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_fuel_id;
         
         /// <summary>
-        /// TextBox_quick_message_subject control.
+        /// TextBox_license_plate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_quick_message_subject;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_license_plate;
         
         /// <summary>
-        /// TextBox_quick_message_body control.
+        /// CheckBox_be_four_or_all_wheel_drive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_quick_message_body;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_four_or_all_wheel_drive;
         
         /// <summary>
-        /// RequiredFieldValidator_quick_message_body control.
+        /// Button_submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_quick_message_body;
+        protected global::System.Web.UI.WebControls.Button Button_submit;
         
         /// <summary>
-        /// UpdatePanel_send_button control.
+        /// Button_delete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_send_button;
-        
-        /// <summary>
-        /// Button_send control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_send;
-        
-        /// <summary>
-        /// UserControl_postcontent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_postcontent.TWebUserControl_postcontent UserControl_postcontent;
-        
-        /// <summary>
-        /// UserControl_update_progress_blocker_control control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_update_progress_blocker.TWebUserControl_update_progress_blocker UserControl_update_progress_blocker_control;
+        protected global::System.Web.UI.WebControls.Button Button_delete;
     }
 }
