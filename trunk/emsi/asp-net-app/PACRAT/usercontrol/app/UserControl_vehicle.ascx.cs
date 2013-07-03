@@ -158,7 +158,13 @@ namespace UserControl_vehicle
           {
           SetDataEntryMode();
           TextBox_service_id.Text = p.service_id;
+          DropDownList_kind.Items.Insert(0,(new ListItem("-- kind --",k.EMPTY)));
+          DropDownList_fuel.Items.Insert(0,(new ListItem("-- fuel --",k.EMPTY)));
           TextBox_name.Focus();
+          }
+        else
+          {
+          PresentRecord(p.id);
           }
         p.be_loaded = true;
         }
@@ -228,7 +234,6 @@ namespace UserControl_vehicle
           service_id:p.biz_vehicles.ServiceIdOf(p.summary)
           );
         p.presentation_mode = (p.be_ok_to_config_vehicles ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
-        PresentRecord(id);
         }
       else
         {
@@ -331,7 +336,14 @@ namespace UserControl_vehicle
           CheckBox_be_four_or_all_wheel_drive.Checked
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        SetLookupMode();
+        if (p.presentation_mode == presentation_mode_enum.NEW)
+          {
+          BackTrack();
+          }
+        else
+          {
+          SetLookupMode();
+          }
         }
       else
         {

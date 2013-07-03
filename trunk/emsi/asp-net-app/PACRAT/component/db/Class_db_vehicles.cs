@@ -54,14 +54,24 @@ namespace Class_db_vehicles
       (
       string sort_order,
       bool be_sort_order_ascending,
-      object target
+      object target,
+      string service_filter
       )
       {
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select vehicle.id as id"
-        + " from vehicle",
+        + " , name"
+        + " , vehicle_kind.description as kind"
+        + " , fuel.description as fuel"
+        + " , license_plate"
+        + " , IF(be_four_or_all_wheel_drive,'YES','no') as be_four_or_all_wheel_drive"
+        + " from vehicle"
+        +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +   " join fuel on (fuel.id=vehicle.fuel_id)"
+        + (service_filter.Length > 0 ? " where service_id = '" + service_filter + "'" : k.EMPTY)
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
         .ExecuteReader();

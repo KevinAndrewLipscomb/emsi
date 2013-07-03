@@ -34,10 +34,11 @@ namespace Class_biz_vehicles
       (
       string sort_order,
       bool be_sort_order_ascending,
-      object target
+      object target,
+      string service_filter
       )
       {
-      db_vehicles.BindBaseDataList(sort_order,be_sort_order_ascending,target);
+      db_vehicles.BindBaseDataList(sort_order,be_sort_order_ascending,target,service_filter);
       }
 
     public void BindDirectToListControl(object target)
@@ -93,10 +94,10 @@ namespace Class_biz_vehicles
         (
         id,
         service_id,
-        name,
+        name.ToUpper(),
         kind_id,
         fuel_id,
-        license_plate,
+        license_plate.ToUpper(),
         be_four_or_all_wheel_drive
         );
       }
