@@ -217,6 +217,7 @@ namespace UserControl_strike_team_deployment
         {
         p.id = k.EMPTY;
         p.summary = null;
+        p.be_ok_to_config_strike_team_deployments = true;
         p.presentation_mode = presentation_mode_enum.NEW;
         }
       }

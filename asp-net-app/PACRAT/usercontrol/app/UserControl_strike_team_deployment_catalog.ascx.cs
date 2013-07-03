@@ -157,7 +157,7 @@ namespace UserControl_strike_team_deployment_catalog
         p.be_loaded = false;
         p.be_ok_to_config_strike_team_deployments = k.Has((Session["privilege_array"] as string[]),"config-strike-team-deployments");
         p.be_sort_order_ascending = true;
-        p.sort_order = "field_0%";
+        p.sort_order = "creation_date desc";
         }
       }
 
