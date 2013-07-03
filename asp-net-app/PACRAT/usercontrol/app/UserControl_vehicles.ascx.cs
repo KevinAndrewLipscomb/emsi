@@ -250,7 +250,7 @@ namespace UserControl_vehicles
 
     private void Bind()
       {
-      p.biz_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.biz_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.service_id);
       p.be_datagrid_empty = (p.num_vehicles == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
