@@ -76,6 +76,7 @@ namespace Class_db_strike_team_deployment_members
         +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
         + (do_include_all_eligible_practitioners ? " where " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
         ,
         connection
         )

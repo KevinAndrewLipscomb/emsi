@@ -53,14 +53,30 @@ namespace Class_db_strike_team_deployment_vehicles
       (
       string sort_order,
       bool be_sort_order_ascending,
-      object target
+      object target,
+      string deployment_id,
+      bool do_include_all_eligible_vehicles
       )
       {
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select strike_team_deployment_vehicle.id as id"
-        + " from strike_team_deployment_vehicle",
+        + " , vehicle.id as vehicle_id"
+        + " , service.name as service"
+        + " , vehicle.name as name"
+        + " , vehicle_kind.description as kind"
+        + " , fuel.description as fuel"
+        + " , be_four_or_all_wheel_drive"
+        + " from vehicle"
+        +   " join service on (service.id=vehicle.service_id)"
+        +   " join county_region_map on (county_region_map.county_code=service.county_code)"
+        +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code)"
+        +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +   " join fuel on (fuel.id=vehicle.fuel_id)"
+        +   (do_include_all_eligible_vehicles ? " left" : k.EMPTY) + " join strike_team_deployment_vehicle on (strike_team_deployment_vehicle.vehicle_id=vehicle.id and strike_team_deployment_vehicle.deployment_id = '" + deployment_id + "')"
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
+        ,
         connection
         )
         .ExecuteReader();

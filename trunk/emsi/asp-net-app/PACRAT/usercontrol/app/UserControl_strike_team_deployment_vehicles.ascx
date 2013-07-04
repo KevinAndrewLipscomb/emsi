@@ -10,10 +10,11 @@
               <td bgcolor="#dcdcdc">
                 <table cellspacing="0" cellpadding="0" border="0">
                   <tr>
-                    <td>
-                      <strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong>
+                    <td valign="middle">
+                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_vehicles" runat="server" Text="Include all eligible vehicles" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_vehicles_CheckedChanged" />
                     </td>
-                    <td align="right">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td align="right" valign="middle">
                       <asp:Literal ID="Literal_num_vehicles" runat="server"></asp:Literal> vehicles
                     </td>
                   </tr>
@@ -26,19 +27,16 @@
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
-                    <asp:BoundColumn datafield="field_0"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_1" headertext="Field 1" sortexpression="field_1%">
-                      <HeaderStyle horizontalalign="Left"></HeaderStyle>
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_2" headertext="Field 2" sortexpression="field_2%">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_3" dataformatstring="{0:C}" headertext="Field 3 $" sortexpression="field_3%">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="field_4" dataformatstring="{0:C}" headertext="Field 4 $" sortexpression="field_4%">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
-                    </asp:BoundColumn>
+                    <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="vehicle_id" visible="false"></asp:BoundColumn>
+                    <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_vehicle.id is not null)%,service,name" Text="?">
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:ButtonColumn>
+                    <asp:BoundColumn datafield="service" headertext="Service" sortexpression="service%,name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%,service"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,service,name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="fuel" headertext="Fuel" sortexpression="fuel%,service,name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?" sortexpression="be_four_or_all_wheel_drive%,service,name"></asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

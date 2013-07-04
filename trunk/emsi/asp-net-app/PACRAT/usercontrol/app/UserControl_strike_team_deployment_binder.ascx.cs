@@ -50,13 +50,13 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_vehicles)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_vehicles.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_vehicles",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        //c.SetTarget(target);
+        c.Set(p.deployment_id);
         }
       else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_OPERATIONAL_PERIODS)
         {
         var c = ((TWebUserControl_strike_team_deployment_operational_periods)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_operational_periods.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_operational_periods",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        //c.SetTarget(target);
+        //c.Set(p.deployment_id);
         }
       }
     private void FillPlaceHolder(bool be_fresh_control_required)

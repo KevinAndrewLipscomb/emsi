@@ -154,7 +154,7 @@ namespace UserControl_strike_team_deployment_members
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
         p.do_include_all_eligible_practitioners = false;
-        p.sort_order = "field_practitioner%";
+        p.sort_order = "last_name%,first_name";
         }
       }
 
