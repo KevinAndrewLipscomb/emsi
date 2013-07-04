@@ -29,7 +29,7 @@
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
                     <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="practitioner_id" visible="false"></asp:BoundColumn>
-                    <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(id is not null)%,last_name,first_name" Text="?">
+                    <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_member.id is not null)%,last_name,first_name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
                     <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name"></asp:BoundColumn>

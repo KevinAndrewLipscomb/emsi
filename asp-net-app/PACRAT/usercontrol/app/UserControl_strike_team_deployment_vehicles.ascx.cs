@@ -19,6 +19,10 @@ namespace UserControl_strike_team_deployment_vehicles
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
       public const int TCI_VEHICLE_ID = 2;
+      public const int TCI_MOBILIZED = 3;
+      public const int TCI_LAST_NAME = 4;
+      public const int TCI_FIRST_NAME = 5;
+      public const int TCI_LEVEL = 6;
       }
 
     private struct p_type
@@ -28,8 +32,10 @@ namespace UserControl_strike_team_deployment_vehicles
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
+      public string deployment_id;
+      public bool do_include_all_eligible_vehicles;
       public TClass_msg_protected.vehicle_detail msg_protected_vehicle_detail;
-      public uint num_strike_team_deployment_vehicles;
+      public uint num_vehicles;
       public string sort_order;
       }
 
@@ -146,7 +152,9 @@ namespace UserControl_strike_team_deployment_vehicles
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.sort_order = "field_strike_team_deployment_vehicle%";
+        p.deployment_id = k.EMPTY;
+        p.do_include_all_eligible_vehicles = false;
+        p.sort_order = "name%,service";
         }
       }
 
@@ -178,8 +186,30 @@ namespace UserControl_strike_team_deployment_vehicles
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_vehicle_detail.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_VEHICLE_ID].Text,k.safe_hint_type.NUM);
-        MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_detail");
+        var vehicle_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_VEHICLE_ID].Text,k.safe_hint_type.NUM);
+        if (e.CommandName == "Select")
+          {
+          p.msg_protected_vehicle_detail.id = vehicle_id;
+          MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_profile");
+          }
+        else if (e.CommandName == "ToggleMobilization")
+          {
+          var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          if (id.Length == 0)
+            {
+            p.biz_strike_team_deployment_vehicles.Set
+              (
+              id:k.EMPTY,
+              deployment_id:p.deployment_id,
+              vehicle_id:vehicle_id
+              );
+            }
+          else
+            {
+            p.biz_strike_team_deployment_vehicles.Delete(id);
+            }
+          Bind();
+          }
         }
       }
 
@@ -194,6 +224,9 @@ namespace UserControl_strike_team_deployment_vehicles
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
+          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
+          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? "YES" : "no");
+          //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
           foreach (TableCell cell in e.Item.Cells)
@@ -202,7 +235,7 @@ namespace UserControl_strike_team_deployment_vehicles
             }
           e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].EnableViewState = true;
           //
-          p.num_strike_team_deployment_vehicles++;
+          p.num_vehicles++;
           }
         }
       else
@@ -228,12 +261,25 @@ namespace UserControl_strike_team_deployment_vehicles
 
     private void Bind()
       {
-      p.biz_strike_team_deployment_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
-      p.be_datagrid_empty = (p.num_strike_team_deployment_vehicles == 0);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Visible = p.do_include_all_eligible_vehicles;
+      p.biz_strike_team_deployment_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_vehicles);
+      p.be_datagrid_empty = (p.num_vehicles == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      Literal_num_vehicles.Text = p.num_strike_team_deployment_vehicles.ToString();
-      p.num_strike_team_deployment_vehicles = 0;
+      Literal_num_vehicles.Text = p.num_vehicles.ToString();
+      p.num_vehicles = 0;
+      }
+
+    protected void CheckBox_do_include_all_eligible_vehicles_CheckedChanged(object sender, EventArgs e)
+      {
+      p.do_include_all_eligible_vehicles = CheckBox_do_include_all_eligible_vehicles.Checked;
+      Bind();
+      }
+
+    internal void Set(string deployment_id)
+      {
+      p.deployment_id = deployment_id;
+      Bind();
       }
 
     } // end TWebUserControl_strike_team_deployment_vehicles
