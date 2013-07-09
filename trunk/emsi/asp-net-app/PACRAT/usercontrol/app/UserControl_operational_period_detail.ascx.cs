@@ -31,6 +31,7 @@ namespace UserControl_operational_period_detail
     private struct p_type
       {
       public string assignment_level_filter;
+      public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
       public bool be_sort_order_ascending;
@@ -40,6 +41,7 @@ namespace UserControl_operational_period_detail
       public TClass_biz_user biz_user;
       public string deployment_id;
       public bool may_add_mappings;
+      public k.int_nonnegative num_mappings;
       public string operational_period_id;
       public string sort_order;
       }
@@ -57,7 +59,12 @@ namespace UserControl_operational_period_detail
         operational_period_id:p.operational_period_id,
         assignment_level_filter:p.assignment_level_filter
         );
+      p.be_datagrid_empty = (p.num_mappings.val == 0);
+      TableCell_no_mappings.Visible = p.be_datagrid_empty;
+      TableCell_mappings.Visible = !p.be_datagrid_empty;
       TableCell_add_mapping.Visible = p.may_add_mappings;
+      p.num_mappings.val = 0;
+      //
       if (TableCell_add_mapping.Visible)
         {
         p.biz_strike_team_deployment_vehicles.BindDirectToListControl
@@ -98,6 +105,8 @@ namespace UserControl_operational_period_detail
         link_button = ((e.Item.Cells[UserControl_operational_period_detail_Static.CI_UNMAP].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Unmap";
+        //
+        p.num_mappings.val++;
         //
         // Remove all cell controls from viewstate except for the ones at ID fields.
         //
@@ -238,9 +247,7 @@ namespace UserControl_operational_period_detail
 
     protected void DropDownList_assignment_level_filter_SelectedIndexChanged(object sender, System.EventArgs e)
       {
-      p.assignment_level_filter = k.Safe(DropDownList_assignment_level_filter.SelectedValue, k.safe_hint_type.NUM);
-      p.sort_order = UserControl_operational_period_detail_Static.INITIAL_SORT_ORDER;
-      p.be_sort_order_ascending = true;
+      p.assignment_level_filter = k.Safe(DropDownList_assignment_level_filter.SelectedValue, k.safe_hint_type.ALPHA);
       Bind();
       }
 
@@ -262,11 +269,13 @@ namespace UserControl_operational_period_detail
         p.biz_user = new TClass_biz_user();
         //
         p.assignment_level_filter = k.EMPTY;
+        p.be_datagrid_empty = false;
         p.be_interactive = !(Session["mode:report"] != null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
         p.may_add_mappings = p.be_interactive;
+        p.num_mappings = new k.int_nonnegative();
         p.operational_period_id = k.EMPTY;
         p.sort_order = UserControl_operational_period_detail_Static.INITIAL_SORT_ORDER;
         }

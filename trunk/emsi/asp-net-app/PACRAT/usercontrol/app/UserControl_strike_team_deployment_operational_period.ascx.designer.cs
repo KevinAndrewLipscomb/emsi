@@ -13,6 +13,15 @@ namespace UserControl_strike_team_deployment_operational_period {
     public partial class TWebUserControl_strike_team_deployment_operational_period {
         
         /// <summary>
+        /// UpdatePanel_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        
+        /// <summary>
         /// TableRow_navigation control.
         /// </summary>
         /// <remarks>

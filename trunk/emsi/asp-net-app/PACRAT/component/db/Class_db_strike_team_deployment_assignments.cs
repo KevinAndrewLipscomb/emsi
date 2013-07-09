@@ -72,6 +72,7 @@ namespace Class_db_strike_team_deployment_assignments
         +   " join practitioner on (practitioner.id=strike_team_deployment_assignment.member_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         + " where operational_period_id = '" + operational_period_id + "'"
+        +     (assignment_level_filter.Length == 0 ? k.EMPTY : " and vehicle.id is not null")
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )

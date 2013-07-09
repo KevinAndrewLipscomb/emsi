@@ -21,7 +21,8 @@
           <td>
             <table cellspacing="0" cellpadding="10" border="0">
               <tr>
-                <td nowrap="nowrap" valign="top">
+                <td id="TableCell_no_mappings" runat="server" valign="top"><em>--&nbsp;No&nbsp;mappings&nbsp;--</em></td>
+                <td id="TableCell_mappings" runat="server" nowrap="nowrap" valign="top">
                   <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" ondeletecommand="DataGrid_control_DeleteCommand" onitemdatabound="DataGrid_control_ItemDataBound" onsortcommand="DataGrid_control_SortCommand">
                     <Columns>
                       <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Unmap&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete"></asp:ButtonColumn>
