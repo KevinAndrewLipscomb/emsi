@@ -114,6 +114,7 @@ namespace Class_db_strike_team_deployment_members
       )
       {
       Open();
+      (target as ListControl).Items.Clear();
       var dr = new MySqlCommand
         (
         "SELECT practitioner.id as id"

@@ -59,16 +59,16 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as GridView).DataSource = new MySqlCommand
+      ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select vehicle_id"
-        + " , concat(service.name,' ',vehicle.name,' (',vehicle_kind.description,')') as vehicle_designator"
+        + " , IFNULL(concat(service.name,' ',vehicle.name,' (',vehicle_kind.description,')'),'(none)') as vehicle_designator"
         + " , concat(practitioner.last_name,', ',practitioner.first_name,' (',practitioner_level.short_description,' ',practitioner.certification_number,')') as member_designator"
         + " , member_id"
         + " from strike_team_deployment_assignment"
-        +   " join vehicle on (vehicle.id=strike_team_deployment_assignment.vehicle_id)"
-        +   " join service on (service.id=vehicle.service_id)"
-        +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +   " left join vehicle on (vehicle.id=strike_team_deployment_assignment.vehicle_id)"
+        +   " left join service on (service.id=vehicle.service_id)"
+        +   " left join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
         +   " join practitioner on (practitioner.id=strike_team_deployment_assignment.member_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         + " where operational_period_id = '" + operational_period_id + "'"
@@ -76,7 +76,7 @@ namespace Class_db_strike_team_deployment_assignments
         connection
         )
         .ExecuteReader();
-      ((target) as GridView).DataBind();
+      ((target) as BaseDataList).DataBind();
       Close();
       }
 
