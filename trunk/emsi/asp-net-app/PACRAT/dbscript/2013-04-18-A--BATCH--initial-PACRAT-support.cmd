@@ -23,4 +23,5 @@ mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance%
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-06-13-B--create-table-strike_team_deployment_operational_period.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-06-20-A--create-table-vehicle.sql
 mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-06-17-A--create-table-strike_team_deployment_vehicle.sql
+mysql --host=%the_host% --user=%the_user% --password=%2 --database=%db_instance% <2013-07-07-A--create-table-strike_team_deployment_assignment.sql
 pause

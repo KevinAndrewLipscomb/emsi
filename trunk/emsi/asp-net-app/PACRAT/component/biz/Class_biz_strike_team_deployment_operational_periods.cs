@@ -1,44 +1,54 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
-using Class_db_strike_team_deployment_operational_period;
+using Class_db_strike_team_deployment_operational_periods;
 using kix;
 using System;
 using System.Collections;
 
-namespace Class_biz_strike_team_deployment_operational_period
+namespace Class_biz_strike_team_deployment_operational_periods
   {
-  public class TClass_biz_strike_team_deployment_operational_period
-    {
-    private TClass_db_strike_team_deployment_operational_period db_strike_team_deployment_operational_period = null;
 
-    public TClass_biz_strike_team_deployment_operational_period() : base()
+  internal enum presentation_mode_enum
+    {
+    NONE,
+    FULL_FUNCTION,
+    NEW,
+    REVIEW_ONLY
+    };
+
+  public class TClass_biz_strike_team_deployment_operational_periods
+    {
+    private TClass_db_strike_team_deployment_operational_periods db_strike_team_deployment_operational_periods = null;
+
+    public TClass_biz_strike_team_deployment_operational_periods() : base()
       {
-      db_strike_team_deployment_operational_period = new TClass_db_strike_team_deployment_operational_period();
+      db_strike_team_deployment_operational_periods = new TClass_db_strike_team_deployment_operational_periods();
       }
 
     public bool Bind(string partial_spec, object target)
       {
-      return db_strike_team_deployment_operational_period.Bind(partial_spec, target);
+      return db_strike_team_deployment_operational_periods.Bind(partial_spec, target);
       }
 
     public void BindBaseDataList
       (
       string sort_order,
       bool be_sort_order_ascending,
-      object target
+      object target,
+      string deployment_id
       )
       {
-      db_strike_team_deployment_operational_period.BindBaseDataList(sort_order,be_sort_order_ascending,target);
+      db_strike_team_deployment_operational_periods.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id);
       }
 
     public void BindDirectToListControl(object target)
       {
-      db_strike_team_deployment_operational_period.BindDirectToListControl(target);
+      db_strike_team_deployment_operational_periods.BindDirectToListControl(target);
       }
 
     public bool Delete(string id)
       {
-      return db_strike_team_deployment_operational_period.Delete(id);
+      return db_strike_team_deployment_operational_periods.Delete(id);
       }
 
     public bool Get
@@ -49,7 +59,7 @@ namespace Class_biz_strike_team_deployment_operational_period
       out DateTime end
       )
       {
-      return db_strike_team_deployment_operational_period.Get
+      return db_strike_team_deployment_operational_periods.Get
         (
         id,
         out deployment_id,
@@ -66,7 +76,7 @@ namespace Class_biz_strike_team_deployment_operational_period
       DateTime end
       )
       {
-      db_strike_team_deployment_operational_period.Set
+      db_strike_team_deployment_operational_periods.Set
         (
         id,
         deployment_id,
@@ -77,7 +87,7 @@ namespace Class_biz_strike_team_deployment_operational_period
 
     internal object Summary(string id)
       {
-      return db_strike_team_deployment_operational_period.Summary(id);
+      return db_strike_team_deployment_operational_periods.Summary(id);
       }
 
     } // end TClass_biz_strike_team_deployment_operational_period

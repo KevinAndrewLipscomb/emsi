@@ -33,7 +33,7 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (emergency_contact_1_phone_number is not null)"
     + " and"
-    +   " (drivers_license_expiration <= CURDATE())"
+    +   " (drivers_license_expiration >= CURDATE())"
     + " and"
     +   " nims_is_100_date is not null"
     + " and"

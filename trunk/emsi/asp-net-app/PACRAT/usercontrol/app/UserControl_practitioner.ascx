@@ -242,7 +242,10 @@
         <tr>
           <td bgcolor="whitesmoke">
             <h3><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> attributes</h3>
-            <small>These attributes are managed in real-time via <asp:Literal ID="Literal_application_name_2" runat="server"></asp:Literal>.</small>
+            <small>
+              <p>These attributes are managed in real-time via <asp:Literal ID="Literal_application_name_2" runat="server"></asp:Literal>.</p>
+              <p>&clubs; = Strike Team credential</p>
+            </small>
           </td>
         </tr>
         <tr><td><uc1:UserControl_practitioner_strike_team_detail ID="UserControl_practitioner_strike_team_detail_control" runat="server" /></td></tr>

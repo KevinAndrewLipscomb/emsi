@@ -4,6 +4,11 @@ namespace Class_msg_protected
   {
   public class TClass_msg_protected
     {
+    public class operational_period_detail
+      {
+      internal string deployment_id = k.EMPTY;
+      internal string operational_period_id = k.EMPTY;
+      }
     public class overview
       {
       internal string target = k.EMPTY;

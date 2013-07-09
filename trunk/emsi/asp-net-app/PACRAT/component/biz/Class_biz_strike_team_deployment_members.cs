@@ -38,6 +38,16 @@ namespace Class_biz_strike_team_deployment_members
       db_strike_team_deployment_members.BindDirectToListControl(target);
       }
 
+    internal void BindUnassignedInOperationalPeriodDirectToListControl
+      (
+      object target,
+      string deployment_id,
+      string operational_period_id
+      )
+      {
+      db_strike_team_deployment_members.BindUnassignedInOperationalPeriodDirectToListControl(target,deployment_id,operational_period_id);
+      }
+
     public bool Delete(string id)
       {
       return db_strike_team_deployment_members.Delete(id);
