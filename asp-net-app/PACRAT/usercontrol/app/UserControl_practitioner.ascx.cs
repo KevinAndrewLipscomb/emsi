@@ -295,7 +295,7 @@ namespace UserControl_practitioner
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+        p.be_loaded = IsPostBack;
         }
       else
         {

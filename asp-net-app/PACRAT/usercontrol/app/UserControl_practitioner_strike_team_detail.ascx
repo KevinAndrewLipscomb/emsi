@@ -7,6 +7,7 @@
       <table cellspacing="0" cellpadding="5" border="0">
   <tr id="TableRow_practitioner_id" runat="server" visible="false">
     <td bgcolor="gainsboro" valign="top"><font class="">practitioner_id:</font></td>
+    <td></td>
     <td valign="top"><font class="">
       <table cellspacing="0" cellpadding="0" border="0">
          <tr>
@@ -54,6 +55,7 @@
   </tr>
   <tr>
     <td><font class="">Act&nbsp;33 of 1985&nbsp;clearance&nbsp;date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -64,6 +66,7 @@
   </tr>
   <tr>
     <td><font class="">Act&nbsp;34 of 1985&nbsp;clearance&nbsp;date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -74,6 +77,7 @@
   </tr>
   <tr>
     <td><font class="">Act&nbsp;151 of 1994&nbsp;clearance&nbsp;date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -84,6 +88,7 @@
   </tr>
   <tr>
     <td><font class="">Phone&nbsp;number:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
@@ -94,6 +99,7 @@
   </tr>
   <tr>
     <td><font class="">Phone&nbsp;service&nbsp;id:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_phone_service_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
@@ -105,6 +111,7 @@
   </tr>
   <tr>
     <td><font class="">Hepatitis&nbsp;B immunization:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:CheckBox id="CheckBox_be_immune_hepatitis_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
@@ -115,6 +122,7 @@
   </tr>
   <tr>
     <td><font class="">Diptheria/tetanus immunization:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:CheckBox id="CheckBox_be_immune_diptheria_tetanus" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
@@ -125,6 +133,7 @@
   </tr>
   <tr>
     <td><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;name:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_1_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
@@ -135,6 +144,7 @@
   </tr>
   <tr>
     <td><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;phone&nbsp;number:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_1_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
@@ -145,6 +155,7 @@
   </tr>
   <tr>
     <td><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;name:</font></td>
+    <td></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_2_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
@@ -155,6 +166,7 @@
   </tr>
   <tr>
     <td><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;phone&nbsp;number:</font></td>
+    <td></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_2_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
@@ -165,6 +177,7 @@
   </tr>
   <tr>
     <td><font class="">Meds/doses:</font></td>
+    <td></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_meds_doses" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
@@ -176,6 +189,7 @@
   </tr>
   <tr>
     <td><font class="">Allergies:</font></td>
+    <td></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_allergies" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
@@ -187,6 +201,7 @@
   </tr>
   <tr>
     <td><font class="">PCP&nbsp;name:</font></td>
+    <td></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_pcp_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
@@ -197,6 +212,7 @@
   </tr>
   <tr>
     <td><font class="">Drivers&nbsp;license&nbsp;expiration date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -207,6 +223,7 @@
   </tr>
   <tr>
     <td><font class="">NIMS IS&nbsp;100&nbsp;date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_100_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -217,6 +234,7 @@
   </tr>
   <tr>
     <td><font class="">NIMS IS&nbsp;200&nbsp;date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_200_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -227,6 +245,7 @@
   </tr>
   <tr>
     <td><font class="">NIMS IS&nbsp;700&nbsp;date:</font></td>
+    <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>

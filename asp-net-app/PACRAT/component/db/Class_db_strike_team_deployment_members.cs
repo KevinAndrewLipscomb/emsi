@@ -106,6 +106,35 @@ namespace Class_db_strike_team_deployment_members
       Close();
       }
 
+    internal void BindUnassignedInOperationalPeriodDirectToListControl
+      (
+      object target,
+      string deployment_id,
+      string operational_period_id
+      )
+      {
+      Open();
+      var dr = new MySqlCommand
+        (
+        "SELECT practitioner.id as id"
+        + " , concat(practitioner.last_name,', ',practitioner.first_name,' (',practitioner_level.short_description,' ',practitioner.certification_number,')') as spec"
+        + " FROM strike_team_deployment_member"
+        +   " join practitioner on (practitioner.id=strike_team_deployment_member.practitioner_id)"
+        +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+        + " where deployment_id = '" + deployment_id + "'"
+        +   " and practitioner.id not in (select member_id from strike_team_deployment_assignment where operational_period_id = '" + operational_period_id + "')"
+        + " order by spec",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
+        }
+      dr.Close();
+      Close();
+      }
+
     public bool Delete(string id)
       {
       var result = true;

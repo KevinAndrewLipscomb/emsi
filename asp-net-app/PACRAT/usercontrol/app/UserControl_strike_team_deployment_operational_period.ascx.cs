@@ -1,7 +1,10 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using Class_biz_strike_team_deployment_operational_period;
+using Class_biz_members;
+using Class_biz_privileges;
 using Class_biz_role_member_map;
+using Class_biz_strike_team_deployment_operational_periods;
+using Class_biz_user;
 using kix;
 using System;
 using System.Web;
@@ -11,16 +14,23 @@ using System.Web.UI.WebControls;
 using System.Collections;
 using UserControl_drop_down_date;
 
-namespace UserControl_strike_team_deployment_operational_periods
+namespace UserControl_strike_team_deployment_operational_period
   {
-  public partial class TWebUserControl_strike_team_deployment_operational_periods: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_strike_team_deployment_operational_period: ki_web_ui.usercontrol_class
     {
     private struct p_type
       {
       public bool be_loaded;
-      public TClass_biz_strike_team_deployment_operational_period biz_strike_team_deployment_operational_period;
+      public bool be_ok_to_config_strike_team_deployment_operational_periods;
+      public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
+      public TClass_biz_members biz_members;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
-      public bool be_ok_to_config_strike_team_deployment_operational_period;
+      public TClass_biz_user biz_user;
+      public string deployment_id;
+      public string operational_period_id;
+      public presentation_mode_enum presentation_mode;
+      public object summary;
       } // end p_type
 
     private p_type p;
@@ -30,8 +40,8 @@ namespace UserControl_strike_team_deployment_operational_periods
       TextBox_id.Text = k.EMPTY;
       DropDownList_id.Visible = false;
       TextBox_deployment_id.Text = k.EMPTY;
-      TextBox_start.Text = k.EMPTY;
-      TextBox_end.Text = k.EMPTY;
+      UserControl_drop_down_datetime_start.Clear();
+      UserControl_drop_down_datetime_end.Clear();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -127,13 +137,39 @@ namespace UserControl_strike_team_deployment_operational_periods
       {
       if (!p.be_loaded)
         {
-        LinkButton_new_record.Visible = p.be_ok_to_config_strike_team_deployment_operational_period;
+        LinkButton_new_record.Visible = p.be_ok_to_config_strike_team_deployment_operational_periods;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
+        //
+        UserControl_drop_down_datetime_start.minyear = DateTime.Now.AddYears(-1).ToString("yyyy");
+        UserControl_drop_down_datetime_start.maxyear = DateTime.Now.AddYears(1).ToString("yyyy");
+        UserControl_drop_down_datetime_start.minute_intervals = 15;
+        UserControl_drop_down_datetime_end.minyear = DateTime.Now.AddYears(-1).ToString("yyyy");
+        UserControl_drop_down_datetime_end.maxyear = DateTime.Now.AddYears(1).ToString("yyyy");
+        UserControl_drop_down_datetime_end.minute_intervals = 15;
+        //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        SetDataEntryMode();
+        if (p.presentation_mode == presentation_mode_enum.NEW)
+          {
+          SetDataEntryMode();
+          TextBox_deployment_id.Text = p.deployment_id;
+          UserControl_drop_down_datetime_start.selectedvalue = DateTime.Now;
+          UserControl_drop_down_datetime_end.selectedvalue = DateTime.Now;
+          UserControl_drop_down_datetime_start.Focus();
+          }
+        else
+          {
+          PresentRecord(p.operational_period_id);
+          Panel_active_operational_period_detail.Visible = true;
+          UserControl_operational_period_detail_control.Set
+            (
+            deployment_id:p.deployment_id,
+            operational_period_id:p.operational_period_id
+            );
+          }
+
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -149,7 +185,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       result = false;
       if
         (
-        p.biz_strike_team_deployment_operational_period.Get
+        p.biz_strike_team_deployment_operational_periods.Get
           (
           id,
           out deployment_id,
@@ -161,20 +197,40 @@ namespace UserControl_strike_team_deployment_operational_periods
         TextBox_id.Text = id;
         TextBox_id.Enabled = false;
         TextBox_deployment_id.Text = deployment_id;
-        TextBox_start.Text = start.ToString();
-        TextBox_end.Text = end.ToString();
+        UserControl_drop_down_datetime_start.selectedvalue = start;
+        UserControl_drop_down_datetime_end.selectedvalue = end;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
-        SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_period);
-        Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_period;
-        Button_delete.Enabled = p.be_ok_to_config_strike_team_deployment_operational_period;
+        SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_periods);
+        Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
+        Button_delete.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
         result = true;
         }
       return result;
       }
 
+    internal void Set
+      (
+      string deployment_id,
+      string operational_period_id
+      )
+      {
+      p.deployment_id = deployment_id;
+      if (operational_period_id.Length > 0)
+        {
+        p.operational_period_id = operational_period_id;
+        p.summary = p.biz_strike_team_deployment_operational_periods.Summary(operational_period_id);
+        p.presentation_mode = (p.be_ok_to_config_strike_team_deployment_operational_periods ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
+        }
+      else
+        {
+        p.operational_period_id = k.EMPTY;
+        p.summary = null;
+        p.presentation_mode = presentation_mode_enum.NEW;
+        }
+      }
     private void SetDataEntryMode()
       {
       Clear();
@@ -185,8 +241,8 @@ namespace UserControl_strike_team_deployment_operational_periods
       Label_lookup_hint.Enabled = false;
       LinkButton_reset.Enabled = true;
       LinkButton_new_record.Enabled = false;
-      SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_period);
-      Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_period;
+      SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_periods);
+      Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
       Button_delete.Enabled = false;
       TextBox_id.Focus();
       }
@@ -211,15 +267,21 @@ namespace UserControl_strike_team_deployment_operational_periods
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-#warning Revise the following line if the usercontrol will not be a direct child of the member binder.
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_operational_periods");
+        p.be_loaded = IsPostBack;
         }
       else
         {
         p.be_loaded = false;
-        p.biz_strike_team_deployment_operational_period = new TClass_biz_strike_team_deployment_operational_period();
+        p.biz_members = new TClass_biz_members();
+        p.biz_privileges = new TClass_biz_privileges();
+        p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.be_ok_to_config_strike_team_deployment_operational_period = k.Has((string[])(Session["privilege_array"]), "config-strike_team_deployment_operational_period");
+        p.biz_user = new TClass_biz_user();
+        p.be_ok_to_config_strike_team_deployment_operational_periods = true;
+        p.deployment_id = k.EMPTY;
+        p.operational_period_id = k.EMPTY;
+        p.presentation_mode = presentation_mode_enum.NONE;
+        p.summary = null;
         }
       }
 
@@ -238,7 +300,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_strike_team_deployment_operational_periods Fresh()
+    public TWebUserControl_strike_team_deployment_operational_period Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -251,15 +313,15 @@ namespace UserControl_strike_team_deployment_operational_periods
         var start = new DateTime();
         var end = new DateTime();
         //
-        if (TextBox_start.Text != k.EMPTY)
+        if (UserControl_drop_down_datetime_start.selectedvalue != DateTime.MinValue)
           {
-          start = DateTime.Parse(k.Safe(TextBox_start.Text,k.safe_hint_type.DATE_TIME));
+          start = UserControl_drop_down_datetime_start.selectedvalue;
           }
-        if (TextBox_end.Text != k.EMPTY)
+        if (UserControl_drop_down_datetime_end.selectedvalue != DateTime.MinValue)
           {
-          end = DateTime.Parse(k.Safe(TextBox_end.Text,k.safe_hint_type.DATE_TIME));
+          end = UserControl_drop_down_datetime_end.selectedvalue;
           }
-        p.biz_strike_team_deployment_operational_period.Set
+        p.biz_strike_team_deployment_operational_periods.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM).Trim(),
@@ -267,7 +329,10 @@ namespace UserControl_strike_team_deployment_operational_periods
           end
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        SetLookupMode();
+        if (p.presentation_mode == presentation_mode_enum.NEW)
+          {
+          BackTrack();
+          }
         }
       else
         {
@@ -306,7 +371,7 @@ namespace UserControl_strike_team_deployment_operational_periods
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_strike_team_deployment_operational_period.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
+      if (p.biz_strike_team_deployment_operational_periods.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
         {
         SetLookupMode();
         }
@@ -329,8 +394,8 @@ namespace UserControl_strike_team_deployment_operational_periods
     private void SetDependentFieldAblements(bool ablement)
       {
       TextBox_deployment_id.Enabled = ablement;
-      TextBox_start.Enabled = ablement;
-      TextBox_end.Enabled = ablement;
+      UserControl_drop_down_datetime_start.enabled = ablement;
+      UserControl_drop_down_datetime_end.enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -342,7 +407,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       if (!PresentRecord(saved_id))
         {
         TextBox_id.Text = saved_id;
-        p.biz_strike_team_deployment_operational_period.Bind(saved_id, DropDownList_id);
+        p.biz_strike_team_deployment_operational_periods.Bind(saved_id, DropDownList_id);
         num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {

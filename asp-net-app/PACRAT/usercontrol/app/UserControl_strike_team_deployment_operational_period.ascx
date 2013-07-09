@@ -1,11 +1,13 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_strike_team_deployment_operational_periods.ascx.cs" Inherits="UserControl_strike_team_deployment_operational_periods.TWebUserControl_strike_team_deployment_operational_periods"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_strike_team_deployment_operational_period.ascx.cs" Inherits="UserControl_strike_team_deployment_operational_period.TWebUserControl_strike_team_deployment_operational_period"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
+<%@ Register src="../ki/UserControl_drop_down_datetime.ascx" tagname="UserControl_drop_down_datetime" tagprefix="uc2" %>
+<%@ Register src="UserControl_operational_period_detail.ascx" tagname="UserControl_operational_period_detail" tagprefix="uc3" %>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
       <table cellspacing="0" cellpadding="5" border="0">
-  <tr>
+  <tr id="TableRow_navigation" runat="server" visible="false">
     <td bgcolor="gainsboro" valign="top"><font class="">id:</font></td>
     <td valign="top"><font class="">
       <table cellspacing="0" cellpadding="0" border="0">
@@ -52,7 +54,7 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_id" runat="server" errormessage="Please enter id." font-bold="True" controltovalidate="TextBox_id">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_id" runat="server" visible="false">
     <td><font class="">Deployment&nbsp;id:</font></td>
     <td>
       <font class="">
@@ -67,28 +69,25 @@
   <tr>
     <td><font class="">Start:</font></td>
     <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_start" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
+      <uc2:UserControl_drop_down_datetime ID="UserControl_drop_down_datetime_start" runat="server" />
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_start" runat="server" errormessage="Please enter Start." font-bold="True" controltovalidate="TextBox_start">!ERR!</ASP:RequiredFieldValidator>
-    </td>
+      &nbsp;</td>
   </tr>
   <tr>
     <td><font class="">End:</font></td>
     <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_end" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
+      <uc2:UserControl_drop_down_datetime ID="UserControl_drop_down_datetime_end" runat="server" />
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_end" runat="server" errormessage="Please enter End." font-bold="True" controltovalidate="TextBox_end">!ERR!</ASP:RequiredFieldValidator>
-    </td>
+      &nbsp;</td>
   </tr>
       </table>
     </td>
   </tr>
 </table>
 <ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
-
+<asp:Panel ID="Panel_active_operational_period_detail" runat="server" Visible="false">
+  <br />
+  <uc3:UserControl_operational_period_detail ID="UserControl_operational_period_detail_control" runat="server" />  
+</asp:Panel>

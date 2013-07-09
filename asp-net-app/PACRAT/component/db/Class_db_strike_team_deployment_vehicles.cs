@@ -84,15 +84,22 @@ namespace Class_db_strike_team_deployment_vehicles
       Close();
       }
 
-    public void BindDirectToListControl(object target)
+    public void BindDirectToListControl
+      (
+      object target,
+      string deployment_id
+      )
       {
       Open();
-      ((target) as ListControl).Items.Clear();
       var dr = new MySqlCommand
         (
-        "SELECT id"
-        + " , CONVERT(concat(IFNULL(deployment_id,'-'),'|',IFNULL(vehicle_id,'-')) USING utf8) as spec"
+        "SELECT vehicle.id as id"
+        + " , concat(service.name,' ',vehicle.name,' (',vehicle_kind.description,')') as spec"
         + " FROM strike_team_deployment_vehicle"
+        +   " join vehicle on (vehicle.id=strike_team_deployment_vehicle.vehicle_id)"
+        +   " join service on (service.id=vehicle.service_id)"
+        +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        + " where deployment_id = '" + deployment_id + "'"
         + " order by spec",
         connection
         )

@@ -1,6 +1,9 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using Class_biz_strike_team_deployment_vehicles;
+using Class_biz_members;
+using Class_biz_privileges;
+using Class_biz_user;
+using Class_biz_strike_team_deployment_operational_periods;
 using Class_msg_protected;
 using kix;
 using System;
@@ -9,21 +12,18 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Collections;
+using AjaxControlToolkit;
 
-namespace UserControl_strike_team_deployment_vehicles
+namespace UserControl_strike_team_deployment_operational_periods
   {
-  public partial class TWebUserControl_strike_team_deployment_vehicles: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_strike_team_deployment_operational_periods: ki_web_ui.usercontrol_class
     {
-    public class UserControl_strike_team_deployment_vehicles_Static
+    public class UserControl_strike_team_deployment_operational_periods_Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_VEHICLE_ID = 2;
-      public const int TCI_MOBILIZED = 3;
-      public const int TCI_SERVICE = 4;
-      public const int TCI_NAME = 5;
-      public const int TCI_KIND = 6;
-      public const int TCI_FUEL = 6;
+      public const int TCI_START = 2;
+      public const int TCI_END = 3;
       }
 
     private struct p_type
@@ -31,12 +31,15 @@ namespace UserControl_strike_team_deployment_vehicles
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_ok_to_config;
       public bool be_sort_order_ascending;
-      public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
+      public TClass_biz_members biz_members;
+      public TClass_biz_privileges biz_privileges;
+      public TClass_biz_user biz_user;
+      public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
       public string deployment_id;
-      public bool do_include_all_eligible_vehicles;
-      public TClass_msg_protected.vehicle_detail msg_protected_vehicle_detail;
-      public uint num_vehicles;
+      public TClass_msg_protected.operational_period_detail msg_protected_operational_period_detail;
+      public uint num_operational_periods;
       public string sort_order;
       }
 
@@ -125,6 +128,7 @@ namespace UserControl_strike_team_deployment_vehicles
       {
       if (!p.be_loaded)
         {
+        LinkButton_new.Visible = p.be_ok_to_config;
         if (!p.be_interactive)
           {
           DataGrid_control.AllowSorting = false;
@@ -132,6 +136,7 @@ namespace UserControl_strike_team_deployment_vehicles
         Bind();
         p.be_loaded = true;
         }
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
       InjectPersistentClientSideScript();
       }
 
@@ -143,19 +148,23 @@ namespace UserControl_strike_team_deployment_vehicles
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_strike_team_deployment_UserControl_strike_team_deployment_binder_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_vehicles");
+#warning Revise the ClientID path to this control appropriately.
+        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_operational_periods");
         }
       else
         {
-        p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
-        p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
+        p.biz_members = new TClass_biz_members();
+        p.biz_privileges = new TClass_biz_privileges();
+        p.biz_user = new TClass_biz_user();
+        p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
+        p.msg_protected_operational_period_detail = new TClass_msg_protected.operational_period_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
+        p.be_ok_to_config = true;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
-        p.do_include_all_eligible_vehicles = false;
-        p.sort_order = "name%,service";
+        p.sort_order = "start%,end";
         }
       }
 
@@ -168,16 +177,16 @@ namespace UserControl_strike_team_deployment_vehicles
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
       this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
       this.DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.DataGrid_control_ItemCommand);
-      this.PreRender += this.TWebUserControl_strike_team_deployment_vehicles_PreRender;
+      this.PreRender += this.TWebUserControl_operational_periods_PreRender;
       //this.Load += this.Page_Load;
       }
 
-    private void TWebUserControl_strike_team_deployment_vehicles_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_operational_periods_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_strike_team_deployment_vehicles Fresh()
+    public TWebUserControl_strike_team_deployment_operational_periods Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -187,30 +196,9 @@ namespace UserControl_strike_team_deployment_vehicles
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var vehicle_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_VEHICLE_ID].Text,k.safe_hint_type.NUM);
-        if (e.CommandName == "Select")
-          {
-          p.msg_protected_vehicle_detail.id = vehicle_id;
-          MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_profile");
-          }
-        else if (e.CommandName == "ToggleMobilization")
-          {
-          var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
-          if (id.Length == 0)
-            {
-            p.biz_strike_team_deployment_vehicles.Set
-              (
-              id:k.EMPTY,
-              deployment_id:p.deployment_id,
-              vehicle_id:vehicle_id
-              );
-            }
-          else
-            {
-            p.biz_strike_team_deployment_vehicles.Delete(id);
-            }
-          Bind();
-          }
+        p.msg_protected_operational_period_detail.operational_period_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+        p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
+        MessageDropCrumbAndTransferTo(p.msg_protected_operational_period_detail,"protected","operational_period_detail");
         }
       }
 
@@ -221,12 +209,9 @@ namespace UserControl_strike_team_deployment_vehicles
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
-          //
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
-          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? "YES" : "no");
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
@@ -234,14 +219,14 @@ namespace UserControl_strike_team_deployment_vehicles
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].EnableViewState = true;
           //
-          p.num_vehicles++;
+          p.num_operational_periods++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -262,20 +247,25 @@ namespace UserControl_strike_team_deployment_vehicles
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Visible = p.do_include_all_eligible_vehicles;
-      p.biz_strike_team_deployment_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_vehicles);
-      p.be_datagrid_empty = (p.num_vehicles == 0);
+      p.biz_strike_team_deployment_operational_periods.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id);
+      p.be_datagrid_empty = (p.num_operational_periods == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      Literal_num_vehicles.Text = p.num_vehicles.ToString();
-      p.num_vehicles = 0;
+      Literal_num_operational_periods.Text = p.num_operational_periods.ToString();
+      p.num_operational_periods = 0;
       }
 
-    protected void CheckBox_do_include_all_eligible_vehicles_CheckedChanged(object sender, EventArgs e)
-      {
-      p.do_include_all_eligible_vehicles = CheckBox_do_include_all_eligible_vehicles.Checked;
-      Bind();
-      }
+    protected void LinkButton_new_Click(object sender, EventArgs e)
+    {
+    p.msg_protected_operational_period_detail.operational_period_id = k.EMPTY;
+    p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
+    MessageDropCrumbAndTransferTo
+      (
+      msg:p.msg_protected_operational_period_detail,
+      folder_name:"protected",
+      aspx_name:"operational_period_detail"
+      );
+    }
 
     internal void Set(string deployment_id)
       {
@@ -283,6 +273,6 @@ namespace UserControl_strike_team_deployment_vehicles
       Bind();
       }
 
-    } // end TWebUserControl_strike_team_deployment_vehicles
+    } // end TWebUserControl_operational_periods
 
   }
