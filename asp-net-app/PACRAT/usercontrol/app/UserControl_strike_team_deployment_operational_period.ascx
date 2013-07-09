@@ -3,6 +3,8 @@
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
 <%@ Register src="../ki/UserControl_drop_down_datetime.ascx" tagname="UserControl_drop_down_datetime" tagprefix="uc2" %>
 <%@ Register src="UserControl_operational_period_detail.ascx" tagname="UserControl_operational_period_detail" tagprefix="uc3" %>
+<asp:UpdatePanel ID="UpdatePanel_control" runat="server">
+  <ContentTemplate>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
@@ -91,3 +93,5 @@
   <br />
   <uc3:UserControl_operational_period_detail ID="UserControl_operational_period_detail_control" runat="server" />  
 </asp:Panel>
+  </ContentTemplate>
+</asp:UpdatePanel>
