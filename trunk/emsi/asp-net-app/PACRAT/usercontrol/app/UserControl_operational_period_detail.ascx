@@ -22,25 +22,22 @@
             <table cellspacing="0" cellpadding="10" border="0">
               <tr>
                 <td nowrap="nowrap" valign="top">
-                  <asp:GridView id="GridView_control" runat="server" gridlines="Horizontal" cellpadding="5" allowsorting="True" emptydatatext="No mappings" bordercolor="Gainsboro" borderstyle="Solid" borderwidth="1px" autogeneratecolumns="False">
-                    <RowStyle font-size="Small"></RowStyle>
+                  <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" ondeletecommand="DataGrid_control_DeleteCommand" onitemdatabound="DataGrid_control_ItemDataBound" onsortcommand="DataGrid_control_SortCommand">
                     <Columns>
-                      <asp:CommandField causesvalidation="False" deleteimageurl="~/protected/image/delete_x16_h.png" deletetext="Unmap" showdeletebutton="True" buttontype="Image">
-                        <ItemStyle horizontalalign="Right"></ItemStyle>
-                      </asp:CommandField>
-                      <asp:BoundField datafield="vehicle_id" Visible="false"></asp:BoundField>
-                      <asp:BoundField datafield="vehicle_designator" headertext="Vehicle" sortexpression="vehicle_designator%,member_designator">
+                      <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Unmap&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete"></asp:ButtonColumn>
+                      <asp:BoundColumn datafield="vehicle_id" Visible="false"></asp:BoundColumn>
+                      <asp:BoundColumn datafield="vehicle_designator" headertext="Vehicle" sortexpression="vehicle_designator%,member_designator">
                         <HeaderStyle horizontalalign="Left"></HeaderStyle>
                         <ItemStyle horizontalalign="Left"></ItemStyle>
-                      </asp:BoundField>
-                      <asp:BoundField datafield="member_designator" headertext="Member" sortexpression="member_designator%,vehicle_designator">
+                      </asp:BoundColumn>
+                      <asp:BoundColumn datafield="member_designator" headertext="Member" sortexpression="member_designator%,vehicle_designator">
                         <HeaderStyle horizontalalign="Left"></HeaderStyle>
                         <ItemStyle horizontalalign="Left"></ItemStyle>
-                      </asp:BoundField>
-                      <asp:BoundField datafield="member_id" Visible="false"></asp:BoundField>
+                      </asp:BoundColumn>
+                      <asp:BoundColumn datafield="member_id" Visible="false"></asp:BoundColumn>
                     </Columns>
                     <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
-                  </asp:GridView>
+                  </asp:DataGrid>
                 </td>
                 <td id="TableCell_add_mapping" runat="server" valign="top" visible="false">
                   <table cellspacing="0" cellpadding="2" border="0">

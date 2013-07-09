@@ -279,6 +279,7 @@ namespace UserControl_strike_team_deployment_members
     internal void Set(string deployment_id)
       {
       p.deployment_id = deployment_id;
+      Bind();
       }
 
     } // end TWebUserControl_strike_team_deployment_members

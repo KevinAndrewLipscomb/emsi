@@ -1,9 +1,9 @@
-using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployment_assignments;
+using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployment_vehicles;
 using Class_biz_user;
 using kix;
-using System.Configuration;
+using System.Collections;
 using System.Web.UI.WebControls;
 
 namespace UserControl_operational_period_detail
@@ -48,12 +48,12 @@ namespace UserControl_operational_period_detail
 
     private void Bind()
       {
-      GridView_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive;
+      DataGrid_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive;
       p.biz_strike_team_deployment_assignments.BindActuals
         (
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
-        target:GridView_control,
+        target:DataGrid_control,
         operational_period_id:p.operational_period_id,
         assignment_level_filter:p.assignment_level_filter
         );
@@ -65,44 +65,52 @@ namespace UserControl_operational_period_detail
           target:DropDownList_vehicle,
           deployment_id:p.deployment_id
           );
+        DropDownList_vehicle.Items.Insert(index:0,item:new ListItem(text:"(none)",value:"0"));
+        DropDownList_vehicle.Items.Insert(index:0,item:new ListItem(text:"-- Vehicle -- ",value:k.EMPTY));
         p.biz_strike_team_deployment_members.BindUnassignedInOperationalPeriodDirectToListControl
           (
           target:DropDownList_member,
           deployment_id:p.deployment_id,
           operational_period_id:p.operational_period_id
           );
+        DropDownList_member.Items.Insert(index:0,item:new ListItem(text:"-- Member -- ",value:k.EMPTY));
         }
       }
 
-    private void GridView_control_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
-      {
-      if (e.Row.RowType != DataControlRowType.EmptyDataRow)
-        {
-        //
-        // Remove all cell controls from viewstate except for the ones at ID fields.
-        //
-        foreach (TableCell cell in e.Row.Cells)
-          {
-          cell.EnableViewState = false;
-          }
-        e.Row.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].EnableViewState = true;
-        e.Row.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].EnableViewState = true;
-        }
-      }
-
-    private void GridView_control_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
+    protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
       {
       p.biz_strike_team_deployment_assignments.Save
         (
         operational_period_id:p.operational_period_id,
-        member_id:k.Safe(GridView_control.Rows[e.RowIndex].Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].Text, k.safe_hint_type.NUM),
-        vehicle_id:k.Safe(GridView_control.Rows[e.RowIndex].Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].Text, k.safe_hint_type.NUM),
+        member_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].Text, k.safe_hint_type.NUM),
+        vehicle_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].Text, k.safe_hint_type.NUM),
         be_assigned:false
         );
       Bind();
       }
 
-    private void GridView_control_Sorting(object sender, System.Web.UI.WebControls.GridViewSortEventArgs e)
+    protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
+      {
+      if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
+        {
+        LinkButton link_button;
+        //
+        link_button = ((e.Item.Cells[UserControl_operational_period_detail_Static.CI_UNMAP].Controls[0]) as LinkButton);
+        link_button.Text = k.ExpandTildePath(link_button.Text);
+        link_button.ToolTip = "Unmap";
+        //
+        // Remove all cell controls from viewstate except for the ones at ID fields.
+        //
+        foreach (TableCell cell in e.Item.Cells)
+          {
+          cell.EnableViewState = false;
+          }
+        e.Item.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].EnableViewState = true;
+        e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].EnableViewState = true;
+        }
+      }
+
+    protected void DataGrid_control_SortCommand(object source, DataGridSortCommandEventArgs e)
       {
       if (e.SortExpression == p.sort_order)
         {
@@ -113,7 +121,7 @@ namespace UserControl_operational_period_detail
         p.sort_order = e.SortExpression;
         p.be_sort_order_ascending = true;
         }
-      GridView_control.EditIndex =  -1;
+      DataGrid_control.EditItemIndex =  -1;
       Bind();
       }
 
@@ -123,9 +131,6 @@ namespace UserControl_operational_period_detail
     // / </summary>
     private void InitializeComponent()
       {
-      GridView_control.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(GridView_control_Sorting);
-      GridView_control.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(GridView_control_RowDataBound);
-      GridView_control.RowDeleting += new System.Web.UI.WebControls.GridViewDeleteEventHandler(GridView_control_RowDeleting);
       PreRender += TWebUserControl_operational_period_detail_PreRender;
       }
 
@@ -247,7 +252,7 @@ namespace UserControl_operational_period_detail
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["M_UserControl_config_UserControl_vehicles_and_matrices_binder_PlaceHolder_content"] as string) == "UserControl_operational_period_detail");
+        p.be_loaded = IsPostBack;
         }
       else
         {
@@ -271,7 +276,7 @@ namespace UserControl_operational_period_detail
       {
       if (!p.be_loaded)
         {
-        GridView_control.AllowSorting = p.be_interactive;
+        DataGrid_control.AllowSorting = p.be_interactive;
         Bind();
         p.be_loaded = true;
         }

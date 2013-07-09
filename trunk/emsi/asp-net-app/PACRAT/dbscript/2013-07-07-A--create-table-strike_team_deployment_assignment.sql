@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS strike_team_deployment_assignment (
   KEY (member_id),
   KEY (vehicle_id),
   CONSTRAINT strike_team_deployment_assignment_operational_period_id FOREIGN KEY (operational_period_id) REFERENCES strike_team_deployment_operational_period (id),
-  CONSTRAINT strike_team_deployment_assignment_member_id FOREIGN KEY (member_id) REFERENCES practitioner (id),
-  CONSTRAINT strike_team_deployment_assignment_vehicle_id FOREIGN KEY (vehicle_id) REFERENCES vehicle (id)
+  CONSTRAINT strike_team_deployment_assignment_member_id FOREIGN KEY (member_id) REFERENCES practitioner (id)
 )
 ENGINE = InnoDB;
