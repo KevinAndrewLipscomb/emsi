@@ -16,3 +16,7 @@ grant select
 grant process
   on *.*
   to 'ki-pacrat'@'localhost'
+;
+grant select
+  on homedb.*
+  to 'ki-pacrath'@'localhost' identified by '~ki-pacrath-password~'
