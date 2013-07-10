@@ -2,6 +2,7 @@
 
 using Class_biz_practitioner_strike_team_details;
 using Class_biz_role_member_map;
+using Class_biz_sms_gateways;
 using kix;
 using System;
 using System.Configuration;
@@ -17,6 +18,7 @@ namespace UserControl_practitioner_strike_team_detail
       public bool be_loaded;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
       public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_sms_gateways biz_sms_gateways;
       public bool be_ok_to_config_practitioner_strike_team_details;
       }
 
@@ -30,7 +32,7 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_act_1985_34_date.Clear();
       UserControl_drop_down_date_act_1994_151_date.Clear();
       TextBox_phone_number.Text = k.EMPTY;
-      TextBox_phone_service_id.Text = k.EMPTY;
+      DropDownList_phone_service.ClearSelection();
       CheckBox_be_immune_hepatitis_b.Checked = false;
       CheckBox_be_immune_diptheria_tetanus.Checked = false;
       TextBox_emergency_contact_1_name.Text = k.EMPTY;
@@ -153,6 +155,11 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_act_1985_34_date.maxyear = this_year;
         UserControl_drop_down_date_act_1994_151_date.minyear = three_year_ago;
         UserControl_drop_down_date_act_1994_151_date.maxyear = this_year;
+        p.biz_sms_gateways.BindDirectToListControl
+          (
+          target:DropDownList_phone_service,
+          unselected_literal:"-- phone service --"
+          );
         UserControl_drop_down_date_drivers_license_expiration.minyear = this_year;
         UserControl_drop_down_date_drivers_license_expiration.maxyear = DateTime.Now.AddYears(int.Parse(ConfigurationManager.AppSettings["max_drivers_license_validity_years"])).Year.ToString();
         UserControl_drop_down_date_nims_is_100_date.minyear = "2004";
@@ -228,7 +235,7 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_act_1985_34_date.selectedvalue = act_1985_34_date;
         UserControl_drop_down_date_act_1994_151_date.selectedvalue = act_1994_151_date;
         TextBox_phone_number.Text = phone_number;
-        TextBox_phone_service_id.Text = phone_service_id;
+        DropDownList_phone_service.SelectedValue = phone_service_id;
         CheckBox_be_immune_hepatitis_b.Checked = be_immune_hepatitis_b;
         CheckBox_be_immune_diptheria_tetanus.Checked = be_immune_diptheria_tetanus;
         TextBox_emergency_contact_1_name.Text = emergency_contact_1_name;
@@ -293,9 +300,11 @@ namespace UserControl_practitioner_strike_team_detail
         }
       else
         {
-        p.be_loaded = false;
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
         p.biz_role_member_map = new TClass_biz_role_member_map();
+        p.biz_sms_gateways = new TClass_biz_sms_gateways();
+        //
+        p.be_loaded = false;
         p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-strike-team-details");
         }
       }
@@ -344,7 +353,7 @@ namespace UserControl_practitioner_strike_team_detail
           UserControl_drop_down_date_act_1985_34_date.selectedvalue,
           UserControl_drop_down_date_act_1994_151_date.selectedvalue,
           k.Safe(TextBox_phone_number.Text, k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_phone_service_id.Text, k.safe_hint_type.NUM).Trim(),
+          k.Safe(DropDownList_phone_service.SelectedValue, k.safe_hint_type.NUM).Trim(),
           CheckBox_be_immune_hepatitis_b.Checked,
           CheckBox_be_immune_diptheria_tetanus.Checked,
           k.Safe(TextBox_emergency_contact_1_name.Text, k.safe_hint_type.HUMAN_NAME).Trim(),
@@ -426,7 +435,7 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_act_1985_34_date.enabled = ablement;
       UserControl_drop_down_date_act_1994_151_date.enabled = ablement;
       TextBox_phone_number.Enabled = ablement;
-      TextBox_phone_service_id.Enabled = ablement;
+      DropDownList_phone_service.Enabled = ablement;
       CheckBox_be_immune_hepatitis_b.Enabled = ablement;
       CheckBox_be_immune_diptheria_tetanus.Enabled = ablement;
       TextBox_emergency_contact_1_name.Enabled = ablement;

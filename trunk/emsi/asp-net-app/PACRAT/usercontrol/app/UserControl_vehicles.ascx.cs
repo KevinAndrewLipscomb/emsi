@@ -153,8 +153,7 @@ namespace UserControl_vehicles
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-#warning Revise the ClientID path to this control appropriately.
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_vehicles");
+        p.be_loaded = IsPostBack;
         }
       else
         {

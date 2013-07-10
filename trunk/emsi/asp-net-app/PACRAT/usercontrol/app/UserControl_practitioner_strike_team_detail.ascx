@@ -61,7 +61,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -72,7 +72,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -94,20 +94,18 @@
         <ASP:TextBox id="TextBox_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
     <td><font class="">Phone&nbsp;service&nbsp;id:</font></td>
     <td>&clubs;</td>
     <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_phone_service_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
+      <asp:DropDownList ID="DropDownList_phone_service" runat="server">
+      </asp:DropDownList>
     </td>
-    <td nowrap="True">
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_phone_service_id" runat="server" errormessage="Please enter a valid Phone&nbsp;service&nbsp;id." font-bold="True" controltovalidate="TextBox_phone_service_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
-    </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
   </tr>
   <tr>
     <td><font class="">Hepatitis&nbsp;B immunization:</font></td>
@@ -117,7 +115,7 @@
         <ASP:CheckBox id="CheckBox_be_immune_hepatitis_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -128,7 +126,7 @@
         <ASP:CheckBox id="CheckBox_be_immune_diptheria_tetanus" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -139,7 +137,7 @@
         <ASP:TextBox id="TextBox_emergency_contact_1_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -150,7 +148,7 @@
         <ASP:TextBox id="TextBox_emergency_contact_1_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -161,7 +159,7 @@
         <ASP:TextBox id="TextBox_emergency_contact_2_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -172,7 +170,7 @@
         <ASP:TextBox id="TextBox_emergency_contact_2_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -183,7 +181,7 @@
         <ASP:TextBox id="TextBox_meds_doses" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_meds_doses" runat="server" errormessage="Please restrict the Meds&nbsp;doses entry to 65535 characters." font-bold="True" controltovalidate="TextBox_meds_doses" validationexpression="^[\s\S]{0,65535}$">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
@@ -195,7 +193,7 @@
         <ASP:TextBox id="TextBox_allergies" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_allergies" runat="server" errormessage="Please restrict the Allergies entry to 65535 characters." font-bold="True" controltovalidate="TextBox_allergies" validationexpression="^[\s\S]{0,65535}$">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
@@ -207,7 +205,7 @@
         <ASP:TextBox id="TextBox_pcp_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -218,7 +216,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -229,7 +227,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_100_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -240,7 +238,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_200_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -251,7 +249,7 @@
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
     </td>
   </tr>
       </table>

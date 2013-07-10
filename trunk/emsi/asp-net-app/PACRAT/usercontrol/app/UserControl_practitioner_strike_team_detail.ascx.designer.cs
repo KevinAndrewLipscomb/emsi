@@ -193,22 +193,13 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.TextBox TextBox_phone_number;
         
         /// <summary>
-        /// TextBox_phone_service_id control.
+        /// DropDownList_phone_service control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_phone_service_id;
-        
-        /// <summary>
-        /// RegularExpressionValidator_phone_service_id control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_phone_service_id;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_phone_service;
         
         /// <summary>
         /// CheckBox_be_immune_hepatitis_b control.
