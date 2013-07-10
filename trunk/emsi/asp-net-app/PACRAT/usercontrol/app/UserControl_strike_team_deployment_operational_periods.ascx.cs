@@ -145,11 +145,19 @@ namespace UserControl_strike_team_deployment_operational_periods
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (Session[InstanceId() + ".p"] != null)
+      var instance_id = InstanceId();
+      if (Session[instance_id + ".p"] != null)
         {
-        p = (p_type)(Session[InstanceId() + ".p"]);
-#warning Revise the ClientID path to this control appropriately.
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_operational_periods");
+        p = (p_type)(Session[instance_id + ".p"]);
+        p.be_loaded = IsPostBack;  // This test is sufficient if this control is being used statically on its page.
+        //
+        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
+        // had it loaded already.
+        //
+        if (instance_id == "ASP.protected_strike_team_deployment_detail_aspx.UserControl_strike_team_deployment_control_strike_team_deployment_binder_control_strike_team_deployment_operational_periods")
+          {
+          p.be_loaded &= ((Session["UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_operational_periods");
+          }
         }
       else
         {

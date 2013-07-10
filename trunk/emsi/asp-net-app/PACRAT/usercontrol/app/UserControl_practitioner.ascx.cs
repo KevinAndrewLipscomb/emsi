@@ -292,10 +292,15 @@ namespace UserControl_practitioner
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (Session[InstanceId() + ".p"] != null)
+      var instance_id = InstanceId();
+      if (Session[instance_id + ".p"] != null)
         {
-        p = (p_type)(Session[InstanceId() + ".p"]);
+        p = (p_type)(Session[instance_id + ".p"]);
         p.be_loaded = IsPostBack;
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_practitioner")
+          {
+          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+          }
         }
       else
         {
