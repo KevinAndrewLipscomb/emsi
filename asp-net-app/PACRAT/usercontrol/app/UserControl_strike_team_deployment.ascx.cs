@@ -212,6 +212,7 @@ namespace UserControl_strike_team_deployment
           );
         p.presentation_mode = (p.be_ok_to_config_strike_team_deployments ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
         PresentRecord(id);
+        UserControl_strike_team_deployment_binder_control.Set(id);
         }
       else
         {
@@ -265,7 +266,7 @@ namespace UserControl_strike_team_deployment
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack; // && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment");
+        p.be_loaded = IsPostBack;
         }
       else
         {

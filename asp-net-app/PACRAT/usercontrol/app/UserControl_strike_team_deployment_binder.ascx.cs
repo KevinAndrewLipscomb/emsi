@@ -139,6 +139,7 @@ namespace UserControl_strike_team_deployment_binder
     internal void Set(string deployment_id)
       {
       p.deployment_id = deployment_id;
+      SetTarget(target:"/personnel/");
       }
 
     //--
