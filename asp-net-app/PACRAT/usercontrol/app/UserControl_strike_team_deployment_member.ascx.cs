@@ -207,8 +207,7 @@ namespace UserControl_strike_team_deployment_member
       if (Session[InstanceId() + ".p"] != null)
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
-#warning Revise the following line if the usercontrol will not be a direct child of the member binder.
-        p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_member");
+        p.be_loaded = IsPostBack;
         }
       else
         {
