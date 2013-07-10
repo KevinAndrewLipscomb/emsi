@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <appSettings>
-  <add key="db_connection_string" value="Server=localhost;Database=emsidb_d;Uid=ki-aspdotnetfw-d;Pwd=~ki-aspdotnetfw-d-password~;Treat Tiny As Boolean=false;Respect Binary Flags=false;Default Command Timeout=300" />
+  <add key="db_connection_string" value="Server=localhost;Database=emsidb_d;Uid=ki-pacrat-d;Pwd=~ki-pacrat-d-password~;Treat Tiny As Boolean=false;Respect Binary Flags=false;Default Command Timeout=300" />
+  <add key="dbhomedb_connection_string" value="Server=localhost;Database=homedb_d;Uid=ki-pacrath-d;Pwd=~ki-pacrath-d-password~;Treat Tiny As Boolean=false;Respect Binary Flags=false;Allow User Variables=true;Default Command Timeout=300;" />
   <add key="sysadmin_encoded_password" value="~" />
 </appSettings>
