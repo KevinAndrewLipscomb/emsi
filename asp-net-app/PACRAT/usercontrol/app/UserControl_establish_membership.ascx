@@ -47,7 +47,10 @@
                             </tr>
                             <tr>
                               <td></td>
-                              <td><asp:Button ID="Button_submit" runat="server" Text="Submit" Font-Bold="True" OnClick="Button_submit_Click"></asp:Button></td>
+                              <td>
+                                <asp:Button ID="Button_submit" runat="server" Text="Submit" Font-Bold="True" OnClick="Button_submit_Click"></asp:Button>
+                                <asp:CustomValidator ID="CustomValidator_shared_secret" runat="server" Display="Dynamic" ErrorMessage="Sorry, because of privileges attached to the specified membership record, Application Administrator intervention is required to complete this match.  The Application Administrator has been notified and will be in touch with you." Font-Bold="True" OnServerValidate="CustomValidator_shared_secret_ServerValidate">!ERR!</asp:CustomValidator>
+                              </td>
                             </tr>
                           </table>
                         </blockquote>
