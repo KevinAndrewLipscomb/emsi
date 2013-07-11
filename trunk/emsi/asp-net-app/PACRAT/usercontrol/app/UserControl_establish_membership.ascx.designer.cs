@@ -94,6 +94,15 @@ namespace UserControl_establish_membership {
         protected global::System.Web.UI.WebControls.Button Button_submit;
         
         /// <summary>
+        /// CustomValidator_shared_secret control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_shared_secret;
+        
+        /// <summary>
         /// LinkButton_trouble_handler control.
         /// </summary>
         /// <remarks>
