@@ -246,7 +246,7 @@ namespace practitioner_management
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.biz_strike_team_rosters.Delete(k.Safe(e.Item.Cells[practitioner_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM));
+        p.biz_strike_team_rosters.Delete(k.Safe(e.Item.Cells[practitioner_management_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
