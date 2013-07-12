@@ -115,13 +115,6 @@ namespace Class_db_strike_team_rosters
             (
             "delete from strike_team_roster"
             + " where id = '" + id + "'"
-            +   " and 'NEEDS_CONED_SPONSOR_FINALIZATION' ="
-            +     " ("
-            +     " select description"
-            +     " from service"
-            +       " join service_status on (service_status.id=service.status_id)"
-            +     " where service.id = strike_team_roster.service_id"
-            +     " )"
             ),
           connection
           )
