@@ -8,12 +8,15 @@
           <table cellspacing="0" cellpadding="10" border="0">
             <tr>
               <td bgcolor="#dcdcdc">
-                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <table cellspacing="0" cellpadding="10" border="0" width="100%">
+                  <tr>
+                    <td colspan="5"><strong><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal> <em>strike team vehicles</em></strong></td>
+                  </tr>
                   <tr>
                     <td><strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong></td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td align="right"><asp:Literal ID="Literal_num_vehicles" runat="server"></asp:Literal> vehicles</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td><asp:LinkButton ID="LinkButton_new" runat="server" Font-Bold="True" onclick="LinkButton_new_Click" Visible="False">NEW</asp:LinkButton></td>
                   </tr>
                 </table>
@@ -30,7 +33,10 @@
                     <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="fuel" headertext="Fuel" sortexpression="fuel%,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="license_plate" headertext="Tag" sortexpression="license_plate%,name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?" sortexpression="be_four_or_all_wheel_drive%,name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?" sortexpression="be_four_or_all_wheel_drive%,name">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

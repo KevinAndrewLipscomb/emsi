@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_user;
@@ -7,12 +8,9 @@ using Class_biz_vehicles;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
-using AjaxControlToolkit;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_vehicles
   {
@@ -40,6 +38,7 @@ namespace UserControl_vehicles
       public TClass_msg_protected.vehicle_detail msg_protected_vehicle_detail;
       public uint num_vehicles;
       public string service_id;
+      public string service_name;
       public string sort_order;
       }
 
@@ -128,6 +127,7 @@ namespace UserControl_vehicles
       {
       if (!p.be_loaded)
         {
+        Literal_service_name.Text = p.service_name;
         LinkButton_new.Visible = p.biz_privileges.HasForService
           (
           member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
@@ -161,11 +161,11 @@ namespace UserControl_vehicles
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_user = new TClass_biz_user();
         p.biz_vehicles = new TClass_biz_vehicles();
-        p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
         p.service_id = k.EMPTY;
         p.sort_order = "name%";
         }
@@ -269,9 +269,14 @@ namespace UserControl_vehicles
       );
     }
 
-    internal void Set(string service_id)
+    internal void Set
+      (
+      string service_id,
+      string service_name
+      )
       {
       p.service_id = service_id;
+      p.service_name = service_name;
       }
 
     } // end TWebUserControl_vehicles

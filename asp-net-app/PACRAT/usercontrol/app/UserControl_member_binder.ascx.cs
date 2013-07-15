@@ -31,6 +31,9 @@ namespace UserControl_member_binder
     private struct p_type
       {
       internal bool be_loaded;
+      internal bool be_ok_to_config_roles_and_matrices;
+      internal bool be_ok_to_config_strike_team_region;
+      internal bool be_ok_to_config_strike_team_service;
       internal TClass_biz_members biz_members;
       internal TClass_biz_user biz_user;
       internal string content_id;
@@ -124,12 +127,22 @@ namespace UserControl_member_binder
         }
       else
         {
-        p.be_loaded = false;
-        //
         p.biz_members = new TClass_biz_members();
         p.biz_user = new TClass_biz_user();
         //
-        p.tab_index = UserControl_member_binder_Static.TSSI_MEMBER_PROFILE;
+        p.be_loaded = false;
+        p.be_ok_to_config_roles_and_matrices = k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices");
+        p.be_ok_to_config_strike_team_region = k.Has((string[])(Session["privilege_array"]),"config-strike-team-region");
+        p.be_ok_to_config_strike_team_service = k.Has((string[])(Session["privilege_array"]),"config-strike-team-service");
+        if (p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service)
+          {
+          p.tab_index = UserControl_member_binder_Static.TSSI_PREPARATION;
+          }
+        else
+          {
+          p.tab_index = UserControl_member_binder_Static.TSSI_MEMBER_PROFILE;
+          }
+        //
         FillPlaceHolder(true);
         }
       }
@@ -140,14 +153,7 @@ namespace UserControl_member_binder
         {
         p.be_loaded = true;
         }
-      TabPanel_preparation.Enabled =
-        (
-          k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices")
-        ||
-          k.Has((string[])(Session["privilege_array"]),"config-strike-team-region")
-        ||
-          k.Has((string[])(Session["privilege_array"]),"config-strike-team-service")
-        );
+      TabPanel_preparation.Enabled = (p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service);
       TabPanel_coordination.Enabled = k.Has((string[])(Session["privilege_array"]),"config-strike-team-deployments");
       TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
       TabContainer_control.ActiveTabIndex = (int)(p.tab_index);

@@ -202,6 +202,11 @@ namespace UserControl_region_detail
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
+          if (e.Item.Cells[UserControl_region_detail_Static.TCI_PARTICIPANT].Text == "YES")
+            {
+            e.Item.Style.Add(HtmlTextWriterStyle.FontWeight,"bold");
+            }
+          //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
           foreach (TableCell cell in e.Item.Cells)

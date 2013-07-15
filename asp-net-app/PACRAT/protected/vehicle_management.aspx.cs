@@ -55,7 +55,11 @@ namespace vehicle_management
           aspx_name:"vehicle_management"
           );
         //
-        UserControl_vehicles_control.Set(service_id:p.biz_services.IdOf(p.incoming.summary));
+        UserControl_vehicles_control.Set
+          (
+          service_id:p.biz_services.IdOf(p.incoming.summary),
+          service_name:p.biz_services.NameOfSummary(p.incoming.summary)
+          );
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
