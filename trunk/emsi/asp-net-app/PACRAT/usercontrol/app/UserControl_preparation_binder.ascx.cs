@@ -123,17 +123,17 @@ namespace UserControl_preparation_binder
         {
         p.be_loaded = false;
         //
-        if (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"))
+        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-service"))
           {
-          p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
           }
         if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-region"))
           {
           p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
           }
-        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-service"))
+        if (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"))
           {
-          p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
+          p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
           }
         FillPlaceHolder(true);
         }

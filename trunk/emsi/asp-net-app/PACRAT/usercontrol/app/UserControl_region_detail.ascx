@@ -21,7 +21,12 @@
                       <ItemStyle horizontalalign="Center"></ItemStyle>
                     </asp:BoundColumn>
                     <asp:BoundColumn DataField="num_members" HeaderText="#members" ReadOnly="True" SortExpression="num_members%,be_strike_team_participant desc,name">
-                      <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Right" />
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn DataField="num_vehicles" HeaderText="#vehicles" ReadOnly="True" SortExpression="num_vehicles%,be_strike_team_participant desc,name">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
