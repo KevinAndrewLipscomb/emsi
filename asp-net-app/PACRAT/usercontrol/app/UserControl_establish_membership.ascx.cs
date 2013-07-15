@@ -37,6 +37,10 @@ namespace UserControl_establish_membership
                 UserControl_drop_down_date_birth.minyear = DateTime.Today.AddYears(-130).Year.ToString();
                 UserControl_drop_down_date_birth.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
                 p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
+                if (DateTime.Today <= DateTime.Parse(ConfigurationManager.AppSettings["last_day_to_allow_unimpeded_memestab_to_role_holder"]))
+                  {
+                  CustomValidator_shared_secret.Enabled = false;
+                  }
                 TextBox_certification_number.Focus();
                 p.be_loaded = true;
             }
