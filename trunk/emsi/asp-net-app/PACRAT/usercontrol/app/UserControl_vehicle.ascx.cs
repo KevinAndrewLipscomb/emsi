@@ -336,14 +336,7 @@ namespace UserControl_vehicle
           CheckBox_be_four_or_all_wheel_drive.Checked
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        if (p.presentation_mode == presentation_mode_enum.NEW)
-          {
-          BackTrack();
-          }
-        else
-          {
-          SetLookupMode();
-          }
+        BackTrack();
         }
       else
         {
@@ -384,7 +377,7 @@ namespace UserControl_vehicle
       {
       if (p.biz_vehicles.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
         {
-        SetLookupMode();
+        BackTrack();
         }
       else
         {
@@ -443,6 +436,26 @@ namespace UserControl_vehicle
             }
           }
         }
+      }
+
+    protected void CustomValidator_uniqueness_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = (new ArrayList {k.EMPTY,p.id}).Contains(p.biz_vehicles.IdByServiceIdAndName
+        (
+        service_id:p.service_id,
+        name:k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim())
+        );
+      }
+
+    protected void CustomValidator_license_plate_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      var designator_with_competing_license_plate = p.biz_vehicles.DesignatorWithCompetingLicensePlate
+        (
+        id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
+        license_plate:k.Safe(TextBox_license_plate.Text, k.safe_hint_type.ALPHANUM)
+        );
+      CustomValidator_license_plate.ErrorMessage += designator_with_competing_license_plate;
+      args.IsValid = (designator_with_competing_license_plate == k.EMPTY);
       }
 
     } // end TWebUserControl_vehicle

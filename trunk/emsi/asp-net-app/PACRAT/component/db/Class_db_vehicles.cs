@@ -123,6 +123,30 @@ namespace Class_db_vehicles
       return result;
       }
 
+    internal string DesignatorWithCompetingLicensePlate
+      (
+      string id,
+      string license_plate
+      )
+      {
+      Open();
+      var designator_with_competing_license_plate_obj = new MySqlCommand
+        (
+        "select IFNULL(concat(service.name,' ',vehicle.name),'') from vehicle join service on (service.id=vehicle.service_id) where license_plate = '" + license_plate + "' and vehicle.id <> '" + id + "'",
+        connection
+        )
+        .ExecuteScalar();
+      Close();
+      if (designator_with_competing_license_plate_obj == null)
+        {
+        return k.EMPTY;
+        }
+      else
+        {
+        return designator_with_competing_license_plate_obj.ToString();
+        }
+      }
+
     public bool Get
       (
       string id,
@@ -157,6 +181,14 @@ namespace Class_db_vehicles
       dr.Close();
       Close();
       return result;
+      }
+
+    internal string IdByServiceIdAndName(string service_id, string name)
+      {
+      Open();
+      var id_by_service_id_and_name_obj = new MySqlCommand("select id from vehicle where service_id = '" + service_id + "' and name = '" + name + "'",connection).ExecuteScalar();
+      Close();
+      return (id_by_service_id_and_name_obj == null ? k.EMPTY : id_by_service_id_and_name_obj.ToString());
       }
 
     internal string ServiceIdOf(object summary)

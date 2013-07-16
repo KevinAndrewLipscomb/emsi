@@ -211,6 +211,15 @@ namespace UserControl_vehicle {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_name;
         
         /// <summary>
+        /// CustomValidator_uniqueness control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_uniqueness;
+        
+        /// <summary>
         /// DropDownList_kind control.
         /// </summary>
         /// <remarks>
@@ -254,6 +263,15 @@ namespace UserControl_vehicle {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_license_plate;
+        
+        /// <summary>
+        /// CustomValidator_license_plate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_license_plate;
         
         /// <summary>
         /// CheckBox_be_four_or_all_wheel_drive control.
