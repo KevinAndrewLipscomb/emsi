@@ -17,7 +17,7 @@
                     <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%">
                       <HeaderStyle horizontalalign="Left"></HeaderStyle>
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="be_pacrat_subscriber" headertext="Participant?" sortexpression="be_pacrat_subscriber%,name">
+                    <asp:BoundColumn datafield="be_pacrat_subscriber" headertext="Subscriber?" sortexpression="be_pacrat_subscriber%,name">
                       <ItemStyle horizontalalign="Center"></ItemStyle>
                     </asp:BoundColumn>
                   </Columns>

@@ -51,6 +51,15 @@ namespace Class_biz_vehicles
       return db_vehicles.Delete(id);
       }
 
+    internal string DesignatorWithCompetingLicensePlate
+      (
+      string id,
+      string license_plate
+      )
+      {
+      return db_vehicles.DesignatorWithCompetingLicensePlate(id,license_plate);
+      }
+
     public bool Get
       (
       string id,
@@ -72,6 +81,15 @@ namespace Class_biz_vehicles
         out license_plate,
         out be_four_or_all_wheel_drive
         );
+      }
+
+    internal string IdByServiceIdAndName
+      (
+      string service_id,
+      string name
+      )
+      {
+      return db_vehicles.IdByServiceIdAndName(service_id,name);
       }
 
     internal string ServiceIdOf(object summary)
