@@ -1,11 +1,11 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_vehicle.ascx.cs" Inherits="UserControl_vehicle.TWebUserControl_vehicle"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_tow_capacity.ascx.cs" Inherits="UserControl_tow_capacity.TWebUserControl_tow_capacity"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
       <table cellspacing="0" cellpadding="5" border="0">
-  <tr runat="server" id="TableRow_record_navigation_controls" visible="false">
+  <tr>
     <td bgcolor="gainsboro" valign="top"><font class="">id:</font></td>
     <td valign="top"><font class="">
       <table cellspacing="0" cellpadding="0" border="0">
@@ -52,94 +52,38 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_id" runat="server" errormessage="Please enter id." font-bold="True" controltovalidate="TextBox_id">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
-  <tr runat="server" id="TableRow_service" visible="false">
-    <td><font class="">Service&nbsp;id:</font></td>
+  <tr>
+    <td><font class="">Short&nbsp;description:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_service_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_short_description" runat="server" columns="31" maxlength="31" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_service_id" runat="server" errormessage="Please enter Service&nbsp;id." font-bold="True" controltovalidate="TextBox_service_id">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_service_id" runat="server" errormessage="Please enter a valid Service&nbsp;id." font-bold="True" controltovalidate="TextBox_service_id" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_short_description" runat="server" errormessage="Please enter Short&nbsp;description." font-bold="True" controltovalidate="TextBox_short_description">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">Name:</font></td>
+    <td><font class="">Long&nbsp;description:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_name" runat="server" columns="63" maxlength="63" cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_long_description" runat="server" columns="63" maxlength="63" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_name" runat="server" errormessage="Please enter Name." font-bold="True" controltovalidate="TextBox_name">!ERR!</ASP:RequiredFieldValidator>
-      <asp:CustomValidator ID="CustomValidator_uniqueness" runat="server" Display="Dynamic" ErrorMessage="A vehicle with this name already exists in the system for this service." Font-Bold="True" onservervalidate="CustomValidator_uniqueness_ServerValidate">!ERR!</asp:CustomValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_long_description" runat="server" errormessage="Please enter Long&nbsp;description." font-bold="True" controltovalidate="TextBox_long_description">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">Kind:</font></td>
+    <td><font class="">Pecking&nbsp;order:</font></td>
     <td>
       <font class="">
-        <ASP:DropDownList id="DropDownList_kind" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
+        <ASP:TextBox id="TextBox_pecking_order" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_kind_id" runat="server" errormessage="Please selected a vehicle Kind." font-bold="True" controltovalidate="DropDownList_kind">!ERR!</ASP:RequiredFieldValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Tow capacity:</font></td>
-    <td>
-      <font class="">
-        <ASP:DropDownList id="DropDownList_tow_capacity" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_tow_capacity" runat="server" errormessage="Please selected a Tow capacity." font-bold="True" controltovalidate="DropDownList_tow_capacity">!ERR!</ASP:RequiredFieldValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Fuel:</font></td>
-    <td>
-      <font class="">
-        <ASP:DropDownList id="DropDownList_fuel" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_fuel_id" runat="server" errormessage="Please select a Fuel." font-bold="True" controltovalidate="DropDownList_fuel">!ERR!</ASP:RequiredFieldValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">License&nbsp;plate:</font></td>
-    <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_license_plate" runat="server" columns="15" maxlength="15" cssclass="" enabled="False"></ASP:TextBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <asp:CustomValidator ID="CustomValidator_license_plate" runat="server" ErrorMessage="The specified license plate already belongs to " Font-Bold="True" onservervalidate="CustomValidator_license_plate_ServerValidate">!ERR!</asp:CustomValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">PA DOH decal #:</font></td>
-    <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_pa_doh_decal_num" runat="server" columns="7" maxlength="7" cssclass="" enabled="False"></ASP:TextBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_pa_doh_decal_num" Display="Dynamic" ErrorMessage="Please enter a valid 7-digit PA DOH decal number." Font-Bold="True" ValidationExpression="\d{7}">!ERR!</asp:RegularExpressionValidator>
-      <asp:CustomValidator ID="CustomValidator_pa_doh_decal_num" runat="server" ErrorMessage="The specified PA DOH decal number already belongs to " Font-Bold="True" onservervalidate="CustomValidator_pa_doh_decal_num_ServerValidate">!ERR!</asp:CustomValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Be&nbsp;four&nbsp;or&nbsp;all&nbsp;wheel&nbsp;drive:</font></td>
-    <td>
-      <font class="">
-        <ASP:CheckBox id="CheckBox_be_four_or_all_wheel_drive" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_pecking_order" runat="server" errormessage="Please enter Pecking&nbsp;order." font-bold="True" controltovalidate="TextBox_pecking_order">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_pecking_order" runat="server" errormessage="Please enter a valid Pecking&nbsp;order." font-bold="True" controltovalidate="TextBox_pecking_order" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
       </table>

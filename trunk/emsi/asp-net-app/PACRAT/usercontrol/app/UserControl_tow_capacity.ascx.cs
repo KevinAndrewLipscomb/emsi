@@ -1,33 +1,26 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using AjaxControlToolkit;
-using Class_biz_members;
-using Class_biz_privileges;
+using Class_biz_tow_capacities;
 using Class_biz_role_member_map;
-using Class_biz_strike_team_deployment_operational_periods;
-using Class_biz_user;
 using kix;
 using System;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Collections;
+using UserControl_drop_down_date;
 
-namespace UserControl_strike_team_deployment_operational_period
+namespace UserControl_tow_capacity
   {
-  public partial class TWebUserControl_strike_team_deployment_operational_period: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_tow_capacity: ki_web_ui.usercontrol_class
     {
     private struct p_type
       {
       public bool be_loaded;
-      public bool be_ok_to_config_strike_team_deployment_operational_periods;
-      public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
-      public TClass_biz_members biz_members;
-      public TClass_biz_privileges biz_privileges;
+      public TClass_biz_tow_capacities biz_tow_capacities;
       public TClass_biz_role_member_map biz_role_member_map;
-      public TClass_biz_user biz_user;
-      public string deployment_id;
-      public string operational_period_id;
-      public presentation_mode_enum presentation_mode;
-      public object summary;
+      public bool be_ok_to_config_tow_capacities;
       } // end p_type
 
     private p_type p;
@@ -36,9 +29,9 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       TextBox_id.Text = k.EMPTY;
       DropDownList_id.Visible = false;
-      TextBox_deployment_id.Text = k.EMPTY;
-      UserControl_drop_down_datetime_start.Clear();
-      UserControl_drop_down_datetime_end.Clear();
+      TextBox_short_description.Text = k.EMPTY;
+      TextBox_long_description.Text = k.EMPTY;
+      TextBox_pecking_order.Text = k.EMPTY;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -134,102 +127,53 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       if (!p.be_loaded)
         {
-        LinkButton_new_record.Visible = p.be_ok_to_config_strike_team_deployment_operational_periods;
+        LinkButton_new_record.Visible = p.be_ok_to_config_tow_capacities;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
-        //
-        UserControl_drop_down_datetime_start.minyear = DateTime.Now.AddYears(-1).ToString("yyyy");
-        UserControl_drop_down_datetime_start.maxyear = DateTime.Now.AddYears(1).ToString("yyyy");
-        UserControl_drop_down_datetime_start.minute_intervals = 15;
-        UserControl_drop_down_datetime_end.minyear = DateTime.Now.AddYears(-1).ToString("yyyy");
-        UserControl_drop_down_datetime_end.maxyear = DateTime.Now.AddYears(1).ToString("yyyy");
-        UserControl_drop_down_datetime_end.minute_intervals = 15;
-        //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        if (p.presentation_mode == presentation_mode_enum.NEW)
-          {
-          SetDataEntryMode();
-          TextBox_deployment_id.Text = p.deployment_id;
-          UserControl_drop_down_datetime_start.selectedvalue = DateTime.Now;
-          UserControl_drop_down_datetime_end.selectedvalue = DateTime.Now;
-          UserControl_drop_down_datetime_start.Focus();
-          }
-        else
-          {
-          PresentRecord(p.operational_period_id);
-          Panel_active_operational_period_detail.Visible = true;
-          UserControl_operational_period_detail_control.Set
-            (
-            deployment_id:p.deployment_id,
-            operational_period_id:p.operational_period_id
-            );
-          }
-
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_delete);
       }
 
     private bool PresentRecord(string id)
       {
       Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
-      string deployment_id;
-      DateTime start;
-      DateTime end;
+      string short_description;
+      string long_description;
+      string pecking_order;
       result = false;
       if
         (
-        p.biz_strike_team_deployment_operational_periods.Get
+        p.biz_tow_capacities.Get
           (
           id,
-          out deployment_id,
-          out start,
-          out end
+          out short_description,
+          out long_description,
+          out pecking_order
           )
         )
         {
         TextBox_id.Text = id;
         TextBox_id.Enabled = false;
-        TextBox_deployment_id.Text = deployment_id;
-        UserControl_drop_down_datetime_start.selectedvalue = start;
-        UserControl_drop_down_datetime_end.selectedvalue = end;
+        TextBox_short_description.Text = short_description;
+        TextBox_long_description.Text = long_description;
+        TextBox_pecking_order.Text = pecking_order;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
-        SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_periods);
-        Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
-        Button_delete.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
+        SetDependentFieldAblements(p.be_ok_to_config_tow_capacities);
+        Button_submit.Enabled = p.be_ok_to_config_tow_capacities;
+        Button_delete.Enabled = p.be_ok_to_config_tow_capacities;
         result = true;
         }
       return result;
       }
 
-    internal void Set
-      (
-      string deployment_id,
-      string operational_period_id
-      )
-      {
-      p.deployment_id = deployment_id;
-      if (operational_period_id.Length > 0)
-        {
-        p.operational_period_id = operational_period_id;
-        p.summary = p.biz_strike_team_deployment_operational_periods.Summary(operational_period_id);
-        p.presentation_mode = (p.be_ok_to_config_strike_team_deployment_operational_periods ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
-        }
-      else
-        {
-        p.operational_period_id = k.EMPTY;
-        p.summary = null;
-        p.presentation_mode = presentation_mode_enum.NEW;
-        }
-      }
     private void SetDataEntryMode()
       {
       Clear();
@@ -240,8 +184,8 @@ namespace UserControl_strike_team_deployment_operational_period
       Label_lookup_hint.Enabled = false;
       LinkButton_reset.Enabled = true;
       LinkButton_new_record.Enabled = false;
-      SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_periods);
-      Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
+      SetDependentFieldAblements(p.be_ok_to_config_tow_capacities);
+      Button_submit.Enabled = p.be_ok_to_config_tow_capacities;
       Button_delete.Enabled = false;
       TextBox_id.Focus();
       }
@@ -263,24 +207,32 @@ namespace UserControl_strike_team_deployment_operational_period
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (Session[InstanceId() + ".p"] != null)
+      var instance_id = InstanceId();
+      if (Session[instance_id + ".p"] != null)
         {
-        p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack;
+        p = (p_type)(Session[instance_id + ".p"]);
+        p.be_loaded = IsPostBack;  // This test is sufficient if this control is being used statically on its page.
+        //
+        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
+        // had it loaded already.
+        //
+#warning Revise the binder-related instance_id to this control appropriately.
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_tow_capacity")
+          {
+#warning Revise the ClientID path to this control appropriately.
+          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_tow_capacity");
+          }
+//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_tow_capacity")
+//        {
+//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_tow_capacity");
+//        }
         }
       else
         {
         p.be_loaded = false;
-        p.biz_members = new TClass_biz_members();
-        p.biz_privileges = new TClass_biz_privileges();
-        p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
+        p.biz_tow_capacities = new TClass_biz_tow_capacities();
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.biz_user = new TClass_biz_user();
-        p.be_ok_to_config_strike_team_deployment_operational_periods = true;
-        p.deployment_id = k.EMPTY;
-        p.operational_period_id = k.EMPTY;
-        p.presentation_mode = presentation_mode_enum.NONE;
-        p.summary = null;
+        p.be_ok_to_config_tow_capacities = k.Has((string[])(Session["privilege_array"]), "config-tow_capacities");
         }
       }
 
@@ -291,15 +243,15 @@ namespace UserControl_strike_team_deployment_operational_period
     private void InitializeComponent()
       {
       //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_deployment_operational_periods_PreRender;
+      this.PreRender += this.TWebUserControl_tow_capacity_PreRender;
       }
 
-    private void TWebUserControl_strike_team_deployment_operational_periods_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_tow_capacity_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_strike_team_deployment_operational_period Fresh()
+    public TWebUserControl_tow_capacity Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -309,29 +261,15 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       if (Page.IsValid)
         {
-        var start = new DateTime();
-        var end = new DateTime();
-        //
-        if (UserControl_drop_down_datetime_start.selectedvalue != DateTime.MinValue)
-          {
-          start = UserControl_drop_down_datetime_start.selectedvalue;
-          }
-        if (UserControl_drop_down_datetime_end.selectedvalue != DateTime.MinValue)
-          {
-          end = UserControl_drop_down_datetime_end.selectedvalue;
-          }
-        p.biz_strike_team_deployment_operational_periods.Set
+        p.biz_tow_capacities.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM).Trim(),
-          start,
-          end
+          k.Safe(TextBox_short_description.Text,k.safe_hint_type.PUNCTUATED).Trim(),
+          k.Safe(TextBox_long_description.Text,k.safe_hint_type.PUNCTUATED).Trim(),
+          k.Safe(TextBox_pecking_order.Text,k.safe_hint_type.NUM).Trim()
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        if (p.presentation_mode == presentation_mode_enum.NEW)
-          {
-          BackTrack();
-          }
+        SetLookupMode();
         }
       else
         {
@@ -370,9 +308,9 @@ namespace UserControl_strike_team_deployment_operational_period
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_strike_team_deployment_operational_periods.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
+      if (p.biz_tow_capacities.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
         {
-        BackTrack();
+        SetLookupMode();
         }
       else
         {
@@ -392,9 +330,9 @@ namespace UserControl_strike_team_deployment_operational_period
 
     private void SetDependentFieldAblements(bool ablement)
       {
-      TextBox_deployment_id.Enabled = ablement;
-      UserControl_drop_down_datetime_start.enabled = ablement;
-      UserControl_drop_down_datetime_end.enabled = ablement;
+      TextBox_short_description.Enabled = ablement;
+      TextBox_long_description.Enabled = ablement;
+      TextBox_pecking_order.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -406,7 +344,7 @@ namespace UserControl_strike_team_deployment_operational_period
       if (!PresentRecord(saved_id))
         {
         TextBox_id.Text = saved_id;
-        p.biz_strike_team_deployment_operational_periods.Bind(saved_id, DropDownList_id);
+        p.biz_tow_capacities.Bind(saved_id, DropDownList_id);
         num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {
@@ -430,6 +368,6 @@ namespace UserControl_strike_team_deployment_operational_period
         }
       }
 
-    } // end TWebUserControl_strike_team_deployment_operational_periods
+    } // end TWebUserControl_tow_capacity
 
   }

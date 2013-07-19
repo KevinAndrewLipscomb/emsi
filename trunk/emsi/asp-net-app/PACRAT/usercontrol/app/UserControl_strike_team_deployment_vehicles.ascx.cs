@@ -20,10 +20,11 @@ namespace UserControl_strike_team_deployment_vehicles
       public const int TCI_ID = 1;
       public const int TCI_VEHICLE_ID = 2;
       public const int TCI_MOBILIZED = 3;
-      public const int TCI_SERVICE = 4;
-      public const int TCI_NAME = 5;
-      public const int TCI_KIND = 6;
-      public const int TCI_FUEL = 6;
+      public const int TCI_SERVICE_ID = 4;
+      public const int TCI_SERVICE = 5;
+      public const int TCI_NAME = 6;
+      public const int TCI_KIND = 7;
+      public const int TCI_FUEL = 8;
       }
 
     private struct p_type
@@ -164,7 +165,7 @@ namespace UserControl_strike_team_deployment_vehicles
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
         p.do_include_all_eligible_vehicles = false;
-        p.sort_order = "name%,service";
+        p.sort_order = "service%,name";
         }
       }
 
@@ -200,7 +201,8 @@ namespace UserControl_strike_team_deployment_vehicles
         if (e.CommandName == "Select")
           {
           p.msg_protected_vehicle_detail.id = vehicle_id;
-          MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_profile");
+          p.msg_protected_vehicle_detail.service_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SERVICE_ID].Text,k.safe_hint_type.NUM);
+          MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_detail");
           }
         else if (e.CommandName == "ToggleMobilization")
           {

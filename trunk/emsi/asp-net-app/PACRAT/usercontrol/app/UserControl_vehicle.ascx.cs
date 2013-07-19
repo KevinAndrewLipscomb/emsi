@@ -4,6 +4,7 @@ using Class_biz_fuels;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
+using Class_biz_tow_capacities;
 using Class_biz_user;
 using Class_biz_vehicle_kinds;
 using Class_biz_vehicles;
@@ -27,6 +28,7 @@ namespace UserControl_vehicle
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_tow_capacities biz_tow_capacities;
       public TClass_biz_user biz_user;
       public TClass_biz_vehicle_kinds biz_vehicle_kinds;
       public TClass_biz_vehicles biz_vehicles;
@@ -46,8 +48,10 @@ namespace UserControl_vehicle
       TextBox_service_id.Text = k.EMPTY;
       TextBox_name.Text = k.EMPTY;
       DropDownList_kind.ClearSelection();
+      DropDownList_tow_capacity.ClearSelection();
       DropDownList_fuel.ClearSelection();
       TextBox_license_plate.Text = k.EMPTY;
+      TextBox_pa_doh_decal_num.Text = k.EMPTY;
       CheckBox_be_four_or_all_wheel_drive.Checked = false;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
@@ -151,6 +155,7 @@ namespace UserControl_vehicle
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
         //
         p.biz_vehicle_kinds.BindDirectToListControl(target:DropDownList_kind);
+        p.biz_tow_capacities.BindLongDescriptionDirectToListControl(target:DropDownList_tow_capacity);
         p.biz_fuels.BindDirectToListControl(target:DropDownList_fuel);
         //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
@@ -159,6 +164,7 @@ namespace UserControl_vehicle
           SetDataEntryMode();
           TextBox_service_id.Text = p.service_id;
           DropDownList_kind.Items.Insert(0,(new ListItem("-- kind --",k.EMPTY)));
+          DropDownList_tow_capacity.Items.Insert(0,(new ListItem("-- tow capacity -- ",k.EMPTY)));
           DropDownList_fuel.Items.Insert(0,(new ListItem("-- fuel --",k.EMPTY)));
           TextBox_name.Focus();
           }
@@ -181,6 +187,8 @@ namespace UserControl_vehicle
       string fuel_id;
       string license_plate;
       bool be_four_or_all_wheel_drive;
+      string tow_capacity_id;
+      string pa_doh_decal_num;
       result = false;
       if
         (
@@ -192,7 +200,9 @@ namespace UserControl_vehicle
           out kind_id,
           out fuel_id,
           out license_plate,
-          out be_four_or_all_wheel_drive
+          out be_four_or_all_wheel_drive,
+          out tow_capacity_id,
+          out pa_doh_decal_num
           )
         )
         {
@@ -201,8 +211,10 @@ namespace UserControl_vehicle
         TextBox_service_id.Text = service_id;
         TextBox_name.Text = name;
         DropDownList_kind.SelectedValue = kind_id;
+        DropDownList_tow_capacity.SelectedValue = tow_capacity_id;
         DropDownList_fuel.SelectedValue = fuel_id;
         TextBox_license_plate.Text = license_plate;
+        TextBox_pa_doh_decal_num.Text = pa_doh_decal_num;
         CheckBox_be_four_or_all_wheel_drive.Checked = be_four_or_all_wheel_drive;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
@@ -287,6 +299,7 @@ namespace UserControl_vehicle
         p.biz_members = new TClass_biz_members();
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
+        p.biz_tow_capacities = new TClass_biz_tow_capacities();
         p.biz_user = new TClass_biz_user();
         p.biz_vehicle_kinds = new TClass_biz_vehicle_kinds();
         p.biz_vehicles = new TClass_biz_vehicles();
@@ -328,12 +341,14 @@ namespace UserControl_vehicle
         p.biz_vehicles.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_service_id.Text,k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_service_id.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
-          k.Safe(DropDownList_kind.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(DropDownList_fuel.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_license_plate.Text,k.safe_hint_type.ALPHANUM).Trim(),
-          CheckBox_be_four_or_all_wheel_drive.Checked
+          k.Safe(DropDownList_kind.Text,k.safe_hint_type.NUM),
+          k.Safe(DropDownList_fuel.Text,k.safe_hint_type.NUM),
+          k.Safe(TextBox_license_plate.Text,k.safe_hint_type.ALPHANUM),
+          CheckBox_be_four_or_all_wheel_drive.Checked,
+          k.Safe(DropDownList_tow_capacity.Text,k.safe_hint_type.NUM),
+          k.Safe(TextBox_pa_doh_decal_num.Text,k.safe_hint_type.NUM)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         BackTrack();
@@ -400,9 +415,11 @@ namespace UserControl_vehicle
       TextBox_service_id.Enabled = ablement;
       TextBox_name.Enabled = ablement;
       DropDownList_kind.Enabled = ablement;
+      DropDownList_tow_capacity.Enabled = ablement;
       DropDownList_fuel.Enabled = ablement;
       TextBox_license_plate.Enabled = ablement;
       CheckBox_be_four_or_all_wheel_drive.Enabled = ablement;
+      TextBox_pa_doh_decal_num.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -456,6 +473,17 @@ namespace UserControl_vehicle
         );
       CustomValidator_license_plate.ErrorMessage += designator_with_competing_license_plate;
       args.IsValid = (designator_with_competing_license_plate == k.EMPTY);
+      }
+
+    protected void CustomValidator_pa_doh_decal_num_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      var designator_with_competing_pa_doh_decal_num = p.biz_vehicles.DesignatorWithCompetingPaDohDecalNum
+        (
+        id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
+        pa_doh_decal_num:k.Safe(TextBox_pa_doh_decal_num.Text, k.safe_hint_type.NUM)
+        );
+      CustomValidator_pa_doh_decal_num.ErrorMessage += designator_with_competing_pa_doh_decal_num;
+      args.IsValid = (designator_with_competing_pa_doh_decal_num == k.EMPTY);
       }
 
     } // end TWebUserControl_vehicle

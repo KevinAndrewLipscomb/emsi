@@ -22,6 +22,15 @@ namespace vehicle_detail {
         protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
         
         /// <summary>
+        /// Literal_service control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_service;
+        
+        /// <summary>
         /// UserControl_vehicle_control control.
         /// </summary>
         /// <remarks>

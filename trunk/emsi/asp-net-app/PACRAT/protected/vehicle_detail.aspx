@@ -15,6 +15,7 @@
   <body bgcolor="white">
     <form runat="server">
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
+      <h3>Detail for <asp:Literal ID="Literal_service" runat="server"></asp:Literal> vehicle</h3>
       <uc2:UserControl_vehicle ID="UserControl_vehicle_control" runat="server" />
       <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent>
       <uc3:UserControl_update_progress_blocker id="UserControl_update_progress_blocker_control" runat="server"></uc3:UserControl_update_progress_blocker>

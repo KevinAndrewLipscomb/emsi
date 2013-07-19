@@ -32,6 +32,7 @@
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_vehicle.id is not null)%,service,name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
+                    <asp:BoundColumn datafield="service_id" visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service" headertext="Service" sortexpression="service%,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%,service"></asp:BoundColumn>
                     <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,service,name"></asp:BoundColumn>
