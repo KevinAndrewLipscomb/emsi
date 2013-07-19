@@ -1,5 +1,6 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
+using Class_biz_services;
 using Class_biz_vehicles;
 using Class_msg_protected;
 using kix;
@@ -20,6 +21,7 @@ namespace vehicle_detail
 
     private struct p_type
       {
+      public TClass_biz_services biz_services;
       public TClass_biz_vehicles biz_vehicles;
       public TClass_msg_protected.vehicle_detail incoming;
       }
@@ -41,6 +43,7 @@ namespace vehicle_detail
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - vehicle_detail";
+        Literal_service.Text = p.biz_services.NameOf(p.incoming.service_id);
         }
       }
 
@@ -55,6 +58,7 @@ namespace vehicle_detail
         //
         // Initialize p.~ objects here.
         //
+        p.biz_services = new TClass_biz_services();
         p.biz_vehicles = new TClass_biz_vehicles();
         //
         p.incoming = Message<TClass_msg_protected.vehicle_detail>

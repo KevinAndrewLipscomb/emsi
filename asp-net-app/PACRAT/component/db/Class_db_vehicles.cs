@@ -64,11 +64,14 @@ namespace Class_db_vehicles
         "select vehicle.id as id"
         + " , name"
         + " , vehicle_kind.description as kind"
+        + " , tow_capacity.short_description as tow_capacity"
         + " , fuel.description as fuel"
         + " , license_plate"
+        + " , pa_doh_decal_num"
         + " , IF(be_four_or_all_wheel_drive,'YES','no') as be_four_or_all_wheel_drive"
         + " from vehicle"
         +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +   " join tow_capacity on (tow_capacity.id=vehicle.tow_capacity_id)"
         +   " join fuel on (fuel.id=vehicle.fuel_id)"
         + (service_filter.Length > 0 ? " where service_id = '" + service_filter + "'" : k.EMPTY)
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
@@ -147,6 +150,30 @@ namespace Class_db_vehicles
         }
       }
 
+    internal string DesignatorWithCompetingPaDohDecalNum
+      (
+      string id,
+      string pa_doh_decal_num
+      )
+      {
+      Open();
+      var designator_with_competing_pa_doh_decal_num_obj = new MySqlCommand
+        (
+        "select IFNULL(concat(service.name,' ',vehicle.name),'') from vehicle join service on (service.id=vehicle.service_id) where pa_doh_decal_num = '" + pa_doh_decal_num + "' and vehicle.id <> '" + id + "'",
+        connection
+        )
+        .ExecuteScalar();
+      Close();
+      if (designator_with_competing_pa_doh_decal_num_obj == null)
+        {
+        return k.EMPTY;
+        }
+      else
+        {
+        return designator_with_competing_pa_doh_decal_num_obj.ToString();
+        }
+      }
+
     public bool Get
       (
       string id,
@@ -155,7 +182,9 @@ namespace Class_db_vehicles
       out string kind_id,
       out string fuel_id,
       out string license_plate,
-      out bool be_four_or_all_wheel_drive
+      out bool be_four_or_all_wheel_drive,
+      out string tow_capacity_id,
+      out string pa_doh_decal_num
       )
       {
       service_id = k.EMPTY;
@@ -164,6 +193,8 @@ namespace Class_db_vehicles
       fuel_id = k.EMPTY;
       license_plate = k.EMPTY;
       be_four_or_all_wheel_drive = false;
+      tow_capacity_id = k.EMPTY;
+      pa_doh_decal_num = k.EMPTY;
       var result = false;
       //
       Open();
@@ -176,6 +207,8 @@ namespace Class_db_vehicles
         fuel_id = dr["fuel_id"].ToString();
         license_plate = dr["license_plate"].ToString();
         be_four_or_all_wheel_drive = (dr["be_four_or_all_wheel_drive"].ToString() == "1");
+        tow_capacity_id = dr["tow_capacity_id"].ToString();
+        pa_doh_decal_num = dr["pa_doh_decal_num"].ToString();
         result = true;
         }
       dr.Close();
@@ -204,7 +237,9 @@ namespace Class_db_vehicles
       string kind_id,
       string fuel_id,
       string license_plate,
-      bool be_four_or_all_wheel_drive
+      bool be_four_or_all_wheel_drive,
+      string tow_capacity_id,
+      string pa_doh_decal_num
       )
       {
       var childless_field_assignments_clause = k.EMPTY
@@ -214,6 +249,8 @@ namespace Class_db_vehicles
       + " , fuel_id = NULLIF('" + fuel_id + "','')"
       + " , license_plate = NULLIF('" + license_plate + "','')"
       + " , be_four_or_all_wheel_drive = " + be_four_or_all_wheel_drive.ToString()
+      + " , tow_capacity_id = NULLIF('" + tow_capacity_id + "','')"
+      + " , pa_doh_decal_num = NULLIF('" + pa_doh_decal_num + "','')"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (

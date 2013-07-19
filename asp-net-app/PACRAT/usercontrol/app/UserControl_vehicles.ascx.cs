@@ -200,6 +200,7 @@ namespace UserControl_vehicles
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
         p.msg_protected_vehicle_detail.id = k.Safe(e.Item.Cells[UserControl_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+        p.msg_protected_vehicle_detail.service_id = p.service_id;
         MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_detail");
         }
       }

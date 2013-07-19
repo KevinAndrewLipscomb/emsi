@@ -9,32 +9,32 @@ using System.Collections;
 using System.Web.UI.WebControls;
 using UserControl_drop_down_date;
 
-namespace Class_db_strike_team_deployment_vehicles
+namespace Class_db_tow_capacities
   {
-  public class TClass_db_strike_team_deployment_vehicles: TClass_db
+  public class TClass_db_tow_capacities: TClass_db
     {
-    private class strike_team_deployment_vehicle_summary
+    private class tow_capacity_summary
       {
       public string id;
       }
 
     private TClass_db_trail db_trail = null;
 
-    public TClass_db_strike_team_deployment_vehicles() : base()
+    public TClass_db_tow_capacities() : base()
       {
       db_trail = new TClass_db_trail();
       }
 
     public bool Bind(string partial_spec, object target)
       {
-      var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(vehicle_id,'-'))";
+      var concat_clause = "concat(IFNULL(short_description,'-'),'|',IFNULL(long_description,'-'),'|',IFNULL(pecking_order,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
       var dr = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
-        + " from strike_team_deployment_vehicle"
+        + " from tow_capacity"
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
@@ -53,31 +53,14 @@ namespace Class_db_strike_team_deployment_vehicles
       (
       string sort_order,
       bool be_sort_order_ascending,
-      object target,
-      string deployment_id,
-      bool do_include_all_eligible_vehicles
+      object target
       )
       {
       Open();
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
-        "select strike_team_deployment_vehicle.id as id"
-        + " , vehicle.id as vehicle_id"
-        + " , service.id as service_id"
-        + " , service.name as service"
-        + " , vehicle.name as name"
-        + " , vehicle_kind.description as kind"
-        + " , fuel.description as fuel"
-        + " , be_four_or_all_wheel_drive"
-        + " from vehicle"
-        +   " join service on (service.id=vehicle.service_id)"
-        +   " join county_region_map on (county_region_map.county_code=service.county_code)"
-        +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code)"
-        +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
-        +   " join fuel on (fuel.id=vehicle.fuel_id)"
-        +   (do_include_all_eligible_vehicles ? " left" : k.EMPTY) + " join strike_team_deployment_vehicle on (strike_team_deployment_vehicle.vehicle_id=vehicle.id and strike_team_deployment_vehicle.deployment_id = '" + deployment_id + "')"
-        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
-        ,
+        "select tow_capacity.id as id"
+        + " from tow_capacity",
         connection
         )
         .ExecuteReader();
@@ -85,24 +68,37 @@ namespace Class_db_strike_team_deployment_vehicles
       Close();
       }
 
-    public void BindDirectToListControl
-      (
-      object target,
-      string deployment_id
-      )
+    public void BindDirectToListControl(object target)
       {
       Open();
-      (target as ListControl).Items.Clear();
+      ((target) as ListControl).Items.Clear();
       var dr = new MySqlCommand
         (
-        "SELECT vehicle.id as id"
-        + " , concat(service.name,' ',vehicle.name,' (',vehicle_kind.description,')') as spec"
-        + " FROM strike_team_deployment_vehicle"
-        +   " join vehicle on (vehicle.id=strike_team_deployment_vehicle.vehicle_id)"
-        +   " join service on (service.id=vehicle.service_id)"
-        +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
-        + " where deployment_id = '" + deployment_id + "'"
+        "SELECT id"
+        + " , CONVERT(concat(IFNULL(short_description,'-'),'|',IFNULL(long_description,'-'),'|',IFNULL(pecking_order,'-')) USING utf8) as spec"
+        + " FROM tow_capacity"
         + " order by spec",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
+        }
+      dr.Close();
+      Close();
+      }
+
+    public void BindLongDescriptionDirectToListControl(object target)
+      {
+      Open();
+      ((target) as ListControl).Items.Clear();
+      var dr = new MySqlCommand
+        (
+        "SELECT id"
+        + " , long_description as spec"
+        + " FROM tow_capacity"
+        + " order by pecking_order",
         connection
         )
         .ExecuteReader();
@@ -120,7 +116,7 @@ namespace Class_db_strike_team_deployment_vehicles
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_vehicle where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        new MySqlCommand(db_trail.Saved("delete from tow_capacity where id = \"" + id + "\""), connection).ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -140,20 +136,23 @@ namespace Class_db_strike_team_deployment_vehicles
     public bool Get
       (
       string id,
-      out string deployment_id,
-      out string vehicle_id
+      out string short_description,
+      out string long_description,
+      out string pecking_order
       )
       {
-      deployment_id = k.EMPTY;
-      vehicle_id = k.EMPTY;
+      short_description = k.EMPTY;
+      long_description = k.EMPTY;
+      pecking_order = k.EMPTY;
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment_vehicle where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      var dr = new MySqlCommand("select * from tow_capacity where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
       if (dr.Read())
         {
-        deployment_id = dr["deployment_id"].ToString();
-        vehicle_id = dr["vehicle_id"].ToString();
+        short_description = dr["short_description"].ToString();
+        long_description = dr["long_description"].ToString();
+        pecking_order = dr["pecking_order"].ToString();
         result = true;
         }
       dr.Close();
@@ -164,17 +163,19 @@ namespace Class_db_strike_team_deployment_vehicles
     public void Set
       (
       string id,
-      string deployment_id,
-      string vehicle_id
+      string short_description,
+      string long_description,
+      string pecking_order
       )
       {
       var childless_field_assignments_clause = k.EMPTY
-      + "deployment_id = NULLIF('" + deployment_id + "','')"
-      + " , vehicle_id = NULLIF('" + vehicle_id + "','')"
+      + "short_description = NULLIF('" + short_description + "','')"
+      + " , long_description = NULLIF('" + long_description + "','')"
+      + " , pecking_order = NULLIF('" + pecking_order + "','')"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (
-        target_table_name:"strike_team_deployment_vehicle",
+        target_table_name:"tow_capacity",
         key_field_name:"id",
         key_field_value:id,
         childless_field_assignments_clause:childless_field_assignments_clause
@@ -189,14 +190,14 @@ namespace Class_db_strike_team_deployment_vehicles
         new MySqlCommand
           (
           "SELECT *"
-          + " FROM strike_team_deployment_vehicle"
+          + " FROM tow_capacity"
           + " where id = '" + id + "'",
           connection
           )
           .ExecuteReader()
         );
       dr.Read();
-      var the_summary = new strike_team_deployment_vehicle_summary()
+      var the_summary = new tow_capacity_summary()
         {
         id = id
         };
@@ -204,6 +205,6 @@ namespace Class_db_strike_team_deployment_vehicles
       return the_summary;
       }
 
-    } // end TClass_db_strike_team_deployment_vehicles
+    } // end TClass_db_tow_capacities
 
   }

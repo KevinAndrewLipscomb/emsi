@@ -15,6 +15,7 @@
   <body bgcolor="white">
     <form runat="server">
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
+      <h3>Detail for operational period</h3>
       <uc2:UserControl_strike_team_deployment_operational_period ID="UserControl_strike_team_deployment_operational_period_control" runat="server" />
       <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent>
       <uc3:UserControl_update_progress_blocker id="UserControl_update_progress_blocker_control" runat="server"></uc3:UserControl_update_progress_blocker>

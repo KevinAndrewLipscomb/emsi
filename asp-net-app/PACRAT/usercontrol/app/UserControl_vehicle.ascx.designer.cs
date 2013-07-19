@@ -238,6 +238,24 @@ namespace UserControl_vehicle {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind_id;
         
         /// <summary>
+        /// DropDownList_tow_capacity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_tow_capacity;
+        
+        /// <summary>
+        /// RequiredFieldValidator_tow_capacity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_tow_capacity;
+        
+        /// <summary>
         /// DropDownList_fuel control.
         /// </summary>
         /// <remarks>
@@ -272,6 +290,33 @@ namespace UserControl_vehicle {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_license_plate;
+        
+        /// <summary>
+        /// TextBox_pa_doh_decal_num control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_pa_doh_decal_num;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
+        /// CustomValidator_pa_doh_decal_num control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_pa_doh_decal_num;
         
         /// <summary>
         /// CheckBox_be_four_or_all_wheel_drive control.
