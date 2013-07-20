@@ -144,6 +144,37 @@ namespace Class_db_strike_team_deployment_operational_periods
       return result;
       }
 
+    internal string IdInSameDeploymentWithCompetingTimes
+      (
+      string id,
+      string deployment_id,
+      DateTime start,
+      DateTime end
+      )
+      {
+      Open();
+      var id_in_same_deployment_with_competing_times_obj = new MySqlCommand
+        (
+        "select IFNULL(id,'')"
+        + " from strike_team_deployment_operational_period"
+        + " where deployment_id = '" + deployment_id + "'"
+        +   " and start = '" + start.ToString("yyyy-MM-dd HH:mm") + "'"
+        +   " and end = '" + end.ToString("yyyy-MM-dd HH:mm") + "'"
+        +   " and id <> '" + id + "'",
+        connection
+        )
+        .ExecuteScalar();
+      Close();
+      if (id_in_same_deployment_with_competing_times_obj == null)
+        {
+        return k.EMPTY;
+        }
+      else
+        {
+        return id_in_same_deployment_with_competing_times_obj.ToString();
+        }
+      }
+
     public void Set
       (
       string id,

@@ -68,6 +68,17 @@ namespace Class_biz_strike_team_deployment_operational_periods
         );
       }
 
+    internal string IdInSameDeploymentWithCompetingTimes
+      (
+      string id,
+      string deployment_id,
+      DateTime start,
+      DateTime end
+      )
+      {
+      return db_strike_team_deployment_operational_periods.IdInSameDeploymentWithCompetingTimes(id,deployment_id,start,end);
+      }
+
     public void Set
       (
       string id,

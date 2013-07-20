@@ -430,6 +430,23 @@ namespace UserControl_strike_team_deployment_operational_period
         }
       }
 
+    protected void CustomValidator_chronological_order_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = UserControl_drop_down_datetime_start.selectedvalue < UserControl_drop_down_datetime_end.selectedvalue;
+      }
+
+    protected void CustomValidator_uniqueness_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      var id_with_competing_times = p.biz_strike_team_deployment_operational_periods.IdInSameDeploymentWithCompetingTimes
+        (
+        id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
+        deployment_id:p.deployment_id,
+        start:UserControl_drop_down_datetime_start.selectedvalue,
+        end:UserControl_drop_down_datetime_end.selectedvalue
+        );
+      args.IsValid = (id_with_competing_times == k.EMPTY);
+      }
+
     } // end TWebUserControl_strike_team_deployment_operational_periods
 
   }
