@@ -49,7 +49,7 @@
                           <asp:ListItem Value="0">(none)</asp:ListItem>
                         </asp:DropDownList>
                       </td>
-                      <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_vehicle" runat="server" errormessage="Please select a Vehicle." font-bold="True" controltovalidate="DropDownList_vehicle" setfocusonerror="True" display="Dynamic">!ERR!</asp:RequiredFieldValidator></td>
+                      <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_vehicle" runat="server" errormessage="Please select a Vehicle." font-bold="True" controltovalidate="DropDownList_vehicle" setfocusonerror="True" display="Dynamic" ValidationGroup="OperationalPeriodDetail">!ERR!</asp:RequiredFieldValidator></td>
                     </tr>
                     <tr>
                       <td>
@@ -57,10 +57,10 @@
                           <asp:ListItem selected="True">-- Member --</asp:ListItem>
                         </asp:DropDownList>
                       </td>
-                      <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_member" runat="server" errormessage="Please select a Member." font-bold="True" controltovalidate="DropDownList_member" setfocusonerror="True" display="Dynamic">!ERR!</asp:RequiredFieldValidator></td>
+                      <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_member" runat="server" errormessage="Please select a Member." font-bold="True" controltovalidate="DropDownList_member" setfocusonerror="True" display="Dynamic" ValidationGroup="OperationalPeriodDetail">!ERR!</asp:RequiredFieldValidator></td>
                     </tr>
                     <tr>
-                      <td><asp:Button id="Button_add" runat="server" text="<--&nbsp;Add" onclick="Button_add_Click"></asp:Button></td>
+                      <td><asp:Button id="Button_add" runat="server" text="<--&nbsp;Add" onclick="Button_add_Click" ValidationGroup="OperationalPeriodDetail"></asp:Button></td>
                       <td></td>
                     </tr>
                   </table>

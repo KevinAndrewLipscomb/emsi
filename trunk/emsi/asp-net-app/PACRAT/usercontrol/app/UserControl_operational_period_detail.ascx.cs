@@ -107,15 +107,6 @@ namespace UserControl_operational_period_detail
         link_button.ToolTip = "Unmap";
         //
         p.num_mappings.val++;
-        //
-        // Remove all cell controls from viewstate except for the ones at ID fields.
-        //
-        foreach (TableCell cell in e.Item.Cells)
-          {
-          cell.EnableViewState = false;
-          }
-        e.Item.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].EnableViewState = true;
-        e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].EnableViewState = true;
         }
       }
 

@@ -88,7 +88,7 @@
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
+<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>&nbsp;&nbsp;<asp:CustomValidator ID="CustomValidator_chronological_order" runat="server" ErrorMessage="You specified an operational period with a negative duration.  Did you mean to advance the End day by one?" Display="Dynamic" Font-Bold="True" onservervalidate="CustomValidator_chronological_order_ServerValidate">!ERR!</asp:CustomValidator><asp:CustomValidator ID="CustomValidator_uniqueness" runat="server" Display="Dynamic" ErrorMessage="The specified operational period duplicates an existing one in the same deployment." Font-Bold="True" onservervalidate="CustomValidator_uniqueness_ServerValidate">!ERR!</asp:CustomValidator>
 <asp:Panel ID="Panel_active_operational_period_detail" runat="server" Visible="false">
   <br />
   <uc3:UserControl_operational_period_detail ID="UserControl_operational_period_detail_control" runat="server" />  
