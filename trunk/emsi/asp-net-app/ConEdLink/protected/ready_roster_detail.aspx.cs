@@ -281,6 +281,11 @@ namespace ready_roster_detail
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
+        Literal_eval_summary_instructional_staff.Text = p.biz_coned_offerings.EvalSummaryInstructionalStaffOf(p.incoming.summary);
+        Literal_eval_summary_time_appropriately_used.Text = p.biz_coned_offerings.EvalSummaryTimeAppropriatelyUsedOf(p.incoming.summary);
+        Literal_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.incoming.summary);
+        Literal_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.incoming.summary);
+        Literal_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.incoming.summary);
         //
         var hash_table = new Hashtable();
         hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);

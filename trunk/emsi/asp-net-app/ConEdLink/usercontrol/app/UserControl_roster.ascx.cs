@@ -61,6 +61,11 @@ namespace UserControl_roster
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.summary));
+        Literal_eval_summary_instructional_staff.Text = p.biz_coned_offerings.EvalSummaryInstructionalStaffOf(p.summary);
+        Literal_eval_summary_time_appropriately_used.Text = p.biz_coned_offerings.EvalSummaryTimeAppropriatelyUsedOf(p.summary);
+        Literal_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.summary);
+        Literal_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.summary);
+        Literal_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.summary);
         Bind();
         p.be_loaded = true;
         }

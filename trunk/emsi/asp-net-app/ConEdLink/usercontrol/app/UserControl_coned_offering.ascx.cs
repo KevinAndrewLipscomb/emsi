@@ -102,6 +102,11 @@ namespace UserControl_coned_offering
       TextBox_courses_course_number.Text = k.EMPTY;
       TextBox_course_title.Text = k.EMPTY;
       DropDownList_status.ClearSelection();
+      TextBox_eval_summary_instructional_staff.Text = k.EMPTY;
+      TextBox_eval_summary_time_appropriately_used.Text = k.EMPTY;
+      TextBox_eval_summary_classroom_training_site.Text = k.EMPTY;
+      TextBox_eval_summary_equipment_av.Text = k.EMPTY;
+      TextBox_eval_summary_misc_remarks.Text = k.EMPTY;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -287,6 +292,11 @@ namespace UserControl_coned_offering
       string courses_course_number;
       string course_title;
       string status_id;
+      string eval_summary_instructional_staff;
+      string eval_summary_time_appropriately_used;
+      string eval_summary_classroom_training_site;
+      string eval_summary_equipment_av;
+      string eval_summary_misc_remarks;
       result = false;
       if
         (
@@ -357,7 +367,12 @@ namespace UserControl_coned_offering
           out sponsor_name,
           out courses_course_number,
           out course_title,
-          out status_id
+          out status_id,
+          out eval_summary_instructional_staff,
+          out eval_summary_time_appropriately_used,
+          out eval_summary_classroom_training_site,
+          out eval_summary_equipment_av,
+          out eval_summary_misc_remarks
           )
         )
         {
@@ -428,6 +443,11 @@ namespace UserControl_coned_offering
         TextBox_courses_course_number.Text = courses_course_number;
         TextBox_course_title.Text = course_title;
         DropDownList_status.SelectedValue = status_id;
+        TextBox_eval_summary_instructional_staff.Text = eval_summary_instructional_staff;
+        TextBox_eval_summary_time_appropriately_used.Text = eval_summary_time_appropriately_used;
+        TextBox_eval_summary_classroom_training_site.Text = eval_summary_classroom_training_site;
+        TextBox_eval_summary_equipment_av.Text = eval_summary_equipment_av;
+        TextBox_eval_summary_misc_remarks.Text = eval_summary_misc_remarks;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -598,7 +618,12 @@ namespace UserControl_coned_offering
           k.Safe(TextBox_sponsor_name.Text,k.safe_hint_type.ORG_NAME).Trim(),
           k.Safe(TextBox_courses_course_number.Text,k.safe_hint_type.NUM).Trim(),
           k.Safe(TextBox_course_title.Text,k.safe_hint_type.PUNCTUATED).Trim(),
-          k.Safe(DropDownList_status.SelectedValue,k.safe_hint_type.NUM)
+          k.Safe(DropDownList_status.SelectedValue,k.safe_hint_type.NUM),
+          k.Safe(TextBox_eval_summary_instructional_staff.Text,k.safe_hint_type.MEMO).Trim(),
+          k.Safe(TextBox_eval_summary_time_appropriately_used.Text,k.safe_hint_type.MEMO).Trim(),
+          k.Safe(TextBox_eval_summary_classroom_training_site.Text,k.safe_hint_type.MEMO).Trim(),
+          k.Safe(TextBox_eval_summary_equipment_av.Text,k.safe_hint_type.MEMO).Trim(),
+          k.Safe(TextBox_eval_summary_misc_remarks.Text,k.safe_hint_type.MEMO).Trim()
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();
@@ -727,6 +752,11 @@ namespace UserControl_coned_offering
       TextBox_courses_course_number.Enabled = ablement;
       TextBox_course_title.Enabled = ablement;
       DropDownList_status.Enabled = ablement;
+      TextBox_eval_summary_instructional_staff.Enabled = ablement;
+      TextBox_eval_summary_time_appropriately_used.Enabled = ablement;
+      TextBox_eval_summary_classroom_training_site.Enabled = ablement;
+      TextBox_eval_summary_equipment_av.Enabled = ablement;
+      TextBox_eval_summary_misc_remarks.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

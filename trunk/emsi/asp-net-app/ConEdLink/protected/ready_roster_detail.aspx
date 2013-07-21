@@ -111,6 +111,61 @@
                         <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
                       </td>
                     </tr>
+		                <tr><td style="background-color:WhiteSmoke"><strong>Evaluation summary</strong></td></tr>
+		                <tr>
+			                <td>
+                        <table cellspacing="0" cellpadding="5" border="0">
+                          <tr><td colspan="4"><strong>INSTRUCTIONAL QUALITY</strong></td></tr>
+                          <tr>
+                            <td></td>
+                            <td valign="top"><font class="">Instructional staff:</font></td>
+                            <td style="font-family: 'Courier New', Courier, monospace">
+                              <ASP:Literal id="Literal_eval_summary_instructional_staff" runat="server" ></ASP:Literal>
+                            </td>
+                            <td nowrap="nowrap">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td valign="top"><font class="">Time appropriately used:</font></td>
+                            <td style="font-family: 'Courier New', Courier, monospace">
+                              <ASP:Literal id="Literal_eval_summary_time_appropriately_used" runat="server" ></ASP:Literal>
+                            </td>
+                            <td nowrap="nowrap">
+                            </td>
+                          </tr>
+                          <tr><td colspan="4"><strong>LEARNING ENVIRONMENT</strong></td></tr>
+                          <tr>
+                            <td></td>
+                            <td valign="top"><font class="">Classroom/training site:</font></td>
+                            <td style="font-family: 'Courier New', Courier, monospace">
+                              <ASP:Literal id="Literal_eval_summary_classroom_training_site" runat="server" ></ASP:Literal>
+                            </td>
+                            <td nowrap="nowrap">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td valign="top"><font class="">Equipment/AV:</font></td>
+                            <td style="font-family: 'Courier New', Courier, monospace">
+                              <ASP:Literal id="Literal_eval_summary_equipment_av" runat="server" ></ASP:Literal>
+                            </td>
+                            <td nowrap="nowrap">
+                            </td>
+                          </tr>
+                          <tr><td colspan="4"><strong>OTHER</strong></td></tr>
+                          <tr>
+                            <td></td>
+                            <td valign="top"><font class="">Miscellaneous remarks:</font></td>
+                            <td style="font-family: 'Courier New', Courier, monospace">
+                              <ASP:Literal id="Literal_eval_summary_misc_remarks" runat="server" ></ASP:Literal>
+                            </td>
+                            <td nowrap="nowrap">
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
                     <tr><td style="background-color:WhiteSmoke"><strong>To advance...</strong></td></tr>
                     <tr>
                       <td>
