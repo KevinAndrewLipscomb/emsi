@@ -702,7 +702,7 @@ namespace coned_offering_roster
         RequireConfirmation
           (
           Button_close_and_submit,
-          "Closing this class will prevent you from adding or removing practitioners from the roster, and from editing any birth dates or instructor hours." + k.NEW_LINE
+          "Closing this class will prevent you from adding or removing practitioners from the roster, and from editing any birth dates, instructor hours, or evaluation summary information." + k.NEW_LINE
           + k.NEW_LINE
           + "To proceed, click OK:"
           );
