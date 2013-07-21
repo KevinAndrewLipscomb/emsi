@@ -182,6 +182,12 @@ namespace coned_offering_roster
 
     private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
       {
+      TextBox_eval_summary_instructional_staff.Enabled = be_open;
+      TextBox_eval_summary_time_appropriately_used.Enabled = be_open;
+      TextBox_eval_summary_classroom_training_site.Enabled = be_open;
+      TextBox_eval_summary_equipment_av.Enabled = be_open;
+      TextBox_eval_summary_misc_remarks.Enabled = be_open;
+      HyperLink_close_and_submit.Visible = be_open;
       Button_close_and_submit.Visible = be_open;
       Button_close_and_submit.Enabled = (DataGrid_control.EditItemIndex == -1);
       CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
@@ -249,7 +255,16 @@ namespace coned_offering_roster
       {
       if (IsValid)
         {
-        p.biz_coned_offerings.CloseAndSubmit(p.incoming.summary,p.num_attendees);
+        p.biz_coned_offerings.CloseAndSubmit
+         (
+         summary:p.incoming.summary,
+         num_attendees:p.num_attendees,
+         eval_summary_instructional_staff:k.Safe(TextBox_eval_summary_instructional_staff.Text,k.safe_hint_type.MEMO),
+         eval_summary_time_appropriately_used:k.Safe(TextBox_eval_summary_time_appropriately_used.Text,k.safe_hint_type.MEMO),
+         eval_summary_classroom_training_site:k.Safe(TextBox_eval_summary_classroom_training_site.Text,k.safe_hint_type.MEMO),
+         eval_summary_equipment_av:k.Safe(TextBox_eval_summary_equipment_av.Text,k.safe_hint_type.MEMO),
+         eval_summary_misc_remarks:k.Safe(TextBox_eval_summary_misc_remarks.Text,k.safe_hint_type.MEMO)
+         );
         p.be_ok_to_edit_roster = false;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(false);
@@ -672,6 +687,11 @@ namespace coned_offering_roster
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_canceled);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
+        TextBox_eval_summary_instructional_staff.Text = p.biz_coned_offerings.EvalSummaryInstructionalStaffOf(p.incoming.summary);
+        TextBox_eval_summary_time_appropriately_used.Text = p.biz_coned_offerings.EvalSummaryTimeAppropriatelyUsedOf(p.incoming.summary);
+        TextBox_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.incoming.summary);
+        TextBox_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.incoming.summary);
+        TextBox_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.incoming.summary);
         //
         var hash_table = new Hashtable();
         hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);

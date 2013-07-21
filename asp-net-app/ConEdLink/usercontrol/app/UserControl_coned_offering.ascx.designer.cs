@@ -1012,6 +1012,51 @@ namespace UserControl_coned_offering {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_status;
         
         /// <summary>
+        /// TextBox_eval_summary_instructional_staff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_instructional_staff;
+        
+        /// <summary>
+        /// TextBox_eval_summary_time_appropriately_used control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_time_appropriately_used;
+        
+        /// <summary>
+        /// TextBox_eval_summary_classroom_training_site control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_classroom_training_site;
+        
+        /// <summary>
+        /// TextBox_eval_summary_equipment_av control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_equipment_av;
+        
+        /// <summary>
+        /// TextBox_eval_summary_misc_remarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_misc_remarks;
+        
+        /// <summary>
         /// Button_submit control.
         /// </summary>
         /// <remarks>

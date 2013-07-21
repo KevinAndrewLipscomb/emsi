@@ -148,6 +148,51 @@ namespace ready_roster_detail {
         protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
         
         /// <summary>
+        /// Literal_eval_summary_instructional_staff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_eval_summary_instructional_staff;
+        
+        /// <summary>
+        /// Literal_eval_summary_time_appropriately_used control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_eval_summary_time_appropriately_used;
+        
+        /// <summary>
+        /// Literal_eval_summary_classroom_training_site control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_eval_summary_classroom_training_site;
+        
+        /// <summary>
+        /// Literal_eval_summary_equipment_av control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_eval_summary_equipment_av;
+        
+        /// <summary>
+        /// Literal_eval_summary_misc_remarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_eval_summary_misc_remarks;
+        
+        /// <summary>
         /// LinkButton_gen_lcds control.
         /// </summary>
         /// <remarks>

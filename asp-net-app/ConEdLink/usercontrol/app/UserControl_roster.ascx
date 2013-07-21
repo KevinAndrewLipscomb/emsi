@@ -74,4 +74,72 @@
       </table>
     </td>
   </tr>
+  <tr><td>&nbsp;</td></tr>
+  <tr>
+    <td>
+      <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
+        <tr>
+	        <td>
+	          <table cellspacing="0" cellpadding="10" border="0">
+		          <tr><td bgcolor="#f5f5f5"><strong>Evaluation summary</strong></td></tr>
+		          <tr>
+			          <td>
+                  <table cellspacing="0" cellpadding="5" border="0">
+                    <tr><td colspan="4"><strong>INSTRUCTIONAL QUALITY</strong></td></tr>
+                    <tr>
+                      <td></td>
+                      <td valign="top"><font class="">Instructional staff:</font></td>
+                      <td style="font-family: 'Courier New', Courier, monospace">
+                        <ASP:Literal id="Literal_eval_summary_instructional_staff" runat="server" ></ASP:Literal>
+                      </td>
+                      <td nowrap="nowrap">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td valign="top"><font class="">Time appropriately used:</font></td>
+                      <td style="font-family: 'Courier New', Courier, monospace">
+                        <ASP:Literal id="Literal_eval_summary_time_appropriately_used" runat="server" ></ASP:Literal>
+                      </td>
+                      <td nowrap="nowrap">
+                      </td>
+                    </tr>
+                    <tr><td colspan="4"><strong>LEARNING ENVIRONMENT</strong></td></tr>
+                    <tr>
+                      <td></td>
+                      <td valign="top"><font class="">Classroom/training site:</font></td>
+                      <td style="font-family: 'Courier New', Courier, monospace">
+                        <ASP:Literal id="Literal_eval_summary_classroom_training_site" runat="server" ></ASP:Literal>
+                      </td>
+                      <td nowrap="nowrap">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td valign="top"><font class="">Equipment/AV:</font></td>
+                      <td style="font-family: 'Courier New', Courier, monospace">
+                        <ASP:Literal id="Literal_eval_summary_equipment_av" runat="server" ></ASP:Literal>
+                      </td>
+                      <td nowrap="nowrap">
+                      </td>
+                    </tr>
+                    <tr><td colspan="4"><strong>OTHER</strong></td></tr>
+                    <tr>
+                      <td></td>
+                      <td valign="top"><font class="">Miscellaneous remarks:</font></td>
+                      <td style="font-family: 'Courier New', Courier, monospace">
+                        <ASP:Literal id="Literal_eval_summary_misc_remarks" runat="server" ></ASP:Literal>
+                      </td>
+                      <td nowrap="nowrap">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>

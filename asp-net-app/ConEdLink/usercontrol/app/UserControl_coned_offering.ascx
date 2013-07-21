@@ -718,6 +718,56 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_status" runat="server" errormessage="Please select a Status." font-bold="True" controltovalidate="DropDownList_status">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
+  <tr>
+    <td valign="top"><font class="">Instructional staff (eval summary):</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_eval_summary_instructional_staff" runat="server" columns="72" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"><font class="">Time appropriately used (eval summary):</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_eval_summary_time_appropriately_used" runat="server" columns="72" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"><font class="">Classroom/training site (eval summary):</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_eval_summary_classroom_training_site" runat="server" columns="72" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"><font class="">Equipment/AV (eval summary):</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_eval_summary_equipment_av" runat="server" columns="72" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"><font class="">Miscellaneous remarks (eval summary):</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_eval_summary_misc_remarks" runat="server" columns="72" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
       </table>
     </td>
   </tr>

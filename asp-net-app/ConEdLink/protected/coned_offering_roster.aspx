@@ -148,11 +148,7 @@
                                     <tr>
                                       <td><b>Attendees</b></td>
                                       <td>&nbsp;&nbsp;&nbsp;</td>
-                                      <td align="center"><asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" /></td>
-                                      <td>&nbsp;&nbsp;&nbsp;</td>
-                                      <td>
-                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
-                                      </td>
+                                      <td align="center"><asp:HyperLink ID="HyperLink_close_and_submit" runat="server" Font-Bold="True" NavigateUrl="#EvalSummary">CLOSE CLASS and SUBMIT FOR CREDIT</asp:HyperLink></td>
                                     </tr>
                                   </table>
                                   </td></tr>
@@ -262,6 +258,95 @@
                               <asp:AsyncPostBackTrigger ControlID="ListBox_practitioner" EventName="SelectedIndexChanged" />
                             </Triggers>
                           </asp:UpdatePanel>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                  <td>
+                    <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
+                      <tr>
+	                      <td>
+	                        <table cellspacing="0" cellpadding="10" border="0">
+		                        <tr>
+                              <td bgcolor="#f5f5f5">
+                                <a id="EvalSummary" />
+                                <p><strong>Evaluation summary</strong></p>
+                                <small>
+                                  <p>Summarize the comments received on Student Class Evaluation forms.</p>
+                                  <p>These fields are only saved when you CLOSE CLASS and SUBMIT FOR CREDIT.</p>
+                                </small>
+                              </td>
+                            </tr>
+		                        <tr>
+			                        <td>
+                                <table cellspacing="0" cellpadding="5" border="0">
+                                  <tr><td colspan="4"><strong>INSTRUCTIONAL QUALITY</strong></td></tr>
+                                  <tr>
+                                    <td></td>
+                                    <td valign="top"><font class="">Instructional staff:</font></td>
+                                    <td>
+                                      <font class="">
+                                        <ASP:TextBox id="TextBox_eval_summary_instructional_staff" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+                                      </font>
+                                    </td>
+                                    <td nowrap="nowrap">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td valign="top"><font class="">Time appropriately used:</font></td>
+                                    <td>
+                                      <font class="">
+                                        <ASP:TextBox id="TextBox_eval_summary_time_appropriately_used" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+                                      </font>
+                                    </td>
+                                    <td nowrap="nowrap">
+                                    </td>
+                                  </tr>
+                                  <tr><td colspan="4"><strong>LEARNING ENVIRONMENT</strong></td></tr>
+                                  <tr>
+                                    <td></td>
+                                    <td valign="top"><font class="">Classroom/training site:</font></td>
+                                    <td>
+                                      <font class="">
+                                        <ASP:TextBox id="TextBox_eval_summary_classroom_training_site" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+                                      </font>
+                                    </td>
+                                    <td nowrap="nowrap">
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td valign="top"><font class="">Equipment/AV:</font></td>
+                                    <td>
+                                      <font class="">
+                                        <ASP:TextBox id="TextBox_eval_summary_equipment_av" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+                                      </font>
+                                    </td>
+                                    <td nowrap="nowrap">
+                                    </td>
+                                  </tr>
+                                  <tr><td colspan="4"><strong>OTHER</strong></td></tr>
+                                  <tr>
+                                    <td></td>
+                                    <td valign="top"><font class="">Miscellaneous remarks:</font></td>
+                                    <td>
+                                      <font class="">
+                                        <ASP:TextBox id="TextBox_eval_summary_misc_remarks" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
+                                      </font>
+                                    </td>
+                                    <td nowrap="nowrap">
+                                    </td>
+                                  </tr>
+                                </table>
+                                <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" />
+                                <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
+                              </td>
+                            </tr>
+                          </table>
                         </td>
                       </tr>
                     </table>

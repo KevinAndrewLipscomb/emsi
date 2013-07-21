@@ -274,22 +274,13 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_attendees;
         
         /// <summary>
-        /// Button_close_and_submit control.
+        /// HyperLink_close_and_submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_close_and_submit;
-        
-        /// <summary>
-        /// CustomValidator_close_class_and_submit_for_credit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_close_class_and_submit_for_credit;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_close_and_submit;
         
         /// <summary>
         /// TableRow_none control.
@@ -380,6 +371,69 @@ namespace coned_offering_roster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_header_sample;
+        
+        /// <summary>
+        /// TextBox_eval_summary_instructional_staff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_instructional_staff;
+        
+        /// <summary>
+        /// TextBox_eval_summary_time_appropriately_used control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_time_appropriately_used;
+        
+        /// <summary>
+        /// TextBox_eval_summary_classroom_training_site control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_classroom_training_site;
+        
+        /// <summary>
+        /// TextBox_eval_summary_equipment_av control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_equipment_av;
+        
+        /// <summary>
+        /// TextBox_eval_summary_misc_remarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_eval_summary_misc_remarks;
+        
+        /// <summary>
+        /// Button_close_and_submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_close_and_submit;
+        
+        /// <summary>
+        /// CustomValidator_close_class_and_submit_for_credit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_close_class_and_submit_for_credit;
         
         /// <summary>
         /// Literal_author_email_address control.
