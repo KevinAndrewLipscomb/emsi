@@ -85,6 +85,39 @@ namespace Class_db_eval_summary_modes
       BindDirectToListControl(target, "-- eval_summary_mode --");
       }
 
+    public void BindRadioButtonList(object target)
+      {
+      var display_html = k.EMPTY;
+      Open();
+      ((target) as RadioButtonList).Items.Clear();
+      var dr = new MySqlCommand
+        (
+        "SELECT id"
+        + " , description"
+        + " , elaboration"
+        + " FROM eval_summary_mode",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        display_html = "<b>" + dr["description"].ToString() + "</b>";
+        if (dr["elaboration"].ToString() != k.EMPTY)
+          {
+          display_html = display_html
+          + "<table>"
+          +   "<tr>"
+          +     "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+          +     "<td><small><i>" + dr["elaboration"].ToString() + "</i></small></td>"
+          +   "</tr>"
+          + "</table>";
+          }
+        ((target) as RadioButtonList).Items.Add(new ListItem(display_html, dr["id"].ToString()));
+        }
+      dr.Close();
+      Close();
+      }
+
     public bool Delete(string id)
       {
       var result = true;

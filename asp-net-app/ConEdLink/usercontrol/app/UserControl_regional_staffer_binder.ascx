@@ -9,6 +9,7 @@
             <cc1:TabPanel runat="server" headertext="Rosters" id="TabPanel_rosters"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Sponsors" id="TabPanel_sponsors"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Practitioners" id="TabPanel_practitioners"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Config" id="TabPanel_config" Enabled="false"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="About" id="TabPanel_about"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>

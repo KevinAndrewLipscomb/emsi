@@ -1,8 +1,10 @@
 using kix;
 using UserControl_about;
+using UserControl_config;
 using UserControl_coned_sponsors;
 using UserControl_practitioner;
 using UserControl_roster_binder;
+using System.Web;
 
 namespace UserControl_regional_staffer_binder
   {
@@ -12,7 +14,8 @@ namespace UserControl_regional_staffer_binder
     public const int TSSI_ROSTERS = 0;
     public const int TSSI_SPONSORS = 1;
     public const int TSSI_PRACTITIONERS = 2;
-    public const int TSSI_ABOUT = 3;
+    public const int TSSI_CONFIG = 3;
+    public const int TSSI_ABOUT = 4;
     }
 
   public partial class TWebUserControl_regional_staffer_binder: ki_web_ui.usercontrol_class
@@ -31,6 +34,7 @@ namespace UserControl_regional_staffer_binder
       {
       if (!p.be_loaded)
         {
+        TabPanel_config.Enabled = HttpContext.Current.User.IsInRole("director") || HttpContext.Current.User.IsInRole("education-coordinator");
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
         p.be_loaded = true;
         }
@@ -112,6 +116,11 @@ namespace UserControl_regional_staffer_binder
         var c = ((TWebUserControl_practitioner)(LoadControl("~/usercontrol/app/UserControl_practitioner.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
+      else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_CONFIG)
+        {
+        var c = ((TWebUserControl_config)(LoadControl("~/usercontrol/app/UserControl_config.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_config",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        }
       else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_ABOUT)
         {
         var c = ((TWebUserControl_about)(LoadControl("~/usercontrol/app/UserControl_about.ascx")));
@@ -138,6 +147,10 @@ namespace UserControl_regional_staffer_binder
         else if (target.ToLower().Contains("/practitioner/"))
           {
           p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_PRACTITIONERS;
+          }
+        else if (target.ToLower().Contains("/config/"))
+          {
+          p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_CONFIG;
           }
         else if (target.ToLower().Contains("/about/"))
           {

@@ -34,6 +34,11 @@ namespace Class_biz_eval_summary_modes
       BindDirectToListControl(target, unselected_literal, k.EMPTY);
       }
 
+    public void BindRadioButtonList(object target)
+      {
+      db_eval_summary_modes.BindRadioButtonList(target);
+      }
+
     public bool Delete(string code)
       {
       return db_eval_summary_modes.Delete(code);
