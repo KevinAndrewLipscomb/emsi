@@ -148,7 +148,11 @@
                                     <tr>
                                       <td><b>Attendees</b></td>
                                       <td>&nbsp;&nbsp;&nbsp;</td>
-                                      <td align="center"><asp:HyperLink ID="HyperLink_close_and_submit" runat="server" Font-Bold="True" NavigateUrl="#EvalSummary">CLOSE CLASS and SUBMIT FOR CREDIT</asp:HyperLink></td>
+                                      <td align="center">
+                                        <asp:HyperLink ID="HyperLink_close_and_submit" runat="server" Font-Bold="True" NavigateUrl="#EvalSummary">CLOSE CLASS and SUBMIT FOR CREDIT</asp:HyperLink>
+                                        <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" visible="false"/>
+                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate" visible="false">!ERR!</asp:CustomValidator>
+                                      </td>
                                     </tr>
                                   </table>
                                   </td></tr>
@@ -263,8 +267,8 @@
                     </table>
                   </td>
                 </tr>
-                <tr><td>&nbsp;</td></tr>
-                <tr>
+                <tr id="TableRow_eval_summary_head_spacer" runat="server"><td>&nbsp;</td></tr>
+                <tr id="TableRow_eval_summary" runat="server">
                   <td>
                     <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
                       <tr>
@@ -292,7 +296,8 @@
                                         <ASP:TextBox id="TextBox_eval_summary_instructional_staff" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
                                       </font>
                                     </td>
-                                    <td nowrap="nowrap">
+                                    <td nowrap="nowrap" valign="top">
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_instructional_staff" runat="server" ControlToValidate="TextBox_eval_summary_instructional_staff" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Instructional staff (eval summary) field." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
                                     </td>
                                   </tr>
                                   <tr>
@@ -303,7 +308,8 @@
                                         <ASP:TextBox id="TextBox_eval_summary_time_appropriately_used" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
                                       </font>
                                     </td>
-                                    <td nowrap="nowrap">
+                                    <td nowrap="nowrap" valign="top">
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_time_appropriately_used" runat="server" ControlToValidate="TextBox_eval_summary_time_appropriately_used" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Time appropriately used (eval summary) field." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
                                     </td>
                                   </tr>
                                   <tr><td colspan="4"><strong>LEARNING ENVIRONMENT</strong></td></tr>
@@ -315,7 +321,8 @@
                                         <ASP:TextBox id="TextBox_eval_summary_classroom_training_site" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
                                       </font>
                                     </td>
-                                    <td nowrap="nowrap">
+                                    <td nowrap="nowrap" valign="top">
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_classroom_training_site" runat="server" ControlToValidate="TextBox_eval_summary_classroom_training_site" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Classroom/training site (eval summary) field." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
                                     </td>
                                   </tr>
                                   <tr>
@@ -326,7 +333,8 @@
                                         <ASP:TextBox id="TextBox_eval_summary_equipment_av" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
                                       </font>
                                     </td>
-                                    <td nowrap="nowrap">
+                                    <td nowrap="nowrap" valign="top">
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_equipment_av" runat="server" ControlToValidate="TextBox_eval_summary_equipment_av" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Equipment/AV (eval summary) field." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
                                     </td>
                                   </tr>
                                   <tr><td colspan="4"><strong>OTHER</strong></td></tr>
@@ -338,12 +346,13 @@
                                         <ASP:TextBox id="TextBox_eval_summary_misc_remarks" runat="server" columns="60" cssclass="" enabled="False" TextMode="MultiLine" Rows="4"></ASP:TextBox>
                                       </font>
                                     </td>
-                                    <td nowrap="nowrap">
+                                    <td nowrap="nowrap" valign="top">
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_misc_remarks" runat="server" ControlToValidate="TextBox_eval_summary_misc_remarks" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Misc remarks (eval summary) field." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
                                     </td>
                                   </tr>
                                 </table>
-                                <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" />
-                                <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
+                                <asp:Button ID="Button_close_and_submit_2" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" />
+                                <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit_2" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate">!ERR!</asp:CustomValidator>
                               </td>
                             </tr>
                           </table>

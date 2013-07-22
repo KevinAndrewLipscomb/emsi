@@ -4,6 +4,7 @@ using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
 using Class_biz_practitioners;
+using Class_biz_regions;
 using Class_msg_protected;
 using ConEdLink.WebReference_emsams;
 using kix;
@@ -23,11 +24,13 @@ namespace ready_roster_detail
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
     public TClass_biz_practitioners biz_practitioners;
+    public TClass_biz_regions biz_regions;
     public string coned_offering_id;
     public TClass_msg_protected.ready_roster_detail incoming;
     public string lcds_content_xml;
     public k.decimal_nonnegative length;
     public k.int_nonnegative num_attendees;
+    public string region_code;
     public string sort_order;
     }
 
@@ -248,12 +251,14 @@ namespace ready_roster_detail
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_counties = new TClass_biz_counties();
         p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_regions = new TClass_biz_regions();
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.ready_roster_detail>(folder_name:"protected",aspx_name:"ready_roster_detail");
         p.lcds_content_xml = k.EMPTY;
         p.num_attendees = new k.int_nonnegative();
+        p.region_code = Session["region_code"].ToString();
         p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
         //
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
@@ -273,7 +278,7 @@ namespace ready_roster_detail
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - ready_roster_detail";
-        var max_spec_length = p.biz_practitioners.MaxSpecLength(Session["region_code"].ToString(),k.EMPTY);
+        var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code,k.EMPTY);
         Literal_course_title.Text = p.biz_coned_offerings.CourseTitleOf(p.incoming.summary);
         Literal_class_number.Text = p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary));
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
@@ -286,6 +291,8 @@ namespace ready_roster_detail
         Literal_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.incoming.summary);
         Literal_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.incoming.summary);
         Literal_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.incoming.summary);
+        TableRow_eval_summary_header.Visible = (p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(p.region_code) != "Hidden");
+        TableRow_eval_summary_body.Visible = TableRow_eval_summary_header.Visible;
         //
         var hash_table = new Hashtable();
         hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);

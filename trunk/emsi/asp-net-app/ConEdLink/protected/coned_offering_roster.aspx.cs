@@ -6,6 +6,7 @@ using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
 using Class_biz_practitioners;
+using Class_biz_regions;
 using Class_biz_teaching_entities;
 using Class_biz_user;
 using Class_msg_protected;
@@ -30,9 +31,11 @@ namespace coned_offering_roster
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
     public TClass_biz_practitioners biz_practitioners;
+    public TClass_biz_regions biz_regions;
     public TClass_biz_teaching_entities biz_teaching_entities;
     public TClass_biz_user biz_user;
     public string coned_offering_id;
+    public string eval_summary_mode_description;
     public TClass_msg_protected.coned_offering_roster incoming;
     public k.decimal_nonnegative length;
     public k.int_nonnegative num_attendees;
@@ -187,10 +190,13 @@ namespace coned_offering_roster
       TextBox_eval_summary_classroom_training_site.Enabled = be_open;
       TextBox_eval_summary_equipment_av.Enabled = be_open;
       TextBox_eval_summary_misc_remarks.Enabled = be_open;
-      HyperLink_close_and_submit.Visible = be_open;
-      Button_close_and_submit.Visible = be_open;
+      HyperLink_close_and_submit.Visible &= be_open;
+      Button_close_and_submit.Visible &= be_open;
+      Button_close_and_submit_2.Visible &= be_open;
       Button_close_and_submit.Enabled = (DataGrid_control.EditItemIndex == -1);
-      CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
+      Button_close_and_submit_2.Enabled = Button_close_and_submit.Enabled;
+      CustomValidator_close_class_and_submit_for_credit.Visible &= be_open;
+      CustomValidator_close_class_and_submit_for_credit_2.Visible &= be_open;
       HyperLink_quickmessage.Enabled = (DataGrid_control.EditItemIndex == -1);
       LinkButton_email_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1);
       HyperLink_print_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1) && p.be_ceu_breakdown_valid;
@@ -635,6 +641,7 @@ namespace coned_offering_roster
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_counties = new TClass_biz_counties();
         p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_regions = new TClass_biz_regions();
         p.biz_teaching_entities = new TClass_biz_teaching_entities();
         p.biz_user = new TClass_biz_user();
         //
@@ -652,6 +659,7 @@ namespace coned_offering_roster
         p.be_ceu_breakdown_valid = p.biz_coned_offerings.BeCeuBreakdownValid(p.incoming.summary);
         p.be_ok_to_edit_roster = p.biz_coned_offerings.BeOkToEditRoster(p.incoming.summary);
         p.coned_offering_id = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        p.eval_summary_mode_description = p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(p.region_code);
         p.length = p.biz_coned_offerings.LengthOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
@@ -692,6 +700,18 @@ namespace coned_offering_roster
         TextBox_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.incoming.summary);
         TextBox_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.incoming.summary);
         TextBox_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.incoming.summary);
+        HyperLink_close_and_submit.Visible = (p.eval_summary_mode_description != "Hidden");
+        Button_close_and_submit.Visible = (p.eval_summary_mode_description == "Hidden");
+        CustomValidator_close_class_and_submit_for_credit.Visible = (p.eval_summary_mode_description == "Hidden");
+        TableRow_eval_summary_head_spacer.Visible = (p.eval_summary_mode_description != "Hidden");
+        TableRow_eval_summary.Visible = (p.eval_summary_mode_description != "Hidden");
+        RequiredFieldValidator_eval_summary_instructional_staff.Enabled = (p.eval_summary_mode_description == "Mandatory");
+        RequiredFieldValidator_eval_summary_time_appropriately_used.Enabled = (p.eval_summary_mode_description == "Mandatory");
+        RequiredFieldValidator_eval_summary_classroom_training_site.Enabled = (p.eval_summary_mode_description == "Mandatory");
+        RequiredFieldValidator_eval_summary_equipment_av.Enabled = (p.eval_summary_mode_description == "Mandatory");
+        RequiredFieldValidator_eval_summary_misc_remarks.Enabled = (p.eval_summary_mode_description == "Mandatory");
+        Button_close_and_submit_2.Visible = (p.eval_summary_mode_description != "Hidden");
+        CustomValidator_close_class_and_submit_for_credit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         //
         var hash_table = new Hashtable();
         hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);

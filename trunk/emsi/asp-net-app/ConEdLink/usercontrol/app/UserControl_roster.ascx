@@ -74,8 +74,8 @@
       </table>
     </td>
   </tr>
-  <tr><td>&nbsp;</td></tr>
-  <tr>
+  <tr id="TableRow_eval_summary_head_spacer" runat="server"><td>&nbsp;</td></tr>
+  <tr id="TableRow_eval_summary" runat="server">
     <td>
       <table cellspacing="0" cellpadding="0" style="border:1px solid Gainsboro">
         <tr>
