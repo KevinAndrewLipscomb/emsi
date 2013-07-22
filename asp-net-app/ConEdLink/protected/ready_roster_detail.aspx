@@ -111,8 +111,8 @@
                         <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
                       </td>
                     </tr>
-		                <tr><td style="background-color:WhiteSmoke"><strong>Evaluation summary</strong></td></tr>
-		                <tr>
+		                <tr id="TableRow_eval_summary_header" runat="server"><td style="background-color:WhiteSmoke"><strong>Evaluation summary</strong></td></tr>
+		                <tr id="TableRow_eval_summary_body" runat="server">
 			                <td>
                         <table cellspacing="0" cellpadding="5" border="0">
                           <tr><td colspan="4"><strong>INSTRUCTIONAL QUALITY</strong></td></tr>

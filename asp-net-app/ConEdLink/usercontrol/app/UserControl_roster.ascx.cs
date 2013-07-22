@@ -1,5 +1,6 @@
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
+using Class_biz_regions;
 using kix;
 using System.Collections;
 using System.Drawing;
@@ -31,6 +32,7 @@ namespace UserControl_roster
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
       public TClass_biz_coned_offerings biz_coned_offerings;
+      public TClass_biz_regions biz_regions;
       public string coned_offering_id;
       public k.decimal_nonnegative length;
       public k.int_nonnegative num_attendees;
@@ -66,6 +68,8 @@ namespace UserControl_roster
         Literal_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.summary);
         Literal_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.summary);
         Literal_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.summary);
+        TableRow_eval_summary_head_spacer.Visible = (p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(Session["region_code"].ToString()) != "Hidden");
+        TableRow_eval_summary.Visible = TableRow_eval_summary_head_spacer.Visible;
         Bind();
         p.be_loaded = true;
         }
@@ -87,6 +91,7 @@ namespace UserControl_roster
         //
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
+        p.biz_regions = new TClass_biz_regions();
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
