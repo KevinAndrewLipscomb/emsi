@@ -355,19 +355,19 @@
     <Compile Include="usercontrol\app\UserControl_coned_sponsor_user.ascx.designer.cs">
       <DependentUpon>UserControl_coned_sponsor_user.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_config.ascx.cs">
+      <DependentUpon>UserControl_config.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_config.ascx.designer.cs">
+      <DependentUpon>UserControl_config.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_counties.ascx.cs">
       <DependentUpon>UserControl_counties.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_counties.ascx.designer.cs">
       <DependentUpon>UserControl_counties.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_eval_summary_mode.ascx.cs">
-      <DependentUpon>UserControl_eval_summary_mode.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_eval_summary_mode.ascx.designer.cs">
-      <DependentUpon>UserControl_eval_summary_mode.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_outstanding_rosters.ascx.cs">
       <DependentUpon>UserControl_outstanding_rosters.ascx</DependentUpon>
@@ -617,8 +617,8 @@
     <Content Include="usercontrol\app\UserControl_coned_sponsor_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_sponsor_status.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_sponsor_user.ascx" />
+    <Content Include="usercontrol\app\UserControl_config.ascx" />
     <Content Include="usercontrol\app\UserControl_counties.ascx" />
-    <Content Include="usercontrol\app\UserControl_eval_summary_mode.ascx" />
     <Content Include="usercontrol\app\UserControl_outstanding_rosters.ascx" />
     <Content Include="usercontrol\app\UserControl_postcontent.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
