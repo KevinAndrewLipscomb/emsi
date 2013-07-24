@@ -36,7 +36,7 @@ namespace Class_db_tow_capacities
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
         + " from tow_capacity"
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
-        + " order by spec",
+        + " order by pecking_order",
         connection
         )
         .ExecuteReader();

@@ -216,11 +216,9 @@ namespace UserControl_tow_capacity
         // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
         // had it loaded already.
         //
-#warning Revise the binder-related instance_id to this control appropriately.
-        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_tow_capacity")
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_config_binder_business_objects_binder_tow_capacity")
           {
-#warning Revise the ClientID path to this control appropriately.
-          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_tow_capacity");
+          p.be_loaded &= ((Session["UserControl_member_binder_UserControl_config_binder_UserControl_business_objects_binder_PlaceHolder_content"] as string) == "UserControl_tow_capacity");
           }
 //      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_tow_capacity")
 //        {
@@ -232,7 +230,7 @@ namespace UserControl_tow_capacity
         p.be_loaded = false;
         p.biz_tow_capacities = new TClass_biz_tow_capacities();
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.be_ok_to_config_tow_capacities = k.Has((string[])(Session["privilege_array"]), "config-tow_capacities");
+        p.be_ok_to_config_tow_capacities = k.Has((string[])(Session["privilege_array"]), "config-business-objects");
         }
       }
 

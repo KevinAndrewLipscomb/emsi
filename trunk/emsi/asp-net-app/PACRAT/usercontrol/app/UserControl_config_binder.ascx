@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_config_binder.ascx.cs" Inherits="UserControl_config_binder.TWebUserControl_config_binder"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_config_binder.ascx.cs" Inherits="UserControl_config_binder.TWebUserControl_config_binder"%>
 <%@ Register TagPrefix="cc1" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">
   <ContentTemplate>
@@ -8,6 +8,7 @@
           <cc1:TabContainer id="TabContainer_control" autopostback="True" runat="server" cssclass="ajax__tab_ki">
             <cc1:TabPanel runat="server" headertext="Roles & mappings" id="TabPanel_roles_and_mappings"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Users & mappings" id="TabPanel_users_and_mappings" enabled="False"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Business objects" id="TabPanel_business_objects" enabled="False"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

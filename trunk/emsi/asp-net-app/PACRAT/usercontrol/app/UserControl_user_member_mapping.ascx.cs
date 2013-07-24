@@ -216,11 +216,11 @@ namespace UserControl_user_member_mapping.Units
 {
     public class UserControl_user_member_mapping
     {
-        public const int CI_USER_ID = 0;
-        public const int CI_USER_NAME = 1;
-        public const int CI_MEMBER_NAME = 2;
-        public const int CI_MEMBER_ID = 3;
-        public const string INITIAL_SORT_ORDER = "user_name";
+      public const int CI_MEMBER_ID = 0;
+      public const int CI_MEMBER_NAME = 1;
+      public const int CI_USER_ID = 2;
+      public const int CI_USER_NAME = 3;
+      public const string INITIAL_SORT_ORDER = "member_name";
     } // end UserControl_user_member_mapping
 
 }
