@@ -196,17 +196,30 @@ namespace UserControl_vehicle_kind
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (Session[InstanceId() + ".p"] != null)
+      var instance_id = InstanceId();
+      if (Session[instance_id + ".p"] != null)
         {
-        p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["M_UserControl_config_UserControl_business_objects_binder_UserControl_fleet_object_binder_PlaceHolder_content"] as string) == "UserControl_vehicle_kind");
+        p = (p_type)(Session[instance_id + ".p"]);
+        p.be_loaded = IsPostBack;  // This test is sufficient if this control is being used statically on its page.
+        //
+        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
+        // had it loaded already.
+        //
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_config_binder_business_objects_binder_vehicle_kind")
+          {
+          p.be_loaded &= ((Session["UserControl_member_binder_UserControl_config_binder_UserControl_business_objects_binder_PlaceHolder_content"] as string) == "UserControl_vehicle_kind");
+          }
+//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_vehicle_kind")
+//        {
+//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_vehicle_kind");
+//        }
         }
       else
         {
         p.be_loaded = false;
         p.biz_vehicle_kinds = new TClass_biz_vehicle_kinds();
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.be_ok_to_config_vehicle_kinds = k.Has((string[])(Session["privilege_array"]), "config-fleet-attributes");
+        p.be_ok_to_config_vehicle_kinds = k.Has((string[])(Session["privilege_array"]), "config-business-objects");
         }
       }
 

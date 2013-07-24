@@ -97,6 +97,7 @@
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
+    <Content Include="usercontrol\app\UserControl_business_objects_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_fuel.ascx" />
     <Content Include="usercontrol\app\UserControl_operational_period_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
@@ -348,6 +349,13 @@
     <Compile Include="usercontrol\app\UserControl_about.ascx.designer.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_business_objects_binder.ascx.cs">
+      <DependentUpon>UserControl_business_objects_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_business_objects_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_business_objects_binder.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_common_header_bar.ascx.cs">
       <DependentUpon>UserControl_common_header_bar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -358,6 +366,9 @@
     <Compile Include="usercontrol\app\UserControl_config_binder.ascx.cs">
       <DependentUpon>UserControl_config_binder.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_config_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_config_binder.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_establish_membership.ascx.cs">
       <DependentUpon>UserControl_establish_membership.ascx</DependentUpon>
