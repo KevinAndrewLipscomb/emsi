@@ -27,21 +27,38 @@
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
-                    <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="vehicle_id" visible="false"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="id" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="vehicle_id" visible="false" ReadOnly="True"></asp:BoundColumn>
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_vehicle.id is not null)%,service,name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
                     <asp:BoundColumn datafield="tactical_name" headertext="Tac name" sortexpression="tactical_name%,name,service"></asp:BoundColumn>
                     <asp:BoundColumn datafield="transponder_name" headertext="Xpndr name" sortexpression="transponder_name%,name,service"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="service_id" visible="false"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="service" headertext="Service" sortexpression="service%,name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%,service"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="patient_care_level" headertext="Lvl" sortexpression="patient_care_level.pecking_order%,service,name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,service,name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="pa_doh_decal_num" headertext="Decal #" sortexpression="pa_doh_decal_num%,service,name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="fuel" headertext="Fuel" sortexpression="fuel%,service,name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?" sortexpression="be_four_or_all_wheel_drive%,service,name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="service_id" visible="false" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="service" headertext="Service" sortexpression="service%,name" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%,service" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="patient_care_level" headertext="Lvl" sortexpression="patient_care_level.pecking_order%,service,name" ReadOnly="True">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,service,name" ReadOnly="True">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn datafield="pa_doh_decal_num" headertext="Decal #" sortexpression="pa_doh_decal_num%,service,name" ReadOnly="True">
+                      <HeaderStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn DataField="tow_capacity" HeaderText="Tow cap" ReadOnly="True" SortExpression="tow_capacity_id%,service,name">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" Wrap="False" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn datafield="fuel" headertext="Fuel" sortexpression="fuel%,service,name" ReadOnly="True">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?" sortexpression="be_four_or_all_wheel_drive%,service,name" ReadOnly="True">
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

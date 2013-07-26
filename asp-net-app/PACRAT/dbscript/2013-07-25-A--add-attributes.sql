@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS patient_care_level (
 ENGINE = InnoDB;
 ;
 insert ignore patient_care_level (description,pecking_order) values
-("none",0),
+("---",0),
 ("BLS",75),
 ("ALS",150)
 ;
