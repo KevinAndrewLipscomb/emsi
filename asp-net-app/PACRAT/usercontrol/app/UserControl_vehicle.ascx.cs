@@ -2,6 +2,7 @@
 
 using Class_biz_fuels;
 using Class_biz_members;
+using Class_biz_patient_care_levels;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_tow_capacities;
@@ -26,6 +27,7 @@ namespace UserControl_vehicle
       public bool be_loaded;
       public TClass_biz_fuels biz_fuels;
       public TClass_biz_members biz_members;
+      public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_tow_capacities biz_tow_capacities;
@@ -53,6 +55,7 @@ namespace UserControl_vehicle
       TextBox_license_plate.Text = k.EMPTY;
       TextBox_pa_doh_decal_num.Text = k.EMPTY;
       CheckBox_be_four_or_all_wheel_drive.Checked = false;
+      DropDownList_patient_care_level.ClearSelection();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -157,6 +160,7 @@ namespace UserControl_vehicle
         p.biz_vehicle_kinds.BindDirectToListControl(target:DropDownList_kind);
         p.biz_tow_capacities.BindLongDescriptionDirectToListControl(target:DropDownList_tow_capacity);
         p.biz_fuels.BindDirectToListControl(target:DropDownList_fuel);
+        p.biz_patient_care_levels.BindDirectToListControl(target:DropDownList_patient_care_level);
         //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.presentation_mode == presentation_mode_enum.NEW)
@@ -166,6 +170,7 @@ namespace UserControl_vehicle
           DropDownList_kind.Items.Insert(0,(new ListItem("-- kind --",k.EMPTY)));
           DropDownList_tow_capacity.Items.Insert(0,(new ListItem("-- tow capacity -- ",k.EMPTY)));
           DropDownList_fuel.Items.Insert(0,(new ListItem("-- fuel --",k.EMPTY)));
+          DropDownList_patient_care_level.Items.Insert(0,(new ListItem("-- patient care level --",k.EMPTY)));
           TextBox_name.Focus();
           }
         else
@@ -189,6 +194,7 @@ namespace UserControl_vehicle
       bool be_four_or_all_wheel_drive;
       string tow_capacity_id;
       string pa_doh_decal_num;
+      string patient_care_level;
       result = false;
       if
         (
@@ -202,7 +208,8 @@ namespace UserControl_vehicle
           out license_plate,
           out be_four_or_all_wheel_drive,
           out tow_capacity_id,
-          out pa_doh_decal_num
+          out pa_doh_decal_num,
+          out patient_care_level
           )
         )
         {
@@ -216,6 +223,7 @@ namespace UserControl_vehicle
         TextBox_license_plate.Text = license_plate;
         TextBox_pa_doh_decal_num.Text = pa_doh_decal_num;
         CheckBox_be_four_or_all_wheel_drive.Checked = be_four_or_all_wheel_drive;
+        DropDownList_patient_care_level.SelectedValue = patient_care_level;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -297,6 +305,7 @@ namespace UserControl_vehicle
         {
         p.biz_fuels = new TClass_biz_fuels();
         p.biz_members = new TClass_biz_members();
+        p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_tow_capacities = new TClass_biz_tow_capacities();
@@ -348,7 +357,8 @@ namespace UserControl_vehicle
           k.Safe(TextBox_license_plate.Text,k.safe_hint_type.ALPHANUM),
           CheckBox_be_four_or_all_wheel_drive.Checked,
           k.Safe(DropDownList_tow_capacity.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_pa_doh_decal_num.Text,k.safe_hint_type.NUM)
+          k.Safe(TextBox_pa_doh_decal_num.Text,k.safe_hint_type.NUM),
+          k.Safe(DropDownList_patient_care_level.Text,k.safe_hint_type.ALPHA)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         BackTrack();
@@ -420,6 +430,7 @@ namespace UserControl_vehicle
       TextBox_license_plate.Enabled = ablement;
       CheckBox_be_four_or_all_wheel_drive.Enabled = ablement;
       TextBox_pa_doh_decal_num.Enabled = ablement;
+      DropDownList_patient_care_level.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

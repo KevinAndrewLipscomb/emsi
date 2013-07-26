@@ -264,7 +264,7 @@ namespace UserControl_tow_capacity
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_short_description.Text,k.safe_hint_type.PUNCTUATED).Trim(),
           k.Safe(TextBox_long_description.Text,k.safe_hint_type.PUNCTUATED).Trim(),
-          k.Safe(TextBox_pecking_order.Text,k.safe_hint_type.NUM).Trim()
+          k.Safe(TextBox_pecking_order.Text,k.safe_hint_type.NUM)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();

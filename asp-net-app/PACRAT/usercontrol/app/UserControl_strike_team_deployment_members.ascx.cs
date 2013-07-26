@@ -20,9 +20,10 @@ namespace UserControl_strike_team_deployment_members
       public const int TCI_ID = 1;
       public const int TCI_PRACTITIONER_ID = 2;
       public const int TCI_MOBILIZED = 3;
-      public const int TCI_LAST_NAME = 4;
-      public const int TCI_FIRST_NAME = 5;
-      public const int TCI_LEVEL = 6;
+      public const int TCI_TAG_NUM = 4;
+      public const int TCI_LAST_NAME = 5;
+      public const int TCI_FIRST_NAME = 6;
+      public const int TCI_LEVEL = 7;
       }
 
     private struct p_type
@@ -210,7 +211,8 @@ namespace UserControl_strike_team_deployment_members
               (
               id:k.EMPTY,
               deployment_id:p.deployment_id,
-              practitioner_id:practitioner_id
+              practitioner_id:practitioner_id,
+              tag_num:k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Text,k.safe_hint_type.NUM)
               );
             }
           else

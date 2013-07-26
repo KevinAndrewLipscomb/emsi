@@ -32,10 +32,14 @@
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_vehicle.id is not null)%,service,name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
+                    <asp:BoundColumn datafield="tactical_name" headertext="Tac name" sortexpression="tactical_name%,name,service"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="transponder_name" headertext="Xpndr name" sortexpression="transponder_name%,name,service"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service_id" visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service" headertext="Service" sortexpression="service%,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%,service"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="patient_care_level" headertext="Lvl" sortexpression="patient_care_level.pecking_order%,service,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,service,name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="pa_doh_decal_num" headertext="Decal #" sortexpression="pa_doh_decal_num%,service,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="fuel" headertext="Fuel" sortexpression="fuel%,service,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?" sortexpression="be_four_or_all_wheel_drive%,service,name"></asp:BoundColumn>
                   </Columns>

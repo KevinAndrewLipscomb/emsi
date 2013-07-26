@@ -67,6 +67,7 @@ namespace Class_db_strike_team_deployment_members
         + " , last_name"
         + " , first_name"
         + " , short_description as level"
+        + " , tag_num"
         + " from strike_team_roster"
         +   " join service on (service.id=strike_team_roster.service_id)"
         +   " join county_region_map on (county_region_map.county_code=service.county_code)"
@@ -163,11 +164,13 @@ namespace Class_db_strike_team_deployment_members
       (
       string id,
       out string deployment_id,
-      out string practitioner_id
+      out string practitioner_id,
+      out string tag_num
       )
       {
       deployment_id = k.EMPTY;
       practitioner_id = k.EMPTY;
+      tag_num = k.EMPTY;
       var result = false;
       //
       Open();
@@ -176,6 +179,7 @@ namespace Class_db_strike_team_deployment_members
         {
         deployment_id = dr["deployment_id"].ToString();
         practitioner_id = dr["practitioner_id"].ToString();
+        tag_num = dr["tag_num"].ToString();
         result = true;
         }
       dr.Close();
@@ -187,12 +191,14 @@ namespace Class_db_strike_team_deployment_members
       (
       string id,
       string deployment_id,
-      string practitioner_id
+      string practitioner_id,
+      string tag_num
       )
       {
       var childless_field_assignments_clause = k.EMPTY
       + "deployment_id = NULLIF('" + deployment_id + "','')"
       + " , practitioner_id = NULLIF('" + practitioner_id + "','')"
+      + " , tag_num = NULLIF('" + tag_num + "','')"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (

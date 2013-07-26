@@ -323,7 +323,7 @@ namespace UserControl_strike_team_deployment_operational_period
         p.biz_strike_team_deployment_operational_periods.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM).Trim(),
+          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
           start,
           end
           );

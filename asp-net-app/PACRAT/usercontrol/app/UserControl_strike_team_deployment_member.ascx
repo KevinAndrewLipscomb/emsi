@@ -76,6 +76,18 @@
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_practitioner_id" runat="server" errormessage="Please enter a valid Practitioner&nbsp;id." font-bold="True" controltovalidate="TextBox_practitioner_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
+  <tr>
+    <td><font class="">Tag&nbsp;#:</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_tag_num" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_tag_num" runat="server" errormessage="Please enter Tag #." font-bold="True" controltovalidate="TextBox_tag_num">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_tag_num" runat="server" errormessage="Please enter a valid Tag #." font-bold="True" controltovalidate="TextBox_tag_num" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
+    </td>
+  </tr>
       </table>
     </td>
   </tr>

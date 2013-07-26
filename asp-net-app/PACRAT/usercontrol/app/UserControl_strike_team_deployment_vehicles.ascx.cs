@@ -20,11 +20,13 @@ namespace UserControl_strike_team_deployment_vehicles
       public const int TCI_ID = 1;
       public const int TCI_VEHICLE_ID = 2;
       public const int TCI_MOBILIZED = 3;
-      public const int TCI_SERVICE_ID = 4;
-      public const int TCI_SERVICE = 5;
-      public const int TCI_NAME = 6;
-      public const int TCI_KIND = 7;
-      public const int TCI_FUEL = 8;
+      public const int TCI_TACTICAL_NAME = 4;
+      public const int TCI_TRANSPONDER_NAME = 5;
+      public const int TCI_SERVICE_ID = 6;
+      public const int TCI_SERVICE = 7;
+      public const int TCI_NAME = 8;
+      public const int TCI_KIND = 9;
+      public const int TCI_FUEL = 10;
       }
 
     private struct p_type
@@ -213,7 +215,9 @@ namespace UserControl_strike_team_deployment_vehicles
               (
               id:k.EMPTY,
               deployment_id:p.deployment_id,
-              vehicle_id:vehicle_id
+              vehicle_id:vehicle_id,
+              tactical_name:k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Text,k.safe_hint_type.NUM),
+              transponder_name:k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Text,k.safe_hint_type.NUM)
               );
             }
           else

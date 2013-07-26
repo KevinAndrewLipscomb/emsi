@@ -79,7 +79,8 @@ namespace Class_biz_vehicles
       out string license_plate,
       out bool be_four_or_all_wheel_drive,
       out string tow_capacity_id,
-      out string pa_doh_decal_num
+      out string pa_doh_decal_num,
+      out string patient_care_level_id
       )
       {
       return db_vehicles.Get
@@ -92,7 +93,8 @@ namespace Class_biz_vehicles
         out license_plate,
         out be_four_or_all_wheel_drive,
         out tow_capacity_id,
-        out pa_doh_decal_num
+        out pa_doh_decal_num,
+        out patient_care_level_id
         );
       }
 
@@ -120,7 +122,8 @@ namespace Class_biz_vehicles
       string license_plate,
       bool be_four_or_all_wheel_drive,
       string tow_capacity_id,
-      string pa_doh_decal_num
+      string pa_doh_decal_num,
+      string patient_care_level_id
       )
       {
       db_vehicles.Set
@@ -133,7 +136,8 @@ namespace Class_biz_vehicles
         license_plate.ToUpper(),
         be_four_or_all_wheel_drive,
         tow_capacity_id,
-        pa_doh_decal_num
+        pa_doh_decal_num,
+        patient_care_level_id
         );
       }
 

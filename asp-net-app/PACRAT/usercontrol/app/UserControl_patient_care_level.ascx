@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_strike_team_deployment_vehicle.ascx.cs" Inherits="UserControl_strike_team_deployment_vehicle.TWebUserControl_strike_team_deployment_vehicle"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_patient_care_level.ascx.cs" Inherits="UserControl_patient_care_level.TWebUserControl_patient_care_level"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
@@ -53,49 +53,26 @@
     </td>
   </tr>
   <tr>
-    <td><font class="">Deployment&nbsp;id:</font></td>
+    <td><font class="">Description:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_deployment_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_description" runat="server" columns="7" maxlength="7" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_deployment_id" runat="server" errormessage="Please enter Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_deployment_id" runat="server" errormessage="Please enter a valid Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_description" runat="server" errormessage="Please enter Description." font-bold="True" controltovalidate="TextBox_description">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">Vehicle&nbsp;id:</font></td>
+    <td><font class="">Pecking&nbsp;order:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_vehicle_id" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_pecking_order" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_vehicle_id" runat="server" errormessage="Please enter Vehicle&nbsp;id." font-bold="True" controltovalidate="TextBox_vehicle_id">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_vehicle_id" runat="server" errormessage="Please enter a valid Vehicle&nbsp;id." font-bold="True" controltovalidate="TextBox_vehicle_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Tactical&nbsp;name:</font></td>
-    <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_tactical_name" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <asp:CustomValidator ID="CustomValidator_tactical_name" runat="server" Display="Dynamic" ErrorMessage="For this deployment, the specified Tactical name already belongs to " Font-Bold="True" onservervalidate="CustomValidator_tactical_name_ServerValidate">!ERR!</asp:CustomValidator>
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Transponder&nbsp;name:</font></td>
-    <td>
-      <font class="">
-        <ASP:TextBox id="TextBox_transponder_name" runat="server"  cssclass="" enabled="False"></ASP:TextBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <asp:CustomValidator ID="CustomValidator_transponder_name" runat="server" Display="Dynamic" ErrorMessage="For this deployment, the specified Transponder name already belongs to " Font-Bold="True" onservervalidate="CustomValidator_transponder_name_ServerValidate">!ERR!</asp:CustomValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_pecking_order" runat="server" errormessage="Please enter Pecking&nbsp;order." font-bold="True" controltovalidate="TextBox_pecking_order">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_pecking_order" runat="server" errormessage="Please enter a valid Pecking&nbsp;order." font-bold="True" controltovalidate="TextBox_pecking_order" validationexpression="\d*">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
       </table>

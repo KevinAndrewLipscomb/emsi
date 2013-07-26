@@ -47,18 +47,42 @@ namespace Class_biz_strike_team_deployment_vehicles
       return db_strike_team_deployment_vehicles.Delete(id);
       }
 
+    internal string DesignatorOnDeploymentWithCompetingTacticalName
+      (
+      string deployment_id,
+      string id,
+      string tactical_name
+      )
+      {
+      return db_strike_team_deployment_vehicles.DesignatorOnDeploymentWithCompetingTacticalName(deployment_id,id,tactical_name);
+      }
+
+    internal string DesignatorOnDeploymentWithCompetingTransponderName
+      (
+      string deployment_id,
+      string id,
+      string transponder_name
+      )
+      {
+      return db_strike_team_deployment_vehicles.DesignatorOnDeploymentWithCompetingTransponderName(deployment_id,id,transponder_name);
+      }
+
     public bool Get
       (
       string id,
       out string deployment_id,
-      out string vehicle_id
+      out string vehicle_id,
+      out string tactical_name,
+      out string transponder_name
       )
       {
       return db_strike_team_deployment_vehicles.Get
         (
         id,
         out deployment_id,
-        out vehicle_id
+        out vehicle_id,
+        out tactical_name,
+        out transponder_name
         );
       }
 
@@ -66,14 +90,18 @@ namespace Class_biz_strike_team_deployment_vehicles
       (
       string id,
       string deployment_id,
-      string vehicle_id
+      string vehicle_id,
+      string tactical_name,
+      string transponder_name
       )
       {
       db_strike_team_deployment_vehicles.Set
         (
         id,
         deployment_id,
-        vehicle_id
+        vehicle_id,
+        tactical_name,
+        transponder_name
         );
       }
 
