@@ -13,6 +13,15 @@ namespace strike_team_deployment_detail {
     public partial class TWebForm_strike_team_deployment_detail {
         
         /// <summary>
+        /// Body_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Body_control;
+        
+        /// <summary>
         /// UserControl_precontent control.
         /// </summary>
         /// <remarks>

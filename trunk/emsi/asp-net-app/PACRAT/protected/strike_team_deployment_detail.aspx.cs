@@ -1,17 +1,11 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
+using AjaxControlToolkit;
 using Class_biz_strike_team_deployments;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Configuration;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 
 namespace strike_team_deployment_detail
   {
@@ -36,12 +30,23 @@ namespace strike_team_deployment_detail
       this.PreRender += this.TWebForm_strike_team_deployment_detail_PreRender;
       }
 
+    private void InjectPersistentClientSideScript()
+      {
+      Body_control.Attributes.Add
+        (
+        "onkeypress",
+        k.EMPTY
+        + " return (document.activeElement.name == 'UserControl_strike_team_deployment_control$TextBox_name' || event.keyCode != 13)"  // Prevent default behavior of performing a postback when enter key is pressed since we want to evaluate the situation first in the TextBox_practitioner onkeyup event.
+        );
+      }
+
     protected void Page_Load(object sender, System.EventArgs e)
       {
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - strike_team_deployment_detail";
         }
+      InjectPersistentClientSideScript();
       }
 
     protected override void OnInit(EventArgs e)
@@ -69,9 +74,9 @@ namespace strike_team_deployment_detail
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
-      //
-      // ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
-      //
+//
+// ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+//
       }
 
     private void TWebForm_strike_team_deployment_detail_PreRender(object sender, System.EventArgs e)
