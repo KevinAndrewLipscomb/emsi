@@ -1,9 +1,10 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~binder.cs~template
 
 using kix;
-using UserControl_vehicle_kind;
-using UserControl_tow_capacity;
 using UserControl_fuel;
+using UserControl_patient_care_level;
+using UserControl_tow_capacity;
+using UserControl_vehicle_kind;
 
 namespace UserControl_business_objects_binder
   {
@@ -13,6 +14,7 @@ namespace UserControl_business_objects_binder
     public const int TSSI_VEHICLE_KINDS = 0;
     public const int TSSI_TOW_CAPACITIES = 1;
     public const int TSSI_FUELS = 2;
+    public const int TSSI_PATIENT_CARE_LEVELS = 3;
     }
 
   public partial class TWebUserControl_business_objects_binder: ki_web_ui.usercontrol_class
@@ -55,6 +57,12 @@ namespace UserControl_business_objects_binder
         {
         var c = ((TWebUserControl_fuel)(LoadControl("~/usercontrol/app/UserControl_fuel.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_fuel",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        //c.SetTarget(target);
+        }
+      else if (p.tab_index == UserControl_business_objects_binder_Static.TSSI_PATIENT_CARE_LEVELS)
+        {
+        var c = ((TWebUserControl_patient_care_level)(LoadControl("~/usercontrol/app/UserControl_patient_care_level.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_patient_care_level",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         //c.SetTarget(target);
         }
       }
@@ -168,6 +176,10 @@ namespace UserControl_business_objects_binder
         else if (target.ToLower().Contains("/fuels/"))
           {
           p.tab_index = UserControl_business_objects_binder_Static.TSSI_FUELS;
+          }
+        else if (target.ToLower().Contains("/patient-care-levels/"))
+          {
+          p.tab_index = UserControl_business_objects_binder_Static.TSSI_PATIENT_CARE_LEVELS;
           }
         //
         PlaceHolder_content.Controls.Clear();

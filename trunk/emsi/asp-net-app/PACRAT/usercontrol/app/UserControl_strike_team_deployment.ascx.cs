@@ -315,7 +315,7 @@ namespace UserControl_strike_team_deployment
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
           (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
           k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
-          k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM).Trim()
+          k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM)
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {

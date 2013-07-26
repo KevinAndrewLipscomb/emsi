@@ -31,6 +31,7 @@ namespace UserControl_strike_team_deployment_member
       DropDownList_id.Visible = false;
       TextBox_deployment_id.Text = k.EMPTY;
       TextBox_practitioner_id.Text = k.EMPTY;
+      TextBox_tag_num.Text = k.EMPTY;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -144,6 +145,7 @@ namespace UserControl_strike_team_deployment_member
       bool result;
       string deployment_id;
       string practitioner_id;
+      string tag_num;
       result = false;
       if
         (
@@ -151,7 +153,8 @@ namespace UserControl_strike_team_deployment_member
           (
           id,
           out deployment_id,
-          out practitioner_id
+          out practitioner_id,
+          out tag_num
           )
         )
         {
@@ -159,6 +162,7 @@ namespace UserControl_strike_team_deployment_member
         TextBox_id.Enabled = false;
         TextBox_deployment_id.Text = deployment_id;
         TextBox_practitioner_id.Text = practitioner_id;
+        TextBox_tag_num.Text = tag_num;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -246,8 +250,9 @@ namespace UserControl_strike_team_deployment_member
         p.biz_strike_team_deployment_members.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM).Trim(),
-          k.Safe(TextBox_practitioner_id.Text,k.safe_hint_type.NUM).Trim()
+          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
+          k.Safe(TextBox_practitioner_id.Text,k.safe_hint_type.NUM),
+          k.Safe(TextBox_tag_num.Text,k.safe_hint_type.NUM)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();
@@ -313,6 +318,7 @@ namespace UserControl_strike_team_deployment_member
       {
       TextBox_deployment_id.Enabled = ablement;
       TextBox_practitioner_id.Enabled = ablement;
+      TextBox_tag_num.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

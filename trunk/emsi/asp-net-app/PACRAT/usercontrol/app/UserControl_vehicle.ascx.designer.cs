@@ -238,6 +238,24 @@ namespace UserControl_vehicle {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind_id;
         
         /// <summary>
+        /// DropDownList_patient_care_level control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_patient_care_level;
+        
+        /// <summary>
+        /// RequiredFieldValidator_patient_care_level control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_patient_care_level;
+        
+        /// <summary>
         /// DropDownList_tow_capacity control.
         /// </summary>
         /// <remarks>

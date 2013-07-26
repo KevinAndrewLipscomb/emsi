@@ -57,14 +57,16 @@ namespace Class_biz_strike_team_deployment_members
       (
       string id,
       out string deployment_id,
-      out string practitioner_id
+      out string practitioner_id,
+      out string tag_num
       )
       {
       return db_strike_team_deployment_members.Get
         (
         id,
         out deployment_id,
-        out practitioner_id
+        out practitioner_id,
+        out tag_num
         );
       }
 
@@ -72,14 +74,16 @@ namespace Class_biz_strike_team_deployment_members
       (
       string id,
       string deployment_id,
-      string practitioner_id
+      string practitioner_id,
+      string tag_num
       )
       {
       db_strike_team_deployment_members.Set
         (
         id,
         deployment_id,
-        practitioner_id
+        practitioner_id,
+        tag_num
         );
       }
 

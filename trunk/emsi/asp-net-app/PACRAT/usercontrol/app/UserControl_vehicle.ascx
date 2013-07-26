@@ -88,6 +88,17 @@
     </td>
   </tr>
   <tr>
+    <td><font class="">Patient care level:</font></td>
+    <td>
+      <font class="">
+        <ASP:DropDownList id="DropDownList_patient_care_level" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_patient_care_level" runat="server" errormessage="Please selected a Patient care level." font-bold="True" controltovalidate="DropDownList_patient_care_level">!ERR!</ASP:RequiredFieldValidator>
+    </td>
+  </tr>
+  <tr>
     <td><font class="">Tow capacity:</font></td>
     <td>
       <font class="">

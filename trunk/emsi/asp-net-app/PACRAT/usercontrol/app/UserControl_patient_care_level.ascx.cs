@@ -1,6 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using Class_biz_strike_team_deployment_vehicles;
+using Class_biz_patient_care_levels;
 using Class_biz_role_member_map;
 using kix;
 using System;
@@ -11,16 +11,16 @@ using System.Web.UI.WebControls;
 using System.Collections;
 using UserControl_drop_down_date;
 
-namespace UserControl_strike_team_deployment_vehicle
+namespace UserControl_patient_care_level
   {
-  public partial class TWebUserControl_strike_team_deployment_vehicle: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_patient_care_level: ki_web_ui.usercontrol_class
     {
     private struct p_type
       {
       public bool be_loaded;
-      public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
+      public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_role_member_map biz_role_member_map;
-      public bool be_ok_to_config_strike_team_deployment_vehicles;
+      public bool be_ok_to_config_patient_care_levels;
       } // end p_type
 
     private p_type p;
@@ -29,10 +29,8 @@ namespace UserControl_strike_team_deployment_vehicle
       {
       TextBox_id.Text = k.EMPTY;
       DropDownList_id.Visible = false;
-      TextBox_deployment_id.Text = k.EMPTY;
-      TextBox_vehicle_id.Text = k.EMPTY;
-      TextBox_tactical_name.Text = k.EMPTY;
-      TextBox_transponder_name.Text = k.EMPTY;
+      TextBox_description.Text = k.EMPTY;
+      TextBox_pecking_order.Text = k.EMPTY;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -128,13 +126,12 @@ namespace UserControl_strike_team_deployment_vehicle
       {
       if (!p.be_loaded)
         {
-        LinkButton_new_record.Visible = p.be_ok_to_config_strike_team_deployment_vehicles;
+        LinkButton_new_record.Visible = p.be_ok_to_config_patient_care_levels;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        SetDataEntryMode();
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -144,36 +141,30 @@ namespace UserControl_strike_team_deployment_vehicle
       {
       Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
-      string deployment_id;
-      string vehicle_id;
-      string tactical_name;
-      string transponder_name;
+      string description;
+      string pecking_order;
       result = false;
       if
         (
-        p.biz_strike_team_deployment_vehicles.Get
+        p.biz_patient_care_levels.Get
           (
           id,
-          out deployment_id,
-          out vehicle_id,
-          out tactical_name,
-          out transponder_name
+          out description,
+          out pecking_order
           )
         )
         {
         TextBox_id.Text = id;
         TextBox_id.Enabled = false;
-        TextBox_deployment_id.Text = deployment_id;
-        TextBox_vehicle_id.Text = vehicle_id;
-        TextBox_tactical_name.Text = tactical_name;
-        TextBox_transponder_name.Text = transponder_name;
+        TextBox_description.Text = description;
+        TextBox_pecking_order.Text = pecking_order;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
-        SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_vehicles);
-        Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_vehicles;
-        Button_delete.Enabled = p.be_ok_to_config_strike_team_deployment_vehicles;
+        SetDependentFieldAblements(p.be_ok_to_config_patient_care_levels);
+        Button_submit.Enabled = p.be_ok_to_config_patient_care_levels;
+        Button_delete.Enabled = p.be_ok_to_config_patient_care_levels;
         result = true;
         }
       return result;
@@ -189,8 +180,8 @@ namespace UserControl_strike_team_deployment_vehicle
       Label_lookup_hint.Enabled = false;
       LinkButton_reset.Enabled = true;
       LinkButton_new_record.Enabled = false;
-      SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_vehicles);
-      Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_vehicles;
+      SetDependentFieldAblements(p.be_ok_to_config_patient_care_levels);
+      Button_submit.Enabled = p.be_ok_to_config_patient_care_levels;
       Button_delete.Enabled = false;
       TextBox_id.Focus();
       }
@@ -217,13 +208,25 @@ namespace UserControl_strike_team_deployment_vehicle
         {
         p = (p_type)(Session[instance_id + ".p"]);
         p.be_loaded = IsPostBack;  // This test is sufficient if this control is being used statically on its page.
+        //
+        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
+        // had it loaded already.
+        //
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_config_binder_business_objects_binder_patient_care_level")
+          {
+          p.be_loaded &= ((Session["UserControl_member_binder_UserControl_config_binder_UserControl_business_objects_binder_PlaceHolder_content"] as string) == "UserControl_patient_care_level");
+          }
+//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_patient_care_level")
+//        {
+//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_patient_care_level");
+//        }
         }
       else
         {
         p.be_loaded = false;
-        p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
+        p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.be_ok_to_config_strike_team_deployment_vehicles = k.Has((string[])(Session["privilege_array"]), "config-strike_team_deployment_vehicles");
+        p.be_ok_to_config_patient_care_levels = k.Has((string[])(Session["privilege_array"]), "config-patient_care_levels");
         }
       }
 
@@ -234,15 +237,15 @@ namespace UserControl_strike_team_deployment_vehicle
     private void InitializeComponent()
       {
       //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_deployment_vehicle_PreRender;
+      this.PreRender += this.TWebUserControl_patient_care_level_PreRender;
       }
 
-    private void TWebUserControl_strike_team_deployment_vehicle_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_patient_care_level_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_strike_team_deployment_vehicle Fresh()
+    public TWebUserControl_patient_care_level Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -252,13 +255,11 @@ namespace UserControl_strike_team_deployment_vehicle
       {
       if (Page.IsValid)
         {
-        p.biz_strike_team_deployment_vehicles.Set
+        p.biz_patient_care_levels.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_vehicle_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_tactical_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
-          k.Safe(TextBox_transponder_name.Text,k.safe_hint_type.MAKE_MODEL).Trim()
+          k.Safe(TextBox_description.Text,k.safe_hint_type.ALPHA),
+          k.Safe(TextBox_pecking_order.Text,k.safe_hint_type.NUM)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();
@@ -300,7 +301,7 @@ namespace UserControl_strike_team_deployment_vehicle
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_strike_team_deployment_vehicles.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
+      if (p.biz_patient_care_levels.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
         {
         SetLookupMode();
         }
@@ -322,10 +323,8 @@ namespace UserControl_strike_team_deployment_vehicle
 
     private void SetDependentFieldAblements(bool ablement)
       {
-      TextBox_deployment_id.Enabled = ablement;
-      TextBox_vehicle_id.Enabled = ablement;
-      TextBox_tactical_name.Enabled = ablement;
-      TextBox_transponder_name.Enabled = ablement;
+      TextBox_description.Enabled = ablement;
+      TextBox_pecking_order.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -337,7 +336,7 @@ namespace UserControl_strike_team_deployment_vehicle
       if (!PresentRecord(saved_id))
         {
         TextBox_id.Text = saved_id;
-        p.biz_strike_team_deployment_vehicles.Bind(saved_id, DropDownList_id);
+        p.biz_patient_care_levels.Bind(saved_id, DropDownList_id);
         num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {
@@ -361,30 +360,6 @@ namespace UserControl_strike_team_deployment_vehicle
         }
       }
 
-    protected void CustomValidator_tactical_name_ServerValidate(object source, ServerValidateEventArgs args)
-      {
-      var designator_with_competing_tactical_name = p.biz_strike_team_deployment_vehicles.DesignatorOnDeploymentWithCompetingTacticalName
-        (
-        deployment_id:k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
-        id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
-        tactical_name:k.Safe(TextBox_tactical_name.Text, k.safe_hint_type.ALPHANUM)
-        );
-      CustomValidator_tactical_name.ErrorMessage += designator_with_competing_tactical_name;
-      args.IsValid = (designator_with_competing_tactical_name == k.EMPTY);
-      }
-
-    protected void CustomValidator_transponder_name_ServerValidate(object source, ServerValidateEventArgs args)
-      {
-      var designator_with_competing_transponder_name = p.biz_strike_team_deployment_vehicles.DesignatorOnDeploymentWithCompetingTransponderName
-        (
-        deployment_id:k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
-        id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
-        transponder_name:k.Safe(TextBox_transponder_name.Text, k.safe_hint_type.ALPHANUM)
-        );
-      CustomValidator_transponder_name.ErrorMessage += designator_with_competing_transponder_name;
-      args.IsValid = (designator_with_competing_transponder_name == k.EMPTY);
-      }
-
-    } // end TWebUserControl_strike_team_deployment_vehicle
+    } // end TWebUserControl_patient_care_level
 
   }

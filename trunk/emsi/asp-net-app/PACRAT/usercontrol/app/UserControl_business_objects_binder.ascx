@@ -10,6 +10,7 @@
             <cc1:TabPanel runat="server" headertext="Vehicle kinds" id="TabPanel_vehicle_kinds"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Tow capacities" id="TabPanel_tow_capacities"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Fuels" id="TabPanel_fuels"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Patient care levels" id="TabPanel_patient_care_levels"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

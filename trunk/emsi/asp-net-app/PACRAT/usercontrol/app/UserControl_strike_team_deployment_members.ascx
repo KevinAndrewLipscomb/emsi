@@ -32,6 +32,7 @@
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_member.id is not null)%,last_name,first_name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
+                    <asp:BoundColumn datafield="tag_num" headertext="Tag #" sortexpression="tag_num%,last_name,first_name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="level" headertext="Level" sortexpression="practitioner_level.pecking_order%,last_name,first_name"></asp:BoundColumn>
