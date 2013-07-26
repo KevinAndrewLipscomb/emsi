@@ -2,6 +2,8 @@
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
 <%@ Register src="UserControl_strike_team_deployment_binder.ascx" tagname="UserControl_strike_team_deployment_binder" tagprefix="uc2" %>
+<asp:UpdatePanel ID="UpdatePanel_control" runat="server">
+  <ContentTemplate>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
@@ -94,3 +96,5 @@
   <br />
   <uc2:UserControl_strike_team_deployment_binder ID="UserControl_strike_team_deployment_binder_control" runat="server" />
 </asp:Panel>
+  </ContentTemplate>
+</asp:UpdatePanel>

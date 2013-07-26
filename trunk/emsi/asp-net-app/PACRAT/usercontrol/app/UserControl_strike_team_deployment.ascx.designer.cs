@@ -13,6 +13,15 @@ namespace UserControl_strike_team_deployment {
     public partial class TWebUserControl_strike_team_deployment {
         
         /// <summary>
+        /// UpdatePanel_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        
+        /// <summary>
         /// TableRow_record_navigation_controls control.
         /// </summary>
         /// <remarks>

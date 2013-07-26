@@ -63,6 +63,7 @@ namespace Class_db_vehicles
         (
         "select vehicle.id as id"
         + " , name"
+        + " , patient_care_level.description as patient_care_level"
         + " , vehicle_kind.description as kind"
         + " , tow_capacity.short_description as tow_capacity"
         + " , fuel.description as fuel"
@@ -70,6 +71,7 @@ namespace Class_db_vehicles
         + " , pa_doh_decal_num"
         + " , IF(be_four_or_all_wheel_drive,'YES','no') as be_four_or_all_wheel_drive"
         + " from vehicle"
+        +   " join patient_care_level on (patient_care_level.id=vehicle.patient_care_level_id)"
         +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
         +   " join tow_capacity on (tow_capacity.id=vehicle.tow_capacity_id)"
         +   " join fuel on (fuel.id=vehicle.fuel_id)"

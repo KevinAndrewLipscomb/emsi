@@ -69,6 +69,7 @@ namespace Class_db_strike_team_deployment_vehicles
         + " , patient_care_level.description as patient_care_level"
         + " , vehicle_kind.description as kind"
         + " , pa_doh_decal_num"
+        + " , tow_capacity.short_description as tow_capacity"
         + " , fuel.description as fuel"
         + " , IF(be_four_or_all_wheel_drive,'YES','no') as be_four_or_all_wheel_drive"
         + " , tactical_name"
@@ -79,6 +80,7 @@ namespace Class_db_strike_team_deployment_vehicles
         +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code)"
         +   " join patient_care_level on (patient_care_level.id=vehicle.patient_care_level_id)"
         +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +   " join tow_capacity on (tow_capacity.id=vehicle.tow_capacity_id)"
         +   " join fuel on (fuel.id=vehicle.fuel_id)"
         +   (do_include_all_eligible_vehicles ? " left" : k.EMPTY) + " join strike_team_deployment_vehicle on (strike_team_deployment_vehicle.vehicle_id=vehicle.id and strike_team_deployment_vehicle.deployment_id = '" + deployment_id + "')"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))

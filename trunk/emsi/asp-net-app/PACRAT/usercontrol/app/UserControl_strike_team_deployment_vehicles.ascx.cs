@@ -4,11 +4,10 @@ using Class_biz_strike_team_deployment_vehicles;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_vehicles
   {
@@ -216,13 +215,39 @@ namespace UserControl_strike_team_deployment_vehicles
               id:k.EMPTY,
               deployment_id:p.deployment_id,
               vehicle_id:vehicle_id,
-              tactical_name:k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Text,k.safe_hint_type.NUM),
-              transponder_name:k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Text,k.safe_hint_type.NUM)
+              tactical_name:k.EMPTY
+              + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SERVICE].Text,k.safe_hint_type.ORG_NAME)
+              + k.SPACE
+              + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_NAME].Text,k.safe_hint_type.MAKE_MODEL),
+              transponder_name:k.EMPTY
               );
+            DataGrid_control.EditItemIndex = e.Item.ItemIndex;
             }
           else
             {
-            p.biz_strike_team_deployment_vehicles.Delete(id);
+            if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
+              {
+              p.biz_strike_team_deployment_vehicles.Set
+                (
+                id:id,
+                deployment_id:p.deployment_id,
+                vehicle_id:vehicle_id,
+                tactical_name:k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper(),
+                transponder_name:k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper()
+                );
+              DataGrid_control.EditItemIndex = -1;
+              }
+            else
+              {
+              if (!p.do_include_all_eligible_vehicles)
+                {
+                DataGrid_control.EditItemIndex = e.Item.ItemIndex;
+                }
+              else
+                {
+                p.biz_strike_team_deployment_vehicles.Delete(id);
+                }
+              }
             }
           Bind();
           }
@@ -240,8 +265,15 @@ namespace UserControl_strike_team_deployment_vehicles
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
+          var be_this_row_in_edit_mode = (DataGrid_control.EditItemIndex == e.Item.ItemIndex);
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
-          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? "YES" : "no");
+          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_vehicles ? "YES" : "Edit>") : "no");
+          link_button.Font.Bold = be_this_row_in_edit_mode;
+          if (be_this_row_in_edit_mode)
+            {
+            link_button.Text = "SAVE>";
+            (e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Focus();
+            }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
@@ -277,7 +309,13 @@ namespace UserControl_strike_team_deployment_vehicles
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Visible = p.do_include_all_eligible_vehicles;
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].HeaderText = (p.do_include_all_eligible_vehicles ? "Mobilized?" : k.EMPTY);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].HeaderStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].HeaderStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].ItemStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].HeaderStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].ItemStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.White : Color.LightGray);
       p.biz_strike_team_deployment_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_vehicles);
       p.be_datagrid_empty = (p.num_vehicles == 0);
       TableRow_none.Visible = p.be_datagrid_empty;

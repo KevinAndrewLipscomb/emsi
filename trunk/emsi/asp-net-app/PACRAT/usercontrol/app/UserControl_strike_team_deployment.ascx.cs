@@ -320,7 +320,6 @@ namespace UserControl_strike_team_deployment
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {
           Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-          SetLookupMode();
           }
         else
           {
