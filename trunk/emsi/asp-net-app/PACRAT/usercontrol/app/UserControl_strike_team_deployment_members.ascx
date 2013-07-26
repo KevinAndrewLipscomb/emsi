@@ -27,15 +27,20 @@
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
-                    <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="practitioner_id" visible="false"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="id" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="practitioner_id" visible="false" ReadOnly="True"></asp:BoundColumn>
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_member.id is not null)%,last_name,first_name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
-                    <asp:BoundColumn datafield="tag_num" headertext="Tag #" sortexpression="tag_num%,last_name,first_name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="level" headertext="Level" sortexpression="practitioner_level.pecking_order%,last_name,first_name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="tag_num" headertext="Tag #" sortexpression="tag_num%,last_name,first_name">
+                      <ItemStyle HorizontalAlign="Right" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name" ReadOnly="True"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="level" headertext="Level" sortexpression="practitioner_level.pecking_order%,last_name,first_name" ReadOnly="True">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

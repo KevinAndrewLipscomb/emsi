@@ -4,11 +4,10 @@ using Class_biz_strike_team_deployment_members;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_members
   {
@@ -212,12 +211,34 @@ namespace UserControl_strike_team_deployment_members
               id:k.EMPTY,
               deployment_id:p.deployment_id,
               practitioner_id:practitioner_id,
-              tag_num:k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Text,k.safe_hint_type.NUM)
+              tag_num:k.EMPTY
               );
+            DataGrid_control.EditItemIndex = e.Item.ItemIndex;
             }
           else
             {
-            p.biz_strike_team_deployment_members.Delete(id);
+            if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
+              {
+              p.biz_strike_team_deployment_members.Set
+                (
+                id:id,
+                deployment_id:p.deployment_id,
+                practitioner_id:practitioner_id,
+                tag_num:k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM)
+                );
+              DataGrid_control.EditItemIndex = -1;
+              }
+            else
+              {
+              if (!p.do_include_all_eligible_practitioners)
+                {
+                DataGrid_control.EditItemIndex = e.Item.ItemIndex;
+                }
+              else
+                {
+                p.biz_strike_team_deployment_members.Delete(id);
+                }
+              }
             }
           Bind();
           }
@@ -235,8 +256,15 @@ namespace UserControl_strike_team_deployment_members
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
+          var be_this_row_in_edit_mode = (DataGrid_control.EditItemIndex == e.Item.ItemIndex);
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
-          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? "YES" : "no");
+          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_practitioners ? "YES" : "Edit>") : "no");
+          link_button.Font.Bold = be_this_row_in_edit_mode;
+          if (be_this_row_in_edit_mode)
+            {
+            link_button.Text = "SAVE>";
+            (e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Focus();
+            }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
@@ -272,7 +300,11 @@ namespace UserControl_strike_team_deployment_members
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Visible = p.do_include_all_eligible_practitioners;
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].HeaderText = (p.do_include_all_eligible_practitioners ? "Mobilized?" : k.EMPTY);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
       p.biz_strike_team_deployment_members.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_practitioners);
       p.be_datagrid_empty = (p.num_practitioners == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
