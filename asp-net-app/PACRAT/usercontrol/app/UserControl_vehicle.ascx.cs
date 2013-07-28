@@ -358,7 +358,7 @@ namespace UserControl_vehicle
           CheckBox_be_four_or_all_wheel_drive.Checked,
           k.Safe(DropDownList_tow_capacity.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_pa_doh_decal_num.Text,k.safe_hint_type.NUM),
-          k.Safe(DropDownList_patient_care_level.Text,k.safe_hint_type.ALPHA)
+          k.Safe(DropDownList_patient_care_level.Text,k.safe_hint_type.NUM)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         BackTrack();
