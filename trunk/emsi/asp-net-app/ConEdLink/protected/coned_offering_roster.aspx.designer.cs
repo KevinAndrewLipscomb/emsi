@@ -409,6 +409,15 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_eval_summary;
         
         /// <summary>
+        /// UpdatePanel_eval_summary_fields control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_eval_summary_fields;
+        
+        /// <summary>
         /// TextBox_eval_summary_instructional_staff control.
         /// </summary>
         /// <remarks>
@@ -497,6 +506,15 @@ namespace coned_offering_roster {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_eval_summary_misc_remarks;
+        
+        /// <summary>
+        /// UpdatePanel_close_and_submit_2_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_close_and_submit_2_button;
         
         /// <summary>
         /// Button_close_and_submit_2 control.
