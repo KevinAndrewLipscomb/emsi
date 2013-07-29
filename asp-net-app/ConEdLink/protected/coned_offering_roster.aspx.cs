@@ -194,9 +194,12 @@ namespace coned_offering_roster
       HyperLink_close_and_submit.Enabled = be_open && HyperLink_close_and_submit.Visible && (DataGrid_control.EditItemIndex == -1);
       Button_close_and_submit.Visible = be_open && (p.eval_summary_mode_description == "Hidden");
       Button_close_and_submit.Enabled = be_open && Button_close_and_submit.Visible && (DataGrid_control.EditItemIndex == -1);
+      CustomValidator_close_class_and_submit_for_credit.Visible = Button_close_and_submit.Visible;
+      CustomValidator_close_class_and_submit_for_credit.Enabled = Button_close_and_submit.Enabled;
       Button_close_and_submit_2.Visible = be_open && (p.eval_summary_mode_description != "Hidden");
       Button_close_and_submit_2.Enabled = be_open && Button_close_and_submit_2.Visible && (DataGrid_control.EditItemIndex == -1);
-      CustomValidator_close_class_and_submit_for_credit.Visible = be_open;
+      CustomValidator_close_class_and_submit_for_credit_2.Visible = Button_close_and_submit_2.Visible;
+      CustomValidator_close_class_and_submit_for_credit_2.Enabled = Button_close_and_submit_2.Enabled;
       HyperLink_quickmessage.Enabled = (DataGrid_control.EditItemIndex == -1);
       LinkButton_email_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1);
       HyperLink_print_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1) && p.be_ceu_breakdown_valid;

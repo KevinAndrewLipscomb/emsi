@@ -2,6 +2,7 @@
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~datagrid~sortable.ascx-template -->
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">
   <ContentTemplate>
+    <asp:ValidationSummary ID="ValidationSummary_quick_message" runat="server" ValidationGroup="quick_message"/>
     <p><strong><asp:Label id="Label_num_coned_sponsors" runat="server"></asp:Label>&nbsp;sponsors</strong></p>
     <p><small>If one of your sponsors seems to be missing from this list, make sure their EMSRS record includes an email address.</small></p>
     <asp:DataGrid id="DataGrid_control" runat="server" allowsorting="True" autogeneratecolumns="False" cellpadding="10" gridlines="Horizontal">
