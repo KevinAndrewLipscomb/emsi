@@ -15,6 +15,14 @@
   <body id="Body_control" runat="server" bgcolor="white">
     <form runat="server" defaultfocus="TextBox_practitioner">
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
+        <asp:UpdatePanel ID="UpdatePanel_validation_group_summary" runat="server">
+          <ContentTemplate>
+            <asp:ValidationSummary ID="ValidationSummary_scan_batch" runat="server" ValidationGroup="ScanBatch"/>
+            <asp:ValidationSummary ID="ValidationSummary_copy" runat="server" ValidationGroup="Copy"/>
+            <asp:ValidationSummary ID="ValidationSummary_quick_message" runat="server" ValidationGroup="QuickMessage"/>
+            <asp:ValidationSummary ID="ValidationSummary_practitioner_attributes" runat="server" ValidationGroup="PractitionerAttributes"/>
+          </ContentTemplate>
+        </asp:UpdatePanel>
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td valign="top">
@@ -150,8 +158,8 @@
                                       <td>&nbsp;&nbsp;&nbsp;</td>
                                       <td align="center">
                                         <asp:HyperLink ID="HyperLink_close_and_submit" runat="server" Font-Bold="True" NavigateUrl="#EvalSummary">CLOSE CLASS and SUBMIT FOR CREDIT</asp:HyperLink>
-                                        <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" visible="false" ValidationGroup="CloseAndSubmit"/>
-                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate" visible="false" ValidationGroup="CloseAndSubmit">!ERR!</asp:CustomValidator>
+                                        <asp:Button ID="Button_close_and_submit" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" visible="false" />
+                                        <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate" visible="false" >!ERR!</asp:CustomValidator>
                                       </td>
                                     </tr>
                                   </table>
@@ -187,9 +195,9 @@
                                           <ItemTemplate><asp:Label ID="Label_dob" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.birth_date") %>'></asp:Label></ItemTemplate>
                                           <EditItemTemplate>
                                             <asp:TextBox ID="TextBox_dob" runat="server" Columns="9" MaxLength="10" Text='<%# DataBinder.Eval(Container, "DataItem.birth_date") %>' enabled="false"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a Birth date." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a valid Birth date using the m/d/yyyy format." Font-Bold="True" ValidationExpression="\d{1,2}[-/]\d{1,2}[-/]\d{4}">!ERR!</asp:RegularExpressionValidator>
-                                            <asp:CustomValidator ID="CustomValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a valid Birth date consistent with an age of 16-130 years." Font-Bold="True" onservervalidate="CustomValidator_dob_ServerValidate">!ERR!</asp:CustomValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a Birth date." Font-Bold="True" ValidationGroup="PractitionerAttributes">!ERR!</asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a valid Birth date using the m/d/yyyy format." Font-Bold="True" ValidationExpression="\d{1,2}[-/]\d{1,2}[-/]\d{4}" ValidationGroup="PractitionerAttributes">!ERR!</asp:RegularExpressionValidator>
+                                            <asp:CustomValidator ID="CustomValidator_dob" runat="server" ControlToValidate="TextBox_dob" Display="Dynamic" ErrorMessage="Please enter a valid Birth date consistent with an age of 16-130 years." Font-Bold="True" onservervalidate="CustomValidator_dob_ServerValidate" ValidationGroup="PractitionerAttributes">!ERR!</asp:CustomValidator>
                                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender_dob" runat="server" TargetControlID="TextBox_dob" WatermarkText="m/d/yyyy" WatermarkCssClass="textbox_watermark"></asp:TextBoxWatermarkExtender>
                                           </EditItemTemplate>
                                         </asp:TemplateColumn>
@@ -204,8 +212,8 @@
                                           <ItemTemplate><asp:Label ID="Label_email_address" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.email_address") %>'></asp:Label></ItemTemplate>
                                           <EditItemTemplate>
                                             <asp:TextBox ID="TextBox_email_address" runat="server" Columns="15" MaxLength="127" Text='<%# DataBinder.Eval(Container, "DataItem.email_address") %>'></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator_email_address" runat="server" ControlToValidate="TextBox_email_address" Display="Dynamic" ErrorMessage="Please enter a valid Email address." Font-Bold="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">!ERR!</asp:RegularExpressionValidator>
-                                            <asp:CustomValidator ID="CustomValidator_email_address" runat="server" ControlToValidate="TextBox_email_address" Display="Dynamic" ErrorMessage='Please enter an Email address with a valid Domain Name (the part after the "@").' Font-Bold="True" onservervalidate="CustomValidator_email_address_ServerValidate">!ERR!</asp:CustomValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator_email_address" runat="server" ControlToValidate="TextBox_email_address" Display="Dynamic" ErrorMessage="Please enter a valid Email address." Font-Bold="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="PractitionerAttributes">!ERR!</asp:RegularExpressionValidator>
+                                            <asp:CustomValidator ID="CustomValidator_email_address" runat="server" ControlToValidate="TextBox_email_address" Display="Dynamic" ErrorMessage='Please enter an Email address with a valid Domain Name (the part after the "@").' Font-Bold="True" onservervalidate="CustomValidator_email_address_ServerValidate" ValidationGroup="PractitionerAttributes">!ERR!</asp:CustomValidator>
                                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender_email_address" runat="server" TargetControlID="TextBox_email_address" WatermarkText="user@domain.tld" WatermarkCssClass="textbox_watermark"></asp:TextBoxWatermarkExtender>
                                           </EditItemTemplate>
                                         </asp:TemplateColumn>
@@ -216,12 +224,12 @@
                                           <ItemStyle HorizontalAlign="Right" Wrap="false" />
                                           <EditItemTemplate>
                                             <asp:TextBox ID="TextBox_instructor_hours" runat="server" Columns="3" MaxLength="5" Text='<%# DataBinder.Eval(Container, "DataItem.instructor_hours") %>' visible="false"></asp:TextBox>
-                                            <asp:CustomValidator ID="CustomValidator_instructor_hours" runat="server" ControlToValidate="TextBox_instructor_hours" Display="Dynamic" ErrorMessage='Please enter a valid Instructor hours value that does not exceed the Total class hours value.' Font-Bold="True" onservervalidate="CustomValidator_instructor_hours_ServerValidate">!ERR!</asp:CustomValidator>
+                                            <asp:CustomValidator ID="CustomValidator_instructor_hours" runat="server" ControlToValidate="TextBox_instructor_hours" Display="Dynamic" ErrorMessage='Please enter a valid Instructor hours value that does not exceed the Total class hours value.' Font-Bold="True" onservervalidate="CustomValidator_instructor_hours_ServerValidate" ValidationGroup="PractitionerAttributes">!ERR!</asp:CustomValidator>
                                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender_instructor_hours" runat="server" TargetControlID="TextBox_instructor_hours" FilterType="Numbers,Custom" ValidChars="."></asp:FilteredTextBoxExtender>
                                             <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender_instructor_hours" runat="server" TargetControlID="TextBox_instructor_hours" WatermarkText="#.#" WatermarkCssClass="textbox_watermark"></asp:TextBoxWatermarkExtender>
                                           </EditItemTemplate>
                                         </asp:TemplateColumn>
-                                        <asp:EditCommandColumn CancelText="&lt;IMG src=&quot;~/protected/image/edit-undo-8.png&quot; alt=&quot;Cancel&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" EditText="&lt;IMG src=&quot;~/protected/image/draw_freehand_16_h.png&quot; alt=&quot;Edit&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" UpdateText="&lt;IMG src=&quot;~/protected/image/document-save-5.png&quot; alt=&quot;Update&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;">
+                                        <asp:EditCommandColumn CancelText="&lt;IMG src=&quot;~/protected/image/edit-undo-8.png&quot; alt=&quot;Cancel&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" EditText="&lt;IMG src=&quot;~/protected/image/draw_freehand_16_h.png&quot; alt=&quot;Edit&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" UpdateText="&lt;IMG src=&quot;~/protected/image/document-save-5.png&quot; alt=&quot;Update&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" ValidationGroup="PractitionerAttributes">
                                           <ItemStyle Wrap="false" />
                                         </asp:EditCommandColumn>
                                         <asp:BoundColumn DataField="practitioner_status_description" ReadOnly="True" Visible="false"></asp:BoundColumn>
@@ -301,7 +309,7 @@
                                           </font>
                                         </td>
                                         <td nowrap="nowrap" valign="top">
-                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_instructional_staff" runat="server" ControlToValidate="TextBox_eval_summary_instructional_staff" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Instructional staff (eval summary) field." Font-Bold="True" ValidationGroup="CloseAndSubmit">!ERR!</asp:RequiredFieldValidator>
+                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_instructional_staff" runat="server" ControlToValidate="TextBox_eval_summary_instructional_staff" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Instructional staff (eval summary) field." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
                                         </td>
                                       </tr>
                                       <tr>
@@ -313,7 +321,7 @@
                                           </font>
                                         </td>
                                         <td nowrap="nowrap" valign="top">
-                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_time_appropriately_used" runat="server" ControlToValidate="TextBox_eval_summary_time_appropriately_used" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Time appropriately used (eval summary) field." Font-Bold="True" ValidationGroup="CloseAndSubmit">!ERR!</asp:RequiredFieldValidator>
+                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_time_appropriately_used" runat="server" ControlToValidate="TextBox_eval_summary_time_appropriately_used" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Time appropriately used (eval summary) field." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
                                         </td>
                                       </tr>
                                       <tr><td colspan="4"><strong>LEARNING ENVIRONMENT</strong></td></tr>
@@ -326,7 +334,7 @@
                                           </font>
                                         </td>
                                         <td nowrap="nowrap" valign="top">
-                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_classroom_training_site" runat="server" ControlToValidate="TextBox_eval_summary_classroom_training_site" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Classroom/training site (eval summary) field." Font-Bold="True" ValidationGroup="CloseAndSubmit">!ERR!</asp:RequiredFieldValidator>
+                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_classroom_training_site" runat="server" ControlToValidate="TextBox_eval_summary_classroom_training_site" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Classroom/training site (eval summary) field." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
                                         </td>
                                       </tr>
                                       <tr>
@@ -338,7 +346,7 @@
                                           </font>
                                         </td>
                                         <td nowrap="nowrap" valign="top">
-                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_equipment_av" runat="server" ControlToValidate="TextBox_eval_summary_equipment_av" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Equipment/AV (eval summary) field." Font-Bold="True" ValidationGroup="CloseAndSubmit">!ERR!</asp:RequiredFieldValidator>
+                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_equipment_av" runat="server" ControlToValidate="TextBox_eval_summary_equipment_av" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Equipment/AV (eval summary) field." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
                                         </td>
                                       </tr>
                                       <tr><td colspan="4"><strong>OTHER</strong></td></tr>
@@ -351,7 +359,7 @@
                                           </font>
                                         </td>
                                         <td nowrap="nowrap" valign="top">
-                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_misc_remarks" runat="server" ControlToValidate="TextBox_eval_summary_misc_remarks" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Misc remarks (eval summary) field." Font-Bold="True" ValidationGroup="CloseAndSubmit">!ERR!</asp:RequiredFieldValidator>
+                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator_eval_summary_misc_remarks" runat="server" ControlToValidate="TextBox_eval_summary_misc_remarks" Display="Dynamic" Enabled="False" ErrorMessage="Please enter a comment in the Misc remarks (eval summary) field." Font-Bold="True" >!ERR!</asp:RequiredFieldValidator>
                                         </td>
                                       </tr>
                                     </table>
@@ -363,8 +371,8 @@
                                 </asp:UpdatePanel>
                                 <asp:UpdatePanel ID="UpdatePanel_close_and_submit_2_button" runat="server" UpdateMode="Conditional">
                                   <ContentTemplate>
-                                    <asp:Button ID="Button_close_and_submit_2" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" ValidationGroup="CloseAndSubmit" />
-                                    <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit_2" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate" ValidationGroup="CloseAndSubmit">!ERR!</asp:CustomValidator>
+                                    <asp:Button ID="Button_close_and_submit_2" runat="server" Font-Bold="True" onclick="Button_close_and_submit_Click" Text="CLOSE CLASS and SUBMIT FOR CREDIT" />
+                                    <asp:CustomValidator ID="CustomValidator_close_class_and_submit_for_credit_2" runat="server" Display="Dynamic" ErrorMessage="You cannot submit a roster for a class that is not Approved, or could not have been completely presented given the registered Start and actual required Length, or that has no Attendees, or still shows that a DOB is 'REQUIRED'." Font-Bold="true" OnServerValidate="CustomValidator_close_class_and_submit_for_credit_ServerValidate" >!ERR!</asp:CustomValidator>
                                   </ContentTemplate>
                                   <Triggers>
                                     <asp:AsyncPostBackTrigger ControlID="DataGrid_control" EventName="ItemCommand" />
