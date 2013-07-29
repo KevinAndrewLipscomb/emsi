@@ -708,11 +708,11 @@ namespace coned_offering_roster
         CustomValidator_close_class_and_submit_for_credit.Visible = (p.eval_summary_mode_description == "Hidden");
         TableRow_eval_summary_head_spacer.Visible = (p.eval_summary_mode_description != "Hidden");
         TableRow_eval_summary.Visible = (p.eval_summary_mode_description != "Hidden");
-        RequiredFieldValidator_eval_summary_instructional_staff.Enabled = (p.eval_summary_mode_description == "Mandatory");
-        RequiredFieldValidator_eval_summary_time_appropriately_used.Enabled = (p.eval_summary_mode_description == "Mandatory");
-        RequiredFieldValidator_eval_summary_classroom_training_site.Enabled = (p.eval_summary_mode_description == "Mandatory");
-        RequiredFieldValidator_eval_summary_equipment_av.Enabled = (p.eval_summary_mode_description == "Mandatory");
-        RequiredFieldValidator_eval_summary_misc_remarks.Enabled = (p.eval_summary_mode_description == "Mandatory");
+        RequiredFieldValidator_eval_summary_instructional_staff.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_time_appropriately_used.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_classroom_training_site.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_equipment_av.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_misc_remarks.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
         Button_close_and_submit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         CustomValidator_close_class_and_submit_for_credit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         //
