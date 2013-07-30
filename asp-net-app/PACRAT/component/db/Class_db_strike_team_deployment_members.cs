@@ -60,7 +60,10 @@ namespace Class_db_strike_team_deployment_members
       string service_strike_team_management_footprint
       )
       {
-      var sql = "select strike_team_deployment_member.id as id"
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select strike_team_deployment_member.id as id"
         + " , practitioner.id as practitioner_id"
         + " , last_name"
         + " , first_name"
@@ -77,11 +80,7 @@ namespace Class_db_strike_team_deployment_members
         + " where 1=1"
         +   (do_include_all_eligible_practitioners ? " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
         +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY) 
-        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"));
-      Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
-        (
-        sql,
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
         .ExecuteReader();
