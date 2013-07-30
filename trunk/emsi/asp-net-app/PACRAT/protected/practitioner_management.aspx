@@ -17,6 +17,7 @@
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
       <asp:UpdatePanel ID="UpdatePanel_overall" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
+          <asp:ValidationSummary ID="ValidationSummary_quick_message" runat="server" ValidationGroup="QuickMessage"/>
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td valign="top">
