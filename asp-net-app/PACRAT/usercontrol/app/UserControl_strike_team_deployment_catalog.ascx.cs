@@ -124,10 +124,9 @@ namespace UserControl_strike_team_deployment_catalog
       {
       if (!p.be_loaded)
         {
-        if (!p.be_interactive)
-          {
-          DataGrid_control.AllowSorting = false;
-          }
+        DataGrid_control.AllowSorting = p.be_interactive;
+        DataGrid_control.Columns[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Visible = p.be_interactive;
+        DataGrid_control.Columns[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Visible = p.be_interactive && p.be_ok_to_config_strike_team_deployments;
         LinkButton_add.Visible = p.be_ok_to_config_strike_team_deployments;
         Bind();
         p.be_loaded = true;

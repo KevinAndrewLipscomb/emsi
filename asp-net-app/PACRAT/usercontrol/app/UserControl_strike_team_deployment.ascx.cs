@@ -137,14 +137,22 @@ namespace UserControl_strike_team_deployment
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
+        Button_submit.Visible = p.be_ok_to_config_strike_team_deployments;
         //
-        p.biz_privileges.BindRegionsInWhichMemberHasPrivilegeDirectToListControl
-          (
-          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-          privilege_name:"config-strike-team-deployments",
-          target:DropDownList_region,
-          unselected_literal:k.EMPTY
-          );
+        if (p.be_ok_to_config_strike_team_deployments)
+          {
+          p.biz_privileges.BindRegionsInWhichMemberHasPrivilegeDirectToListControl
+            (
+            member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+            privilege_name:"config-strike-team-deployments",
+            target:DropDownList_region,
+            unselected_literal:k.EMPTY
+            );
+          }
+        else
+          {
+          DropDownList_region.Items.Add(new ListItem(text:p.biz_strike_team_deployments.RegionNameOf(p.summary),value:k.EMPTY));
+          }
         //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.presentation_mode == presentation_mode_enum.NEW)
@@ -155,7 +163,11 @@ namespace UserControl_strike_team_deployment
           {
           Button_submit.Text = "Rename this deployment";
           Panel_active_deployment_detail.Visible = true;
-          UserControl_strike_team_deployment_binder_control.Set(p.id);
+          UserControl_strike_team_deployment_binder_control.Set
+            (
+            deployment_id:p.id,
+            be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments
+            );
           }
         p.be_loaded = true;
         }
@@ -212,7 +224,11 @@ namespace UserControl_strike_team_deployment
           );
         p.presentation_mode = (p.be_ok_to_config_strike_team_deployments ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
         PresentRecord(id);
-        UserControl_strike_team_deployment_binder_control.Set(id);
+        UserControl_strike_team_deployment_binder_control.Set
+          (
+          deployment_id:id,
+          be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments
+          );
         }
       else
         {

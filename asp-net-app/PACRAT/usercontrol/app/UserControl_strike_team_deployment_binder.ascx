@@ -9,7 +9,7 @@
           <cc1:TabContainer id="TabContainer_control" runat="server" autopostback="True" cssclass="ajax__tab_ki">
             <cc1:TabPanel runat="server" headertext="Personnel" id="TabPanel_personnel"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Vehicles" id="TabPanel_vehicles"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Operational periods" id="TabPanel_operational_periods"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Operational periods" id="TabPanel_operational_periods" Visible="false"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

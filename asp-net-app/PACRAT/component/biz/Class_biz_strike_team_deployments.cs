@@ -72,6 +72,11 @@ namespace Class_biz_strike_team_deployments
       return db_strike_team_deployments.RegionCodeOf(summary);
       }
 
+    internal string RegionNameOf(object summary)
+      {
+      return db_strike_team_deployments.RegionNameOf(summary);
+      }
+
     public void Set
       (
       string id,

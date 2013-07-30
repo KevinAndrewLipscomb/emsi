@@ -27,10 +27,11 @@ namespace Class_biz_strike_team_deployment_members
       bool be_sort_order_ascending,
       object target,
       string deployment_id,
-      bool do_include_all_eligible_practitioners
+      bool do_include_all_eligible_practitioners,
+      string service_strike_team_management_footprint
       )
       {
-      db_strike_team_deployment_members.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id,do_include_all_eligible_practitioners);
+      db_strike_team_deployment_members.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id,do_include_all_eligible_practitioners,service_strike_team_management_footprint);
       }
 
     public void BindDirectToListControl(object target)

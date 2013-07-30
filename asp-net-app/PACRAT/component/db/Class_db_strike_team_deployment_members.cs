@@ -56,13 +56,11 @@ namespace Class_db_strike_team_deployment_members
       bool be_sort_order_ascending,
       object target,
       string deployment_id,
-      bool do_include_all_eligible_practitioners
+      bool do_include_all_eligible_practitioners,
+      string service_strike_team_management_footprint
       )
       {
-      Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
-        (
-        "select strike_team_deployment_member.id as id"
+      var sql = "select strike_team_deployment_member.id as id"
         + " , practitioner.id as practitioner_id"
         + " , last_name"
         + " , first_name"
@@ -76,9 +74,14 @@ namespace Class_db_strike_team_deployment_members
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
-        + (do_include_all_eligible_practitioners ? " where " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
-        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
-        ,
+        + " where 1=1"
+        +   (do_include_all_eligible_practitioners ? " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
+        +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY) 
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"));
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        sql,
         connection
         )
         .ExecuteReader();

@@ -1,5 +1,8 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~binder.cs~template
 
+using Class_biz_members;
+using Class_biz_services;
+using Class_biz_user;
 using kix;
 using UserControl_strike_team_deployment_members;
 using UserControl_strike_team_deployment_operational_periods;
@@ -27,8 +30,13 @@ namespace UserControl_strike_team_deployment_binder
     private struct p_type
       {
       internal bool be_loaded;
+      internal bool be_ok_to_config_strike_team_deployments;
+      internal TClass_biz_members biz_members;
+      internal TClass_biz_services biz_services;
+      internal TClass_biz_user biz_user;
       internal string content_id;
       internal string deployment_id;
+      internal string service_strike_team_management_footprint;
       internal uint tab_index;
       }
 
@@ -44,7 +52,7 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_members)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_members.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_members",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.Set(p.deployment_id);
+        c.Set(p.deployment_id,p.service_strike_team_management_footprint);
         }
       else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_VEHICLES)
         {
@@ -78,6 +86,7 @@ namespace UserControl_strike_team_deployment_binder
       {
       if (!p.be_loaded)
         {
+        TabPanel_operational_periods.Visible = p.be_ok_to_config_strike_team_deployments;
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
         p.be_loaded = true;
         }
@@ -124,7 +133,12 @@ namespace UserControl_strike_team_deployment_binder
         {
         p.be_loaded = false;
         //
+        p.biz_members = new TClass_biz_members();
+        p.biz_services = new TClass_biz_services();
+        p.biz_user = new TClass_biz_user();
+        //
         p.deployment_id = k.EMPTY;
+        p.service_strike_team_management_footprint = k.EMPTY;
         p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL;
         FillPlaceHolder(true);
         }
@@ -136,9 +150,15 @@ namespace UserControl_strike_team_deployment_binder
     //
     //--
 
-    internal void Set(string deployment_id)
+    internal void Set
+      (
+      string deployment_id,
+      bool be_ok_to_config_strike_team_deployments
+      )
       {
       p.deployment_id = deployment_id;
+      p.be_ok_to_config_strike_team_deployments = be_ok_to_config_strike_team_deployments;
+      p.service_strike_team_management_footprint = (be_ok_to_config_strike_team_deployments ? k.EMPTY : p.biz_services.ServiceStrikeTeamManagementFootprintOf(p.biz_members.IdOfUserId(p.biz_user.IdNum())));
       SetTarget(target:"/personnel/");
       }
 
