@@ -36,6 +36,7 @@ namespace UserControl_strike_team_deployment_members
       public bool do_include_all_eligible_practitioners;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public uint num_practitioners;
+      public string service_strike_team_management_footprint;
       public string sort_order;
       }
 
@@ -163,6 +164,7 @@ namespace UserControl_strike_team_deployment_members
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
         p.do_include_all_eligible_practitioners = false;
+        p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "last_name%,first_name";
         }
       }
@@ -213,7 +215,10 @@ namespace UserControl_strike_team_deployment_members
               practitioner_id:practitioner_id,
               tag_num:k.EMPTY
               );
-            DataGrid_control.EditItemIndex = e.Item.ItemIndex;
+            if (p.service_strike_team_management_footprint.Length == 0)
+              {
+              DataGrid_control.EditItemIndex = e.Item.ItemIndex;
+              }
             }
           else
             {
@@ -230,7 +235,7 @@ namespace UserControl_strike_team_deployment_members
               }
             else
               {
-              if (!p.do_include_all_eligible_practitioners)
+              if (!p.do_include_all_eligible_practitioners && (p.service_strike_team_management_footprint.Length == 0))
                 {
                 DataGrid_control.EditItemIndex = e.Item.ItemIndex;
                 }
@@ -258,7 +263,7 @@ namespace UserControl_strike_team_deployment_members
           //
           var be_this_row_in_edit_mode = (DataGrid_control.EditItemIndex == e.Item.ItemIndex);
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
-          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_practitioners ? "YES" : "Edit>") : "no");
+          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_practitioners || (p.service_strike_team_management_footprint.Length > 0) ? "YES" : "Edit>") : "no");
           link_button.Font.Bold = be_this_row_in_edit_mode;
           if (be_this_row_in_edit_mode)
             {
@@ -305,7 +310,7 @@ namespace UserControl_strike_team_deployment_members
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
-      p.biz_strike_team_deployment_members.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_practitioners);
+      p.biz_strike_team_deployment_members.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_practitioners,p.service_strike_team_management_footprint);
       p.be_datagrid_empty = (p.num_practitioners == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -319,9 +324,14 @@ namespace UserControl_strike_team_deployment_members
       Bind();
       }
 
-    internal void Set(string deployment_id)
+    internal void Set
+      (
+      string deployment_id,
+      string service_strike_team_management_footprint
+      )
       {
       p.deployment_id = deployment_id;
+      p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
       }
 

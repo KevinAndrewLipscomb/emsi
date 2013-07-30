@@ -154,7 +154,7 @@ namespace UserControl_member_binder
         p.be_loaded = true;
         }
       TabPanel_preparation.Enabled = (p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service);
-      TabPanel_coordination.Enabled = k.Has((string[])(Session["privilege_array"]),"config-strike-team-deployments");
+      TabPanel_coordination.Enabled = k.Has((string[])(Session["privilege_array"]),"see-strike-team-deployments") || k.Has((string[])(Session["privilege_array"]),"config-strike-team-deployments");
       TabPanel_config.Enabled = (k.Has((string[])(Session["privilege_array"]),"config-users") || k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"));
       TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
       }

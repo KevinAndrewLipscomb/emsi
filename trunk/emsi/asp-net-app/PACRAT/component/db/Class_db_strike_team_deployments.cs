@@ -19,6 +19,7 @@ namespace Class_db_strike_team_deployments
       public DateTime creation_date;
       public string name;
       public string region_code;
+      public string region_name;
       }
 
     private TClass_db_trail db_trail = null;
@@ -69,13 +70,15 @@ namespace Class_db_strike_team_deployments
         + " from strike_team_deployment"
         + " where region_code in"
         +   " ("
-        +   " select GROUP_CONCAT(code)"
+        +   " select GROUP_CONCAT(region_code_name_map.code)"
         +   " from region_code_name_map"
-        +     " join role_member_map on (role_member_map.region_code=region_code_name_map.code or (role_member_map.region_code is null and role_member_map.service_id is null))"
+        +     " join county_region_map on (county_region_map.region_code=region_code_name_map.code)"
+        +     " join service on (service.county_code=county_region_map.county_code)"
+        +     " join role_member_map on ((role_member_map.region_code is null and role_member_map.service_id is null) or role_member_map.region_code=region_code_name_map.code or role_member_map.service_id=service.id)"
         +     " join role_privilege_map on (role_privilege_map.role_id=role_member_map.role_id)"
         +     " join privilege on (privilege.id=role_privilege_map.privilege_id)"
         +   " where member_id = '" + member_id + "'"
-        +     " and privilege.name = 'config-strike-team-deployments'"
+        +     " and privilege.name in ('see-strike-team-deployments','config-strike-team-deployments')"
         +     " and be_pacrat_subscriber"
         +   " )",
         connection
@@ -161,6 +164,11 @@ namespace Class_db_strike_team_deployments
       return (summary as strike_team_deployment_summary).region_code;
       }
 
+    internal string RegionNameOf(object summary)
+      {
+      return (summary as strike_team_deployment_summary).region_name;
+      }
+
     public void Set
       (
       string id,
@@ -190,8 +198,12 @@ namespace Class_db_strike_team_deployments
         (
         new MySqlCommand
           (
-          "SELECT *"
+          "SELECT strike_team_deployment.creation_date as creation_date"
+          + " , strike_team_deployment.name as name"
+          + " , strike_team_deployment.region_code as region_code"
+          + " , region_code_name_map.name as region_name"
           + " FROM strike_team_deployment"
+          +   " join region_code_name_map on (region_code_name_map.code=strike_team_deployment.region_code)"
           + " where id = '" + id + "'",
           connection
           )
@@ -203,7 +215,8 @@ namespace Class_db_strike_team_deployments
         id = id,
         creation_date = DateTime.Parse(dr["creation_date"].ToString()),
         name = dr["name"].ToString(),
-        region_code = dr["region_code"].ToString()
+        region_code = dr["region_code"].ToString(),
+        region_name = dr["region_name"].ToString()
         };
       Close();
       return the_summary;

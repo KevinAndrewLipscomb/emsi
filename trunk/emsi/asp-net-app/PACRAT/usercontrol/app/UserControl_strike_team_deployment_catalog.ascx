@@ -28,7 +28,7 @@
                     <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="creation_date" headertext="Created" sortexpression="creation_date%,name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%,creation_date"></asp:BoundColumn>
-                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete"></asp:ButtonColumn>
+                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="false"></asp:ButtonColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

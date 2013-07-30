@@ -91,7 +91,7 @@
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button>
+<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="False"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button>
 <asp:Panel ID="Panel_active_deployment_detail" runat="server" Visible="false">
   <br />
   <uc2:UserControl_strike_team_deployment_binder ID="UserControl_strike_team_deployment_binder_control" runat="server" />
