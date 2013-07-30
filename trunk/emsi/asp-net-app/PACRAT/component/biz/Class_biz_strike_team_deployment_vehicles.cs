@@ -27,10 +27,11 @@ namespace Class_biz_strike_team_deployment_vehicles
       bool be_sort_order_ascending,
       object target,
       string deployment_id,
-      bool do_include_all_eligible_vehicles
+      bool do_include_all_eligible_vehicles,
+      string service_strike_team_management_footprint
       )
       {
-      db_strike_team_deployment_vehicles.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id,do_include_all_eligible_vehicles);
+      db_strike_team_deployment_vehicles.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id,do_include_all_eligible_vehicles,service_strike_team_management_footprint);
       }
 
     public void BindDirectToListControl
