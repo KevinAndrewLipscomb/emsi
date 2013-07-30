@@ -17,6 +17,7 @@
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
       <asp:UpdatePanel ID="UpdatePanel_overall" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
+          <asp:ValidationSummary ID="ValidationSummary_quick_message" runat="server" ValidationGroup="QuickMessage"/>
           <asp:CheckBox ID="CheckBox_be_pacrat_subscriber" runat="server" AutoPostBack="True" Text="Subscribing region" oncheckedchanged="CheckBox_be_pacrat_subscriber_CheckedChanged" />
           <hr noshade="noshade" width="100%" size="1" />
           <table cellpadding="0" cellspacing="0">

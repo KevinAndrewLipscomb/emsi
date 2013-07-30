@@ -1,5 +1,6 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_operational_period_detail.ascx.cs" Inherits="UserControl_operational_period_detail.TWebUserControl_operational_period_detail"%>
 <%@ Register TagPrefix="asp" Namespace="System.Web.UI" Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
+<asp:ValidationSummary ID="ValidationSummary_operational_period_detail" runat="server" ValidationGroup="OperationalPeriodDetail"/>
 <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
   <tr>
     <td>

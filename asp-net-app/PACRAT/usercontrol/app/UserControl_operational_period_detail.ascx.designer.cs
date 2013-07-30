@@ -13,6 +13,15 @@ namespace UserControl_operational_period_detail {
     public partial class TWebUserControl_operational_period_detail {
         
         /// <summary>
+        /// ValidationSummary_operational_period_detail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_operational_period_detail;
+        
+        /// <summary>
         /// DropDownList_assignment_level_filter control.
         /// </summary>
         /// <remarks>

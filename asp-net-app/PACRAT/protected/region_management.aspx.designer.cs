@@ -40,6 +40,15 @@ namespace region_management {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_overall;
         
         /// <summary>
+        /// ValidationSummary_quick_message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_quick_message;
+        
+        /// <summary>
         /// CheckBox_be_pacrat_subscriber control.
         /// </summary>
         /// <remarks>
