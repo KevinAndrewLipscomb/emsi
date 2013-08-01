@@ -157,33 +157,6 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_practitioner_id;
         
         /// <summary>
-        /// UserControl_drop_down_date_act_1985_33_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1985_33_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_act_1985_34_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1985_34_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_act_1994_151_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1994_151_date;
-        
-        /// <summary>
         /// TextBox_phone_number control.
         /// </summary>
         /// <remarks>
@@ -200,24 +173,6 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_phone_service;
-        
-        /// <summary>
-        /// CheckBox_be_immune_hepatitis_b control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_immune_hepatitis_b;
-        
-        /// <summary>
-        /// CheckBox_be_immune_diptheria_tetanus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_immune_diptheria_tetanus;
         
         /// <summary>
         /// TextBox_emergency_contact_1_name control.
@@ -254,6 +209,24 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_emergency_contact_2_phone_number;
+        
+        /// <summary>
+        /// CheckBox_be_immune_hepatitis_b control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_immune_hepatitis_b;
+        
+        /// <summary>
+        /// CheckBox_be_immune_diptheria_tetanus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_immune_diptheria_tetanus;
         
         /// <summary>
         /// TextBox_meds_doses control.
@@ -335,6 +308,33 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_nims_is_700_date;
+        
+        /// <summary>
+        /// UserControl_drop_down_date_act_1985_33_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1985_33_date;
+        
+        /// <summary>
+        /// UserControl_drop_down_date_act_1985_34_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1985_34_date;
+        
+        /// <summary>
+        /// UserControl_drop_down_date_act_1994_151_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1994_151_date;
         
         /// <summary>
         /// Button_submit control.

@@ -283,6 +283,7 @@ namespace UserControl_practitioner
       if (id.Length > 0)
         {
         p.id = id;
+        PresentRecord(p.id);
         UserControl_practitioner_strike_team_detail_control.SetTarget(target:target);
         }
       }
