@@ -20,6 +20,7 @@ namespace UserControl_practitioner_strike_team_detail
       public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_sms_gateways biz_sms_gateways;
       public bool be_ok_to_config_practitioner_strike_team_details;
+      public string practitioner_id;
       }
 
     private p_type p;
@@ -170,10 +171,9 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_nims_is_700_date.maxyear = this_year;
         //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        var practitioner_id = k.Safe(TextBox_practitioner_id.Text,k.safe_hint_type.NUM);
-        if (practitioner_id.Length > 0)
+        if (p.practitioner_id.Length > 0)
           {
-          PresentRecord(practitioner_id);
+          PresentRecord(p.practitioner_id);
           }
         p.be_loaded = true;
         }
@@ -311,6 +311,7 @@ namespace UserControl_practitioner_strike_team_detail
         //
         p.be_loaded = false;
         p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-strike-team-details");
+        p.practitioner_id = k.EMPTY;
         }
       }
 
@@ -353,7 +354,7 @@ namespace UserControl_practitioner_strike_team_detail
         {
         p.biz_practitioner_strike_team_details.Set
           (
-          k.Safe(TextBox_practitioner_id.Text, k.safe_hint_type.NUM).Trim(),
+          p.practitioner_id, //k.Safe(TextBox_practitioner_id.Text, k.safe_hint_type.NUM).Trim(),
           UserControl_drop_down_date_act_1985_33_date.selectedvalue,
           UserControl_drop_down_date_act_1985_34_date.selectedvalue,
           UserControl_drop_down_date_act_1994_151_date.selectedvalue,
@@ -494,7 +495,8 @@ namespace UserControl_practitioner_strike_team_detail
       var practitioner_id = target.Substring(target.LastIndexOf("/") + 1);
       if (practitioner_id.Length > 0)
         {
-        TextBox_practitioner_id.Text = practitioner_id;
+        p.practitioner_id = practitioner_id;
+        PresentRecord(p.practitioner_id);
         }
       }
 

@@ -50,207 +50,221 @@
     </font>
     </td>
     <td nowrap="nowrap" valign="top">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_practitioner_id" runat="server" errormessage="Please enter practitioner_id." font-bold="True" controltovalidate="TextBox_practitioner_id">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_practitioner_id" runat="server" errormessage="Please enter practitioner_id." font-bold="True" controltovalidate="TextBox_practitioner_id" Display="Dynamic">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">Act&nbsp;33 of 1985&nbsp;clearance&nbsp;date:</font></td>
-    <td>&clubs;</td>
-    <td>
-      <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-    </td>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke"><p><strong>Contact information</strong></p></td>
   </tr>
   <tr>
-    <td><font class="">Act&nbsp;34 of 1985&nbsp;clearance&nbsp;date:</font></td>
-    <td>&clubs;</td>
-    <td>
-      <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Act&nbsp;151 of 1994&nbsp;clearance&nbsp;date:</font></td>
-    <td>&clubs;</td>
-    <td>
-      <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Phone&nbsp;number:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Phone&nbsp;number:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td><font class="">Phone&nbsp;service&nbsp;id:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Phone&nbsp;service&nbsp;id:</font></td>
     <td>&clubs;</td>
     <td>
       <asp:DropDownList ID="DropDownList_phone_service" runat="server">
       </asp:DropDownList>
     </td>
-    <td nowrap="nowrap">
-      &nbsp;</td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td><font class="">Hepatitis&nbsp;B immunization:</font></td>
-    <td>&clubs;</td>
-    <td>
-      <font class="">
-        <ASP:CheckBox id="CheckBox_be_immune_hepatitis_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Diptheria/tetanus immunization:</font></td>
-    <td>&clubs;</td>
-    <td>
-      <font class="">
-        <ASP:CheckBox id="CheckBox_be_immune_diptheria_tetanus" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-    </td>
-  </tr>
-  <tr>
-    <td><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;name:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;name:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_1_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;phone&nbsp;number:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;phone&nbsp;number:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_1_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr>
-    <td><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;name:</font></td>
-    <td></td>
+  <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
+    <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;name:</font></td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_2_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;phone&nbsp;number:</font></td>
-    <td></td>
-    <td>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;phone&nbsp;number:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_2_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke"><p><strong>Health information</strong></p></td>
   </tr>
   <tr>
-    <td><font class="">Meds/doses:</font></td>
-    <td></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Hepatitis&nbsp;B immunization:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <ASP:CheckBox id="CheckBox_be_immune_hepatitis_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
+    <td style="border-left: thin solid Gainsboro"><font class="">Diptheria/tetanus immunization:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <ASP:CheckBox id="CheckBox_be_immune_diptheria_tetanus" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
+    <td style="border-left: thin solid Gainsboro"><font class="">Meds/doses:</font></td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_meds_doses" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_meds_doses" runat="server" errormessage="Please restrict the Meds&nbsp;doses entry to 65535 characters." font-bold="True" controltovalidate="TextBox_meds_doses" validationexpression="^[\s\S]{0,65535}$">!ERR!</ASP:RegularExpressionValidator>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_meds_doses" runat="server" errormessage="Please restrict the Meds&nbsp;doses entry to 65535 characters." font-bold="True" controltovalidate="TextBox_meds_doses" validationexpression="^[\s\S]{0,65535}$" Display="Dynamic">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
-  <tr>
-    <td><font class="">Allergies:</font></td>
-    <td></td>
+  <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
+    <td style="border-left: thin solid Gainsboro"><font class="">Allergies:</font></td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_allergies" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_allergies" runat="server" errormessage="Please restrict the Allergies entry to 65535 characters." font-bold="True" controltovalidate="TextBox_allergies" validationexpression="^[\s\S]{0,65535}$">!ERR!</ASP:RegularExpressionValidator>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_allergies" runat="server" errormessage="Please restrict the Allergies entry to 65535 characters." font-bold="True" controltovalidate="TextBox_allergies" validationexpression="^[\s\S]{0,65535}$" Display="Dynamic">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
   <tr>
-    <td><font class="">PCP&nbsp;name:</font></td>
-    <td></td>
-    <td>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">PCP&nbsp;name:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp</td>
+    <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <ASP:TextBox id="TextBox_pcp_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>Driving</strong></p>
+      <small>This field should hold the date shown on the practitioner's drivers license.&nbsp; The authority entering this data should keep a copy of the source document in case of audit.</small>
     </td>
   </tr>
   <tr>
-    <td><font class="">Drivers&nbsp;license&nbsp;expiration date:</font></td>
-    <td>&clubs;</td>
-    <td>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Drivers&nbsp;license&nbsp;expiration date:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="nowrap">
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>National Incident Management System training</strong></p>
+      <small>
+        These fields should hold the dates shown on the corresponding class completion certificates from the <strong><a href="http://training.fema.gov/IS/NIMS.aspx" target="_blank">FEMA EMI ISP</a></strong>.&nbsp; The authority
+        entering this data should keep a copy of the source documents in case of audit.
+      </small>
     </td>
   </tr>
   <tr>
-    <td><font class="">NIMS IS&nbsp;100&nbsp;date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">NIMS IS-100.b date:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_100_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td><font class="">NIMS IS&nbsp;200&nbsp;date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">NIMS IS-200.b date:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_200_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="nowrap">
-    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td><font class="">NIMS IS&nbsp;700&nbsp;date:</font></td>
-    <td>&clubs;</td>
-    <td>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">NIMS IS-700.a date:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
-    <td nowrap="nowrap">
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>Clearance & background checks</strong></p>
+      <small>
+        These fields should hold the dates shown on the <strong><a href="http://www.dpw.state.pa.us/findaform/childabusehistoryclearanceforms/index.htm" target="_blank">corresponding state documents</a></strong> indicating
+        compliance.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
+      </small>
     </td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro"><font class="">PA Child Abuse History Clearance date:</font></td>
+    <td valign="top">&clubs;</td>
+    <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></font></td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr style="border-left: thin solid Gainsboro; border-right: thin solid Gainsboro">
+    <td style="border-left: thin solid Gainsboro" valign="top"><font class="">PA Criminal Record Check date:</font></td>
+    <td valign="top">&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro" valign="top"><font class="">FBI Criminal Background Check date:</font></td>
+    <td  style="border-bottom: thin solid Gainsboro"valign="top">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro">
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
       </table>
     </td>
