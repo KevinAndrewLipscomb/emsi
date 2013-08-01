@@ -5,6 +5,41 @@
   <tr>
     <td>
       <table cellspacing="0" cellpadding="10" border="0">
+        <tr><td bgcolor="#dcdcdc"><table cellspacing="0" cellpadding="10" border="0" width="100%"><tr><td colspan="5"><strong>Duty units</strong></td></tr></table></td></tr>
+        <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+        <tr id="TableRow_digest" runat="server">
+          <td>
+            <asp:DataGrid id="DataGrid_digest" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_digest_ItemDataBound" onsortcommand="DataGrid_digest_SortCommand">
+              <Columns>
+                <asp:BoundColumn datafield="vehicle_designator" headertext="Vehicle" sortexpression="vehicle_designator%"></asp:BoundColumn>
+                <asp:BoundColumn datafield="vehicle_patient_care_level_description" visible="false"></asp:BoundColumn>
+                <asp:BoundColumn datafield="max_practitioner_level_short_description" visible="false"></asp:BoundColumn>
+                <asp:BoundColumn DataField="effective_patient_care_level" HeaderText="Lvl">
+                  <HeaderStyle HorizontalAlign="Center" />
+                  <ItemStyle HorizontalAlign="Center"/>
+                </asp:BoundColumn>
+                <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,vehicle_designator">
+                  <HeaderStyle HorizontalAlign="Center" />
+                  <ItemStyle HorizontalAlign="Center"/>
+                </asp:BoundColumn>
+                <asp:BoundColumn datafield="par" headertext="Par" sortexpression="par%,vehicle_designator">
+                  <HeaderStyle HorizontalAlign="Center" />
+                  <ItemStyle HorizontalAlign="Center"/>
+                </asp:BoundColumn>
+              </Columns>
+              <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
+            </asp:DataGrid>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br />
+<table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
+  <tr>
+    <td>
+      <table cellspacing="0" cellpadding="10" border="0">
         <tr>
           <td bgcolor="whitesmoke">
             <table cellspacing="0" cellpadding="5" border="0">
@@ -62,7 +97,7 @@
                     </tr>
                     <tr>
                       <td><asp:Button id="Button_add" runat="server" text="<--&nbsp;Add" onclick="Button_add_Click" ValidationGroup="OperationalPeriodDetail"></asp:Button></td>
-                      <td></td>
+                      <td>&nbsp;</td>
                     </tr>
                   </table>
                 </td>
