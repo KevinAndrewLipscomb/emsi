@@ -258,7 +258,7 @@ namespace UserControl_patient_care_level
         p.biz_patient_care_levels.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_description.Text,k.safe_hint_type.ALPHA),
+          k.Safe(TextBox_description.Text,k.safe_hint_type.HYPHENATED_ALPHA),
           k.Safe(TextBox_pecking_order.Text,k.safe_hint_type.NUM)
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);

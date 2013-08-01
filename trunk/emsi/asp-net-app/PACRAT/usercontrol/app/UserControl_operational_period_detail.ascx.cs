@@ -1,3 +1,4 @@
+using Class_biz_patient_care_levels;
 using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployment_vehicles;
@@ -16,6 +17,13 @@ namespace UserControl_operational_period_detail
     public const int CI_VEHICLE = 2;
     public const int CI_MEMBER_DESIGNATOR = 3;
     public const int CI_MEMBER_ID = 4;
+    public const int DIGEST_CI_VEHICLE = 0;
+    public const int DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID = 1;
+    public const int DIGEST_CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER = 2;
+    public const int DIGEST_CI_EFFECTIVE_PATIENT_CARE_LEVEL = 3;
+    public const int DIGEST_CI_KIND = 4;
+    public const int DIGEST_CI_PAR = 5;
+    public const string INITIAL_DIGEST_SORT_ORDER = "vehicle_designator%";
     public const string INITIAL_SORT_ORDER = "vehicle_designator%,member_designator";
     }
 
@@ -32,15 +40,20 @@ namespace UserControl_operational_period_detail
       {
       public string assignment_level_filter;
       public bool be_datagrid_empty;
+      public bool be_digest_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_digest_sort_order_ascending;
       public bool be_sort_order_ascending;
+      public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
       public TClass_biz_user biz_user;
       public string deployment_id;
+      public string digest_sort_order;
       public bool may_add_mappings;
+      public k.int_nonnegative num_digest_items;
       public k.int_nonnegative num_mappings;
       public string operational_period_id;
       public string sort_order;
@@ -64,6 +77,18 @@ namespace UserControl_operational_period_detail
       TableCell_mappings.Visible = !p.be_datagrid_empty;
       TableCell_add_mapping.Visible = p.may_add_mappings;
       p.num_mappings.val = 0;
+      //
+      p.biz_strike_team_deployment_assignments.BindDigest
+        (
+        sort_order:p.digest_sort_order,
+        be_sort_order_ascending:p.be_digest_sort_order_ascending,
+        target:DataGrid_digest,
+        operational_period_id:p.operational_period_id
+        );
+      p.be_digest_empty = (p.num_digest_items.val == 0);
+      TableRow_none.Visible = p.be_digest_empty;
+      TableRow_digest.Visible = !p.be_digest_empty;
+      p.num_digest_items.val = 0;
       //
       if (TableCell_add_mapping.Visible)
         {
@@ -121,7 +146,7 @@ namespace UserControl_operational_period_detail
         p.sort_order = e.SortExpression;
         p.be_sort_order_ascending = true;
         }
-      DataGrid_control.EditItemIndex =  -1;
+      DataGrid_control.EditItemIndex = -1;
       Bind();
       }
 
@@ -254,6 +279,7 @@ namespace UserControl_operational_period_detail
         }
       else
         {
+        p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
         p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
@@ -261,11 +287,15 @@ namespace UserControl_operational_period_detail
         //
         p.assignment_level_filter = k.EMPTY;
         p.be_datagrid_empty = false;
+        p.be_digest_empty = false;
+        p.be_digest_sort_order_ascending = true;
         p.be_interactive = !(Session["mode:report"] != null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
+        p.digest_sort_order = UserControl_operational_period_detail_Static.INITIAL_DIGEST_SORT_ORDER;
         p.may_add_mappings = p.be_interactive;
+        p.num_digest_items = new k.int_nonnegative();
         p.num_mappings = new k.int_nonnegative();
         p.operational_period_id = k.EMPTY;
         p.sort_order = UserControl_operational_period_detail_Static.INITIAL_SORT_ORDER;
@@ -277,6 +307,7 @@ namespace UserControl_operational_period_detail
       if (!p.be_loaded)
         {
         DataGrid_control.AllowSorting = p.be_interactive;
+        DataGrid_digest.AllowSorting = p.be_interactive;
         Bind();
         p.be_loaded = true;
         }
@@ -303,6 +334,34 @@ namespace UserControl_operational_period_detail
       {
       p.deployment_id = deployment_id;
       p.operational_period_id = operational_period_id;
+      Bind();
+      }
+
+    protected void DataGrid_digest_ItemDataBound(object sender, DataGridItemEventArgs e)
+      {
+      if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
+        {
+        e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_EFFECTIVE_PATIENT_CARE_LEVEL].Text = p.biz_patient_care_levels.EffectiveOf
+          (
+          vehicle_patient_care_level_description:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text,k.safe_hint_type.HYPHENATED_ALPHA),
+          practitioner_level_short_description:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER].Text,k.safe_hint_type.HYPHENATED_ALPHA)
+          );
+        p.num_digest_items.val++;
+        }
+      }
+
+    protected void DataGrid_digest_SortCommand(object source, DataGridSortCommandEventArgs e)
+      {
+      if (e.SortExpression == p.digest_sort_order)
+        {
+        p.be_digest_sort_order_ascending = !p.be_digest_sort_order_ascending;
+        }
+      else
+        {
+        p.digest_sort_order = e.SortExpression;
+        p.be_digest_sort_order_ascending = true;
+        }
+      DataGrid_digest.EditItemIndex = -1;
       Bind();
       }
 

@@ -41,6 +41,24 @@ namespace Class_biz_patient_care_levels
       return db_patient_care_levels.Delete(id);
       }
 
+    internal string EffectiveOf
+      (
+      string vehicle_patient_care_level_description,
+      string practitioner_level_short_description
+      )
+      {
+      var effective_of = "---";
+      if ((vehicle_patient_care_level_description != "---") && (new ArrayList {"EMR","EMT","EMT-New","PHRN","EMT-P","HP","MCMD"}.Contains(practitioner_level_short_description)))
+        {
+        effective_of = "BLS";
+        }
+      if ((vehicle_patient_care_level_description == "ALS") && (new ArrayList {"PHRN","EMT-P","HP","MCMD"}.Contains(practitioner_level_short_description)))
+        {
+        effective_of = "ALS";
+        }
+      return effective_of;
+      }
+
     public bool Get
       (
       string id,

@@ -106,7 +106,9 @@ namespace Class_db_strike_team_deployment_vehicles
       var dr = new MySqlCommand
         (
         "SELECT vehicle.id as id"
-        + " , concat(service.name,' ',vehicle.name,' (',vehicle_kind.description,')') as spec"
+        + " , @static_designator := concat(service.name,' ',vehicle.name)"
+        + " , @dynamic_designator := IF(tactical_name = @static_designator,concat(@static_designator,' (',vehicle_kind.description,')'),concat(tactical_name,' [',@static_designator,' (',vehicle_kind.description,')]'))"
+        + " , IFNULL(@dynamic_designator,'(none)') as spec"
         + " FROM strike_team_deployment_vehicle"
         +   " join vehicle on (vehicle.id=strike_team_deployment_vehicle.vehicle_id)"
         +   " join service on (service.id=vehicle.service_id)"

@@ -43,6 +43,17 @@ namespace Class_biz_strike_team_deployment_assignments
       db_strike_team_deployment_assignments.BindBaseDataList(sort_order,be_sort_order_ascending,target);
       }
 
+    internal void BindDigest
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string operational_period_id
+      )
+      {
+      db_strike_team_deployment_assignments.BindDigest(sort_order,be_sort_order_ascending,target,operational_period_id);
+      }
+
     public void BindDirectToListControl(object target)
       {
       db_strike_team_deployment_assignments.BindDirectToListControl(target);
