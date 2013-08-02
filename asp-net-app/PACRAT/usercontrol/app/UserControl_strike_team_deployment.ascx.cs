@@ -163,11 +163,6 @@ namespace UserControl_strike_team_deployment
           {
           Button_submit.Text = "Rename this deployment";
           Panel_active_deployment_detail.Visible = true;
-          UserControl_strike_team_deployment_binder_control.Set
-            (
-            deployment_id:p.id,
-            be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments
-            );
           }
         p.be_loaded = true;
         }
