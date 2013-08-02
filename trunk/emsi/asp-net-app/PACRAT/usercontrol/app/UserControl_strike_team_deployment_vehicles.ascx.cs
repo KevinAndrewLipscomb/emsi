@@ -225,7 +225,7 @@ namespace UserControl_strike_team_deployment_vehicles
               id:k.EMPTY,
               deployment_id:p.deployment_id,
               vehicle_id:vehicle_id,
-              tactical_name:tactical_name,
+              tactical_name:tactical_name.Substring(0,63),
               transponder_name:k.EMPTY
               );
             if (p.service_strike_team_management_footprint.Length == 0)
