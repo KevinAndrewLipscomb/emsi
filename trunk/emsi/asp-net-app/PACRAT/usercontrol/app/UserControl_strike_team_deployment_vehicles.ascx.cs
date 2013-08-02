@@ -132,9 +132,9 @@ namespace UserControl_strike_team_deployment_vehicles
           {
           DataGrid_control.AllowSorting = false;
           }
-        Bind();
         p.be_loaded = true;
         }
+      Bind();
       InjectPersistentClientSideScript();
       }
 
@@ -154,7 +154,7 @@ namespace UserControl_strike_team_deployment_vehicles
         //
         if (instance_id == "ASP.protected_strike_team_deployment_detail_aspx.UserControl_strike_team_deployment_control_strike_team_deployment_binder_control_strike_team_deployment_vehicles")
           {
-          p.be_loaded &= ((Session["UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_vehicles");
+          p.be_loaded &= ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_vehicles");
           }
         }
       else
@@ -166,7 +166,6 @@ namespace UserControl_strike_team_deployment_vehicles
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
-        p.do_include_all_eligible_vehicles = false;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "service%,name";
         }
@@ -225,7 +224,7 @@ namespace UserControl_strike_team_deployment_vehicles
               id:k.EMPTY,
               deployment_id:p.deployment_id,
               vehicle_id:vehicle_id,
-              tactical_name:tactical_name.Substring(0,63),
+              tactical_name:tactical_name,
               transponder_name:k.EMPTY
               );
             if (p.service_strike_team_management_footprint.Length == 0)
@@ -326,7 +325,15 @@ namespace UserControl_strike_team_deployment_vehicles
       DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].ItemStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.White : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].HeaderStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.WhiteSmoke : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].ItemStyle.BackColor = (p.do_include_all_eligible_vehicles ? Color.White : Color.LightGray);
-      p.biz_strike_team_deployment_vehicles.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_vehicles,p.service_strike_team_management_footprint);
+      p.biz_strike_team_deployment_vehicles.BindBaseDataList
+        (
+        sort_order:p.sort_order,
+        be_sort_order_ascending:p.be_sort_order_ascending,
+        target:DataGrid_control,
+        deployment_id:p.deployment_id,
+        do_include_all_eligible_vehicles:p.do_include_all_eligible_vehicles,
+        service_strike_team_management_footprint:p.service_strike_team_management_footprint
+        );
       p.be_datagrid_empty = (p.num_vehicles == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -347,6 +354,11 @@ namespace UserControl_strike_team_deployment_vehicles
       )
       {
       p.deployment_id = deployment_id;
+      if ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) != "UserControl_strike_team_deployment_vehicles")
+        {
+        p.do_include_all_eligible_vehicles = p.biz_strike_team_deployment_vehicles.BeNone(p.deployment_id);
+        CheckBox_do_include_all_eligible_vehicles.Checked = p.do_include_all_eligible_vehicles;
+        }
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
       }

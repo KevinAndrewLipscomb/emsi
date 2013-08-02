@@ -156,7 +156,7 @@ namespace UserControl_strike_team_deployment_operational_periods
         //
         if (instance_id == "ASP.protected_strike_team_deployment_detail_aspx.UserControl_strike_team_deployment_control_strike_team_deployment_binder_control_strike_team_deployment_operational_periods")
           {
-          p.be_loaded &= ((Session["UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_operational_periods");
+          p.be_loaded &= ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_operational_periods");
           }
         }
       else

@@ -25,6 +25,14 @@ namespace Class_db_strike_team_deployment_vehicles
       db_trail = new TClass_db_trail();
       }
 
+    internal bool BeNone(string deployment_id)
+      {
+      Open();
+      var be_none = ("0" == new MySqlCommand("select count(*) from strike_team_deployment_vehicle where deployment_id = '" + deployment_id + "'",connection).ExecuteScalar().ToString());
+      Close();
+      return be_none;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(vehicle_id,'-'))";
@@ -253,7 +261,7 @@ namespace Class_db_strike_team_deployment_vehicles
       var childless_field_assignments_clause = k.EMPTY
       + "deployment_id = NULLIF('" + deployment_id + "','')"
       + " , vehicle_id = NULLIF('" + vehicle_id + "','')"
-      + " , tactical_name = NULLIF('" + tactical_name + "','')"
+      + " , tactical_name = NULLIF(LEFT('" + tactical_name + "',63),'')"
       + " , transponder_name = NULLIF('" + transponder_name + "','')"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate

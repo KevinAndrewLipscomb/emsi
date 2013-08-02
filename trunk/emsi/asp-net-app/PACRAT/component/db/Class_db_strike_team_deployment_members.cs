@@ -26,6 +26,14 @@ namespace Class_db_strike_team_deployment_members
       db_trail = new TClass_db_trail();
       }
 
+    internal bool BeNone(string deployment_id)
+      {
+      Open();
+      var be_none = ("0" == new MySqlCommand("select count(*) from strike_team_deployment_member where deployment_id = '" + deployment_id + "'",connection).ExecuteScalar().ToString());
+      Close();
+      return be_none;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(practitioner_id,'-'))";
