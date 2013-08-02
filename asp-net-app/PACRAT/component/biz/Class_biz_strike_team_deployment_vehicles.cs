@@ -16,6 +16,11 @@ namespace Class_biz_strike_team_deployment_vehicles
       db_strike_team_deployment_vehicles = new TClass_db_strike_team_deployment_vehicles();
       }
 
+    internal bool BeNone(string deployment_id)
+      {
+      return db_strike_team_deployment_vehicles.BeNone(deployment_id);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_strike_team_deployment_vehicles.Bind(partial_spec, target);

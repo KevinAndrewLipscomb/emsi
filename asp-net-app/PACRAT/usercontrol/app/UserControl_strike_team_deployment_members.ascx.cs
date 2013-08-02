@@ -129,9 +129,9 @@ namespace UserControl_strike_team_deployment_members
           {
           DataGrid_control.AllowSorting = false;
           }
-        Bind();
         p.be_loaded = true;
         }
+      Bind();
       InjectPersistentClientSideScript();
       }
 
@@ -151,7 +151,7 @@ namespace UserControl_strike_team_deployment_members
         //
         if (instance_id == "ASP.protected_strike_team_deployment_detail_aspx.UserControl_strike_team_deployment_control_strike_team_deployment_binder_control_strike_team_deployment_members")
           {
-          p.be_loaded &= ((Session["UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_members");
+          p.be_loaded &= ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_members");
           }
         }
       else
@@ -163,7 +163,6 @@ namespace UserControl_strike_team_deployment_members
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
-        p.do_include_all_eligible_practitioners = false;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "last_name%,first_name";
         }
@@ -310,7 +309,15 @@ namespace UserControl_strike_team_deployment_members
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
-      p.biz_strike_team_deployment_members.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id,p.do_include_all_eligible_practitioners,p.service_strike_team_management_footprint);
+      p.biz_strike_team_deployment_members.BindBaseDataList
+        (
+        sort_order:p.sort_order,
+        be_sort_order_ascending:p.be_sort_order_ascending,
+        target:DataGrid_control,
+        deployment_id:p.deployment_id,
+        do_include_all_eligible_practitioners:p.do_include_all_eligible_practitioners,
+        service_strike_team_management_footprint:p.service_strike_team_management_footprint
+        );
       p.be_datagrid_empty = (p.num_practitioners == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -331,6 +338,11 @@ namespace UserControl_strike_team_deployment_members
       )
       {
       p.deployment_id = deployment_id;
+      if ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) != "UserControl_strike_team_deployment_members")
+        {
+        p.do_include_all_eligible_practitioners = p.biz_strike_team_deployment_members.BeNone(p.deployment_id);
+        CheckBox_do_include_all_eligible_practitioners.Checked = p.do_include_all_eligible_practitioners;
+        }
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
       }
