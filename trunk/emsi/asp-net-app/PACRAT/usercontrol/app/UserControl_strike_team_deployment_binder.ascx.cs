@@ -140,7 +140,7 @@ namespace UserControl_strike_team_deployment_binder
         p.deployment_id = k.EMPTY;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL;
-        FillPlaceHolder(true);
+        //Don't FillPlaceHolder(true); since it will be done via Set when target information is known.
         }
       }
 
