@@ -15,11 +15,11 @@ namespace Class_db_practitioner_strike_team_details
     {
     public const string BE_CREDENTIALED_EXPRESSION = k.EMPTY
     + " ("
-    +   " (act_1985_33_date is not null)"
+    +   " (act_1985_33_date is not null and act_1985_33_date > '0001-01-01')"
     + " and"
-    +   " (act_1985_34_date is not null)"
+    +   " (act_1985_34_date is not null and act_1985_34_date > '0001-01-01')"
     + " and"
-    +   " (act_1994_151_date is not null)"
+    +   " (act_1994_151_date is not null and act_1994_151_date > '0001-01-01')"
     + " and"
     +   " (phone_number is not null)"
     + " and"
@@ -35,11 +35,11 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (drivers_license_expiration >= CURDATE())"
     + " and"
-    +   " nims_is_100_date is not null"
+    +   " (nims_is_100_date is not null and nims_is_100_date > '0001-01-01')"
     + " and"
-    +   " nims_is_200_date is not null"
+    +   " (nims_is_200_date is not null and nims_is_200_date > '0001-01-01')"
     + " and"
-    +   " nims_is_700_date is not null"
+    +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
     + " )";
     }
 
