@@ -22,33 +22,6 @@ namespace UserControl_operational_period_detail {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_operational_period_detail;
         
         /// <summary>
-        /// TableRow_none control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
-        
-        /// <summary>
-        /// TableRow_digest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_digest;
-        
-        /// <summary>
-        /// DataGrid_digest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid DataGrid_digest;
-        
-        /// <summary>
         /// DropDownList_assignment_level_filter control.
         /// </summary>
         /// <remarks>
@@ -137,5 +110,32 @@ namespace UserControl_operational_period_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_add;
+        
+        /// <summary>
+        /// TableRow_none control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
+        
+        /// <summary>
+        /// TableRow_digest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_digest;
+        
+        /// <summary>
+        /// DataGrid_digest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_digest;
     }
 }
