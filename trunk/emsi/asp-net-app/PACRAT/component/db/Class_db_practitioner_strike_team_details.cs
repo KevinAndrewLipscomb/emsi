@@ -245,6 +245,22 @@ namespace Class_db_practitioner_strike_team_details
         );
       }
 
+    internal string SmsTargetOf(string practitioner_id)
+      {
+      Open();
+      var sms_target_of_obj = new MySqlCommand
+        (
+        "select concat(phone_number,'@',hostname)"
+        + " from practitioner_strike_team_detail"
+        +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
+        + " where practitioner_id = '" + practitioner_id + "'",
+        connection
+        )
+        .ExecuteScalar();
+      Close();
+      return (sms_target_of_obj == null ? k.EMPTY : sms_target_of_obj.ToString());
+      }
+
     } // end TClass_db_practitioner_strike_team_details
 
   }

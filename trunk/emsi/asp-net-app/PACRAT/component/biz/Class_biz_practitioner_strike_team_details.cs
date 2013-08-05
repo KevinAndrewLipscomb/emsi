@@ -125,6 +125,11 @@ namespace Class_biz_practitioner_strike_team_details
         );
       }
 
+    internal string SmsTargetOf(string practitioner_id)
+      {
+      return db_practitioner_strike_team_details.SmsTargetOf(practitioner_id);
+      }
+
     } // end TClass_biz_practitioner_strike_team_details
 
   }

@@ -1,7 +1,7 @@
 // Derived from KiAspdotnetFramework/component/db/Class~db~template~kicrudhelped~items.cs~template
 
-using Class_dbhomedb;
-using Class_dbhomedb_trail;
+using Class_db;
+using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
 using System;
@@ -11,18 +11,18 @@ using UserControl_drop_down_date;
 
 namespace Class_db_sms_gateways
   {
-  public class TClass_db_sms_gateways: TClass_dbhomedb
+  public class TClass_db_sms_gateways: TClass_db
     {
     private class sms_gateway_summary
       {
       public string id;
       }
 
-    private TClass_dbhomedb_trail db_trail = null;
+    private TClass_db_trail db_trail = null;
 
     public TClass_db_sms_gateways() : base()
       {
-      db_trail = new TClass_dbhomedb_trail();
+      db_trail = new TClass_db_trail();
       }
 
     public bool Bind(string partial_spec, object target)
