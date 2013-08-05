@@ -137,9 +137,9 @@
                 <td><a id="QuickMessage"><strong>QuickMessage</strong></a></td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td align="right">
-                  <asp:RadioButtonList ID="RadioButtonList_quick_message_mode" runat="server" AutoPostBack="True" RepeatDirection="Horizontal">
-                    <asp:ListItem Selected="True" Value="email">Email</asp:ListItem>
-                    <asp:ListItem Value="sms">SMS</asp:ListItem>
+                  <asp:RadioButtonList ID="RadioButtonList_quick_message_mode" runat="server" AutoPostBack="True" RepeatDirection="Horizontal" onselectedindexchanged="RadioButtonList_quick_message_mode_SelectedIndexChanged" Visible="false">
+                    <asp:ListItem Value="email">Email</asp:ListItem>
+                    <asp:ListItem Selected="True" Value="sms">SMS</asp:ListItem>
                   </asp:RadioButtonList>
                 </td>
                 <td>
@@ -153,8 +153,8 @@
           <td>
             <table cellspacing="0" cellpadding="10" width="100%" border="0">
               <tr>
-                <td>Send <asp:Literal ID="Literal_quick_message_kind_email" runat="server">email</asp:Literal><asp:Literal ID="Literal_quick_message_kind_sms" runat="server" Visible="false">SMS</asp:Literal> to:</td>
-                <td>Sponsors selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) above.</td>
+                <td>Send <asp:Literal ID="Literal_quick_message_kind_email" runat="server" Visible="false">email</asp:Literal><asp:Literal ID="Literal_quick_message_kind_sms" runat="server">SMS</asp:Literal> to:</td>
+                <td>Recipients selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) above.</td>
                 <td></td>
               </tr>
               <tr>
@@ -166,8 +166,8 @@
                 <td>Reply-to:</td>
                 <td>
                   <asp:RadioButtonList ID="RadioButtonList_reply_to" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Selected="True" Value="email">My email</asp:ListItem>
-                    <asp:ListItem Value="phone">My phone</asp:ListItem>
+                    <asp:ListItem Value="email">My email</asp:ListItem>
+                    <asp:ListItem Selected="True" Value="phone">My phone</asp:ListItem>
                     <asp:ListItem Value="bouncer">BOUNCER</asp:ListItem>
                   </asp:RadioButtonList>
                 </td>
@@ -175,14 +175,14 @@
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator_reply_to" runat="server" ControlToValidate="RadioButtonList_reply_to" Display="Dynamic" ErrorMessage="Please specify a Reply-to target." Font-Bold="True" ValidationGroup="quick_message">!ERR!</asp:RequiredFieldValidator>
                 </td>
               </tr>
-              <tr id="TableRow_subject" runat="server">
+              <tr id="TableRow_subject" runat="server" visible="false">
                 <td>Subject:</td>
                 <td><ASP:TextBox id="TextBox_quick_message_subject" runat="server" maxlength="255" columns="72"></ASP:TextBox></td>
                 <td></td>
               </tr>
               <tr>
                 <td valign="top">Message:</td>
-                <td><ASP:TextBox id="TextBox_quick_message_body" runat="server" columns="72" rows="18" textmode="MultiLine"></ASP:TextBox></td>
+                <td><ASP:TextBox id="TextBox_quick_message_body" runat="server" columns="40" rows="4" textmode="MultiLine"></ASP:TextBox></td>
                 <td nowrap="nowrap" valign="top"><ASP:RequiredFieldValidator id="RequiredFieldValidator_quick_message_body" runat="server" errormessage="Please enter a message body." font-bold="True" controltovalidate="TextBox_quick_message_body" validationgroup="quick_message">!ERR!</ASP:RequiredFieldValidator></td>
               </tr>
               <tr>
