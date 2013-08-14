@@ -134,7 +134,14 @@ namespace UserControl_strike_team_deployment_vehicles
           }
         p.be_loaded = true;
         }
-      Bind();
+      if (DataGrid_control.EditItemIndex > -1)
+        {
+        //
+        // Must rebind to restore the tactical_name and transponder_name columns to their edit-mode TextBox renditions, loaded with the user-supplied values.  Otherwise we can't read those values when the ItemCommand event
+        // fires.
+        //
+        Bind();
+        }
       InjectPersistentClientSideScript();
       }
 

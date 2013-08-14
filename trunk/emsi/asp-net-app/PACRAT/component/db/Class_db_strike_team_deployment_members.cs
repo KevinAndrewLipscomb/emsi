@@ -77,6 +77,8 @@ namespace Class_db_strike_team_deployment_members
         + " , first_name"
         + " , short_description as level"
         + " , tag_num"
+        + " , email_address"
+        + " , concat(phone_number,'@',sms_gateway.hostname) as sms_target"
         + " from strike_team_roster"
         +   " join service on (service.id=strike_team_roster.service_id)"
         +   " join county_region_map on (county_region_map.county_code=service.county_code)"
@@ -84,6 +86,7 @@ namespace Class_db_strike_team_deployment_members
         +   " join practitioner on (practitioner.id=strike_team_roster.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
+        +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
         + " where 1=1"
         +   (do_include_all_eligible_practitioners ? " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
