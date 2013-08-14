@@ -1,12 +1,16 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using AjaxControlToolkit;
+using Class_biz_members;
+using Class_biz_practitioner_strike_team_details;
 using Class_biz_strike_team_deployment_members;
+using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
 using System.Collections;
+using System.Configuration;
 using System.Drawing;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_members
@@ -23,6 +27,9 @@ namespace UserControl_strike_team_deployment_members
       public const int TCI_LAST_NAME = 5;
       public const int TCI_FIRST_NAME = 6;
       public const int TCI_LEVEL = 7;
+      public const int TCI_EMAIL_ADDRESS = 8;
+      public const int TCI_SMS_TARGET = 9;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 10;
       }
 
     private struct p_type
@@ -31,13 +38,20 @@ namespace UserControl_strike_team_deployment_members
       public bool be_interactive;
       public bool be_loaded;
       public bool be_sort_order_ascending;
+      public TClass_biz_members biz_members;
+      public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
+      public TClass_biz_user biz_user;
       public string deployment_id;
       public bool do_include_all_eligible_practitioners;
+      public string distribution_list_email;
+      public string distribution_list_sms;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public uint num_practitioners;
       public string service_strike_team_management_footprint;
       public string sort_order;
+      public string user_target_email;
+      public string user_target_sms;
       }
 
     private p_type p;
@@ -125,13 +139,24 @@ namespace UserControl_strike_team_deployment_members
       {
       if (!p.be_loaded)
         {
-        if (!p.be_interactive)
+        if (p.be_interactive)
+          {
+          Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);
+          }
+        else
           {
           DataGrid_control.AllowSorting = false;
           }
         p.be_loaded = true;
         }
-      Bind();
+      if (DataGrid_control.EditItemIndex > -1)
+        {
+        //
+        // Must rebind to restore the tag_num column to its edit-mode TextBox rendition, loaded with the user-supplied value.  Otherwise we can't read that value when the ItemCommand event fires.  This will reset each
+        // CheckBox_select, but if the user has shifted attention to editing a row, that should not be a big deal.
+        //
+        Bind();
+        }
       InjectPersistentClientSideScript();
       }
 
@@ -156,15 +181,22 @@ namespace UserControl_strike_team_deployment_members
         }
       else
         {
+        p.biz_members = new TClass_biz_members();
+        p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
+        p.biz_user = new TClass_biz_user();
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
+        p.distribution_list_email = k.EMPTY;
+        p.distribution_list_sms = k.EMPTY;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "last_name%,first_name";
+        p.user_target_email = p.biz_members.EmailAddressOf(p.biz_user.IdNum());
+        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         }
       }
 
@@ -258,7 +290,6 @@ namespace UserControl_strike_team_deployment_members
           {
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
-          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           var be_this_row_in_edit_mode = (DataGrid_control.EditItemIndex == e.Item.ItemIndex);
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
@@ -323,6 +354,8 @@ namespace UserControl_strike_team_deployment_members
       DataGrid_control.Visible = !p.be_datagrid_empty;
       Literal_num_practitioners.Text = p.num_practitioners.ToString();
       p.num_practitioners = 0;
+      //
+      BuildDistributionListAndRegisterPostBackControls();
       }
 
     protected void CheckBox_do_include_all_eligible_practitioners_CheckedChanged(object sender, EventArgs e)
@@ -345,6 +378,116 @@ namespace UserControl_strike_team_deployment_members
         }
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
+      }
+
+    protected void CheckBox_force_all_CheckedChanged(object sender, EventArgs e)
+      {
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        (DataGrid_control.Items[i.val].Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        }
+      BuildDistributionListAndRegisterPostBackControls();
+      }
+
+    protected void CheckBox_selected_CheckedChanged(object sender, EventArgs e)
+      {
+      BuildDistributionListAndRegisterPostBackControls();
+      }
+
+    private void BuildDistributionListAndRegisterPostBackControls()
+      {
+      p.distribution_list_email = k.EMPTY;
+      p.distribution_list_sms = k.EMPTY;
+      TableCellCollection tcc;
+      for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        tcc = DataGrid_control.Items[i.val].Cells;
+        if ((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
+          {
+          p.distribution_list_email += tcc[UserControl_strike_team_deployment_members_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
+          p.distribution_list_sms += tcc[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE;
+          }
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        }
+      Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
+      }
+
+    protected void Button_send_Click(object sender, EventArgs e)
+      {
+      var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
+      var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
+      if (distribution_list.Length > 0)
+        {
+        var attribution = k.EMPTY;
+        if (be_email_mode)
+          {
+          attribution += "-- From "
+          + p.biz_user.Roles()[0] + k.SPACE
+          + p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()) + k.SPACE + p.biz_members.LastNameOfMemberId(Session["member_id"].ToString())
+          + " (" + p.biz_user.EmailAddress() + ")"
+          + " [via " + ConfigurationManager.AppSettings["application_name"] + "]" + k.NEW_LINE
+          + k.NEW_LINE;
+          }
+        k.SmtpMailSend
+          (
+          from:ConfigurationManager.AppSettings["sender_email_address"],
+          to:distribution_list,
+          subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
+          message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
+          be_html:false,
+          cc:k.EMPTY,
+          bcc:k.Safe(Literal_author_target.Text,k.safe_hint_type.EMAIL_ADDRESS),
+          reply_to:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? ConfigurationManager.AppSettings["bouncer_email_address"] : (RadioButtonList_reply_to.SelectedValue == "email" ? p.user_target_email : p.user_target_sms))
+          );
+        TextBox_quick_message_subject.Text = k.EMPTY;
+        TextBox_quick_message_body.Text = k.EMPTY;
+        Alert
+          (
+          cause:k.alert_cause_type.LOGIC,
+          state:k.alert_state_type.NORMAL,
+          key:"messagsnt",
+          value:"Message sent",
+          be_using_scriptmanager:true
+          );
+        }
+      else
+        {
+        Alert
+          (
+          cause:k.alert_cause_type.USER,
+          state:k.alert_state_type.FAILURE,
+          key:"noqmrecips",
+          value:"Message *NOT* sent.  No recipients are selected.",
+          be_using_scriptmanager:true
+          );
+        }
+      BuildDistributionListAndRegisterPostBackControls();
+      }
+
+    protected void RadioButtonList_quick_message_mode_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      if (RadioButtonList_quick_message_mode.SelectedValue == "email")
+        {
+        Literal_quick_message_kind_email.Visible = true;
+        Literal_quick_message_kind_sms.Visible = false;
+        Literal_author_target.Text = p.user_target_email;
+        RadioButtonList_reply_to.SelectedValue = "email";
+        TableRow_subject.Visible = true;
+        TextBox_quick_message_body.Columns = 72;
+        TextBox_quick_message_body.Rows = 18;
+        Label_distribution_list.Text = p.distribution_list_email;
+        }
+      else
+        {
+        Literal_quick_message_kind_email.Visible = false;
+        Literal_quick_message_kind_sms.Visible = true;
+        Literal_author_target.Text = p.user_target_sms;
+        RadioButtonList_reply_to.SelectedValue = "sms";
+        TableRow_subject.Visible = false;
+        TextBox_quick_message_body.Columns = 40;
+        TextBox_quick_message_body.Rows = 4;
+        Label_distribution_list.Text = p.distribution_list_sms;
+        }
       }
 
     } // end TWebUserControl_strike_team_deployment_members
