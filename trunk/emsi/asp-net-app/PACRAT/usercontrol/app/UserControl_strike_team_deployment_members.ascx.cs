@@ -308,6 +308,7 @@ namespace UserControl_strike_team_deployment_members
             cell.EnableViewState = false;
             }
           e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].EnableViewState = true;
           //
           p.num_practitioners++;
           }
