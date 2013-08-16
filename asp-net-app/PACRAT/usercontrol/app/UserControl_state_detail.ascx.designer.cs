@@ -31,6 +31,24 @@ namespace UserControl_state_detail {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_quick_message;
         
         /// <summary>
+        /// CheckBox_do_include_all_regions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_do_include_all_regions;
+        
+        /// <summary>
+        /// Literal_num_regions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_num_regions;
+        
+        /// <summary>
         /// TableRow_none control.
         /// </summary>
         /// <remarks>

@@ -39,6 +39,7 @@ namespace UserControl_state_detail
       public TClass_biz_user biz_user;
       public string distribution_list_email;
       public string distribution_list_sms;
+      public bool do_include_all_regions;
       public TClass_msg_protected.region_management msg_protected_region_management;
       public uint num_regions;
       public string sort_order;
@@ -168,6 +169,7 @@ namespace UserControl_state_detail
         p.be_sort_order_ascending = true;
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
+        p.do_include_all_regions = false;
         p.sort_order = "be_pacrat_subscriber desc,name";
         p.user_target_email = p.biz_members.EmailAddressOf(p.biz_user.IdNum());
         p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
@@ -246,11 +248,13 @@ namespace UserControl_state_detail
         (
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
-        target:DataGrid_control
+        target:DataGrid_control,
+        do_include_all_regions:p.do_include_all_regions
         );
       p.be_datagrid_empty = (p.num_regions == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
+      Literal_num_regions.Text = p.num_regions.ToString();
       p.num_regions = 0;
       BuildDistributionListAndRegisterPostBackControls();
       }
@@ -363,6 +367,12 @@ namespace UserControl_state_detail
         TextBox_quick_message_body.Rows = 4;
         Label_distribution_list.Text = p.distribution_list_sms;
         }
+      }
+
+    protected void CheckBox_do_include_all_regions_CheckedChanged(object sender, EventArgs e)
+      {
+      p.do_include_all_regions = CheckBox_do_include_all_regions.Checked;
+      Bind();
       }
 
     } // end TWebUserControl_state_detail

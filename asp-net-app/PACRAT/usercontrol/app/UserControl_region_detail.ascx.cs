@@ -44,8 +44,9 @@ namespace UserControl_region_detail
       public TClass_biz_user biz_user;
       public string distribution_list_email;
       public string distribution_list_sms;
+      public bool do_include_all_services;
       public TClass_msg_protected.service_management msg_protected_service_management;
-      public uint num_regions;
+      public uint num_services;
       public string sort_order;
       public object summary;
       public string user_target_email;
@@ -176,6 +177,7 @@ namespace UserControl_region_detail
         p.be_sort_order_ascending = true;
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
+        p.do_include_all_services = false;
         p.sort_order = "be_strike_team_participant desc,name";
         p.summary = null;
         p.user_target_email = p.biz_members.EmailAddressOf(p.biz_user.IdNum());
@@ -231,7 +233,7 @@ namespace UserControl_region_detail
             e.Item.Style.Add(HtmlTextWriterStyle.FontWeight,"bold");
             }
           //
-          p.num_regions++;
+          p.num_services++;
           }
         }
       else
@@ -261,12 +263,14 @@ namespace UserControl_region_detail
         (
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
-        target:DataGrid_control
+        target:DataGrid_control,
+        do_include_all_services:p.do_include_all_services
         );
-      p.be_datagrid_empty = (p.num_regions == 0);
+      p.be_datagrid_empty = (p.num_services == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      p.num_regions = 0;
+      Literal_num_services.Text = p.num_services.ToString();
+      p.num_services = 0;
       BuildDistributionListAndRegisterPostBackControls();
       }
 
@@ -383,6 +387,12 @@ namespace UserControl_region_detail
         TextBox_quick_message_body.Rows = 4;
         Label_distribution_list.Text = p.distribution_list_sms;
         }
+      }
+
+    protected void CheckBox_do_include_all_services_CheckedChanged(object sender, EventArgs e)
+      {
+      p.do_include_all_services = CheckBox_do_include_all_services.Checked;
+      Bind();
       }
 
     } // end TWebUserControl_region_detail
