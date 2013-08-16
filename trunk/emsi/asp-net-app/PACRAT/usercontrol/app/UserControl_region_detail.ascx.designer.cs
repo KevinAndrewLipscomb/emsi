@@ -40,6 +40,24 @@ namespace UserControl_region_detail {
         protected global::System.Web.UI.WebControls.Literal Literal_region_name;
         
         /// <summary>
+        /// CheckBox_do_include_all_services control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_do_include_all_services;
+        
+        /// <summary>
+        /// Literal_num_services control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_num_services;
+        
+        /// <summary>
         /// TableRow_none control.
         /// </summary>
         /// <remarks>

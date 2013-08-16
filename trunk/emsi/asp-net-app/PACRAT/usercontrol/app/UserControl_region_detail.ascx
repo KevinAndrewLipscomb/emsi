@@ -7,7 +7,22 @@
       <tr>
         <td>
           <table cellspacing="0" cellpadding="10" border="0">
-            <tr><td bgcolor="#dcdcdc"><strong><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> EMS Strike Team program</strong></td></tr>
+            <tr>
+              <td bgcolor="#dcdcdc">
+                <p><strong><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> EMS Strike Team program</strong></p>
+                <table cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td valign="middle">
+                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_services" runat="server" Text="Include all services" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_services_CheckedChanged" />
+                    </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td align="right" valign="middle">
+                      <asp:Literal ID="Literal_num_services" runat="server"></asp:Literal> services
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
             <tr>
               <td>
