@@ -405,8 +405,8 @@ namespace UserControl_strike_team_deployment_members
         tcc = DataGrid_control.Items[i.val].Cells;
         if ((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.distribution_list_email += tcc[UserControl_strike_team_deployment_members_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
-          p.distribution_list_sms += tcc[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE;
+          p.distribution_list_email += (tcc[UserControl_strike_team_deployment_members_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_sms += (tcc[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
@@ -483,7 +483,7 @@ namespace UserControl_strike_team_deployment_members
         Literal_quick_message_kind_email.Visible = false;
         Literal_quick_message_kind_sms.Visible = true;
         Literal_author_target.Text = p.user_target_sms;
-        RadioButtonList_reply_to.SelectedValue = "sms";
+        RadioButtonList_reply_to.SelectedValue = "phone";
         TableRow_subject.Visible = false;
         TextBox_quick_message_body.Columns = 40;
         TextBox_quick_message_body.Rows = 4;
