@@ -171,8 +171,10 @@ namespace UserControl_state_detail
         p.distribution_list_sms = k.EMPTY;
         p.do_include_all_regions = false;
         p.sort_order = "be_pacrat_subscriber desc,name";
-        p.user_target_email = p.biz_members.EmailAddressOf(p.biz_user.IdNum());
-        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+        //
+        var member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
+        p.user_target_email = p.biz_members.EmailAddressOf(member_id:member_id);
+        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:member_id);
         }
       }
 
@@ -367,6 +369,7 @@ namespace UserControl_state_detail
         TextBox_quick_message_body.Rows = 4;
         Label_distribution_list.Text = p.distribution_list_sms;
         }
+      BuildDistributionListAndRegisterPostBackControls();
       }
 
     protected void CheckBox_do_include_all_regions_CheckedChanged(object sender, EventArgs e)
