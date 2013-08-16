@@ -411,7 +411,7 @@ namespace UserControl_operational_period_detail
         if ((tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
           //p.distribution_list_email += tcc[UserControl_operational_period_detail_Static.DIGEST_CI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
-          p.distribution_list_sms += tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SMS_TARGET].Text + k.COMMA_SPACE;
+          p.distribution_list_sms += (tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
         //
         // Calls to ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl() from DataGrid_~_ItemDataBound go here.
