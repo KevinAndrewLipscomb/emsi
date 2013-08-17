@@ -28,6 +28,9 @@
                     <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="start" headertext="Start" sortexpression="start%,end"></asp:BoundColumn>
                     <asp:BoundColumn datafield="end" headertext="End" sortexpression="end%,start"></asp:BoundColumn>
+                    <asp:BoundColumn DataField="be_convoy" HeaderText="Convoy?" SortExpression="be_convoy%,start,end">
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

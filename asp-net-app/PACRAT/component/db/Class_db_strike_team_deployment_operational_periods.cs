@@ -63,6 +63,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         "select id"
         + " , DATE_FORMAT(start,'%Y-%m-%d %H:%i') as start"
         + " , DATE_FORMAT(end,'%Y-%m-%d %H:%i') as end"
+        + " , IF(be_convoy,'YES','no') as be_convoy"
         + " from strike_team_deployment_operational_period"
         + " where deployment_id = '" + deployment_id + "'"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
@@ -122,12 +123,14 @@ namespace Class_db_strike_team_deployment_operational_periods
       string id,
       out string deployment_id,
       out DateTime start,
-      out DateTime end
+      out DateTime end,
+      out bool be_convoy
       )
       {
       deployment_id = k.EMPTY;
       start = DateTime.MinValue;
       end = DateTime.MinValue;
+      be_convoy = false;
       var result = false;
       //
       Open();
@@ -137,6 +140,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         deployment_id = dr["deployment_id"].ToString();
         start = DateTime.Parse(dr["start"].ToString());
         end = DateTime.Parse(dr["end"].ToString());
+        be_convoy = ("1" == dr["be_convoy"].ToString());
         result = true;
         }
       dr.Close();
@@ -180,13 +184,15 @@ namespace Class_db_strike_team_deployment_operational_periods
       string id,
       string deployment_id,
       DateTime start,
-      DateTime end
+      DateTime end,
+      bool be_convoy
       )
       {
       var childless_field_assignments_clause = k.EMPTY
       + "deployment_id = NULLIF('" + deployment_id + "','')"
       + " , start = NULLIF('" + start.ToString("s") + "','')"
       + " , end = NULLIF('" + end.ToString("s") + "','')"
+      + " , be_convoy = " + be_convoy.ToString()
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (

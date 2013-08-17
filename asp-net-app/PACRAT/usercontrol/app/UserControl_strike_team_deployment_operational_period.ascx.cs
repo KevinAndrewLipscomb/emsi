@@ -39,6 +39,7 @@ namespace UserControl_strike_team_deployment_operational_period
       TextBox_deployment_id.Text = k.EMPTY;
       UserControl_drop_down_datetime_start.Clear();
       UserControl_drop_down_datetime_end.Clear();
+      CheckBox_be_convoy.Checked = false;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -181,6 +182,7 @@ namespace UserControl_strike_team_deployment_operational_period
       string deployment_id;
       DateTime start;
       DateTime end;
+      bool be_convoy;
       result = false;
       if
         (
@@ -189,7 +191,8 @@ namespace UserControl_strike_team_deployment_operational_period
           id,
           out deployment_id,
           out start,
-          out end
+          out end,
+          out be_convoy
           )
         )
         {
@@ -198,6 +201,7 @@ namespace UserControl_strike_team_deployment_operational_period
         TextBox_deployment_id.Text = deployment_id;
         UserControl_drop_down_datetime_start.selectedvalue = start;
         UserControl_drop_down_datetime_end.selectedvalue = end;
+        CheckBox_be_convoy.Checked = be_convoy;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -325,7 +329,8 @@ namespace UserControl_strike_team_deployment_operational_period
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
           start,
-          end
+          end,
+          CheckBox_be_convoy.Checked
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         if (p.presentation_mode == presentation_mode_enum.NEW)
@@ -395,6 +400,7 @@ namespace UserControl_strike_team_deployment_operational_period
       TextBox_deployment_id.Enabled = ablement;
       UserControl_drop_down_datetime_start.enabled = ablement;
       UserControl_drop_down_datetime_end.enabled = ablement;
+      CheckBox_be_convoy.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

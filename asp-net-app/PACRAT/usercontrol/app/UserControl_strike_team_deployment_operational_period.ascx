@@ -84,6 +84,14 @@
     <td nowrap="nowrap">
       &nbsp;</td>
   </tr>
+  <tr>
+    <td><font class="">Be convoy:</font></td>
+    <td>
+      <asp:CheckBox ID="CheckBox_be_convoy" runat="server" />
+    </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
+  </tr>
       </table>
     </td>
   </tr>
