@@ -24,6 +24,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       public const int TCI_ID = 1;
       public const int TCI_START = 2;
       public const int TCI_END = 3;
+      public const int TCI_CONVOY = 4;
       }
 
     private struct p_type

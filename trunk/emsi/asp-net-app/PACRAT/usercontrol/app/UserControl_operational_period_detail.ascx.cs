@@ -89,6 +89,7 @@ namespace UserControl_operational_period_detail
       TableCell_no_mappings.Visible = p.be_datagrid_empty;
       TableCell_mappings.Visible = !p.be_datagrid_empty;
       TableCell_add_mapping.Visible = p.may_add_mappings;
+      Table_quick_message.Visible = !p.be_datagrid_empty;
       p.num_mappings.val = 0;
       //
       p.biz_strike_team_deployment_assignments.BindDigest

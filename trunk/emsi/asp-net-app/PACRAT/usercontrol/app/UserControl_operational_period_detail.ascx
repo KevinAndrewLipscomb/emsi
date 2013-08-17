@@ -75,7 +75,7 @@
                     <tr>
                       <td>
                         <table cellspacing="0" cellpadding="10" border="0">
-                          <tr><td bgcolor="#dcdcdc"><table cellspacing="0" cellpadding="10" border="0" width="100%"><tr><td><strong>Duty unit digest</strong></td></tr></table></td></tr>
+                          <tr><td bgcolor="#dcdcdc"><table cellspacing="0" cellpadding="10" border="0" width="100%"><tr><td><strong>Unit digest</strong></td></tr></table></td></tr>
                           <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
                           <tr id="TableRow_digest" runat="server">
                             <td>

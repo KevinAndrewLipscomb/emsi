@@ -56,7 +56,8 @@ namespace Class_biz_strike_team_deployment_operational_periods
       string id,
       out string deployment_id,
       out DateTime start,
-      out DateTime end
+      out DateTime end,
+      out bool be_convoy
       )
       {
       return db_strike_team_deployment_operational_periods.Get
@@ -64,7 +65,8 @@ namespace Class_biz_strike_team_deployment_operational_periods
         id,
         out deployment_id,
         out start,
-        out end
+        out end,
+        out be_convoy
         );
       }
 
@@ -84,7 +86,8 @@ namespace Class_biz_strike_team_deployment_operational_periods
       string id,
       string deployment_id,
       DateTime start,
-      DateTime end
+      DateTime end,
+      bool be_convoy
       )
       {
       db_strike_team_deployment_operational_periods.Set
@@ -92,7 +95,8 @@ namespace Class_biz_strike_team_deployment_operational_periods
         id,
         deployment_id,
         start,
-        end
+        end,
+        be_convoy
         );
       }
 
