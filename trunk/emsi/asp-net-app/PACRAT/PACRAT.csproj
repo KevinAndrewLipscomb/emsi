@@ -84,6 +84,8 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
+    <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
     <Content Include="protected\operational_period_detail.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
     <Content Include="protected\practitioner_profile.aspx" />
@@ -216,6 +218,13 @@
     </Compile>
     <Compile Include="noninteractive\milestone_sweep.aspx.designer.cs">
       <DependentUpon>milestone_sweep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\statement_strike_team_member_status.aspx.cs">
+      <DependentUpon>statement_strike_team_member_status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\statement_strike_team_member_status.aspx.designer.cs">
+      <DependentUpon>statement_strike_team_member_status.aspx</DependentUpon>
     </Compile>
     <Compile Include="noninteractive\test_report.aspx.cs">
       <DependentUpon>test_report.aspx</DependentUpon>

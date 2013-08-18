@@ -78,6 +78,11 @@ namespace Class_biz_practitioner_strike_team_details
         );
       }
 
+    internal void MakeMemberStatusStatements()
+      {
+      db_practitioner_strike_team_details.MakeMemberStatusStatements();
+      }
+
     public void Set
       (
       string practitioner_id,

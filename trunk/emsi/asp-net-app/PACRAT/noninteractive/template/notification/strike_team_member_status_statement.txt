@@ -1,0 +1,84 @@
+Strike team member status statement
+<first_name/>,
+
+This is an automatic statement from <application_name/>.
+
+It's very important that all your details be recorded correctly in <application_name/>.  The correctness of these details can prevent deployment problems.
+
+Your status in <application_name/> has been recorded as follows:
+
+   Name:
+      <first_name/> <last_name/>
+
+   Certification number:
+      <certification_number/>
+
+   CREDENTIALED FOR STRIKE TEAM PARTICIPATION:
+      <credentialed_clause/>
+
+   CONTACT INFORMATION:
+
+      Phone number:
+         <phone_number/>
+
+      Phone service:
+         <carrier_name/>
+
+      Emergency contact 1 name:
+         <emergency_contact_1_name/>
+
+      Emergency contact 1 phone number:
+         <emergency_contact_1_phone_number/>
+
+      Emergency contact 2 name:
+         <emergency_contact_2_name/>
+
+      Emergency contact 2 phone number:
+         <emergency_contact_2_phone_number/>
+
+   HEALTH INFORMATION:
+
+      Immunized against Hepatitis B:
+         <be_immune_hepatitis_b/>
+
+      Immunized against diptheria/tetanus:
+         <be_immune_diptheria_tetanus/>
+
+      Meds/doses, allergies, PCP name:
+         Log into <application_name/> to view and maintain these details.
+
+   DRIVING:
+
+      Drivers license expiration date:
+         <drivers_license_expiration/>
+
+   NATIONAL INCIDENT MANAGEMENT TRAINING:
+
+      NIMS IS-100.b date:
+         <nims_is_100_date/>
+
+      NIMS IS-200.b date:
+         <nims_is_200_date/>
+
+      NIMS IS-700.a date:
+         <nims_is_700_date/>
+
+   CLEARANCE & BACKGROUND CHECKS:
+
+      PA Child Abuse History Clearance date:
+         <act_1985_33_date/>
+
+      PA Criminal Record Check date:
+         <act_1985_34_date/>
+
+      FBI Criminal Background Check date:
+         <act_1994_151_date/>
+
+   SERVICE STRIKE TEAM AFFILIATION(S):
+      <service_strike_team_affiliation/>
+
+If any of the above details are incorrect, notify your service strike team manager *immediately*.
+
+Thanks for your continued service to the Pennsylvania EMS Strike Team program!
+
+-- <application_name/>
