@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/component/db/Class~db~template~kicrudhelped~items.cs~template
 
+using Class_biz_notifications;
 using Class_db;
 using Class_db_trail;
 using kix;
@@ -45,10 +46,13 @@ namespace Class_db_practitioner_strike_team_details
 
   public class TClass_db_practitioner_strike_team_details: TClass_db
     {
+
+    private TClass_biz_notifications biz_notifications = null;
     private TClass_db_trail db_trail = null;
 
     public TClass_db_practitioner_strike_team_details() : base()
       {
+      biz_notifications = new TClass_biz_notifications();
       db_trail = new TClass_db_trail();
       }
 
@@ -191,6 +195,75 @@ namespace Class_db_practitioner_strike_team_details
       dr.Close();
       Close();
       return result;
+      }
+
+    public void MakeMemberStatusStatements()
+      {
+      Open();
+      var dr = new MySqlCommand
+        (
+        "select email_address"
+        + " , last_name"
+        + " , first_name"
+        + " , certification_number"
+        + " , phone_number"
+        + " , carrier_name"
+        + " , emergency_contact_1_name"
+        + " , emergency_contact_1_phone_number"
+        + " , emergency_contact_2_name"
+        + " , emergency_contact_2_phone_number"
+        + " , be_immune_hepatitis_b"
+        + " , be_immune_diptheria_tetanus"
+        + " , IF(DATE_FORMAT(drivers_license_expiration,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(drivers_license_expiration,'%e %M %Y')) as drivers_license_expiration"
+        + " , IF(DATE_FORMAT(nims_is_100_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(nims_is_100_date,'%e %M %Y')) as nims_is_100_date"
+        + " , IF(DATE_FORMAT(nims_is_200_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(nims_is_200_date,'%e %M %Y')) as nims_is_200_date"
+        + " , IF(DATE_FORMAT(nims_is_700_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(nims_is_700_date,'%e %M %Y')) as nims_is_700_date"
+        + " , IF(DATE_FORMAT(act_1985_33_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_33_date,'%e %M %Y')) as act_1985_33_date"
+        + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_34_date,'%e %M %Y')) as act_1985_34_date"
+        + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1994_151_date,'%e %M %Y')) as act_1994_151_date"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one credentialing requirement') as credentialed_clause"
+        + " , GROUP_CONCAT(service.name ORDER BY service.name SEPARATOR ', ') as service_strike_team_affiliation"
+        + " from practitioner_strike_team_detail"
+        +   " join practitioner on (practitioner.id=practitioner_strike_team_detail.practitioner_id)"
+        +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
+        +   " join strike_team_roster on (strike_team_roster.practitioner_id=practitioner.id)"
+        +   " join service on (service.id=strike_team_roster.service_id)"
+        + " where email_address is not null"
+        +   " and TRIM(email_address) <> ''"
+        + " group by practitioner_strike_team_detail.id"
+        + " order by RAND()",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        biz_notifications.IssueStrikeTeamMemberStatusStatement
+          (
+          email_address:dr["email_address"].ToString(),
+          last_name:dr["last_name"].ToString().ToUpper(),
+          first_name:dr["first_name"].ToString().ToUpper(),
+          certification_number:dr["certification_number"].ToString(),
+          phone_number:dr["phone_number"].ToString(),
+          carrier_name:dr["carrier_name"].ToString(),
+          emergency_contact_1_name:dr["emergency_contact_1_name"].ToString(),
+          emergency_contact_1_phone_number:dr["emergency_contact_1_phone_number"].ToString(),
+          emergency_contact_2_name:dr["emergency_contact_2_name"].ToString(),
+          emergency_contact_2_phone_number:dr["emergency_contact_2_phone_number"].ToString(),
+          be_immune_hepatitis_b:(dr["be_immune_hepatitis_b"].ToString() == "1"),
+          be_immune_diptheria_tetanus:(dr["be_immune_diptheria_tetanus"].ToString() == "1"),
+          drivers_license_expiration:dr["drivers_license_expiration"].ToString(),
+          nims_is_100_date:dr["nims_is_100_date"].ToString(),
+          nims_is_200_date:dr["nims_is_200_date"].ToString(),
+          nims_is_700_date:dr["nims_is_700_date"].ToString(),
+          act_1985_33_date:dr["act_1985_33_date"].ToString(),
+          act_1985_34_date:dr["act_1985_34_date"].ToString(),
+          act_1994_151_date:dr["act_1994_151_date"].ToString(),
+          credentialed_clause:dr["credentialed_clause"].ToString(),
+          service_strike_team_affiliation:dr["service_strike_team_affiliation"].ToString()
+          );
+        }
+      dr.Close();
+      Close();
       }
 
     public void Set
