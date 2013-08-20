@@ -163,35 +163,35 @@ namespace Class_biz_eval_summary_tallies
       )
       {
       if (question_1_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"1",value:question_1_rating_1); }
-      if (question_1_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"2",value:question_1_rating_2); }
-      if (question_1_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"3",value:question_1_rating_3); }
-      if (question_1_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"4",value:question_1_rating_4); }
-      if (question_1_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"5",value:question_1_rating_5); }
-      if (question_2_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"1",value:question_2_rating_1); }
+      if (question_1_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"1",value:question_1_rating_2); }
+      if (question_1_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"1",value:question_1_rating_3); }
+      if (question_1_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"1",value:question_1_rating_4); }
+      if (question_1_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"1",value:question_1_rating_5); }
+      if (question_2_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"2",value:question_2_rating_1); }
       if (question_2_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"2",value:question_2_rating_2); }
-      if (question_2_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"3",value:question_2_rating_3); }
-      if (question_2_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"4",value:question_2_rating_4); }
-      if (question_2_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"5",value:question_2_rating_5); }
-      if (question_3_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"1",value:question_3_rating_1); }
-      if (question_3_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"2",value:question_3_rating_2); }
+      if (question_2_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"2",value:question_2_rating_3); }
+      if (question_2_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"2",value:question_2_rating_4); }
+      if (question_2_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"2",value:question_2_rating_5); }
+      if (question_3_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"3",value:question_3_rating_1); }
+      if (question_3_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"3",value:question_3_rating_2); }
       if (question_3_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"3",value:question_3_rating_3); }
-      if (question_3_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"4",value:question_3_rating_4); }
-      if (question_3_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"5",value:question_3_rating_5); }
-      if (question_4_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"1",value:question_4_rating_1); }
-      if (question_4_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"2",value:question_4_rating_2); }
-      if (question_4_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"3",value:question_4_rating_3); }
+      if (question_3_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"3",value:question_3_rating_4); }
+      if (question_3_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"3",value:question_3_rating_5); }
+      if (question_4_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"4",value:question_4_rating_1); }
+      if (question_4_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"4",value:question_4_rating_2); }
+      if (question_4_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"4",value:question_4_rating_3); }
       if (question_4_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"4",value:question_4_rating_4); }
-      if (question_4_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"5",value:question_4_rating_5); }
-      if (question_5_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"1",value:question_5_rating_1); }
-      if (question_5_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"2",value:question_5_rating_2); }
-      if (question_5_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"3",value:question_5_rating_3); }
-      if (question_5_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"4",value:question_5_rating_4); }
+      if (question_4_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"4",value:question_4_rating_5); }
+      if (question_5_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"5",value:question_5_rating_1); }
+      if (question_5_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"5",value:question_5_rating_2); }
+      if (question_5_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"5",value:question_5_rating_3); }
+      if (question_5_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"5",value:question_5_rating_4); }
       if (question_5_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"5",value:question_5_rating_5); }
-      if (question_6_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"6",question:"1",value:question_6_rating_1); }
-      if (question_6_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"6",question:"2",value:question_6_rating_2); }
-      if (question_6_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"6",question:"3",value:question_6_rating_3); }
-      if (question_6_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"6",question:"4",value:question_6_rating_4); }
-      if (question_6_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"6",question:"5",value:question_6_rating_5); }
+      if (question_6_rating_1.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"1",question:"6",value:question_6_rating_1); }
+      if (question_6_rating_2.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"2",question:"6",value:question_6_rating_2); }
+      if (question_6_rating_3.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"3",question:"6",value:question_6_rating_3); }
+      if (question_6_rating_4.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"4",question:"6",value:question_6_rating_4); }
+      if (question_6_rating_5.Length > 0) { db_eval_summary_tallies.Set(id:k.EMPTY,coned_offering_id:coned_offering_id,rating:"5",question:"6",value:question_6_rating_5); }
       }
 
     public void Set

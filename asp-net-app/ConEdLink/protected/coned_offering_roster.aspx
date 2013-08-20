@@ -313,7 +313,7 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td align="center"><small><small>E<br />x<br />c<br />e<br />l<br />l<br />e<br />n<br />t</small></small></td>
+                                                    <td align="center"><small><small>Ex-<br />cel-<br />lent</small></small></td>
                                                     <td></td>
                                                   </tr>
                                                   <tr>

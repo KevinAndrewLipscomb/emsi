@@ -3,6 +3,7 @@
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
+using Class_biz_eval_summary_tallies;
 using Class_biz_practitioners;
 using Class_biz_regions;
 using Class_msg_protected;
@@ -23,6 +24,7 @@ namespace ready_roster_detail
     public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
+    public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
     public TClass_biz_practitioners biz_practitioners;
     public TClass_biz_regions biz_regions;
     public string coned_offering_id;
@@ -94,6 +96,104 @@ namespace ready_roster_detail
     private void InjectPersistentClientSideScript()
       {
       //EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
+      }
+
+    private void LoadRatings()
+      {
+      var question_1_rating_1 = k.EMPTY;
+      var question_1_rating_2 = k.EMPTY;
+      var question_1_rating_3 = k.EMPTY;
+      var question_1_rating_4 = k.EMPTY;
+      var question_1_rating_5 = k.EMPTY;
+      var question_2_rating_1 = k.EMPTY;
+      var question_2_rating_2 = k.EMPTY;
+      var question_2_rating_3 = k.EMPTY;
+      var question_2_rating_4 = k.EMPTY;
+      var question_2_rating_5 = k.EMPTY;
+      var question_3_rating_1 = k.EMPTY;
+      var question_3_rating_2 = k.EMPTY;
+      var question_3_rating_3 = k.EMPTY;
+      var question_3_rating_4 = k.EMPTY;
+      var question_3_rating_5 = k.EMPTY;
+      var question_4_rating_1 = k.EMPTY;
+      var question_4_rating_2 = k.EMPTY;
+      var question_4_rating_3 = k.EMPTY;
+      var question_4_rating_4 = k.EMPTY;
+      var question_4_rating_5 = k.EMPTY;
+      var question_5_rating_1 = k.EMPTY;
+      var question_5_rating_2 = k.EMPTY;
+      var question_5_rating_3 = k.EMPTY;
+      var question_5_rating_4 = k.EMPTY;
+      var question_5_rating_5 = k.EMPTY;
+      var question_6_rating_1 = k.EMPTY;
+      var question_6_rating_2 = k.EMPTY;
+      var question_6_rating_3 = k.EMPTY;
+      var question_6_rating_4 = k.EMPTY;
+      var question_6_rating_5 = k.EMPTY;
+      p.biz_eval_summary_tallies.Load
+        (
+        coned_offering_id:p.coned_offering_id,
+        question_1_rating_1:out question_1_rating_1,
+        question_1_rating_2:out question_1_rating_2,
+        question_1_rating_3:out question_1_rating_3,
+        question_1_rating_4:out question_1_rating_4,
+        question_1_rating_5:out question_1_rating_5,
+        question_2_rating_1:out question_2_rating_1,
+        question_2_rating_2:out question_2_rating_2,
+        question_2_rating_3:out question_2_rating_3,
+        question_2_rating_4:out question_2_rating_4,
+        question_2_rating_5:out question_2_rating_5,
+        question_3_rating_1:out question_3_rating_1,
+        question_3_rating_2:out question_3_rating_2,
+        question_3_rating_3:out question_3_rating_3,
+        question_3_rating_4:out question_3_rating_4,
+        question_3_rating_5:out question_3_rating_5,
+        question_4_rating_1:out question_4_rating_1,
+        question_4_rating_2:out question_4_rating_2,
+        question_4_rating_3:out question_4_rating_3,
+        question_4_rating_4:out question_4_rating_4,
+        question_4_rating_5:out question_4_rating_5,
+        question_5_rating_1:out question_5_rating_1,
+        question_5_rating_2:out question_5_rating_2,
+        question_5_rating_3:out question_5_rating_3,
+        question_5_rating_4:out question_5_rating_4,
+        question_5_rating_5:out question_5_rating_5,
+        question_6_rating_1:out question_6_rating_1,
+        question_6_rating_2:out question_6_rating_2,
+        question_6_rating_3:out question_6_rating_3,
+        question_6_rating_4:out question_6_rating_4,
+        question_6_rating_5:out question_6_rating_5
+        );
+      Literal_question_1_rating_1.Text = question_1_rating_1;
+      Literal_question_1_rating_2.Text = question_1_rating_2;
+      Literal_question_1_rating_3.Text = question_1_rating_3;
+      Literal_question_1_rating_4.Text = question_1_rating_4;
+      Literal_question_1_rating_5.Text = question_1_rating_5;
+      Literal_question_2_rating_1.Text = question_2_rating_1;
+      Literal_question_2_rating_2.Text = question_2_rating_2;
+      Literal_question_2_rating_3.Text = question_2_rating_3;
+      Literal_question_2_rating_4.Text = question_2_rating_4;
+      Literal_question_2_rating_5.Text = question_2_rating_5;
+      Literal_question_3_rating_1.Text = question_3_rating_1;
+      Literal_question_3_rating_2.Text = question_3_rating_2;
+      Literal_question_3_rating_3.Text = question_3_rating_3;
+      Literal_question_3_rating_4.Text = question_3_rating_4;
+      Literal_question_3_rating_5.Text = question_3_rating_5;
+      Literal_question_4_rating_1.Text = question_4_rating_1;
+      Literal_question_4_rating_2.Text = question_4_rating_2;
+      Literal_question_4_rating_3.Text = question_4_rating_3;
+      Literal_question_4_rating_4.Text = question_4_rating_4;
+      Literal_question_4_rating_5.Text = question_4_rating_5;
+      Literal_question_5_rating_1.Text = question_5_rating_1;
+      Literal_question_5_rating_2.Text = question_5_rating_2;
+      Literal_question_5_rating_3.Text = question_5_rating_3;
+      Literal_question_5_rating_4.Text = question_5_rating_4;
+      Literal_question_5_rating_5.Text = question_5_rating_5;
+      Literal_question_6_rating_1.Text = question_6_rating_1;
+      Literal_question_6_rating_2.Text = question_6_rating_2;
+      Literal_question_6_rating_3.Text = question_6_rating_3;
+      Literal_question_6_rating_4.Text = question_6_rating_4;
+      Literal_question_6_rating_5.Text = question_6_rating_5;
       }
 
     private void TWebForm_ready_roster_detail_PreRender(object sender, System.EventArgs e)
@@ -250,6 +350,7 @@ namespace ready_roster_detail
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_counties = new TClass_biz_counties();
+        p.biz_eval_summary_tallies = new TClass_biz_eval_summary_tallies();
         p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_regions = new TClass_biz_regions();
         //
@@ -286,13 +387,20 @@ namespace ready_roster_detail
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
+        var eval_summary_mode_description = p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(p.region_code);
+        if (eval_summary_mode_description == "SAEMS")
+          {
+          LoadRatings();
+          }
         Literal_eval_summary_instructional_staff.Text = p.biz_coned_offerings.EvalSummaryInstructionalStaffOf(p.incoming.summary);
         Literal_eval_summary_time_appropriately_used.Text = p.biz_coned_offerings.EvalSummaryTimeAppropriatelyUsedOf(p.incoming.summary);
         Literal_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.incoming.summary);
         Literal_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.incoming.summary);
         Literal_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.incoming.summary);
-        TableRow_eval_summary_header.Visible = (p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(p.region_code) != "Hidden");
+        TableRow_eval_summary_header.Visible = (eval_summary_mode_description != "Hidden");
         TableRow_eval_summary_body.Visible = TableRow_eval_summary_header.Visible;
+        TableRow_ratings_header.Visible = (eval_summary_mode_description == "SAEMS");
+        TableRow_ratings_body.Visible = TableRow_ratings_header.Visible;
         //
         var hash_table = new Hashtable();
         hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
