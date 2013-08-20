@@ -5,6 +5,7 @@ using Class_biz_accounts;
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
 using Class_biz_counties;
+using Class_biz_eval_summary_tallies;
 using Class_biz_practitioners;
 using Class_biz_regions;
 using Class_biz_teaching_entities;
@@ -30,6 +31,7 @@ namespace coned_offering_roster
     public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
     public TClass_biz_coned_offerings biz_coned_offerings;
     public TClass_biz_counties biz_counties;
+    public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
     public TClass_biz_practitioners biz_practitioners;
     public TClass_biz_regions biz_regions;
     public TClass_biz_teaching_entities biz_teaching_entities;
@@ -185,6 +187,39 @@ namespace coned_offering_roster
 
     private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
       {
+      if (p.eval_summary_mode_description == "SAEMS")
+        {
+        TextBox_question_1_rating_1.Enabled = be_open;
+        TextBox_question_1_rating_2.Enabled = be_open;
+        TextBox_question_1_rating_3.Enabled = be_open;
+        TextBox_question_1_rating_4.Enabled = be_open;
+        TextBox_question_1_rating_5.Enabled = be_open;
+        TextBox_question_2_rating_1.Enabled = be_open;
+        TextBox_question_2_rating_2.Enabled = be_open;
+        TextBox_question_2_rating_3.Enabled = be_open;
+        TextBox_question_2_rating_4.Enabled = be_open;
+        TextBox_question_2_rating_5.Enabled = be_open;
+        TextBox_question_3_rating_1.Enabled = be_open;
+        TextBox_question_3_rating_2.Enabled = be_open;
+        TextBox_question_3_rating_3.Enabled = be_open;
+        TextBox_question_3_rating_4.Enabled = be_open;
+        TextBox_question_3_rating_5.Enabled = be_open;
+        TextBox_question_4_rating_1.Enabled = be_open;
+        TextBox_question_4_rating_2.Enabled = be_open;
+        TextBox_question_4_rating_3.Enabled = be_open;
+        TextBox_question_4_rating_4.Enabled = be_open;
+        TextBox_question_4_rating_5.Enabled = be_open;
+        TextBox_question_5_rating_1.Enabled = be_open;
+        TextBox_question_5_rating_2.Enabled = be_open;
+        TextBox_question_5_rating_3.Enabled = be_open;
+        TextBox_question_5_rating_4.Enabled = be_open;
+        TextBox_question_5_rating_5.Enabled = be_open;
+        TextBox_question_6_rating_1.Enabled = be_open;
+        TextBox_question_6_rating_2.Enabled = be_open;
+        TextBox_question_6_rating_3.Enabled = be_open;
+        TextBox_question_6_rating_4.Enabled = be_open;
+        TextBox_question_6_rating_5.Enabled = be_open;
+        }
       TextBox_eval_summary_instructional_staff.Enabled = be_open;
       TextBox_eval_summary_time_appropriately_used.Enabled = be_open;
       TextBox_eval_summary_classroom_training_site.Enabled = be_open;
@@ -274,6 +309,43 @@ namespace coned_offering_roster
          eval_summary_equipment_av:k.Safe(TextBox_eval_summary_equipment_av.Text,k.safe_hint_type.MEMO),
          eval_summary_misc_remarks:k.Safe(TextBox_eval_summary_misc_remarks.Text,k.safe_hint_type.MEMO)
          );
+        if (p.eval_summary_mode_description == "SAEMS")
+          {
+          p.biz_eval_summary_tallies.Save
+            (
+            coned_offering_id:p.coned_offering_id,
+            question_1_rating_1:k.Safe(TextBox_question_1_rating_1.Text,k.safe_hint_type.NUM),
+            question_1_rating_2:k.Safe(TextBox_question_1_rating_2.Text,k.safe_hint_type.NUM),
+            question_1_rating_3:k.Safe(TextBox_question_1_rating_3.Text,k.safe_hint_type.NUM),
+            question_1_rating_4:k.Safe(TextBox_question_1_rating_4.Text,k.safe_hint_type.NUM),
+            question_1_rating_5:k.Safe(TextBox_question_1_rating_5.Text,k.safe_hint_type.NUM),
+            question_2_rating_1:k.Safe(TextBox_question_2_rating_1.Text,k.safe_hint_type.NUM),
+            question_2_rating_2:k.Safe(TextBox_question_2_rating_2.Text,k.safe_hint_type.NUM),
+            question_2_rating_3:k.Safe(TextBox_question_2_rating_3.Text,k.safe_hint_type.NUM),
+            question_2_rating_4:k.Safe(TextBox_question_2_rating_4.Text,k.safe_hint_type.NUM),
+            question_2_rating_5:k.Safe(TextBox_question_2_rating_5.Text,k.safe_hint_type.NUM),
+            question_3_rating_1:k.Safe(TextBox_question_3_rating_1.Text,k.safe_hint_type.NUM),
+            question_3_rating_2:k.Safe(TextBox_question_3_rating_2.Text,k.safe_hint_type.NUM),
+            question_3_rating_3:k.Safe(TextBox_question_3_rating_3.Text,k.safe_hint_type.NUM),
+            question_3_rating_4:k.Safe(TextBox_question_3_rating_4.Text,k.safe_hint_type.NUM),
+            question_3_rating_5:k.Safe(TextBox_question_3_rating_5.Text,k.safe_hint_type.NUM),
+            question_4_rating_1:k.Safe(TextBox_question_4_rating_1.Text,k.safe_hint_type.NUM),
+            question_4_rating_2:k.Safe(TextBox_question_4_rating_2.Text,k.safe_hint_type.NUM),
+            question_4_rating_3:k.Safe(TextBox_question_4_rating_3.Text,k.safe_hint_type.NUM),
+            question_4_rating_4:k.Safe(TextBox_question_4_rating_4.Text,k.safe_hint_type.NUM),
+            question_4_rating_5:k.Safe(TextBox_question_4_rating_5.Text,k.safe_hint_type.NUM),
+            question_5_rating_1:k.Safe(TextBox_question_5_rating_1.Text,k.safe_hint_type.NUM),
+            question_5_rating_2:k.Safe(TextBox_question_5_rating_2.Text,k.safe_hint_type.NUM),
+            question_5_rating_3:k.Safe(TextBox_question_5_rating_3.Text,k.safe_hint_type.NUM),
+            question_5_rating_4:k.Safe(TextBox_question_5_rating_4.Text,k.safe_hint_type.NUM),
+            question_5_rating_5:k.Safe(TextBox_question_5_rating_5.Text,k.safe_hint_type.NUM),
+            question_6_rating_1:k.Safe(TextBox_question_6_rating_1.Text,k.safe_hint_type.NUM),
+            question_6_rating_2:k.Safe(TextBox_question_6_rating_2.Text,k.safe_hint_type.NUM),
+            question_6_rating_3:k.Safe(TextBox_question_6_rating_3.Text,k.safe_hint_type.NUM),
+            question_6_rating_4:k.Safe(TextBox_question_6_rating_4.Text,k.safe_hint_type.NUM),
+            question_6_rating_5:k.Safe(TextBox_question_6_rating_5.Text,k.safe_hint_type.NUM)
+            );
+          }
         p.be_ok_to_edit_roster = false;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(false);
@@ -643,6 +715,7 @@ namespace coned_offering_roster
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_counties = new TClass_biz_counties();
+        p.biz_eval_summary_tallies = new TClass_biz_eval_summary_tallies();
         p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_regions = new TClass_biz_regions();
         p.biz_teaching_entities = new TClass_biz_teaching_entities();
@@ -698,6 +771,12 @@ namespace coned_offering_roster
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_canceled);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
+        TableRow_ratings_header.Visible = (p.eval_summary_mode_description == "SAEMS");
+        TableRow_ratings_body.Visible = (p.eval_summary_mode_description == "SAEMS");
+        if (p.eval_summary_mode_description == "SAEMS")
+          {
+          LoadRatings();
+          }
         TextBox_eval_summary_instructional_staff.Text = p.biz_coned_offerings.EvalSummaryInstructionalStaffOf(p.incoming.summary);
         TextBox_eval_summary_time_appropriately_used.Text = p.biz_coned_offerings.EvalSummaryTimeAppropriatelyUsedOf(p.incoming.summary);
         TextBox_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.incoming.summary);
@@ -708,11 +787,11 @@ namespace coned_offering_roster
         CustomValidator_close_class_and_submit_for_credit.Visible = (p.eval_summary_mode_description == "Hidden");
         TableRow_eval_summary_head_spacer.Visible = (p.eval_summary_mode_description != "Hidden");
         TableRow_eval_summary.Visible = (p.eval_summary_mode_description != "Hidden");
-        RequiredFieldValidator_eval_summary_instructional_staff.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
-        RequiredFieldValidator_eval_summary_time_appropriately_used.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
-        RequiredFieldValidator_eval_summary_classroom_training_site.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
-        RequiredFieldValidator_eval_summary_equipment_av.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
-        RequiredFieldValidator_eval_summary_misc_remarks.Enabled = (p.eval_summary_mode_description == "Mandatory") && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_instructional_staff.Enabled = (new ArrayList {"Mandatory","SAEMS"}.Contains(p.eval_summary_mode_description)) && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_time_appropriately_used.Enabled = (new ArrayList {"Mandatory","SAEMS"}.Contains(p.eval_summary_mode_description)) && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_classroom_training_site.Enabled = (new ArrayList {"Mandatory","SAEMS"}.Contains(p.eval_summary_mode_description)) && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_equipment_av.Enabled = (new ArrayList {"Mandatory","SAEMS"}.Contains(p.eval_summary_mode_description)) && p.be_ok_to_edit_roster;
+        RequiredFieldValidator_eval_summary_misc_remarks.Enabled = (new ArrayList {"Mandatory","SAEMS"}.Contains(p.eval_summary_mode_description)) && p.be_ok_to_edit_roster;
         Button_close_and_submit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         CustomValidator_close_class_and_submit_for_credit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         //
@@ -732,6 +811,104 @@ namespace coned_offering_roster
         Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
+      }
+
+    private void LoadRatings()
+      {
+      var question_1_rating_1 = k.EMPTY;
+      var question_1_rating_2 = k.EMPTY;
+      var question_1_rating_3 = k.EMPTY;
+      var question_1_rating_4 = k.EMPTY;
+      var question_1_rating_5 = k.EMPTY;
+      var question_2_rating_1 = k.EMPTY;
+      var question_2_rating_2 = k.EMPTY;
+      var question_2_rating_3 = k.EMPTY;
+      var question_2_rating_4 = k.EMPTY;
+      var question_2_rating_5 = k.EMPTY;
+      var question_3_rating_1 = k.EMPTY;
+      var question_3_rating_2 = k.EMPTY;
+      var question_3_rating_3 = k.EMPTY;
+      var question_3_rating_4 = k.EMPTY;
+      var question_3_rating_5 = k.EMPTY;
+      var question_4_rating_1 = k.EMPTY;
+      var question_4_rating_2 = k.EMPTY;
+      var question_4_rating_3 = k.EMPTY;
+      var question_4_rating_4 = k.EMPTY;
+      var question_4_rating_5 = k.EMPTY;
+      var question_5_rating_1 = k.EMPTY;
+      var question_5_rating_2 = k.EMPTY;
+      var question_5_rating_3 = k.EMPTY;
+      var question_5_rating_4 = k.EMPTY;
+      var question_5_rating_5 = k.EMPTY;
+      var question_6_rating_1 = k.EMPTY;
+      var question_6_rating_2 = k.EMPTY;
+      var question_6_rating_3 = k.EMPTY;
+      var question_6_rating_4 = k.EMPTY;
+      var question_6_rating_5 = k.EMPTY;
+      p.biz_eval_summary_tallies.Load
+        (
+        coned_offering_id:p.coned_offering_id,
+        question_1_rating_1:out question_1_rating_1,
+        question_1_rating_2:out question_1_rating_2,
+        question_1_rating_3:out question_1_rating_3,
+        question_1_rating_4:out question_1_rating_4,
+        question_1_rating_5:out question_1_rating_5,
+        question_2_rating_1:out question_2_rating_1,
+        question_2_rating_2:out question_2_rating_2,
+        question_2_rating_3:out question_2_rating_3,
+        question_2_rating_4:out question_2_rating_4,
+        question_2_rating_5:out question_2_rating_5,
+        question_3_rating_1:out question_3_rating_1,
+        question_3_rating_2:out question_3_rating_2,
+        question_3_rating_3:out question_3_rating_3,
+        question_3_rating_4:out question_3_rating_4,
+        question_3_rating_5:out question_3_rating_5,
+        question_4_rating_1:out question_4_rating_1,
+        question_4_rating_2:out question_4_rating_2,
+        question_4_rating_3:out question_4_rating_3,
+        question_4_rating_4:out question_4_rating_4,
+        question_4_rating_5:out question_4_rating_5,
+        question_5_rating_1:out question_5_rating_1,
+        question_5_rating_2:out question_5_rating_2,
+        question_5_rating_3:out question_5_rating_3,
+        question_5_rating_4:out question_5_rating_4,
+        question_5_rating_5:out question_5_rating_5,
+        question_6_rating_1:out question_6_rating_1,
+        question_6_rating_2:out question_6_rating_2,
+        question_6_rating_3:out question_6_rating_3,
+        question_6_rating_4:out question_6_rating_4,
+        question_6_rating_5:out question_6_rating_5
+        );
+      TextBox_question_1_rating_1.Text = question_1_rating_1;
+      TextBox_question_1_rating_2.Text = question_1_rating_2;
+      TextBox_question_1_rating_3.Text = question_1_rating_3;
+      TextBox_question_1_rating_4.Text = question_1_rating_4;
+      TextBox_question_1_rating_5.Text = question_1_rating_5;
+      TextBox_question_2_rating_1.Text = question_2_rating_1;
+      TextBox_question_2_rating_2.Text = question_2_rating_2;
+      TextBox_question_2_rating_3.Text = question_2_rating_3;
+      TextBox_question_2_rating_4.Text = question_2_rating_4;
+      TextBox_question_2_rating_5.Text = question_2_rating_5;
+      TextBox_question_3_rating_1.Text = question_3_rating_1;
+      TextBox_question_3_rating_2.Text = question_3_rating_2;
+      TextBox_question_3_rating_3.Text = question_3_rating_3;
+      TextBox_question_3_rating_4.Text = question_3_rating_4;
+      TextBox_question_3_rating_5.Text = question_3_rating_5;
+      TextBox_question_4_rating_1.Text = question_4_rating_1;
+      TextBox_question_4_rating_2.Text = question_4_rating_2;
+      TextBox_question_4_rating_3.Text = question_4_rating_3;
+      TextBox_question_4_rating_4.Text = question_4_rating_4;
+      TextBox_question_4_rating_5.Text = question_4_rating_5;
+      TextBox_question_5_rating_1.Text = question_5_rating_1;
+      TextBox_question_5_rating_2.Text = question_5_rating_2;
+      TextBox_question_5_rating_3.Text = question_5_rating_3;
+      TextBox_question_5_rating_4.Text = question_5_rating_4;
+      TextBox_question_5_rating_5.Text = question_5_rating_5;
+      TextBox_question_6_rating_1.Text = question_6_rating_1;
+      TextBox_question_6_rating_2.Text = question_6_rating_2;
+      TextBox_question_6_rating_3.Text = question_6_rating_3;
+      TextBox_question_6_rating_4.Text = question_6_rating_4;
+      TextBox_question_6_rating_5.Text = question_6_rating_5;
       }
 
     protected void RadioButtonList_input_method_SelectedIndexChanged(object sender, EventArgs e)
