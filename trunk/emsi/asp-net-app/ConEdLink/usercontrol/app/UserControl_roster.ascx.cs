@@ -1,5 +1,6 @@
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
+using Class_biz_eval_summary_tallies;
 using Class_biz_regions;
 using kix;
 using System.Collections;
@@ -32,6 +33,7 @@ namespace UserControl_roster
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
       public TClass_biz_coned_offerings biz_coned_offerings;
+      public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
       public TClass_biz_regions biz_regions;
       public string coned_offering_id;
       public k.decimal_nonnegative length;
@@ -63,13 +65,20 @@ namespace UserControl_roster
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.summary));
+        var eval_summary_mode_description = p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(Session["region_code"].ToString());
+        if (eval_summary_mode_description == "SAEMS")
+          {
+          LoadRatings();
+          }
         Literal_eval_summary_instructional_staff.Text = p.biz_coned_offerings.EvalSummaryInstructionalStaffOf(p.summary);
         Literal_eval_summary_time_appropriately_used.Text = p.biz_coned_offerings.EvalSummaryTimeAppropriatelyUsedOf(p.summary);
         Literal_eval_summary_classroom_training_site.Text = p.biz_coned_offerings.EvalSummaryClassroomTrainingSiteOf(p.summary);
         Literal_eval_summary_equipment_av.Text = p.biz_coned_offerings.EvalSummaryEquipmentAvOf(p.summary);
         Literal_eval_summary_misc_remarks.Text = p.biz_coned_offerings.EvalSummaryMiscRemarksOf(p.summary);
-        TableRow_eval_summary_head_spacer.Visible = (p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(Session["region_code"].ToString()) != "Hidden");
+        TableRow_eval_summary_head_spacer.Visible = (eval_summary_mode_description != "Hidden");
         TableRow_eval_summary.Visible = TableRow_eval_summary_head_spacer.Visible;
+        TableRow_ratings_header.Visible = (eval_summary_mode_description == "SAEMS");
+        TableRow_ratings_body.Visible = TableRow_ratings_header.Visible;
         Bind();
         p.be_loaded = true;
         }
@@ -91,6 +100,7 @@ namespace UserControl_roster
         //
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
+        p.biz_eval_summary_tallies = new TClass_biz_eval_summary_tallies();
         p.biz_regions = new TClass_biz_regions();
         //
         p.be_noncurrent_practitioners_on_roster = false;
@@ -165,6 +175,104 @@ namespace UserControl_roster
       p.summary = coned_offering_summary;
       p.coned_offering_id = p.biz_coned_offerings.IdOf(p.summary);
       p.length = p.biz_coned_offerings.LengthOf(p.summary);
+      }
+
+    private void LoadRatings()
+      {
+      var question_1_rating_1 = k.EMPTY;
+      var question_1_rating_2 = k.EMPTY;
+      var question_1_rating_3 = k.EMPTY;
+      var question_1_rating_4 = k.EMPTY;
+      var question_1_rating_5 = k.EMPTY;
+      var question_2_rating_1 = k.EMPTY;
+      var question_2_rating_2 = k.EMPTY;
+      var question_2_rating_3 = k.EMPTY;
+      var question_2_rating_4 = k.EMPTY;
+      var question_2_rating_5 = k.EMPTY;
+      var question_3_rating_1 = k.EMPTY;
+      var question_3_rating_2 = k.EMPTY;
+      var question_3_rating_3 = k.EMPTY;
+      var question_3_rating_4 = k.EMPTY;
+      var question_3_rating_5 = k.EMPTY;
+      var question_4_rating_1 = k.EMPTY;
+      var question_4_rating_2 = k.EMPTY;
+      var question_4_rating_3 = k.EMPTY;
+      var question_4_rating_4 = k.EMPTY;
+      var question_4_rating_5 = k.EMPTY;
+      var question_5_rating_1 = k.EMPTY;
+      var question_5_rating_2 = k.EMPTY;
+      var question_5_rating_3 = k.EMPTY;
+      var question_5_rating_4 = k.EMPTY;
+      var question_5_rating_5 = k.EMPTY;
+      var question_6_rating_1 = k.EMPTY;
+      var question_6_rating_2 = k.EMPTY;
+      var question_6_rating_3 = k.EMPTY;
+      var question_6_rating_4 = k.EMPTY;
+      var question_6_rating_5 = k.EMPTY;
+      p.biz_eval_summary_tallies.Load
+        (
+        coned_offering_id:p.coned_offering_id,
+        question_1_rating_1:out question_1_rating_1,
+        question_1_rating_2:out question_1_rating_2,
+        question_1_rating_3:out question_1_rating_3,
+        question_1_rating_4:out question_1_rating_4,
+        question_1_rating_5:out question_1_rating_5,
+        question_2_rating_1:out question_2_rating_1,
+        question_2_rating_2:out question_2_rating_2,
+        question_2_rating_3:out question_2_rating_3,
+        question_2_rating_4:out question_2_rating_4,
+        question_2_rating_5:out question_2_rating_5,
+        question_3_rating_1:out question_3_rating_1,
+        question_3_rating_2:out question_3_rating_2,
+        question_3_rating_3:out question_3_rating_3,
+        question_3_rating_4:out question_3_rating_4,
+        question_3_rating_5:out question_3_rating_5,
+        question_4_rating_1:out question_4_rating_1,
+        question_4_rating_2:out question_4_rating_2,
+        question_4_rating_3:out question_4_rating_3,
+        question_4_rating_4:out question_4_rating_4,
+        question_4_rating_5:out question_4_rating_5,
+        question_5_rating_1:out question_5_rating_1,
+        question_5_rating_2:out question_5_rating_2,
+        question_5_rating_3:out question_5_rating_3,
+        question_5_rating_4:out question_5_rating_4,
+        question_5_rating_5:out question_5_rating_5,
+        question_6_rating_1:out question_6_rating_1,
+        question_6_rating_2:out question_6_rating_2,
+        question_6_rating_3:out question_6_rating_3,
+        question_6_rating_4:out question_6_rating_4,
+        question_6_rating_5:out question_6_rating_5
+        );
+      Literal_question_1_rating_1.Text = question_1_rating_1;
+      Literal_question_1_rating_2.Text = question_1_rating_2;
+      Literal_question_1_rating_3.Text = question_1_rating_3;
+      Literal_question_1_rating_4.Text = question_1_rating_4;
+      Literal_question_1_rating_5.Text = question_1_rating_5;
+      Literal_question_2_rating_1.Text = question_2_rating_1;
+      Literal_question_2_rating_2.Text = question_2_rating_2;
+      Literal_question_2_rating_3.Text = question_2_rating_3;
+      Literal_question_2_rating_4.Text = question_2_rating_4;
+      Literal_question_2_rating_5.Text = question_2_rating_5;
+      Literal_question_3_rating_1.Text = question_3_rating_1;
+      Literal_question_3_rating_2.Text = question_3_rating_2;
+      Literal_question_3_rating_3.Text = question_3_rating_3;
+      Literal_question_3_rating_4.Text = question_3_rating_4;
+      Literal_question_3_rating_5.Text = question_3_rating_5;
+      Literal_question_4_rating_1.Text = question_4_rating_1;
+      Literal_question_4_rating_2.Text = question_4_rating_2;
+      Literal_question_4_rating_3.Text = question_4_rating_3;
+      Literal_question_4_rating_4.Text = question_4_rating_4;
+      Literal_question_4_rating_5.Text = question_4_rating_5;
+      Literal_question_5_rating_1.Text = question_5_rating_1;
+      Literal_question_5_rating_2.Text = question_5_rating_2;
+      Literal_question_5_rating_3.Text = question_5_rating_3;
+      Literal_question_5_rating_4.Text = question_5_rating_4;
+      Literal_question_5_rating_5.Text = question_5_rating_5;
+      Literal_question_6_rating_1.Text = question_6_rating_1;
+      Literal_question_6_rating_2.Text = question_6_rating_2;
+      Literal_question_6_rating_3.Text = question_6_rating_3;
+      Literal_question_6_rating_4.Text = question_6_rating_4;
+      Literal_question_6_rating_5.Text = question_6_rating_5;
       }
 
     }

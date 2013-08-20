@@ -115,6 +115,93 @@
 		                <tr id="TableRow_eval_summary_body" runat="server">
 			                <td>
                         <table cellspacing="0" cellpadding="5" border="0">
+                          <tr id="TableRow_ratings_header" runat="server"><td colspan="4"><strong>RATINGS</strong></td></tr>
+                          <tr id="TableRow_ratings_body" runat="server">
+                            <td></td>
+                            <td colspan="2">
+                              <table cellpadding="0" cellspacing="0" border="1">
+                                <tr>
+                                  <td>
+                                    <table cellpadding="5" cellspacing="0">
+                                      <tr>
+                                        <td></td>
+                                        <td align="center" valign="bottom"><small><small>P<br />o<br />o<br />r</small></small></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="center"><small><small>Ex-<br />cel-<br />lent</small></small></td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td></td>
+                                        <td align="center">1</td>
+                                        <td align="center">2</td>
+                                        <td align="center">3</td>
+                                        <td align="center">4</td>
+                                        <td align="center">5</td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Q1</td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_1_rating_1" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_1_rating_2" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_1_rating_3" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_1_rating_4" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_1_rating_5" runat="server"></asp:Literal></td>
+                                        <td>Program objectives?</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Q2</td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_2_rating_1" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_2_rating_2" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_2_rating_3" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_2_rating_4" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_2_rating_5" runat="server"></asp:Literal></td>
+                                        <td>Instructional/A-V materials?</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Q3</td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_3_rating_1" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_3_rating_2" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_3_rating_3" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_3_rating_4" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_3_rating_5" runat="server"></asp:Literal></td>
+                                        <td>Facility appropriate/comfortable?</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Q4</td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_4_rating_1" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_4_rating_2" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_4_rating_3" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_4_rating_4" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_4_rating_5" runat="server"></asp:Literal></td>
+                                        <td>Instructor(s) prepared?</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Q5</td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_5_rating_1" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_5_rating_2" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_5_rating_3" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_5_rating_4" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_5_rating_5" runat="server"></asp:Literal></td>
+                                        <td>Overall?</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Q6</td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_6_rating_1" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_6_rating_2" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_6_rating_3" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_6_rating_4" runat="server"></asp:Literal></td>
+                                        <td style="font-family: 'Courier New', Courier, monospace"><asp:Literal ID="Literal_question_6_rating_5" runat="server"></asp:Literal></td>
+                                        <td>Adequate Q&A time?</td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td>&nbsp;</td>
+                          </tr>
                           <tr><td colspan="4"><strong>INSTRUCTIONAL QUALITY</strong></td></tr>
                           <tr>
                             <td></td>
