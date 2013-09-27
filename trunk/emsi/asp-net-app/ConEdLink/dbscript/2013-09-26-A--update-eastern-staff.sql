@@ -9,6 +9,6 @@ insert ignore regional_staffer_user (id,password_reset_email_address) values
 insert ignore regional_staffer_role (group_id,user_id) values
 ((select id from regional_staffer_group where name = "education-specialist"),(select id from regional_staffer_user where password_reset_email_address = "lisagarrity@easternemscouncil.org"))
 ;
-update regional_staffer_user set be_active = FALSE where id = 9
+update regional_staffer_user set be_active = FALSE where id in (6,9)
 ;
 COMMIT
