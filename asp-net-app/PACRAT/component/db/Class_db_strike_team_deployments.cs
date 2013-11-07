@@ -80,7 +80,8 @@ namespace Class_db_strike_team_deployments
         +   " where member_id = '" + member_id + "'"
         +     " and privilege.name in ('see-strike-team-deployments','config-strike-team-deployments')"
         +     " and be_pacrat_subscriber"
-        +   " )",
+        +   " )"
+        + " order by creation_date desc",
         connection
         )
         .ExecuteReader();
