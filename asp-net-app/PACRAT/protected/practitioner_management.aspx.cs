@@ -509,8 +509,7 @@ namespace practitioner_management
         target:ListBox_practitioner,
         region_code:k.EMPTY,
         starting_with:practitioner,
-        limit:new k.int_positive(12),
-        do_limit_to_21_yoa_or_older:true
+        limit:new k.int_positive(12)
         );
       if (practitioner.Length > 0)
         {
