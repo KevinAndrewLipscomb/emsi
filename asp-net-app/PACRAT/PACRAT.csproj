@@ -109,6 +109,7 @@
     <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_region_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
+    <Content Include="usercontrol\app\UserControl_sms_gateway.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
@@ -525,6 +526,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_service_affiliation.ascx.designer.cs">
       <DependentUpon>UserControl_service_affiliation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_sms_gateway.ascx.cs">
+      <DependentUpon>UserControl_sms_gateway.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_sms_gateway.ascx.designer.cs">
+      <DependentUpon>UserControl_sms_gateway.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_state_affiliation.ascx.cs">
       <DependentUpon>UserControl_state_affiliation.ascx</DependentUpon>

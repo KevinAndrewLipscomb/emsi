@@ -3,6 +3,7 @@
 using kix;
 using UserControl_fuel;
 using UserControl_patient_care_level;
+using UserControl_sms_gateway;
 using UserControl_tow_capacity;
 using UserControl_vehicle_kind;
 
@@ -15,6 +16,7 @@ namespace UserControl_business_objects_binder
     public const int TSSI_TOW_CAPACITIES = 1;
     public const int TSSI_FUELS = 2;
     public const int TSSI_PATIENT_CARE_LEVELS = 3;
+    public const int TSSI_SMS_GATEWAYS = 4;
     }
 
   public partial class TWebUserControl_business_objects_binder: ki_web_ui.usercontrol_class
@@ -63,6 +65,12 @@ namespace UserControl_business_objects_binder
         {
         var c = ((TWebUserControl_patient_care_level)(LoadControl("~/usercontrol/app/UserControl_patient_care_level.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_patient_care_level",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        //c.SetTarget(target);
+        }
+      else if (p.tab_index == UserControl_business_objects_binder_Static.TSSI_SMS_GATEWAYS)
+        {
+        var c = ((TWebUserControl_sms_gateway)(LoadControl("~/usercontrol/app/UserControl_sms_gateway.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_sms_gateway",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         //c.SetTarget(target);
         }
       }
@@ -181,6 +189,10 @@ namespace UserControl_business_objects_binder
           {
           p.tab_index = UserControl_business_objects_binder_Static.TSSI_PATIENT_CARE_LEVELS;
           }
+        else if (target.ToLower().Contains("/sms-gateways/"))
+          {
+          p.tab_index = UserControl_business_objects_binder_Static.TSSI_SMS_GATEWAYS;
+          }
         //
         PlaceHolder_content.Controls.Clear();
         FillPlaceHolder(false,target);
@@ -191,4 +203,3 @@ namespace UserControl_business_objects_binder
     } // end TWebUserControl_business_objects_binder
 
   }
-
