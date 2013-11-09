@@ -1,5 +1,7 @@
 #
 # $Id$
 #
-00 02 * * * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/milestone_sweep.aspx
-15 02 * * * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/daily_tasks.aspx
+30 22 01 01 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/statement_strike_team_member_status.aspx
+30 22 01 04 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/statement_strike_team_member_status.aspx
+30 22 01 07 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/statement_strike_team_member_status.aspx
+30 22 01 10 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/statement_strike_team_member_status.aspx
