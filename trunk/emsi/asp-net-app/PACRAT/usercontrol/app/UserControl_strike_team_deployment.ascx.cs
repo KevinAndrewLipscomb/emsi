@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
+using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
@@ -166,6 +167,7 @@ namespace UserControl_strike_team_deployment
           }
         p.be_loaded = true;
         }
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
       InjectPersistentClientSideScript();
       }
 
