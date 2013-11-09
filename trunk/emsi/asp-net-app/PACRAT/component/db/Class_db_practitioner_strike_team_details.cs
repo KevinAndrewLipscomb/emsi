@@ -222,12 +222,25 @@ namespace Class_db_practitioner_strike_team_details
         + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_34_date,'%e %M %Y')) as act_1985_34_date"
         + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1994_151_date,'%e %M %Y')) as act_1994_151_date"
         + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one credentialing requirement') as credentialed_clause"
-        + " , GROUP_CONCAT(service.name ORDER BY service.name SEPARATOR ', ') as service_strike_team_affiliation"
+        + " , GROUP_CONCAT(affiliated_service.name ORDER BY affiliated_service.name SEPARATOR ', ') as service_strike_team_affiliation"
+        + " , IFNULL("
+        +       " ("
+        +       " select email_address"
+        +       " from role_member_map"
+        +         " join role on (role.id=role_member_map.role_id)"
+        +         " join practitioner on (practitioner.id=role_member_map.member_id)"
+        +       " where role.name = 'Service Strike Team Manager'"
+        +         " and service_id = affiliated_service.id"
+        +       " limit 1"
+        +       " )"
+        +     " ,"
+        +       " ''"
+        +     " ) as service_strike_team_primary_manager"
         + " from practitioner_strike_team_detail"
         +   " join practitioner on (practitioner.id=practitioner_strike_team_detail.practitioner_id)"
         +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
         +   " join strike_team_roster on (strike_team_roster.practitioner_id=practitioner.id)"
-        +   " join service on (service.id=strike_team_roster.service_id)"
+        +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
         + " where email_address is not null"
         +   " and TRIM(email_address) <> ''"
         + " group by practitioner_strike_team_detail.id"
@@ -259,7 +272,8 @@ namespace Class_db_practitioner_strike_team_details
           act_1985_34_date:dr["act_1985_34_date"].ToString(),
           act_1994_151_date:dr["act_1994_151_date"].ToString(),
           credentialed_clause:dr["credentialed_clause"].ToString(),
-          service_strike_team_affiliation:dr["service_strike_team_affiliation"].ToString()
+          service_strike_team_affiliation:dr["service_strike_team_affiliation"].ToString(),
+          service_strike_team_primary_manager:dr["service_strike_team_primary_manager"].ToString()
           );
         }
       dr.Close();
