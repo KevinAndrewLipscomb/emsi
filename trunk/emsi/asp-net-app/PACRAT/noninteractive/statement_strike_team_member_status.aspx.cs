@@ -17,7 +17,8 @@ namespace statement_strike_team_member_status
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
-      new TClass_biz_scheduled_tasks().DoStrikeTeamMemberStatusStatements();
+      var value = Request[key:"do_limit_to_uncredentialed"];
+      new TClass_biz_scheduled_tasks().DoStrikeTeamMemberStatusStatements(do_limit_to_uncredentialed:(value != null) && bool.Parse(value));
       }
 
     protected override void OnInit(EventArgs e)
