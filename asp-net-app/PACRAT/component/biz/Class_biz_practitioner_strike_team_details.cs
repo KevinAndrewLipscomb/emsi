@@ -78,9 +78,9 @@ namespace Class_biz_practitioner_strike_team_details
         );
       }
 
-    internal void MakeMemberStatusStatements()
+    internal void MakeMemberStatusStatements(bool do_limit_to_uncredentialed)
       {
-      db_practitioner_strike_team_details.MakeMemberStatusStatements();
+      db_practitioner_strike_team_details.MakeMemberStatusStatements(do_limit_to_uncredentialed);
       }
 
     public void Set

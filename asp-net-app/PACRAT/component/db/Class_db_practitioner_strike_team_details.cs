@@ -197,7 +197,7 @@ namespace Class_db_practitioner_strike_team_details
       return result;
       }
 
-    public void MakeMemberStatusStatements()
+    public void MakeMemberStatusStatements(bool do_limit_to_uncredentialed)
       {
       Open();
       var dr = new MySqlCommand
@@ -243,6 +243,7 @@ namespace Class_db_practitioner_strike_team_details
         +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
         + " where email_address is not null"
         +   " and TRIM(email_address) <> ''"
+        +   (do_limit_to_uncredentialed ? " and not" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
         + " group by practitioner_strike_team_detail.id"
         + " order by RAND()",
         connection
@@ -278,6 +279,10 @@ namespace Class_db_practitioner_strike_team_details
         }
       dr.Close();
       Close();
+      }
+    public void MakeMemberStatusStatements()
+      {
+      MakeMemberStatusStatements(do_limit_to_uncredentialed:false);
       }
 
     public void Set

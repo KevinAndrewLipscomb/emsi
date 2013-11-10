@@ -21,9 +21,9 @@ namespace Class_biz_scheduled_tasks
       fs.DeleteCondemnedFolders(current_working_directory_spec + "/../protected/attachment");
       }
 
-    public void DoStrikeTeamMemberStatusStatements()
+    public void DoStrikeTeamMemberStatusStatements(bool do_limit_to_uncredentialed)
       {
-      biz_practitioner_strike_team_details.MakeMemberStatusStatements();
+      biz_practitioner_strike_team_details.MakeMemberStatusStatements(do_limit_to_uncredentialed);
       }
 
     } // end TClass_biz_scheduled_tasks
