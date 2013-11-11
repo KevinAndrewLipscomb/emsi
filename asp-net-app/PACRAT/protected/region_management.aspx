@@ -66,10 +66,9 @@
                         <tr>
                           <td>
                             <table cellpadding="5" cellspacing="0">
-                              <tr><td colspan="3"><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
+                              <tr><td colspan="2"><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
                               <tr>
-                                <td nowrap="nowrap" valign="top"><b>PA DOH Region #:</b></td>
-                                <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
+                                <td nowrap="nowrap" valign="top"><b>PA DOH Region #:</b> <asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
                                 <td valign="top" align="center">
                                   <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
                                 </td>

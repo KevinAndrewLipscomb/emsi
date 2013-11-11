@@ -84,6 +84,8 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="noninteractive\report_service_strike_team_roster.aspx" />
+    <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
     <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
     <Content Include="protected\operational_period_detail.aspx" />
@@ -112,6 +114,7 @@
     <Content Include="usercontrol\app\UserControl_sms_gateway.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
+    <Content Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx" />
@@ -219,6 +222,20 @@
     </Compile>
     <Compile Include="noninteractive\milestone_sweep.aspx.designer.cs">
       <DependentUpon>milestone_sweep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\report_service_strike_team_roster.aspx.cs">
+      <DependentUpon>report_service_strike_team_roster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\report_service_strike_team_roster.aspx.designer.cs">
+      <DependentUpon>report_service_strike_team_roster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\statement_service_strike_team_roster.aspx.cs">
+      <DependentUpon>statement_service_strike_team_roster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\statement_service_strike_team_roster.aspx.designer.cs">
+      <DependentUpon>statement_service_strike_team_roster.aspx</DependentUpon>
     </Compile>
     <Compile Include="noninteractive\statement_strike_team_member_status.aspx.cs">
       <DependentUpon>statement_strike_team_member_status.aspx</DependentUpon>
@@ -540,6 +557,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_state_detail.ascx.designer.cs">
       <DependentUpon>UserControl_state_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx.cs">
+      <DependentUpon>UserControl_static_service_strike_team_roster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx.designer.cs">
+      <DependentUpon>UserControl_static_service_strike_team_roster.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment.ascx</DependentUpon>
