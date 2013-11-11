@@ -62,6 +62,15 @@ namespace Class_biz_role_member_map
             db_role_member_map.BindHolders(role_name, target, sort_order, be_sort_order_ascending);
         }
 
+        internal string EmailTargetOfByExplicitServiceId
+          (
+          string role_name,
+          string service_id
+          )
+          {
+          return db_role_member_map.EmailTargetOfByExplicitServiceId(role_name,service_id);
+          }
+
         public void Save(string member_id, string role_id, bool be_granted)
         {
             db_role_member_map.Save(member_id, role_id, be_granted);
