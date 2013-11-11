@@ -88,6 +88,7 @@
     <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
     <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
+    <Content Include="protected\bounty_program.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
     <Content Include="protected\practitioner_profile.aspx" />
@@ -245,6 +246,13 @@
       <DependentUpon>statement_strike_team_member_status.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="protected\bounty_program.aspx.cs">
+      <DependentUpon>bounty_program.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\bounty_program.aspx.designer.cs">
+      <DependentUpon>bounty_program.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\change_email_address.aspx.cs">
       <DependentUpon>change_email_address.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -11,5 +11,23 @@ namespace UserControl_postcontent {
     
     
     public partial class TWebUserControl_postcontent {
+        
+        /// <summary>
+        /// TableRow_bounty_program control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_bounty_program;
+        
+        /// <summary>
+        /// HyperLink_bounty_program control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_bounty_program;
     }
 }

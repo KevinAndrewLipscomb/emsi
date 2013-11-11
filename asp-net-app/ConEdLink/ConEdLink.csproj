@@ -185,6 +185,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="protected\bounty_program.aspx.cs">
+      <DependentUpon>bounty_program.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\bounty_program.aspx.designer.cs">
+      <DependentUpon>bounty_program.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\change_email_address.aspx.cs">
       <DependentUpon>change_email_address.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -564,6 +570,7 @@
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
     <Content Include="noninteractive\template\notification\roster_due.txt" />
+    <Content Include="protected\bounty_program.aspx" />
     <Content Include="protected\coned_offering_detail.aspx" />
     <Content Include="protected\coned_offering_roster.aspx" />
     <Content Include="protected\coned_sponsor_detail.aspx" />

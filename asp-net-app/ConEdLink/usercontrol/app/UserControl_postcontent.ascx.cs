@@ -42,6 +42,8 @@ namespace UserControl_postcontent
           var be_ok_to_see_barcoding_manuals = (Session["target_user_table"].ToString() == "regional_staffer") || p.biz_accounts.BeOkForConedSponsorToInputRosterByBatch();
           TableRow_creating_rosters_using_barcode_scanners.Visible = be_ok_to_see_barcoding_manuals;
           TableRow_creating_rosters_using_cipherlab_barcode_readers.Visible = be_ok_to_see_barcoding_manuals;
+          //
+          TableRow_bounty_program.Visible = true;
           }
         }
       }
