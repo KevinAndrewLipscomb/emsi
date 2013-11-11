@@ -2,6 +2,10 @@
 # $Id$
 #
 #
+# Monthly
+#
+25 22 01  * * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/statement_service_strike_team_roster.aspx
+#
 # Special
 #
 30 22 01 01 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/PACRAT/noninteractive/statement_strike_team_member_status.aspx
