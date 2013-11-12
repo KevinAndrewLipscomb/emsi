@@ -1,0 +1,6 @@
+START TRANSACTION
+;
+ALTER TABLE `strike_team_deployment`
+  ADD COLUMN `be_drill` BOOLEAN NOT NULL DEFAULT FALSE
+;
+COMMIT

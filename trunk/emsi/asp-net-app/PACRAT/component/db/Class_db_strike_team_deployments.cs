@@ -138,12 +138,14 @@ namespace Class_db_strike_team_deployments
       string id,
       out DateTime creation_date,
       out string name,
-      out string region_code
+      out string region_code,
+      out bool be_drill
       )
       {
       creation_date = DateTime.MinValue;
       name = k.EMPTY;
       region_code = k.EMPTY;
+      be_drill = false;
       var result = false;
       //
       Open();
@@ -153,6 +155,7 @@ namespace Class_db_strike_team_deployments
         creation_date = DateTime.Parse(dr["creation_date"].ToString());
         name = dr["name"].ToString();
         region_code = dr["region_code"].ToString();
+        be_drill = (dr["be_drill"].ToString() == "1");
         result = true;
         }
       dr.Close();
@@ -175,13 +178,15 @@ namespace Class_db_strike_team_deployments
       string id,
       DateTime creation_date,
       string name,
-      string region_code
+      string region_code,
+      bool be_drill
       )
       {
       var childless_field_assignments_clause = k.EMPTY
       + "creation_date = '" + creation_date.ToString("yyyy-MM-dd") + "'"
       + " , name = NULLIF('" + name + "','')"
       + " , region_code = NULLIF('" + region_code + "','')"
+      + " , be_drill = " + be_drill.ToString()
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (

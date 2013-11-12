@@ -55,7 +55,8 @@ namespace Class_biz_strike_team_deployments
       string id,
       out DateTime creation_date,
       out string name,
-      out string region_code
+      out string region_code,
+      out bool be_drill
       )
       {
       return db_strike_team_deployments.Get
@@ -63,7 +64,8 @@ namespace Class_biz_strike_team_deployments
         id,
         out creation_date,
         out name,
-        out region_code
+        out region_code,
+        out be_drill
         );
       }
 
@@ -82,7 +84,8 @@ namespace Class_biz_strike_team_deployments
       string id,
       DateTime creation_date,
       string name,
-      string region_code
+      string region_code,
+      bool be_drill
       )
       {
       db_strike_team_deployments.Set
@@ -90,7 +93,8 @@ namespace Class_biz_strike_team_deployments
         id,
         creation_date,
         name,
-        region_code
+        region_code,
+        be_drill
         );
       }
 

@@ -87,6 +87,16 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_name" runat="server" errormessage="Please enter Name." font-bold="True" controltovalidate="TextBox_name">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
+  <tr>
+    <td><font class=""></font></td>
+    <td>
+      <font class="">
+        <ASP:CheckBox id="CheckBox_be_drill" runat="server" cssclass="" enabled="False" Text="This deployment is a DRILL.  Credential requirements should not be enforced."></ASP:CheckBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
       </table>
     </td>
   </tr>
