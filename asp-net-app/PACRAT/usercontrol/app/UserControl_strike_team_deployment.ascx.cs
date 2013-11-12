@@ -38,6 +38,7 @@ namespace UserControl_strike_team_deployment
       UserControl_drop_down_date_creation_date.Clear();
       TextBox_name.Text = k.EMPTY;
       DropDownList_region.ClearSelection();
+      CheckBox_be_drill.Checked = false;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -162,7 +163,7 @@ namespace UserControl_strike_team_deployment
           }
         else
           {
-          Button_submit.Text = "Rename this deployment";
+          Button_submit.Text = "Alter this deployment";
           Panel_active_deployment_detail.Visible = true;
           }
         p.be_loaded = true;
@@ -178,6 +179,7 @@ namespace UserControl_strike_team_deployment
       DateTime creation_date;
       string name;
       string region_code;
+      bool be_drill;
       result = false;
       if
         (
@@ -186,7 +188,8 @@ namespace UserControl_strike_team_deployment
           id,
           out creation_date,
           out name,
-          out region_code
+          out region_code,
+          out be_drill
           )
         )
         {
@@ -195,6 +198,7 @@ namespace UserControl_strike_team_deployment
         UserControl_drop_down_date_creation_date.selectedvalue = creation_date;
         TextBox_name.Text = name;
         DropDownList_region.SelectedValue = region_code;
+        CheckBox_be_drill.Checked = be_drill;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -328,7 +332,8 @@ namespace UserControl_strike_team_deployment
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
           (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
           k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
-          k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM)
+          k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM),
+          CheckBox_be_drill.Checked
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {
@@ -401,6 +406,7 @@ namespace UserControl_strike_team_deployment
       UserControl_drop_down_date_creation_date.enabled = ablement;
       TextBox_name.Enabled = ablement;
       DropDownList_region.Enabled = (p.presentation_mode == presentation_mode_enum.NEW) && ablement;
+      CheckBox_be_drill.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
