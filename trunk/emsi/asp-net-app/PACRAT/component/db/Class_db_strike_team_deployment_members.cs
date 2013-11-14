@@ -76,6 +76,7 @@ namespace Class_db_strike_team_deployment_members
         + " , last_name"
         + " , first_name"
         + " , short_description as level"
+        + " , GROUP_CONCAT(DISTINCT service.name) as affiliation"
         + " , tag_num"
         + " , email_address"
         + " , concat(phone_number,'@',sms_gateway.hostname) as sms_target"
@@ -90,7 +91,8 @@ namespace Class_db_strike_team_deployment_members
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
         + " where TRUE"
         +   " and" + (do_include_all_eligible_practitioners ? " (" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + " or be_drill)" : " (practitioner_strike_team_detail.id is not null and phone_service_id is not null)")
-        +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY) 
+        +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY)
+        + " group by practitioner.id"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
