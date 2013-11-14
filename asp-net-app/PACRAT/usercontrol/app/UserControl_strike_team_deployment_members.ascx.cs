@@ -27,9 +27,10 @@ namespace UserControl_strike_team_deployment_members
       public const int TCI_LAST_NAME = 5;
       public const int TCI_FIRST_NAME = 6;
       public const int TCI_LEVEL = 7;
-      public const int TCI_EMAIL_ADDRESS = 8;
-      public const int TCI_SMS_TARGET = 9;
-      public const int TCI_SELECT_FOR_QUICKMESSAGE = 10;
+      public const int TCI_AFFILIATION = 8;
+      public const int TCI_EMAIL_ADDRESS = 9;
+      public const int TCI_SMS_TARGET = 10;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 11;
       }
 
     private struct p_type
