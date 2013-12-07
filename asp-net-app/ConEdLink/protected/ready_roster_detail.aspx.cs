@@ -227,42 +227,69 @@ namespace ready_roster_detail
     protected void Button_submit_to_emsrs_Click(object sender, EventArgs e)
       {
       var application_name = ConfigurationManager.AppSettings["application_name"];
+      var be_response_meaningful = true;
       var response = "Errors Found: 0  (Not really.  " + application_name + " is not an instance that actually makes changes to EMSRS.)";
       if (!(application_name.EndsWith("_d") || application_name.EndsWith("_x")))
         {
-        response = new EMSREGWebServices().ProcessConed("<CONEDRAW>" + p.lcds_content_xml + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
+        try
+          {
+          response = new EMSREGWebServices().ProcessConed("<CONEDRAW>" + p.lcds_content_xml + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
+          }
+        catch (Exception the_exception)
+          {
+          be_response_meaningful = false;
+          if (the_exception.Message.Contains("The operation has timed out"))
+            {
+            Alert
+              (
+              cause:k.alert_cause_type.NETWORK,
+              state:k.alert_state_type.FAILURE,
+              key:"emsrstimedout",
+              value:"EMSRS DID NOT RESPOND.  " + application_name + " could not submit the roster.  Please try again later or contact the EMSRS administrators.",
+              be_using_scriptmanager:true
+              );
+            }
+          else
+            {
+            throw the_exception;
+            }
+          }
         }
-      if (response.Contains("Errors Found: 0"))
+      if (be_response_meaningful)
         {
-        Alert
-          (
-          cause:k.alert_cause_type.NETWORK,
-          state:k.alert_state_type.SUCCESS,
-          key:"okfromemsrs",
-          value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
-          be_using_scriptmanager:true
-          );
-        p.biz_coned_offerings.Archive(p.incoming.summary);
-        Button_mark_done.Enabled = false;
-        Button_submit_to_emsrs.Enabled = false;
-        Button_go_back.Enabled = true;
-        }
-      else
-        {
-        k.SmtpMailSend
-          (
-          from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:ConfigurationManager.AppSettings["failsafe_recipient_email_address"],
-          subject:"EMSRS coned cards submission response",
-          message_string:"[response]" + k.NEW_LINE + response + k.NEW_LINE + k.NEW_LINE + "[p.lcds_content_xml]" + k.NEW_LINE + p.lcds_content_xml.Replace("</Table><Table>","</Table>" + k.NEW_LINE + "<Table>")
-          );
-        Alert
-          (
-          cause:k.alert_cause_type.NETWORK,
-          state:k.alert_state_type.WARNING,
-          key:"emsrsnotok",
-          value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
-          be_using_scriptmanager:true);
+        if (response.Contains("Errors Found: 0"))
+          {
+          Alert
+            (
+            cause:k.alert_cause_type.NETWORK,
+            state:k.alert_state_type.SUCCESS,
+            key:"okfromemsrs",
+            value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
+            be_using_scriptmanager:true
+            );
+          p.biz_coned_offerings.Archive(p.incoming.summary);
+          Button_mark_done.Enabled = false;
+          Button_submit_to_emsrs.Enabled = false;
+          Button_go_back.Enabled = true;
+          }
+        else
+          {
+          k.SmtpMailSend
+            (
+            from:ConfigurationManager.AppSettings["sender_email_address"],
+            to:ConfigurationManager.AppSettings["failsafe_recipient_email_address"],
+            subject:"EMSRS coned cards submission response",
+            message_string:"[response]" + k.NEW_LINE + response + k.NEW_LINE + k.NEW_LINE + "[p.lcds_content_xml]" + k.NEW_LINE + p.lcds_content_xml.Replace("</Table><Table>","</Table>" + k.NEW_LINE + "<Table>")
+            );
+          Alert
+            (
+            cause:k.alert_cause_type.NETWORK,
+            state:k.alert_state_type.WARNING,
+            key:"emsrsnotok",
+            value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
+            be_using_scriptmanager:true
+            );
+          }
         }
       }
 
