@@ -12,7 +12,7 @@
                 <table cellspacing="0" cellpadding="0" border="0">
                   <tr>
                     <td valign="middle">
-                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_practitioners" runat="server" Text="Include all eligible practitioners" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_practitioners_CheckedChanged" />
+                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_practitioners" runat="server" Text="Show all eligible practitioners, whether mobilized or not" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_practitioners_CheckedChanged" />
                     </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td align="right" valign="middle">
@@ -49,7 +49,7 @@
                     <asp:BoundColumn datafield="sms_target" Visible="false"></asp:BoundColumn>
                     <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                       <HeaderTemplate>
-                        <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
+                        <small>Include in<br />QuickMessage</small><br /> All:<asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
                       </HeaderTemplate>
                       <ItemTemplate>
                         <asp:CheckBox ID="CheckBox_selected" runat="server" Checked="True" AutoPostBack="True" oncheckedchanged="CheckBox_selected_CheckedChanged" ToolTip="Select/Unselect for QuickMessage" />

@@ -163,7 +163,6 @@ namespace region_management
 
     private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
       {
-      HyperLink_quickmessage.Enabled = (DataGrid_control.EditItemIndex == -1);
       Button_send.Enabled = (DataGrid_control.EditItemIndex == -1);
       }
 

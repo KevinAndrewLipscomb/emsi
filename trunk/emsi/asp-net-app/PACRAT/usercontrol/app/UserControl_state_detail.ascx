@@ -13,7 +13,7 @@
                 <table cellspacing="0" cellpadding="0" border="0">
                   <tr>
                     <td valign="middle">
-                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_regions" runat="server" Text="Include all regions" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_regions_CheckedChanged" />
+                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_regions" runat="server" Text="Show all regions, whether subscribed or not" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_regions_CheckedChanged" />
                     </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td align="right" valign="middle">
@@ -33,14 +33,14 @@
                     <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%">
                       <HeaderStyle horizontalalign="Left"></HeaderStyle>
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="be_pacrat_subscriber" headertext="Subscriber?" sortexpression="be_pacrat_subscriber%,name">
+                    <asp:BoundColumn datafield="be_pacrat_subscriber" headertext="Subscribed?" sortexpression="be_pacrat_subscriber%,name">
                       <ItemStyle horizontalalign="Center"></ItemStyle>
                     </asp:BoundColumn>
                     <asp:BoundColumn datafield="email_target" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="sms_target" Visible="false"></asp:BoundColumn>
                     <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                       <HeaderTemplate>
-                        <asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
+                        <small>Include in<br />QuickMessage</small><br /> All:<asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
                       </HeaderTemplate>
                       <ItemTemplate>
                         <asp:CheckBox ID="CheckBox_selected" runat="server" Checked="True" AutoPostBack="True" oncheckedchanged="CheckBox_selected_CheckedChanged" ToolTip="Select/Unselect for QuickMessage" />

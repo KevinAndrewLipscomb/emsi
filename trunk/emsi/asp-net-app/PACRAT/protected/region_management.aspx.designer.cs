@@ -211,33 +211,6 @@ namespace region_management {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down;
         
         /// <summary>
-        /// CheckBox_item_sample control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_item_sample;
-        
-        /// <summary>
-        /// HyperLink_quickmessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_quickmessage;
-        
-        /// <summary>
-        /// CheckBox_header_sample control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_header_sample;
-        
-        /// <summary>
         /// Literal_author_email_address control.
         /// </summary>
         /// <remarks>
