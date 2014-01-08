@@ -360,12 +360,17 @@ namespace UserControl_strike_team_deployment_vehicles
       string service_strike_team_management_footprint
       )
       {
-      p.deployment_id = deployment_id;
-      if ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) != "UserControl_strike_team_deployment_vehicles")
+      if(
+          ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) != "UserControl_strike_team_deployment_vehicles")
+        ||
+          (deployment_id != p.deployment_id)
+        )
+      //then
         {
-        p.do_include_all_eligible_vehicles = p.biz_strike_team_deployment_vehicles.BeNone(p.deployment_id);
+        p.do_include_all_eligible_vehicles = p.biz_strike_team_deployment_vehicles.BeNone(deployment_id);
         CheckBox_do_include_all_eligible_vehicles.Checked = p.do_include_all_eligible_vehicles;
         }
+      p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
       }
