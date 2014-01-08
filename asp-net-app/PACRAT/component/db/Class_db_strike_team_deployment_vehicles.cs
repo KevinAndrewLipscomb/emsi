@@ -115,7 +115,7 @@ namespace Class_db_strike_team_deployment_vehicles
         (
         "SELECT vehicle.id as id"
         + " , @static_designator := concat(service.name,' ',vehicle.name)"
-        + " , @dynamic_designator := IF(tactical_name = @static_designator,concat(@static_designator,' (',vehicle_kind.description,')'),concat(tactical_name,' [',@static_designator,' (',vehicle_kind.description,')]'))"
+        + " , @dynamic_designator := IF(tactical_name = @static_designator or tactical_name is null,concat(@static_designator,' (',vehicle_kind.description,')'),concat(tactical_name,' [',@static_designator,' (',vehicle_kind.description,')]'))"
         + " , IFNULL(@dynamic_designator,'(none)') as spec"
         + " FROM strike_team_deployment_vehicle"
         +   " join vehicle on (vehicle.id=strike_team_deployment_vehicle.vehicle_id)"

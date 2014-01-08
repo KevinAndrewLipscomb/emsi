@@ -194,6 +194,7 @@ namespace UserControl_strike_team_deployment_members
         p.deployment_id = k.EMPTY;
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
+        p.do_include_all_eligible_practitioners = true;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "last_name%,first_name";
         //
@@ -374,12 +375,17 @@ namespace UserControl_strike_team_deployment_members
       string service_strike_team_management_footprint
       )
       {
-      p.deployment_id = deployment_id;
-      if ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) != "UserControl_strike_team_deployment_members")
+      if(
+          ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) != "UserControl_strike_team_deployment_members")
+        ||
+          (deployment_id != p.deployment_id)
+        )
+      //then
         {
-        p.do_include_all_eligible_practitioners = p.biz_strike_team_deployment_members.BeNone(p.deployment_id);
+        p.do_include_all_eligible_practitioners = p.biz_strike_team_deployment_members.BeNone(deployment_id);
         CheckBox_do_include_all_eligible_practitioners.Checked = p.do_include_all_eligible_practitioners;
         }
+      p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
       }
