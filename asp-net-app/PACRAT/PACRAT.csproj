@@ -119,6 +119,7 @@
     <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx" />
+    <Content Include="usercontrol\app\UserControl_strike_team_deployment_log.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_member.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_members.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_operational_period.ascx" />
@@ -147,6 +148,7 @@
     <Compile Include="component\biz\Class_biz_sms_gateways.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployments.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_assignments.cs" />
+    <Compile Include="component\biz\Class_biz_strike_team_deployment_logs.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_members.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_operational_periods.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_vehicles.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="component\db\Class_db_sms_gateways.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployments.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployment_assignments.cs" />
+    <Compile Include="component\db\Class_db_strike_team_deployment_logs.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployment_members.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployment_operational_periods.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployment_vehicles.cs" />
@@ -593,6 +596,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_catalog.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_log.ascx.cs">
+      <DependentUpon>UserControl_strike_team_deployment_log.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_log.ascx.designer.cs">
+      <DependentUpon>UserControl_strike_team_deployment_log.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_member.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_member.ascx</DependentUpon>

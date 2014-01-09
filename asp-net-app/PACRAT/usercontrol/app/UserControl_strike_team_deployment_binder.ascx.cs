@@ -4,6 +4,7 @@ using Class_biz_members;
 using Class_biz_services;
 using Class_biz_user;
 using kix;
+using UserControl_strike_team_deployment_log;
 using UserControl_strike_team_deployment_members;
 using UserControl_strike_team_deployment_operational_periods;
 using UserControl_strike_team_deployment_vehicles;
@@ -13,9 +14,10 @@ namespace UserControl_strike_team_deployment_binder
 
   public class UserControl_strike_team_deployment_binder_Static
     {
-    public const int TSSI_PERSONNEL = 0;
-    public const int TSSI_VEHICLES = 1;
-    public const int TSSI_OPERATIONAL_PERIODS = 2;
+    public const int TSSI_LOG = 0;
+    public const int TSSI_PERSONNEL = 1;
+    public const int TSSI_VEHICLES = 2;
+    public const int TSSI_OPERATIONAL_PERIODS = 3;
     }
 
   public partial class TWebUserControl_strike_team_deployment_binder: ki_web_ui.usercontrol_class
@@ -48,7 +50,13 @@ namespace UserControl_strike_team_deployment_binder
       string target
       )
       {
-      if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL)
+      if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_LOG)
+        {
+        var c = ((TWebUserControl_strike_team_deployment_log)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_log.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_log",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        c.Set(p.deployment_id,p.service_strike_team_management_footprint);
+        }
+      else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL)
         {
         var c = ((TWebUserControl_strike_team_deployment_members)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_members.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_members",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
@@ -187,7 +195,11 @@ namespace UserControl_strike_team_deployment_binder
       {
       if (target != k.EMPTY)
         {
-        if (target.ToLower().Contains("/personnel/"))
+        if (target.ToLower().Contains("/log/"))
+          {
+          p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_LOG;
+          }
+        else if (target.ToLower().Contains("/personnel/"))
           {
           p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL;
           }
@@ -209,4 +221,3 @@ namespace UserControl_strike_team_deployment_binder
     } // end TWebUserControl_strike_team_deployment_binder
 
   }
-
