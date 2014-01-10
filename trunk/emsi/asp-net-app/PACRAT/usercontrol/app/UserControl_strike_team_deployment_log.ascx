@@ -23,17 +23,18 @@
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
             <tr>
               <td>
-                <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
+                <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="2" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
                     <asp:BoundColumn datafield="id" ReadOnly="True" Visible="False"></asp:BoundColumn>
                     <asp:BoundColumn datafield="timestamp" headertext="Timestamp" sortexpression="timestamp%" ReadOnly="True">
                       <HeaderStyle horizontalalign="Left"></HeaderStyle>
+                      <ItemStyle VerticalAlign="Top" Wrap="False" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="actor" headertext="Actor" sortexpression="actor%" ReadOnly="True">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
+                    <asp:BoundColumn datafield="actor" headertext="Actor" sortexpression="actor%,timestamp" ReadOnly="True">
+                      <ItemStyle horizontalalign="Left" VerticalAlign="Top" Wrap="False" />
                     </asp:BoundColumn>
                     <asp:BoundColumn datafield="action" headertext="Action" ReadOnly="True">
-                      <ItemStyle horizontalalign="Right"></ItemStyle>
+                      <ItemStyle horizontalalign="Left" />
                     </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>

@@ -22,10 +22,6 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (act_1994_151_date is not null and act_1994_151_date > '0001-01-01')"
     + " and"
-    +   " (phone_number is not null)"
-    + " and"
-    +   " (phone_service_id is not null)"
-    + " and"
     +   " be_immune_hepatitis_b"
     + " and"
     +   " be_immune_diptheria_tetanus"
@@ -41,6 +37,12 @@ namespace Class_db_practitioner_strike_team_details
     +   " (nims_is_200_date is not null and nims_is_200_date > '0001-01-01')"
     + " and"
     +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
+    + " )";
+    public const string BE_TEXTABLE_EXPRESSION = k.EMPTY
+    + " ("
+    +   " (phone_number is not null)"
+    + " and"
+    +   " (phone_service_id is not null)"
     + " )";
     }
 
@@ -221,7 +223,7 @@ namespace Class_db_practitioner_strike_team_details
         + " , IF(DATE_FORMAT(act_1985_33_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_33_date,'%e %M %Y')) as act_1985_33_date"
         + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_34_date,'%e %M %Y')) as act_1985_34_date"
         + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1994_151_date,'%e %M %Y')) as act_1994_151_date"
-        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one credentialing requirement') as credentialed_clause"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one credentialing requirement') as credentialed_clause"
         + " , GROUP_CONCAT(affiliated_service.name ORDER BY affiliated_service.name SEPARATOR ', ') as service_strike_team_affiliation"
         + " , IFNULL("
         +       " ("
@@ -243,7 +245,7 @@ namespace Class_db_practitioner_strike_team_details
         +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
         + " where email_address is not null"
         +   " and TRIM(email_address) <> ''"
-        +   (do_limit_to_uncredentialed ? " and not" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION : k.EMPTY)
+        +   (do_limit_to_uncredentialed ? " and not (" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ")" : k.EMPTY)
         + " group by practitioner_strike_team_detail.id"
         + " order by RAND()",
         connection

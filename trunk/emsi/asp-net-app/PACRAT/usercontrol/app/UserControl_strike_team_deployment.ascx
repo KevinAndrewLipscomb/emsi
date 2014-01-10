@@ -91,7 +91,7 @@
     <td><font class=""></font></td>
     <td>
       <font class="">
-        <ASP:CheckBox id="CheckBox_be_drill" runat="server" cssclass="" enabled="False" Text="This deployment is a DRILL.  Credential requirements should not be enforced."></ASP:CheckBox>
+        <ASP:CheckBox id="CheckBox_be_drill" runat="server" cssclass="" enabled="False" Text="This deployment is a DRILL.  Only cellphone-related credential requirements should be enforced."></ASP:CheckBox>
       </font>
     </td>
     <td nowrap="nowrap">

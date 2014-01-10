@@ -158,7 +158,7 @@ namespace UserControl_strike_team_deployment_log
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
-        p.sort_order = "timestamp desc";
+        p.sort_order = "timestamp";
         p.service_strike_team_management_footprint = k.EMPTY;
         }
       }
@@ -188,14 +188,10 @@ namespace UserControl_strike_team_deployment_log
 
     private void DataGrid_control_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)
       {
-      LinkButton link_button;
       if (p.be_interactive)
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_log_Static.TCI_SELECT].Controls[0]) as LinkButton);
-          link_button.Text = k.ExpandTildePath(link_button.Text);
-          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
