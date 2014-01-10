@@ -25,6 +25,11 @@ namespace Class_biz_strike_team_deployment_operational_periods
       db_strike_team_deployment_operational_periods = new TClass_db_strike_team_deployment_operational_periods();
       }
 
+    internal bool BeConvoyOf(object summary)
+      {
+      return db_strike_team_deployment_operational_periods.BeConvoyOf(summary);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_strike_team_deployment_operational_periods.Bind(partial_spec, target);
@@ -49,6 +54,11 @@ namespace Class_biz_strike_team_deployment_operational_periods
     public bool Delete(string id)
       {
       return db_strike_team_deployment_operational_periods.Delete(id);
+      }
+
+    internal DateTime EndOf(object summary)
+      {
+      return db_strike_team_deployment_operational_periods.EndOf(summary);
       }
 
     public bool Get
@@ -98,6 +108,11 @@ namespace Class_biz_strike_team_deployment_operational_periods
         end,
         be_convoy
         );
+      }
+
+    internal DateTime StartOf(object summary)
+      {
+      return db_strike_team_deployment_operational_periods.StartOf(summary);
       }
 
     internal object Summary(string id)

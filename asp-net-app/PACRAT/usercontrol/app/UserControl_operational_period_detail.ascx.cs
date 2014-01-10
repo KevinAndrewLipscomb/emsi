@@ -3,7 +3,9 @@ using Class_biz_members;
 using Class_biz_patient_care_levels;
 using Class_biz_practitioner_strike_team_details;
 using Class_biz_strike_team_deployment_assignments;
+using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
+using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_strike_team_deployment_vehicles;
 using Class_biz_user;
 using kix;
@@ -55,8 +57,10 @@ namespace UserControl_operational_period_detail
       public TClass_biz_members biz_members;
       public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
-      public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
+      public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
+      public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
+      public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
       public TClass_biz_user biz_user;
       public string deployment_id;
@@ -133,6 +137,19 @@ namespace UserControl_operational_period_detail
         vehicle_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].Text, k.safe_hint_type.NUM),
         be_assigned:false
         );
+      //
+      // Log event
+      //
+      var operational_period_summary = p.biz_strike_team_deployment_operational_periods.Summary(id:p.operational_period_id);
+      p.biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id:p.deployment_id,
+        action:"deassigned member `" + k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text,k.safe_hint_type.PUNCTUATED) + "`"
+        + " from " + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary) ? "convoy" : "operational period")
+        + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
+        + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
+        );
+      //
       Bind();
       }
 
@@ -273,6 +290,20 @@ namespace UserControl_operational_period_detail
         vehicle_id:k.Safe(DropDownList_vehicle.SelectedValue, k.safe_hint_type.NUM),
         be_assigned:true
         );
+      //
+      // Log event
+      //
+      var operational_period_summary = p.biz_strike_team_deployment_operational_periods.Summary(id:p.operational_period_id);
+      p.biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id:p.deployment_id,
+        action:"assigned member `" + k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text,k.safe_hint_type.PUNCTUATED) + "`"
+        + " to vehicle `" + k.Safe(DropDownList_vehicle.Items[DropDownList_vehicle.SelectedIndex].Text,k.safe_hint_type.PUNCTUATED) + "`"
+        + " for " + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary) ? "convoy" : "operational period")
+        + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
+        + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
+        );
+      //
       Bind();
       }
 
@@ -298,7 +329,9 @@ namespace UserControl_operational_period_detail
         p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
         p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
+        p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
+        p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
         p.biz_user = new TClass_biz_user();
         //

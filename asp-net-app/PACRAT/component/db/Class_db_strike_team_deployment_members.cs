@@ -86,11 +86,11 @@ namespace Class_db_strike_team_deployment_members
         +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code and strike_team_deployment.id = '" + deployment_id + "')"
         +   " join practitioner on (practitioner.id=strike_team_roster.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
-        +   " left join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
-        +   " left join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
+        +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
+        +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
-        + " where TRUE"
-        +   " and" + (do_include_all_eligible_practitioners ? " (" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + " or be_drill)" : " (practitioner_strike_team_detail.id is not null and phone_service_id is not null)")
+        + " where " + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION
+        +   (do_include_all_eligible_practitioners ? " and (" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + " or be_drill)" : k.EMPTY)
         +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY)
         + " group by practitioner.id"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),

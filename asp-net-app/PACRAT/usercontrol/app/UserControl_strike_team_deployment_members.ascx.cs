@@ -3,6 +3,7 @@
 using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_user;
 using Class_msg_protected;
@@ -41,6 +42,7 @@ namespace UserControl_strike_team_deployment_members
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+      public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_user biz_user;
       public string deployment_id;
@@ -184,6 +186,7 @@ namespace UserControl_strike_team_deployment_members
         {
         p.biz_members = new TClass_biz_members();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+        p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_user = new TClass_biz_user();
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
@@ -241,6 +244,7 @@ namespace UserControl_strike_team_deployment_members
         else if (e.CommandName == "ToggleMobilization")
           {
           var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          var name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME) + k.COMMA_SPACE + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
           if (id.Length == 0)
             {
             p.biz_strike_team_deployment_members.Set
@@ -250,6 +254,15 @@ namespace UserControl_strike_team_deployment_members
               practitioner_id:practitioner_id,
               tag_num:k.EMPTY
               );
+            //
+            // Log event
+            //
+            p.biz_strike_team_deployment_logs.Enter
+              (
+              deployment_id:p.deployment_id,
+              action:"mobilized `" + name + "`"
+              );
+            //
             if (p.service_strike_team_management_footprint.Length == 0)
               {
               DataGrid_control.EditItemIndex = e.Item.ItemIndex;
@@ -259,13 +272,23 @@ namespace UserControl_strike_team_deployment_members
             {
             if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
               {
+              var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
               p.biz_strike_team_deployment_members.Set
                 (
                 id:id,
                 deployment_id:p.deployment_id,
                 practitioner_id:practitioner_id,
-                tag_num:k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM)
+                tag_num:tag_num
                 );
+              //
+              // Log event
+              //
+              p.biz_strike_team_deployment_logs.Enter
+                (
+                deployment_id:p.deployment_id,
+                action:"assigned tag `" + tag_num + "` to `" + name + "`"
+                );
+              //
               DataGrid_control.EditItemIndex = -1;
               }
             else
@@ -277,6 +300,15 @@ namespace UserControl_strike_team_deployment_members
               else
                 {
                 p.biz_strike_team_deployment_members.Delete(id);
+                //
+                // Log event
+                //
+                p.biz_strike_team_deployment_logs.Enter
+                  (
+                  deployment_id:p.deployment_id,
+                  action:"demobilized `" + name + "`"
+                  );
+                //
                 }
               }
             }

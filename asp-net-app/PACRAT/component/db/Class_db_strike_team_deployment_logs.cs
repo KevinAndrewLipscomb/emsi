@@ -1,5 +1,7 @@
 // Derived from KiAspdotnetFramework/component/db/Class~db~template~kicrudhelped~items.cs~template
 
+using Class_biz_members;
+using Class_biz_user;
 using Class_db;
 using Class_db_trail;
 using kix;
@@ -18,10 +20,14 @@ namespace Class_db_strike_team_deployment_logs
       public string id;
       }
 
+    private TClass_biz_members biz_members = null;
+    private TClass_biz_user  biz_user = null;
     private TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_deployment_logs() : base()
       {
+      biz_members = new TClass_biz_members();
+      biz_user = new TClass_biz_user();
       db_trail = new TClass_db_trail();
       }
 
@@ -66,7 +72,8 @@ namespace Class_db_strike_team_deployment_logs
         + " , action"
         + " from strike_team_deployment_log"
         +   " join member on (member.id=strike_team_deployment_log.actor_member_id)"
-        + " where deployment_id = '" + deployment_id + "'",
+        + " where deployment_id = '" + deployment_id + "'"
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
         .ExecuteReader();
@@ -116,6 +123,28 @@ namespace Class_db_strike_team_deployment_logs
         }
       Close();
       return result;
+      }
+
+    internal void Enter
+      (
+      string deployment_id,
+      string action
+      )
+      {
+      Open();
+      new MySqlCommand
+        (
+        db_trail.Saved
+          (
+          "insert strike_team_deployment_log"
+          + " set deployment_id = NULLIF('" + deployment_id + "','')"
+          + " , actor_member_id = NULLIF('" + biz_members.IdOfUserId(biz_user.IdNum()) + "','')"
+          + " , action = NULLIF('" + action + "','')"
+          ),
+        connection
+        )
+        .ExecuteNonQuery();
+      Close();
       }
 
     public bool Get

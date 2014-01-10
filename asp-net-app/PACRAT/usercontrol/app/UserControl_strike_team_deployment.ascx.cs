@@ -4,6 +4,7 @@ using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
+using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using kix;
@@ -21,6 +22,7 @@ namespace UserControl_strike_team_deployment
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public bool be_ok_to_config_strike_team_deployments;
@@ -290,6 +292,7 @@ namespace UserControl_strike_team_deployment
         p.biz_members = new TClass_biz_members();
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
+        p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
         //
@@ -327,16 +330,27 @@ namespace UserControl_strike_team_deployment
       {
       if (Page.IsValid)
         {
+        var id = k.Safe(TextBox_id.Text,k.safe_hint_type.NUM);
+        var name = k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim();
         p.biz_strike_team_deployments.Set
           (
-          k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
+          id,
           (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
-          k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
+          name,
           k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM),
           CheckBox_be_drill.Checked
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {
+          //
+          // Log event
+          //
+          p.biz_strike_team_deployment_logs.Enter
+            (
+            deployment_id:id,
+            action:"named deployment `" + name + "` and made it " + (CheckBox_be_drill.Checked ? k.EMPTY : "not ") + "a drill"
+            );
+          //
           Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
           }
         else
@@ -381,8 +395,18 @@ namespace UserControl_strike_team_deployment
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_strike_team_deployments.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
+      var id = k.Safe(TextBox_id.Text,k.safe_hint_type.NUM);
+      if (p.biz_strike_team_deployments.Delete(id))
         {
+        //
+        // Log event
+        //
+        p.biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id:id,
+          action:"deleted deployment"
+          );
+        //
         SetLookupMode();
         }
       else

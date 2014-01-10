@@ -16,6 +16,9 @@ namespace Class_db_strike_team_deployment_operational_periods
     private class strike_team_deployment_operational_periods_summary
       {
       public string id;
+      public DateTime start;
+      public DateTime end;
+      public bool be_convoy;
       }
 
     private TClass_db_trail db_trail = null;
@@ -23,6 +26,11 @@ namespace Class_db_strike_team_deployment_operational_periods
     public TClass_db_strike_team_deployment_operational_periods() : base()
       {
       db_trail = new TClass_db_trail();
+      }
+
+    internal bool BeConvoyOf(object summary)
+      {
+      return (summary as strike_team_deployment_operational_periods_summary).be_convoy;
       }
 
     public bool Bind(string partial_spec, object target)
@@ -118,6 +126,11 @@ namespace Class_db_strike_team_deployment_operational_periods
       return result;
       }
 
+    internal DateTime EndOf(object summary)
+      {
+      return (summary as strike_team_deployment_operational_periods_summary).end;
+      }
+
     public bool Get
       (
       string id,
@@ -203,6 +216,11 @@ namespace Class_db_strike_team_deployment_operational_periods
         );
       }
 
+    internal DateTime StartOf(object summary)
+      {
+      return (summary as strike_team_deployment_operational_periods_summary).start;
+      }
+
     internal object Summary(string id)
       {
       Open();
@@ -221,6 +239,9 @@ namespace Class_db_strike_team_deployment_operational_periods
       var the_summary = new strike_team_deployment_operational_periods_summary()
         {
         id = id,
+        start = DateTime.Parse(dr["start"].ToString()),
+        end = DateTime.Parse(dr["end"].ToString()),
+        be_convoy = (dr["be_convoy"].ToString() == "1")
         };
       Close();
       return the_summary;

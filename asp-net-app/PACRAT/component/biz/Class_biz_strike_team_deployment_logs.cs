@@ -42,6 +42,15 @@ namespace Class_biz_strike_team_deployment_logs
       return db_strike_team_deployment_logs.Delete(id);
       }
 
+    internal void Enter
+      (
+      string deployment_id,
+      string action
+      )
+      {
+      db_strike_team_deployment_logs.Enter(deployment_id,action);
+      }
+
     public bool Get
       (
       string id,
