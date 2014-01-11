@@ -144,7 +144,7 @@ namespace UserControl_operational_period_detail
       p.biz_strike_team_deployment_logs.Enter
         (
         deployment_id:p.deployment_id,
-        action:"deassigned member `" + k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text,k.safe_hint_type.PUNCTUATED) + "`"
+        action:"deassigned member `" + k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_DESIGNATOR].Text,k.safe_hint_type.PUNCTUATED) + "`"
         + " from " + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary) ? "convoy" : "operational period")
         + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
         + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
