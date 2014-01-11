@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_vehicles;
 using Class_msg_protected;
 using kix;
@@ -34,6 +35,7 @@ namespace UserControl_strike_team_deployment_vehicles
       public bool be_interactive;
       public bool be_loaded;
       public bool be_sort_order_ascending;
+      public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
       public string deployment_id;
       public bool do_include_all_eligible_vehicles;
@@ -166,12 +168,14 @@ namespace UserControl_strike_team_deployment_vehicles
         }
       else
         {
+        p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
         p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.do_include_all_eligible_vehicles = true;
         p.deployment_id = k.EMPTY;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "service%,name";
@@ -216,15 +220,16 @@ namespace UserControl_strike_team_deployment_vehicles
         else if (e.CommandName == "ToggleMobilization")
           {
           var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          var static_name = k.EMPTY
+          + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SERVICE].Text,k.safe_hint_type.ORG_NAME)
+          + k.SPACE
+          + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_NAME].Text,k.safe_hint_type.MAKE_MODEL);
           if (id.Length == 0)
             {
             var tactical_name = k.EMPTY;
             if (p.service_strike_team_management_footprint.Length == 0)
               {
-              tactical_name = k.EMPTY
-              + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SERVICE].Text,k.safe_hint_type.ORG_NAME)
-              + k.SPACE
-              + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_NAME].Text,k.safe_hint_type.MAKE_MODEL);
+              tactical_name = static_name;
               }
             p.biz_strike_team_deployment_vehicles.Set
               (
@@ -234,6 +239,15 @@ namespace UserControl_strike_team_deployment_vehicles
               tactical_name:tactical_name,
               transponder_name:k.EMPTY
               );
+            //
+            // Log event
+            //
+            p.biz_strike_team_deployment_logs.Enter
+              (
+              deployment_id:p.deployment_id,
+              action:"mobilized `" + static_name + "`"
+              );
+            //
             if (p.service_strike_team_management_footprint.Length == 0)
               {
               DataGrid_control.EditItemIndex = e.Item.ItemIndex;
@@ -243,14 +257,25 @@ namespace UserControl_strike_team_deployment_vehicles
             {
             if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
               {
+              var tactical_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
+              var transponder_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
               p.biz_strike_team_deployment_vehicles.Set
                 (
                 id:id,
                 deployment_id:p.deployment_id,
                 vehicle_id:vehicle_id,
-                tactical_name:k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper(),
-                transponder_name:k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper()
+                tactical_name:tactical_name,
+                transponder_name:transponder_name
                 );
+              //
+              // Log event
+              //
+              p.biz_strike_team_deployment_logs.Enter
+                (
+                deployment_id:p.deployment_id,
+                action:"assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to `" + static_name + "`"
+                );
+              //
               DataGrid_control.EditItemIndex = -1;
               }
             else
@@ -262,6 +287,15 @@ namespace UserControl_strike_team_deployment_vehicles
               else
                 {
                 p.biz_strike_team_deployment_vehicles.Delete(id);
+                //
+                // Log event
+                //
+                p.biz_strike_team_deployment_logs.Enter
+                  (
+                  deployment_id:p.deployment_id,
+                  action:"demobilized `" + static_name + "`"
+                  );
+                //
                 }
               }
             }
@@ -351,6 +385,7 @@ namespace UserControl_strike_team_deployment_vehicles
     protected void CheckBox_do_include_all_eligible_vehicles_CheckedChanged(object sender, EventArgs e)
       {
       p.do_include_all_eligible_vehicles = CheckBox_do_include_all_eligible_vehicles.Checked;
+      DataGrid_control.EditItemIndex =  -1;
       Bind();
       }
 
