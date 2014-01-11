@@ -4,6 +4,7 @@ using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
+using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_user;
 using kix;
@@ -19,6 +20,7 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       public bool be_loaded;
       public bool be_ok_to_config_strike_team_deployment_operational_periods;
+      public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
@@ -277,6 +279,7 @@ namespace UserControl_strike_team_deployment_operational_period
         p.be_loaded = false;
         p.biz_members = new TClass_biz_members();
         p.biz_privileges = new TClass_biz_privileges();
+        p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_user = new TClass_biz_user();
@@ -332,6 +335,13 @@ namespace UserControl_strike_team_deployment_operational_period
           end,
           CheckBox_be_convoy.Checked
           );
+        p.biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id:p.deployment_id,
+          action:"designated " + start.ToString("yyyy-MM-dd HH:mm")
+          + " to " + end.ToString("yyyy-MM-dd HH:mm")
+          + " as a" + (CheckBox_be_convoy.Checked ? " convoy" : "n operational period")
+          );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         if (p.presentation_mode == presentation_mode_enum.NEW)
           {
@@ -375,8 +385,18 @@ namespace UserControl_strike_team_deployment_operational_period
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_strike_team_deployment_operational_periods.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
+      var operational_period_id = k.Safe(TextBox_id.Text, k.safe_hint_type.NUM);
+      var summary = p.biz_strike_team_deployment_operational_periods.Summary(id:operational_period_id);
+      if (p.biz_strike_team_deployment_operational_periods.Delete(operational_period_id))
         {
+        p.biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id:p.deployment_id,
+          action:"deleted "
+          + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(summary) ? "convoy" : "operational period")
+          + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(summary).ToString("yyyy-MM-dd HH:mm")
+          + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(summary).ToString("yyyy-MM-dd HH:mm")
+          );
         BackTrack();
         }
       else
