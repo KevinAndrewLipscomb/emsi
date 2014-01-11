@@ -398,6 +398,7 @@ namespace UserControl_strike_team_deployment_members
     protected void CheckBox_do_include_all_eligible_practitioners_CheckedChanged(object sender, EventArgs e)
       {
       p.do_include_all_eligible_practitioners = CheckBox_do_include_all_eligible_practitioners.Checked;
+      DataGrid_control.EditItemIndex =  -1;
       Bind();
       }
 
