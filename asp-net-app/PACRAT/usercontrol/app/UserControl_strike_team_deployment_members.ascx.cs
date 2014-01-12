@@ -260,7 +260,7 @@ namespace UserControl_strike_team_deployment_members
             p.biz_strike_team_deployment_logs.Enter
               (
               deployment_id:p.deployment_id,
-              action:"mobilized `" + name + "`"
+              action:"mobilized member `" + name + "`"
               );
             //
             if (p.service_strike_team_management_footprint.Length == 0)
@@ -286,7 +286,7 @@ namespace UserControl_strike_team_deployment_members
               p.biz_strike_team_deployment_logs.Enter
                 (
                 deployment_id:p.deployment_id,
-                action:"assigned tag `" + tag_num + "` to `" + name + "`"
+                action:"assigned tag `" + tag_num + "` to member `" + name + "`"
                 );
               //
               DataGrid_control.EditItemIndex = -1;
@@ -306,7 +306,7 @@ namespace UserControl_strike_team_deployment_members
                 p.biz_strike_team_deployment_logs.Enter
                   (
                   deployment_id:p.deployment_id,
-                  action:"demobilized `" + name + "`"
+                  action:"demobilized member `" + name + "`"
                   );
                 //
                 }

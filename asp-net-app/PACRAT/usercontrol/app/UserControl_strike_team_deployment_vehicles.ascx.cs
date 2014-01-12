@@ -245,7 +245,7 @@ namespace UserControl_strike_team_deployment_vehicles
             p.biz_strike_team_deployment_logs.Enter
               (
               deployment_id:p.deployment_id,
-              action:"mobilized `" + static_name + "`"
+              action:"mobilized vehicle `" + static_name + "`"
               );
             //
             if (p.service_strike_team_management_footprint.Length == 0)
@@ -273,7 +273,7 @@ namespace UserControl_strike_team_deployment_vehicles
               p.biz_strike_team_deployment_logs.Enter
                 (
                 deployment_id:p.deployment_id,
-                action:"assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to `" + static_name + "`"
+                action:"assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to vehicle `" + static_name + "`"
                 );
               //
               DataGrid_control.EditItemIndex = -1;
@@ -293,7 +293,7 @@ namespace UserControl_strike_team_deployment_vehicles
                 p.biz_strike_team_deployment_logs.Enter
                   (
                   deployment_id:p.deployment_id,
-                  action:"demobilized `" + static_name + "`"
+                  action:"demobilized vehicle `" + static_name + "`"
                   );
                 //
                 }
