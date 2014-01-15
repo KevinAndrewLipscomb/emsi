@@ -1,0 +1,32 @@
+Sponsor says roster ALREADY SUBMITTED (<class_number/>)
+This is an automatic notification from <application_name/>.
+
+Continuing Education Sponsor <sponsor_number/>, <sponsor_name/>, has indicated that the following class no longer needs to appear in <application_name/> because its roster has ALREADY BEEN SUBMITTED:
+
+   Class #:
+      <class_number/>
+   Course title:
+      <course_title/>
+   Start:
+      <start/>
+   End:
+      <end/>
+   Length:
+      <length/>
+   Location:
+      <location/>
+
+It may be that no action from you is required.  This is a normal occurrence when your region has recently subscribed to <application_name/>, or when a sponsor used some non-<application_name/> mechanism to submit a roster.
+
+You can reach <sponsor_name/> at:
+
+   Class public contact:
+      <coned_offering_public_contact_email/> (mailto:<coned_offering_public_contact_email/>)
+   Sponsor:
+      <sponsor_email/> (mailto:<sponsor_email/>)
+   Sponsor contact:
+      <sponsor_contact_email/> (mailto:<sponsor_contact_email/>)
+   Sponsor public contact:
+      <sponsor_public_contact_email/> (mailto:<sponsor_public_contact_email/>)
+
+-- <application_name/> (http://<host_domain_name/>/<application_name/>)

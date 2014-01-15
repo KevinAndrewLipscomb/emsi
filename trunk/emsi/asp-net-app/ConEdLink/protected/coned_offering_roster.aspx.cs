@@ -97,12 +97,9 @@ namespace coned_offering_roster
       p.num_attendees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[coned_offering_roster_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
-      //Button_mark_class_canceled.Visible =
-      //  (
-      //    (p.biz_coned_offerings.RegionCodeOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary)) == p.region_code)
-      //  &&
-      //    (p.num_attendees.val == 0) || (Session["imitator_designator"] != null)
-      //  );
+      Button_mark_class_canceled.Visible = (p.num_attendees.val == 0);
+      Button_mark_class_ran_no_ce.Visible = (p.num_attendees.val == 0);
+      Button_mark_roster_already_submitted.Visible = (p.num_attendees.val == 0);
       TableRow_none.Visible = (p.num_attendees.val == 0);
       DataGrid_control.Visible = (p.num_attendees.val > 0);
       Label_noncurrent_practitioner_on_roster.Visible = p.be_noncurrent_practitioners_on_roster;
@@ -369,22 +366,20 @@ namespace coned_offering_roster
 
     protected void Button_mark_class_canceled_Click(object sender, EventArgs e)
       {
-      try
-        {
-        p.biz_coned_offerings.MarkCanceled(p.incoming.summary,p.region_code);
-        BackTrack();
-        }
-      catch
-        {
-        Alert
-          (
-          cause:k.alert_cause_type.NETWORK,
-          state:k.alert_state_type.FAILURE,
-          key:"bademsrscancel",
-          value:"ConEdLink was unable to cancel the class.  This may be due to a temporary problem communicating with EMSRS.  Please try again.  If the problem continues, please try later.  If the problem is persistent, please"
-          + " notify your regional council and cite the class number."
-          );
-        }
+      p.biz_coned_offerings.RequestCancellation(p.incoming.summary,p.region_code);
+      BackTrack();
+      }
+
+    protected void Button_mark_class_ran_no_ce_Click(object sender, EventArgs e)
+      {
+      p.biz_coned_offerings.RequestRanNoCe(p.incoming.summary,p.region_code);
+      BackTrack();
+      }
+
+    protected void Button_mark_roster_already_submitted_Click(object sender, EventArgs e)
+      {
+      p.biz_coned_offerings.MarkRosterAlreadySubmitted(p.incoming.summary,p.region_code);
+      BackTrack();
       }
 
     protected void Button_send_Click(object sender, System.EventArgs e)
@@ -767,8 +762,24 @@ namespace coned_offering_roster
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
         Literal_start.Text = p.biz_coned_offerings.StartDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.StartOtherOf(p.incoming.summary);
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.incoming.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.incoming.summary);
-        RequireConfirmation(Button_mark_class_canceled,"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + " and the class will be marked as CANCELED in the state EMSRS.");
+        RequireConfirmation
+          (
+          c:Button_mark_class_canceled,
+          prompt:"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + "."
+          );
+        RequireConfirmation
+          (
+          c:Button_mark_class_ran_no_ce,
+          prompt:"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + "."
+          );
+        RequireConfirmation
+          (
+          c:Button_mark_roster_already_submitted,
+          prompt:"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + "."
+          );
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_canceled);
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_ran_no_ce);
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_roster_already_submitted);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         TableRow_ratings_header.Visible = (p.eval_summary_mode_description == "SAEMS");
