@@ -391,6 +391,24 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Button Button_mark_class_canceled;
         
         /// <summary>
+        /// Button_mark_class_ran_no_ce control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_mark_class_ran_no_ce;
+        
+        /// <summary>
+        /// Button_mark_roster_already_submitted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_mark_roster_already_submitted;
+        
+        /// <summary>
         /// CheckBox_item_sample control.
         /// </summary>
         /// <remarks>

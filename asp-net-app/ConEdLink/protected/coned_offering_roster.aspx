@@ -246,7 +246,23 @@
                                           <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
                                         </td>
                                         <td align="right">
-                                          <asp:Button ID="Button_mark_class_canceled" runat="server" CausesValidation="False" onclick="Button_mark_class_canceled_Click" Text="Mark class CANCELED" Visible="False" />
+                                          <table cellpadding="5" cellspacing="0">
+                                            <tr>
+                                              <td>
+                                                <asp:Button ID="Button_mark_class_canceled" runat="server" CausesValidation="False" onclick="Button_mark_class_canceled_Click" Text="Class was CANCELED" Visible="False" Width="100%" />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                                <asp:Button ID="Button_mark_class_ran_no_ce" runat="server" CausesValidation="False" onclick="Button_mark_class_ran_no_ce_Click" Text="Class RAN but NO CE was requested" Visible="False" Width="100%" />
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                                <asp:Button ID="Button_mark_roster_already_submitted" runat="server" CausesValidation="False" onclick="Button_mark_roster_already_submitted_Click" Text="Roster ALREADY SUBMITTED" Visible="False" Width="100%" />
+                                              </td>
+                                            </tr>
+                                          </table>
                                         </td>
                                       </tr>
                                     </table>
