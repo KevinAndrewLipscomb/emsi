@@ -484,9 +484,9 @@ namespace practitioner_management
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
         //
-        //var hash_table = new Hashtable();
-        //hash_table["service_id"] = p.biz_services.IdOf(p.incoming.summary);
-        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        var hash_table = new Hashtable();
+        hash_table["service_id"] = p.biz_services.IdOf(p.incoming.summary);
+        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_service_strike_team_roster.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);

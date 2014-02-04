@@ -479,9 +479,9 @@ namespace service_management
         LinkButton_drill_down_to_members.Text = k.ExpandTildePath(LinkButton_drill_down_to_members.Text);
         LinkButton_drill_down_to_vehicles.Text = k.ExpandTildePath(LinkButton_drill_down_to_vehicles.Text);
         //
-        //var hash_table = new Hashtable();
-        //hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
-        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        var hash_table = new Hashtable();
+        hash_table["service_id"] = p.biz_services.IdOf(p.incoming.summary);
+        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_service_strike_team_key_personnel.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
