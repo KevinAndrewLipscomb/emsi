@@ -89,6 +89,9 @@
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
     <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
     <Content Include="protected\bounty_program.aspx" />
+    <Content Include="protected\hardcopy_region_strike_team_key_personnel.aspx" />
+    <Content Include="protected\hardcopy_service_strike_team_key_personnel.aspx" />
+    <Content Include="protected\hardcopy_service_strike_team_roster.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
     <Content Include="protected\practitioner_profile.aspx" />
@@ -115,6 +118,8 @@
     <Content Include="usercontrol\app\UserControl_sms_gateway.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
+    <Content Include="usercontrol\app\UserControl_static_region_strike_team_key_personnel.ascx" />
+    <Content Include="usercontrol\app\UserControl_static_service_strike_team_key_personnel.ascx" />
     <Content Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx" />
@@ -277,6 +282,27 @@
     </Compile>
     <Compile Include="protected\establish_membership_trouble.aspx.designer.cs">
       <DependentUpon>establish_membership_trouble.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\hardcopy_region_strike_team_key_personnel.aspx.cs">
+      <DependentUpon>hardcopy_region_strike_team_key_personnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\hardcopy_region_strike_team_key_personnel.aspx.designer.cs">
+      <DependentUpon>hardcopy_region_strike_team_key_personnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\hardcopy_service_strike_team_key_personnel.aspx.cs">
+      <DependentUpon>hardcopy_service_strike_team_key_personnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\hardcopy_service_strike_team_key_personnel.aspx.designer.cs">
+      <DependentUpon>hardcopy_service_strike_team_key_personnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\hardcopy_service_strike_team_roster.aspx.cs">
+      <DependentUpon>hardcopy_service_strike_team_roster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\hardcopy_service_strike_team_roster.aspx.designer.cs">
+      <DependentUpon>hardcopy_service_strike_team_roster.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\operational_period_detail.aspx.cs">
       <DependentUpon>operational_period_detail.aspx</DependentUpon>
@@ -568,6 +594,20 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_state_detail.ascx.designer.cs">
       <DependentUpon>UserControl_state_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_region_strike_team_key_personnel.ascx.cs">
+      <DependentUpon>UserControl_static_region_strike_team_key_personnel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_region_strike_team_key_personnel.ascx.designer.cs">
+      <DependentUpon>UserControl_static_region_strike_team_key_personnel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_service_strike_team_key_personnel.ascx.cs">
+      <DependentUpon>UserControl_static_service_strike_team_key_personnel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_service_strike_team_key_personnel.ascx.designer.cs">
+      <DependentUpon>UserControl_static_service_strike_team_key_personnel.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx.cs">
       <DependentUpon>UserControl_static_service_strike_team_roster.ascx</DependentUpon>

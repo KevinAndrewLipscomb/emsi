@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_static_service_strike_team_roster.ascx.cs" Inherits="UserControl_static_service_strike_team_roster.TWebUserControl_static_service_strike_team_roster"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_static_region_strike_team_key_personnel.ascx.cs" Inherits="UserControl_static_region_strike_team_key_personnel.TWebUserControl_static_region_strike_team_key_personnel"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~std.ascx-template -->
 <table cellpadding="0" cellspacing="0">
   <tr>
@@ -7,9 +7,9 @@
         <tr>
           <td>
             <table cellpadding="5" cellspacing="0">
-              <tr><td><b><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
+              <tr><td><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
               <tr>
-                <td nowrap="nowrap" valign="top"><b>PA DOH Affiliate #:</b> <asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
+                <td nowrap="nowrap" valign="top"><b>PA DOH Region #:</b> <asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
               </tr>
             </table>
           </td>
@@ -24,18 +24,12 @@
         <tr>
           <td>
             <table cellpadding="10" cellspacing="0">
-              <tr><td style="background-color:WhiteSmoke"><b>Members</b></td></tr>
+              <tr><td style="background-color:WhiteSmoke"><b>Key personnel</b></td></tr>
               <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
               <tr id="TableRow_assignees" runat="server">
                 <td valign="top">
                   <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%">
                     <Columns>
-                      <asp:BoundColumn datafield="be_credentialed" Visible="false" ReadOnly="True"></asp:BoundColumn>
-                      <asp:TemplateColumn>
-                        <ItemTemplate>
-                          <asp:Image ID="Image_uncredentialed" runat="server" AlternateText="Uncredentialed" Height="16px" ImageUrl="@image/dialog-warning-2.png" Width="16px" />
-                        </ItemTemplate>
-                      </asp:TemplateColumn>
                       <asp:BoundColumn datafield="last_name" headertext="Last name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="first_name" headertext="First name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="middle_initial" ReadOnly="True"></asp:BoundColumn>
@@ -43,9 +37,13 @@
                         <ItemStyle Wrap="false" />
                       </asp:BoundColumn>
                       <asp:BoundColumn datafield="certification_number_for_display" headertext="Cert#" ReadOnly="True"></asp:BoundColumn>
-                      <asp:TemplateColumn HeaderText="DOB" SortExpression="birth_date%,last_name,first_name,middle_initial,practitioner_level.pecking_order,certification_number">
+                      <asp:TemplateColumn HeaderText="DOB">
                         <ItemTemplate><asp:Label ID="Label_dob" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.birth_date") %>'></asp:Label></ItemTemplate>
                       </asp:TemplateColumn>
+                      <asp:BoundColumn DataField="role_name" headertext="Role" ReadOnly="True">
+                        <HeaderStyle HorizontalAlign="Center" />
+                        <ItemStyle HorizontalAlign="Center" />
+                      </asp:BoundColumn>
                       <asp:TemplateColumn HeaderText="Email address">
                         <ItemTemplate><asp:Label ID="Label_email_address" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.email_address") %>'></asp:Label></ItemTemplate>
                       </asp:TemplateColumn>

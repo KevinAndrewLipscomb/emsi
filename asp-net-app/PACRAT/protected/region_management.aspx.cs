@@ -468,9 +468,9 @@ namespace region_management
         Literal_emsrs_code.Text = p.biz_regions.EmsrsCodeOf(p.incoming.summary);
         LinkButton_drill_down.Text = k.ExpandTildePath(LinkButton_drill_down.Text);
         //
-        //var hash_table = new Hashtable();
-        //hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
-        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster_state.aspx?"; // "~/protected/hardcopy_roster_state.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        var hash_table = new Hashtable();
+        hash_table["region_code"] = p.biz_regions.CodeOf(p.incoming.summary);
+        HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_region_strike_team_key_personnel.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
