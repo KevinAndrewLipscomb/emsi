@@ -69,6 +69,11 @@ namespace Class_biz_strike_team_deployments
         );
       }
 
+    internal string NameOfId(string id)
+      {
+      return db_strike_team_deployments.NameOfId(id);
+      }
+
     internal string RegionCodeOf(object summary)
       {
       return db_strike_team_deployments.RegionCodeOf(summary);

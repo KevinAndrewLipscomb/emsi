@@ -81,7 +81,7 @@ namespace UserControl_operational_period_detail
     private void Bind()
       {
       DataGrid_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive;
-      p.biz_strike_team_deployment_assignments.BindActuals
+      p.biz_strike_team_deployment_assignments.BindActualsByOperationalPeriod
         (
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
@@ -96,7 +96,7 @@ namespace UserControl_operational_period_detail
       Table_quick_message.Visible = !p.be_datagrid_empty;
       p.num_mappings.val = 0;
       //
-      p.biz_strike_team_deployment_assignments.BindDigest
+      p.biz_strike_team_deployment_assignments.BindDigestByOperationalPeriod
         (
         sort_order:p.digest_sort_order,
         be_sort_order_ascending:p.be_digest_sort_order_ascending,

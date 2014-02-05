@@ -163,6 +163,14 @@ namespace Class_db_strike_team_deployments
       return result;
       }
 
+    internal string NameOfId(string id)
+      {
+      Open();
+      var name_of_id_obj = new MySqlCommand("select name from strike_team_deployment where id = '" + id + "'",connection).ExecuteScalar();
+      Close();
+      return (name_of_id_obj == null ? k.EMPTY : name_of_id_obj.ToString());
+      }
+
     internal string RegionCodeOf(object summary)
       {
       return (summary as strike_team_deployment_summary).region_code;
