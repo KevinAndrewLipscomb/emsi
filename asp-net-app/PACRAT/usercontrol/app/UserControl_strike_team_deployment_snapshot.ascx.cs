@@ -323,6 +323,7 @@ namespace UserControl_strike_team_deployment_snapshot
         +   "<ss:Worksheet ss:Name=\"Intro\">"
         +     "<Table>"
         +       "<Row><Cell><Data>This is a snapshot of data associated with the '" + name + "' deployment.</Data></Cell></Row>"
+        +       "<Row><Cell><Data>This deployment is " + (be_drill ? "a DRILL" : "NOT a drill") + ".</Data></Cell></Row>"
         +       "<Row><Cell><Data>The authority and scope of this data is Pennsylvania EMS Region " + p.biz_regions.EmsrsCodeOf(region_summary) + " (" + p.biz_regions.NameOf(region_summary) + ").</Data></Cell></Row>"
         +       "<Row><Cell><Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</Data></Cell></Row>"
         +       "<Row><Cell><Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</Data></Cell></Row>"
