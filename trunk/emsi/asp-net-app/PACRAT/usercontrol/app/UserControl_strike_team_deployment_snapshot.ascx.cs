@@ -1,4 +1,5 @@
 using Class_biz_patient_care_levels;
+using Class_biz_regions;
 using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
@@ -61,6 +62,7 @@ namespace UserControl_strike_team_deployment_snapshot
       public string assignments_content_xml;
       public bool be_loaded;
       public TClass_biz_patient_care_levels biz_patient_care_levels;
+      public TClass_biz_regions biz_regions;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
@@ -111,6 +113,7 @@ namespace UserControl_strike_team_deployment_snapshot
         p.be_loaded = false;
         //
         p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
+        p.biz_regions = new TClass_biz_regions();
         p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
@@ -300,9 +303,32 @@ namespace UserControl_strike_team_deployment_snapshot
 
     protected void Button_export_Click(object sender, System.EventArgs e)
       {
+      var mark = DateTime.Now;
+      var creation_date = DateTime.MinValue;
+      var name = k.EMPTY;
+      var region_code = k.EMPTY;
+      var be_drill = false;
+      p.biz_strike_team_deployments.Get
+        (
+        id:p.deployment_id,
+        creation_date:out creation_date,
+        name:out name,
+        region_code:out region_code,
+        be_drill:out be_drill
+        );
+      var region_summary = p.biz_regions.Summary(region_code);
       var raw_xml = k.EMPTY
         + "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
         + "<Workbook xmlns:c=\"urn:schemas-microsoft-com:office:component:spreadsheet\" xmlns:html=\"http://www.w3.org/TR/REC-html40\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:x2=\"http://schemas.microsoft.com/office/excel/2003/xml\" xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:x=\"urn:schemas-microsoft-com:office:excel\">"
+        +   "<ss:Worksheet ss:Name=\"Intro\">"
+        +     "<Table>"
+        +       "<Row><Cell><Data>This is a snapshot of data associated with the '" + name + "' deployment.</Data></Cell></Row>"
+        +       "<Row><Cell><Data>The authority and scope of this data is Pennsylvania EMS Region " + p.biz_regions.EmsrsCodeOf(region_summary) + " (" + p.biz_regions.NameOf(region_summary) + ").</Data></Cell></Row>"
+        +       "<Row><Cell><Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</Data></Cell></Row>"
+        +       "<Row><Cell><Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</Data></Cell></Row>"
+        +       "<Row><Cell><Data>Use the worksheet tabs in this workbook to browse this data.</Data></Cell></Row>"
+        +     "</Table>"
+        +   "</ss:Worksheet>"
         +   "<ss:Worksheet ss:Name=\"Personnel\"><Table>" + p.personnel_content_xml + "</Table></ss:Worksheet>"
         +   "<ss:Worksheet ss:Name=\"Vehicles\"><Table>" + p.vehicles_content_xml + "</Table></ss:Worksheet>"
         +   "<ss:Worksheet ss:Name=\"OperationalPeriods\"><Table>" + p.operational_periods_content_xml + "</Table></ss:Worksheet>"
@@ -313,7 +339,7 @@ namespace UserControl_strike_team_deployment_snapshot
       ExportToExcel
         (
         the_page:Page,
-        filename_sans_extension:"PACRAT-" + p.deployment_id.ToString() + "-" + k.Safe(p.biz_strike_team_deployments.NameOfId(p.deployment_id),k.safe_hint_type.ALPHANUM) + "-" + DateTime.Now.ToString("yyyyMMddHHmmssf"),
+        filename_sans_extension:"PACRAT-" + p.deployment_id.ToString() + "-" + k.Safe(name,k.safe_hint_type.ALPHANUM) + "-" + mark.ToString("yyyyMMddHHmmssf"),
         excel_string:raw_xml.Replace("&nbsp;",k.EMPTY)
         );
       }
