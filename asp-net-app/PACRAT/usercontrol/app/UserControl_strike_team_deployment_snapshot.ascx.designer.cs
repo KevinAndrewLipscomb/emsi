@@ -7,81 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_strike_team_deployment_binder {
+namespace UserControl_strike_team_deployment_snapshot {
     
     
-    public partial class TWebUserControl_strike_team_deployment_binder {
+    public partial class TWebUserControl_strike_team_deployment_snapshot {
         
         /// <summary>
-        /// UpdatePanel_control control.
+        /// Button_export control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        protected global::System.Web.UI.WebControls.Button Button_export;
         
         /// <summary>
-        /// TabContainer_control control.
+        /// DataGrid_personnel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainer_control;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_personnel;
         
         /// <summary>
-        /// TabPanel_personnel control.
+        /// DataGrid_vehicles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_personnel;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_vehicles;
         
         /// <summary>
-        /// TabPanel_vehicles control.
+        /// DataGrid_operational_periods control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_vehicles;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_operational_periods;
         
         /// <summary>
-        /// TabPanel_operational_periods control.
+        /// DataGrid_digest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_operational_periods;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_digest;
         
         /// <summary>
-        /// TabPanel_log control.
+        /// DataGrid_assignments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_log;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_assignments;
         
         /// <summary>
-        /// TabPanel_snapshot control.
+        /// DataGrid_log control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_snapshot;
-        
-        /// <summary>
-        /// PlaceHolder_content control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder_content;
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_log;
     }
 }

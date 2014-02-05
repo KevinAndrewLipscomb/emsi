@@ -129,6 +129,7 @@
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_members.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_operational_period.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_operational_periods.ascx" />
+    <Content Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_vehicle.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_vehicles.ascx" />
     <Content Include="usercontrol\app\UserControl_tow_capacity.ascx" />
@@ -671,6 +672,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_operational_periods.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_operational_periods.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx.cs">
+      <DependentUpon>UserControl_strike_team_deployment_snapshot.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx.designer.cs">
+      <DependentUpon>UserControl_strike_team_deployment_snapshot.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_vehicle.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_vehicle.ascx</DependentUpon>

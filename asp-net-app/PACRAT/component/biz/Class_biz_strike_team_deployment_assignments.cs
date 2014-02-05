@@ -21,7 +21,18 @@ namespace Class_biz_strike_team_deployment_assignments
       return db_strike_team_deployment_assignments.Bind(partial_spec, target);
       }
 
-    public void BindActuals
+    public void BindActualsByDeployment
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string deployment_id
+      )
+      {
+      db_strike_team_deployment_assignments.BindActualsByDeployment(sort_order,be_sort_order_ascending,target,deployment_id);
+      }
+
+    public void BindActualsByOperationalPeriod
       (
       string sort_order,
       bool be_sort_order_ascending,
@@ -30,7 +41,7 @@ namespace Class_biz_strike_team_deployment_assignments
       string assignment_level_filter
       )
       {
-      db_strike_team_deployment_assignments.BindActuals(sort_order,be_sort_order_ascending,target,operational_period_id,assignment_level_filter);
+      db_strike_team_deployment_assignments.BindActualsByOperationalPeriod(sort_order,be_sort_order_ascending,target,operational_period_id,assignment_level_filter);
       }
 
     public void BindBaseDataList
@@ -43,7 +54,18 @@ namespace Class_biz_strike_team_deployment_assignments
       db_strike_team_deployment_assignments.BindBaseDataList(sort_order,be_sort_order_ascending,target);
       }
 
-    internal void BindDigest
+    internal void BindDigestByDeployment
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string deployment_id
+      )
+      {
+      db_strike_team_deployment_assignments.BindDigestByDeployment(sort_order,be_sort_order_ascending,target,deployment_id);
+      }
+
+    internal void BindDigestByOperationalPeriod
       (
       string sort_order,
       bool be_sort_order_ascending,
@@ -51,7 +73,7 @@ namespace Class_biz_strike_team_deployment_assignments
       string operational_period_id
       )
       {
-      db_strike_team_deployment_assignments.BindDigest(sort_order,be_sort_order_ascending,target,operational_period_id);
+      db_strike_team_deployment_assignments.BindDigestByOperationalPeriod(sort_order,be_sort_order_ascending,target,operational_period_id);
       }
 
     public void BindDirectToListControl(object target)
