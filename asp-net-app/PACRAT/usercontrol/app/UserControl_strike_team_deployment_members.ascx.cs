@@ -5,6 +5,7 @@ using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
+using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using Class_msg_protected;
 using kix;
@@ -44,6 +45,7 @@ namespace UserControl_strike_team_deployment_members
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
+      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public string deployment_id;
       public bool do_include_all_eligible_practitioners;
@@ -188,6 +190,7 @@ namespace UserControl_strike_team_deployment_members
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         //
@@ -243,42 +246,18 @@ namespace UserControl_strike_team_deployment_members
           }
         else if (e.CommandName == "ToggleMobilization")
           {
-          var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM);
-          var name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME) + k.COMMA_SPACE + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-          if (id.Length == 0)
+          if (p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
             {
-            p.biz_strike_team_deployment_members.Set
-              (
-              id:k.EMPTY,
-              deployment_id:p.deployment_id,
-              practitioner_id:practitioner_id,
-              tag_num:k.EMPTY
-              );
-            //
-            // Log event
-            //
-            p.biz_strike_team_deployment_logs.Enter
-              (
-              deployment_id:p.deployment_id,
-              action:"mobilized member `" + name + "`"
-              );
-            //
-            if (p.service_strike_team_management_footprint.Length == 0)
+            var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+            var name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME) + k.COMMA_SPACE + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+            if (id.Length == 0)
               {
-              DataGrid_control.EditItemIndex = e.Item.ItemIndex;
-              }
-            }
-          else
-            {
-            if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
-              {
-              var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
               p.biz_strike_team_deployment_members.Set
                 (
-                id:id,
+                id:k.EMPTY,
                 deployment_id:p.deployment_id,
                 practitioner_id:practitioner_id,
-                tag_num:tag_num
+                tag_num:k.EMPTY
                 );
               //
               // Log event
@@ -286,33 +265,64 @@ namespace UserControl_strike_team_deployment_members
               p.biz_strike_team_deployment_logs.Enter
                 (
                 deployment_id:p.deployment_id,
-                action:"assigned tag `" + tag_num + "` to member `" + name + "`"
+                action:"mobilized member `" + name + "`"
                 );
               //
-              DataGrid_control.EditItemIndex = -1;
-              }
-            else
-              {
-              if (!p.do_include_all_eligible_practitioners && (p.service_strike_team_management_footprint.Length == 0))
+              if (p.service_strike_team_management_footprint.Length == 0)
                 {
                 DataGrid_control.EditItemIndex = e.Item.ItemIndex;
                 }
-              else
+              }
+            else
+              {
+              if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
-                p.biz_strike_team_deployment_members.Delete(id);
+                var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
+                p.biz_strike_team_deployment_members.Set
+                  (
+                  id:id,
+                  deployment_id:p.deployment_id,
+                  practitioner_id:practitioner_id,
+                  tag_num:tag_num
+                  );
                 //
                 // Log event
                 //
                 p.biz_strike_team_deployment_logs.Enter
                   (
                   deployment_id:p.deployment_id,
-                  action:"demobilized member `" + name + "`"
+                  action:"assigned tag `" + tag_num + "` to member `" + name + "`"
                   );
                 //
+                DataGrid_control.EditItemIndex = -1;
+                }
+              else
+                {
+                if (!p.do_include_all_eligible_practitioners && (p.service_strike_team_management_footprint.Length == 0))
+                  {
+                  DataGrid_control.EditItemIndex = e.Item.ItemIndex;
+                  }
+                else
+                  {
+                  p.biz_strike_team_deployment_members.Delete(id);
+                  //
+                  // Log event
+                  //
+                  p.biz_strike_team_deployment_logs.Enter
+                    (
+                    deployment_id:p.deployment_id,
+                    action:"demobilized member `" + name + "`"
+                    );
+                  //
+                  }
                 }
               }
+            Bind();
             }
-          Bind();
+          else // changes and QuickMessages no longer allowed
+            {
+            SetRestrictedMode();
+            }
           }
         }
       }
@@ -372,11 +382,17 @@ namespace UserControl_strike_team_deployment_members
 
     private void Bind()
       {
+      if (!p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
+        {
+        SetRestrictedMode();
+        }
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].HeaderText = (p.do_include_all_eligible_practitioners ? "Mobilized?" : k.EMPTY);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Visible = (p.do_include_all_eligible_practitioners || (p.service_strike_team_management_footprint.Length == 0));
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
       DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Visible = (p.service_strike_team_management_footprint.Length == 0);
       p.biz_strike_team_deployment_members.BindBaseDataList
         (
         sort_order:p.sort_order,
@@ -393,6 +409,16 @@ namespace UserControl_strike_team_deployment_members
       p.num_practitioners = 0;
       //
       BuildDistributionListAndRegisterPostBackControls();
+      }
+
+    private void SetRestrictedMode()
+      {
+      TableRow_operational_period_started.Visible = true;
+      CheckBox_do_include_all_eligible_practitioners.Checked = false;
+      p.do_include_all_eligible_practitioners = false;
+      Td_filter.Visible = false;
+      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = false;
+      Table_quick_message.Visible = false;
       }
 
     protected void CheckBox_do_include_all_eligible_practitioners_CheckedChanged(object sender, EventArgs e)
@@ -415,7 +441,11 @@ namespace UserControl_strike_team_deployment_members
         )
       //then
         {
-        p.do_include_all_eligible_practitioners = p.biz_strike_team_deployment_members.BeNone(deployment_id);
+        p.do_include_all_eligible_practitioners = p.biz_strike_team_deployment_members.BeNone
+          (
+          deployment_id:deployment_id,
+          service_strike_team_management_footprint:service_strike_team_management_footprint
+          );
         CheckBox_do_include_all_eligible_practitioners.Checked = p.do_include_all_eligible_practitioners;
         }
       p.deployment_id = deployment_id;
@@ -457,54 +487,61 @@ namespace UserControl_strike_team_deployment_members
 
     protected void Button_send_Click(object sender, EventArgs e)
       {
-      var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
-      var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
-      if (distribution_list.Length > 0)
+      if (p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
         {
-        var attribution = k.EMPTY;
-        if (be_email_mode)
+        var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
+        var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
+        if (distribution_list.Length > 0)
           {
-          attribution += "-- From "
-          + p.biz_user.Roles()[0] + k.SPACE
-          + p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()) + k.SPACE + p.biz_members.LastNameOfMemberId(Session["member_id"].ToString())
-          + " (" + p.biz_user.EmailAddress() + ")"
-          + " [via " + ConfigurationManager.AppSettings["application_name"] + "]" + k.NEW_LINE
-          + k.NEW_LINE;
+          var attribution = k.EMPTY;
+          if (be_email_mode)
+            {
+            attribution += "-- From "
+            + p.biz_user.Roles()[0] + k.SPACE
+            + p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()) + k.SPACE + p.biz_members.LastNameOfMemberId(Session["member_id"].ToString())
+            + " (" + p.biz_user.EmailAddress() + ")"
+            + " [via " + ConfigurationManager.AppSettings["application_name"] + "]" + k.NEW_LINE
+            + k.NEW_LINE;
+            }
+          k.SmtpMailSend
+            (
+            from:ConfigurationManager.AppSettings["sender_email_address"],
+            to:distribution_list,
+            subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
+            message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
+            be_html:false,
+            cc:k.EMPTY,
+            bcc:k.Safe(Literal_author_target.Text,k.safe_hint_type.EMAIL_ADDRESS),
+            reply_to:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? ConfigurationManager.AppSettings["bouncer_email_address"] : (RadioButtonList_reply_to.SelectedValue == "email" ? p.user_target_email : p.user_target_sms))
+            );
+          TextBox_quick_message_subject.Text = k.EMPTY;
+          TextBox_quick_message_body.Text = k.EMPTY;
+          Alert
+            (
+            cause:k.alert_cause_type.LOGIC,
+            state:k.alert_state_type.NORMAL,
+            key:"messagsnt",
+            value:"Message sent",
+            be_using_scriptmanager:true
+            );
           }
-        k.SmtpMailSend
-          (
-          from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:distribution_list,
-          subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
-          message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
-          be_html:false,
-          cc:k.EMPTY,
-          bcc:k.Safe(Literal_author_target.Text,k.safe_hint_type.EMAIL_ADDRESS),
-          reply_to:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? ConfigurationManager.AppSettings["bouncer_email_address"] : (RadioButtonList_reply_to.SelectedValue == "email" ? p.user_target_email : p.user_target_sms))
-          );
-        TextBox_quick_message_subject.Text = k.EMPTY;
-        TextBox_quick_message_body.Text = k.EMPTY;
-        Alert
-          (
-          cause:k.alert_cause_type.LOGIC,
-          state:k.alert_state_type.NORMAL,
-          key:"messagsnt",
-          value:"Message sent",
-          be_using_scriptmanager:true
-          );
+        else
+          {
+          Alert
+            (
+            cause:k.alert_cause_type.USER,
+            state:k.alert_state_type.FAILURE,
+            key:"noqmrecips",
+            value:"Message *NOT* sent.  No recipients are selected.",
+            be_using_scriptmanager:true
+            );
+          }
+        BuildDistributionListAndRegisterPostBackControls();
         }
-      else
+      else // changes and QuickMessages no longer allowed
         {
-        Alert
-          (
-          cause:k.alert_cause_type.USER,
-          state:k.alert_state_type.FAILURE,
-          key:"noqmrecips",
-          value:"Message *NOT* sent.  No recipients are selected.",
-          be_using_scriptmanager:true
-          );
+        SetRestrictedMode();
         }
-      BuildDistributionListAndRegisterPostBackControls();
       }
 
     protected void RadioButtonList_quick_message_mode_SelectedIndexChanged(object sender, EventArgs e)

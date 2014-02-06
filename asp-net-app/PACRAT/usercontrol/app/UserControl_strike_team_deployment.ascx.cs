@@ -40,7 +40,7 @@ namespace UserControl_strike_team_deployment
       UserControl_drop_down_date_creation_date.Clear();
       TextBox_name.Text = k.EMPTY;
       DropDownList_region.ClearSelection();
-      CheckBox_be_drill.Checked = false;
+      RadioButtonList_be_drill.ClearSelection();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -200,7 +200,7 @@ namespace UserControl_strike_team_deployment
         UserControl_drop_down_date_creation_date.selectedvalue = creation_date;
         TextBox_name.Text = name;
         DropDownList_region.SelectedValue = region_code;
-        CheckBox_be_drill.Checked = be_drill;
+        RadioButtonList_be_drill.SelectedValue = be_drill.ToString();
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -338,7 +338,7 @@ namespace UserControl_strike_team_deployment
           (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
           name,
           k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM),
-          CheckBox_be_drill.Checked
+          bool.Parse(RadioButtonList_be_drill.SelectedValue)
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {
@@ -348,7 +348,7 @@ namespace UserControl_strike_team_deployment
           p.biz_strike_team_deployment_logs.Enter
             (
             deployment_id:id,
-            action:"named deployment `" + name + "` and made it " + (CheckBox_be_drill.Checked ? k.EMPTY : "not ") + "a drill"
+            action:"named deployment `" + name + "` and made it " + (bool.Parse(RadioButtonList_be_drill.SelectedValue) ? k.EMPTY : "not ") + "a drill"
             );
           //
           Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
@@ -430,7 +430,7 @@ namespace UserControl_strike_team_deployment
       UserControl_drop_down_date_creation_date.enabled = ablement;
       TextBox_name.Enabled = ablement;
       DropDownList_region.Enabled = (p.presentation_mode == presentation_mode_enum.NEW) && ablement;
-      CheckBox_be_drill.Enabled = ablement;
+      RadioButtonList_be_drill.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

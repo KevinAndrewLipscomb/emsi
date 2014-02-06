@@ -9,9 +9,9 @@
           <cc1:TabContainer id="TabContainer_control" runat="server" autopostback="True" cssclass="ajax__tab_ki">
             <cc1:TabPanel runat="server" headertext="Personnel" id="TabPanel_personnel"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Vehicles" id="TabPanel_vehicles"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Operational periods" id="TabPanel_operational_periods" enabled="false"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Log" id="TabPanel_log"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Snapshot" id="TabPanel_snapshot" enabled="false"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Operational periods" id="TabPanel_operational_periods" visible="false"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Log" id="TabPanel_log" visible="false"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Snapshot" id="TabPanel_snapshot" visible="false"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

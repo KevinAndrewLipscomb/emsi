@@ -102,8 +102,9 @@ namespace UserControl_strike_team_deployment_binder
       {
       if (!p.be_loaded)
         {
-        TabPanel_operational_periods.Enabled = p.be_ok_to_config_strike_team_deployments;
-        TabPanel_snapshot.Enabled = p.be_ok_to_config_strike_team_deployments;
+        TabPanel_operational_periods.Visible = p.be_ok_to_config_strike_team_deployments;
+        TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
+        TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
         p.be_loaded = true;
         }

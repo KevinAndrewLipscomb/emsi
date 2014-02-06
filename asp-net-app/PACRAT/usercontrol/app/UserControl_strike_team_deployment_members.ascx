@@ -7,11 +7,14 @@
       <tr>
         <td>
           <table cellspacing="0" cellpadding="10" border="0">
+            <tr id="TableRow_operational_period_started" runat="server" bgcolor="khaki" visible="false">
+              <td>An operational period has started for this deployment, so no further mobilization changes or QuickMessages are allowed from your account.</td>
+            </tr>
             <tr>
               <td bgcolor="#dcdcdc">
                 <table cellspacing="0" cellpadding="0" border="0">
                   <tr>
-                    <td valign="middle">
+                    <td id="Td_filter" runat="server" valign="middle">
                       <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_practitioners" runat="server" Text="Show all eligible practitioners, whether mobilized or not" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_practitioners_CheckedChanged" />
                     </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

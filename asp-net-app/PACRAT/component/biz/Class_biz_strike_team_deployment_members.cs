@@ -16,9 +16,13 @@ namespace Class_biz_strike_team_deployment_members
       db_strike_team_deployment_members = new TClass_db_strike_team_deployment_members();
       }
 
-    internal bool BeNone(string deployment_id)
+    internal bool BeNone
+      (
+      string deployment_id,
+      string service_strike_team_management_footprint
+      )
       {
-      return db_strike_team_deployment_members.BeNone(deployment_id);
+      return db_strike_team_deployment_members.BeNone(deployment_id,service_strike_team_management_footprint);
       }
 
     public bool Bind(string partial_spec, object target)
