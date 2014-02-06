@@ -91,10 +91,14 @@
     <td><font class=""></font></td>
     <td>
       <font class="">
-        <ASP:CheckBox id="CheckBox_be_drill" runat="server" cssclass="" enabled="False" Text="This deployment is a DRILL.  Only cellphone-related credential requirements should be enforced."></ASP:CheckBox>
+        <asp:RadioButtonList ID="RadioButtonList_be_drill" runat="server" cssclass="" enabled="False">
+          <asp:ListItem Value="False" Selected="True">This is an ACTUAL DEPLOYMENT, not a drill. All credential requirements are enforced.</asp:ListItem>
+          <asp:ListItem Value="True">This deployment is a DRILL.  Only cellphone-related credential requirements are enforced.</asp:ListItem>
+        </asp:RadioButtonList>
       </font>
     </td>
-    <td nowrap="nowrap">
+    <td nowrap="nowrap" valign="top">
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator_be_drill" runat="server" ControlToValidate="RadioButtonList_be_drill" ErrorMessage="Please selected whether this is an actual deployment or a drill." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
     </td>
   </tr>
       </table>

@@ -25,10 +25,22 @@ namespace Class_db_strike_team_deployment_vehicles
       db_trail = new TClass_db_trail();
       }
 
-    internal bool BeNone(string deployment_id)
+    internal bool BeNone
+      (
+      string deployment_id,
+      string service_strike_team_management_footprint
+      )
       {
       Open();
-      var be_none = ("0" == new MySqlCommand("select count(*) from strike_team_deployment_vehicle where deployment_id = '" + deployment_id + "'",connection).ExecuteScalar().ToString());
+      var be_none = "0" == new MySqlCommand
+        (
+        "select count(*)"
+        + " from strike_team_deployment_vehicle"
+        +   (service_strike_team_management_footprint.Length > 0 ? " join vehicle on (vehicle.id=strike_team_deployment_vehicle.vehicle_id)" : k.EMPTY)
+        + " where deployment_id = '" + deployment_id + "'"
+        +   (service_strike_team_management_footprint.Length > 0 ? " and service_id in (" + service_strike_team_management_footprint + ")" : k.EMPTY),
+        connection
+        ).ExecuteScalar().ToString();
       Close();
       return be_none;
       }

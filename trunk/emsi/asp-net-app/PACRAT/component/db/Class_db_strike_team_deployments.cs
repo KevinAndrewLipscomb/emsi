@@ -29,6 +29,15 @@ namespace Class_db_strike_team_deployments
       db_trail = new TClass_db_trail();
       }
 
+    internal bool BeAnyOperationalPeriodStartedFor(string deployment_id)
+      {
+      var be_any_operational_period_started_for = true;
+      Open();
+      be_any_operational_period_started_for = "0" != new MySqlCommand("select count(*) from strike_team_deployment_operational_period where deployment_id = '" + deployment_id + "' and start <= NOW()",connection).ExecuteScalar().ToString();
+      Close();
+      return be_any_operational_period_started_for;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(creation_date,'-'),'|',IFNULL(name,'-'),'|',IFNULL(region_code,'-'))";
