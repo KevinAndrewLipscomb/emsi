@@ -221,11 +221,101 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">NIMS IS-700.a date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">NIMS IS-700.a date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">NIMS IS-800.b date:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_800_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>PA Prepared LMS training</strong></p>
+      <small>
+        These fields should hold the dates shown on the corresponding class completion certificates from the <strong><a href="http://paprepared.net/" target="_blank">PA Prepared LMS</a></strong>.&nbsp; The authority
+        entering this data should keep a copy of the source documents in case of audit.
+      </small>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro"><font class="">Stress Response During Disasters date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_disaster_stress_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro"><font class="">EMS Ops for MCIs date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_mci_ops_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left"><font class="">WMD Awareness date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_wmd_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left"><font class="">Smallpox date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_smallpox_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left"><font class="">Basic Medical Response to Terrorism date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_basic_med_terrorism_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left"><font class="">Electrical Hazards date:</font></td>
+    <td>&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_electrical_hazards_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Biological Terrorism for EMS date:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro">
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_bioterror_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>

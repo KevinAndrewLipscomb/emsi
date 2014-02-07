@@ -37,6 +37,22 @@ namespace Class_db_practitioner_strike_team_details
     +   " (nims_is_200_date is not null and nims_is_200_date > '0001-01-01')"
     + " and"
     +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
+    + " and"
+    +   " (nims_is_800_date is not null and nims_is_700_date > '0001-01-01')"
+    + " and"
+    +   " (lms_disaster_stress_respons_date is not null and lms_disaster_stress_respons_date > '0001-01-01')"
+    + " and"
+    +   " (lms_ems_mci_ops_date is not null and lms_ems_mci_ops_date > '0001-01-01')"
+    + " and"
+    +   " (lms_wmd_date is not null and lms_wmd_date > '0001-01-01')"
+    + " and"
+    +   " (lms_smallpox_date is not null and lms_smallpox_date > '0001-01-01')"
+    + " and"
+    +   " (lms_basic_med_terrorism_response_date is not null and lms_basic_med_terrorism_response_date > '0001-01-01')"
+    + " and"
+    +   " (lms_electrical_hazards_date is not null and lms_electrical_hazards_date > '0001-01-01')"
+    + " and"
+    +   " (lms_ems_bioterror_date is not null and lms_ems_bioterror_date > '0001-01-01')"
     + " )";
     public const string BE_TEXTABLE_EXPRESSION = k.EMPTY
     + " ("
@@ -146,7 +162,15 @@ namespace Class_db_practitioner_strike_team_details
       out DateTime drivers_license_expiration,
       out DateTime nims_is_100_date,
       out DateTime nims_is_200_date,
-      out DateTime nims_is_700_date
+      out DateTime nims_is_700_date,
+      out DateTime nims_is_800_date,
+      out DateTime lms_disaster_stress_response_date,
+      out DateTime lms_ems_mci_ops_date,
+      out DateTime lms_wmd_date,
+      out DateTime lms_smallpox_date,
+      out DateTime lms_basic_med_terrorism_response_date,
+      out DateTime lms_electrical_hazards_date,
+      out DateTime lms_ems_bioterror_date
       )
       {
       act_1985_33_date = DateTime.MinValue;
@@ -167,6 +191,14 @@ namespace Class_db_practitioner_strike_team_details
       nims_is_100_date = DateTime.MinValue;
       nims_is_200_date = DateTime.MinValue;
       nims_is_700_date = DateTime.MinValue;
+      nims_is_800_date = DateTime.MinValue;
+      lms_disaster_stress_response_date = DateTime.MinValue;
+      lms_ems_mci_ops_date = DateTime.MinValue;
+      lms_wmd_date = DateTime.MinValue;
+      lms_smallpox_date = DateTime.MinValue;
+      lms_basic_med_terrorism_response_date = DateTime.MinValue;
+      lms_electrical_hazards_date = DateTime.MinValue;
+      lms_ems_bioterror_date = DateTime.MinValue;
       var result = false;
       //
       Open();
@@ -192,6 +224,14 @@ namespace Class_db_practitioner_strike_team_details
         nims_is_100_date = DateTime.Parse(dr["nims_is_100_date"].ToString());
         nims_is_200_date = DateTime.Parse(dr["nims_is_200_date"].ToString());
         nims_is_700_date = DateTime.Parse(dr["nims_is_700_date"].ToString());
+        nims_is_800_date = DateTime.Parse(dr["nims_is_800_date"].ToString());
+        lms_disaster_stress_response_date = DateTime.Parse(dr["lms_disaster_stress_response_date"].ToString());
+        lms_ems_mci_ops_date = DateTime.Parse(dr["lms_ems_mci_ops_date"].ToString());
+        lms_wmd_date = DateTime.Parse(dr["lms_wmd_date"].ToString());
+        lms_smallpox_date = DateTime.Parse(dr["lms_smallpox_date"].ToString());
+        lms_basic_med_terrorism_response_date = DateTime.Parse(dr["lms_basic_med_terrorism_response_date"].ToString());
+        lms_electrical_hazards_date = DateTime.Parse(dr["lms_electrical_hazards_date"].ToString());
+        lms_ems_bioterror_date = DateTime.Parse(dr["lms_ems_bioterror_date"].ToString());
         result = true;
         }
       dr.Close();
@@ -307,7 +347,15 @@ namespace Class_db_practitioner_strike_team_details
       DateTime drivers_license_expiration,
       DateTime nims_is_100_date,
       DateTime nims_is_200_date,
-      DateTime nims_is_700_date
+      DateTime nims_is_700_date,
+      DateTime nims_is_800_date,
+      DateTime lms_disaster_stress_response_date,
+      DateTime lms_ems_mci_ops_date,
+      DateTime lms_wmd_date,
+      DateTime lms_smallpox_date,
+      DateTime lms_basic_med_terrorism_response_date,
+      DateTime lms_electrical_hazards_date,
+      DateTime lms_ems_bioterror_date
       )
       {
       var childless_field_assignments_clause = k.EMPTY
@@ -329,6 +377,14 @@ namespace Class_db_practitioner_strike_team_details
       + " , nims_is_100_date = '" + nims_is_100_date.ToString("yyyy-MM-dd") + "'"
       + " , nims_is_200_date = '" + nims_is_200_date.ToString("yyyy-MM-dd") + "'"
       + " , nims_is_700_date = '" + nims_is_700_date.ToString("yyyy-MM-dd") + "'"
+      + " , nims_is_800_date = '" + nims_is_800_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_disaster_stress_response_date = '" + lms_disaster_stress_response_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_ems_mci_ops_date = '" + lms_ems_mci_ops_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_wmd_date = '" + lms_wmd_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_smallpox_date = '" + lms_smallpox_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_basic_med_terrorism_response_date = '" + lms_basic_med_terrorism_response_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_electrical_hazards_date = '" + lms_electrical_hazards_date.ToString("yyyy-MM-dd") + "'"
+      + " , lms_ems_bioterror_date = '" + lms_ems_bioterror_date.ToString("yyyy-MM-dd") + "'"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (
