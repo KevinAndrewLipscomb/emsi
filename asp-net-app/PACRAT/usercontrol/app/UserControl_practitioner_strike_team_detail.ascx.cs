@@ -47,6 +47,14 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_nims_is_100_date.Clear();
       UserControl_drop_down_date_nims_is_200_date.Clear();
       UserControl_drop_down_date_nims_is_700_date.Clear();
+      UserControl_drop_down_date_nims_is_800_date.Clear();
+      UserControl_drop_down_date_lms_disaster_stress_response_date.Clear();
+      UserControl_drop_down_date_lms_ems_mci_ops_date.Clear();
+      UserControl_drop_down_date_lms_wmd_date.Clear();
+      UserControl_drop_down_date_lms_smallpox_date.Clear();
+      UserControl_drop_down_date_lms_basic_med_terrorism_response_date.Clear();
+      UserControl_drop_down_date_lms_electrical_hazards_date.Clear();
+      UserControl_drop_down_date_lms_ems_bioterror_date.Clear();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -202,6 +210,14 @@ namespace UserControl_practitioner_strike_team_detail
       DateTime nims_is_100_date;
       DateTime nims_is_200_date;
       DateTime nims_is_700_date;
+      DateTime nims_is_800_date;
+      DateTime lms_disaster_stress_response_date;
+      DateTime lms_ems_mci_ops_date;
+      DateTime lms_wmd_date;
+      DateTime lms_smallpox_date;
+      DateTime lms_basic_med_terrorism_response_date;
+      DateTime lms_electrical_hazards_date;
+      DateTime lms_ems_bioterror_date;
       result = false;
       if
         (
@@ -225,7 +241,15 @@ namespace UserControl_practitioner_strike_team_detail
           out drivers_license_expiration,
           out nims_is_100_date,
           out nims_is_200_date,
-          out nims_is_700_date
+          out nims_is_700_date,
+          out nims_is_800_date,
+          out lms_disaster_stress_response_date,
+          out lms_ems_mci_ops_date,
+          out lms_wmd_date,
+          out lms_smallpox_date,
+          out lms_basic_med_terrorism_response_date,
+          out lms_electrical_hazards_date,
+          out lms_ems_bioterror_date
           )
         )
         {
@@ -249,6 +273,14 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_nims_is_100_date.selectedvalue = nims_is_100_date;
         UserControl_drop_down_date_nims_is_200_date.selectedvalue = nims_is_200_date;
         UserControl_drop_down_date_nims_is_700_date.selectedvalue = nims_is_700_date;
+        UserControl_drop_down_date_nims_is_800_date.selectedvalue = nims_is_800_date;
+        UserControl_drop_down_date_lms_disaster_stress_response_date.selectedvalue = lms_disaster_stress_response_date;
+        UserControl_drop_down_date_lms_ems_mci_ops_date.selectedvalue = lms_ems_mci_ops_date;
+        UserControl_drop_down_date_lms_wmd_date.selectedvalue = lms_wmd_date;
+        UserControl_drop_down_date_lms_smallpox_date.selectedvalue = lms_smallpox_date;
+        UserControl_drop_down_date_lms_basic_med_terrorism_response_date.selectedvalue = lms_basic_med_terrorism_response_date;
+        UserControl_drop_down_date_lms_electrical_hazards_date.selectedvalue = lms_electrical_hazards_date;
+        UserControl_drop_down_date_lms_ems_bioterror_date.selectedvalue = lms_ems_bioterror_date;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -340,6 +372,14 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_nims_is_100_date.Fresh();
       UserControl_drop_down_date_nims_is_200_date.Fresh();
       UserControl_drop_down_date_nims_is_700_date.Fresh();
+      UserControl_drop_down_date_nims_is_800_date.Fresh();
+      UserControl_drop_down_date_lms_disaster_stress_response_date.Fresh();
+      UserControl_drop_down_date_lms_ems_mci_ops_date.Fresh();
+      UserControl_drop_down_date_lms_wmd_date.Fresh();
+      UserControl_drop_down_date_lms_smallpox_date.Fresh();
+      UserControl_drop_down_date_lms_basic_med_terrorism_response_date.Fresh();
+      UserControl_drop_down_date_lms_electrical_hazards_date.Fresh();
+      UserControl_drop_down_date_lms_ems_bioterror_date.Fresh();
       return this;
       }
 
@@ -372,7 +412,15 @@ namespace UserControl_practitioner_strike_team_detail
           UserControl_drop_down_date_drivers_license_expiration.selectedvalue,
           UserControl_drop_down_date_nims_is_100_date.selectedvalue,
           UserControl_drop_down_date_nims_is_200_date.selectedvalue,
-          UserControl_drop_down_date_nims_is_700_date.selectedvalue
+          UserControl_drop_down_date_nims_is_700_date.selectedvalue,
+          UserControl_drop_down_date_nims_is_800_date.selectedvalue,
+          UserControl_drop_down_date_lms_disaster_stress_response_date.selectedvalue,
+          UserControl_drop_down_date_lms_ems_mci_ops_date.selectedvalue,
+          UserControl_drop_down_date_lms_wmd_date.selectedvalue,
+          UserControl_drop_down_date_lms_smallpox_date.selectedvalue,
+          UserControl_drop_down_date_lms_basic_med_terrorism_response_date.selectedvalue,
+          UserControl_drop_down_date_lms_electrical_hazards_date.selectedvalue,
+          UserControl_drop_down_date_lms_ems_bioterror_date.selectedvalue
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         //SetLookupMode();  -- inappropriate when not using lookup feature
@@ -455,6 +503,14 @@ namespace UserControl_practitioner_strike_team_detail
       UserControl_drop_down_date_nims_is_100_date.enabled = ablement;
       UserControl_drop_down_date_nims_is_200_date.enabled = ablement;
       UserControl_drop_down_date_nims_is_700_date.enabled = ablement;
+      UserControl_drop_down_date_nims_is_800_date.enabled = ablement;
+      UserControl_drop_down_date_lms_disaster_stress_response_date.enabled = ablement;
+      UserControl_drop_down_date_lms_ems_mci_ops_date.enabled = ablement;
+      UserControl_drop_down_date_lms_wmd_date.enabled = ablement;
+      UserControl_drop_down_date_lms_smallpox_date.enabled = ablement;
+      UserControl_drop_down_date_lms_basic_med_terrorism_response_date.enabled = ablement;
+      UserControl_drop_down_date_lms_electrical_hazards_date.enabled = ablement;
+      UserControl_drop_down_date_lms_ems_bioterror_date.enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

@@ -38,6 +38,9 @@ Your status in <application_name/> has been recorded as follows:
       -  NIMS IS-100.b date
       -  NIMS IS-200.b date
       -  NIMS IS-700.a date
+      -  NIMS IS-800.b date
+   -  PA PREPARED LMS TRAINING
+      -  ~
    -  CLEARANCE & BACKGROUND CHECKS:
       -  PA Child Abuse History Clearance date
       -  PA Criminal Record Check date

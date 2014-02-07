@@ -51,7 +51,15 @@ namespace Class_biz_practitioner_strike_team_details
       out DateTime drivers_license_expiration,
       out DateTime nims_is_100_date,
       out DateTime nims_is_200_date,
-      out DateTime nims_is_700_date
+      out DateTime nims_is_700_date,
+      out DateTime nims_is_800_date,
+      out DateTime lms_disaster_stress_response_date,
+      out DateTime lms_ems_mci_ops_date,
+      out DateTime lms_wmd_date,
+      out DateTime lms_smallpox_date,
+      out DateTime lms_basic_med_terrorism_response_date,
+      out DateTime lms_electrical_hazards_date,
+      out DateTime lms_ems_bioterror_date
       )
       {
       return db_practitioner_strike_team_details.Get
@@ -74,7 +82,15 @@ namespace Class_biz_practitioner_strike_team_details
         out drivers_license_expiration,
         out nims_is_100_date,
         out nims_is_200_date,
-        out nims_is_700_date
+        out nims_is_700_date,
+        out nims_is_800_date,
+        out lms_disaster_stress_response_date,
+        out lms_ems_mci_ops_date,
+        out lms_wmd_date,
+        out lms_smallpox_date,
+        out lms_basic_med_terrorism_response_date,
+        out lms_electrical_hazards_date,
+        out lms_ems_bioterror_date
         );
       }
 
@@ -103,7 +119,15 @@ namespace Class_biz_practitioner_strike_team_details
       DateTime drivers_license_expiration,
       DateTime nims_is_100_date,
       DateTime nims_is_200_date,
-      DateTime nims_is_700_date
+      DateTime nims_is_700_date,
+      DateTime nims_is_800_date,
+      DateTime lms_disaster_stress_response_date,
+      DateTime lms_ems_mci_ops_date,
+      DateTime lms_wmd_date,
+      DateTime lms_smallpox_date,
+      DateTime lms_basic_med_terrorism_response_date,
+      DateTime lms_electrical_hazards_date,
+      DateTime lms_ems_bioterror_date
       )
       {
       db_practitioner_strike_team_details.Set
@@ -126,7 +150,15 @@ namespace Class_biz_practitioner_strike_team_details
         drivers_license_expiration,
         nims_is_100_date,
         nims_is_200_date,
-        nims_is_700_date
+        nims_is_700_date,
+        nims_is_800_date,
+        lms_disaster_stress_response_date,
+        lms_ems_mci_ops_date,
+        lms_wmd_date,
+        lms_smallpox_date,
+        lms_basic_med_terrorism_response_date,
+        lms_electrical_hazards_date,
+        lms_ems_bioterror_date
         );
       }
 
