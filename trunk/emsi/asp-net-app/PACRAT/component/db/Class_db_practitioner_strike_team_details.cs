@@ -40,7 +40,7 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (nims_is_800_date is not null and nims_is_700_date > '0001-01-01')"
     + " and"
-    +   " (lms_disaster_stress_respons_date is not null and lms_disaster_stress_respons_date > '0001-01-01')"
+    +   " (lms_disaster_stress_response_date is not null and lms_disaster_stress_response_date > '0001-01-01')"
     + " and"
     +   " (lms_ems_mci_ops_date is not null and lms_ems_mci_ops_date > '0001-01-01')"
     + " and"
