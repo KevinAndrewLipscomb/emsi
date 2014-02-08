@@ -12,10 +12,10 @@
               <td>
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
-                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;Personnel&lt;/small&gt;" commandname="ManagePersonnel">
+                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;MEMBERS&lt;/small&gt;" commandname="ManagePersonnel">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
-                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;Vehicles&lt;/small&gt;" commandname="ManageVehicles">
+                    <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;VEHICLES&lt;/small&gt;" commandname="ManageVehicles">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
                     <asp:BoundColumn datafield="service_id" Visible="false"></asp:BoundColumn>

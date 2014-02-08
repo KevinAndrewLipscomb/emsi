@@ -54,6 +54,22 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (lms_ems_bioterror_date is not null and lms_ems_bioterror_date > '0001-01-01')"
     + " )";
+    public const string BE_LEADERSHIP_CREDENTIALED_EXPRESSION = k.EMPTY
+    + " ("
+    +   " (nims_ics_300_date is not null and nims_ics_300_date > '0001-01-01')"
+    + " and"
+    +   " (nims_ics_400_date is not null and nims_ics_400_date > '0001-01-01')"
+    + " and"
+    +   " (pa_psychological_first_aid_date is not null and pa_psychological_first_aid_date > '0001-01-01')"
+    + " and"
+    +   " (pa_water_rescue_awareness_date is not null and pa_water_rescue_awareness_date > '0001-01-01')"
+    + " and"
+    +   " (pa_hazmat_awareness_date is not null and pa_hazmat_awareness_date > '0001-01-01')"
+    + " and"
+    +   " (pa_ems_strike_team_leader_date is not null and pa_ems_strike_team_leader_date > '0001-01-01')"
+    + " and"
+    +   " (two_years_supervisory_experience_date is not null and two_years_supervisory_experience_date > '0001-01-01')"
+    + " )";
     public const string BE_TEXTABLE_EXPRESSION = k.EMPTY
     + " ("
     +   " (phone_number is not null)"

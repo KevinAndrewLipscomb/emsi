@@ -8,6 +8,7 @@
   <tr id="TableRow_practitioner_id" runat="server" visible="false">
     <td bgcolor="gainsboro" valign="top"><font class="">practitioner_id:</font></td>
     <td></td>
+    <td>&nbsp;</td>
     <td valign="top"><font class="">
       <table cellspacing="0" cellpadding="0" border="0">
          <tr>
@@ -54,11 +55,12 @@
     </td>
   </tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke"><p><strong>Contact information</strong></p></td>
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke"><p><strong>Contact information</strong></p></td>
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Phone&nbsp;number:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
@@ -68,7 +70,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Phone&nbsp;service&nbsp;id:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_phone_service" runat="server">
       </asp:DropDownList>
@@ -77,7 +80,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;name:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_1_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
@@ -87,7 +91,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;1&nbsp;phone&nbsp;number:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_1_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
@@ -97,6 +102,7 @@
   </tr>
   <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
     <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;name:</font></td>
+    <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>
       <font class="">
@@ -108,6 +114,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;phone&nbsp;number:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <ASP:TextBox id="TextBox_emergency_contact_2_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
@@ -115,13 +122,14 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke"><p><strong>Health information</strong></p></td>
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke"><p><strong>Health information</strong></p></td>
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Hepatitis&nbsp;B immunization:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <ASP:CheckBox id="CheckBox_be_immune_hepatitis_b" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
@@ -131,7 +139,8 @@
   </tr>
   <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
     <td style="border-left: thin solid Gainsboro"><font class="">Diptheria/tetanus immunization:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <ASP:CheckBox id="CheckBox_be_immune_diptheria_tetanus" runat="server"  cssclass="" enabled="False"></ASP:CheckBox>
@@ -141,6 +150,7 @@
   </tr>
   <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
     <td style="border-left: thin solid Gainsboro"><font class="">Meds/doses:</font></td>
+    <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>
       <font class="">
@@ -154,6 +164,7 @@
   <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
     <td style="border-left: thin solid Gainsboro"><font class="">Allergies:</font></td>
     <td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <ASP:TextBox id="TextBox_allergies" runat="server" columns="72" textmode="MultiLine" rows="2" cssclass="" enabled="False"></ASP:TextBox>
@@ -166,6 +177,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">PCP&nbsp;name:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp</td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <ASP:TextBox id="TextBox_pcp_name" runat="server" columns="72" maxlength="127" cssclass="" enabled="False"></ASP:TextBox>
@@ -173,16 +185,17 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-right: thin solid Gainsboro; border-left: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>Driving</strong></p>
       <small>This field should hold the date shown on the practitioner's drivers license.&nbsp; The authority entering this data should keep a copy of the source document in case of audit.</small>
     </td>
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Drivers&nbsp;license&nbsp;expiration date:</font></td>
-    <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -190,9 +203,9 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>Clearance & background checks</strong></p>
       <small>
         These fields should hold the dates shown on the <strong><a href="http://www.dpw.state.pa.us/findaform/childabusehistoryclearanceforms/index.htm" target="_blank">corresponding state documents</a></strong> indicating
@@ -202,13 +215,15 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">PA Child Abuse History Clearance date:</font></td>
-    <td valign="top">&clubs;</td>
+    <td valign="top"><font color="#33CC33">&clubs;</font></td>
+    <td valign="top"><font color="#3366FF">&diams;</font></td>
     <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></font></td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr style="border-left: thin solid Gainsboro; border-right: thin solid Gainsboro">
     <td style="border-left: thin solid Gainsboro" valign="top"><font class="">PA Criminal Record Check date:</font></td>
-    <td valign="top">&clubs;</td>
+    <td valign="top"><font color="#33CC33">&clubs;</font></td>
+    <td valign="top"><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -218,7 +233,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro" valign="top"><font class="">FBI Criminal Background Check date:</font></td>
-    <td  style="border-bottom: thin solid Gainsboro"valign="top">&clubs;</td>
+    <td  style="border-bottom: thin solid Gainsboro"valign="top"><font color="#33CC33">&clubs;</font></td>
+    <td  style="border-bottom: thin solid Gainsboro"valign="top"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -226,9 +242,9 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>National Incident Management System independent study</strong></p>
       <small>
         These fields should hold the dates shown on the corresponding class completion certificates from the <strong><a href="http://training.fema.gov/IS/NIMS.aspx" target="_blank">FEMA EMI ISP</a></strong>.&nbsp; The authority
@@ -238,7 +254,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">NIMS IS-100.b date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_100_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -248,7 +265,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">NIMS IS-200.b date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_200_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -258,7 +276,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">NIMS IS-700.a date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -268,7 +287,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">NIMS IS-800.b date:</font></td>
-    <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_800_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -276,9 +296,9 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>National Incident Management System classroom training</strong></p>
       <small>
         These fields should hold the dates shown on the corresponding class completion certificates.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
@@ -288,6 +308,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">NIMS ICS-300 date:</font></td>
     <td>&nbsp;</td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_300_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -298,6 +319,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">NIMS ICS-400 date:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_400_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -305,9 +327,9 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>PA Prepared LMS training</strong></p>
       <small>
         These fields should hold the dates shown on the corresponding class completion certificates from the <strong><a href="http://paprepared.net/" target="_blank">PA Prepared LMS</a></strong>.&nbsp; The authority
@@ -317,7 +339,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Stress Response During Disasters date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_disaster_stress_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -327,7 +350,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">EMS Ops for MCIs date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_mci_ops_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -337,7 +361,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">WMD Awareness date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_wmd_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -347,7 +372,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Smallpox date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_smallpox_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -357,7 +383,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Basic Medical Response to Terrorism date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_basic_med_terrorism_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -367,7 +394,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Electrical Hazards date:</font></td>
-    <td>&clubs;</td>
+    <td><font color="#33CC33">&clubs;</font></td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_electrical_hazards_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -377,7 +405,8 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Biological Terrorism for EMS date:</font></td>
-    <td style="border-bottom: thin solid Gainsboro">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_bioterror_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -385,9 +414,9 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>Pennsylvania continuing education classes</strong></p>
       <small>
         These fields should hold the dates shown on the corresponding class completion certificates.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
@@ -397,6 +426,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Psychological First Aid date:</font></td>
     <td>&nbsp;</td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_psychological_first_aid_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -407,6 +437,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Water Rescue Awareness date:</font></td>
     <td>&nbsp;</td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_water_rescue_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -417,6 +448,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">HazMat Awareness date:</font></td>
     <td>&nbsp;</td>
+    <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_hazmat_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -427,6 +459,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">EMS Strike Team Leader date:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_ems_strike_team_leader_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -434,9 +467,9 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr><td colspan="5">&nbsp;</td></tr>
   <tr>
-    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+    <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>Experience</strong></p>
       <small>
         These fields should hold the dates when the corresponding qualification was achieved.
@@ -446,6 +479,7 @@
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Two years supervisory experience date:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_two_years_supervisory_experience_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>

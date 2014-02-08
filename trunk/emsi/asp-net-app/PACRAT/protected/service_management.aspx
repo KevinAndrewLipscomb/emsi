@@ -88,12 +88,15 @@
                             <asp:UpdatePanel ID="UpdatePanel_assignees" runat="server" UpdateMode="Conditional">
                               <ContentTemplate>
                                 <table cellpadding="10" cellspacing="0">
-                                  <tr><td style="background-color:WhiteSmoke"><b>Key personnel</b></td></tr>
-                                  <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
-                                  <tr id="TableRow_assignees" runat="server">
+                                  <tr bgcolor="#99CCFF"><td><b>Key personnel</b></td></tr>
+                                  <tr id="TableRow_none" runat="server" bgcolor="#99CCFF"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+                                  <tr id="TableRow_assignees" runat="server" bgcolor="#99CCFF">
                                     <td valign="top">
-                                      <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%">
+                                      <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%" BackColor="White" onitemcommand="DataGrid_control_ItemCommand">
                                         <Columns>
+                                          <asp:BoundColumn datafield="be_credentialed" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                                          <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/dialog-warning-2.png&quot; alt=&quot;Uncredentialed&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Profile"></asp:ButtonColumn>
+                                          <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Profile"></asp:ButtonColumn>
                                           <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                                             <HeaderTemplate>
                                               <small>Include in<br />QuickMessage</small><br /> All:<asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all" Checked="True" />
@@ -159,11 +162,15 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      Drill down to
-                                      <asp:LinkButton ID="LinkButton_drill_down_to_members" runat="server" Font-Bold="True" onclick="LinkButton_drill_down_to_members_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;MEMBERS"></asp:LinkButton>
-                                      or
-                                      <asp:LinkButton ID="LinkButton_drill_down_to_vehicles" runat="server" Font-Bold="True" onclick="LinkButton_drill_down_to_vehicles_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Vehicles&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;VEHICLES"></asp:LinkButton>
-                                      in this service's strike team
+                                      <table>
+                                        <tr>
+                                          <td align="center" valign="middle">Drill down to</td>
+                                          <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down_to_members" runat="server" onclick="LinkButton_drill_down_to_members_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;MEMBERS&lt;/small&gt;"></asp:LinkButton></td>
+                                          <td align="center" valign="middle">or</td>
+                                          <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down_to_vehicles" runat="server" onclick="LinkButton_drill_down_to_vehicles_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Vehicles&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;VEHICLES&lt;/small&gt;"></asp:LinkButton></td>
+                                          <td align="center" valign="middle">in this service's strike team</td>
+                                        </tr>
+                                      </table>
                                     </td>
                                   </tr>
                                 </table>
