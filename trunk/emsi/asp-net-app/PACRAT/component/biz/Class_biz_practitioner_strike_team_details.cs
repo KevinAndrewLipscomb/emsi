@@ -59,7 +59,14 @@ namespace Class_biz_practitioner_strike_team_details
       out DateTime lms_smallpox_date,
       out DateTime lms_basic_med_terrorism_response_date,
       out DateTime lms_electrical_hazards_date,
-      out DateTime lms_ems_bioterror_date
+      out DateTime lms_ems_bioterror_date,
+      out DateTime nims_ics_300_date,
+      out DateTime nims_ics_400_date,
+      out DateTime pa_psychological_first_aid_date,
+      out DateTime pa_water_rescue_awareness_date,
+      out DateTime pa_hazmat_awareness_date,
+      out DateTime pa_ems_strike_team_leader_date,
+      out DateTime two_years_supervisory_experience_date
       )
       {
       return db_practitioner_strike_team_details.Get
@@ -90,7 +97,14 @@ namespace Class_biz_practitioner_strike_team_details
         out lms_smallpox_date,
         out lms_basic_med_terrorism_response_date,
         out lms_electrical_hazards_date,
-        out lms_ems_bioterror_date
+        out lms_ems_bioterror_date,
+        out nims_ics_300_date,
+        out nims_ics_400_date,
+        out pa_psychological_first_aid_date,
+        out pa_water_rescue_awareness_date,
+        out pa_hazmat_awareness_date,
+        out pa_ems_strike_team_leader_date,
+        out two_years_supervisory_experience_date
         );
       }
 
@@ -127,7 +141,14 @@ namespace Class_biz_practitioner_strike_team_details
       DateTime lms_smallpox_date,
       DateTime lms_basic_med_terrorism_response_date,
       DateTime lms_electrical_hazards_date,
-      DateTime lms_ems_bioterror_date
+      DateTime lms_ems_bioterror_date,
+      DateTime nims_ics_300_date,
+      DateTime nims_ics_400_date,
+      DateTime pa_psychological_first_aid_date,
+      DateTime pa_water_rescue_awareness_date,
+      DateTime pa_hazmat_awareness_date,
+      DateTime pa_ems_strike_team_leader_date,
+      DateTime two_years_supervisory_experience_date
       )
       {
       db_practitioner_strike_team_details.Set
@@ -158,7 +179,14 @@ namespace Class_biz_practitioner_strike_team_details
         lms_smallpox_date,
         lms_basic_med_terrorism_response_date,
         lms_electrical_hazards_date,
-        lms_ems_bioterror_date
+        lms_ems_bioterror_date,
+        nims_ics_300_date,
+        nims_ics_400_date,
+        pa_psychological_first_aid_date,
+        pa_water_rescue_awareness_date,
+        pa_hazmat_awareness_date,
+        pa_ems_strike_team_leader_date,
+        two_years_supervisory_experience_date
         );
       }
 
