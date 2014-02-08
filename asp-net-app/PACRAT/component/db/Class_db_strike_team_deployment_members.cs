@@ -103,7 +103,7 @@ namespace Class_db_strike_team_deployment_members
         +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
         + " where " + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION
-        +   (do_include_all_eligible_practitioners ? " and (" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + " or be_drill)" : k.EMPTY)
+        +   (do_include_all_eligible_practitioners ? " and (" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " or be_drill)" : k.EMPTY)
         +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY)
         + " group by practitioner.id"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
