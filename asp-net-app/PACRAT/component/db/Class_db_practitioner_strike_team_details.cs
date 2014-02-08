@@ -170,7 +170,14 @@ namespace Class_db_practitioner_strike_team_details
       out DateTime lms_smallpox_date,
       out DateTime lms_basic_med_terrorism_response_date,
       out DateTime lms_electrical_hazards_date,
-      out DateTime lms_ems_bioterror_date
+      out DateTime lms_ems_bioterror_date,
+      out DateTime nims_ics_300_date,
+      out DateTime nims_ics_400_date,
+      out DateTime pa_psychological_first_aid_date,
+      out DateTime pa_water_rescue_awareness_date,
+      out DateTime pa_hazmat_awareness_date,
+      out DateTime pa_ems_strike_team_leader_date,
+      out DateTime two_years_supervisory_experience_date
       )
       {
       act_1985_33_date = DateTime.MinValue;
@@ -199,6 +206,13 @@ namespace Class_db_practitioner_strike_team_details
       lms_basic_med_terrorism_response_date = DateTime.MinValue;
       lms_electrical_hazards_date = DateTime.MinValue;
       lms_ems_bioterror_date = DateTime.MinValue;
+      nims_ics_300_date = DateTime.MinValue;
+      nims_ics_400_date = DateTime.MinValue;
+      pa_psychological_first_aid_date = DateTime.MinValue;
+      pa_water_rescue_awareness_date = DateTime.MinValue;
+      pa_hazmat_awareness_date = DateTime.MinValue;
+      pa_ems_strike_team_leader_date = DateTime.MinValue;
+      two_years_supervisory_experience_date = DateTime.MinValue;
       var result = false;
       //
       Open();
@@ -232,6 +246,13 @@ namespace Class_db_practitioner_strike_team_details
         lms_basic_med_terrorism_response_date = DateTime.Parse(dr["lms_basic_med_terrorism_response_date"].ToString());
         lms_electrical_hazards_date = DateTime.Parse(dr["lms_electrical_hazards_date"].ToString());
         lms_ems_bioterror_date = DateTime.Parse(dr["lms_ems_bioterror_date"].ToString());
+        nims_ics_300_date = DateTime.Parse(dr["nims_ics_300_date"].ToString());
+        nims_ics_400_date = DateTime.Parse(dr["nims_ics_400_date"].ToString());
+        pa_psychological_first_aid_date = DateTime.Parse(dr["pa_psychological_first_aid_date"].ToString());
+        pa_water_rescue_awareness_date = DateTime.Parse(dr["pa_water_rescue_awareness_date"].ToString());
+        pa_hazmat_awareness_date = DateTime.Parse(dr["pa_hazmat_awareness_date"].ToString());
+        pa_ems_strike_team_leader_date = DateTime.Parse(dr["pa_ems_strike_team_leader_date"].ToString());
+        two_years_supervisory_experience_date = DateTime.Parse(dr["two_years_supervisory_experience_date"].ToString());
         result = true;
         }
       dr.Close();
@@ -355,7 +376,14 @@ namespace Class_db_practitioner_strike_team_details
       DateTime lms_smallpox_date,
       DateTime lms_basic_med_terrorism_response_date,
       DateTime lms_electrical_hazards_date,
-      DateTime lms_ems_bioterror_date
+      DateTime lms_ems_bioterror_date,
+      DateTime nims_ics_300_date,
+      DateTime nims_ics_400_date,
+      DateTime pa_psychological_first_aid_date,
+      DateTime pa_water_rescue_awareness_date,
+      DateTime pa_hazmat_awareness_date,
+      DateTime pa_ems_strike_team_leader_date,
+      DateTime two_years_supervisory_experience_date
       )
       {
       var childless_field_assignments_clause = k.EMPTY
@@ -385,6 +413,13 @@ namespace Class_db_practitioner_strike_team_details
       + " , lms_basic_med_terrorism_response_date = '" + lms_basic_med_terrorism_response_date.ToString("yyyy-MM-dd") + "'"
       + " , lms_electrical_hazards_date = '" + lms_electrical_hazards_date.ToString("yyyy-MM-dd") + "'"
       + " , lms_ems_bioterror_date = '" + lms_ems_bioterror_date.ToString("yyyy-MM-dd") + "'"
+      + " , nims_ics_300_date = '" + nims_ics_300_date.ToString("yyyy-MM-dd") + "'"
+      + " , nims_ics_400_date = '" + nims_ics_400_date.ToString("yyyy-MM-dd") + "'"
+      + " , pa_psychological_first_aid_date = '" + pa_psychological_first_aid_date.ToString("yyyy-MM-dd") + "'"
+      + " , pa_water_rescue_awareness_date = '" + pa_water_rescue_awareness_date.ToString("yyyy-MM-dd") + "'"
+      + " , pa_hazmat_awareness_date = '" + pa_hazmat_awareness_date.ToString("yyyy-MM-dd") + "'"
+      + " , pa_ems_strike_team_leader_date = '" + pa_ems_strike_team_leader_date.ToString("yyyy-MM-dd") + "'"
+      + " , two_years_supervisory_experience_date = '" + two_years_supervisory_experience_date.ToString("yyyy-MM-dd") + "'"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (

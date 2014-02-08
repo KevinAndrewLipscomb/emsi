@@ -193,7 +193,43 @@
   <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
     <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
-      <p><strong>National Incident Management System training</strong></p>
+      <p><strong>Clearance & background checks</strong></p>
+      <small>
+        These fields should hold the dates shown on the <strong><a href="http://www.dpw.state.pa.us/findaform/childabusehistoryclearanceforms/index.htm" target="_blank">corresponding state documents</a></strong> indicating
+        compliance.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
+      </small>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro"><font class="">PA Child Abuse History Clearance date:</font></td>
+    <td valign="top">&clubs;</td>
+    <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></font></td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr style="border-left: thin solid Gainsboro; border-right: thin solid Gainsboro">
+    <td style="border-left: thin solid Gainsboro" valign="top"><font class="">PA Criminal Record Check date:</font></td>
+    <td valign="top">&clubs;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro" valign="top"><font class="">FBI Criminal Background Check date:</font></td>
+    <td  style="border-bottom: thin solid Gainsboro"valign="top">&clubs;</td>
+    <td style="border-bottom: thin solid Gainsboro">
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>National Incident Management System independent study</strong></p>
       <small>
         These fields should hold the dates shown on the corresponding class completion certificates from the <strong><a href="http://training.fema.gov/IS/NIMS.aspx" target="_blank">FEMA EMI ISP</a></strong>.&nbsp; The authority
         entering this data should keep a copy of the source documents in case of audit.
@@ -243,6 +279,35 @@
   <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
     <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>National Incident Management System classroom training</strong></p>
+      <small>
+        These fields should hold the dates shown on the corresponding class completion certificates.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
+      </small>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro"><font class="">NIMS ICS-300 date:</font></td>
+    <td>&nbsp;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_300_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">NIMS ICS-400 date:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_400_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>PA Prepared LMS training</strong></p>
       <small>
         These fields should hold the dates shown on the corresponding class completion certificates from the <strong><a href="http://paprepared.net/" target="_blank">PA Prepared LMS</a></strong>.&nbsp; The authority
@@ -271,7 +336,7 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left"><font class="">WMD Awareness date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">WMD Awareness date:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
@@ -281,7 +346,7 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left"><font class="">Smallpox date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Smallpox date:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
@@ -291,7 +356,7 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left"><font class="">Basic Medical Response to Terrorism date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Basic Medical Response to Terrorism date:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
@@ -301,7 +366,7 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left"><font class="">Electrical Hazards date:</font></td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Electrical Hazards date:</font></td>
     <td>&clubs;</td>
     <td>
       <font class="">
@@ -323,35 +388,67 @@
   <tr><td colspan="4">&nbsp;</td></tr>
   <tr>
     <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
-      <p><strong>Clearance & background checks</strong></p>
+      <p><strong>Pennsylvania continuing education classes</strong></p>
       <small>
-        These fields should hold the dates shown on the <strong><a href="http://www.dpw.state.pa.us/findaform/childabusehistoryclearanceforms/index.htm" target="_blank">corresponding state documents</a></strong> indicating
-        compliance.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
+        These fields should hold the dates shown on the corresponding class completion certificates.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
       </small>
     </td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">PA Child Abuse History Clearance date:</font></td>
-    <td valign="top">&clubs;</td>
-    <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></font></td>
-    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
-  </tr>
-  <tr style="border-left: thin solid Gainsboro; border-right: thin solid Gainsboro">
-    <td style="border-left: thin solid Gainsboro" valign="top"><font class="">PA Criminal Record Check date:</font></td>
-    <td valign="top">&clubs;</td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Psychological First Aid date:</font></td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_psychological_first_aid_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro" valign="top"><font class="">FBI Criminal Background Check date:</font></td>
-    <td  style="border-bottom: thin solid Gainsboro"valign="top">&clubs;</td>
+    <td style="border-left: thin solid Gainsboro"><font class="">Water Rescue Awareness date:</font></td>
+    <td>&nbsp;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_water_rescue_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro"><font class="">HazMat Awareness date:</font></td>
+    <td>&nbsp;</td>
+    <td>
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_hazmat_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">EMS Strike Team Leader date:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_ems_strike_team_leader_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+      </font>
+    </td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+  </tr>
+  <tr><td colspan="4">&nbsp;</td></tr>
+  <tr>
+    <td colspan="4" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
+      <p><strong>Experience</strong></p>
+      <small>
+        These fields should hold the dates when the corresponding qualification was achieved.
+      </small>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Two years supervisory experience date:</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">
+      <font class="">
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_two_years_supervisory_experience_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
