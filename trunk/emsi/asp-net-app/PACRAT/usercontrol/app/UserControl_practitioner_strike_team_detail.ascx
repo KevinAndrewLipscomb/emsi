@@ -477,7 +477,7 @@
     </td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Two years supervisory experience date:</font></td>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Two years in supervisory role date:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">

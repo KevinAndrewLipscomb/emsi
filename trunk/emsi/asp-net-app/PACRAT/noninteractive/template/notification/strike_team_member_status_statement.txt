@@ -13,8 +13,11 @@ Your status in <application_name/> has been recorded as follows:
    Certification number:
       <certification_number/>
 
-   CREDENTIALED FOR STRIKE TEAM PARTICIPATION:
-      <credentialed_clause/>
+   CREDENTIALED FOR STRIKE TEAM PARTICIPATION AS A MEMBER:
+      <credentialed_as_member_clause/>
+
+   CREDENTIALED FOR STRIKE TEAM PARTICIPATION AS A LEADER:
+      <credentialed_as_leader_clause/>
 
    SERVICE STRIKE TEAM AFFILIATION(S):
       <service_strike_team_affiliation/>
@@ -34,23 +37,33 @@ Your status in <application_name/> has been recorded as follows:
       -  Meds/doses, allergies, PCP name
    -  DRIVING
       -  Drivers license expiration date
-   -  NATIONAL INCIDENT MANAGEMENT TRAINING
-      -  NIMS IS-100.b date
-      -  NIMS IS-200.b date
-      -  NIMS IS-700.a date
-      -  NIMS IS-800.b date
-   -  PA PREPARED LMS TRAINING
-      -  Stress Response During Disasters
-      -  EMS Operations For MCIs
-      -  WMD Awareness
-      -  Smallpox
-      -  Basic Medical Response To Terrorism
-      -  Electrical Hazards
-      -  Biological Terrorism For EMS
    -  CLEARANCE & BACKGROUND CHECKS:
       -  PA Child Abuse History Clearance date
       -  PA Criminal Record Check date
       -  FBI Criminal Background Check date
+   -  NATIONAL INCIDENT MANAGEMENT SYSTEM INDEPENDENT STUDY
+      -  NIMS IS-100.b date
+      -  NIMS IS-200.b date
+      -  NIMS IS-700.a date
+      -  NIMS IS-800.b date
+   -  NATIONAL INCIDENT MANAGEMENT SYSTEM CLASSROOM TRAINING
+      -  NIMS ICS-300 date
+      -  NIMS ICS-400 date
+   -  PA PREPARED LMS TRAINING
+      -  Stress Response During Disasters date
+      -  EMS Operations For MCIs date
+      -  WMD Awareness date
+      -  Smallpox date
+      -  Basic Medical Response To Terrorism date
+      -  Electrical Hazards date
+      -  Biological Terrorism For EMS date
+   -  PENNSYLVANIA CONTINUING EDUCATION CLASSES
+      -  Psychological First Aid date
+      -  Water Rescue Awareness date
+      -  HazMat Awareness date
+      -  EMS Strike Team Leadership date
+   -  EXPERIENCE
+      -  Two years in supervisory role date
 
 If any of the above details are incorrect in <application_name/>, or have changed, notify your service strike team manager *immediately*.
 

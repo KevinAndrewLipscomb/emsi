@@ -14,7 +14,7 @@ namespace Class_db_practitioner_strike_team_details
   {
   public static class Class_db_practitioner_strike_team_details_Static
     {
-    public const string BE_CREDENTIALED_EXPRESSION = k.EMPTY
+    public const string BE_CREDENTIALED_AS_MEMBER_EXPRESSION = k.EMPTY
     + " ("
     +   " (act_1985_33_date is not null and act_1985_33_date > '0001-01-01')"
     + " and"
@@ -54,7 +54,7 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (lms_ems_bioterror_date is not null and lms_ems_bioterror_date > '0001-01-01')"
     + " )";
-    public const string BE_LEADERSHIP_CREDENTIALED_EXPRESSION = k.EMPTY
+    public const string BE_CREDENTIALED_AS_LEADER_EXPRESSION = k.EMPTY
     + " ("
     +   " (nims_ics_300_date is not null and nims_ics_300_date > '0001-01-01')"
     + " and"
@@ -300,7 +300,8 @@ namespace Class_db_practitioner_strike_team_details
         + " , IF(DATE_FORMAT(act_1985_33_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_33_date,'%e %M %Y')) as act_1985_33_date"
         + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_34_date,'%e %M %Y')) as act_1985_34_date"
         + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1994_151_date,'%e %M %Y')) as act_1994_151_date"
-        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one credentialing requirement') as credentialed_clause"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one membership requirement') as credentialed_as_member_clause"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one leadership requirement') as credentialed_as_leader_clause"
         + " , GROUP_CONCAT(affiliated_service.name ORDER BY affiliated_service.name SEPARATOR ', ') as service_strike_team_affiliation"
         + " , IFNULL("
         +       " ("
@@ -322,7 +323,7 @@ namespace Class_db_practitioner_strike_team_details
         +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
         + " where email_address is not null"
         +   " and TRIM(email_address) <> ''"
-        +   (do_limit_to_uncredentialed ? " and not (" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + ")" : k.EMPTY)
+        +   (do_limit_to_uncredentialed ? " and not (" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + ")" : k.EMPTY)
         + " group by practitioner_strike_team_detail.id"
         + " order by RAND()",
         connection
@@ -351,7 +352,8 @@ namespace Class_db_practitioner_strike_team_details
           act_1985_33_date:dr["act_1985_33_date"].ToString(),
           act_1985_34_date:dr["act_1985_34_date"].ToString(),
           act_1994_151_date:dr["act_1994_151_date"].ToString(),
-          credentialed_clause:dr["credentialed_clause"].ToString(),
+          credentialed_as_member_clause:dr["credentialed_as_member_clause"].ToString(),
+          credentialed_as_leader_clause:dr["credentialed_as_leader_clause"].ToString(),
           service_strike_team_affiliation:dr["service_strike_team_affiliation"].ToString(),
           service_strike_team_primary_manager:dr["service_strike_team_primary_manager"].ToString()
           );
