@@ -244,7 +244,7 @@
             <h3><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> attributes</h3>
             <small>
               <p>These attributes are managed in real-time via <asp:Literal ID="Literal_application_name_2" runat="server"></asp:Literal>.</p>
-              <p>&clubs; = Strike Team credential</p>
+              <p><font color="#33CC33">&clubs;</font>&nbsp;=&nbsp;Strike&nbsp;Team&nbsp;Member&nbsp;credential&nbsp; <font color="#3366FF">&diams;</font>&nbsp;=&nbsp;Strike&nbsp;Team&nbsp;Leader&nbsp;credential</p>
             </small>
           </td>
         </tr>

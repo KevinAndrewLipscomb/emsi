@@ -86,11 +86,11 @@
                             <asp:UpdatePanel ID="UpdatePanel_assignees" runat="server" UpdateMode="Conditional">
                               <ContentTemplate>
                                 <table cellpadding="10" cellspacing="0">
-                                  <tr><td style="background-color:WhiteSmoke"><b>Members</b></td></tr>
-                                  <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
-                                  <tr id="TableRow_assignees" runat="server">
+                                  <tr bgcolor="#99FF99"><td><b>Members</b></td></tr>
+                                  <tr id="TableRow_none" runat="server" bgcolor="#99FF99"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+                                  <tr id="TableRow_assignees" runat="server" bgcolor="#99FF99">
                                     <td valign="top">
-                                      <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%" onitemcommand="DataGrid_control_ItemCommand">
+                                      <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onsortcommand="DataGrid_control_SortCommand" onitemdatabound="DataGrid_control_ItemDataBound" oncancelcommand="DataGrid_control_CancelCommand" ondeletecommand="DataGrid_control_DeleteCommand" oneditcommand="DataGrid_control_EditCommand" onupdatecommand="DataGrid_control_UpdateCommand" Font-Size="85%" onitemcommand="DataGrid_control_ItemCommand" BackColor="White">
                                         <Columns>
                                           <asp:BoundColumn datafield="id" Visible="false" ReadOnly="True"></asp:BoundColumn>
                                           <asp:BoundColumn datafield="be_credentialed" Visible="false" ReadOnly="True"></asp:BoundColumn>

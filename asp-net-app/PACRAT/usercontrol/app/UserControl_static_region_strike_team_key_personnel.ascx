@@ -24,11 +24,11 @@
         <tr>
           <td>
             <table cellpadding="10" cellspacing="0">
-              <tr><td style="background-color:WhiteSmoke"><b>Key personnel</b></td></tr>
-              <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
-              <tr id="TableRow_assignees" runat="server">
+              <tr bgcolor="#FFFF99"><td><b>Key personnel</b></td></tr>
+              <tr id="TableRow_none" runat="server" bgcolor="#FFFF99"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+              <tr id="TableRow_assignees" runat="server" bgcolor="#FFFF99">
                 <td valign="top">
-                  <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%">
+                  <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%" BackColor="White">
                     <Columns>
                       <asp:BoundColumn datafield="last_name" headertext="Last name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="first_name" headertext="First name" ReadOnly="True"></asp:BoundColumn>

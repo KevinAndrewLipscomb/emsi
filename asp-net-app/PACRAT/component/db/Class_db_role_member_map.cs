@@ -1,13 +1,12 @@
-using MySql.Data.MySqlClient;
+using Class_db;
+using Class_db_practitioner_strike_team_details;
+using Class_db_roles;
+using Class_db_trail;
 using kix;
-using System;
-
-
+using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Web.UI.WebControls;
-using Class_db;
-using Class_db_trail;
-using Class_db_roles;
+
 namespace Class_db_role_member_map
 {
   public static class Class_db_role_member_map_Static
@@ -108,10 +107,12 @@ namespace Class_db_role_member_map
             + " , IFNULL(email_address,'DESIRED') as email_address"
             + " , practitioner_level.emsrs_code as level_emsrs_code"
             + " , practitioner_status.description as practitioner_status_description"
+            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_LEADERSHIP_CREDENTIALED_EXPRESSION + ",'Y','N') as be_credentialed"
             + " from role_member_map"
             +   " join practitioner on (practitioner.id=role_member_map.member_id)"
             +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
             +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+            +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
             +   " join role on (role.id=role_member_map.role_id)"
             + " where region_code = '" + region_code + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
@@ -147,10 +148,12 @@ namespace Class_db_role_member_map
             + " , IFNULL(email_address,'DESIRED') as email_address"
             + " , practitioner_level.emsrs_code as level_emsrs_code"
             + " , practitioner_status.description as practitioner_status_description"
+            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_LEADERSHIP_CREDENTIALED_EXPRESSION + ",'Y','N') as be_credentialed"
             + " from role_member_map"
             +   " join practitioner on (practitioner.id=role_member_map.member_id)"
             +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
             +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+            +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
             +   " join role on (role.id=role_member_map.role_id)"
             + " where service_id = '" + service_id + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),

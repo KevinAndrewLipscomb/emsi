@@ -32,11 +32,12 @@ namespace region_management
     public TClass_biz_roles biz_roles;
     public TClass_biz_tiers biz_tiers;
     public TClass_biz_user biz_user;
-    public string region_code;
-    public TClass_msg_protected.region_detail msg_protected_region_detail;
     public TClass_msg_protected.region_management incoming;
+    public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
+    public TClass_msg_protected.region_detail msg_protected_region_detail;
     public k.int_nonnegative num_assignees;
     public k.int_nonnegative num_assignees_with_known_birth_dates;
+    public string region_code;
     public string region_strike_team_manager_role_id;
     public string region_tier_id;
     public ArrayList roster_id_arraylist;
@@ -48,22 +49,25 @@ namespace region_management
     {
     private class region_management_Static
       {
-      public const int TCI_SELECT = 0;
-      public const int TCI_DELETE = 1;
-      public const int TCI_PRACTITIONER_ID = 2;
-      public const int TCI_LAST_NAME = 3;
-      public const int TCI_FIRST_NAME = 4;
-      public const int TCI_MIDDLE_INITIAL = 5;
-      public const int TCI_LEVEL = 6;
-      public const int TCI_LEVEL_EMSRS_CODE = 7;
-      public const int TCI_CERT_NUM = 8;
-      public const int TCI_BE_DOB_CONFIRMED = 9;
-      public const int TCI_DOB = 10;
-      public const int TCI_ROLE_ID = 11;
-      public const int TCI_ROLE_NAME = 12;
-      public const int TCI_EMAIL_ADDRESS = 13;
-      public const int TCI_EDIT_UPDATE_CANCEL = 14;
-      public const int TCI_STATUS_DESCRIPTION = 15;
+      public const int TCI_BE_CREDENTIALED = 0;
+      public const int TCI_UNCREDENTIALED = 1;
+      public const int TCI_PROFILE = 2;
+      public const int TCI_SELECT = 3;
+      public const int TCI_DELETE = 4;
+      public const int TCI_PRACTITIONER_ID = 5;
+      public const int TCI_LAST_NAME = 6;
+      public const int TCI_FIRST_NAME = 7;
+      public const int TCI_MIDDLE_INITIAL = 8;
+      public const int TCI_LEVEL = 9;
+      public const int TCI_LEVEL_EMSRS_CODE = 10;
+      public const int TCI_CERT_NUM = 11;
+      public const int TCI_BE_DOB_CONFIRMED = 12;
+      public const int TCI_DOB = 13;
+      public const int TCI_ROLE_ID = 14;
+      public const int TCI_ROLE_NAME = 15;
+      public const int TCI_EMAIL_ADDRESS = 16;
+      public const int TCI_EDIT_UPDATE_CANCEL = 17;
+      public const int TCI_STATUS_DESCRIPTION = 18;
       }
 
     private p_type p;
@@ -275,6 +279,24 @@ namespace region_management
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
+        if (e.Item.Cells[region_management_Static.TCI_BE_CREDENTIALED].Text == "Y")
+          {
+          link_button = ((e.Item.Cells[region_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button.Visible = false;
+          }
+        else
+          {
+          link_button = ((e.Item.Cells[region_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button.Text = k.ExpandTildePath(link_button.Text);
+          link_button.ToolTip = "UNCREDENTIALED";
+          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          }
+        //
+        link_button = ((e.Item.Cells[region_management_Static.TCI_PROFILE].Controls[0]) as LinkButton);
+        link_button.Text = k.ExpandTildePath(link_button.Text);
+        link_button.ToolTip = "Profile";
+        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+        //
         link_button = ((e.Item.Cells[region_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
@@ -433,6 +455,7 @@ namespace region_management
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.region_management>(folder_name:"protected",aspx_name:"region_management");
+        p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         p.msg_protected_region_detail = new TClass_msg_protected.region_detail();
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
@@ -526,6 +549,23 @@ namespace region_management
         folder_name:"protected",
         aspx_name:"region_detail"
         );
+      }
+
+    protected void DataGrid_control_ItemCommand(object source, DataGridCommandEventArgs e)
+      {
+      if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
+        {
+        if (e.CommandName == "Profile")
+          {
+          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[region_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+          MessageDropCrumbAndTransferTo
+            (
+            msg:p.msg_protected_practitioner_profile,
+            folder_name:"protected",
+            aspx_name:"practitioner_profile"
+            );
+          }
+        }
       }
 
     } // end TWebForm_region_management
