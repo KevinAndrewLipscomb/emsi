@@ -100,6 +100,7 @@
     <Content Include="protected\service_management.aspx" />
     <Content Include="protected\state_detail.aspx" />
     <Content Include="protected\strike_team_deployment_detail.aspx" />
+    <Content Include="protected\underway_demobilization.aspx" />
     <Content Include="protected\vehicle_detail.aspx" />
     <Content Include="protected\vehicle_management.aspx" />
     <Content Include="remind_username.aspx" />
@@ -133,6 +134,7 @@
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_vehicle.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_vehicles.ascx" />
     <Content Include="usercontrol\app\UserControl_tow_capacity.ascx" />
+    <Content Include="usercontrol\app\UserControl_underway_demobilization.ascx" />
     <Content Include="usercontrol\app\UserControl_vehicle.ascx" />
     <Content Include="usercontrol\app\UserControl_vehicles.ascx" />
     <Content Include="usercontrol\app\UserControl_vehicle_kind.ascx" />
@@ -367,6 +369,13 @@
     </Compile>
     <Compile Include="protected\strike_team_deployment_detail.aspx.designer.cs">
       <DependentUpon>strike_team_deployment_detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\underway_demobilization.aspx.cs">
+      <DependentUpon>underway_demobilization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\underway_demobilization.aspx.designer.cs">
+      <DependentUpon>underway_demobilization.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\vehicle_detail.aspx.cs">
       <DependentUpon>vehicle_detail.aspx</DependentUpon>
@@ -700,6 +709,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_tow_capacity.ascx.designer.cs">
       <DependentUpon>UserControl_tow_capacity.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_underway_demobilization.ascx.cs">
+      <DependentUpon>UserControl_underway_demobilization.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_underway_demobilization.ascx.designer.cs">
+      <DependentUpon>UserControl_underway_demobilization.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_update_progress_blocker.ascx.cs">
       <DependentUpon>UserControl_update_progress_blocker.ascx</DependentUpon>
