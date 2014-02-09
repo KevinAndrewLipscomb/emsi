@@ -15,7 +15,7 @@
                 <table cellspacing="0" cellpadding="0" border="0">
                   <tr>
                     <td id="Td_filter" runat="server" valign="middle">
-                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_practitioners" runat="server" Text="Show all eligible practitioners, whether mobilized or not" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_practitioners_CheckedChanged" />
+                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_practitioners" runat="server" Text="Mobilize/demobilize mode; Show all eligible practitioners" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_practitioners_CheckedChanged" />
                     </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td align="right" valign="middle">
