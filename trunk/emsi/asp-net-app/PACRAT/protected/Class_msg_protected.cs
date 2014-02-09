@@ -2,6 +2,13 @@ using kix;
 
 namespace Class_msg_protected
   {
+
+  internal enum underway_demobilization_mode_enum
+    {
+    MEMBER,
+    VEHICLE
+    };
+
   public class TClass_msg_protected
     {
     public class operational_period_detail
@@ -38,6 +45,13 @@ namespace Class_msg_protected
       {
       internal string id = k.EMPTY;
       }
+    public class underway_demobilization
+      {
+      internal string deployment_id = k.EMPTY;
+      internal underway_demobilization_mode_enum mode = underway_demobilization_mode_enum.MEMBER;
+      internal string asset_id = k.EMPTY;
+      internal string asset_designator = k.EMPTY;
+      }
     public class vehicle_detail
       {
       internal string id = k.EMPTY;
@@ -48,4 +62,5 @@ namespace Class_msg_protected
       internal object summary = null;
       }
     }
+
   }

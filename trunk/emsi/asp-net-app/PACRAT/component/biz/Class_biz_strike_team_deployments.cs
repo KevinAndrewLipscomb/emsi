@@ -24,6 +24,15 @@ namespace Class_biz_strike_team_deployments
       db_strike_team_deployments = new TClass_db_strike_team_deployments();
       }
 
+    internal bool BeDemobilizationReasonRequired
+      (
+      string deployment_id,
+      string service_strike_team_management_footprint
+      )
+      {
+      return (service_strike_team_management_footprint.Length == 0) && db_strike_team_deployments.BeAnyOperationalPeriodStartedFor(deployment_id);
+      }
+
     internal bool BeOkToMakeMobilizationChangesAndQuickMessages
       (
       string deployment_id,

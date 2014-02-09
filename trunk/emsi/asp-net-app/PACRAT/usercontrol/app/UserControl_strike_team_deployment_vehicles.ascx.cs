@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using AjaxControlToolkit;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_vehicles;
 using Class_biz_strike_team_deployments;
@@ -41,6 +42,7 @@ namespace UserControl_strike_team_deployment_vehicles
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public string deployment_id;
       public bool do_include_all_eligible_vehicles;
+      public TClass_msg_protected.underway_demobilization msg_protected_underway_demobilization;
       public TClass_msg_protected.vehicle_detail msg_protected_vehicle_detail;
       public uint num_vehicles;
       public string service_strike_team_management_footprint;
@@ -173,6 +175,7 @@ namespace UserControl_strike_team_deployment_vehicles
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
+        p.msg_protected_underway_demobilization = new TClass_msg_protected.underway_demobilization();
         p.msg_protected_vehicle_detail = new TClass_msg_protected.vehicle_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
@@ -291,16 +294,32 @@ namespace UserControl_strike_team_deployment_vehicles
                   }
                 else
                   {
-                  p.biz_strike_team_deployment_vehicles.Delete(id);
-                  //
-                  // Log event
-                  //
-                  p.biz_strike_team_deployment_logs.Enter
-                    (
-                    deployment_id:p.deployment_id,
-                    action:"demobilized vehicle `" + static_name + "`"
-                    );
-                  //
+                  if(
+                      (((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Controls[0]) as LinkButton).Text == "YES")
+                    &&
+                      (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint))
+                    )
+                  // then
+                    {
+                    p.msg_protected_underway_demobilization.deployment_id = p.deployment_id;
+                    p.msg_protected_underway_demobilization.mode = underway_demobilization_mode_enum.VEHICLE;
+                    p.msg_protected_underway_demobilization.asset_id = id;
+                    p.msg_protected_underway_demobilization.asset_designator = static_name;
+                    MessageDropCrumbAndTransferTo(p.msg_protected_underway_demobilization,"protected","underway_demobilization");
+                    }
+                  else
+                    {
+                    p.biz_strike_team_deployment_vehicles.Delete(id);
+                    //
+                    // Log event
+                    //
+                    p.biz_strike_team_deployment_logs.Enter
+                      (
+                      deployment_id:p.deployment_id,
+                      action:"demobilized vehicle `" + static_name + "`"
+                      );
+                    //
+                    }
                   }
                 }
               }
@@ -333,6 +352,10 @@ namespace UserControl_strike_team_deployment_vehicles
             {
             link_button.Text = "SAVE>";
             (e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Focus();
+            }
+          if ((link_button.Text == "YES") && (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint)))
+            {
+            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
             }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
