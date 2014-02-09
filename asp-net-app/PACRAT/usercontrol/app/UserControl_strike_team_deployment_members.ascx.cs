@@ -52,6 +52,7 @@ namespace UserControl_strike_team_deployment_members
       public string distribution_list_email;
       public string distribution_list_sms;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
+      public TClass_msg_protected.underway_demobilization msg_protected_underway_demobilization;
       public uint num_practitioners;
       public string service_strike_team_management_footprint;
       public string sort_order;
@@ -63,81 +64,7 @@ namespace UserControl_strike_team_deployment_members
 
     private void InjectPersistentClientSideScript()
       {
-      // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
-      // EstablishClientSideFunction(k.client_side_function_enumeral_type.KGS_TO_LBS);
-      // EstablishClientSideFunction(k.client_side_function_enumeral_type.LBS_TO_KGS);
-      // EstablishClientSideFunction
-      // (
-      // 'RecalculateDependentValues()',
-      // k.EMPTY
-      // + 'El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value ='
-      // +  ' El("' + TextBox_gross_landed_weight_in_pounds.clientid + '").value - El("' + TextBox_gross_invoiced_weight_in_lbs.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value ='
-      // +  ' El("' + TextBox_gross_landed_weight_in_kgs.clientid + '").value - El("' + TextBox_gross_invoiced_weight_in_kgs.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_gain_or_loss_per_bale_in_lbs.clientid + '").value ='
-      // +  ' El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_gain_or_loss_per_bale_in_kgs.clientid + '").value ='
-      // +  ' El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value ='
-      // +  ' El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value - El("' + TextBox_franchise_in_lbs.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_actual_gain_or_loss_in_kgs.clientid + '").value ='
-      // +  ' El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value - El("' + TextBox_franchise_in_kgs.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_actual_gain_or_loss_per_bale_in_lbs.clientid + '").value ='
-      // +  ' El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_actual_gain_or_loss_per_bale_in_kgs.clientid + '").value ='
-      // +  ' El("' + TextBox_actual_gain_or_loss_in_kgs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_percent_gain_or_loss.clientid + '").value ='
-      // +  ' Math.round(El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_net_invoiced_in_lbs.clientid + '").value*100*100)/100;'
-      // + k.NEW_LINE
-      // + 'El("' + TextBox_monetary_gain_or_loss.clientid + '").value ='
-      // +  ' El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value*El("' + TextBox_unit_price_in_cents_per_pound.clientid + '").value;'
-      // );
-      // //
-      // TextBox_bales.attributes.Add('onkeyup','RecalculateDependentValues();');
-      // TextBox_gross_landed_weight_in_pounds.attributes.Add
-      // (
-      // 'onkeyup',
-      // 'El("' + TextBox_gross_landed_weight_in_kgs.clientid + '").value = LbsToKgs(El("' + TextBox_gross_landed_weight_in_pounds.clientid + '").value);'
-      // + ' RecalculateDependentValues();'
-      // );
-      // TextBox_gross_landed_weight_in_kgs.attributes.Add
-      // (
-      // 'onkeyup',
-      // 'El("' + TextBox_gross_landed_weight_in_pounds.clientid + '").value = KgsToLbs(El("' + TextBox_gross_landed_weight_in_kgs.clientid + '").value);'
-      // + ' RecalculateDependentValues();'
-      // );
-      // TextBox_landed_or_ciq_tare.attributes.Add
-      // (
-      // 'onkeyup',
-      // 'El("' + TextBox_landed_or_ciq_tare_in_kgs.clientid + '").value = LbsToKgs(El("' + TextBox_landed_or_ciq_tare.clientid + '").value);'
-      // + ' RecalculateDependentValues();'
-      // );
-      // TextBox_landed_or_ciq_tare_in_kgs.attributes.Add
-      // (
-      // 'onkeyup',
-      // 'El("' + TextBox_landed_or_ciq_tare.clientid + '").value = KgsToLbs(El("' + TextBox_landed_or_ciq_tare_in_kgs.clientid + '").value);'
-      // + ' RecalculateDependentValues();'
-      // );
-      // TextBox_net_landed_in_pounds.attributes.Add
-      // (
-      // 'onkeyup',
-      // 'El("' + TextBox_net_landed_in_kgs.clientid + '").value = LbsToKgs(El("' + TextBox_net_landed_in_pounds.clientid + '").value);'
-      // + ' RecalculateDependentValues();'
-      // );
-      // TextBox_net_landed_in_kgs.attributes.Add
-      // (
-      // 'onkeyup',
-      // 'El("' + TextBox_net_landed_in_pounds.clientid + '").value = KgsToLbs(El("' + TextBox_net_landed_in_kgs.clientid + '").value);'
-      // + ' RecalculateDependentValues();'
-      // );
+      //EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
       }
 
     protected void Page_Load(object sender, System.EventArgs e)
@@ -193,6 +120,7 @@ namespace UserControl_strike_team_deployment_members
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
+        p.msg_protected_underway_demobilization = new TClass_msg_protected.underway_demobilization();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -304,16 +232,32 @@ namespace UserControl_strike_team_deployment_members
                   }
                 else
                   {
-                  p.biz_strike_team_deployment_members.Delete(id);
-                  //
-                  // Log event
-                  //
-                  p.biz_strike_team_deployment_logs.Enter
-                    (
-                    deployment_id:p.deployment_id,
-                    action:"demobilized member `" + name + "`"
-                    );
-                  //
+                  if(
+                      (((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton).Text == "YES")
+                    &&
+                      (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint))
+                    )
+                  // then
+                    {
+                    p.msg_protected_underway_demobilization.deployment_id = p.deployment_id;
+                    p.msg_protected_underway_demobilization.mode = underway_demobilization_mode_enum.MEMBER;
+                    p.msg_protected_underway_demobilization.asset_id = id;
+                    p.msg_protected_underway_demobilization.asset_designator = name;
+                    MessageDropCrumbAndTransferTo(p.msg_protected_underway_demobilization,"protected","underway_demobilization");
+                    }
+                  else
+                    {
+                    p.biz_strike_team_deployment_members.Delete(id);
+                    //
+                    // Log event
+                    //
+                    p.biz_strike_team_deployment_logs.Enter
+                      (
+                      deployment_id:p.deployment_id,
+                      action:"demobilized member `" + name + "`"
+                      );
+                    //
+                    }
                   }
                 }
               }
@@ -345,6 +289,10 @@ namespace UserControl_strike_team_deployment_members
             {
             link_button.Text = "SAVE>";
             (e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Focus();
+            }
+          if ((link_button.Text == "YES") && (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint)))
+            {
+            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
             }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
