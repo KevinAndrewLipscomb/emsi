@@ -11,6 +11,10 @@ namespace Class_msg_protected
 
   public class TClass_msg_protected
     {
+    public class mobilization_announcement
+      {
+      internal object deployment_summary;
+      }
     public class operational_period_detail
       {
       internal string deployment_id = k.EMPTY;

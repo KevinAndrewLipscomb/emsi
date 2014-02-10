@@ -247,6 +247,15 @@ namespace UserControl_strike_team_deployment {
         protected global::System.Web.UI.WebControls.Button Button_delete;
         
         /// <summary>
+        /// LinkButton_announce control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_announce;
+        
+        /// <summary>
         /// Panel_active_deployment_detail control.
         /// </summary>
         /// <remarks>

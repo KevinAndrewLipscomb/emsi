@@ -92,6 +92,7 @@
     <Content Include="protected\hardcopy_region_strike_team_key_personnel.aspx" />
     <Content Include="protected\hardcopy_service_strike_team_key_personnel.aspx" />
     <Content Include="protected\hardcopy_service_strike_team_roster.aspx" />
+    <Content Include="protected\mobilization_announcement.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
     <Content Include="protected\practitioner_profile.aspx" />
@@ -108,6 +109,7 @@
     <Content Include="timeout.aspx" />
     <Content Include="usercontrol\app\UserControl_business_objects_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_fuel.ascx" />
+    <Content Include="usercontrol\app\UserControl_mobilization_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_operational_period_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_patient_care_level.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
@@ -307,6 +309,13 @@
     <Compile Include="protected\hardcopy_service_strike_team_roster.aspx.designer.cs">
       <DependentUpon>hardcopy_service_strike_team_roster.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\mobilization_announcement.aspx.cs">
+      <DependentUpon>mobilization_announcement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\mobilization_announcement.aspx.designer.cs">
+      <DependentUpon>mobilization_announcement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\operational_period_detail.aspx.cs">
       <DependentUpon>operational_period_detail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -460,6 +469,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_member_binder.ascx.designer.cs">
       <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_mobilization_announcement.ascx.cs">
+      <DependentUpon>UserControl_mobilization_announcement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_mobilization_announcement.ascx.designer.cs">
+      <DependentUpon>UserControl_mobilization_announcement.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_operational_period_detail.ascx.cs">
       <DependentUpon>UserControl_operational_period_detail.ascx</DependentUpon>

@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
+using Class_biz_notifications;
 using Class_db_strike_team_deployments;
 using kix;
 using System;
@@ -17,11 +18,25 @@ namespace Class_biz_strike_team_deployments
 
   public class TClass_biz_strike_team_deployments
     {
+
+    private TClass_biz_notifications biz_notifications = null;
     private TClass_db_strike_team_deployments db_strike_team_deployments = null;
 
     public TClass_biz_strike_team_deployments() : base()
       {
+      biz_notifications = new TClass_biz_notifications();
       db_strike_team_deployments = new TClass_db_strike_team_deployments();
+      }
+
+    internal void AnnounceMobilization
+      (
+      object summary,
+      string supplemental_message,
+      string service_id
+      )
+      {
+      //biz_notifications.Issue();
+      //biz_notifications.Issue();
       }
 
     internal bool BeDemobilizationReasonRequired
@@ -85,6 +100,11 @@ namespace Class_biz_strike_team_deployments
         out region_code,
         out be_drill
         );
+      }
+
+    internal string NameOf(object summary)
+      {
+      return db_strike_team_deployments.NameOf(summary);
       }
 
     internal string NameOfId(string id)

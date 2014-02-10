@@ -7,6 +7,7 @@ using Class_biz_role_member_map;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployments;
 using Class_biz_user;
+using Class_msg_protected;
 using kix;
 using System;
 using System.Web.UI;
@@ -19,14 +20,15 @@ namespace UserControl_strike_team_deployment
     private struct p_type
       {
       public bool be_loaded;
+      public bool be_ok_to_config_strike_team_deployments;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
-      public bool be_ok_to_config_strike_team_deployments;
       public string id;
+      public TClass_msg_protected.mobilization_announcement msg_protected_mobilization_announcement;
       public presentation_mode_enum presentation_mode;
       public object summary;
       }
@@ -166,11 +168,17 @@ namespace UserControl_strike_team_deployment
         else
           {
           Button_submit.Text = "Alter this deployment";
+          LinkButton_announce.Visible = p.be_ok_to_config_strike_team_deployments && !p.biz_strike_team_deployments.BeDemobilizationReasonRequired
+            (
+            deployment_id:p.id,
+            service_strike_team_management_footprint:k.EMPTY
+            );
           Panel_active_deployment_detail.Visible = true;
           }
         p.be_loaded = true;
         }
       ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_announce);
       InjectPersistentClientSideScript();
       }
 
@@ -295,6 +303,7 @@ namespace UserControl_strike_team_deployment
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
+        p.msg_protected_mobilization_announcement = new TClass_msg_protected.mobilization_announcement();
         //
         p.be_loaded = false;
         p.be_ok_to_config_strike_team_deployments = false;
@@ -464,6 +473,17 @@ namespace UserControl_strike_team_deployment
             }
           }
         }
+      }
+
+    protected void LinkButton_announce_Click(object sender, EventArgs e)
+      {
+      p.msg_protected_mobilization_announcement.deployment_summary = p.summary;
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_mobilization_announcement,
+        folder_name:"protected",
+        aspx_name:"mobilization_announcement"
+        );
       }
 
     } // end TWebUserControl_strike_team_deployment
