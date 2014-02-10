@@ -20,6 +20,7 @@ namespace Class_db_strike_team_deployments
       public string name;
       public string region_code;
       public string region_name;
+      public bool be_drill;
       }
 
     private TClass_db_trail db_trail = null;
@@ -36,6 +37,11 @@ namespace Class_db_strike_team_deployments
       be_any_operational_period_started_for = "0" != new MySqlCommand("select count(*) from strike_team_deployment_operational_period where deployment_id = '" + deployment_id + "' and start <= NOW()",connection).ExecuteScalar().ToString();
       Close();
       return be_any_operational_period_started_for;
+      }
+
+    internal bool BeDrill(object summary)
+      {
+      return (summary as strike_team_deployment_summary).be_drill;
       }
 
     public bool Bind(string partial_spec, object target)
@@ -230,6 +236,7 @@ namespace Class_db_strike_team_deployments
           + " , strike_team_deployment.name as name"
           + " , strike_team_deployment.region_code as region_code"
           + " , region_code_name_map.name as region_name"
+          + " , be_drill"
           + " FROM strike_team_deployment"
           +   " join region_code_name_map on (region_code_name_map.code=strike_team_deployment.region_code)"
           + " where id = '" + id + "'",
@@ -244,7 +251,8 @@ namespace Class_db_strike_team_deployments
         creation_date = DateTime.Parse(dr["creation_date"].ToString()),
         name = dr["name"].ToString(),
         region_code = dr["region_code"].ToString(),
-        region_name = dr["region_name"].ToString()
+        region_name = dr["region_name"].ToString(),
+        be_drill = ("1" == dr["be_drill"].ToString())
         };
       Close();
       return the_summary;

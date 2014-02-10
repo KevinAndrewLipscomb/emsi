@@ -31,6 +31,10 @@ namespace UserControl_mobilization_announcement
           region_code:p.biz_strike_team_deployments.RegionCodeOf(p.deployment_summary),
           target:CheckBoxList_service_strike_teams
           );
+        foreach (ListItem item in CheckBoxList_service_strike_teams.Items)
+          {
+          item.Selected = true;
+          }
         //
         p.be_loaded = true;
         }

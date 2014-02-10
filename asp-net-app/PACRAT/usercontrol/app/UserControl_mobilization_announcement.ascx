@@ -3,16 +3,16 @@
 <h3>Mobilization announcement</h3>
 <table cellpadding="5" cellspacing="0">
   <tr>
-    <td valign="top">Deployment open for mobilization:</td>
-    <td valign="top"><asp:Literal ID="Literal_deployment_name" runat="server"></asp:Literal></td>
-    <td valign="top">&nbsp;</td>
-  </tr>
-  <tr>
     <td valign="top">To managers at:</td>
-    <td valign="top"><small><asp:CheckBoxList ID="CheckBoxList_service_strike_teams" runat="server"></asp:CheckBoxList></small></td>
+    <td valign="top"><small><asp:CheckBoxList ID="CheckBoxList_service_strike_teams" runat="server" RepeatLayout="Flow"></asp:CheckBoxList></small></td>
     <td valign="top">
       <asp:CustomValidator ID="CustomValidator_service_strike_teams" runat="server" ErrorMessage="Please select at least one Service Strike Team." Font-Bold="True" onservervalidate="CustomValidator_service_strike_teams_ServerValidate">!ERR!</asp:CustomValidator>
     </td>
+  </tr>
+  <tr>
+    <td valign="top">Deployment open for mobilization:</td>
+    <td valign="top"><asp:Literal ID="Literal_deployment_name" runat="server"></asp:Literal></td>
+    <td valign="top">&nbsp;</td>
   </tr>
   <tr>
     <td valign="top">Announcement:</td>
@@ -20,13 +20,23 @@
       The selected Service Strike Team Managers will receive:
       <ul>
         <li>An SMS message indicating that a deployment is open for mobilization and advising them to check their email.</li>
-        <li>An email with instructions for marking their personnel and vehicles as mobilized for this deployment, and with any supplemental message that you specify below.</li>
+        <li>
+          An email containing:
+          <ul>
+            <li>Instructions for marking their personnel and vehicles as mobilized for this deployment</li>
+            <li>An indication of whether this is an actual deployment or a drill, as you previously specified</li>
+            <li>Any supplemental message that you specify below.</li>
+          </ul>
+        </li>
       </ul>
     </td>
     <td valign="top">&nbsp;</td>
   </tr>
   <tr>
-    <td valign="top">Supplemental message:</td>
+    <td valign="top">
+      <p>Supplemental message:</p>
+      <small>Specify time and place to muster if known.</small>
+    </td>
     <td valign="top"><asp:TextBox ID="TextBox_supplemental_message" runat="server" Columns="72" Rows="6" TextMode="MultiLine"></asp:TextBox></td>
     <td valign="top">&nbsp;</td>
   </tr>
