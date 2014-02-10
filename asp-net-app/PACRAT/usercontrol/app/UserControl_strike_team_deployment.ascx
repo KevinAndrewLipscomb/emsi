@@ -101,11 +101,25 @@
       <asp:RequiredFieldValidator ID="RequiredFieldValidator_be_drill" runat="server" ControlToValidate="RadioButtonList_be_drill" ErrorMessage="Please selected whether this is an actual deployment or a drill." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
     </td>
   </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <table cellpadding="10" cellspacing="0">
+        <tr>
+          <td><ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="False"></ASP:Button></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><asp:LinkButton ID="LinkButton_announce" runat="server" CausesValidation="False" onclick="LinkButton_announce_Click" Visible="False">Mobilization announcement...</asp:LinkButton></td>
+        </tr>
+      </table>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
       </table>
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="False"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button>
 <asp:Panel ID="Panel_active_deployment_detail" runat="server" Visible="false">
   <br />
   <uc2:UserControl_strike_team_deployment_binder ID="UserControl_strike_team_deployment_binder_control" runat="server" />

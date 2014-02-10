@@ -47,6 +47,7 @@ namespace UserControl_region_detail
       public bool do_include_all_services;
       public TClass_msg_protected.service_management msg_protected_service_management;
       public uint num_services;
+      public string region_code;
       public string sort_order;
       public object summary;
       public string user_target_email;
@@ -178,6 +179,7 @@ namespace UserControl_region_detail
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
         p.do_include_all_services = false;
+        p.region_code = k.EMPTY;
         p.sort_order = "be_strike_team_participant desc,name";
         p.summary = null;
         //
@@ -214,7 +216,7 @@ namespace UserControl_region_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_service_management.region_code = p.biz_regions.CodeOf(p.summary);
+        p.msg_protected_service_management.region_code = p.region_code;
         p.msg_protected_service_management.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_region_detail_Static.TCI_ID].Text,k.safe_hint_type.NUM));
         MessageDropCrumbAndTransferTo(p.msg_protected_service_management,"protected","service_management");
         }
@@ -266,6 +268,7 @@ namespace UserControl_region_detail
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control,
+        region_code:p.region_code,
         do_include_all_services:p.do_include_all_services
         );
       p.be_datagrid_empty = (p.num_services == 0);
@@ -279,6 +282,7 @@ namespace UserControl_region_detail
     internal void Set(object summary)
       {
       p.summary = summary;
+      p.region_code = p.biz_regions.CodeOf(p.summary);
       }
 
     protected void CheckBox_force_all_CheckedChanged(object sender, EventArgs e)

@@ -172,6 +172,11 @@ namespace Class_db_strike_team_deployments
       return result;
       }
 
+    internal string NameOf(object summary)
+      {
+      return (summary as strike_team_deployment_summary).name;
+      }
+
     internal string NameOfId(string id)
       {
       Open();
