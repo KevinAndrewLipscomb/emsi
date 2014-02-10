@@ -13,6 +13,24 @@ namespace UserControl_mobilization_announcement {
     public partial class TWebUserControl_mobilization_announcement {
         
         /// <summary>
+        /// UpdatePanel_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        
+        /// <summary>
+        /// CheckBox_force_all control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_force_all;
+        
+        /// <summary>
         /// CheckBoxList_service_strike_teams control.
         /// </summary>
         /// <remarks>

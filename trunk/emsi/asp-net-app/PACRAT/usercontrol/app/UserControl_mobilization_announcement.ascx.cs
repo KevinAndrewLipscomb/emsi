@@ -117,14 +117,15 @@ namespace UserControl_mobilization_announcement
               );
             }
           }
+        TextBox_supplemental_message.Text = k.EMPTY;
         Alert
           (
           cause:k.alert_cause_type.USER,
           state:k.alert_state_type.NORMAL,
           key:"ancmtsent",
-          value:"Announcement sent"
+          value:"Announcement sent",
+          be_using_scriptmanager:true
           );
-        BackTrack();
         }
       else
         {
@@ -142,6 +143,14 @@ namespace UserControl_mobilization_announcement
     protected void CustomValidator_service_strike_teams_ServerValidate(object source, ServerValidateEventArgs args)
       {
       args.IsValid = (CheckBoxList_service_strike_teams.SelectedValue.Length > 0);
+      }
+
+    protected void CheckBox_force_all_CheckedChanged(object sender, System.EventArgs e)
+      {
+      foreach (ListItem item in CheckBoxList_service_strike_teams.Items)
+        {
+        item.Selected = CheckBox_force_all.Checked;
+        }
       }
 
     }

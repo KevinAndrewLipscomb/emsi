@@ -1,10 +1,19 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_mobilization_announcement.ascx.cs" Inherits="UserControl_mobilization_announcement.TWebUserControl_mobilization_announcement"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~std.ascx-template -->
 <h3>Mobilization announcement</h3>
+<asp:UpdatePanel ID="UpdatePanel_control" runat="server" UpdateMode="Conditional">
+  <ContentTemplate>
 <table cellpadding="5" cellspacing="0">
   <tr>
     <td valign="top">To managers at:</td>
-    <td valign="top"><small><asp:CheckBoxList ID="CheckBoxList_service_strike_teams" runat="server" RepeatLayout="Flow"></asp:CheckBoxList></small></td>
+    <td valign="top">
+      <table>
+        <tr>
+          <td valign="top"><small><strong>All:</strong><asp:CheckBox ID="CheckBox_force_all" runat="server" Checked="true" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all"/></small></td>
+          <td><small><asp:CheckBoxList ID="CheckBoxList_service_strike_teams" runat="server" RepeatLayout="Flow"></asp:CheckBoxList></small></td>
+        </tr>
+      </table>
+    </td>
     <td valign="top">
       <asp:CustomValidator ID="CustomValidator_service_strike_teams" runat="server" ErrorMessage="Please select at least one Service Strike Team." Font-Bold="True" onservervalidate="CustomValidator_service_strike_teams_ServerValidate">!ERR!</asp:CustomValidator>
     </td>
@@ -46,3 +55,5 @@
     <td valign="top">&nbsp;</td>
   </tr>
 </table>
+  </ContentTemplate>
+</asp:UpdatePanel>
