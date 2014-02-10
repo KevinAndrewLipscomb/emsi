@@ -1,23 +1,25 @@
-using System;
-
-using System.Collections;
-using Class_db_role_member_map;
 using Class_biz_notifications;
 using Class_biz_user;
+using Class_db_role_member_map;
+using System.Collections;
+
 namespace Class_biz_role_member_map
-{
-    public class TClass_biz_role_member_map
+  {
+
+  public class TClass_biz_role_member_map
     {
+
         private TClass_db_role_member_map db_role_member_map = null;
         private TClass_biz_notifications biz_notifications = null;
         private TClass_biz_user biz_user = null;
-        //Constructor  Create()
+
         public TClass_biz_role_member_map() : base()
         {
             db_role_member_map = new TClass_db_role_member_map();
             biz_notifications = new TClass_biz_notifications();
             biz_user = new TClass_biz_user();
         }
+
         public bool BePrivilegedToModifyTuple(bool has_config_roles_and_matrices, bool has_assign_roles_to_members, string role_natural_text)
         {
             bool result;
@@ -62,6 +64,15 @@ namespace Class_biz_role_member_map
             db_role_member_map.BindHolders(role_name, target, sort_order, be_sort_order_ascending);
         }
 
+        internal string EmailTargetOfByExplicitRegionCode
+          (
+          string role_name,
+          string region_code
+          )
+          {
+          return db_role_member_map.EmailTargetOfByExplicitRegionCode(role_name,region_code);
+          }
+
         internal string EmailTargetOfByExplicitServiceId
           (
           string role_name,
@@ -101,6 +112,15 @@ namespace Class_biz_role_member_map
           biz_notifications.IssueForExplicitServiceRoleChange(member_id,role_id,be_granted,service_id);
           }
 
+    internal string SmsTargetOfByExplicitServiceId
+      (
+      string role_name,
+      string service_id
+      )
+      {
+      return db_role_member_map.SmsTargetOfByExplicitServiceId(role_name,service_id);
+      }
+
     } // end TClass_biz_role_member_map
 
-}
+  }

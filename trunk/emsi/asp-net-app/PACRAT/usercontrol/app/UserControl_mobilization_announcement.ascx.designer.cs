@@ -13,15 +13,6 @@ namespace UserControl_mobilization_announcement {
     public partial class TWebUserControl_mobilization_announcement {
         
         /// <summary>
-        /// Literal_deployment_name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_deployment_name;
-        
-        /// <summary>
         /// CheckBoxList_service_strike_teams control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace UserControl_mobilization_announcement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_service_strike_teams;
+        
+        /// <summary>
+        /// Literal_deployment_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_deployment_name;
         
         /// <summary>
         /// TextBox_supplemental_message control.

@@ -8,7 +8,8 @@ using System.Collections;
 using System.Web.UI.WebControls;
 
 namespace Class_db_role_member_map
-{
+  {
+
   public static class Class_db_role_member_map_Static
     {
     public const int CI_MEMBER_ID = 0;
@@ -17,7 +18,7 @@ namespace Class_db_role_member_map
     public const int ROLE_HOLDER_EMAIL_ADDRESS_CI = 1;
     }
 
-    public class TClass_db_role_member_map: TClass_db
+  public class TClass_db_role_member_map: TClass_db
     {
         private TClass_db_trail db_trail = null;
         //Constructor  Create()
@@ -182,6 +183,38 @@ namespace Class_db_role_member_map
 
         }
 
+        internal string EmailTargetOfByExplicitRegionCode
+          (
+          string role_name,
+          string region_code
+          )
+          {
+          var email_target_of_by_explicit_region_code = k.EMPTY;
+          Open();
+          var dr = new MySqlCommand
+            (
+            "select email_address"
+            + " from role_member_map"
+            +   " join role on (role.id=role_member_map.role_id)"
+            +   " join member on (member.id=role_member_map.member_id)"
+            + " where role.name = '" + role_name + "'"
+            +   " and region_code = '" + region_code + "'",
+            connection
+            )
+            .ExecuteReader();
+          while (dr.Read())
+            {
+            email_target_of_by_explicit_region_code += dr["email_address"].ToString() + k.COMMA;
+            }
+          dr.Close();
+          Close();
+          if (email_target_of_by_explicit_region_code.Length > 0)
+            {
+            email_target_of_by_explicit_region_code = email_target_of_by_explicit_region_code.Substring(0, email_target_of_by_explicit_region_code.Length - 1);
+            }
+          return email_target_of_by_explicit_region_code;
+          }
+
         internal string EmailTargetOfByExplicitServiceId(string role_name, string service_id)
           {
           var email_target_of_by_explicit_service_id = k.EMPTY;
@@ -264,7 +297,36 @@ namespace Class_db_role_member_map
           Close();
           }
 
+    internal string SmsTargetOfByExplicitServiceId(string role_name, string service_id)
+      {
+      var sms_target_of_by_explicit_service_id = k.EMPTY;
+      Open();
+      var dr = new MySqlCommand
+        (
+        "select concat(phone_number,'@',hostname) as sms_address"
+        + " from role_member_map"
+        +   " join role on (role.id=role_member_map.role_id)"
+        +   " join member on (member.id=role_member_map.member_id)"
+        +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=member.id)"
+        +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
+        + " where role.name = '" + role_name + "'"
+        +   " and service_id = '" + service_id + "'",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        sms_target_of_by_explicit_service_id += dr["sms_address"].ToString() + k.COMMA;
+        }
+      dr.Close();
+      Close();
+      if (sms_target_of_by_explicit_service_id.Length > 0)
+        {
+        sms_target_of_by_explicit_service_id = sms_target_of_by_explicit_service_id.Substring(0, sms_target_of_by_explicit_service_id.Length - 1);
+        }
+      return sms_target_of_by_explicit_service_id;
+      }
+
     } // end TClass_db_role_member_map
 
-}
-
+  }

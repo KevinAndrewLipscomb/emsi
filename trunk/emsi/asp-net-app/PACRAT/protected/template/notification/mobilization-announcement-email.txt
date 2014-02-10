@@ -1,0 +1,34 @@
+STRIKE TEAM MOBILIZATION - <deployment_name/>
+<service_name/> Strike Team Manager(s),
+
+<region_name/> has activated the <service_name/> Strike Team to MOBILIZE for the following deployment:
+
+   Name:
+      <deployment_name/>
+
+   Nature:
+      <actual_vs_drill_indicator/>
+
+   Supplemental message:
+      <supplemental_message/>
+
+Please do the following without delay to indicate which of your personnel and vehicles will mobilize for this deployment:
+
+1. Log into http://<host_domain_name/>/<application_name/> .
+
+2. Click the COORDINATION tab.
+
+3. Drill down into the <deployment_name/> deployment.
+
+4. Under the PERSONNEL and VEHICLES tabs, respectively:
+
+   A. Make sure the "Mobilize/demobilize" box is CHECKED.
+
+   B. In the "Mobilized?" column, click "no" to change it to "YES" for
+      each person or vehicle you are mobilizing.
+
+You can reach the <region_name/> Regional Strike Team Manager(s) at:
+
+   <region_strike_team_manager_target/> (mailto:<region_strike_team_manager_target/>)
+
+-- <application_name/> (http://<host_domain_name/>/<application_name/>)
