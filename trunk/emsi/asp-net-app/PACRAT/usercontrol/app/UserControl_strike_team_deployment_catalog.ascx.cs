@@ -206,13 +206,11 @@ namespace UserControl_strike_team_deployment_catalog
           {
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
-          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          var status_cell = e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_STATUS];
-          if (status_cell.Text == "*MOBILIZING*")
-            {
-            status_cell.Font.Bold = true;
-            }
+          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_STATUS].Controls[0]) as LinkButton);
+          link_button.Font.Bold = (link_button.Text == "*MOBILIZING*");
+          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);

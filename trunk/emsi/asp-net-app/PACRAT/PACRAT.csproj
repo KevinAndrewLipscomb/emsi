@@ -101,6 +101,13 @@
     <Content Include="protected\service_management.aspx" />
     <Content Include="protected\state_detail.aspx" />
     <Content Include="protected\strike_team_deployment_detail.aspx" />
+    <Content Include="protected\template\notification\explicit_region_role_change.txt" />
+    <Content Include="protected\template\notification\explicit_service_role_change.txt" />
+    <Content Include="protected\template\notification\membership_establishment_blocked.txt" />
+    <Content Include="protected\template\notification\membership_establishment_trouble.txt" />
+    <Content Include="protected\template\notification\mobilization-announcement-email.txt" />
+    <Content Include="protected\template\notification\mobilization-announcement-sms.txt" />
+    <Content Include="protected\template\notification\role_change.txt" />
     <Content Include="protected\underway_demobilization.aspx" />
     <Content Include="protected\vehicle_detail.aspx" />
     <Content Include="protected\vehicle_management.aspx" />
