@@ -65,6 +65,11 @@ namespace Class_biz_strike_team_deployments
         }
       }
 
+    internal bool BeAllConcludedWithinScope(string member_id)
+      {
+      return db_strike_team_deployments.BeAllConcludedWithinScope(member_id);
+      }
+
     internal bool BeDemobilizationReasonRequired
       (
       string deployment_id,

@@ -11,8 +11,36 @@ using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployments
   {
+
   public class TClass_db_strike_team_deployments: TClass_db
     {
+
+    private class Static
+      {
+      internal const string CATALOG_CMDTEXT_PREFIX_WHERE_MEMBER_ID_EQUALS = k.EMPTY
+      + "select strike_team_deployment.id as id"
+      + " , DATE_FORMAT(creation_date,'%Y-%m-%d') as creation_date"
+      + " , name"
+      + " , IF(MAX(end) < NOW(),'Concluded',IF(MIN(start) < NOW(),'UNDERWAY','*MOBILIZING*')) as status"
+      + " from strike_team_deployment"
+      +   " left join strike_team_deployment_operational_period on (strike_team_deployment_operational_period.deployment_id=strike_team_deployment.id)"
+      + " where region_code in"
+      +   " ("
+      +   " select GROUP_CONCAT(region_code_name_map.code)"
+      +   " from region_code_name_map"
+      +     " join county_region_map on (county_region_map.region_code=region_code_name_map.code)"
+      +     " join service on (service.county_code=county_region_map.county_code)"
+      +     " join role_member_map on ((role_member_map.region_code is null and role_member_map.service_id is null) or role_member_map.region_code=region_code_name_map.code or role_member_map.service_id=service.id)"
+      +     " join role_privilege_map on (role_privilege_map.role_id=role_member_map.role_id)"
+      +     " join privilege on (privilege.id=role_privilege_map.privilege_id)"
+      +   " where be_pacrat_subscriber"
+      +     " and privilege.name in ('see-strike-team-deployments','config-strike-team-deployments')"
+      +     " and member_id = '";
+      internal const string CATALOG_CMDTEXT_SUFFIX = "'"
+      +   " )"
+      + " group by strike_team_deployment.id";
+      }
+
     private class strike_team_deployment_summary
       {
       public string id;
@@ -28,6 +56,23 @@ namespace Class_db_strike_team_deployments
     public TClass_db_strike_team_deployments() : base()
       {
       db_trail = new TClass_db_trail();
+      }
+
+    internal bool BeAllConcludedWithinScope(string member_id)
+      {
+      var be_all_concluded_within_scope = false;
+      Open();
+      be_all_concluded_within_scope = "1" == new MySqlCommand
+        (
+        //
+        // By bookkending the equality test with the IFNULL(~,1) clause, we cover the case where the catalog is empty.
+        //
+        "select IFNULL(sum(status = 'Concluded') = count(*),1) from ("+   Static.CATALOG_CMDTEXT_PREFIX_WHERE_MEMBER_ID_EQUALS + member_id + Static.CATALOG_CMDTEXT_SUFFIX + " ) as catalog",
+        connection
+        )
+        .ExecuteScalar().ToString();
+      Close();
+      return be_all_concluded_within_scope;
       }
 
     internal bool BeAnyOperationalPeriodStartedFor(string deployment_id)
@@ -77,29 +122,7 @@ namespace Class_db_strike_team_deployments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
-        (
-        "select strike_team_deployment.id as id"
-        + " , DATE_FORMAT(creation_date,'%Y-%m-%d') as creation_date"
-        + " , name"
-        + " from strike_team_deployment"
-        + " where region_code in"
-        +   " ("
-        +   " select GROUP_CONCAT(region_code_name_map.code)"
-        +   " from region_code_name_map"
-        +     " join county_region_map on (county_region_map.region_code=region_code_name_map.code)"
-        +     " join service on (service.county_code=county_region_map.county_code)"
-        +     " join role_member_map on ((role_member_map.region_code is null and role_member_map.service_id is null) or role_member_map.region_code=region_code_name_map.code or role_member_map.service_id=service.id)"
-        +     " join role_privilege_map on (role_privilege_map.role_id=role_member_map.role_id)"
-        +     " join privilege on (privilege.id=role_privilege_map.privilege_id)"
-        +   " where member_id = '" + member_id + "'"
-        +     " and privilege.name in ('see-strike-team-deployments','config-strike-team-deployments')"
-        +     " and be_pacrat_subscriber"
-        +   " )"
-        + " order by creation_date desc",
-        connection
-        )
-        .ExecuteReader();
+      ((target) as BaseDataList).DataSource = new MySqlCommand(Static.CATALOG_CMDTEXT_PREFIX_WHERE_MEMBER_ID_EQUALS + member_id + Static.CATALOG_CMDTEXT_SUFFIX + " order by creation_date desc",connection).ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }

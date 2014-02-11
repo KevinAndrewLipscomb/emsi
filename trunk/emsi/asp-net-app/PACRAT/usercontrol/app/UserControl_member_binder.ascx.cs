@@ -1,4 +1,5 @@
 using Class_biz_members;
+using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using kix;
 using UserControl_about;
@@ -35,6 +36,7 @@ namespace UserControl_member_binder
       internal bool be_ok_to_config_strike_team_region;
       internal bool be_ok_to_config_strike_team_service;
       internal TClass_biz_members biz_members;
+      internal TClass_biz_strike_team_deployments biz_strike_team_deployments;
       internal TClass_biz_user biz_user;
       internal string content_id;
       internal uint tab_index;
@@ -128,6 +130,7 @@ namespace UserControl_member_binder
       else
         {
         p.biz_members = new TClass_biz_members();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
         //
         p.be_loaded = false;
@@ -136,7 +139,14 @@ namespace UserControl_member_binder
         p.be_ok_to_config_strike_team_service = k.Has((string[])(Session["privilege_array"]),"config-strike-team-service");
         if (p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service)
           {
-          p.tab_index = UserControl_member_binder_Static.TSSI_PREPARATION;
+          if (p.biz_strike_team_deployments.BeAllConcludedWithinScope(p.biz_members.IdOfUserId(p.biz_user.IdNum())))
+            {
+            p.tab_index = UserControl_member_binder_Static.TSSI_PREPARATION;
+            }
+          else
+            {
+            p.tab_index = UserControl_member_binder_Static.TSSI_COORDINATION;
+            }
           }
         else
           {
