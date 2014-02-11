@@ -37,6 +37,7 @@ namespace coned_sponsor_overview
               Session.Clear();
               DropCrumbAndTransferTo("~/login.aspx");
               }
+            UserControl_coned_sponsor_binder_control.Set(user_sponsor_id:Session["coned_sponsor_user_id"].ToString());
         }
 
     } // end TWebForm_coned_sponsor_overview

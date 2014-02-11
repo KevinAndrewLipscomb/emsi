@@ -3,7 +3,7 @@
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
 <%@ Register src="~/usercontrol/app/UserControl_practitioner_coned_detail.ascx" tagname="UserControl_practitioner_coned_detail" tagprefix="uc1" %>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
-  <tr id="TableRow_id" runat="server" visible="false">
+  <tr id="TableRow_id" runat="server">
     <td bgcolor="gainsboro" valign="top"><font class="">id:</font></td>
     <td valign="top"><font class="">
       <table cellspacing="0" cellpadding="0" border="0">
@@ -147,7 +147,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_birth_date_confirmed" runat="server" visible="false">
     <td><font class="">Be&nbsp;birth&nbsp;date&nbsp;confirmed:</font></td>
     <td>
       <asp:CheckBox ID="CheckBox_be_birth_date_confirmed" runat="server" />
@@ -167,7 +167,7 @@
       <asp:CustomValidator id="CustomValidator_email_address" runat="server" errormessage='Please enter an Email address with a valid Domain Name (the part after the "@").' font-bold="True" controltovalidate="TextBox_email_address" onservervalidate="CustomValidator_email_address_ServerValidate">!ERR!</asp:CustomValidator>
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_street_address_1" runat="server" visible="false">
     <td><font class="">Street&nbsp;address&nbsp;1:</font></td>
     <td>
       <font class="">
@@ -178,7 +178,7 @@
       <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_1" runat="server" errormessage="Please enter a valid Street address 1." font-bold="True" controltovalidate="TextBox_street_address_1" validationexpression="[0-9a-zA-Z#\-,(). ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_street_address_2" runat="server" visible="false">
     <td><font class="">Street&nbsp;address&nbsp;2:</font></td>
     <td>
       <font class="">
@@ -189,7 +189,7 @@
       <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_2" runat="server" errormessage="Please enter a valid Street address 2." font-bold="True" controltovalidate="TextBox_street_address_2" validationexpression="[0-9a-zA-Z#\-,(). ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_city_state_zip" runat="server" visible="false">
     <td><font class="">City&nbsp;state&nbsp;zip:</font></td>
     <td>
       <font class="">
@@ -208,7 +208,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_be_stale" runat="server" visible="false">
     <td><font class="">Be&nbsp;stale:</font></td>
     <td>
       <asp:CheckBox ID="CheckBox_be_stale" runat="server" />
@@ -216,7 +216,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_be_past" runat="server" visible="false">
     <td><font class="">Be&nbsp;past:</font></td>
     <td>
       <asp:CheckBox ID="CheckBox_be_past" runat="server" />

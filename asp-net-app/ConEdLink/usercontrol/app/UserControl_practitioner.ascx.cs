@@ -28,6 +28,7 @@ namespace UserControl_practitioner
       public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_regions biz_regions;
       public string id;
+      public string user_sponsor_id_filter;
       }
 
     private p_type p;
@@ -147,7 +148,6 @@ namespace UserControl_practitioner
       {
       if (!p.be_loaded)
         {
-        TableRow_id.Visible = p.be_educational_reservist_or_higher;
         LinkButton_new_record.Visible = p.be_ok_to_config_practitioners;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
@@ -164,6 +164,12 @@ namespace UserControl_practitioner
         p.biz_counties.BindDirectToListControl(DropDownList_residence_county);
         UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
         UserControl_drop_down_date_birth_date.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
+        TableRow_birth_date_confirmed.Visible = p.be_educational_reservist_or_higher;
+        TableRow_street_address_1.Visible = p.be_educational_reservist_or_higher;
+        TableRow_street_address_2.Visible = p.be_educational_reservist_or_higher;
+        TableRow_city_state_zip.Visible = p.be_educational_reservist_or_higher;
+        TableRow_be_stale.Visible = p.be_educational_reservist_or_higher;
+        TableRow_be_past.Visible = p.be_educational_reservist_or_higher;
         Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
         Literal_application_name_2.Text = Literal_application_name.Text;
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
@@ -239,7 +245,11 @@ namespace UserControl_practitioner
         TextBox_city_state_zip.Text = city_state_zip;
         CheckBox_be_instructor.Checked = be_instructor;
         CheckBox_be_past.Checked = be_past;
-        UserControl_practitioner_coned_detail_control.SetTarget(practitioner_id:id);
+        UserControl_practitioner_coned_detail_control.SetTarget
+          (
+          practitioner_id:id,
+          be_user_coned_sponsor:(p.user_sponsor_id_filter.Length > 0)
+          );
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -287,7 +297,11 @@ namespace UserControl_practitioner
       if (id.Length > 0)
         {
         p.id = id;
-        UserControl_practitioner_coned_detail_control.SetTarget(practitioner_id:p.id);
+        UserControl_practitioner_coned_detail_control.SetTarget
+          (
+          practitioner_id:p.id,
+          be_user_coned_sponsor:(p.user_sponsor_id_filter.Length > 0)
+          );
         }
       }
 
@@ -317,6 +331,7 @@ namespace UserControl_practitioner
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
         p.be_ok_to_config_practitioner_coned_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-coned-details");
         p.id = k.EMPTY;
+        p.user_sponsor_id_filter = k.EMPTY;
         }
       }
 
@@ -453,7 +468,12 @@ namespace UserControl_practitioner
       if (!PresentRecord(saved_id))
         {
         TextBox_id.Text = saved_id;
-        p.biz_practitioners.Bind(saved_id, DropDownList_id);
+        p.biz_practitioners.Bind
+          (
+          partial_spec:saved_id,
+          target:DropDownList_id,
+          sponsor_id_filter:p.user_sponsor_id_filter
+          );
         var num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {
@@ -480,6 +500,11 @@ namespace UserControl_practitioner
     protected void CustomValidator_email_address_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
       {
       args.IsValid = k.BeValidDomainPartOfEmailAddress(k.Safe(TextBox_email_address.Text, k.safe_hint_type.EMAIL_ADDRESS));
+      }
+
+    internal void Set(string user_sponsor_id_filter)
+      {
+      p.user_sponsor_id_filter = user_sponsor_id_filter;
       }
 
     } // end TWebUserControl_practitioner

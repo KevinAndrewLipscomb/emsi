@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using UserControl_about;
 using UserControl_class_catalog;
 using UserControl_coned_sponsor;
+using UserControl_practitioner;
 
 namespace UserControl_coned_sponsor_binder
   {
@@ -17,7 +18,8 @@ namespace UserControl_coned_sponsor_binder
     {
     public const int TSSI_MY_PROFILE = 0;
     public const int TSSI_CLASSES = 1;
-    public const int TSSI_ABOUT = 2;
+    public const int TSSI_PRACTITIONERS = 2;
+    public const int TSSI_ABOUT = 3;
     }
 
   public struct p_type
@@ -25,6 +27,7 @@ namespace UserControl_coned_sponsor_binder
     public bool be_loaded;
     public string content_id;
     public uint tab_index;
+    public string user_sponsor_id;
     }
 
   public partial class TWebUserControl_coned_sponsor_binder: ki_web_ui.usercontrol_class
@@ -58,6 +61,7 @@ namespace UserControl_coned_sponsor_binder
         {
         p.be_loaded = false;
         p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_CLASSES;
+        p.user_sponsor_id = k.EMPTY;
         FillPlaceHolder(true);
         }
       }
@@ -112,6 +116,12 @@ namespace UserControl_coned_sponsor_binder
         var c = ((TWebUserControl_class_catalog)(LoadControl("~/usercontrol/app/UserControl_class_catalog.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_class_catalog",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
+      else if (p.tab_index == UserControl_coned_sponsor_binder_Static.TSSI_PRACTITIONERS)
+        {
+        var c = ((TWebUserControl_practitioner)(LoadControl("~/usercontrol/app/UserControl_practitioner.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        c.Set(user_sponsor_id_filter:p.user_sponsor_id);
+        }
       else if (p.tab_index == UserControl_coned_sponsor_binder_Static.TSSI_ABOUT)
         {
         var c = ((TWebUserControl_about)(LoadControl("~/usercontrol/app/UserControl_about.ascx")));
@@ -135,6 +145,10 @@ namespace UserControl_coned_sponsor_binder
           {
           p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_CLASSES;
           }
+        else if (target.ToLower().Contains("/practitioner/"))
+          {
+          p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_PRACTITIONERS;
+          }
         else if (target.ToLower().Contains("/about/"))
           {
           p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_ABOUT;
@@ -144,6 +158,11 @@ namespace UserControl_coned_sponsor_binder
         FillPlaceHolder(false,target);
         //
         }
+      }
+
+    internal void Set(string user_sponsor_id)
+      {
+      p.user_sponsor_id = user_sponsor_id;
       }
 
     } // end TWebUserControl_coned_sponsor_binder
