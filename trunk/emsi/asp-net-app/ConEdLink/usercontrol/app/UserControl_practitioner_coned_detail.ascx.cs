@@ -36,6 +36,7 @@ namespace UserControl_practitioner_coned_detail
       public bool be_interactive;
       public bool be_loaded;
       public bool be_sort_order_ascending;
+      public bool be_user_coned_sponsor;
       public TClass_biz_coned_offerings biz_coned_offerings;
       public TClass_msg_protected.coned_offering_detail msg_protected_coned_offering_detail;
       public uint num_coned_offerings;
@@ -156,6 +157,7 @@ namespace UserControl_practitioner_coned_detail
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.be_user_coned_sponsor = false;
         p.practitioner_id = k.EMPTY;
         p.sort_order = "start%";
         }
@@ -241,6 +243,7 @@ namespace UserControl_practitioner_coned_detail
 
     private void Bind()
       {
+      DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SPONSOR].Visible = !p.be_user_coned_sponsor;
       p.biz_coned_offerings.BindBaseDataListPractitionerConedDetail(p.practitioner_id,p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       p.be_datagrid_empty = (p.num_coned_offerings == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
@@ -249,9 +252,14 @@ namespace UserControl_practitioner_coned_detail
       p.num_coned_offerings = 0;
       }
 
-    internal void SetTarget(string practitioner_id)
+    internal void SetTarget
+      (
+      string practitioner_id,
+      bool be_user_coned_sponsor
+      )
       {
       p.practitioner_id = practitioner_id;
+      p.be_user_coned_sponsor = be_user_coned_sponsor;
       Bind();
       }
 
