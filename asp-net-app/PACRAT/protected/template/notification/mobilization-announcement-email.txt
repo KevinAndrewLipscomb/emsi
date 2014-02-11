@@ -16,11 +16,9 @@ Please do the following without delay to indicate which of your personnel and ve
 
 1. Log into http://<host_domain_name/>/<application_name/> .
 
-2. Click the COORDINATION tab.
+2. Drill down into the <deployment_name/> deployment.
 
-3. Drill down into the <deployment_name/> deployment.
-
-4. Under the PERSONNEL and VEHICLES tabs, respectively:
+3. Under the PERSONNEL and VEHICLES tabs, respectively:
 
    A. Make sure the "Mobilize/demobilize" box is CHECKED.
 
