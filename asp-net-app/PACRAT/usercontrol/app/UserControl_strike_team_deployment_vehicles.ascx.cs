@@ -455,8 +455,8 @@ namespace UserControl_strike_team_deployment_vehicles
           deployment_id:deployment_id,
           service_strike_team_management_footprint:service_strike_team_management_footprint
           );
-        CheckBox_do_include_all_eligible_vehicles.Checked = p.do_include_all_eligible_vehicles;
         }
+      CheckBox_do_include_all_eligible_vehicles.Checked = p.do_include_all_eligible_vehicles;
       p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
