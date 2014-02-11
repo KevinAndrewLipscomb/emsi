@@ -398,12 +398,12 @@ namespace coned_offering_roster
         k.SmtpMailSend
           (
           from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA)}),
+          to:p.user_email_address,
           subject:TextBox_quick_message_subject.Text,
           message_string:"-- From " + Session[p.biz_user.Kind() + "_name"].ToString() + " (via " + ConfigurationManager.AppSettings["application_name"] + ")" + k.NEW_LINE + k.NEW_LINE + TextBox_quick_message_body.Text,
           be_html:false,
           cc:k.EMPTY,
-          bcc:p.user_email_address,
+          bcc:distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA)}),
           reply_to:p.user_email_address
           );
         TextBox_quick_message_subject.Text = k.EMPTY;
