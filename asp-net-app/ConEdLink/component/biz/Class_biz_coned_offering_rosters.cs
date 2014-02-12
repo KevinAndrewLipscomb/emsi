@@ -39,6 +39,7 @@ namespace Class_biz_coned_offering_rosters
       internal string level_short_description = k.EMPTY;
       internal string dob = k.EMPTY;
       internal string instructor_hours = k.EMPTY;
+      internal string coned_offering_id = k.EMPTY;
       }
 
     public bool Bind(string partial_spec, object target)
@@ -133,9 +134,9 @@ namespace Class_biz_coned_offering_rosters
     internal attendance_rec_class GetAttendanceRec(string id)
       {
       var attendance_rec = new attendance_rec_class();
-      var dummy_string = k.EMPTY;
+      var coned_offering_id = k.EMPTY;
       var practitioner_id = k.EMPTY;
-      db_coned_offering_rosters.Get(id,out dummy_string,out practitioner_id,out attendance_rec.instructor_hours);
+      db_coned_offering_rosters.Get(id,out coned_offering_id,out practitioner_id,out attendance_rec.instructor_hours);
       db_practitioners.GetForAttendanceRec
         (
         practitioner_id,
@@ -148,6 +149,7 @@ namespace Class_biz_coned_offering_rosters
         out attendance_rec.level_short_description,
         out attendance_rec.middle_initial
         );
+      attendance_rec.coned_offering_id = coned_offering_id;
       return attendance_rec;
       }
 

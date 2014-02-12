@@ -256,6 +256,13 @@
     <Compile Include="protected\regional_staffer_overview.aspx.designer.cs">
       <DependentUpon>regional_staffer_overview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\training_certificate_legacy.aspx.cs">
+      <DependentUpon>training_certificate_legacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\training_certificate_legacy.aspx.designer.cs">
+      <DependentUpon>training_certificate_legacy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\training_certificate_package.aspx.cs">
       <DependentUpon>training_certificate_package.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -586,6 +593,7 @@
     <Content Include="protected\template\notification\class_canceled.txt" />
     <Content Include="protected\template\notification\class_unclosed.txt" />
     <Content Include="protected\template\notification\roster_ready.txt" />
+    <Content Include="protected\training_certificate_legacy.aspx" />
     <Content Include="protected\training_certificate_package.aspx" />
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />

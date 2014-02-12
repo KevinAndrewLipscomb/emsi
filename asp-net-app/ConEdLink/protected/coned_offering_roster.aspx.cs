@@ -565,7 +565,7 @@ namespace coned_offering_roster
           p.be_noncurrent_practitioners_on_roster = true;
           }
         //--
-        // DON'T disable viewstate here since thes server needs it to repopulate bound controls when an update is made to an UpdatePanel other than the one that isolates the DataGrid_control.
+        // DON'T disable viewstate here since the server needs it to repopulate bound controls when an update is made to an UpdatePanel other than the one that isolates the DataGrid_control.
         //--
         //
         // Remove all cell controls from viewstate except for the one at TCI_ID.
