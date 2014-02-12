@@ -18,16 +18,18 @@ namespace UserControl_practitioner_coned_detail
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_CLASS_NUMBER = 2;
-      public const int TCI_COURSE_TITLE = 3;
-      public const int TCI_LOCATION = 4;
-      public const int TCI_REGION = 5;
-      public const int TCI_START = 6;
-      public const int TCI_END = 7;
-      public const int TCI_SPONSOR = 8;
-      public const int TCI_MED_TRAUMA_HOURS = 9;
-      public const int TCI_OTHER_HOURS = 10;
-      public const int TCI_INSTRUCTOR_HOURS = 11;
+      public const int TCI_SELECT_FOR_COMPLETION_CERTIFICATE = 2;
+      public const int TCI_CLASS_NUMBER = 3;
+      public const int TCI_COURSE_TITLE = 4;
+      public const int TCI_LOCATION = 5;
+      public const int TCI_REGION = 6;
+      public const int TCI_START = 7;
+      public const int TCI_END = 8;
+      public const int TCI_SPONSOR = 9;
+      public const int TCI_MED_TRAUMA_HOURS = 10;
+      public const int TCI_OTHER_HOURS = 11;
+      public const int TCI_INSTRUCTOR_HOURS = 12;
+      public const int TCI_ROSTER_ID = 13;
       }
 
     private struct p_type
@@ -41,6 +43,7 @@ namespace UserControl_practitioner_coned_detail
       public TClass_msg_protected.coned_offering_detail msg_protected_coned_offering_detail;
       public uint num_coned_offerings;
       public string practitioner_id;
+      public ArrayList roster_id_arraylist;
       public string sort_order;
       }
 
@@ -159,7 +162,8 @@ namespace UserControl_practitioner_coned_detail
         p.be_sort_order_ascending = true;
         p.be_user_coned_sponsor = false;
         p.practitioner_id = k.EMPTY;
-        p.sort_order = "start%";
+        p.roster_id_arraylist = new ArrayList();
+        p.sort_order = "end%";
         }
       }
 
@@ -211,11 +215,11 @@ namespace UserControl_practitioner_coned_detail
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
-          foreach (TableCell cell in e.Item.Cells)
-            {
-            cell.EnableViewState = false;
-            }
-          e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_ID].EnableViewState = true;
+          //foreach (TableCell cell in e.Item.Cells)
+          //  {
+          //  cell.EnableViewState = false;
+          //  }
+          //e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_ID].EnableViewState = true;
           //
           p.num_coned_offerings++;
           }
@@ -243,11 +247,13 @@ namespace UserControl_practitioner_coned_detail
 
     private void Bind()
       {
+      DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SELECT].Visible = !p.be_user_coned_sponsor;
       DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SPONSOR].Visible = !p.be_user_coned_sponsor;
       p.biz_coned_offerings.BindBaseDataListPractitionerConedDetail(p.practitioner_id,p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       p.be_datagrid_empty = (p.num_coned_offerings == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
+      TableRow_email_view_print.Visible = !p.be_datagrid_empty;
       Literal_num_classes.Text = p.num_coned_offerings.ToString();
       p.num_coned_offerings = 0;
       }
@@ -261,6 +267,43 @@ namespace UserControl_practitioner_coned_detail
       p.practitioner_id = practitioner_id;
       p.be_user_coned_sponsor = be_user_coned_sponsor;
       Bind();
+      }
+
+    private void SetHyperlinkPrintCompletionDocumentation()
+      {
+      HyperLink_print_completion_documentation.NavigateUrl = k.EMPTY;
+      p.roster_id_arraylist.Clear();
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        if ((DataGrid_control.Items[i.val].Cells[UserControl_practitioner_coned_detail_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+          {
+          p.roster_id_arraylist.Add(k.Safe(DataGrid_control.Items[i.val].Cells[UserControl_practitioner_coned_detail_Static.TCI_ROSTER_ID].Text,k.safe_hint_type.NUM));
+          }
+        }
+      if (p.roster_id_arraylist.Count > 0)
+        {
+        var hash_table = new Hashtable();
+        hash_table["coned_offering_roster_ids"] = p.roster_id_arraylist;
+        HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_legacy.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        }
+      }
+
+    protected void CheckBox_force_all_CheckedChanged(object sender, EventArgs e)
+      {
+      for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
+        {
+        (DataGrid_control.Items[i.val].Cells[UserControl_practitioner_coned_detail_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        }
+      SetHyperlinkPrintCompletionDocumentation();
+      }
+
+    protected void CheckBox_selected_CheckedChanged(object sender, EventArgs e)
+      {
+      SetHyperlinkPrintCompletionDocumentation();
+      }
+
+    protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
+      {
       }
 
     } // end TWebUserControl_practitioner_coned_detail
