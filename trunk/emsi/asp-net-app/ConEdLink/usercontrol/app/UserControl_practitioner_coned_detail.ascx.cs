@@ -1,6 +1,9 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using Class_biz_accounts;
 using Class_biz_coned_offerings;
+using Class_biz_practitioners;
+using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
@@ -39,11 +42,15 @@ namespace UserControl_practitioner_coned_detail
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public bool be_user_coned_sponsor;
+      public TClass_biz_accounts biz_accounts;
       public TClass_biz_coned_offerings biz_coned_offerings;
+      public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_user biz_user;
       public TClass_msg_protected.coned_offering_detail msg_protected_coned_offering_detail;
       public uint num_coned_offerings;
       public string practitioner_id;
       public ArrayList roster_id_arraylist;
+      public string shielded_query_string_of_hashtable;
       public string sort_order;
       }
 
@@ -154,7 +161,10 @@ namespace UserControl_practitioner_coned_detail
         }
       else
         {
+        p.biz_accounts = new TClass_biz_accounts();
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
+        p.biz_practitioners = new TClass_biz_practitioners();
+        p.biz_user = new TClass_biz_user();
         p.msg_protected_coned_offering_detail = new TClass_msg_protected.coned_offering_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
@@ -163,6 +173,7 @@ namespace UserControl_practitioner_coned_detail
         p.be_user_coned_sponsor = false;
         p.practitioner_id = k.EMPTY;
         p.roster_id_arraylist = new ArrayList();
+        p.shielded_query_string_of_hashtable = k.EMPTY;
         p.sort_order = "end%";
         }
       }
@@ -284,7 +295,8 @@ namespace UserControl_practitioner_coned_detail
         {
         var hash_table = new Hashtable();
         hash_table["coned_offering_roster_ids"] = p.roster_id_arraylist;
-        HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_legacy.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        p.shielded_query_string_of_hashtable = ShieldedQueryStringOfHashtable(hash_table);
+        HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_legacy.aspx?" + p.shielded_query_string_of_hashtable;
         }
       }
 
@@ -304,6 +316,29 @@ namespace UserControl_practitioner_coned_detail
 
     protected void LinkButton_email_completion_documentation_Click(object sender, EventArgs e)
       {
+      var practitioner_email_address = p.biz_practitioners.EmailAddressOfId(p.practitioner_id);
+      if (practitioner_email_address.Length > 0)
+        {
+        if (p.roster_id_arraylist.Count > 0)
+          {
+          p.biz_practitioners.SendClassCompletionCertificateLegacy
+            (
+            working_directory:Server.MapPath("scratch"),
+            shielded_query_string_of_hashtable:p.shielded_query_string_of_hashtable,
+            sender_email_address:p.biz_accounts.EmailAddressByKindId(p.biz_user.Kind(),p.biz_user.IdNum()),
+            target_email_address:practitioner_email_address
+            );
+          Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "lcertssent", "Certificate(s) sent", true);
+          }
+        else
+          {
+          Alert(k.alert_cause_type.USER,k.alert_state_type.FAILURE,"nolcslctd","Certificate(s) *NOT* sent.  No classes are selected.",be_using_scriptmanager:true);
+          }
+        }
+      else
+        {
+        Alert(k.alert_cause_type.APPDATA,k.alert_state_type.FAILURE,"notarget","Certificate(s) *NOT* sent.  No email address is known for this practitioner.",be_using_scriptmanager:true);
+        }
       }
 
     } // end TWebUserControl_practitioner_coned_detail

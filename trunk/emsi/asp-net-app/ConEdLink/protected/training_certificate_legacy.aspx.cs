@@ -7,6 +7,12 @@ namespace training_certificate_legacy
   public partial class TWebForm_training_certificate_legacy: ki_web_ui.page_class
     {
 
+    //==
+    //
+    // PROTECTED
+    //
+    //==
+
     protected override void OnInit(EventArgs e)
       {
       // Required for Designer support

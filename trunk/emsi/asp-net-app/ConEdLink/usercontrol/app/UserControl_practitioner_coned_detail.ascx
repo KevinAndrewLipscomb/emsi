@@ -57,7 +57,7 @@
               <td>
                 For selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) classes...
                 <ul>
-                  <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" onclick="LinkButton_email_completion_documentation_Click"></asp:LinkButton></p></li>
+                  <li><p><asp:LinkButton ID="LinkButton_email_completion_documentation" runat="server" Text="Email completion documentation" onclick="LinkButton_email_completion_documentation_Click" CausesValidation="False"></asp:LinkButton></p></li>
                   <li><p><asp:HyperLink ID="HyperLink_print_completion_documentation" runat="server" Text="Print completion documentation" Target="_blank"></asp:HyperLink></p></li>
                 </ul>
                 <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all classes at once.</small>
