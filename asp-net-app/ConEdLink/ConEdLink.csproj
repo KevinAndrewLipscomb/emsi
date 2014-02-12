@@ -179,6 +179,13 @@
     <Compile Include="noninteractive\report_commanded_training_certificate.aspx.designer.cs">
       <DependentUpon>report_commanded_training_certificate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="noninteractive\report_commanded_training_certificate_legacy.aspx.cs">
+      <DependentUpon>report_commanded_training_certificate_legacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\report_commanded_training_certificate_legacy.aspx.designer.cs">
+      <DependentUpon>report_commanded_training_certificate_legacy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -584,6 +591,7 @@
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
+    <Content Include="noninteractive\report_commanded_training_certificate_legacy.aspx" />
     <Content Include="noninteractive\template\notification\roster_due.txt" />
     <Content Include="protected\bounty_program.aspx" />
     <Content Include="protected\coned_offering_detail.aspx" />

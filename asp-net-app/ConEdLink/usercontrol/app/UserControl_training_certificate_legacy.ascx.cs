@@ -85,67 +85,82 @@ namespace UserControl_training_certificate_legacy
         var roster_ids = (p.hash_table["coned_offering_roster_ids"] as Object[]);
         for (var i = new k.subtype<int>(0,roster_ids.Length); i.val < i.LAST; i.val++)
           {
-          var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
-          var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
-          var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
+          var attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
+          var coned_offering_summary = p.biz_coned_offerings.Summary(attendance_rec.coned_offering_id);
+          var be_ceu_breakdown_valid = p.biz_coned_offerings.BeCeuBreakdownValid(coned_offering_summary);
           var UserControl_training_certificate = ((LoadControl("~/usercontrol/app/UserControl_training_certificate.ascx") as TWebUserControl_training_certificate));
-          attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
-          p.biz_coned_offerings.GetForTrainingCertificates
-            (
-            attendance_rec.coned_offering_id,
-            out class_number,
-            out sponsor_number,
-            out sponsor_name,
-            out course_title,
-            out date_final,
-            ref fr_med_trauma_ceus,
-            ref fr_other_ceus,
-            ref emt_med_trauma_ceus,
-            ref emt_other_ceus,
-            ref emtp_med_trauma_ceus,
-            ref emtp_other_ceus,
-            ref phrn_med_trauma_ceus,
-            ref phrn_other_ceus
-            );
-          p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
-            (
-            fr_med_trauma_ceus.val,
-            fr_other_ceus.val,
-            emt_med_trauma_ceus.val,
-            emt_other_ceus.val,
-            emtp_med_trauma_ceus.val,
-            emtp_other_ceus.val,
-            phrn_med_trauma_ceus.val,
-            phrn_other_ceus.val,
-            attendance_rec.level_short_description,
-            ref med_trauma_ceus_for_this_practitioner,
-            ref other_ceus_for_this_practitioner
-            );
-          UserControl_training_certificate.Set
-            (
-            sponsor_name,
-            sponsor_number,
-            attendance_rec.first_name,
-            attendance_rec.middle_initial,
-            attendance_rec.last_name,
-            attendance_rec.certification_number,
-            attendance_rec.level_emsrs_code,
-            attendance_rec.level_short_description,
-            attendance_rec.dob,
-            p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
-            course_title,
-            med_trauma_ceus_for_this_practitioner.val.ToString(),
-            other_ceus_for_this_practitioner.val.ToString(),
-            date_final,
-            attendance_rec.instructor_hours
-            );
+          if (be_ceu_breakdown_valid)
+            {
+            var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
+            var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
+            p.biz_coned_offerings.GetForTrainingCertificates
+              (
+              attendance_rec.coned_offering_id,
+              out class_number,
+              out sponsor_number,
+              out sponsor_name,
+              out course_title,
+              out date_final,
+              ref fr_med_trauma_ceus,
+              ref fr_other_ceus,
+              ref emt_med_trauma_ceus,
+              ref emt_other_ceus,
+              ref emtp_med_trauma_ceus,
+              ref emtp_other_ceus,
+              ref phrn_med_trauma_ceus,
+              ref phrn_other_ceus
+              );
+            p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
+              (
+              fr_med_trauma_ceus.val,
+              fr_other_ceus.val,
+              emt_med_trauma_ceus.val,
+              emt_other_ceus.val,
+              emtp_med_trauma_ceus.val,
+              emtp_other_ceus.val,
+              phrn_med_trauma_ceus.val,
+              phrn_other_ceus.val,
+              attendance_rec.level_short_description,
+              ref med_trauma_ceus_for_this_practitioner,
+              ref other_ceus_for_this_practitioner
+              );
+            UserControl_training_certificate.Set
+              (
+              sponsor_name,
+              sponsor_number,
+              attendance_rec.first_name,
+              attendance_rec.middle_initial,
+              attendance_rec.last_name,
+              attendance_rec.certification_number,
+              attendance_rec.level_emsrs_code,
+              attendance_rec.level_short_description,
+              attendance_rec.dob,
+              p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
+              course_title,
+              med_trauma_ceus_for_this_practitioner.val.ToString(),
+              other_ceus_for_this_practitioner.val.ToString(),
+              date_final,
+              attendance_rec.instructor_hours
+              );
+            }
           if (i.val > i.FIRST)
             {
             var page_break = new Literal();
             page_break.Text = "<div><div style=\"page-break-before:always;\" /></div>";
             PlaceHolder_training_certificate_legacy.Controls.Add(page_break);
             }
-          PlaceHolder_training_certificate_legacy.Controls.Add(UserControl_training_certificate);
+          if (be_ceu_breakdown_valid)
+            {
+            PlaceHolder_training_certificate_legacy.Controls.Add(UserControl_training_certificate);
+            }
+          else
+            {
+            var failure_indicator = new Literal();
+            failure_indicator.Text = "Sorry, the breakdown of CEUs for class number " + p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(coned_offering_summary))
+            + ", '" + p.biz_coned_offerings.CourseTitleOf(coned_offering_summary) + "', ending " + p.biz_coned_offerings.EndDateOf(coned_offering_summary)
+            + " as imported from EMSRS is invalid.  No certificate can be generated.";
+            PlaceHolder_training_certificate_legacy.Controls.Add(failure_indicator);
+            }
           }
         }
       }
