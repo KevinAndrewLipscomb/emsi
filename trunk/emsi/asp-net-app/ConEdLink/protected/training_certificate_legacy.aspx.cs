@@ -51,23 +51,23 @@ namespace training_certificate_legacy
           var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
           var UserControl_training_certificate = ((LoadControl("~/usercontrol/app/UserControl_training_certificate.ascx") as TWebUserControl_training_certificate));
           attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
-        p.biz_coned_offerings.GetForTrainingCertificates
-          (
-          attendance_rec.coned_offering_id,
-          out class_number,
-          out sponsor_number,
-          out sponsor_name,
-          out course_title,
-          out date_final,
-          ref fr_med_trauma_ceus,
-          ref fr_other_ceus,
-          ref emt_med_trauma_ceus,
-          ref emt_other_ceus,
-          ref emtp_med_trauma_ceus,
-          ref emtp_other_ceus,
-          ref phrn_med_trauma_ceus,
-          ref phrn_other_ceus
-          );
+          p.biz_coned_offerings.GetForTrainingCertificates
+            (
+            attendance_rec.coned_offering_id,
+            out class_number,
+            out sponsor_number,
+            out sponsor_name,
+            out course_title,
+            out date_final,
+            ref fr_med_trauma_ceus,
+            ref fr_other_ceus,
+            ref emt_med_trauma_ceus,
+            ref emt_other_ceus,
+            ref emtp_med_trauma_ceus,
+            ref emtp_other_ceus,
+            ref phrn_med_trauma_ceus,
+            ref phrn_other_ceus
+            );
           p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
             (
             fr_med_trauma_ceus.val,
