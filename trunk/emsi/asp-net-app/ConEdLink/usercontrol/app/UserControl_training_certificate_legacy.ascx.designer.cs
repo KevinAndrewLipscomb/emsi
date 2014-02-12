@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace training_certificate_legacy {
+namespace UserControl_training_certificate_legacy {
     
     
-    public partial class TWebForm_training_certificate_legacy {
+    public partial class TWebUserControl_training_certificate_legacy {
         
         /// <summary>
-        /// UserControl_training_certificate_legacy_control control.
+        /// PlaceHolder_training_certificate_legacy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UserControl_training_certificate_legacy.TWebUserControl_training_certificate_legacy UserControl_training_certificate_legacy_control;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder_training_certificate_legacy;
     }
 }

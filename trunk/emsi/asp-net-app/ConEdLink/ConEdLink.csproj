@@ -490,6 +490,13 @@
     <Compile Include="usercontrol\app\UserControl_training_certificate.ascx.designer.cs">
       <DependentUpon>UserControl_training_certificate.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_training_certificate_legacy.ascx.cs">
+      <DependentUpon>UserControl_training_certificate_legacy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_training_certificate_legacy.ascx.designer.cs">
+      <DependentUpon>UserControl_training_certificate_legacy.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_training_institute_status.ascx.cs">
       <DependentUpon>UserControl_training_institute_status.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -652,6 +659,7 @@
     <Content Include="usercontrol\app\UserControl_teaching_entity_business_type.ascx" />
     <Content Include="usercontrol\app\UserControl_teaching_entity_level.ascx" />
     <Content Include="usercontrol\app\UserControl_training_certificate.ascx" />
+    <Content Include="usercontrol\app\UserControl_training_certificate_legacy.ascx" />
     <Content Include="usercontrol\app\UserControl_training_institute_status.ascx" />
     <Content Include="usercontrol\app\UserControl_update_progress_blocker.ascx" />
     <Content Include="usercontrol\ki\image\delete_x16_h.png" />
