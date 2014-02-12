@@ -184,6 +184,36 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_nims_is_200_date.maxyear = this_year;
         UserControl_drop_down_date_nims_is_700_date.minyear = "2004";
         UserControl_drop_down_date_nims_is_700_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_is_800_date.minyear = "2004";
+        UserControl_drop_down_date_nims_is_800_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_ics_300_date.minyear = "2004";
+        UserControl_drop_down_date_nims_ics_300_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_ics_400_date.minyear = "2004";
+        UserControl_drop_down_date_nims_ics_400_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_disaster_stress_response_date.minyear = "2007";
+        UserControl_drop_down_date_lms_disaster_stress_response_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_ems_mci_ops_date.minyear = "2006";
+        UserControl_drop_down_date_lms_ems_mci_ops_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_wmd_date.minyear = "2008";
+        UserControl_drop_down_date_lms_wmd_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_smallpox_date.minyear = "2007";
+        UserControl_drop_down_date_lms_smallpox_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_basic_med_terrorism_response_date.minyear = "2003";
+        UserControl_drop_down_date_lms_basic_med_terrorism_response_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_electrical_hazards_date.minyear = "2008";
+        UserControl_drop_down_date_lms_electrical_hazards_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_ems_bioterror_date.minyear = "2003";
+        UserControl_drop_down_date_lms_ems_bioterror_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_psychological_first_aid_date.minyear = "2006";
+        UserControl_drop_down_date_pa_psychological_first_aid_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_water_rescue_awareness_date.minyear = "1966";
+        UserControl_drop_down_date_pa_water_rescue_awareness_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_hazmat_awareness_date.minyear = "1984";
+        UserControl_drop_down_date_pa_hazmat_awareness_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_ems_strike_team_leader_date.minyear = "2008";
+        UserControl_drop_down_date_pa_ems_strike_team_leader_date.maxyear = this_year;
+        UserControl_drop_down_date_two_years_supervisory_experience_date.minyear = "1968";
+        UserControl_drop_down_date_two_years_supervisory_experience_date.maxyear = this_year;
         //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.practitioner_id.Length > 0)
