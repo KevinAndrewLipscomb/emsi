@@ -49,6 +49,7 @@ namespace UserControl_practitioner_coned_detail
       public TClass_msg_protected.coned_offering_detail msg_protected_coned_offering_detail;
       public uint num_coned_offerings;
       public string practitioner_id;
+      public string range;
       public ArrayList roster_id_arraylist;
       public string shielded_query_string_of_hashtable;
       public string sort_order;
@@ -143,6 +144,12 @@ namespace UserControl_practitioner_coned_detail
           {
           DataGrid_control.AllowSorting = false;
           }
+        var i = new k.subtype<int>(2012,DateTime.Today.Year);
+        for (i.val = i.LAST; i.val > i.FIRST; i.val--)
+          {
+          DropDownList_range.Items.Add(item:(i.val - 1).ToString());
+          }
+        DropDownList_range.SelectedValue = p.range;
         Bind();
         p.be_loaded = true;
         }
@@ -172,6 +179,7 @@ namespace UserControl_practitioner_coned_detail
         p.be_sort_order_ascending = true;
         p.be_user_coned_sponsor = false;
         p.practitioner_id = k.EMPTY;
+        p.range = "LastThreeYears";
         p.roster_id_arraylist = new ArrayList();
         p.shielded_query_string_of_hashtable = k.EMPTY;
         p.sort_order = "end%";
@@ -260,7 +268,14 @@ namespace UserControl_practitioner_coned_detail
       {
       DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SELECT].Visible = !p.be_user_coned_sponsor;
       DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SPONSOR].Visible = !p.be_user_coned_sponsor;
-      p.biz_coned_offerings.BindBaseDataListPractitionerConedDetail(p.practitioner_id,p.sort_order,p.be_sort_order_ascending,DataGrid_control);
+      p.biz_coned_offerings.BindBaseDataListPractitionerConedDetail
+        (
+        practitioner_id:p.practitioner_id,
+        sort_order:p.sort_order,
+        be_sort_order_ascending:p.be_sort_order_ascending,
+        target:DataGrid_control,
+        range:p.range
+        );
       p.be_datagrid_empty = (p.num_coned_offerings == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -339,6 +354,12 @@ namespace UserControl_practitioner_coned_detail
         {
         Alert(k.alert_cause_type.APPDATA,k.alert_state_type.FAILURE,"notarget","Certificate(s) *NOT* sent.  No email address is known for this practitioner.",be_using_scriptmanager:true);
         }
+      }
+
+    protected void DropDownList_range_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      p.range = k.Safe(DropDownList_range.SelectedValue,k.safe_hint_type.ALPHANUM);
+      Bind();
       }
 
     } // end TWebUserControl_practitioner_coned_detail

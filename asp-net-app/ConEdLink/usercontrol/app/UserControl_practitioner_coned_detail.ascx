@@ -8,10 +8,17 @@
           <table cellspacing="0" cellpadding="10" border="0">
             <tr>
               <td bgcolor="#dcdcdc">
-                <table cellspacing="0" cellpadding="0" border="0">
+                <table cellspacing="0" cellpadding="5" border="0" width="100%">
                   <tr>
-                    <td>
-                      <strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong>
+                    <td nowrap="nowrap">
+                      <strong>
+                        Range:
+                        <asp:DropDownList id="DropDownList_range" runat="server" autopostback="True" onselectedindexchanged="DropDownList_range_SelectedIndexChanged">
+                          <asp:ListItem>All</asp:ListItem>
+                          <asp:ListItem Selected="True" Value="LastThreeYears">Last 3 years</asp:ListItem>
+                          <asp:ListItem Value="SinceJan1">Since January 1st</asp:ListItem>
+                        </asp:DropDownList>
+                      </strong>
                     </td>
                     <td align="right">
                       <asp:Literal ID="Literal_num_classes" runat="server"></asp:Literal> classes
