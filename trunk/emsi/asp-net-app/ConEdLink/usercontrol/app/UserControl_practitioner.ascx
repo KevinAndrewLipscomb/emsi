@@ -15,7 +15,7 @@
       <ASP:TextBox id="TextBox_id" runat="server"  cssclass=""></ASP:TextBox><ASP:Button id="Button_lookup" runat="server" causesvalidation="False" text="LOOKUP" onclick="Button_lookup_Click"></ASP:Button>
                 </td>
                 <td nowrap="nowrap"><small><small><asp:Label id="Label_lookup_arrow" runat="server">&lt;--</asp:Label></small></small></td>
-                <td><small><small><em><asp:Label id="Label_lookup_hint" runat="server">Lookup by partial or full spec</asp:Label></em></small></small></td>
+                <td><small><small><em><asp:Label id="Label_lookup_hint" runat="server">Lookup by partial or full name, certification number, or birth date</asp:Label></em></small></small></td>
               </tr>
             </table>
           </td>
@@ -73,6 +73,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_last_name" runat="server" errormessage="Please enter Last&nbsp;name." font-bold="True" controltovalidate="TextBox_last_name">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
@@ -83,6 +85,8 @@
         <ASP:TextBox id="TextBox_first_name" runat="server" columns="31" maxlength="31" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
     <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_first_name" runat="server" errormessage="Please enter First&nbsp;name." font-bold="True" controltovalidate="TextBox_first_name">!ERR!</ASP:RequiredFieldValidator>
     </td>
@@ -95,6 +99,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr>
@@ -104,6 +110,8 @@
         <ASP:TextBox id="TextBox_certification_number" runat="server" columns="6" maxlength="6" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
     <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_certification_number" runat="server" errormessage="Please enter Certification&nbsp;number." font-bold="True" controltovalidate="TextBox_certification_number">!ERR!</ASP:RequiredFieldValidator>
     </td>
@@ -115,6 +123,8 @@
       </asp:DropDownList>
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_level_id" runat="server" errormessage="Please select a Level." font-bold="True" controltovalidate="DropDownList_level">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
@@ -124,6 +134,8 @@
       <asp:DropDownList ID="DropDownList_regional_council" runat="server">
       </asp:DropDownList>
     </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
     <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_regional_council_code" runat="server" errormessage="Please select a Regional&nbsp;council." font-bold="True" controltovalidate="DropDownList_regional_council">!ERR!</ASP:RequiredFieldValidator>
     </td>
@@ -136,6 +148,8 @@
     </td>
     <td nowrap="nowrap">
       &nbsp;</td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
   </tr>
   <tr>
     <td><font class="">Birth&nbsp;date:</font></td>
@@ -145,6 +159,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr id="TableRow_birth_date_confirmed" runat="server" visible="false">
@@ -152,6 +168,8 @@
     <td>
       <asp:CheckBox ID="CheckBox_be_birth_date_confirmed" runat="server" />
     </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
     <td nowrap="nowrap">
     </td>
   </tr>
@@ -161,6 +179,9 @@
       <font class="">
         <ASP:TextBox id="TextBox_email_address" runat="server"  cssclass="" enabled="False" Columns="72"></ASP:TextBox>
       </font>
+    </td>
+    <td nowrap="nowrap">
+      <asp:LinkButton ID="LinkButton_change_email_address" runat="server" CausesValidation="False" Visible="False" onclick="LinkButton_change_email_address_Click">&larr;Change</asp:LinkButton>
     </td>
     <td nowrap="nowrap">
       <asp:RegularExpressionValidator id="RegularExpressionValidator_email_address" runat="server" errormessage="Please enter a valid Email address." font-bold="True" controltovalidate="TextBox_email_address" validationexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">!ERR!</asp:RegularExpressionValidator>
@@ -175,6 +196,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
       <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_1" runat="server" errormessage="Please enter a valid Street address 1." font-bold="True" controltovalidate="TextBox_street_address_1" validationexpression="[0-9a-zA-Z#\-,(). ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
@@ -185,6 +208,8 @@
         <ASP:TextBox id="TextBox_street_address_2" runat="server"  cssclass="" enabled="False" Columns="72"></ASP:TextBox>
       </font>
     </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
     <td nowrap="nowrap">
       <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_2" runat="server" errormessage="Please enter a valid Street address 2." font-bold="True" controltovalidate="TextBox_street_address_2" validationexpression="[0-9a-zA-Z#\-,(). ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
@@ -197,6 +222,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
       <asp:RegularExpressionValidator id="RegularExpressionValidator_city_state_zip" runat="server" errormessage="Please enter a valid City state zip." font-bold="True" controltovalidate="TextBox_city_state_zip" validationexpression="[0-9a-zA-Z\-,. ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
@@ -206,6 +233,8 @@
       <asp:CheckBox ID="CheckBox_be_instructor" runat="server" />
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr id="TableRow_be_stale" runat="server" visible="false">
@@ -214,6 +243,8 @@
       <asp:CheckBox ID="CheckBox_be_stale" runat="server" />
     </td>
     <td nowrap="nowrap">
+      &nbsp;</td>
+    <td nowrap="nowrap">
     </td>
   </tr>
   <tr id="TableRow_be_past" runat="server" visible="false">
@@ -221,6 +252,8 @@
     <td>
       <asp:CheckBox ID="CheckBox_be_past" runat="server" />
     </td>
+    <td nowrap="nowrap">
+      &nbsp;</td>
     <td nowrap="nowrap">
     </td>
   </tr>

@@ -1,9 +1,11 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
+using AjaxControlToolkit;
 using Class_biz_counties;
 using Class_biz_practitioner_levels;
 using Class_biz_practitioners;
 using Class_biz_regions;
+using Class_msg_protected;
 using kix;
 using System;
 using System.Configuration;
@@ -27,6 +29,7 @@ namespace UserControl_practitioner
       public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_regions biz_regions;
+      public TClass_msg_protected.change_practitioner_email_address msg_protected_change_practitioner_email_address;
       public string id;
       public string user_sponsor_id_filter;
       }
@@ -61,8 +64,10 @@ namespace UserControl_practitioner
       LinkButton_go_to_match_last.Visible = false;
       LinkButton_go_to_match_first.Visible = false;
       SetDependentFieldAblements(false);
+      LinkButton_change_email_address.Visible = false;
       Button_submit.Enabled = false;
       Button_delete.Enabled = false;
+      p.id = k.EMPTY;
       }
 
     private void InjectPersistentClientSideScript()
@@ -177,9 +182,14 @@ namespace UserControl_practitioner
           {
           PresentRecord(p.id);
           }
+        else
+          {
+          TextBox_id.Focus();
+          }
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_change_email_address);
       }
 
     public bool PresentRecord(string id)
@@ -256,9 +266,11 @@ namespace UserControl_practitioner
         LinkButton_reset.Enabled = true;
         SetDependentFieldAblements(p.be_ok_to_config_practitioners);
         var regional_council = k.Safe(DropDownList_regional_council.SelectedValue,k.safe_hint_type.NUM);
+        LinkButton_change_email_address.Visible = true;
         Button_submit.Enabled = p.be_ok_to_config_practitioners;
         Button_delete.Enabled = p.be_ok_to_config_practitioners;
         result = true;
+        p.id = id;
         }
       return result;
       }
@@ -310,10 +322,23 @@ namespace UserControl_practitioner
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (Session[InstanceId() + ".p"] != null)
+      var instance_id = InstanceId();
+      if (Session[instance_id + ".p"] != null)
         {
-        p = (p_type)(Session[InstanceId() + ".p"]);
-        p.be_loaded = IsPostBack && ((Session["UserControl_regional_staffer_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+        p = (p_type)(Session[instance_id + ".p"]);
+        p.be_loaded = IsPostBack;  // This test is sufficient if this control is being used statically on its page.
+        //
+        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
+        // had it loaded already.
+        //
+        if (instance_id == "ASP.protected_regional_staffer_overview_aspx.UserControl_regional_staffer_binder_control_practitioner")
+          {
+          p.be_loaded &= ((Session["UserControl_regional_staffer_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+          }
+        else if (instance_id == "ASP.protected_coned_sponsor_overview_aspx.UserControl_coned_sponsor_binder_control_practitioner")
+          {
+          p.be_loaded &= ((Session["UserControl_coned_sponsor_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+          }
         }
       else
         {
@@ -323,6 +348,7 @@ namespace UserControl_practitioner
         p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         p.biz_regions = new TClass_biz_regions();
+        p.msg_protected_change_practitioner_email_address = new TClass_msg_protected.change_practitioner_email_address();
         //
         p.be_educational_reservist_or_higher = HttpContext.Current.User.IsInRole("director")
         || HttpContext.Current.User.IsInRole("education-coordinator")
@@ -505,6 +531,17 @@ namespace UserControl_practitioner
     internal void Set(string user_sponsor_id_filter)
       {
       p.user_sponsor_id_filter = user_sponsor_id_filter;
+      }
+
+    protected void LinkButton_change_email_address_Click(object sender, EventArgs e)
+      {
+      p.msg_protected_change_practitioner_email_address.practitioner_summary = p.biz_practitioners.Summary(k.Safe(TextBox_id.Text,k.safe_hint_type.NUM));
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_change_practitioner_email_address,
+        folder_name:"protected",
+        aspx_name:"change_practitioner_email_address"
+        );
       }
 
     } // end TWebUserControl_practitioner

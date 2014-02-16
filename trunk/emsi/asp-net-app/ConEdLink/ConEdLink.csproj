@@ -213,6 +213,13 @@
     <Compile Include="protected\change_password.aspx.designer.cs">
       <DependentUpon>change_password.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\change_practitioner_email_address.aspx.cs">
+      <DependentUpon>change_practitioner_email_address.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\change_practitioner_email_address.aspx.designer.cs">
+      <DependentUpon>change_practitioner_email_address.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\Class_msg_protected.cs" />
     <Compile Include="protected\coned_offering_detail.aspx.cs">
       <DependentUpon>coned_offering_detail.aspx</DependentUpon>
@@ -297,6 +304,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_about.ascx.designer.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx.cs">
+      <DependentUpon>UserControl_change_practitioner_email_address.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx.designer.cs">
+      <DependentUpon>UserControl_change_practitioner_email_address.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_class_catalog.ascx.cs">
       <DependentUpon>UserControl_class_catalog.ascx</DependentUpon>
@@ -594,6 +608,7 @@
     <Content Include="noninteractive\report_commanded_training_certificate_legacy.aspx" />
     <Content Include="noninteractive\template\notification\roster_due.txt" />
     <Content Include="protected\bounty_program.aspx" />
+    <Content Include="protected\change_practitioner_email_address.aspx" />
     <Content Include="protected\coned_offering_detail.aspx" />
     <Content Include="protected\coned_offering_roster.aspx" />
     <Content Include="protected\coned_sponsor_detail.aspx" />
@@ -638,6 +653,7 @@
     <None Include="noninteractive\.crontab" />
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
+    <Content Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx" />
     <Content Include="usercontrol\app\UserControl_class_catalog.ascx" />
     <Content Include="usercontrol\app\UserControl_common_header_bar.ascx" />
     <Content Include="usercontrol\app\UserControl_coned_binder.ascx" />
