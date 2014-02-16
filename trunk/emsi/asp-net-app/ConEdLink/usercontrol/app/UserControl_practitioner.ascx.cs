@@ -343,7 +343,7 @@ namespace UserControl_practitioner
           }
         else if (instance_id == "ASP.protected_coned_sponsor_overview_aspx.UserControl_coned_sponsor_binder_control_practitioner")
           {
-          p.be_loaded &= ((Session["UserControl_coned_sponsor_binder_PlaceHolder_content"] as string) == "UserControl_practitioner");
+          p.be_loaded &= ((Session["UserControl_coned_sponsor_binder_control_PlaceHolder_content"] as string) == "UserControl_practitioner");
           }
         }
       else
