@@ -53,6 +53,7 @@ namespace UserControl_practitioner_coned_detail
       public ArrayList roster_id_arraylist;
       public string shielded_query_string_of_hashtable;
       public string sort_order;
+      public string sponsor_id_filter;
       }
 
     private p_type p;
@@ -196,6 +197,7 @@ namespace UserControl_practitioner_coned_detail
         p.roster_id_arraylist = new ArrayList();
         p.shielded_query_string_of_hashtable = k.EMPTY;
         p.sort_order = "end%";
+        p.sponsor_id_filter = "0";
         }
       }
 
@@ -287,6 +289,7 @@ namespace UserControl_practitioner_coned_detail
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control,
+        sponsor_id_filter:p.sponsor_id_filter,
         range:p.range
         );
       p.be_datagrid_empty = (p.num_coned_offerings == 0);
@@ -300,11 +303,12 @@ namespace UserControl_practitioner_coned_detail
     internal void SetTarget
       (
       string practitioner_id,
-      bool be_user_coned_sponsor
+      string user_sponsor_id_filter
       )
       {
       p.practitioner_id = practitioner_id;
-      p.be_user_coned_sponsor = be_user_coned_sponsor;
+      p.sponsor_id_filter = user_sponsor_id_filter;
+      p.be_user_coned_sponsor = (user_sponsor_id_filter.Length > 0);
       Bind();
       }
 

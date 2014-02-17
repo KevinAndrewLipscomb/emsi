@@ -25,7 +25,6 @@ namespace UserControl_practitioner
       public bool be_loaded;
       public bool be_ok_to_config_practitioners;
       public bool be_ok_to_config_practitioner_coned_details;
-      public bool be_user_coned_sponsor;
       public TClass_biz_counties biz_counties;
       public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_practitioner_levels biz_practitioner_levels;
@@ -60,7 +59,7 @@ namespace UserControl_practitioner
       UserControl_practitioner_coned_detail_control.SetTarget
         (
         practitioner_id:k.EMPTY,
-        be_user_coned_sponsor:p.be_user_coned_sponsor
+        user_sponsor_id_filter:p.user_sponsor_id_filter
         );
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
@@ -264,7 +263,7 @@ namespace UserControl_practitioner
         UserControl_practitioner_coned_detail_control.SetTarget
           (
           practitioner_id:id,
-          be_user_coned_sponsor:p.be_user_coned_sponsor
+          user_sponsor_id_filter:p.user_sponsor_id_filter
           );
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
@@ -309,7 +308,7 @@ namespace UserControl_practitioner
       UserControl_practitioner_coned_detail_control.SetTarget
         (
         practitioner_id:k.EMPTY,
-        be_user_coned_sponsor:p.be_user_coned_sponsor
+        user_sponsor_id_filter:p.user_sponsor_id_filter
         );
       TextBox_id.Focus();
       }
@@ -323,7 +322,7 @@ namespace UserControl_practitioner
         UserControl_practitioner_coned_detail_control.SetTarget
           (
           practitioner_id:p.id,
-          be_user_coned_sponsor:p.be_user_coned_sponsor
+          user_sponsor_id_filter:p.user_sponsor_id_filter
           );
         }
       }
@@ -367,7 +366,6 @@ namespace UserControl_practitioner
         || HttpContext.Current.User.IsInRole("education-reservist");
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
         p.be_ok_to_config_practitioner_coned_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-coned-details");
-        p.be_user_coned_sponsor = false;
         p.id = k.EMPTY;
         p.user_sponsor_id_filter = k.EMPTY;
         //
@@ -545,7 +543,6 @@ namespace UserControl_practitioner
     internal void Set(string user_sponsor_id_filter)
       {
       p.user_sponsor_id_filter = user_sponsor_id_filter;
-      p.be_user_coned_sponsor = (user_sponsor_id_filter.Length > 0);
       }
 
     protected void LinkButton_change_email_address_Click(object sender, EventArgs e)
