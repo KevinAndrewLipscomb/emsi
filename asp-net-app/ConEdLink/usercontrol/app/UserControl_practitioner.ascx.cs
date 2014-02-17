@@ -57,6 +57,11 @@ namespace UserControl_practitioner
       TextBox_city_state_zip.Text = k.EMPTY;
       CheckBox_be_instructor.Checked = false;
       CheckBox_be_past.Checked = false;
+      UserControl_practitioner_coned_detail_control.SetTarget
+        (
+        practitioner_id:k.EMPTY,
+        be_user_coned_sponsor:p.be_user_coned_sponsor
+        );
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -365,6 +370,8 @@ namespace UserControl_practitioner
         p.be_user_coned_sponsor = false;
         p.id = k.EMPTY;
         p.user_sponsor_id_filter = k.EMPTY;
+        //
+        Clear();
         }
       }
 
