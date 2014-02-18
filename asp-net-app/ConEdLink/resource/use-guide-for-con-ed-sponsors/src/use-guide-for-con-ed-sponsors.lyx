@@ -176,15 +176,15 @@ The Regional EMS Councils of the Pennsylvania state EMS system
 \begin_layout Description
 
 \size footnotesize
-20
+17
 \begin_inset space ~
 \end_inset
 
-May
+February
 \begin_inset space ~
 \end_inset
 
-2013
+2014
 \end_layout
 
 \end_inset
@@ -1209,6 +1209,118 @@ Managing class rosters
 coned_sponsor_overview
 \emph default
  page.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bulletins
+\end_layout
+
+\begin_layout Standard
+The following bulletins, published after development of this document, are
+ hereby incorporated into the Use Guide(s):
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2013-03-27-A - Removal of feature in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2013-03-27-A%20-%20Removal%20of%20feature%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2013-03-28-A - New _Rosters Outstanding_ in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2013-03-28-A%20-%20New%20_Rosters%20Outstanding_%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2013-05-05-A - New QuickMessage-to-sponsors feature in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2013-05-05-A%20-%20New%20QuickMessage-to-sponsors%20feature%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2013-05-22-A - Better class filtering in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2013-05-22-A%20-%20Better%20class%20filtering%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2013-07-21-A - Class Eval Summaries in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2013-07-21-A%20-%20Class%20Eval%20Summaries%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2013-07-22-A - Re_ Class Eval Summaries in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2013-07-22-A%20-%20Re_%20Class%20Eval%20Summaries%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2014-01-23-A - New class disposition options in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2014-01-23-A%20-%20New%20class%20disposition%20options%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2014-02-17-A - New practitioner support features in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2014-02-17-A%20-%20New%20practitioner%20support%20features%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "2014-02-17-B - Re_ New practitioner support features in ConEdLink"
+target "http://frompaper2web.com/ConEdLink/resource/bulletin/2014-02-17-B%20-%20Re_%20New%20practitioner%20support%20features%20in%20ConEdLink.pdf"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
