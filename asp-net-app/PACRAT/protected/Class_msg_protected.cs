@@ -53,7 +53,7 @@ namespace Class_msg_protected
       {
       internal string deployment_id = k.EMPTY;
       internal underway_demobilization_mode_enum mode = underway_demobilization_mode_enum.MEMBER;
-      internal string asset_id = k.EMPTY;
+      internal string mobilization_id = k.EMPTY;
       internal string asset_designator = k.EMPTY;
       }
     public class vehicle_detail

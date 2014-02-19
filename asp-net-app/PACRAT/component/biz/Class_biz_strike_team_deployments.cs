@@ -3,6 +3,10 @@
 using Class_biz_notifications;
 using Class_biz_role_member_map;
 using Class_biz_services;
+using Class_biz_strike_team_deployment_logs;
+using Class_biz_strike_team_deployment_members;
+using Class_biz_strike_team_deployment_vehicles;
+using Class_db_practitioner_strike_team_details;
 using Class_db_strike_team_deployments;
 using kix;
 using System;
@@ -24,6 +28,10 @@ namespace Class_biz_strike_team_deployments
     private TClass_biz_notifications biz_notifications = null;
     private TClass_biz_role_member_map biz_role_member_map = null;
     private TClass_biz_services biz_services = null;
+    private TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs = null;
+    private TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members = null;
+    private TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles = null;
+    private TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
     private TClass_db_strike_team_deployments db_strike_team_deployments = null;
 
     public TClass_biz_strike_team_deployments() : base()
@@ -31,6 +39,10 @@ namespace Class_biz_strike_team_deployments
       biz_notifications = new TClass_biz_notifications();
       biz_role_member_map = new TClass_biz_role_member_map();
       biz_services = new TClass_biz_services();
+      biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
+      biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
+      biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
+      db_practitioner_strike_team_details = new TClass_db_practitioner_strike_team_details();
       db_strike_team_deployments = new TClass_db_strike_team_deployments();
       }
 
@@ -63,6 +75,67 @@ namespace Class_biz_strike_team_deployments
             );
           }
         }
+      }
+
+    internal void AssignMemberTag
+      (
+      string deployment_id,
+      string mobilization_id,
+      string practitioner_id,
+      string name,
+      string tag_num,
+      string sms_target
+      )
+      {
+      biz_strike_team_deployment_members.Set
+        (
+        id: mobilization_id,
+        deployment_id: deployment_id,
+        practitioner_id: practitioner_id,
+        tag_num: tag_num
+        );
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "assigned tag `" + tag_num + "` to member `" + name + "`"
+        );
+      if (tag_num.Length > 0)
+        {
+        biz_notifications.IssueForDeploymentMemberTagAssignment
+          (
+          target:sms_target,
+          tag_num:tag_num
+          );
+        }
+      else
+        {
+        biz_notifications.IssueForDeploymentMemberTagDeassignment(target:sms_target);
+        }
+      }
+
+    internal void AssignVehicleTagTransponder
+      (
+      string deployment_id,
+      string mobilization_id,
+      string vehicle_id,
+      string static_name,
+      string tactical_name,
+      string transponder_name
+      )
+      {
+      biz_strike_team_deployment_vehicles.Set
+        (
+        id: mobilization_id,
+        deployment_id: deployment_id,
+        vehicle_id: vehicle_id,
+        tactical_name: tactical_name,
+        transponder_name: transponder_name
+        );
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to vehicle `" + static_name + "`"
+        );
       }
 
     internal bool BeAllConcludedWithinScope(string member_id)
@@ -119,6 +192,82 @@ namespace Class_biz_strike_team_deployments
       return db_strike_team_deployments.Delete(id);
       }
 
+    internal void DemobilizeMember
+      (
+      string deployment_id,
+      string deployment_name,
+      string mobilization_id,
+      string name,
+      string sms_target
+      )
+      {
+      biz_strike_team_deployment_members.Delete(mobilization_id);
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "demobilized member `" + name + "`"
+        );
+      biz_notifications.IssueForDeploymentMemberDemobilization
+        (
+        target:sms_target,
+        deployment_name:deployment_name
+        );
+      }
+
+    internal void DemobilizeMemberUnderway
+      (
+      string deployment_id,
+      string deployment_name,
+      string mobilization_id,
+      string asset_designator,
+      string reason,
+      string sms_target
+      )
+      {
+      biz_strike_team_deployment_members.Delete(mobilization_id);
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "performed an underway demobilization of member `" + asset_designator + "` citing `" + reason + "`"
+        );
+      biz_notifications.IssueForDeploymentMemberDemobilization
+        (
+        target:sms_target,
+        deployment_name:deployment_name
+        );
+      }
+
+    internal void DemobilizeVehicle
+      (
+      string deployment_id,
+      string mobilization_id,
+      string static_name
+      )
+      {
+      biz_strike_team_deployment_vehicles.Delete(mobilization_id);
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id:deployment_id,
+        action:"demobilized vehicle `" + static_name + "`"
+        );
+      }
+
+    internal void DemobilizeVehicleUnderway
+      (
+      string deployment_id,
+      string mobilization_id,
+      string asset_designator,
+      string reason
+      )
+      {
+      biz_strike_team_deployment_vehicles.Delete(mobilization_id);
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "performed an underway demobilization of vehicle `" + asset_designator + "` citing `" + reason + "`"
+        );
+      }
+
     public bool Get
       (
       string id,
@@ -135,6 +284,57 @@ namespace Class_biz_strike_team_deployments
         out name,
         out region_code,
         out be_drill
+        );
+      }
+
+    internal void MobilizeMember
+      (
+      string deployment_id,
+      string deployment_name,
+      string practitioner_id,
+      string name,
+      string sms_target
+      )
+      {
+      biz_strike_team_deployment_members.Set
+        (
+        id: k.EMPTY,
+        deployment_id: deployment_id,
+        practitioner_id: practitioner_id,
+        tag_num: k.EMPTY
+        );
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "mobilized member `" + name + "`"
+        );
+      biz_notifications.IssueForDeploymentMemberMobilization
+        (
+        target:sms_target,
+        deployment_name:deployment_name
+        );
+      }
+
+    internal void MobilizeVehicle
+      (
+      string deployment_id,
+      string vehicle_id,
+      string static_name,
+      string tactical_name
+      )
+      {
+      biz_strike_team_deployment_vehicles.Set
+        (
+        id: k.EMPTY,
+        deployment_id: deployment_id,
+        vehicle_id: vehicle_id,
+        tactical_name: tactical_name,
+        transponder_name: k.EMPTY
+        );
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "mobilized vehicle `" + static_name + "`"
         );
       }
 

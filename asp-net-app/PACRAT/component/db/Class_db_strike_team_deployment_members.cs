@@ -215,6 +215,14 @@ namespace Class_db_strike_team_deployment_members
       return result;
       }
 
+    internal string PractitionerIdOfMobilizationId(string mobilization_id)
+      {
+      Open();
+      var practitioner_id_of_mobilization_id_obj = new MySqlCommand("select practitioner_id from strike_team_deployment_member where id = '" + mobilization_id + "'",connection).ExecuteScalar();
+      Close();
+      return (practitioner_id_of_mobilization_id_obj == null ? k.EMPTY : practitioner_id_of_mobilization_id_obj.ToString());
+      }
+
     public void Set
       (
       string id,

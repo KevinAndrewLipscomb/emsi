@@ -239,23 +239,13 @@ namespace UserControl_strike_team_deployment_vehicles
                 {
                 tactical_name = static_name;
                 }
-              p.biz_strike_team_deployment_vehicles.Set
+              p.biz_strike_team_deployments.MobilizeVehicle
                 (
-                id:k.EMPTY,
                 deployment_id:p.deployment_id,
                 vehicle_id:vehicle_id,
-                tactical_name:tactical_name,
-                transponder_name:k.EMPTY
+                static_name:static_name,
+                tactical_name:tactical_name
                 );
-              //
-              // Log event
-              //
-              p.biz_strike_team_deployment_logs.Enter
-                (
-                deployment_id:p.deployment_id,
-                action:"mobilized vehicle `" + static_name + "`"
-                );
-              //
               if (p.service_strike_team_management_footprint.Length == 0)
                 {
                 DataGrid_control.EditItemIndex = e.Item.ItemIndex;
@@ -267,23 +257,15 @@ namespace UserControl_strike_team_deployment_vehicles
                 {
                 var tactical_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
                 var transponder_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
-                p.biz_strike_team_deployment_vehicles.Set
+                p.biz_strike_team_deployments.AssignVehicleTagTransponder
                   (
-                  id:id,
                   deployment_id:p.deployment_id,
+                  mobilization_id:id,
                   vehicle_id:vehicle_id,
+                  static_name:static_name,
                   tactical_name:tactical_name,
                   transponder_name:transponder_name
                   );
-                //
-                // Log event
-                //
-                p.biz_strike_team_deployment_logs.Enter
-                  (
-                  deployment_id:p.deployment_id,
-                  action:"assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to vehicle `" + static_name + "`"
-                  );
-                //
                 DataGrid_control.EditItemIndex = -1;
                 }
               else
@@ -303,22 +285,18 @@ namespace UserControl_strike_team_deployment_vehicles
                     {
                     p.msg_protected_underway_demobilization.deployment_id = p.deployment_id;
                     p.msg_protected_underway_demobilization.mode = underway_demobilization_mode_enum.VEHICLE;
-                    p.msg_protected_underway_demobilization.asset_id = id;
+                    p.msg_protected_underway_demobilization.mobilization_id = id;
                     p.msg_protected_underway_demobilization.asset_designator = static_name;
                     MessageDropCrumbAndTransferTo(p.msg_protected_underway_demobilization,"protected","underway_demobilization");
                     }
                   else
                     {
-                    p.biz_strike_team_deployment_vehicles.Delete(id);
-                    //
-                    // Log event
-                    //
-                    p.biz_strike_team_deployment_logs.Enter
+                    p.biz_strike_team_deployments.DemobilizeVehicle
                       (
                       deployment_id:p.deployment_id,
-                      action:"demobilized vehicle `" + static_name + "`"
+                      mobilization_id:id,
+                      static_name:static_name
                       );
-                    //
                     }
                   }
                 }

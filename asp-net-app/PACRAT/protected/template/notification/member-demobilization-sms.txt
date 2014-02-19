@@ -1,0 +1,2 @@
+
+You've been DEMOBILIZED from Strike Team deployment "<deployment_name/>". -<application_name/>

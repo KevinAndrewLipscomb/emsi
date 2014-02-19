@@ -1,0 +1,2 @@
+
+You've been MOBILIZED for Strike Team deployment "<deployment_name/>". -<application_name/>

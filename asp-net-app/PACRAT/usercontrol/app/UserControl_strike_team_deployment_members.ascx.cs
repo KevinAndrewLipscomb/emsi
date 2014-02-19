@@ -48,6 +48,7 @@ namespace UserControl_strike_team_deployment_members
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public string deployment_id;
+      public string deployment_name;
       public bool do_include_all_eligible_practitioners;
       public string distribution_list_email;
       public string distribution_list_sms;
@@ -126,6 +127,7 @@ namespace UserControl_strike_team_deployment_members
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
+        p.deployment_name = k.EMPTY;
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
         p.do_include_all_eligible_practitioners = true;
@@ -178,24 +180,17 @@ namespace UserControl_strike_team_deployment_members
             {
             var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM);
             var name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME) + k.COMMA_SPACE + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+            var sms_target = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text,k.safe_hint_type.EMAIL_ADDRESS);
             if (id.Length == 0)
               {
-              p.biz_strike_team_deployment_members.Set
+              p.biz_strike_team_deployments.MobilizeMember
                 (
-                id:k.EMPTY,
                 deployment_id:p.deployment_id,
+                deployment_name:p.deployment_name,
                 practitioner_id:practitioner_id,
-                tag_num:k.EMPTY
+                name:name,
+                sms_target:sms_target
                 );
-              //
-              // Log event
-              //
-              p.biz_strike_team_deployment_logs.Enter
-                (
-                deployment_id:p.deployment_id,
-                action:"mobilized member `" + name + "`"
-                );
-              //
               if (p.service_strike_team_management_footprint.Length == 0)
                 {
                 DataGrid_control.EditItemIndex = e.Item.ItemIndex;
@@ -206,22 +201,15 @@ namespace UserControl_strike_team_deployment_members
               if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
                 var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
-                p.biz_strike_team_deployment_members.Set
+                p.biz_strike_team_deployments.AssignMemberTag
                   (
-                  id:id,
                   deployment_id:p.deployment_id,
+                  mobilization_id:id,
                   practitioner_id:practitioner_id,
-                  tag_num:tag_num
+                  name:name,
+                  tag_num:tag_num,
+                  sms_target:sms_target
                   );
-                //
-                // Log event
-                //
-                p.biz_strike_team_deployment_logs.Enter
-                  (
-                  deployment_id:p.deployment_id,
-                  action:"assigned tag `" + tag_num + "` to member `" + name + "`"
-                  );
-                //
                 DataGrid_control.EditItemIndex = -1;
                 }
               else
@@ -241,22 +229,20 @@ namespace UserControl_strike_team_deployment_members
                     {
                     p.msg_protected_underway_demobilization.deployment_id = p.deployment_id;
                     p.msg_protected_underway_demobilization.mode = underway_demobilization_mode_enum.MEMBER;
-                    p.msg_protected_underway_demobilization.asset_id = id;
+                    p.msg_protected_underway_demobilization.mobilization_id = id;
                     p.msg_protected_underway_demobilization.asset_designator = name;
                     MessageDropCrumbAndTransferTo(p.msg_protected_underway_demobilization,"protected","underway_demobilization");
                     }
                   else
                     {
-                    p.biz_strike_team_deployment_members.Delete(id);
-                    //
-                    // Log event
-                    //
-                    p.biz_strike_team_deployment_logs.Enter
+                    p.biz_strike_team_deployments.DemobilizeMember
                       (
                       deployment_id:p.deployment_id,
-                      action:"demobilized member `" + name + "`"
+                      deployment_name:p.deployment_name,
+                      mobilization_id:id,
+                      name:name,
+                      sms_target:sms_target
                       );
-                    //
                     }
                   }
                 }
@@ -397,6 +383,7 @@ namespace UserControl_strike_team_deployment_members
         }
       CheckBox_do_include_all_eligible_practitioners.Checked = p.do_include_all_eligible_practitioners;
       p.deployment_id = deployment_id;
+      p.deployment_name = p.biz_strike_team_deployments.NameOfId(p.deployment_id);
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       Bind();
       }

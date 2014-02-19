@@ -80,6 +80,11 @@ namespace Class_biz_strike_team_deployment_members
         );
       }
 
+    internal string PractitionerIdOfMobilizationId(string mobilization_id)
+      {
+      return db_strike_team_deployment_members.PractitionerIdOfMobilizationId(mobilization_id);
+      }
+
     public void Set
       (
       string id,

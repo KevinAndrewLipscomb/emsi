@@ -61,7 +61,7 @@ namespace underway_demobilization
           (
           deployment_id:p.incoming.deployment_id,
           mode:p.incoming.mode,
-          asset_id:p.incoming.asset_id,
+          mobilization_id:p.incoming.mobilization_id,
           asset_designator:p.incoming.asset_designator
           );
         }
