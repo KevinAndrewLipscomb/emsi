@@ -1,3 +1,4 @@
+using Class_biz_practitioner_strike_team_details;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployment_vehicles;
@@ -13,13 +14,15 @@ namespace UserControl_underway_demobilization
     private struct p_type
       {
       public string asset_designator;
-      public string asset_id;
       public bool be_loaded;
+      public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public string deployment_id;
+      public string deployment_name;
+      public string mobilization_id;
       public Class_msg_protected.underway_demobilization_mode_enum mode;
       }
 
@@ -29,7 +32,7 @@ namespace UserControl_underway_demobilization
       {
       if (!p.be_loaded)
         {
-        Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOfId(p.deployment_id);
+        Literal_deployment_name.Text = p.deployment_name;
         Literal_asset_mode.Text = p.mode.ToString();
         Literal_asset_designator.Text = p.asset_designator;
         //
@@ -64,6 +67,7 @@ namespace UserControl_underway_demobilization
         }
       else
         {
+        p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
@@ -97,40 +101,41 @@ namespace UserControl_underway_demobilization
       (
       string deployment_id,
       Class_msg_protected.underway_demobilization_mode_enum mode,
-      string asset_id,
+      string mobilization_id,
       string asset_designator
       )
       {
       p.deployment_id = deployment_id;
       p.mode = mode;
-      p.asset_id = asset_id;
+      p.mobilization_id = mobilization_id;
       p.asset_designator = asset_designator;
+      //
+      p.deployment_name = p.biz_strike_team_deployments.NameOfId(p.deployment_id);
       }
 
     protected void Button_submit_Click(object sender, System.EventArgs e)
       {
+      var reason = k.Safe(TextBox_reason.Text, k.safe_hint_type.PUNCTUATED);
       if (p.mode == Class_msg_protected.underway_demobilization_mode_enum.MEMBER)
         {
-        p.biz_strike_team_deployment_members.Delete(p.asset_id);
-        //
-        // Log event
-        //
-        p.biz_strike_team_deployment_logs.Enter
+        p.biz_strike_team_deployments.DemobilizeMemberUnderway
           (
           deployment_id:p.deployment_id,
-          action:"performed an underway demobilization of member `" + p.asset_designator + "` citing `" + k.Safe(TextBox_reason.Text,k.safe_hint_type.PUNCTUATED) + "`"
+          deployment_name:p.deployment_name,
+          mobilization_id:p.mobilization_id,
+          asset_designator:p.asset_designator,
+          reason:reason,
+          sms_target:p.biz_practitioner_strike_team_details.SmsTargetOf(p.biz_strike_team_deployment_members.PractitionerIdOfMobilizationId(p.mobilization_id))
           );
         }
       else if (p.mode == Class_msg_protected.underway_demobilization_mode_enum.VEHICLE)
         {
-        p.biz_strike_team_deployment_vehicles.Delete(p.asset_id);
-        //
-        // Log event
-        //
-        p.biz_strike_team_deployment_logs.Enter
+        p.biz_strike_team_deployments.DemobilizeVehicleUnderway
           (
           deployment_id:p.deployment_id,
-          action:"performed an underway demobilization of vehicle `" + p.asset_designator + "` citing `" + k.Safe(TextBox_reason.Text,k.safe_hint_type.PUNCTUATED) + "`"
+          mobilization_id:p.mobilization_id,
+          asset_designator:p.asset_designator,
+          reason:reason
           );
         }
       //

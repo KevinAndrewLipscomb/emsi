@@ -1,0 +1,2 @@
+
+Command shows your Strike Team TAG has been deassigned. If in error, report up the chain. -<application_name/>

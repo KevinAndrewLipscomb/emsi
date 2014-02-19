@@ -103,6 +103,10 @@
     <Content Include="protected\strike_team_deployment_detail.aspx" />
     <Content Include="protected\template\notification\explicit_region_role_change.txt" />
     <Content Include="protected\template\notification\explicit_service_role_change.txt" />
+    <Content Include="protected\template\notification\member-demobilization-sms.txt" />
+    <Content Include="protected\template\notification\member-mobilization-sms.txt" />
+    <Content Include="protected\template\notification\member-tag-assignment-sms.txt" />
+    <Content Include="protected\template\notification\member-tag-deassignment-sms.txt" />
     <Content Include="protected\template\notification\membership_establishment_blocked.txt" />
     <Content Include="protected\template\notification\membership_establishment_trouble.txt" />
     <Content Include="protected\template\notification\mobilization-announcement-email.txt" />

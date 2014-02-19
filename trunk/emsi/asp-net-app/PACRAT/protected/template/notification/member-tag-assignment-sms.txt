@@ -1,0 +1,2 @@
+
+Command shows you have Strike Team TAG #<tag_num/>. If in error, report up the chain. -<application_name/>

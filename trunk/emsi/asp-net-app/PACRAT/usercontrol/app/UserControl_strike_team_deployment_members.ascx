@@ -46,10 +46,10 @@
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
                     <asp:BoundColumn DataField="affiliation" HeaderText="Affiliation" ReadOnly="True">
-                      <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Smaller" Font-Strikeout="False" Font-Underline="False" />
+                      <ItemStyle Font-Size="Smaller" />
                     </asp:BoundColumn>
                     <asp:BoundColumn datafield="email_address" Visible="false"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="sms_target" Visible="false"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="sms_target" Visible="false" ReadOnly="true"></asp:BoundColumn>
                     <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                       <HeaderTemplate>
                         <small>Include in<br />QuickMessage</small><br /> All:<asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
