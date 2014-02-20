@@ -7,6 +7,7 @@ using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_strike_team_deployment_vehicles;
+using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using kix;
 using System;
@@ -62,6 +63,7 @@ namespace UserControl_operational_period_detail
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
+      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public string deployment_id;
       public string digest_sort_order;
@@ -130,26 +132,14 @@ namespace UserControl_operational_period_detail
 
     protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
       {
-      p.biz_strike_team_deployment_assignments.Save
-        (
-        operational_period_id:p.operational_period_id,
-        member_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].Text, k.safe_hint_type.NUM),
-        vehicle_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].Text, k.safe_hint_type.NUM),
-        be_assigned:false
-        );
-      //
-      // Log event
-      //
-      var operational_period_summary = p.biz_strike_team_deployment_operational_periods.Summary(id:p.operational_period_id);
-      p.biz_strike_team_deployment_logs.Enter
+      p.biz_strike_team_deployments.MakeOperationalPeriodDeassignment
         (
         deployment_id:p.deployment_id,
-        action:"deassigned member `" + k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_DESIGNATOR].Text,k.safe_hint_type.PUNCTUATED) + "`"
-        + " from " + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary) ? "convoy" : "operational period")
-        + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
-        + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
+        operational_period_id:p.operational_period_id,
+        member_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].Text, k.safe_hint_type.NUM),
+        member_designator:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_DESIGNATOR].Text, k.safe_hint_type.PUNCTUATED),
+        vehicle_id:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].Text, k.safe_hint_type.NUM)
         );
-      //
       Bind();
       }
 
@@ -283,27 +273,15 @@ namespace UserControl_operational_period_detail
 
     protected void Button_add_Click(object sender, System.EventArgs e)
       {
-      p.biz_strike_team_deployment_assignments.Save
-        (
-        operational_period_id:p.operational_period_id,
-        member_id:k.Safe(DropDownList_member.SelectedValue, k.safe_hint_type.NUM),
-        vehicle_id:k.Safe(DropDownList_vehicle.SelectedValue, k.safe_hint_type.NUM),
-        be_assigned:true
-        );
-      //
-      // Log event
-      //
-      var operational_period_summary = p.biz_strike_team_deployment_operational_periods.Summary(id:p.operational_period_id);
-      p.biz_strike_team_deployment_logs.Enter
+      p.biz_strike_team_deployments.MakeOperationalPeriodAssignment
         (
         deployment_id:p.deployment_id,
-        action:"assigned member `" + k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text,k.safe_hint_type.PUNCTUATED) + "`"
-        + " to vehicle `" + k.Safe(DropDownList_vehicle.Items[DropDownList_vehicle.SelectedIndex].Text,k.safe_hint_type.PUNCTUATED) + "`"
-        + " for " + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary) ? "convoy" : "operational period")
-        + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
-        + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary).ToString("yyyy-MM-dd HH:mm")
+        operational_period_id:p.operational_period_id,
+        member_id:k.Safe(DropDownList_member.SelectedValue, k.safe_hint_type.NUM),
+        member_designator:k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text, k.safe_hint_type.PUNCTUATED),
+        vehicle_id:k.Safe(DropDownList_vehicle.SelectedValue, k.safe_hint_type.NUM),
+        vehicle_designator:k.Safe(DropDownList_vehicle.Items[DropDownList_vehicle.SelectedIndex].Text, k.safe_hint_type.PUNCTUATED)
         );
-      //
       Bind();
       }
 
@@ -333,6 +311,7 @@ namespace UserControl_operational_period_detail
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
         //
         p.assignment_level_filter = k.EMPTY;

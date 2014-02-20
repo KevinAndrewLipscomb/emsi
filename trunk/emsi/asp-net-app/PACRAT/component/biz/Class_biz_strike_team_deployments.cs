@@ -3,8 +3,10 @@
 using Class_biz_notifications;
 using Class_biz_role_member_map;
 using Class_biz_services;
+using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
+using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_strike_team_deployment_vehicles;
 using Class_db_practitioner_strike_team_details;
 using Class_db_strike_team_deployments;
@@ -28,8 +30,10 @@ namespace Class_biz_strike_team_deployments
     private TClass_biz_notifications biz_notifications = null;
     private TClass_biz_role_member_map biz_role_member_map = null;
     private TClass_biz_services biz_services = null;
+    private TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments = null;
     private TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs = null;
     private TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members = null;
+    private TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods = null;
     private TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles = null;
     private TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
     private TClass_db_strike_team_deployments db_strike_team_deployments = null;
@@ -39,8 +43,10 @@ namespace Class_biz_strike_team_deployments
       biz_notifications = new TClass_biz_notifications();
       biz_role_member_map = new TClass_biz_role_member_map();
       biz_services = new TClass_biz_services();
+      biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
       biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
       biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
+      biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
       biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
       db_practitioner_strike_team_details = new TClass_db_practitioner_strike_team_details();
       db_strike_team_deployments = new TClass_db_strike_team_deployments();
@@ -284,6 +290,80 @@ namespace Class_biz_strike_team_deployments
         out name,
         out region_code,
         out be_drill
+        );
+      }
+
+    internal void MakeOperationalPeriodAssignment
+      (
+      string deployment_id,
+      string operational_period_id,
+      string member_id,
+      string member_designator,
+      string vehicle_id,
+      string vehicle_designator
+      )
+      {
+      biz_strike_team_deployment_assignments.Save
+        (
+        operational_period_id: operational_period_id,
+        member_id: member_id,
+        vehicle_id: vehicle_id,
+        be_assigned: true
+        );
+      var operational_period_summary = biz_strike_team_deployment_operational_periods.Summary(id: operational_period_id);
+      var be_convoy = biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary);
+      var start = biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary);
+      var end = biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary);
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "assigned member `" + member_designator + "`"
+        + " to vehicle `" + vehicle_designator + "`"
+        + " for " + (be_convoy ? "convoy" : "operational period")
+        + " from " + start.ToString("yyyy-MM-dd HH:mm")
+        + " to " + end.ToString("yyyy-MM-dd HH:mm")
+        );
+      biz_notifications.IssueForOperationalPeriodAssignment
+        (
+        target:db_practitioner_strike_team_details.SmsTargetOf(member_id),
+        vehicle_designator:vehicle_designator,
+        nature:(be_convoy ? "convoy" : "op period"),
+        start:start.ToString("M/d HH:mm"),
+        end:end.ToString("M/d HH:mm")
+        );
+      }
+
+    internal void MakeOperationalPeriodDeassignment
+      (
+      string deployment_id,
+      string operational_period_id,
+      string member_id,
+      string member_designator,
+      string vehicle_id
+      )
+      {
+      biz_strike_team_deployment_assignments.Save
+        (
+        operational_period_id: operational_period_id,
+        member_id: member_id,
+        vehicle_id: vehicle_id,
+        be_assigned: false
+        );
+      var operational_period_summary = biz_strike_team_deployment_operational_periods.Summary(id: operational_period_id);
+      var be_convoy = biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary);
+      var start = biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary);
+      var end = biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary);
+      biz_strike_team_deployment_logs.Enter
+        (
+        deployment_id: deployment_id,
+        action: "deassigned member `" + member_designator + "` from " + (be_convoy ? "convoy" : "operational period") + " from " + start.ToString("yyyy-MM-dd HH:mm") + " to " + end.ToString("yyyy-MM-dd HH:mm")
+        );
+      biz_notifications.IssueForOperationalPeriodDeassignment
+        (
+        target:db_practitioner_strike_team_details.SmsTargetOf(member_id),
+        nature:(be_convoy ? "convoy" : "op period"),
+        start:start.ToString("M/d HH:mm"),
+        end:end.ToString("M/d HH:mm")
         );
       }
 
