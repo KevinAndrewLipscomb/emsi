@@ -27,9 +27,16 @@
                   <tr><td bgcolor="#f5f5f5"><strong>New password</strong></td></tr>
                   <tr>
                     <td>
-                      A temporary password has been sent to <ASP:Label id="Label_valid_email_address" runat="server" font-bold="True"></ASP:Label>.&nbsp;
-                      Please&nbsp;<ASP:HyperLink id="HyperLink_login" runat="server" navigateurl="login.aspx" font-bold="True">log in</ASP:HyperLink> again after you receive it.&nbsp; You will receive further instructions at
-                      that time.
+                      <p>
+                        A temporary password has been sent to <ASP:Label id="Label_valid_email_address" runat="server" font-bold="True"></ASP:Label>.&nbsp;
+                        Please&nbsp;<ASP:HyperLink id="HyperLink_login" runat="server" navigateurl="login.aspx" font-bold="True">log in</ASP:HyperLink> again after you receive it.&nbsp; You will receive further instructions at
+                        that time.
+                      </p>
+                      <p>
+                        <b>NOTE:</b> If the above email address is wrong, you <b>must</b> contact your regional EMS council's education coordinator to have it corrected in EMSRS.&nbsp; Also, changes made in EMSRS are not
+                        recognized in <asp:Label ID="Label_application_name_5" runat="server"></asp:Label> until <asp:Label ID="Label_application_name_6" runat="server"></asp:Label> performs its next import (for instance, the
+                        next calendar day).
+                      </p>
                     </td>
                   </tr>
                 </table>
@@ -51,8 +58,7 @@
                         The email address...
                         <blockquote><ASP:Label id="Label_invalid_email_address" runat="server" font-bold="True"></ASP:Label></blockquote>
                         that <asp:Label ID="Label_application_name" runat="server"></asp:Label> imported from EMSRS for the
-                        specified Con Ed Sponsor is <strong>INVALID</strong>.&nbsp; You must
-                        <strong><asp:HyperLink ID="HyperLink_emsrs" runat="server" NavigateUrl="https://ems.health.state.pa.us/emsportal" Target="_blank"> set all your email addresses correctly in EMSRS</asp:HyperLink></strong> before
+                        specified Con Ed Sponsor is <strong>INVALID</strong>.&nbsp; You must get your regional EMS council's education coordinator to set all your email addresses correctly in EMSRS before
                         you can use <asp:Label ID="Label_application_name_2" runat="server"></asp:Label>.
                       </p>
                       <p>
