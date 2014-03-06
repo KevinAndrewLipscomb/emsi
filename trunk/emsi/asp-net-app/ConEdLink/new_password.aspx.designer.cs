@@ -58,6 +58,24 @@ namespace new_password {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink_login;
         
         /// <summary>
+        /// Label_application_name_5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_application_name_5;
+        
+        /// <summary>
+        /// Label_application_name_6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_application_name_6;
+        
+        /// <summary>
         /// Panel_blocked control.
         /// </summary>
         /// <remarks>
@@ -83,15 +101,6 @@ namespace new_password {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_application_name;
-        
-        /// <summary>
-        /// HyperLink_emsrs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_emsrs;
         
         /// <summary>
         /// Label_application_name_2 control.

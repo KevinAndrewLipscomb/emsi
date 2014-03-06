@@ -37,6 +37,7 @@ namespace new_password
                     Session.Clear();
                     Server.Transfer("~/login.aspx");
                 }
+                var application_name = ConfigurationManager.AppSettings["application_name"];
                 Title = ConfigurationManager.AppSettings["application_name"] + " - new_password";
                 var biz_accounts = new TClass_biz_accounts();
                 Label_user_name.Text = Session[Session["target_user_table"].ToString() + "_name"].ToString();
@@ -51,15 +52,17 @@ namespace new_password
                   k.SmtpMailSend(ConfigurationManager.AppSettings["sender_email_address"], email_address, ConfigurationManager.AppSettings["application_name"] + " temp password", "Someone at the host known as " + k.Safe(Request.UserHostName, k.safe_hint_type.HOSTNAME) + " (possibly you) requested a new password for the \"" + Session[Session["target_user_table"].ToString() + "_name"].ToString() + "\" " + Session["target_user_table"].ToString() + " account on the " + ConfigurationManager.AppSettings["application_name"] + " system.  Please log into " + ConfigurationManager.AppSettings["application_name"] + " using the following credentials.  " + "You will receive further instructions at that time." + k.NEW_LINE + k.NEW_LINE + "   " + Session["target_user_table"].ToString() + ":" + k.NEW_LINE + "      " + Session[Session["target_user_table"].ToString() + "_name"].ToString() + k.NEW_LINE + "   password:" + k.NEW_LINE + "      " + temporary_password + k.NEW_LINE + k.NEW_LINE + "You can complete this process by visiting:" + k.NEW_LINE + k.NEW_LINE + "   http://" + ConfigurationManager.AppSettings["host_domain_name"] + "/" + Server.UrlEncode(ConfigurationManager.AppSettings["application_name"]) + k.NEW_LINE + k.NEW_LINE + "-- " + ConfigurationManager.AppSettings["application_name"]);
                   // Set Label_email_address.
                   Label_valid_email_address.Text = email_address;
+                  Label_application_name_5.Text = application_name;
+                  Label_application_name_6.Text = application_name;
                   }
                 else
                   {
                   Panel_done.Visible = false;
                   Panel_blocked.Visible = true;
-                  Label_application_name.Text = ConfigurationManager.AppSettings["application_name"];
-                  Label_application_name_2.Text = Label_application_name.Text;
-                  Label_application_name_3.Text = Label_application_name.Text;
-                  Label_application_name_4.Text = Label_application_name.Text;
+                  Label_application_name.Text = application_name;
+                  Label_application_name_2.Text = application_name;
+                  Label_application_name_3.Text = application_name;
+                  Label_application_name_4.Text = application_name;
                   Label_invalid_email_address.Text = email_address;
                   }
             }
