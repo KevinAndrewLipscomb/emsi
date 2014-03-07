@@ -46,9 +46,13 @@ namespace Class_biz_strike_team_deployment_operational_periods
       db_strike_team_deployment_operational_periods.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id);
       }
 
-    public void BindDirectToListControl(object target)
+    public bool BindDirectToListControl
+      (
+      string target_operational_period_id,
+      object target
+      )
       {
-      db_strike_team_deployment_operational_periods.BindDirectToListControl(target);
+      return db_strike_team_deployment_operational_periods.BindDirectToListControl(target_operational_period_id,target);
       }
 
     public bool Delete(string id)

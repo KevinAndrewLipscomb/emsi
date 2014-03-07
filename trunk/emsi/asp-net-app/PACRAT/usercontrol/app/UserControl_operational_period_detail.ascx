@@ -70,7 +70,11 @@
                       <td>&nbsp;</td>
                     </tr>
                   </table>
-                  <br />
+                  <asp:Panel ID="Panel_copy_other_op_period" runat="server" Visible="false">
+                    <hr />
+                    Copy from:<asp:DropDownList ID="DropDownList_source_op_period" runat="server"></asp:DropDownList><asp:Button ID="Button_copy_other_op_period" runat="server" Text="Copy" onclick="Button_copy_other_op_period_Click" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_source_op_period" runat="server" ControlToValidate="DropDownList_source_op_period" Display="Dynamic" ErrorMessage="Please select a source to Copy (assignments) from." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+                  </asp:Panel>
                   <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
                     <tr>
                       <td>
