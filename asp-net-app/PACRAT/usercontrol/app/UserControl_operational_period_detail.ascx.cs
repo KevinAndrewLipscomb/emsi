@@ -265,10 +265,12 @@ namespace UserControl_operational_period_detail
 
     protected void Button_copy_other_op_period_Click(object sender, EventArgs e)
       {
-      p.biz_strike_team_deployment_assignments.Copy
+      p.biz_strike_team_deployments.CopyAssignments
         (
-        source_id:k.Safe(DropDownList_source_op_period.SelectedValue,k.safe_hint_type.NUM),
-        target_id:p.operational_period_id
+        deployment_id:p.deployment_id,
+        source_operational_period_id:k.Safe(DropDownList_source_op_period.SelectedValue,k.safe_hint_type.NUM),
+        target_operational_period_id:p.operational_period_id,
+        datagrid_control:DataGrid_control
         );
       Bind();
       }

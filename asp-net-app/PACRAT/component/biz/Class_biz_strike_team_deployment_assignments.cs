@@ -81,15 +81,6 @@ namespace Class_biz_strike_team_deployment_assignments
       db_strike_team_deployment_assignments.BindDirectToListControl(target);
       }
 
-    internal void Copy
-      (
-      string source_id,
-      string target_id
-      )
-      {
-      db_strike_team_deployment_assignments.Copy(source_id,target_id);
-      }
-
     public bool Delete(string id)
       {
       return db_strike_team_deployment_assignments.Delete(id);

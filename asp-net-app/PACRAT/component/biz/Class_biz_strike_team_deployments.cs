@@ -12,7 +12,8 @@ using Class_db_practitioner_strike_team_details;
 using Class_db_strike_team_deployments;
 using kix;
 using System;
-using System.Collections;
+using System.Web.UI.WebControls;
+using UserControl_operational_period_detail;
 
 namespace Class_biz_strike_team_deployments
   {
@@ -191,6 +192,41 @@ namespace Class_biz_strike_team_deployments
     public void BindDirectToListControl(object target)
       {
       db_strike_team_deployments.BindDirectToListControl(target);
+      }
+
+    internal void CopyAssignments
+      (
+      string deployment_id,
+      string source_operational_period_id,
+      string target_operational_period_id,
+      DataGrid datagrid_control
+      )
+      {
+      //
+      // Take advantage of the fact that we already have a way to pull a prior op period's assignments into a DataGrid, and we already have constant indexes into the DataGrid's columns defined in
+      // UserControl_operational_period_detail.  This cheat depends on receiving a pointer to the DataGrid from the caller, so that the DataSource-to-DataBind transformation will be what we expect (that is, it will be defined
+      // by the code in the caller's ASCX file.
+      //
+      biz_strike_team_deployment_assignments.BindActualsByOperationalPeriod
+        (
+        sort_order:UserControl_operational_period_detail_Static.INITIAL_SORT_ORDER,
+        be_sort_order_ascending:true,
+        target:datagrid_control,
+        operational_period_id:source_operational_period_id,
+        assignment_level_filter:k.EMPTY
+        );
+      foreach (DataGridItem source_assignment in datagrid_control.Items)
+        {
+        MakeOperationalPeriodAssignment
+          (
+          deployment_id:deployment_id,
+          operational_period_id:target_operational_period_id,
+          member_id:source_assignment.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_ID].Text,
+          member_designator:source_assignment.Cells[UserControl_operational_period_detail_Static.CI_MEMBER_DESIGNATOR].Text,
+          vehicle_id:source_assignment.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE_ID].Text,
+          vehicle_designator:source_assignment.Cells[UserControl_operational_period_detail_Static.CI_VEHICLE].Text
+          );
+        }
       }
 
     public bool Delete(string id)

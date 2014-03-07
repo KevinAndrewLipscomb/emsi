@@ -266,30 +266,6 @@ namespace Class_db_strike_team_deployment_assignments
       Close();
       }
 
-    internal void Copy
-      (
-      string source_id,
-      string target_id
-      )
-      {
-      Open();
-      new MySqlCommand
-        (
-        db_trail.Saved
-          (
-          "insert ignore strike_team_deployment_assignment (operational_period_id,vehicle_id,member_id)"
-          + " select '" + target_id + "' as operational_period_id"
-          + " , vehicle_id"
-          + " , member_id"
-          + " from strike_team_deployment_assignment"
-          + " where operational_period_id = '" + source_id + "'"
-          ),
-        connection
-        )
-        .ExecuteNonQuery();
-      Close();
-      }
-
     public bool Delete(string id)
       {
       var result = true;
