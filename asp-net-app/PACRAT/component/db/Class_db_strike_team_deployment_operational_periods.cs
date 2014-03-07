@@ -82,16 +82,22 @@ namespace Class_db_strike_team_deployment_operational_periods
       Close();
       }
 
-    public void BindDirectToListControl(object target)
+    public bool BindDirectToListControl
+      (
+      string target_operational_period_id,
+      object target
+      )
       {
       Open();
       ((target) as ListControl).Items.Clear();
       var dr = new MySqlCommand
         (
         "SELECT id"
-        + " , CONVERT(concat(IFNULL(deployment_id,'-'),'|',IFNULL(DATE_FORMAT(start,'%Y-%m-%d %H:%i'),'-'),'|',IFNULL(DATE_FORMAT(end,'%Y-%m-%d %H:%i'),'-')) USING utf8) as spec"
+        + " , CONVERT(concat(IF(be_convoy,'CVY','OPD'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i')) USING utf8) as spec"
         + " FROM strike_team_deployment_operational_period"
-        + " order by spec",
+        + " where deployment_id = (select deployment_id from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "')"
+        +   " and start < (select start from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "')"
+        + " order by start desc,end desc",
         connection
         )
         .ExecuteReader();
@@ -101,6 +107,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         }
       dr.Close();
       Close();
+      return (((target) as ListControl).Items.Count > 0);
       }
 
     public bool Delete(string id)
