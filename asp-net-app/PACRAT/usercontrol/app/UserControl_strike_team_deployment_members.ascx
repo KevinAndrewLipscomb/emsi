@@ -45,9 +45,7 @@
                       <HeaderStyle HorizontalAlign="Center" />
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn DataField="affiliation" HeaderText="Affiliation" ReadOnly="True">
-                      <ItemStyle Font-Size="Smaller" />
-                    </asp:BoundColumn>
+                    <asp:BoundColumn DataField="affiliation" HeaderText="Affiliation" ReadOnly="True"></asp:BoundColumn>
                     <asp:BoundColumn datafield="email_address" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="sms_target" Visible="false" ReadOnly="true"></asp:BoundColumn>
                     <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
