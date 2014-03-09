@@ -5,18 +5,17 @@ using Class_biz_members;
 using Class_biz_patient_care_levels;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
+using Class_biz_services;
 using Class_biz_tow_capacities;
 using Class_biz_user;
 using Class_biz_vehicle_kinds;
 using Class_biz_vehicles;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
-using UserControl_drop_down_date;
+using System.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_vehicle
   {
@@ -30,6 +29,7 @@ namespace UserControl_vehicle
       public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_services biz_services;
       public TClass_biz_tow_capacities biz_tow_capacities;
       public TClass_biz_user biz_user;
       public TClass_biz_vehicle_kinds biz_vehicle_kinds;
@@ -38,6 +38,7 @@ namespace UserControl_vehicle
       public string id;
       public presentation_mode_enum presentation_mode;
       public string service_id;
+      public string service_short_name;
       public object summary;
       } // end p_type
 
@@ -56,6 +57,8 @@ namespace UserControl_vehicle
       TextBox_pa_doh_decal_num.Text = k.EMPTY;
       CheckBox_be_four_or_all_wheel_drive.Checked = false;
       DropDownList_patient_care_level.ClearSelection();
+      TextBox_elaboration.Text = k.EMPTY;
+      UpdateStagingDesignator();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -162,6 +165,10 @@ namespace UserControl_vehicle
         p.biz_fuels.BindDirectToListControl(target:DropDownList_fuel);
         p.biz_patient_care_levels.BindDirectToListControl(target:DropDownList_patient_care_level);
         //
+        Literal_service_short_name.Text = p.service_short_name;
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        UpdateStagingDesignator();
+        //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.presentation_mode == presentation_mode_enum.NEW)
           {
@@ -195,6 +202,7 @@ namespace UserControl_vehicle
       string tow_capacity_id;
       string pa_doh_decal_num;
       string patient_care_level;
+      string elaboration;
       result = false;
       if
         (
@@ -209,7 +217,8 @@ namespace UserControl_vehicle
           out be_four_or_all_wheel_drive,
           out tow_capacity_id,
           out pa_doh_decal_num,
-          out patient_care_level
+          out patient_care_level,
+          out elaboration
           )
         )
         {
@@ -224,6 +233,8 @@ namespace UserControl_vehicle
         TextBox_pa_doh_decal_num.Text = pa_doh_decal_num;
         CheckBox_be_four_or_all_wheel_drive.Checked = be_four_or_all_wheel_drive;
         DropDownList_patient_care_level.SelectedValue = patient_care_level;
+        TextBox_elaboration.Text = elaboration;
+        UpdateStagingDesignator();
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -243,6 +254,7 @@ namespace UserControl_vehicle
       )
       {
       p.service_id = service_id;
+      p.service_short_name = p.biz_services.ShortNameOf(service_id);
       if (id.Length > 0)
         {
         p.id = id;
@@ -308,6 +320,7 @@ namespace UserControl_vehicle
         p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
+        p.biz_services = new TClass_biz_services();
         p.biz_tow_capacities = new TClass_biz_tow_capacities();
         p.biz_user = new TClass_biz_user();
         p.biz_vehicle_kinds = new TClass_biz_vehicle_kinds();
@@ -358,7 +371,8 @@ namespace UserControl_vehicle
           CheckBox_be_four_or_all_wheel_drive.Checked,
           k.Safe(DropDownList_tow_capacity.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_pa_doh_decal_num.Text,k.safe_hint_type.NUM),
-          k.Safe(DropDownList_patient_care_level.Text,k.safe_hint_type.NUM)
+          k.Safe(DropDownList_patient_care_level.Text,k.safe_hint_type.NUM),
+          k.Safe(TextBox_elaboration.Text,k.safe_hint_type.MEMO).Trim()
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         BackTrack();
@@ -431,6 +445,7 @@ namespace UserControl_vehicle
       CheckBox_be_four_or_all_wheel_drive.Enabled = ablement;
       TextBox_pa_doh_decal_num.Enabled = ablement;
       DropDownList_patient_care_level.Enabled = ablement;
+      TextBox_elaboration.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -495,6 +510,21 @@ namespace UserControl_vehicle
         );
       CustomValidator_pa_doh_decal_num.ErrorMessage += designator_with_competing_pa_doh_decal_num;
       args.IsValid = (designator_with_competing_pa_doh_decal_num == k.EMPTY);
+      }
+
+    protected void DropDownList_kind_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      UpdateStagingDesignator();
+      }
+
+    protected void TextBox_name_TextChanged(object sender, EventArgs e)
+      {
+      UpdateStagingDesignator();
+      }
+
+    private void UpdateStagingDesignator()
+      {
+      Label_designator.Text = p.service_short_name + k.SPACE + k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim() + k.SPACE + "(" + k.Safe(DropDownList_kind.SelectedItem.Text,k.safe_hint_type.ALPHA_WORDS) + ")";
       }
 
     } // end TWebUserControl_vehicle

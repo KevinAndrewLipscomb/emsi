@@ -1,6 +1,8 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_vehicle.ascx.cs" Inherits="UserControl_vehicle.TWebUserControl_vehicle"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~kicrudhelped~item.ascx-template -->
 <%@ Register TagPrefix="uc1" TagName="UserControl_drop_down_date" Src="~/usercontrol/ki/UserControl_drop_down_date.ascx" %>
+<asp:UpdatePanel ID="UpdatePanel_control" runat="server" UpdateMode="Conditional">
+  <ContentTemplate>
 <table cellspacing="0" cellpadding="5" width="100%" border="0">
   <tr>
     <td valign="top">
@@ -65,10 +67,22 @@
     </td>
   </tr>
   <tr>
+    <td><font class="">Kind:</font></td>
+    <td>
+      <font class="">
+        <ASP:DropDownList id="DropDownList_kind" runat="server"  cssclass="" enabled="False" AutoPostBack="True" onselectedindexchanged="DropDownList_kind_SelectedIndexChanged"></ASP:DropDownList>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_kind_id" runat="server" errormessage="Please selected a vehicle Kind." font-bold="True" controltovalidate="DropDownList_kind">!ERR!</ASP:RequiredFieldValidator>
+    </td>
+  </tr>
+  <tr>
     <td><font class="">Name:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_name" runat="server" columns="63" maxlength="63" cssclass="" enabled="False"></ASP:TextBox>
+        <asp:Literal ID="Literal_service_short_name" runat="server"></asp:Literal>&nbsp;<ASP:TextBox id="TextBox_name" runat="server" columns="63" maxlength="63" cssclass="" enabled="False" AutoPostBack="True" ontextchanged="TextBox_name_TextChanged"></ASP:TextBox>
+        <small><asp:LinkButton ID="LinkButton_update_staging_designator" runat="server" Text="Update Staging Designator (below)" /></small>
       </font>
     </td>
     <td nowrap="nowrap">
@@ -76,16 +90,41 @@
       <asp:CustomValidator ID="CustomValidator_uniqueness" runat="server" Display="Dynamic" ErrorMessage="A vehicle with this name already exists in the system for this service." Font-Bold="True" onservervalidate="CustomValidator_uniqueness_ServerValidate">!ERR!</asp:CustomValidator>
     </td>
   </tr>
-  <tr>
-    <td><font class="">Kind:</font></td>
-    <td>
+  <tr bgcolor="khaki">
+    <td align="right" valign="top">
       <font class="">
-        <ASP:DropDownList id="DropDownList_kind" runat="server"  cssclass="" enabled="False"></ASP:DropDownList>
+        <p><b>Staging Designator:</b></p>
+        <p><small><b>IMPORTANT:</b></small></p>
+      </font>
+    </td>
+    <td valign="top">
+      <font class="">
+        <p><asp:Label ID="Label_designator" runat="server" Font-Bold="True" Font-Underline="True"></asp:Label></p>
+        <p>
+          <small>
+            <b>
+              Your goal should be to keep the Staging Designator as short as possible without allowing it to be confused with other strike team units in your region.&nbsp;
+              <asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> will use the Staging Designator in SMS messages and screen displays where excessive length will cause problems.&nbsp; The non-parenthesized
+              portion of the designator should match what is <u>prominently</u> displayed on the vehicle.&nbsp; It should generally reflect the way you refer to the unit in <u>casual</u> conversation.&nbsp; Defer additional
+              details to the Elaboration field, below.
+            </b>
+          </small>
+        </p>
+      </font>
+    </td>
+    <td nowrap="nowrap">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top"><font class="">Elaboration:</font></td>
+    <td valign="top">
+      <font class="">
+        <small>If you need to provide descriptive details about this vehicle that are not captured in the Kind or Name values above, do so here in 510 bytes or less:</small>
+        <br />
+        <ASP:TextBox id="TextBox_elaboration" runat="server"  cssclass="" enabled="False" Columns="60" Rows="4" TextMode="MultiLine"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_kind_id" runat="server" errormessage="Please selected a vehicle Kind." font-bold="True" controltovalidate="DropDownList_kind">!ERR!</ASP:RequiredFieldValidator>
-    </td>
+      &nbsp;</td>
   </tr>
   <tr>
     <td><font class="">Patient care level:</font></td>
@@ -158,4 +197,5 @@
   </tr>
 </table>
 <ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click"></ASP:Button>
-
+  </ContentTemplate>
+</asp:UpdatePanel>
