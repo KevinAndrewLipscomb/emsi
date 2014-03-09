@@ -187,7 +187,8 @@ namespace Class_db_vehicles
       out bool be_four_or_all_wheel_drive,
       out string tow_capacity_id,
       out string pa_doh_decal_num,
-      out string patient_care_level_id
+      out string patient_care_level_id,
+      out string elaboration
       )
       {
       service_id = k.EMPTY;
@@ -199,6 +200,7 @@ namespace Class_db_vehicles
       tow_capacity_id = k.EMPTY;
       pa_doh_decal_num = k.EMPTY;
       patient_care_level_id = k.EMPTY;
+      elaboration = k.EMPTY;
       var result = false;
       //
       Open();
@@ -214,6 +216,7 @@ namespace Class_db_vehicles
         tow_capacity_id = dr["tow_capacity_id"].ToString();
         pa_doh_decal_num = dr["pa_doh_decal_num"].ToString();
         patient_care_level_id = dr["patient_care_level_id"].ToString();
+        elaboration = dr["elaboration"].ToString();
         result = true;
         }
       dr.Close();
@@ -245,7 +248,8 @@ namespace Class_db_vehicles
       bool be_four_or_all_wheel_drive,
       string tow_capacity_id,
       string pa_doh_decal_num,
-      string patient_care_level_id
+      string patient_care_level_id,
+      string elaboration
       )
       {
       var childless_field_assignments_clause = k.EMPTY
@@ -258,7 +262,8 @@ namespace Class_db_vehicles
       + " , tow_capacity_id = NULLIF('" + tow_capacity_id + "','')"
       + " , pa_doh_decal_num = NULLIF('" + pa_doh_decal_num + "','')"
       + " , patient_care_level_id = NULLIF('" + patient_care_level_id + "','')"
-      + k.EMPTY;
+      + " , elaboration = NULLIF('" + elaboration + "','')"
+      ;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (
         target_table_name:"vehicle",

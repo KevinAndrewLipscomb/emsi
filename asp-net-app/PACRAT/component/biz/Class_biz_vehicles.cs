@@ -80,7 +80,8 @@ namespace Class_biz_vehicles
       out bool be_four_or_all_wheel_drive,
       out string tow_capacity_id,
       out string pa_doh_decal_num,
-      out string patient_care_level_id
+      out string patient_care_level_id,
+      out string elaboration
       )
       {
       return db_vehicles.Get
@@ -94,7 +95,8 @@ namespace Class_biz_vehicles
         out be_four_or_all_wheel_drive,
         out tow_capacity_id,
         out pa_doh_decal_num,
-        out patient_care_level_id
+        out patient_care_level_id,
+        out elaboration
         );
       }
 
@@ -123,7 +125,8 @@ namespace Class_biz_vehicles
       bool be_four_or_all_wheel_drive,
       string tow_capacity_id,
       string pa_doh_decal_num,
-      string patient_care_level_id
+      string patient_care_level_id,
+      string elaboration
       )
       {
       db_vehicles.Set
@@ -137,7 +140,8 @@ namespace Class_biz_vehicles
         be_four_or_all_wheel_drive,
         tow_capacity_id,
         pa_doh_decal_num,
-        patient_care_level_id
+        patient_care_level_id,
+        elaboration
         );
       }
 

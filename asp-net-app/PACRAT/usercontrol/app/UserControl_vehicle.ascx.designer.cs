@@ -13,6 +13,15 @@ namespace UserControl_vehicle {
     public partial class TWebUserControl_vehicle {
         
         /// <summary>
+        /// UpdatePanel_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        
+        /// <summary>
         /// TableRow_record_navigation_controls control.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,33 @@ namespace UserControl_vehicle {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_service_id;
         
         /// <summary>
+        /// DropDownList_kind control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_kind;
+        
+        /// <summary>
+        /// RequiredFieldValidator_kind_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind_id;
+        
+        /// <summary>
+        /// Literal_service_short_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_service_short_name;
+        
+        /// <summary>
         /// TextBox_name control.
         /// </summary>
         /// <remarks>
@@ -200,6 +236,15 @@ namespace UserControl_vehicle {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_name;
+        
+        /// <summary>
+        /// LinkButton_update_staging_designator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_update_staging_designator;
         
         /// <summary>
         /// RequiredFieldValidator_name control.
@@ -220,22 +265,31 @@ namespace UserControl_vehicle {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_uniqueness;
         
         /// <summary>
-        /// DropDownList_kind control.
+        /// Label_designator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_kind;
+        protected global::System.Web.UI.WebControls.Label Label_designator;
         
         /// <summary>
-        /// RequiredFieldValidator_kind_id control.
+        /// Literal_application_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind_id;
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
+        
+        /// <summary>
+        /// TextBox_elaboration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_elaboration;
         
         /// <summary>
         /// DropDownList_patient_care_level control.
