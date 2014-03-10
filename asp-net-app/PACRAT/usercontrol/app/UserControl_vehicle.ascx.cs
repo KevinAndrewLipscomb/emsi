@@ -522,13 +522,28 @@ namespace UserControl_vehicle
 
     protected void TextBox_name_TextChanged(object sender, EventArgs e)
       {
-      UpdateStagingDesignator();
+      UpdateStagingDesignator(be_for_name_change:true);
       }
 
-    private void UpdateStagingDesignator()
+    private void UpdateStagingDesignator(bool be_for_name_change)
       {
       Label_designator.Text =
         p.service_short_name + k.SPACE + k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim() + k.SPACE + "(" + p.biz_vehicle_kinds.DescriptionOf(k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.NUM)) + ")";
+      if (be_for_name_change)
+        {
+        Alert
+          (
+          cause:k.alert_cause_type.USER,
+          state:k.alert_state_type.NORMAL,
+          key:"stagdesupd",
+          value:"Your change has had an effect on the Staging Designator.  Please review it.  Don't forget to SUBMIT your changes if you are satisfied.",
+          be_using_scriptmanager:true
+          );
+        }
+      }
+    private void UpdateStagingDesignator()
+      {
+      UpdateStagingDesignator(be_for_name_change:false);
       }
 
     } // end TWebUserControl_vehicle
