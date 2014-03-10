@@ -104,15 +104,19 @@
                                     <HeaderStyle HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center"/>
                                   </asp:BoundColumn>
-                                  <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,vehicle_designator">
+                                  <asp:TemplateColumn HeaderText="Kind" SortExpression="kind%,vehicle_designator">
+                                    <ItemTemplate>
+                                      <asp:Label id="Label_kind" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.kind") %>'></asp:Label>
+                                    </ItemTemplate>
                                     <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center"/>
-                                  </asp:BoundColumn>
+                                    <ItemStyle HorizontalAlign="Center" />
+                                  </asp:TemplateColumn>
                                   <asp:BoundColumn datafield="par" headertext="Par" sortexpression="par%,vehicle_designator">
                                     <HeaderStyle HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center"/>
                                   </asp:BoundColumn>
                                   <asp:BoundColumn datafield="sms_target" Visible="false"></asp:BoundColumn>
+                                  <asp:BoundColumn DataField="elaboration" Visible="false"></asp:BoundColumn>
                                 </Columns>
                                 <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                               </asp:DataGrid>

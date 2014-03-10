@@ -221,6 +221,7 @@ namespace Class_db_strike_team_deployment_assignments
         +   " , member_id"
         +   " , practitioner_level.short_description as max_practitioner_level_short_description"
         +   " , concat(phone_number,'@',hostname) as strike_team_member_sms_target"
+        +   " , IFNULL(vehicle.elaboration,'') as elaboration"
         +   " from strike_team_deployment_assignment"
         +     " join strike_team_deployment_operational_period on (strike_team_deployment_operational_period.id=strike_team_deployment_assignment.operational_period_id)"
         +     " join vehicle on (vehicle.id=strike_team_deployment_assignment.vehicle_id)"

@@ -33,6 +33,7 @@ namespace UserControl_operational_period_detail
     public const int DIGEST_CI_KIND = 5;
     public const int DIGEST_CI_PAR = 6;
     public const int DIGEST_CI_SMS_TARGET = 7;
+    public const int DIGEST_CI_ELABORATION = 8;
     public const string INITIAL_DIGEST_SORT_ORDER = "vehicle_designator%";
     public const string INITIAL_SORT_ORDER = "vehicle_designator%,member_designator";
     }
@@ -350,6 +351,13 @@ namespace UserControl_operational_period_detail
           vehicle_patient_care_level_description:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text,k.safe_hint_type.HYPHENATED_ALPHA),
           practitioner_level_short_description:k.Safe(e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER].Text,k.safe_hint_type.HYPHENATED_ALPHA)
           );
+        //
+        var elaboration = e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_ELABORATION].Text;
+        if (!new ArrayList() {"&nbsp;",k.EMPTY}.Contains(elaboration))
+          {
+          e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_KIND].ToolTip = elaboration;
+          (e.Item.Cells[UserControl_operational_period_detail_Static.DIGEST_CI_KIND].FindControl("Label_kind") as Label).Attributes.Add("style","border-bottom:2px dotted");
+          }
         p.num_digest_items.val++;
         }
       }

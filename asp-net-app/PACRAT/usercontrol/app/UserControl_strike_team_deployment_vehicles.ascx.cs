@@ -27,8 +27,13 @@ namespace UserControl_strike_team_deployment_vehicles
       public const int TCI_SERVICE_ID = 6;
       public const int TCI_SERVICE = 7;
       public const int TCI_NAME = 8;
-      public const int TCI_KIND = 9;
-      public const int TCI_FUEL = 10;
+      public const int TCI_LVL = 9;
+      public const int TCI_KIND = 10;
+      public const int TCI_DECAL_NUM = 11;
+      public const int TCI_TOW_CAP = 12;
+      public const int TCI_FUEL = 13;
+      public const int TCI_AWD = 14;
+      public const int TCI_ELABORATION = 15;
       }
 
     private struct p_type
@@ -334,6 +339,13 @@ namespace UserControl_strike_team_deployment_vehicles
           if ((link_button.Text == "YES") && (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint)))
             {
             ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+            }
+          //
+          var elaboration = e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ELABORATION].Text;
+          if (!new ArrayList() {"&nbsp;",k.EMPTY}.Contains(elaboration))
+            {
+            e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_KIND].ToolTip = elaboration;
+            (e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_KIND].FindControl("Label_kind") as Label).Attributes.Add("style","border-bottom:2px dotted");
             }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.

@@ -1,5 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
+using AjaxControlToolkit;
 using Class_biz_fuels;
 using Class_biz_members;
 using Class_biz_patient_care_levels;
@@ -186,6 +187,8 @@ namespace UserControl_vehicle
           }
         p.be_loaded = true;
         }
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_delete);
       InjectPersistentClientSideScript();
       }
 
