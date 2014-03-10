@@ -20,9 +20,15 @@ namespace UserControl_vehicles
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_2 = 2;
-      public const int TCI_3 = 3;
-      public const int TCI_4 = 4;
+      public const int TCI_NAME = 2;
+      public const int TCI_LVL = 3;
+      public const int TCI_KIND = 4;
+      public const int TCI_DECAL_NUM = 5;
+      public const int TCI_TOW_CAP = 6;
+      public const int TCI_FUEL = 7;
+      public const int TCI_AWD = 8;
+      public const int TCI_TAG = 9;
+      public const int TCI_ELABORATION = 10;
       }
 
     private struct p_type
@@ -215,6 +221,13 @@ namespace UserControl_vehicles
           link_button = ((e.Item.Cells[UserControl_vehicles_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          //
+          var elaboration = e.Item.Cells[UserControl_vehicles_Static.TCI_ELABORATION].Text;
+          if (!new ArrayList() {"&nbsp;",k.EMPTY}.Contains(elaboration))
+            {
+            e.Item.Cells[UserControl_vehicles_Static.TCI_KIND].ToolTip = elaboration;
+            (e.Item.Cells[UserControl_vehicles_Static.TCI_KIND].FindControl("Label_kind") as Label).Attributes.Add("style","border-bottom:2px dotted");
+            }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //

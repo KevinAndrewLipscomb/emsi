@@ -34,10 +34,13 @@
                       <HeaderStyle HorizontalAlign="Center" />
                       <ItemStyle HorizontalAlign="Center"/>
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="kind" headertext="Kind" sortexpression="kind%,name">
+                    <asp:TemplateColumn HeaderText="Kind" SortExpression="kind%,name">
+                      <ItemTemplate>
+                        <asp:Label id="Label_kind" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.kind") %>'></asp:Label>
+                      </ItemTemplate>
                       <HeaderStyle HorizontalAlign="Center" />
-                      <ItemStyle HorizontalAlign="Center"/>
-                    </asp:BoundColumn>
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:TemplateColumn>
                     <asp:BoundColumn DataField="pa_doh_decal_num" HeaderText="Decal #" ReadOnly="True" SortExpression="pa_doh_decal_num%,name">
                       <HeaderStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
@@ -53,7 +56,8 @@
                       <HeaderStyle HorizontalAlign="Center" />
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="license_plate" headertext="Tag" sortexpression="license_plate%,name"></asp:BoundColumn>
+                    <asp:BoundColumn DataField="license_plate" HeaderText="Tag" SortExpression="license_plate%,name"></asp:BoundColumn>
+                    <asp:BoundColumn DataField="elaboration" Visible="false"></asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

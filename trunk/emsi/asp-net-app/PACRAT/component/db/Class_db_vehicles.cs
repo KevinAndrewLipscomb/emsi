@@ -70,6 +70,7 @@ namespace Class_db_vehicles
         + " , license_plate"
         + " , pa_doh_decal_num"
         + " , IF(be_four_or_all_wheel_drive,'YES','no') as be_four_or_all_wheel_drive"
+        + " , IFNULL(vehicle.elaboration,'') as elaboration"
         + " from vehicle"
         +   " join patient_care_level on (patient_care_level.id=vehicle.patient_care_level_id)"
         +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"

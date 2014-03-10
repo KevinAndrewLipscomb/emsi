@@ -95,6 +95,7 @@ namespace Class_db_strike_team_deployment_vehicles
         + " , IF(be_four_or_all_wheel_drive,'YES','no') as be_four_or_all_wheel_drive"
         + " , tactical_name"
         + " , transponder_name"
+        + " , IFNULL(vehicle.elaboration,'') as elaboration"
         + " from vehicle"
         +   " join service on (service.id=vehicle.service_id)"
         +   " join county_region_map on (county_region_map.county_code=service.county_code)"
