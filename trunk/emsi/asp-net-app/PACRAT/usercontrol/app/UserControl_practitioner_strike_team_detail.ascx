@@ -338,7 +338,13 @@
     </td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">Stress Response During Disasters date:</font></td>
+    <td style="border-left: thin solid Gainsboro">
+      <font class="">
+        Stress Response During Disasters date:
+        <br />
+        <small>LMS# 002869</small>
+      </font>
+    </td>
     <td><font color="#33CC33">&clubs;</font></td>
     <td><font color="#3366FF">&diams;</font></td>
     <td>
@@ -349,7 +355,13 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">EMS Ops for MCIs date:</font></td>
+    <td style="border-left: thin solid Gainsboro">
+      <font class="">
+        EMS Ops for MCIs date:
+        <br />
+        <small>LMS# 002454 or 002458</small>
+      </font>
+    </td>
     <td><font color="#33CC33">&clubs;</font></td>
     <td><font color="#3366FF">&diams;</font></td>
     <td>
@@ -360,7 +372,13 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">WMD Awareness date:</font></td>
+    <td style="border-left: thin solid Gainsboro">
+      <font class="">
+        WMD Awareness date:
+        <br />
+        <small>LMS# 003978</small>
+      </font>
+    </td>
     <td><font color="#33CC33">&clubs;</font></td>
     <td><font color="#3366FF">&diams;</font></td>
     <td>
@@ -371,7 +389,13 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">Smallpox date:</font></td>
+    <td style="border-left: thin solid Gainsboro">
+      <font class="">
+        Smallpox date:
+        <br />
+        <small>LMS# 003078 or 003077</small>
+      </font>
+    </td>
     <td><font color="#33CC33">&clubs;</font></td>
     <td><font color="#3366FF">&diams;</font></td>
     <td>
@@ -382,7 +406,13 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">Basic Medical Response to Terrorism date:</font></td>
+    <td style="border-left: thin solid Gainsboro">
+      <font class="">
+        Basic Medical Response to Terrorism date:
+        <br />
+        <small>LMS# 002161</small>
+      </font>
+    </td>
     <td><font color="#33CC33">&clubs;</font></td>
     <td><font color="#3366FF">&diams;</font></td>
     <td>
@@ -393,7 +423,13 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">Electrical Hazards date:</font></td>
+    <td style="border-left: thin solid Gainsboro">
+      <font class="">
+        Electrical Hazards date:
+        <br />
+        <small>LMS# 003599</small>
+      </font>
+    </td>
     <td><font color="#33CC33">&clubs;</font></td>
     <td><font color="#3366FF">&diams;</font></td>
     <td>
@@ -404,7 +440,13 @@
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Biological Terrorism for EMS date:</font></td>
+    <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro">
+      <font class="">
+        Biological Terrorism for EMS date:
+        <br />
+        <small>LMS# 002176</small>
+      </font>
+    </td>
     <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
