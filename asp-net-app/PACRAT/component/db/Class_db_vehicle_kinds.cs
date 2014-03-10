@@ -56,7 +56,7 @@ namespace Class_db_vehicle_kinds
 
     public void BindDirectToListControl(string unselected_literal,object target,string selected_id)
       {
-      this.Open();
+      Open();
       (target as ListControl).Items.Clear();
       if (unselected_literal != k.EMPTY)
         {
@@ -65,10 +65,10 @@ namespace Class_db_vehicle_kinds
       var dr = new MySqlCommand
         (
         "SELECT id"
-        + " , CONVERT(description USING utf8) as spec"
+        + " , CONVERT(concat(description,IFNULL(concat(' - ',elaboration),'')) USING utf8) as spec"
         + " FROM vehicle_kind"
         + " order by spec",
-        this.connection
+        connection
         )
         .ExecuteReader();
       while (dr.Read())
@@ -80,7 +80,7 @@ namespace Class_db_vehicle_kinds
         {
         (target as ListControl).SelectedValue = selected_id;
         }
-      this.Close();
+      Close();
       }
     public void BindDirectToListControl(object target,string selected_id)
       {

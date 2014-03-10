@@ -527,7 +527,8 @@ namespace UserControl_vehicle
 
     private void UpdateStagingDesignator()
       {
-      Label_designator.Text = p.service_short_name + k.SPACE + k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim() + k.SPACE + "(" + k.Safe(DropDownList_kind.SelectedItem.Text,k.safe_hint_type.ALPHA_WORDS) + ")";
+      Label_designator.Text =
+        p.service_short_name + k.SPACE + k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim() + k.SPACE + "(" + p.biz_vehicle_kinds.DescriptionOf(k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.NUM)) + ")";
       }
 
     } // end TWebUserControl_vehicle
