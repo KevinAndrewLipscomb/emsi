@@ -106,6 +106,7 @@ namespace UserControl_state_affiliation
           TableRow_none.Visible = false;
           TableRow_data.Visible = true;
           LinkButton_control.Text = k.ExpandTildePath(LinkButton_control.Text);
+          UserControl_other_prep_ops_control.Visible = true;
           ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_control);
           }
         else

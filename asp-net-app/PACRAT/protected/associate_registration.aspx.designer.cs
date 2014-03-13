@@ -7,54 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_region_affiliation {
+namespace associate_registration {
     
     
-    public partial class TWebUserControl_region_affiliation {
+    public partial class TWebForm_associate_registration {
         
         /// <summary>
-        /// UpdatePanel_control control.
+        /// UserControl_precontent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        protected global::UserControl_precontent.TWebUserControl_precontent UserControl_precontent;
         
         /// <summary>
-        /// TableRow_none control.
+        /// UserControl_associate_registration_control control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
+        protected global::UserControl_associate_registration.TWebUserControl_associate_registration UserControl_associate_registration_control;
         
         /// <summary>
-        /// TableRow_data control.
+        /// UserControl_postcontent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_data;
+        protected global::UserControl_postcontent.TWebUserControl_postcontent UserControl_postcontent;
         
         /// <summary>
-        /// DataGrid_control control.
+        /// UserControl_update_progress_blocker_control control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
-        
-        /// <summary>
-        /// UserControl_other_prep_ops_control control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_other_prep_ops.TWebUserControl_other_prep_ops UserControl_other_prep_ops_control;
+        protected global::UserControl_update_progress_blocker.TWebUserControl_update_progress_blocker UserControl_update_progress_blocker_control;
     }
 }

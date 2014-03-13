@@ -1,4 +1,5 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_region_affiliation.ascx.cs" Inherits="UserControl_region_affiliation.TWebUserControl_region_affiliation"%>
+<%@ Register src="UserControl_other_prep_ops.ascx" tagname="UserControl_other_prep_ops" tagprefix="uc1" %>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~datagrid~sortable.ascx-template -->
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">
   <ContentTemplate>
@@ -29,3 +30,5 @@
     </table>
   </ContentTemplate>
 </asp:UpdatePanel>
+<uc1:UserControl_other_prep_ops ID="UserControl_other_prep_ops_control" runat="server" visible="false"/>
+
