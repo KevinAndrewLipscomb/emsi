@@ -1,4 +1,5 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_state_affiliation.ascx.cs" Inherits="UserControl_state_affiliation.TWebUserControl_state_affiliation"%>
+<%@ Register src="UserControl_other_prep_ops.ascx" tagname="UserControl_other_prep_ops" tagprefix="uc1" %>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~datagrid~sortable.ascx-template -->
 <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
   <tr>
@@ -22,3 +23,5 @@
     </td>
   </tr>
 </table>
+<uc1:UserControl_other_prep_ops ID="UserControl_other_prep_ops_control" runat="server" visible="false"/>
+
