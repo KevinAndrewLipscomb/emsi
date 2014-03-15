@@ -136,7 +136,7 @@ namespace Class_db_role_member_map
           Open();
           ((target) as BaseDataList).DataSource = new MySqlCommand
             (
-            "select practitioner.id as practitioner_id"
+            "select member.id as practitioner_id"
             + " , last_name"
             + " , first_name"
             + " , middle_initial"
@@ -151,10 +151,10 @@ namespace Class_db_role_member_map
             + " , practitioner_status.description as practitioner_status_description"
             + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
             + " from role_member_map"
-            +   " join practitioner on (practitioner.id=role_member_map.member_id)"
-            +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
-            +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
-            +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
+            +   " join member on (member.id=role_member_map.member_id)"
+            +   " join practitioner_level on (practitioner_level.id=member.level_id)"
+            +   " join practitioner_status on (practitioner_status.id=member.status_id)"
+            +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=member.id)"
             +   " join role on (role.id=role_member_map.role_id)"
             + " where service_id = '" + service_id + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
