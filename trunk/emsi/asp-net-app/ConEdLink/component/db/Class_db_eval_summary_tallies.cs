@@ -175,7 +175,8 @@ namespace Class_db_eval_summary_tallies
         target_table_name:"eval_summary_tally",
         key_field_name:"id",
         key_field_value:id,
-        childless_field_assignments_clause:childless_field_assignments_clause
+        childless_field_assignments_clause:childless_field_assignments_clause,
+        additional_match_condition:" or (coned_offering_id = '" + coned_offering_id + "' and rating = '" + rating + "' and question = '" + question + "')"
         );
       }
 
