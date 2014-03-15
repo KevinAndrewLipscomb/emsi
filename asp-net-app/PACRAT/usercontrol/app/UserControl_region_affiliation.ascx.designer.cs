@@ -47,14 +47,5 @@ namespace UserControl_region_affiliation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
-        
-        /// <summary>
-        /// UserControl_other_prep_ops_control control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_other_prep_ops.TWebUserControl_other_prep_ops UserControl_other_prep_ops_control;
     }
 }

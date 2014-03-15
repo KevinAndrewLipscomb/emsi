@@ -88,7 +88,6 @@
     <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
     <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
-    <Content Include="protected\associate_registration.aspx" />
     <Content Include="protected\bounty_program.aspx" />
     <Content Include="protected\hardcopy_region_strike_team_key_personnel.aspx" />
     <Content Include="protected\hardcopy_service_strike_team_key_personnel.aspx" />
@@ -119,12 +118,10 @@
     <Content Include="remind_username.aspx" />
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
-    <Content Include="usercontrol\app\UserControl_associate_registration.ascx" />
     <Content Include="usercontrol\app\UserControl_business_objects_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_fuel.ascx" />
     <Content Include="usercontrol\app\UserControl_mobilization_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_operational_period_detail.ascx" />
-    <Content Include="usercontrol\app\UserControl_other_prep_ops.ascx" />
     <Content Include="usercontrol\app\UserControl_patient_care_level.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner_strike_team_detail.ascx" />
@@ -273,13 +270,6 @@
       <DependentUpon>statement_strike_team_member_status.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="protected\associate_registration.aspx.cs">
-      <DependentUpon>associate_registration.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="protected\associate_registration.aspx.designer.cs">
-      <DependentUpon>associate_registration.aspx</DependentUpon>
-    </Compile>
     <Compile Include="protected\bounty_program.aspx.cs">
       <DependentUpon>bounty_program.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -449,13 +439,6 @@
     <Compile Include="usercontrol\app\UserControl_about.ascx.designer.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
     </Compile>
-    <Compile Include="usercontrol\app\UserControl_associate_registration.ascx.cs">
-      <DependentUpon>UserControl_associate_registration.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_associate_registration.ascx.designer.cs">
-      <DependentUpon>UserControl_associate_registration.ascx</DependentUpon>
-    </Compile>
     <Compile Include="usercontrol\app\UserControl_business_objects_binder.ascx.cs">
       <DependentUpon>UserControl_business_objects_binder.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -511,13 +494,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_operational_period_detail.ascx.designer.cs">
       <DependentUpon>UserControl_operational_period_detail.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_other_prep_ops.ascx.cs">
-      <DependentUpon>UserControl_other_prep_ops.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrol\app\UserControl_other_prep_ops.ascx.designer.cs">
-      <DependentUpon>UserControl_other_prep_ops.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_patient_care_level.ascx.cs">
       <DependentUpon>UserControl_patient_care_level.ascx</DependentUpon>

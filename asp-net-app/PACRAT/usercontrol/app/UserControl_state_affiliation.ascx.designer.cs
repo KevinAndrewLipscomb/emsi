@@ -38,14 +38,5 @@ namespace UserControl_state_affiliation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton_control;
-        
-        /// <summary>
-        /// UserControl_other_prep_ops_control control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_other_prep_ops.TWebUserControl_other_prep_ops UserControl_other_prep_ops_control;
     }
 }
