@@ -1,9 +1,9 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using Class_biz_members;
-using Class_biz_privileges;
-using Class_biz_user;
+using Class_biz_patient_care_levels;
+using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_operational_periods;
+using Class_biz_strike_team_deployments;
 using Class_msg_protected;
 using kix;
 using System;
@@ -12,20 +12,21 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Collections;
-using AjaxControlToolkit;
 
-namespace UserControl_strike_team_deployment_operational_periods
+namespace UserControl_per_op_period_iap
   {
-  public partial class TWebUserControl_strike_team_deployment_operational_periods: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_per_op_period_iap: ki_web_ui.usercontrol_class
     {
-    public class UserControl_strike_team_deployment_operational_periods_Static
+    public static class UserControl_per_op_period_iap_Static
       {
-      public const int TCI_SELECT = 0;
-      public const int TCI_ID = 1;
-      public const int TCI_START = 2;
-      public const int TCI_END = 3;
-      public const int TCI_CONVOY = 4;
-      public const int TCI_FOR_IAP = 5;
+      public const int CI_VEHICLE = 0;
+      public const int CI_VEHICLE_PATIENT_CARE_LEVEL_ID = 1;
+      public const int CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER = 2;
+      public const int CI_EFFECTIVE_PATIENT_CARE_LEVEL = 3;
+      public const int CI_KIND = 4;
+      public const int CI_LEADER = 5;
+      public const int CI_PAR = 6;
+      public const int CI_LEADER_PHONE_NUM= 7;
       }
 
     private struct p_type
@@ -33,15 +34,13 @@ namespace UserControl_strike_team_deployment_operational_periods
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
-      public bool be_ok_to_config;
       public bool be_sort_order_ascending;
-      public TClass_biz_members biz_members;
-      public TClass_biz_privileges biz_privileges;
-      public TClass_biz_user biz_user;
+      public TClass_biz_patient_care_levels biz_patient_care_levels;
+      public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
-      public string deployment_id;
-      public TClass_msg_protected.operational_period_detail msg_protected_operational_period_detail;
-      public uint num_operational_periods;
+      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
+      public k.int_nonnegative num_items;
+      public string operational_period_id;
       public string sort_order;
       }
 
@@ -130,7 +129,6 @@ namespace UserControl_strike_team_deployment_operational_periods
       {
       if (!p.be_loaded)
         {
-        LinkButton_new.Visible = p.be_ok_to_config;
         if (!p.be_interactive)
           {
           DataGrid_control.AllowSorting = false;
@@ -138,7 +136,6 @@ namespace UserControl_strike_team_deployment_operational_periods
         Bind();
         p.be_loaded = true;
         }
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
       InjectPersistentClientSideScript();
       }
 
@@ -152,29 +149,33 @@ namespace UserControl_strike_team_deployment_operational_periods
         {
         p = (p_type)(Session[instance_id + ".p"]);
         p.be_loaded = IsPostBack;  // This test is sufficient if this control is being used statically on its page.
-        //
-        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
-        // had it loaded already.
-        //
-        if (instance_id == "ASP.protected_strike_team_deployment_detail_aspx.UserControl_strike_team_deployment_control_strike_team_deployment_binder_control_strike_team_deployment_operational_periods")
-          {
-          p.be_loaded &= ((Session["UserControl_strike_team_deployment_control_UserControl_strike_team_deployment_binder_control_PlaceHolder_content"] as string) == "UserControl_strike_team_deployment_operational_periods");
-          }
+//        //
+//        // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
+//        // had it loaded already.
+//        //
+//#warning Revise the binder-related instance_id to this control appropriately.
+//        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_per_op_period_iap")
+//          {
+//#warning Revise the ClientID path to this control appropriately.
+//          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_per_op_period_iap");
+//          }
+//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_per_op_period_iap")
+//        {
+//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_per_op_period_iap");
+//        }
         }
       else
         {
-        p.biz_members = new TClass_biz_members();
-        p.biz_privileges = new TClass_biz_privileges();
-        p.biz_user = new TClass_biz_user();
+        p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
+        p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
-        p.msg_protected_operational_period_detail = new TClass_msg_protected.operational_period_detail();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
-        p.be_ok_to_config = true;
         p.be_sort_order_ascending = true;
-        p.deployment_id = k.EMPTY;
-        p.sort_order = "start%,end";
+        p.num_items = new k.int_nonnegative();
+        p.sort_order = "vehicle_designator%";
         }
       }
 
@@ -185,108 +186,75 @@ namespace UserControl_strike_team_deployment_operational_periods
     private void InitializeComponent()
       {
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
-      this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
-      this.DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.DataGrid_control_ItemCommand);
-      this.PreRender += this.TWebUserControl_operational_periods_PreRender;
+      this.PreRender += this.TWebUserControl_per_op_period_iap_PreRender;
       //this.Load += this.Page_Load;
       }
 
-    private void TWebUserControl_operational_periods_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_per_op_period_iap_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_strike_team_deployment_operational_periods Fresh()
+    public TWebUserControl_per_op_period_iap Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
       }
 
-    private void DataGrid_control_ItemCommand(object source, System.Web.UI.WebControls.DataGridCommandEventArgs e)
+    private void DataGrid_control_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_operational_period_detail.operational_period_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text,k.safe_hint_type.NUM);
-        p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
-        MessageDropCrumbAndTransferTo(p.msg_protected_operational_period_detail,"protected","operational_period_detail");
+        e.Item.Cells[UserControl_per_op_period_iap_Static.CI_EFFECTIVE_PATIENT_CARE_LEVEL].Text = p.biz_patient_care_levels.EffectiveOf
+          (
+          vehicle_patient_care_level_description:k.Safe(e.Item.Cells[UserControl_per_op_period_iap_Static.CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text,k.safe_hint_type.HYPHENATED_ALPHA),
+          practitioner_level_short_description:k.Safe(e.Item.Cells[UserControl_per_op_period_iap_Static.CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER].Text,k.safe_hint_type.HYPHENATED_ALPHA)
+          );
+        //
+        e.Item.Cells[UserControl_per_op_period_iap_Static.CI_LEADER_PHONE_NUM].Text = k.FormatAsNanpPhoneNum(e.Item.Cells[UserControl_per_op_period_iap_Static.CI_LEADER_PHONE_NUM].Text);
+        //
+        p.num_items.val++;
         }
-      }
-
-    private void DataGrid_control_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)
-      {
-      LinkButton link_button;
-      if (p.be_interactive)
-        {
-        if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
-          {
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_SELECT].Controls[0]) as LinkButton);
-          link_button.Text = k.ExpandTildePath(link_button.Text);
-          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
-          //
-          var hash_table = new Hashtable();
-          hash_table.Add(key:"id",value:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text);
-          ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
-          //
-          // Remove all cell controls from viewstate except for the one at TCI_ID.
-          //
-          foreach (TableCell cell in e.Item.Cells)
-            {
-            cell.EnableViewState = false;
-            }
-          e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].EnableViewState = true;
-          //
-          p.num_operational_periods++;
-          }
-        }
-      else
-        {
-        e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_SELECT].Visible = false;
-        }
-      }
-
-    private void DataGrid_control_SortCommand(object source, System.Web.UI.WebControls.DataGridSortCommandEventArgs e)
-      {
-      if (e.SortExpression == p.sort_order)
-        {
-        p.be_sort_order_ascending = !p.be_sort_order_ascending;
-        }
-      else
-        {
-        p.sort_order = k.Safe(e.SortExpression, k.safe_hint_type.KI_SORT_EXPRESSION);
-        p.be_sort_order_ascending = true;
-        }
-      DataGrid_control.EditItemIndex =  -1;
-      Bind();
       }
 
     private void Bind()
       {
-      p.biz_strike_team_deployment_operational_periods.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id);
-      p.be_datagrid_empty = (p.num_operational_periods == 0);
+      p.biz_strike_team_deployment_assignments.BindDigestByOperationalPeriod
+        (
+        sort_order:p.sort_order,
+        be_sort_order_ascending:p.be_sort_order_ascending,
+        target:DataGrid_control,
+        operational_period_id:p.operational_period_id
+        );
+      p.be_datagrid_empty = (p.num_items.val == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
-      DataGrid_control.Visible = !p.be_datagrid_empty;
-      Literal_num_operational_periods.Text = p.num_operational_periods.ToString();
-      p.num_operational_periods = 0;
+      TableRow_control.Visible = !p.be_datagrid_empty;
+      p.num_items.val = 0;
       }
 
-    protected void LinkButton_new_Click(object sender, EventArgs e)
-    {
-    p.msg_protected_operational_period_detail.operational_period_id = k.EMPTY;
-    p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
-    MessageDropCrumbAndTransferTo
-      (
-      msg:p.msg_protected_operational_period_detail,
-      folder_name:"protected",
-      aspx_name:"operational_period_detail"
-      );
-    }
-
-    internal void Set(string deployment_id)
+    internal void Set(string operational_period_id)
       {
-      p.deployment_id = deployment_id;
+      p.operational_period_id = operational_period_id;
+      //
+      var be_convoy = false;
+      var deployment_id = k.EMPTY;
+      DateTime start;
+      DateTime end;
+      p.biz_strike_team_deployment_operational_periods.Get
+        (
+        id:operational_period_id,
+        deployment_id:out deployment_id,
+        start:out start,
+        end:out end,
+        be_convoy:out be_convoy
+        );
+      Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOfId(deployment_id);
+      Literal_nature.Text = (be_convoy ? "CONVOY" : "OPERATIONAL PERIOD");
+      Literal_start.Text = start.ToString("MM/dd/yyyy HH:mm");
+      Literal_end.Text = end.ToString("MM/dd/yyyy HH:mm");
       Bind();
       }
 
-    } // end TWebUserControl_operational_periods
+    } // end TWebUserControl_per_op_period_iap
 
   }

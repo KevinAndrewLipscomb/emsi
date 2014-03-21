@@ -222,6 +222,10 @@ namespace Class_db_strike_team_deployment_assignments
         +   " , practitioner_level.short_description as max_practitioner_level_short_description"
         +   " , concat(phone_number,'@',hostname) as strike_team_member_sms_target"
         +   " , IFNULL(vehicle.elaboration,'') as elaboration"
+        +   " , concat(practitioner.last_name,', ',practitioner.first_name) as leader"
+        +   " , practitioner_level.pecking_order as practitioner_level_pecking_order"
+        +   " , practitioner.certification_number as practitioner_certification_number"
+        +   " , practitioner_strike_team_detail.phone_number as leader_phone_num"
         +   " from strike_team_deployment_assignment"
         +     " join strike_team_deployment_operational_period on (strike_team_deployment_operational_period.id=strike_team_deployment_assignment.operational_period_id)"
         +     " join vehicle on (vehicle.id=strike_team_deployment_assignment.vehicle_id)"
@@ -234,10 +238,10 @@ namespace Class_db_strike_team_deployment_assignments
         +     " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
         +     " left join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)" // left join in case a practitioner makes it onto the list despite becoming uncredentialed
         +   " where operational_period_id = '" + operational_period_id + "'"
-        +   " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")) + ",practitioner_level.pecking_order desc"
         +   " )"
         +   " as assignments"
         + " group by vehicle_id"
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")) + ",practitioner_level_pecking_order desc,practitioner_certification_number"
         ,
         connection
         )
