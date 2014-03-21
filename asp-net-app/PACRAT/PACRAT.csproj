@@ -94,6 +94,7 @@
     <Content Include="protected\hardcopy_service_strike_team_roster.aspx" />
     <Content Include="protected\mobilization_announcement.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
+    <Content Include="protected\per_op_period_iap.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
     <Content Include="protected\practitioner_profile.aspx" />
     <Content Include="protected\region_detail.aspx" />
@@ -123,6 +124,7 @@
     <Content Include="usercontrol\app\UserControl_mobilization_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_operational_period_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_patient_care_level.ascx" />
+    <Content Include="usercontrol\app\UserControl_per_op_period_iap.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner_strike_team_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_preparation_binder.ascx" />
@@ -341,6 +343,13 @@
     <Compile Include="protected\overview.aspx.designer.cs">
       <DependentUpon>overview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\per_op_period_iap.aspx.cs">
+      <DependentUpon>per_op_period_iap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\per_op_period_iap.aspx.designer.cs">
+      <DependentUpon>per_op_period_iap.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\practitioner_management.aspx.cs">
       <DependentUpon>practitioner_management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -501,6 +510,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_patient_care_level.ascx.designer.cs">
       <DependentUpon>UserControl_patient_care_level.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_per_op_period_iap.ascx.cs">
+      <DependentUpon>UserControl_per_op_period_iap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_per_op_period_iap.ascx.designer.cs">
+      <DependentUpon>UserControl_per_op_period_iap.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_postcontent.ascx.cs">
       <DependentUpon>UserControl_postcontent.ascx</DependentUpon>
