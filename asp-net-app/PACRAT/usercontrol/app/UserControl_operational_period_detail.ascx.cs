@@ -475,6 +475,11 @@ namespace UserControl_operational_period_detail
       {
       if (!p.be_loaded)
         {
+        HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+        var hash_table = new Hashtable();
+        hash_table.Add(key:"id",value:p.operational_period_id);
+        HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+        //
         DataGrid_control.AllowSorting = p.be_interactive;
         DataGrid_digest.AllowSorting = p.be_interactive;
         Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);

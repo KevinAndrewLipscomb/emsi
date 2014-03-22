@@ -11,8 +11,8 @@
     </td>
   </tr>
   <tr>
-    <td>
-      <table width="100%">
+    <td align="center">
+      <table>
         <tr bgcolor="Gainsboro"><td align="center"><small><b>RESOURCES ASSIGNED</b></small></td></tr>
         <tr id="TableRow_none" runat="server"><td align="center"><em>--&nbsp;NONE&nbsp;--</em></td></tr>
         <tr id="TableRow_control" runat="server">
@@ -57,8 +57,8 @@
     </td>
   </tr>
   <tr>
-    <td>
-      <table width="100%">
+    <td align="center">
+      <table>
         <tr bgcolor="Gainsboro"><td align="center"><small><b>PREPARED BY</b></small></td></tr>
         <tr>
           <td>

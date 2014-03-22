@@ -16,5 +16,6 @@
       <br />
       <uc2:UserControl_per_op_period_iap ID="UserControl_per_op_period_iap_control" runat="server" />
     </form>
+    <script type="text/javascript">window.print();</script>
   </body>
 </html>
