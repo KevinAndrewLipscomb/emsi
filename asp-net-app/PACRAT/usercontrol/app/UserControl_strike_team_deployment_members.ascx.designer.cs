@@ -67,6 +67,15 @@ namespace UserControl_strike_team_deployment_members {
         protected global::System.Web.UI.WebControls.Literal Literal_num_practitioners;
         
         /// <summary>
+        /// HyperLink_for_iap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_for_iap;
+        
+        /// <summary>
         /// TableRow_none control.
         /// </summary>
         /// <remarks>
