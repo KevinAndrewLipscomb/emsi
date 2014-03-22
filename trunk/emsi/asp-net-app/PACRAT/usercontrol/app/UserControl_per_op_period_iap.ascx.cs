@@ -1,17 +1,15 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
+using Class_biz_members;
 using Class_biz_patient_care_levels;
+using Class_biz_practitioners;
 using Class_biz_strike_team_deployment_assignments;
-using Class_biz_strike_team_deployment_operational_periods;
-using Class_biz_strike_team_deployments;
-using Class_msg_protected;
+using Class_biz_user;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Configuration;
+using System.Web.UI.WebControls;
 
 namespace UserControl_per_op_period_iap
   {
@@ -35,10 +33,11 @@ namespace UserControl_per_op_period_iap
       public bool be_interactive;
       public bool be_loaded;
       public bool be_sort_order_ascending;
+      public TClass_biz_members biz_members;
+      public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
-      public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
-      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
+      public TClass_biz_user biz_user;
       public k.int_nonnegative num_items;
       public string operational_period_id;
       public string sort_order;
@@ -129,11 +128,20 @@ namespace UserControl_per_op_period_iap
       {
       if (!p.be_loaded)
         {
-        if (!p.be_interactive)
-          {
-          DataGrid_control.AllowSorting = false;
-          }
+        var mark = DateTime.Now;
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        Literal_ref_num.Text = mark.ToString("yyyy-MM-dd-HH-mm-ss-ff");
         Bind();
+        var practitioner_summary = p.biz_practitioners.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+        Literal_prepared_name.Text = k.EMPTY
+        + p.biz_practitioners.LevelOf(practitioner_summary)
+        + k.SPACE
+        + p.biz_practitioners.FirstNameOf(practitioner_summary)
+        + k.SPACE
+        + p.biz_practitioners.LastNameOf(practitioner_summary)
+        + k.SPACE
+        + "(" + p.biz_practitioners.CertificationNumberOf(practitioner_summary) + ")";
+        Literal_prepared_timestamp.Text = mark.ToString("yyyy-MM-dd HH:mm:ss.ff");
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -166,10 +174,11 @@ namespace UserControl_per_op_period_iap
         }
       else
         {
+        p.biz_members = new TClass_biz_members();
         p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
+        p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
-        p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
-        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
+        p.biz_user = new TClass_biz_user();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -235,23 +244,6 @@ namespace UserControl_per_op_period_iap
     internal void Set(string operational_period_id)
       {
       p.operational_period_id = operational_period_id;
-      //
-      var be_convoy = false;
-      var deployment_id = k.EMPTY;
-      DateTime start;
-      DateTime end;
-      p.biz_strike_team_deployment_operational_periods.Get
-        (
-        id:operational_period_id,
-        deployment_id:out deployment_id,
-        start:out start,
-        end:out end,
-        be_convoy:out be_convoy
-        );
-      Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOfId(deployment_id);
-      Literal_nature.Text = (be_convoy ? "CONVOY" : "OPERATIONAL PERIOD");
-      Literal_start.Text = start.ToString("MM/dd/yyyy HH:mm");
-      Literal_end.Text = end.ToString("MM/dd/yyyy HH:mm");
       Bind();
       }
 

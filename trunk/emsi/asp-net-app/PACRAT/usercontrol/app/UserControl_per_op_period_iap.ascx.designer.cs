@@ -13,40 +13,22 @@ namespace UserControl_per_op_period_iap {
     public partial class TWebUserControl_per_op_period_iap {
         
         /// <summary>
-        /// Literal_deployment_name control.
+        /// Literal_application_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_deployment_name;
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
         
         /// <summary>
-        /// Literal_nature control.
+        /// Literal_ref_num control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_nature;
-        
-        /// <summary>
-        /// Literal_start control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_start;
-        
-        /// <summary>
-        /// Literal_end control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_end;
+        protected global::System.Web.UI.WebControls.Literal Literal_ref_num;
         
         /// <summary>
         /// TableRow_none control.
