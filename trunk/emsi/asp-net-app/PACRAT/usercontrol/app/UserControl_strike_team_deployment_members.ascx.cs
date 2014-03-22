@@ -74,6 +74,11 @@ namespace UserControl_strike_team_deployment_members
         {
         if (p.be_interactive)
           {
+          HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+          var hash_table = new Hashtable();
+          hash_table.Add(key:"id",value:p.deployment_id);
+          HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+          //
           Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);
           }
         else
