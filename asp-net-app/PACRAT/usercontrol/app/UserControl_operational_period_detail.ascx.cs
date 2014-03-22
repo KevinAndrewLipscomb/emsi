@@ -477,7 +477,7 @@ namespace UserControl_operational_period_detail
         {
         HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
         var hash_table = new Hashtable();
-        hash_table.Add(key:"id",value:p.operational_period_id);
+        hash_table.Add(key:"operational_period_id",value:p.operational_period_id);
         HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
         //
         DataGrid_control.AllowSorting = p.be_interactive;

@@ -5,16 +5,19 @@
     <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
       <tr>
         <td>
-          <table cellspacing="0" cellpadding="10" border="0">
+          <table border="0" cellpadding="10" cellspacing="0">
             <tr>
               <td bgcolor="#dcdcdc">
-                <table cellspacing="0" cellpadding="0" border="0">
+                <table border="0" cellpadding="5" cellspacing="0" width="100%">
                   <tr>
                     <td>
-                      <strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong>
+                      <small><strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong></small>
+                    </td>
+                    <td align="center">
+                      <small><asp:Literal ID="Literal_num_entries" runat="server"></asp:Literal> entries</small>
                     </td>
                     <td align="right">
-                      <asp:Literal ID="Literal_num_entries" runat="server"></asp:Literal> entries
+                      <small>For&nbsp;IAP:&nbsp;<asp:HyperLink ID="HyperLink_for_iap" runat="server" NavigateUrl="~/protected/per_deployment_iap_log.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="For IAP" border="0" height="16" width="16" /></asp:HyperLink></small>
                     </td>
                   </tr>
                 </table>

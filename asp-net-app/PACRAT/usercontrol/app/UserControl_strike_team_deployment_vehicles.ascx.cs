@@ -449,6 +449,12 @@ namespace UserControl_strike_team_deployment_vehicles
       CheckBox_do_include_all_eligible_vehicles.Checked = p.do_include_all_eligible_vehicles;
       p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
+      //
+      HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+      var hash_table = new Hashtable();
+      hash_table.Add(key:"vehicles_deployment_id",value:p.deployment_id);
+      HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+      //
       Bind();
       }
 

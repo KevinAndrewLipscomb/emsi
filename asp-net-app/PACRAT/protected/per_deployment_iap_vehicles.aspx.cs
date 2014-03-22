@@ -3,10 +3,10 @@
 using System;
 using System.Configuration;
 
-namespace per_op_period_iap
+namespace per_deployment_iap_vehicles
   {
 
-  public partial class TWebForm_per_op_period_iap: ki_web_ui.page_class
+  public partial class TWebForm_per_deployment_iap_vehicles: ki_web_ui.page_class
     {
 
     private struct p_type
@@ -21,14 +21,14 @@ namespace per_op_period_iap
     // / </summary>
     private void InitializeComponent()
       {
-      PreRender += TWebForm_per_op_period_iap_PreRender;
+      PreRender += TWebForm_per_deployment_iap_vehicles_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - per_op_period_iap";
+        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - per_deployment_iap_vehicles";
         }
       }
 
@@ -47,7 +47,7 @@ namespace per_op_period_iap
         //
         // Initialize p.~ objects here.
         //
-        UserControl_per_op_period_iap_control.Set(operational_period_id:HashtableOfShieldedRequest()["operational_period_id"].ToString());
+        UserControl_per_deployment_iap_vehicles_control.Set(deployment_id:HashtableOfShieldedRequest()["vehicles_deployment_id"].ToString());
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -58,11 +58,11 @@ namespace per_op_period_iap
       //
       }
 
-    private void TWebForm_per_op_period_iap_PreRender(object sender, System.EventArgs e)
+    private void TWebForm_per_deployment_iap_vehicles_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    } // end TWebForm_per_op_period_iap
+    } // end TWebForm_per_deployment_iap_vehicles
 
   }

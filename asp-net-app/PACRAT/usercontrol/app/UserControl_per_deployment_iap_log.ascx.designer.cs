@@ -7,46 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_strike_team_deployment_log {
+namespace UserControl_per_deployment_iap_log {
     
     
-    public partial class TWebUserControl_strike_team_deployment_log {
+    public partial class TWebUserControl_per_deployment_iap_log {
         
         /// <summary>
-        /// UpdatePanel_control control.
+        /// Literal_application_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
         
         /// <summary>
-        /// DropDownList_filter control.
+        /// Literal_ref_num control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_filter;
+        protected global::System.Web.UI.WebControls.Literal Literal_ref_num;
         
         /// <summary>
-        /// Literal_num_entries control.
+        /// Literal_deployment_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_num_entries;
-        
-        /// <summary>
-        /// HyperLink_for_iap control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_for_iap;
+        protected global::System.Web.UI.WebControls.Literal Literal_deployment_name;
         
         /// <summary>
         /// TableRow_none control.
@@ -58,6 +49,15 @@ namespace UserControl_strike_team_deployment_log {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
+        /// TableRow_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_control;
+        
+        /// <summary>
         /// DataGrid_control control.
         /// </summary>
         /// <remarks>
@@ -65,5 +65,23 @@ namespace UserControl_strike_team_deployment_log {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataGrid DataGrid_control;
+        
+        /// <summary>
+        /// Literal_prepared_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prepared_name;
+        
+        /// <summary>
+        /// Literal_prepared_timestamp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prepared_timestamp;
     }
 }

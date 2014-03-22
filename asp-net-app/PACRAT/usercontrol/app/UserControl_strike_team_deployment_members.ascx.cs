@@ -74,11 +74,6 @@ namespace UserControl_strike_team_deployment_members
         {
         if (p.be_interactive)
           {
-          HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
-          var hash_table = new Hashtable();
-          hash_table.Add(key:"id",value:p.deployment_id);
-          HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
-          //
           Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);
           }
         else
@@ -390,6 +385,12 @@ namespace UserControl_strike_team_deployment_members
       p.deployment_id = deployment_id;
       p.deployment_name = p.biz_strike_team_deployments.NameOfId(p.deployment_id);
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
+      //
+      HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+      var hash_table = new Hashtable();
+      hash_table.Add(key:"personnel_deployment_id",value:p.deployment_id);
+      HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+      //
       Bind();
       }
 

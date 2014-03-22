@@ -94,7 +94,9 @@
     <Content Include="protected\hardcopy_service_strike_team_roster.aspx" />
     <Content Include="protected\mobilization_announcement.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
+    <Content Include="protected\per_deployment_iap_log.aspx" />
     <Content Include="protected\per_deployment_iap_personnel.aspx" />
+    <Content Include="protected\per_deployment_iap_vehicles.aspx" />
     <Content Include="protected\per_op_period_iap.aspx" />
     <Content Include="protected\practitioner_management.aspx" />
     <Content Include="protected\practitioner_profile.aspx" />
@@ -125,7 +127,9 @@
     <Content Include="usercontrol\app\UserControl_mobilization_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_operational_period_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_patient_care_level.ascx" />
+    <Content Include="usercontrol\app\UserControl_per_deployment_iap_log.ascx" />
     <Content Include="usercontrol\app\UserControl_per_deployment_iap_personnel.ascx" />
+    <Content Include="usercontrol\app\UserControl_per_deployment_iap_vehicles.ascx" />
     <Content Include="usercontrol\app\UserControl_per_op_period_iap.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner.ascx" />
     <Content Include="usercontrol\app\UserControl_practitioner_strike_team_detail.ascx" />
@@ -345,12 +349,26 @@
     <Compile Include="protected\overview.aspx.designer.cs">
       <DependentUpon>overview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\per_deployment_iap_log.aspx.cs">
+      <DependentUpon>per_deployment_iap_log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\per_deployment_iap_log.aspx.designer.cs">
+      <DependentUpon>per_deployment_iap_log.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\per_deployment_iap_personnel.aspx.cs">
       <DependentUpon>per_deployment_iap_personnel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="protected\per_deployment_iap_personnel.aspx.designer.cs">
       <DependentUpon>per_deployment_iap_personnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\per_deployment_iap_vehicles.aspx.cs">
+      <DependentUpon>per_deployment_iap_vehicles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\per_deployment_iap_vehicles.aspx.designer.cs">
+      <DependentUpon>per_deployment_iap_vehicles.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\per_op_period_iap.aspx.cs">
       <DependentUpon>per_op_period_iap.aspx</DependentUpon>
@@ -520,12 +538,26 @@
     <Compile Include="usercontrol\app\UserControl_patient_care_level.ascx.designer.cs">
       <DependentUpon>UserControl_patient_care_level.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_per_deployment_iap_log.ascx.cs">
+      <DependentUpon>UserControl_per_deployment_iap_log.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_per_deployment_iap_log.ascx.designer.cs">
+      <DependentUpon>UserControl_per_deployment_iap_log.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_per_deployment_iap_personnel.ascx.cs">
       <DependentUpon>UserControl_per_deployment_iap_personnel.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_per_deployment_iap_personnel.ascx.designer.cs">
       <DependentUpon>UserControl_per_deployment_iap_personnel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_per_deployment_iap_vehicles.ascx.cs">
+      <DependentUpon>UserControl_per_deployment_iap_vehicles.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_per_deployment_iap_vehicles.ascx.designer.cs">
+      <DependentUpon>UserControl_per_deployment_iap_vehicles.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_per_op_period_iap.ascx.cs">
       <DependentUpon>UserControl_per_op_period_iap.ascx</DependentUpon>

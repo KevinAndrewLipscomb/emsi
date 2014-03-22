@@ -47,7 +47,7 @@ namespace per_deployment_iap_personnel
         //
         // Initialize p.~ objects here.
         //
-        UserControl_per_deployment_iap_personnel_control.Set(deployment_id:HashtableOfShieldedRequest()["id"].ToString());
+        UserControl_per_deployment_iap_personnel_control.Set(deployment_id:HashtableOfShieldedRequest()["personnel_deployment_id"].ToString());
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

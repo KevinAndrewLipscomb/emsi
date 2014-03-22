@@ -2,7 +2,7 @@
 
 using Class_biz_members;
 using Class_biz_practitioners;
-using Class_biz_strike_team_deployment_members;
+using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using kix;
@@ -11,18 +11,12 @@ using System.Collections;
 using System.Configuration;
 using System.Web.UI.WebControls;
 
-namespace UserControl_per_deployment_iap_personnel
+namespace UserControl_per_deployment_iap_log
   {
-  public partial class TWebUserControl_per_deployment_iap_personnel: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_per_deployment_iap_log: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_per_deployment_iap_personnel_Static
+    public static class UserControl_per_deployment_iap_log_Static
       {
-      public const int TCI_TAG_NUM = 0;
-      public const int TCI_LAST_NAME = 1;
-      public const int TCI_FIRST_NAME = 2;
-      public const int TCI_LEVEL = 3;
-      public const int TCI_AFFILIATION = 4;
-      public const int TCI_SMS_TARGET = 5;
       }
 
     private struct p_type
@@ -30,12 +24,12 @@ namespace UserControl_per_deployment_iap_personnel
       public bool be_datagrid_empty;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioners biz_practitioners;
-      public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
+      public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public string deployment_id;
       public string deployment_name;
-      public uint num_practitioners;
+      public uint num_logs;
       }
 
     private p_type p;
@@ -65,7 +59,7 @@ namespace UserControl_per_deployment_iap_personnel
       //
       p.biz_members = new TClass_biz_members();
       p.biz_practitioners = new TClass_biz_practitioners();
-      p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
+      p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
       p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
       p.biz_user = new TClass_biz_user();
       //
@@ -80,16 +74,16 @@ namespace UserControl_per_deployment_iap_personnel
     private void InitializeComponent()
       {
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
-      this.PreRender += this.TWebUserControl_per_deployment_iap_personnel_PreRender;
+      this.PreRender += this.TWebUserControl_per_deployment_iap_log_PreRender;
       //this.Load += this.Page_Load;
       }
 
-    private void TWebUserControl_per_deployment_iap_personnel_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_per_deployment_iap_log_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_per_deployment_iap_personnel Fresh()
+    public TWebUserControl_per_deployment_iap_log Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -99,25 +93,23 @@ namespace UserControl_per_deployment_iap_personnel
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.num_practitioners++;
+        p.num_logs++;
         }
       }
 
     private void Bind()
       {
-      p.biz_strike_team_deployment_members.BindBaseDataList
+      p.biz_strike_team_deployment_logs.BindBaseDataList
         (
-        sort_order:"tag_num%,last_name,first_name",
+        sort_order:"timestamp",
         be_sort_order_ascending:true,
         target:DataGrid_control,
-        deployment_id:p.deployment_id,
-        do_include_all_eligible_practitioners:false,
-        service_strike_team_management_footprint:k.EMPTY
+        deployment_id:p.deployment_id
         );
-      p.be_datagrid_empty = (p.num_practitioners == 0);
+      p.be_datagrid_empty = (p.num_logs == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      p.num_practitioners = 0;
+      p.num_logs = 0;
       }
 
     internal void Set(string deployment_id)
@@ -128,6 +120,6 @@ namespace UserControl_per_deployment_iap_personnel
       Bind();
       }
 
-    } // end TWebUserControl_per_deployment_iap_personnel
+    } // end TWebUserControl_per_deployment_iap_log
 
   }
