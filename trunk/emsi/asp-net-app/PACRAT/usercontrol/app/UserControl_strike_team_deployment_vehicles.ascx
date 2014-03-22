@@ -11,14 +11,18 @@
             </tr>
             <tr>
               <td bgcolor="#dcdcdc">
-                <table cellspacing="0" cellpadding="0" border="0">
+                <table border="0" cellpadding="5" cellspacing="0" width="100%">
                   <tr>
                     <td id="Td_filter" runat="server" valign="middle">
-                      <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_vehicles" runat="server" Text="Mobilize/demobilize mode; Show all eligible vehicles" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_vehicles_CheckedChanged" />
+                      <small>
+                        <strong>Filter:</strong>&nbsp;<asp:CheckBox ID="CheckBox_do_include_all_eligible_vehicles" runat="server" Text="Mobilize/demobilize mode; Show all eligible vehicles" AutoPostBack="True" oncheckedchanged="CheckBox_do_include_all_eligible_vehicles_CheckedChanged" />
+                      </small>
                     </td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td align="right" valign="middle">
-                      <asp:Literal ID="Literal_num_vehicles" runat="server"></asp:Literal> vehicles
+                    <td align="center" valign="middle">
+                      <small><asp:Literal ID="Literal_num_vehicles" runat="server"></asp:Literal> vehicles</small>
+                    </td>
+                    <td align="right">
+                      <small>For&nbsp;IAP:&nbsp;<asp:HyperLink ID="HyperLink_for_iap" runat="server" NavigateUrl="~/protected/per_deployment_iap_vehicles.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="For IAP" border="0" height="16" width="16" /></asp:HyperLink></small>
                     </td>
                   </tr>
                 </table>

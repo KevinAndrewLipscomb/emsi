@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_per_deployment_iap_personnel.ascx.cs" Inherits="UserControl_per_deployment_iap_personnel.TWebUserControl_per_deployment_iap_personnel"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_per_deployment_iap_vehicles.ascx.cs" Inherits="UserControl_per_deployment_iap_vehicles.TWebUserControl_per_deployment_iap_vehicles"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~datagrid~sortable.ascx-template -->
 <table cellpadding="2" cellspacing="0" align="center">
   <tr>
@@ -6,7 +6,7 @@
       <table align="center" cellpadding="2" cellspacing="0">
         <tr><td align="center">&nbsp;</td></tr>
         <tr><td align="center"><small>Refer to this document as</small></td></tr>
-        <tr><td align="center" nowrap="nowrap"><big><b><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> Mobilized Personnel Report # <asp:Literal ID="Literal_ref_num" runat="server"></asp:Literal></b></big></td></tr>
+        <tr><td align="center" nowrap="nowrap"><big><b><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> Mobilized Vehicles Report # <asp:Literal ID="Literal_ref_num" runat="server"></asp:Literal></b></big></td></tr>
         <tr><td align="center"><small>on NIMS ICS Form 211</small></td></tr>
         <tr><td align="center">&nbsp;</td></tr>
       </table>
@@ -29,23 +29,38 @@
   <tr>
     <td align="center">
       <table width="100%">
-        <tr bgcolor="Gainsboro"><td align="center"><small><b>MOBILIZED PERSONNEL</b></small></td></tr>
+        <tr bgcolor="Gainsboro"><td align="center"><small><b>MOBILIZED VEHICLES</b></small></td></tr>
         <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
         <tr id="TableRow_control" runat="server">
           <td>
             <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False">
               <Columns>
-                <asp:BoundColumn datafield="tag_num" headertext="Tag #">
-                  <ItemStyle HorizontalAlign="Right" />
-                </asp:BoundColumn>
-                <asp:BoundColumn datafield="last_name" headertext="Last name"></asp:BoundColumn>
-                <asp:BoundColumn datafield="first_name" headertext="First name"></asp:BoundColumn>
-                <asp:BoundColumn datafield="level" headertext="Level">
+                <asp:BoundColumn datafield="tactical_name" headertext="Tac name"></asp:BoundColumn>
+                <asp:BoundColumn datafield="transponder_name" headertext="Xpndr name"></asp:BoundColumn>
+                <asp:BoundColumn datafield="service" headertext="Service"></asp:BoundColumn>
+                <asp:BoundColumn datafield="name" headertext="Name"></asp:BoundColumn>
+                <asp:BoundColumn datafield="patient_care_level" headertext="Lvl">
                   <HeaderStyle HorizontalAlign="Center" />
                   <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundColumn>
-                <asp:BoundColumn DataField="affiliation" HeaderText="Affiliation"></asp:BoundColumn>
-                <asp:BoundColumn datafield="sms_target" HeaderText="SMS target"></asp:BoundColumn>
+                <asp:BoundColumn datafield="kind" HeaderText="Kind">
+                  <HeaderStyle HorizontalAlign="Center" />
+                  <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundColumn>
+                <asp:BoundColumn datafield="pa_doh_decal_num" headertext="Decal #">
+                  <HeaderStyle HorizontalAlign="Center" />
+                </asp:BoundColumn>
+                <asp:BoundColumn DataField="tow_capacity" HeaderText="Tow cap">
+                  <HeaderStyle HorizontalAlign="Center" />
+                  <ItemStyle HorizontalAlign="Center" Wrap="False" />
+                </asp:BoundColumn>
+                <asp:BoundColumn datafield="fuel" headertext="Fuel">
+                  <HeaderStyle HorizontalAlign="Center" />
+                  <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundColumn>
+                <asp:BoundColumn datafield="be_four_or_all_wheel_drive" headertext="AWD?">
+                  <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundColumn>
               </Columns>
               <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
             </asp:DataGrid>

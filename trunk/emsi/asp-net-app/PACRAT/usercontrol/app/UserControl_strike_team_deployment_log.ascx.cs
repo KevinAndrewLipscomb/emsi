@@ -1,14 +1,9 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using Class_biz_strike_team_deployment_logs;
-using Class_msg_protected;
 using kix;
-using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_log
   {
@@ -249,6 +244,12 @@ namespace UserControl_strike_team_deployment_log
       {
       p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
+      //
+      HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+      var hash_table = new Hashtable();
+      hash_table.Add(key:"log_deployment_id",value:p.deployment_id);
+      HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+      //
       Bind();
       }
 

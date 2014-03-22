@@ -224,7 +224,7 @@ namespace UserControl_strike_team_deployment_operational_periods
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           var hash_table = new Hashtable();
-          hash_table.Add(key:"id",value:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text);
+          hash_table.Add(key:"operational_period_id",value:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text);
           ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
