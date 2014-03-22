@@ -9,15 +9,18 @@
       <table cellspacing="0" cellpadding="10" border="0">
         <tr>
           <td bgcolor="whitesmoke">
-            <table cellspacing="0" cellpadding="5" border="0">
+            <table  border="0" cellpadding="5" cellspacing="0" width="100%">
               <tr>
                 <td><b><small>Filters:</small></b></td>
-                <td align="center">
+                <td align="center" nowrap="nowrap">
                   <small>Assignment level</small><br/>
                   <ASP:DropDownList id="DropDownList_assignment_level_filter" runat="server" autopostback="True" onselectedindexchanged="DropDownList_assignment_level_filter_SelectedIndexChanged">
                     <asp:ListItem Value="">All</asp:ListItem>
                     <asp:ListItem Value="Vehicular">Vehicular</asp:ListItem>
                   </ASP:DropDownList>
+                </td>
+                <td align="right" width="99%">
+                  For&nbsp;IAP:&nbsp;<asp:HyperLink ID="HyperLink_for_iap" runat="server" NavigateUrl="~/protected/per_op_period_iap.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="For IAP" border="0" height="16" width="16" /></asp:HyperLink>
                 </td>
               </tr>
             </table>
@@ -47,6 +50,11 @@
                   </asp:DataGrid>
                 </td>
                 <td id="TableCell_add_mapping" runat="server" valign="top" visible="false">
+                  <asp:Panel ID="Panel_copy_other_op_period" runat="server" Visible="false">
+                    Copy from:<asp:DropDownList ID="DropDownList_source_op_period" runat="server"></asp:DropDownList><asp:Button ID="Button_copy_other_op_period" runat="server" Text="Copy" onclick="Button_copy_other_op_period_Click" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_source_op_period" runat="server" ControlToValidate="DropDownList_source_op_period" Display="Dynamic" ErrorMessage="Please select a source to Copy (assignments) from." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+                    <hr />
+                  </asp:Panel>
                   <table cellspacing="0" cellpadding="2" border="0">
                     <tr>
                       <td>
@@ -70,13 +78,7 @@
                       <td>&nbsp;</td>
                     </tr>
                   </table>
-                  <asp:Panel ID="Panel_copy_other_op_period" runat="server" Visible="false">
-                    <hr />
-                    <p>
-                      Copy from:<asp:DropDownList ID="DropDownList_source_op_period" runat="server"></asp:DropDownList><asp:Button ID="Button_copy_other_op_period" runat="server" Text="Copy" onclick="Button_copy_other_op_period_Click" />
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator_source_op_period" runat="server" ControlToValidate="DropDownList_source_op_period" Display="Dynamic" ErrorMessage="Please select a source to Copy (assignments) from." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
-                    </p>
-                  </asp:Panel>
+                  <br/>
                   <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
                     <tr>
                       <td>

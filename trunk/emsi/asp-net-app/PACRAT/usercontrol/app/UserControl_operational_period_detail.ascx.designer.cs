@@ -49,6 +49,15 @@ namespace UserControl_operational_period_detail {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_assignment_level_filter;
         
         /// <summary>
+        /// HyperLink_for_iap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_for_iap;
+        
+        /// <summary>
         /// TableCell_no_mappings control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,42 @@ namespace UserControl_operational_period_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell TableCell_add_mapping;
+        
+        /// <summary>
+        /// Panel_copy_other_op_period control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_copy_other_op_period;
+        
+        /// <summary>
+        /// DropDownList_source_op_period control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_source_op_period;
+        
+        /// <summary>
+        /// Button_copy_other_op_period control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_copy_other_op_period;
+        
+        /// <summary>
+        /// RequiredFieldValidator_source_op_period control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_source_op_period;
         
         /// <summary>
         /// DropDownList_vehicle control.
@@ -128,42 +173,6 @@ namespace UserControl_operational_period_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_add;
-        
-        /// <summary>
-        /// Panel_copy_other_op_period control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_copy_other_op_period;
-        
-        /// <summary>
-        /// DropDownList_source_op_period control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_source_op_period;
-        
-        /// <summary>
-        /// Button_copy_other_op_period control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_copy_other_op_period;
-        
-        /// <summary>
-        /// RequiredFieldValidator_source_op_period control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_source_op_period;
         
         /// <summary>
         /// TableRow_none control.

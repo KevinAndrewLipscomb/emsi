@@ -31,7 +31,7 @@
                     <asp:BoundColumn DataField="be_convoy" HeaderText="Convoy?" SortExpression="be_convoy%,start,end">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
-                    <asp:HyperLinkColumn Target="_blank" Text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" HeaderText="For IAP" NavigateUrl="~/protected/per_op_period_iap.aspx?">
+                    <asp:HyperLinkColumn Target="_blank" Text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;For IAP&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" HeaderText="For IAP" NavigateUrl="~/protected/per_op_period_iap.aspx?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:HyperLinkColumn>
                   </Columns>
