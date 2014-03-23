@@ -21,7 +21,7 @@
                     <td align="center" valign="middle">
                       <small><asp:Literal ID="Literal_num_vehicles" runat="server"></asp:Literal> vehicles</small>
                     </td>
-                    <td align="right">
+                    <td id="Td_for_iap" runat="server" align="right" visible="false">
                       <small>For&nbsp;IAP:&nbsp;<asp:HyperLink ID="HyperLink_for_iap" runat="server" NavigateUrl="~/protected/per_deployment_iap_vehicles.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="For IAP" border="0" height="16" width="16" /></asp:HyperLink></small>
                     </td>
                   </tr>

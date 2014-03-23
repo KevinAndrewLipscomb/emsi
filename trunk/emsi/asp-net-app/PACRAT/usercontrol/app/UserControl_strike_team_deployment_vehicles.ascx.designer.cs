@@ -58,6 +58,15 @@ namespace UserControl_strike_team_deployment_vehicles {
         protected global::System.Web.UI.WebControls.Literal Literal_num_vehicles;
         
         /// <summary>
+        /// Td_for_iap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td_for_iap;
+        
+        /// <summary>
         /// HyperLink_for_iap control.
         /// </summary>
         /// <remarks>
