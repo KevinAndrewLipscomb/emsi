@@ -430,7 +430,8 @@ namespace UserControl_strike_team_deployment_vehicles
     internal void Set
       (
       string deployment_id,
-      string service_strike_team_management_footprint
+      string service_strike_team_management_footprint,
+      bool be_ok_to_config_strike_team_deployments
       )
       {
       if(
@@ -450,10 +451,14 @@ namespace UserControl_strike_team_deployment_vehicles
       p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       //
-      HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
-      var hash_table = new Hashtable();
-      hash_table.Add(key:"vehicles_deployment_id",value:p.deployment_id);
-      HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+      if (be_ok_to_config_strike_team_deployments)
+        {
+        Td_for_iap.Visible = true;
+        HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+        var hash_table = new Hashtable();
+        hash_table.Add(key:"vehicles_deployment_id",value:p.deployment_id);
+        HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+        }
       //
       Bind();
       }
