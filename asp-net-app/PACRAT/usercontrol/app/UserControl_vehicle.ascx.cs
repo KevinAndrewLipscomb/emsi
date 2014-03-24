@@ -173,12 +173,12 @@ namespace UserControl_vehicle
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.presentation_mode == presentation_mode_enum.NEW)
           {
-          SetDataEntryMode();
-          TextBox_service_id.Text = p.service_id;
           DropDownList_kind.Items.Insert(0,(new ListItem("-- kind --",k.EMPTY)));
           DropDownList_tow_capacity.Items.Insert(0,(new ListItem("-- tow capacity -- ",k.EMPTY)));
           DropDownList_fuel.Items.Insert(0,(new ListItem("-- fuel --",k.EMPTY)));
           DropDownList_patient_care_level.Items.Insert(0,(new ListItem("-- patient care level --",k.EMPTY)));
+          SetDataEntryMode();
+          TextBox_service_id.Text = p.service_id;
           TextBox_name.Focus();
           }
         else
@@ -527,8 +527,10 @@ namespace UserControl_vehicle
 
     private void UpdateStagingDesignator(bool be_for_name_change)
       {
+      var name = k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim();
+      var kind_id = k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.NUM);
       Label_designator.Text =
-        p.service_short_name + k.SPACE + k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim() + k.SPACE + "(" + p.biz_vehicle_kinds.DescriptionOf(k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.NUM)) + ")";
+        p.service_short_name + k.SPACE + (name.Length > 0 ? name : "--name--") + k.SPACE + "(" + (kind_id.Length > 0 ? p.biz_vehicle_kinds.DescriptionOf(kind_id) : "--kind--") + ")";
       if (be_for_name_change)
         {
         Alert
