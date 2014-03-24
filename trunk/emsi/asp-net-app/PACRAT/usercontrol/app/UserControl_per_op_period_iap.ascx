@@ -49,7 +49,7 @@
     <td align="center">
       <table width="100%">
         <tr bgcolor="Gainsboro"><td align="center"><small><b>RESOURCES ASSIGNED</b></small></td></tr>
-        <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+        <tr id="TableRow_none" runat="server"><td align="center"><em>--&nbsp;NONE&nbsp;--</em></td></tr>
         <tr id="TableRow_control" runat="server">
           <td>
             <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False">
