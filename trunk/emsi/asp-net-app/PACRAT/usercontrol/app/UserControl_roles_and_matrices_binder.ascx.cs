@@ -5,11 +5,12 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Collections;
-
+using UserControl_my_roles_and_mappings;
 using UserControl_role;
 using UserControl_role_member_mapping;
 using UserControl_role_notification_mapping;
 using UserControl_role_privilege_mapping;
+
 namespace UserControl_roles_and_matrices_binder
 {
     public struct p_type
@@ -19,13 +20,10 @@ namespace UserControl_roles_and_matrices_binder
         public uint tab_index;
     } // end p_type
 
-    public class TWebUserControl_roles_and_matrices_binder: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_roles_and_matrices_binder: ki_web_ui.usercontrol_class
     {
         private p_type p;
-        protected System.Web.UI.WebControls.PlaceHolder PlaceHolder_content = null;
-        protected AjaxControlToolkit.TabContainer TabContainer_control = null;
-        protected AjaxControlToolkit.TabPanel TabPanel_roles = null;
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
             {
@@ -55,6 +53,9 @@ namespace UserControl_roles_and_matrices_binder
                 }
                 switch(p.tab_index)
                 {
+                    case Units.UserControl_roles_and_matrices_binder.TSSI_MINE:
+                        p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_my_roles_and_mappings)(LoadControl("~/usercontrol/app/UserControl_my_roles_and_mappings.ascx"))), "UserControl_my_roles_and_mappings", PlaceHolder_content);
+                        break;
                     case Units.UserControl_roles_and_matrices_binder.TSSI_ROLES:
                         // Dynamic controls must be re-added on each postback.
                         p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_role)(LoadControl("~/usercontrol/app/UserControl_role.ascx"))), "UserControl_role", PlaceHolder_content);
@@ -113,6 +114,9 @@ namespace UserControl_roles_and_matrices_binder
             PlaceHolder_content.Controls.Clear();
             switch(p.tab_index)
             {
+                case Units.UserControl_roles_and_matrices_binder.TSSI_MINE:
+                    p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_my_roles_and_mappings)(LoadControl("~/usercontrol/app/UserControl_my_roles_and_mappings.ascx"))),"UserControl_my_roles_and_mappings",PlaceHolder_content,InstanceId());
+                    break;
                 case Units.UserControl_roles_and_matrices_binder.TSSI_ROLES:
                     p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_role)(LoadControl("~/usercontrol/app/UserControl_role.ascx"))),"UserControl_role",PlaceHolder_content,InstanceId());
                     break;
@@ -136,10 +140,11 @@ namespace UserControl_roles_and_matrices_binder.Units
 {
     public class UserControl_roles_and_matrices_binder
     {
-        public const int TSSI_ROLES = 0;
-        public const int TSSI_ROLE_MEMBER_MAPPINGS = 1;
-        public const int TSSI_ROLE_PRIVILEGE_MAPPINGS = 2;
-        public const int TSSI_ROLE_NOTIFICATION_MAPPINGS = 3;
+        public const int TSSI_MINE = 0;
+        public const int TSSI_ROLES = 1;
+        public const int TSSI_ROLE_MEMBER_MAPPINGS = 2;
+        public const int TSSI_ROLE_PRIVILEGE_MAPPINGS = 3;
+        public const int TSSI_ROLE_NOTIFICATION_MAPPINGS = 4;
     } // end UserControl_roles_and_matrices_binder
 
 }
