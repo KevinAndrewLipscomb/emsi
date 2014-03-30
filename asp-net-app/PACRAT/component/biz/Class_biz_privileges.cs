@@ -63,6 +63,15 @@ namespace Class_biz_privileges
             return result;
         }
 
+        internal bool HasForAnyScope
+          (
+          string member_id,
+          string privilege_name
+          )
+          {
+          return db_privileges.HasForAnyScope(member_id,privilege_name);
+          }
+
         internal bool HasForRegion
           (
           string member_id,
