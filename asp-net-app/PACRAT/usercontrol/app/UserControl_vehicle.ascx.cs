@@ -330,7 +330,11 @@ namespace UserControl_vehicle
         p.biz_vehicles = new TClass_biz_vehicles();
         //
         p.be_loaded = false;
-        p.be_ok_to_config_vehicles = k.Has((string[])(Session["privilege_array"]), "config-vehicles");
+        p.be_ok_to_config_vehicles = p.biz_privileges.HasForAnyScope
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"config-vehicles"
+          );
         p.id = k.EMPTY;
         p.presentation_mode = presentation_mode_enum.NONE;
         p.service_id = k.EMPTY;
