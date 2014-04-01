@@ -1,9 +1,12 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
 using Class_biz_counties;
+using Class_biz_members;
 using Class_biz_practitioner_levels;
 using Class_biz_practitioners;
+using Class_biz_privileges;
 using Class_biz_regions;
+using Class_biz_user;
 using kix;
 using System;
 using System.Configuration;
@@ -19,9 +22,12 @@ namespace UserControl_practitioner
       {
       public bool be_loaded;
       public TClass_biz_counties biz_counties;
+      public TClass_biz_members biz_members;
       public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_regions biz_regions;
+      public TClass_biz_user biz_user;
       public bool be_ok_to_config_practitioners;
       public bool be_ok_to_config_practitioner_strike_team_details;
       public string id;
@@ -308,12 +314,19 @@ namespace UserControl_practitioner
         p.be_loaded = false;
         //
         p.biz_counties = new TClass_biz_counties();
+        p.biz_members = new TClass_biz_members();
         p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_regions = new TClass_biz_regions();
+        p.biz_user = new TClass_biz_user();
         //
         p.be_ok_to_config_practitioners = k.Has((string[])(Session["privilege_array"]), "config-practitioners");
-        p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-strike-team-details");
+        p.be_ok_to_config_practitioner_strike_team_details = p.biz_privileges.HasForAnyScope
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"config-practitioner-strike-team-details"
+          );
         p.id = k.EMPTY;
         }
       }

@@ -1,8 +1,11 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
+using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_sms_gateways;
+using Class_biz_user;
 using kix;
 using System;
 using System.Configuration;
@@ -16,9 +19,12 @@ namespace UserControl_practitioner_strike_team_detail
     private struct p_type
       {
       public bool be_loaded;
+      public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_sms_gateways biz_sms_gateways;
+      public TClass_biz_user biz_user;
       public bool be_ok_to_config_practitioner_strike_team_details;
       public string practitioner_id;
       }
@@ -395,12 +401,19 @@ namespace UserControl_practitioner_strike_team_detail
         }
       else
         {
+        p.biz_members = new TClass_biz_members();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_sms_gateways = new TClass_biz_sms_gateways();
+        p.biz_user = new TClass_biz_user();
         //
         p.be_loaded = false;
-        p.be_ok_to_config_practitioner_strike_team_details = k.Has((string[])(Session["privilege_array"]), "config-practitioner-strike-team-details");
+        p.be_ok_to_config_practitioner_strike_team_details = p.biz_privileges.HasForAnyScope
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"config-practitioner-strike-team-details"
+          );
         p.practitioner_id = k.EMPTY;
         }
       }
