@@ -119,7 +119,7 @@ namespace Class_biz_coned_offering_rosters
         med_trauma_ceus_for_this_practitioner.val = emt_med_trauma_ceus;
         other_ceus_for_this_practitioner.val = emt_other_ceus;
         }
-      else if (level_short_description == "EMT-P")
+      else if (new ArrayList() {"EMT-P","HP"}.Contains(level_short_description))
         {
         med_trauma_ceus_for_this_practitioner.val = emtp_med_trauma_ceus;
         other_ceus_for_this_practitioner.val = emtp_other_ceus;
