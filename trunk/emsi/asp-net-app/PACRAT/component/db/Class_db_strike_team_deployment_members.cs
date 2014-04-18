@@ -47,6 +47,20 @@ namespace Class_db_strike_team_deployment_members
       return be_none;
       }
 
+    internal bool BeTagAvailableForAssignment
+      (
+      string deployment_id,
+      string practitioner_id,
+      string tag_num
+      )
+      {
+      Open();
+      var be_tag_available_for_assignment = null == new MySqlCommand
+        ("select 1 from strike_team_deployment_member where deployment_id = '" + deployment_id + "' and practitioner_id <> '" + practitioner_id + "' and tag_num = '" + tag_num + "'",connection).ExecuteScalar();
+      Close();
+      return be_tag_available_for_assignment;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(practitioner_id,'-'))";

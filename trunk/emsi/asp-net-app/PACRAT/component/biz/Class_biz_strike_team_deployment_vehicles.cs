@@ -25,6 +25,17 @@ namespace Class_biz_strike_team_deployment_vehicles
       return db_strike_team_deployment_vehicles.BeNone(deployment_id,service_strike_team_management_footprint);
       }
 
+    internal bool BeTagTransponderAvailableForAssignment
+      (
+      string deployment_id,
+      string vehicle_id,
+      string tactical_name,
+      string transponder_name
+      )
+      {
+      return db_strike_team_deployment_vehicles.BeTagTransponderAvailableForAssignment(deployment_id,vehicle_id,tactical_name,transponder_name);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_strike_team_deployment_vehicles.Bind(partial_spec, target);
