@@ -67,7 +67,7 @@ namespace Class_biz_strike_team_deployments
           (
           target:target,
           deployment_name:NameOf(summary),
-          service_name:biz_services.NameOf(service_id),
+          service_name:biz_services.ShortNameOf(service_id),
           region_name:RegionNameOf(summary),
           actual_vs_drill_indicator:(BeDrill(summary) ? "This deployment is a DRILL." : "This is an ACTUAL DEPLOYMENT, not a drill."),
           supplemental_message:supplemental_message,
@@ -84,7 +84,7 @@ namespace Class_biz_strike_team_deployments
         }
       }
 
-    internal void AssignMemberTag
+    internal bool AssignMemberTag
       (
       string deployment_id,
       string mobilization_id,
@@ -94,33 +94,39 @@ namespace Class_biz_strike_team_deployments
       string sms_target
       )
       {
-      biz_strike_team_deployment_members.Set
-        (
-        id: mobilization_id,
-        deployment_id: deployment_id,
-        practitioner_id: practitioner_id,
-        tag_num: tag_num
-        );
-      biz_strike_team_deployment_logs.Enter
-        (
-        deployment_id: deployment_id,
-        action: "assigned tag `" + tag_num + "` to member `" + name + "`"
-        );
-      if (tag_num.Length > 0)
+      var assign_member_tag = false;
+      if (biz_strike_team_deployment_members.BeTagAvailableForAssignment(deployment_id,practitioner_id,tag_num) || (tag_num.Length == 0))
         {
-        biz_notifications.IssueForDeploymentMemberTagAssignment
+        biz_strike_team_deployment_members.Set
           (
-          target:sms_target,
-          tag_num:tag_num
+          id: mobilization_id,
+          deployment_id: deployment_id,
+          practitioner_id: practitioner_id,
+          tag_num: tag_num
           );
+        biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id: deployment_id,
+          action: "assigned tag `" + tag_num + "` to member `" + name + "`"
+          );
+        if (tag_num.Length > 0)
+          {
+          biz_notifications.IssueForDeploymentMemberTagAssignment
+            (
+            target:sms_target,
+            tag_num:tag_num
+            );
+          }
+        else
+          {
+          biz_notifications.IssueForDeploymentMemberTagDeassignment(target:sms_target);
+          }
+        assign_member_tag = true;
         }
-      else
-        {
-        biz_notifications.IssueForDeploymentMemberTagDeassignment(target:sms_target);
-        }
+      return assign_member_tag;
       }
 
-    internal void AssignVehicleTagTransponder
+    internal bool AssignVehicleTagTransponder
       (
       string deployment_id,
       string mobilization_id,
@@ -130,19 +136,25 @@ namespace Class_biz_strike_team_deployments
       string transponder_name
       )
       {
-      biz_strike_team_deployment_vehicles.Set
-        (
-        id: mobilization_id,
-        deployment_id: deployment_id,
-        vehicle_id: vehicle_id,
-        tactical_name: tactical_name,
-        transponder_name: transponder_name
-        );
-      biz_strike_team_deployment_logs.Enter
-        (
-        deployment_id: deployment_id,
-        action: "assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to vehicle `" + static_name + "`"
-        );
+      var assign_vehicle_tag_transponder = false;
+      if (biz_strike_team_deployment_vehicles.BeTagTransponderAvailableForAssignment(deployment_id,vehicle_id,tactical_name,transponder_name) || (tactical_name.Length + transponder_name.Length == 0))
+        {
+        biz_strike_team_deployment_vehicles.Set
+          (
+          id: mobilization_id,
+          deployment_id: deployment_id,
+          vehicle_id: vehicle_id,
+          tactical_name: tactical_name,
+          transponder_name: transponder_name
+          );
+        biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id: deployment_id,
+          action: "assigned tactical name `" + tactical_name + "` and transponder `" + transponder_name + "` to vehicle `" + static_name + "`"
+          );
+        assign_vehicle_tag_transponder = true;
+        }
+      return assign_vehicle_tag_transponder;
       }
 
     internal bool BeAllConcludedWithinScope(string member_id)

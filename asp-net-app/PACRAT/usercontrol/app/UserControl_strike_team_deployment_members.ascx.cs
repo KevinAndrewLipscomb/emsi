@@ -201,16 +201,31 @@ namespace UserControl_strike_team_deployment_members
               if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
                 var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
-                p.biz_strike_team_deployments.AssignMemberTag
-                  (
-                  deployment_id:p.deployment_id,
-                  mobilization_id:id,
-                  practitioner_id:practitioner_id,
-                  name:name,
-                  tag_num:tag_num,
-                  sms_target:sms_target
-                  );
-                DataGrid_control.EditItemIndex = -1;
+                if(p.biz_strike_team_deployments.AssignMemberTag
+                    (
+                    deployment_id:p.deployment_id,
+                    mobilization_id:id,
+                    practitioner_id:practitioner_id,
+                    name:name,
+                    tag_num:tag_num,
+                    sms_target:sms_target
+                    )
+                  )
+                //then
+                  {
+                  DataGrid_control.EditItemIndex = -1;
+                  }
+                else
+                  {
+                  Alert
+                    (
+                    cause:k.alert_cause_type.APPDATA,
+                    state:k.alert_state_type.FAILURE,
+                    key:"tagaryasd",
+                    value:"The specified tag is already assigned to another member mobilized in this deployment.",
+                    be_using_scriptmanager:true
+                    );
+                  }
                 }
               else
                 {

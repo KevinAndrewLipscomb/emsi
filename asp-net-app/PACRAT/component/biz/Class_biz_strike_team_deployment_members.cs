@@ -25,6 +25,16 @@ namespace Class_biz_strike_team_deployment_members
       return db_strike_team_deployment_members.BeNone(deployment_id,service_strike_team_management_footprint);
       }
 
+    internal bool BeTagAvailableForAssignment
+      (
+      string deployment_id,
+      string practitioner_id,
+      string tag_num
+      )
+      {
+      return db_strike_team_deployment_members.BeTagAvailableForAssignment(deployment_id,practitioner_id,tag_num);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_strike_team_deployment_members.Bind(partial_spec, target);

@@ -45,6 +45,29 @@ namespace Class_db_strike_team_deployment_vehicles
       return be_none;
       }
 
+    internal bool BeTagTransponderAvailableForAssignment
+      (
+      string deployment_id,
+      string vehicle_id,
+      string tactical_name,
+      string transponder_name
+      )
+      {
+      Open();
+      var be_tag_transponder_available_for_assignment = null == new MySqlCommand
+        (
+        "select 1"
+        + " from strike_team_deployment_vehicle"
+        + " where deployment_id = '" + deployment_id + "'"
+        +   " and vehicle_id <> '" + vehicle_id + "'"
+        +   " and (tactical_name = '" + tactical_name + "' or transponder_name = '" + transponder_name + "')",
+        connection
+        )
+        .ExecuteScalar();
+      Close();
+      return be_tag_transponder_available_for_assignment;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(vehicle_id,'-'))";
