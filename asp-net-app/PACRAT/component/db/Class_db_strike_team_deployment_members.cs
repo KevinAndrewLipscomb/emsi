@@ -255,7 +255,8 @@ namespace Class_db_strike_team_deployment_members
         target_table_name:"strike_team_deployment_member",
         key_field_name:"id",
         key_field_value:id,
-        childless_field_assignments_clause:childless_field_assignments_clause
+        childless_field_assignments_clause:childless_field_assignments_clause,
+        additional_match_condition:" or (deployment_id = '" + deployment_id + "' and practitioner_id = '" + practitioner_id + "')"
         );
       }
 
