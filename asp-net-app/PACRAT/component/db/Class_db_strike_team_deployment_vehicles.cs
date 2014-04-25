@@ -305,7 +305,8 @@ namespace Class_db_strike_team_deployment_vehicles
         target_table_name:"strike_team_deployment_vehicle",
         key_field_name:"id",
         key_field_value:id,
-        childless_field_assignments_clause:childless_field_assignments_clause
+        childless_field_assignments_clause:childless_field_assignments_clause,
+        additional_match_condition:" or (deployment_id = '" + deployment_id + "' and vehicle_id = '" + vehicle_id + "')"
         );
       }
 
