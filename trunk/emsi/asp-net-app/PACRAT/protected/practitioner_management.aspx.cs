@@ -404,7 +404,7 @@ namespace practitioner_management
           );
         p.biz_strike_team_rosters.Set
           (
-          k.Safe(e.Item.Cells[practitioner_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM),
+          k.Safe(e.Item.Cells[practitioner_management_Static.TCI_ID].Text,k.safe_hint_type.NUM),
           p.service_id,
           practitioner_id
           );

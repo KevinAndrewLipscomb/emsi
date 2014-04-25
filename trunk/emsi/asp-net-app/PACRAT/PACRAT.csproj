@@ -120,6 +120,7 @@
     <Content Include="protected\vehicle_detail.aspx" />
     <Content Include="protected\vehicle_management.aspx" />
     <Content Include="remind_username.aspx" />
+    <Content Include="resource\Email Whitelist Generator Instructions.htm" />
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
     <Content Include="usercontrol\app\UserControl_business_objects_binder.ascx" />

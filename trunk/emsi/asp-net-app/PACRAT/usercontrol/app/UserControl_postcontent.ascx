@@ -23,6 +23,10 @@
                                   <td valign="top">&bull;</td>
                                   <td><small><a runat="server" href="~/resource/strike-team-guidelines.pdf" target="_blank">PA EMS Strike Team Guidelines</a></small></td>
                                 </tr>
+                                <tr>
+                                  <td valign="top">&bull;</td>
+                                  <td><small><a runat="server" href="~/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small></td>
+                                </tr>
                               </table>
                             </td>
                           </tr>
