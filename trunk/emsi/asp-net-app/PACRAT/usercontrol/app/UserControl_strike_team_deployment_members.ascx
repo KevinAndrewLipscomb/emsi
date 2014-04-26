@@ -40,6 +40,7 @@
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_member.id is not null)%,last_name,first_name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
+                    <asp:BoundColumn datafield="saved_tag_num" ReadOnly="True" Visible="False"></asp:BoundColumn>
                     <asp:BoundColumn datafield="tag_num" headertext="Tag #" sortexpression="tag_num%,last_name,first_name">
                       <ItemStyle HorizontalAlign="Right" />
                     </asp:BoundColumn>

@@ -104,6 +104,7 @@ namespace Class_db_strike_team_deployment_members
         + " , first_name"
         + " , short_description as level"
         + " , GROUP_CONCAT(DISTINCT service.short_name) as affiliation"
+        + " , tag_num as saved_tag_num"
         + " , tag_num"
         + " , email_address"
         + " , concat(phone_number,'@',sms_gateway.hostname) as sms_target"

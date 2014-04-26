@@ -91,6 +91,7 @@ namespace Class_biz_strike_team_deployments
       string practitioner_id,
       string name,
       string tag_num,
+      string saved_tag_num,
       string sms_target
       )
       {
@@ -104,11 +105,14 @@ namespace Class_biz_strike_team_deployments
           practitioner_id: practitioner_id,
           tag_num: tag_num
           );
-        biz_strike_team_deployment_logs.Enter
-          (
-          deployment_id: deployment_id,
-          action: "assigned tag `" + tag_num + "` to member `" + name + "`"
-          );
+        if (tag_num != saved_tag_num)
+          {
+          biz_strike_team_deployment_logs.Enter
+            (
+            deployment_id: deployment_id,
+            action: "assigned tag `" + tag_num + "` to member `" + name + "`"
+            );
+          }
         if (tag_num.Length > 0)
           {
           biz_notifications.IssueForDeploymentMemberTagAssignment
@@ -117,7 +121,7 @@ namespace Class_biz_strike_team_deployments
             tag_num:tag_num
             );
           }
-        else
+        else if (saved_tag_num.Length > 0)
           {
           biz_notifications.IssueForDeploymentMemberTagDeassignment(target:sms_target);
           }
@@ -160,6 +164,11 @@ namespace Class_biz_strike_team_deployments
     internal bool BeAllConcludedWithinScope(string member_id)
       {
       return db_strike_team_deployments.BeAllConcludedWithinScope(member_id);
+      }
+
+    internal bool BeAnyOperationalPeriodStartedFor(string deployment_id)
+      {
+      return db_strike_team_deployments.BeAnyOperationalPeriodStartedFor(deployment_id);
       }
 
     internal bool BeDemobilizationReasonRequired
