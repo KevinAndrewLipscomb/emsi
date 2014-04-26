@@ -236,9 +236,9 @@ namespace UserControl_strike_team_deployment_vehicles
             {
             var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
             var static_name = k.EMPTY
-            + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SERVICE].Text,k.safe_hint_type.ORG_NAME)
+            + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SERVICE].Text,k.safe_hint_type.ORG_NAME).ToUpper()
             + k.SPACE
-            + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_NAME].Text,k.safe_hint_type.MAKE_MODEL);
+            + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_NAME].Text,k.safe_hint_type.MAKE_MODEL).ToUpper();
             if (id.Length == 0)
               {
               var tactical_name = k.EMPTY;
@@ -263,9 +263,9 @@ namespace UserControl_strike_team_deployment_vehicles
               if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
                 var tactical_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
-                var saved_tactical_name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SAVED_TACTICAL_NAME].Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
+                var saved_tactical_name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SAVED_TACTICAL_NAME].Text.Replace("&nbsp;",k.EMPTY),k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
                 var transponder_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
-                var saved_transponder_name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SAVED_TRANSPONDER_NAME].Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
+                var saved_transponder_name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SAVED_TRANSPONDER_NAME].Text.Replace("&nbsp;",k.EMPTY),k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
                 var do_continue_editing = false;
                 if ((tactical_name != saved_tactical_name) || (transponder_name != saved_transponder_name))
                   {
