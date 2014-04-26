@@ -238,10 +238,11 @@ namespace Class_db_strike_team_deployment_assignments
         +     " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
         +     " left join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)" // left join in case a practitioner makes it onto the list despite becoming uncredentialed
         +   " where operational_period_id = '" + operational_period_id + "'"
+        +   " order by practitioner_level_pecking_order desc, practitioner_certification_number"
         +   " )"
         +   " as assignments"
         + " group by vehicle_id"
-        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")) + ",practitioner_level_pecking_order desc,practitioner_certification_number"
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
         ,
         connection
         )

@@ -25,14 +25,15 @@ namespace UserControl_strike_team_deployment_members
       public const int TCI_ID = 1;
       public const int TCI_PRACTITIONER_ID = 2;
       public const int TCI_MOBILIZED = 3;
-      public const int TCI_TAG_NUM = 4;
-      public const int TCI_LAST_NAME = 5;
-      public const int TCI_FIRST_NAME = 6;
-      public const int TCI_LEVEL = 7;
-      public const int TCI_AFFILIATION = 8;
-      public const int TCI_EMAIL_ADDRESS = 9;
-      public const int TCI_SMS_TARGET = 10;
-      public const int TCI_SELECT_FOR_QUICKMESSAGE = 11;
+      public const int TCI_SAVED_TAG_NUM = 4;
+      public const int TCI_TAG_NUM = 5;
+      public const int TCI_LAST_NAME = 6;
+      public const int TCI_FIRST_NAME = 7;
+      public const int TCI_LEVEL = 8;
+      public const int TCI_AFFILIATION = 9;
+      public const int TCI_EMAIL_ADDRESS = 10;
+      public const int TCI_SMS_TARGET = 11;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 12;
       }
 
     private struct p_type
@@ -201,30 +202,37 @@ namespace UserControl_strike_team_deployment_members
               if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
                 var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
-                if(p.biz_strike_team_deployments.AssignMemberTag
-                    (
-                    deployment_id:p.deployment_id,
-                    mobilization_id:id,
-                    practitioner_id:practitioner_id,
-                    name:name,
-                    tag_num:tag_num,
-                    sms_target:sms_target
+                var saved_tag_num = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SAVED_TAG_NUM].Text,k.safe_hint_type.NUM);
+                var do_continue_editing = false;
+                if (tag_num != saved_tag_num)
+                  {
+                  if(!p.biz_strike_team_deployments.AssignMemberTag
+                      (
+                      deployment_id:p.deployment_id,
+                      mobilization_id:id,
+                      practitioner_id:practitioner_id,
+                      name:name,
+                      tag_num:tag_num,
+                      saved_tag_num:saved_tag_num,
+                      sms_target:sms_target
+                      )
                     )
-                  )
-                //then
+                  //then
+                    {
+                    Alert
+                      (
+                      cause:k.alert_cause_type.APPDATA,
+                      state:k.alert_state_type.FAILURE,
+                      key:"tagaryasd",
+                      value:"The specified tag is already assigned to another member mobilized in this deployment.",
+                      be_using_scriptmanager:true
+                      );
+                    do_continue_editing = true;
+                    }
+                  }
+                if (!do_continue_editing)
                   {
                   DataGrid_control.EditItemIndex = -1;
-                  }
-                else
-                  {
-                  Alert
-                    (
-                    cause:k.alert_cause_type.APPDATA,
-                    state:k.alert_state_type.FAILURE,
-                    key:"tagaryasd",
-                    value:"The specified tag is already assigned to another member mobilized in this deployment.",
-                    be_using_scriptmanager:true
-                    );
                   }
                 }
               else
@@ -391,11 +399,7 @@ namespace UserControl_strike_team_deployment_members
         )
       //then
         {
-        p.do_include_all_eligible_practitioners = p.biz_strike_team_deployment_members.BeNone
-          (
-          deployment_id:deployment_id,
-          service_strike_team_management_footprint:service_strike_team_management_footprint
-          );
+        p.do_include_all_eligible_practitioners = !p.biz_strike_team_deployments.BeAnyOperationalPeriodStartedFor(deployment_id:deployment_id);
         }
       CheckBox_do_include_all_eligible_practitioners.Checked = p.do_include_all_eligible_practitioners;
       p.deployment_id = deployment_id;

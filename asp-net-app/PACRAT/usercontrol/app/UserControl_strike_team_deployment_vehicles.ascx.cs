@@ -22,18 +22,20 @@ namespace UserControl_strike_team_deployment_vehicles
       public const int TCI_ID = 1;
       public const int TCI_VEHICLE_ID = 2;
       public const int TCI_MOBILIZED = 3;
-      public const int TCI_TACTICAL_NAME = 4;
-      public const int TCI_TRANSPONDER_NAME = 5;
-      public const int TCI_SERVICE_ID = 6;
-      public const int TCI_SERVICE = 7;
-      public const int TCI_NAME = 8;
-      public const int TCI_LVL = 9;
-      public const int TCI_KIND = 10;
-      public const int TCI_DECAL_NUM = 11;
-      public const int TCI_TOW_CAP = 12;
-      public const int TCI_FUEL = 13;
-      public const int TCI_AWD = 14;
-      public const int TCI_ELABORATION = 15;
+      public const int TCI_SAVED_TACTICAL_NAME = 4;
+      public const int TCI_TACTICAL_NAME = 5;
+      public const int TCI_SAVED_TRANSPONDER_NAME = 6;
+      public const int TCI_TRANSPONDER_NAME = 7;
+      public const int TCI_SERVICE_ID = 8;
+      public const int TCI_SERVICE = 9;
+      public const int TCI_NAME = 10;
+      public const int TCI_LVL = 11;
+      public const int TCI_KIND = 12;
+      public const int TCI_DECAL_NUM = 13;
+      public const int TCI_TOW_CAP = 14;
+      public const int TCI_FUEL = 15;
+      public const int TCI_AWD = 16;
+      public const int TCI_ELABORATION = 17;
       }
 
     private struct p_type
@@ -261,31 +263,38 @@ namespace UserControl_strike_team_deployment_vehicles
               if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
                 var tactical_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TACTICAL_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
+                var saved_tactical_name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SAVED_TACTICAL_NAME].Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
                 var transponder_name = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_TRANSPONDER_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
-                if (p.biz_strike_team_deployments.AssignVehicleTagTransponder
-                    (
-                    deployment_id:p.deployment_id,
-                    mobilization_id:id,
-                    vehicle_id:vehicle_id,
-                    static_name:static_name,
-                    tactical_name:tactical_name,
-                    transponder_name:transponder_name
+                var saved_transponder_name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_SAVED_TRANSPONDER_NAME].Text,k.safe_hint_type.MAKE_MODEL).Trim().ToUpper();
+                var do_continue_editing = false;
+                if ((tactical_name != saved_tactical_name) || (transponder_name != saved_transponder_name))
+                  {
+                  if (!p.biz_strike_team_deployments.AssignVehicleTagTransponder
+                      (
+                      deployment_id:p.deployment_id,
+                      mobilization_id:id,
+                      vehicle_id:vehicle_id,
+                      static_name:static_name,
+                      tactical_name:tactical_name,
+                      transponder_name:transponder_name
+                      )
                     )
-                  )
-                //then
+                  //then
+                    {
+                    Alert
+                      (
+                      cause:k.alert_cause_type.APPDATA,
+                      state:k.alert_state_type.FAILURE,
+                      key:"tagtpraryasd",
+                      value:"The specified tag OR transponder is already assigned to another vehicle mobilized in this deployment.",
+                      be_using_scriptmanager:true
+                      );
+                    do_continue_editing = true;
+                    }
+                  }
+                if (!do_continue_editing)
                   {
                   DataGrid_control.EditItemIndex = -1;
-                  }
-                else
-                  {
-                  Alert
-                    (
-                    cause:k.alert_cause_type.APPDATA,
-                    state:k.alert_state_type.FAILURE,
-                    key:"tagtpraryasd",
-                    value:"The specified tag OR transponder is already assigned to another vehicle mobilized in this deployment.",
-                    be_using_scriptmanager:true
-                    );
                   }
                 }
               else
@@ -456,11 +465,7 @@ namespace UserControl_strike_team_deployment_vehicles
         )
       //then
         {
-        p.do_include_all_eligible_vehicles = p.biz_strike_team_deployment_vehicles.BeNone
-          (
-          deployment_id:deployment_id,
-          service_strike_team_management_footprint:service_strike_team_management_footprint
-          );
+        p.do_include_all_eligible_vehicles = !p.biz_strike_team_deployments.BeAnyOperationalPeriodStartedFor(deployment_id:deployment_id);
         }
       CheckBox_do_include_all_eligible_vehicles.Checked = p.do_include_all_eligible_vehicles;
       p.deployment_id = deployment_id;

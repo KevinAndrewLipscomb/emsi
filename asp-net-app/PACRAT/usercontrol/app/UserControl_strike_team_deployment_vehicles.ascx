@@ -39,7 +39,9 @@
                     <asp:ButtonColumn CommandName="ToggleMobilization" HeaderText="Mobilized?" SortExpression="(strike_team_deployment_vehicle.id is not null)%,service,name" Text="?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:ButtonColumn>
+                    <asp:BoundColumn DataField="saved_tactical_name" ReadOnly="True" Visible="False"></asp:BoundColumn>
                     <asp:BoundColumn datafield="tactical_name" headertext="Tac name" sortexpression="tactical_name%,name,service"></asp:BoundColumn>
+                    <asp:BoundColumn DataField="saved_transponder_name" ReadOnly="True" Visible="False"></asp:BoundColumn>
                     <asp:BoundColumn datafield="transponder_name" headertext="Xpndr name" sortexpression="transponder_name%,name,service"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service_id" visible="false" ReadOnly="True"></asp:BoundColumn>
                     <asp:BoundColumn datafield="service" headertext="Service" sortexpression="service%,name" ReadOnly="True"></asp:BoundColumn>
