@@ -226,6 +226,7 @@ namespace UserControl_strike_team_deployment_binder
           p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_SNAPSHOT;
           }
         //
+        TabContainer_control.ActiveTabIndex = (int)p.tab_index;
         PlaceHolder_content.Controls.Clear();
         FillPlaceHolder(false,target);
         //
