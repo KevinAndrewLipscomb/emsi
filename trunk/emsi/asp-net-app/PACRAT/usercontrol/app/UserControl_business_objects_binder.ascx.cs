@@ -194,6 +194,7 @@ namespace UserControl_business_objects_binder
           p.tab_index = UserControl_business_objects_binder_Static.TSSI_SMS_GATEWAYS;
           }
         //
+        TabContainer_control.ActiveTabIndex = (int)p.tab_index;
         PlaceHolder_content.Controls.Clear();
         FillPlaceHolder(false,target);
         //
