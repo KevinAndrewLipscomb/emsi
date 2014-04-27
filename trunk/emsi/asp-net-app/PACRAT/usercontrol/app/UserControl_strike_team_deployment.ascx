@@ -88,17 +88,18 @@
     </td>
   </tr>
   <tr>
-    <td><font class=""></font></td>
-    <td>
+    <td valign="top"><font class="">Personnel participation policy:</font></td>
+    <td valign="top">
       <font class="">
-        <asp:RadioButtonList ID="RadioButtonList_be_drill" runat="server" cssclass="" enabled="False">
-          <asp:ListItem Value="False" Selected="True">This is an ACTUAL DEPLOYMENT, not a drill. All credential requirements are enforced.</asp:ListItem>
-          <asp:ListItem Value="True">This deployment is a DRILL.  Only cellphone-related credential requirements are enforced.</asp:ListItem>
+        <asp:RadioButtonList ID="RadioButtonList_member_policy" runat="server" cssclass="" enabled="False">
+          <asp:ListItem Value="1" Selected="True">This is an ACTUAL DEPLOYMENT, not a drill, with STRICT enforcement of credential requirements.</asp:ListItem>
+          <asp:ListItem Value="2">This is an ACTUAL DEPLOYMENT, not a drill, with RELAXED enforcement of credential requirements.</asp:ListItem>
+          <asp:ListItem Value="3">This deployment is a DRILL.  Only cellphone-related credential requirements are enforced.</asp:ListItem>
         </asp:RadioButtonList>
       </font>
     </td>
     <td nowrap="nowrap" valign="top">
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator_be_drill" runat="server" ControlToValidate="RadioButtonList_be_drill" ErrorMessage="Please selected whether this is an actual deployment or a drill." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator_member_policy" runat="server" ControlToValidate="RadioButtonList_member_policy" ErrorMessage="Please selected a Personnel participation policy." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
     </td>
   </tr>
   <tr>

@@ -5,6 +5,7 @@ using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_strike_team_deployment_logs;
+using Class_biz_strike_team_deployment_member_policies;
 using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using Class_msg_protected;
@@ -25,6 +26,7 @@ namespace UserControl_strike_team_deployment
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
+      public TClass_biz_strike_team_deployment_member_policies biz_strike_team_deployment_member_policies;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
       public string id;
@@ -42,7 +44,7 @@ namespace UserControl_strike_team_deployment
       UserControl_drop_down_date_creation_date.Clear();
       TextBox_name.Text = k.EMPTY;
       DropDownList_region.ClearSelection();
-      RadioButtonList_be_drill.ClearSelection();
+      RadioButtonList_member_policy.ClearSelection();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -189,7 +191,7 @@ namespace UserControl_strike_team_deployment
       DateTime creation_date;
       string name;
       string region_code;
-      bool be_drill;
+      string member_policy_id;
       result = false;
       if
         (
@@ -199,7 +201,7 @@ namespace UserControl_strike_team_deployment
           out creation_date,
           out name,
           out region_code,
-          out be_drill
+          out member_policy_id
           )
         )
         {
@@ -208,7 +210,7 @@ namespace UserControl_strike_team_deployment
         UserControl_drop_down_date_creation_date.selectedvalue = creation_date;
         TextBox_name.Text = name;
         DropDownList_region.SelectedValue = region_code;
-        RadioButtonList_be_drill.SelectedValue = be_drill.ToString();
+        RadioButtonList_member_policy.SelectedValue = member_policy_id;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -301,6 +303,7 @@ namespace UserControl_strike_team_deployment
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
+        p.biz_strike_team_deployment_member_policies = new TClass_biz_strike_team_deployment_member_policies();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
         p.msg_protected_mobilization_announcement = new TClass_msg_protected.mobilization_announcement();
@@ -341,13 +344,14 @@ namespace UserControl_strike_team_deployment
         {
         var id = k.Safe(TextBox_id.Text,k.safe_hint_type.NUM);
         var name = k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim();
+        var member_policy_id = k.Safe(RadioButtonList_member_policy.SelectedValue,k.safe_hint_type.NUM);
         p.biz_strike_team_deployments.Set
           (
           id,
           (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
           name,
           k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM),
-          bool.Parse(RadioButtonList_be_drill.SelectedValue)
+          member_policy_id
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {
@@ -357,10 +361,16 @@ namespace UserControl_strike_team_deployment
           p.biz_strike_team_deployment_logs.Enter
             (
             deployment_id:id,
-            action:"named deployment `" + name + "` and made it " + (bool.Parse(RadioButtonList_be_drill.SelectedValue) ? k.EMPTY : "not ") + "a drill"
+            action:"named deployment `" + name + "` and set its personnel participation policy to `" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "`"
             );
           //
           Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
+          //
+          UserControl_strike_team_deployment_binder_control.Set
+            (
+            deployment_id:id,
+            be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments
+            );
           }
         else
           {
@@ -439,7 +449,7 @@ namespace UserControl_strike_team_deployment
       UserControl_drop_down_date_creation_date.enabled = ablement;
       TextBox_name.Enabled = ablement;
       DropDownList_region.Enabled = (p.presentation_mode == presentation_mode_enum.NEW) && ablement;
-      RadioButtonList_be_drill.Enabled = ablement;
+      RadioButtonList_member_policy.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
