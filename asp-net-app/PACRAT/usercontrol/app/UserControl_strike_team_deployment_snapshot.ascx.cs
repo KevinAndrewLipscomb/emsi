@@ -2,6 +2,7 @@ using Class_biz_patient_care_levels;
 using Class_biz_regions;
 using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_logs;
+using Class_biz_strike_team_deployment_member_policies;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_strike_team_deployment_vehicles;
@@ -65,6 +66,7 @@ namespace UserControl_strike_team_deployment_snapshot
       public TClass_biz_regions biz_regions;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
+      public TClass_biz_strike_team_deployment_member_policies biz_strike_team_deployment_member_policies;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
       public TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles;
@@ -116,6 +118,7 @@ namespace UserControl_strike_team_deployment_snapshot
         p.biz_regions = new TClass_biz_regions();
         p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
+        p.biz_strike_team_deployment_member_policies = new TClass_biz_strike_team_deployment_member_policies();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
         p.biz_strike_team_deployment_vehicles = new TClass_biz_strike_team_deployment_vehicles();
@@ -307,14 +310,14 @@ namespace UserControl_strike_team_deployment_snapshot
       var creation_date = DateTime.MinValue;
       var name = k.EMPTY;
       var region_code = k.EMPTY;
-      var be_drill = false;
+      var member_policy_id = k.EMPTY;
       p.biz_strike_team_deployments.Get
         (
         id:p.deployment_id,
         creation_date:out creation_date,
         name:out name,
         region_code:out region_code,
-        be_drill:out be_drill
+        member_policy_id:out member_policy_id
         );
       var region_summary = p.biz_regions.Summary(region_code);
       var raw_xml = k.EMPTY
@@ -323,7 +326,7 @@ namespace UserControl_strike_team_deployment_snapshot
         +   "<ss:Worksheet ss:Name=\"Intro\">"
         +     "<Table>"
         +       "<Row><Cell><Data>This is a snapshot of data associated with the '" + name + "' deployment.</Data></Cell></Row>"
-        +       "<Row><Cell><Data>This deployment is " + (be_drill ? "a DRILL" : "NOT a drill") + ".</Data></Cell></Row>"
+        +       "<Row><Cell><Data>This deployment's personnel participation policy is set to '" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "'.</Data></Cell></Row>"
         +       "<Row><Cell><Data>The authority and scope of this data is Pennsylvania EMS Region " + p.biz_regions.EmsrsCodeOf(region_summary) + " (" + p.biz_regions.NameOf(region_summary) + ").</Data></Cell></Row>"
         +       "<Row><Cell><Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</Data></Cell></Row>"
         +       "<Row><Cell><Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</Data></Cell></Row>"

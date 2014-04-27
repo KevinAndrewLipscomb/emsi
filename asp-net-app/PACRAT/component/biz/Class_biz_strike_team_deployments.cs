@@ -69,7 +69,7 @@ namespace Class_biz_strike_team_deployments
           deployment_name:NameOf(summary),
           service_name:biz_services.ShortNameOf(service_id),
           region_name:RegionNameOf(summary),
-          actual_vs_drill_indicator:(BeDrill(summary) ? "This deployment is a DRILL." : "This is an ACTUAL DEPLOYMENT, not a drill."),
+          actual_vs_drill_indicator:(MemberPolicyDescriptionOf(summary) == "drill" ? "This deployment is a DRILL." : "This is an ACTUAL DEPLOYMENT, not a drill."),
           supplemental_message:supplemental_message,
           region_strike_team_manager_target:biz_role_member_map.EmailTargetOfByExplicitRegionCode("Region Strike Team Manager",RegionCodeOf(summary))
           );
@@ -78,7 +78,7 @@ namespace Class_biz_strike_team_deployments
           biz_notifications.IssueMobilizationAnnouncementSms
             (
             target:target,
-            actual_vs_drill_indicator:(BeDrill(summary) ? "This is a DRILL." : "This is NOT A DRILL.")
+            actual_vs_drill_indicator:(MemberPolicyDescriptionOf(summary) == "drill" ? "This is a DRILL." : "This is NOT A DRILL.")
             );
           }
         }
@@ -180,11 +180,6 @@ namespace Class_biz_strike_team_deployments
       return (service_strike_team_management_footprint.Length == 0) && db_strike_team_deployments.BeAnyOperationalPeriodStartedFor(deployment_id);
       }
 
-    internal bool BeDrill(object summary)
-      {
-      return db_strike_team_deployments.BeDrill(summary);
-      }
-
     internal bool BeOkToMakeMobilizationChangesAndQuickMessages
       (
       string deployment_id,
@@ -273,6 +268,7 @@ namespace Class_biz_strike_team_deployments
       biz_notifications.IssueForDeploymentMemberDemobilization
         (
         target:sms_target,
+        actual_vs_drill_indicator:(MemberPolicyDescriptionOf(Summary(deployment_id)) == "drill" ? "DRILL" : "ACTUAL DEPLOYMENT"),
         deployment_name:deployment_name
         );
       }
@@ -296,6 +292,7 @@ namespace Class_biz_strike_team_deployments
       biz_notifications.IssueForDeploymentMemberDemobilization
         (
         target:sms_target,
+        actual_vs_drill_indicator:(MemberPolicyDescriptionOf(Summary(deployment_id)) == "drill" ? "DRILL" : "ACTUAL DEPLOYMENT"),
         deployment_name:deployment_name
         );
       }
@@ -337,7 +334,7 @@ namespace Class_biz_strike_team_deployments
       out DateTime creation_date,
       out string name,
       out string region_code,
-      out bool be_drill
+      out string member_policy_id
       )
       {
       return db_strike_team_deployments.Get
@@ -346,7 +343,7 @@ namespace Class_biz_strike_team_deployments
         out creation_date,
         out name,
         out region_code,
-        out be_drill
+        out member_policy_id
         );
       }
 
@@ -424,6 +421,16 @@ namespace Class_biz_strike_team_deployments
         );
       }
 
+    internal string MemberPolicyDescriptionOf(object summary)
+      {
+      return db_strike_team_deployments.MemberPolicyDescription(summary);
+      }
+
+    internal string MemberPolicyIdOf(object summary)
+      {
+      return db_strike_team_deployments.MemberPolicyId(summary);
+      }
+
     internal void MobilizeMember
       (
       string deployment_id,
@@ -448,6 +455,7 @@ namespace Class_biz_strike_team_deployments
       biz_notifications.IssueForDeploymentMemberMobilization
         (
         target:sms_target,
+        actual_vs_drill_indicator:(MemberPolicyDescriptionOf(Summary(deployment_id)) == "drill" ? "DRILL" : "ACTUAL DEPLOYMENT"),
         deployment_name:deployment_name
         );
       }
@@ -501,7 +509,7 @@ namespace Class_biz_strike_team_deployments
       DateTime creation_date,
       string name,
       string region_code,
-      bool be_drill
+      string member_policy_id
       )
       {
       db_strike_team_deployments.Set
@@ -510,7 +518,7 @@ namespace Class_biz_strike_team_deployments
         creation_date,
         name,
         region_code,
-        be_drill
+        member_policy_id
         );
       }
 

@@ -48,7 +48,8 @@ namespace Class_db_strike_team_deployments
       public string name;
       public string region_code;
       public string region_name;
-      public bool be_drill;
+      public string member_policy_id;
+      public string member_policy_description;
       }
 
     private TClass_db_trail db_trail = null;
@@ -82,11 +83,6 @@ namespace Class_db_strike_team_deployments
       be_any_operational_period_started_for = "0" != new MySqlCommand("select count(*) from strike_team_deployment_operational_period where deployment_id = '" + deployment_id + "' and start <= NOW()",connection).ExecuteScalar().ToString();
       Close();
       return be_any_operational_period_started_for;
-      }
-
-    internal bool BeDrill(object summary)
-      {
-      return (summary as strike_team_deployment_summary).be_drill;
       }
 
     public bool Bind(string partial_spec, object target)
@@ -177,28 +173,38 @@ namespace Class_db_strike_team_deployments
       out DateTime creation_date,
       out string name,
       out string region_code,
-      out bool be_drill
+      out string member_policy_id
       )
       {
       creation_date = DateTime.MinValue;
       name = k.EMPTY;
       region_code = k.EMPTY;
-      be_drill = false;
+      member_policy_id = k.EMPTY;
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      var dr = new MySqlCommand("select * from strike_team_deployment where CAST(id AS CHAR) = '" + id + "'", connection).ExecuteReader();
       if (dr.Read())
         {
         creation_date = DateTime.Parse(dr["creation_date"].ToString());
         name = dr["name"].ToString();
         region_code = dr["region_code"].ToString();
-        be_drill = (dr["be_drill"].ToString() == "1");
+        member_policy_id = dr["member_policy_id"].ToString();
         result = true;
         }
       dr.Close();
       Close();
       return result;
+      }
+
+    internal string MemberPolicyDescription(object summary)
+      {
+      return (summary as strike_team_deployment_summary).member_policy_description;
+      }
+
+    internal string MemberPolicyId(object summary)
+      {
+      return (summary as strike_team_deployment_summary).member_policy_id;
       }
 
     internal string NameOf(object summary)
@@ -230,14 +236,14 @@ namespace Class_db_strike_team_deployments
       DateTime creation_date,
       string name,
       string region_code,
-      bool be_drill
+      string member_policy_id
       )
       {
       var childless_field_assignments_clause = k.EMPTY
       + "creation_date = '" + creation_date.ToString("yyyy-MM-dd") + "'"
       + " , name = NULLIF('" + name + "','')"
       + " , region_code = NULLIF('" + region_code + "','')"
-      + " , be_drill = " + be_drill.ToString()
+      + " , member_policy_id = NULLIF('" + member_policy_id + "','')"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (
@@ -259,10 +265,12 @@ namespace Class_db_strike_team_deployments
           + " , strike_team_deployment.name as name"
           + " , strike_team_deployment.region_code as region_code"
           + " , region_code_name_map.name as region_name"
-          + " , be_drill"
+          + " , member_policy_id"
+          + " , strike_team_deployment_member_policy.description as member_policy_description"
           + " FROM strike_team_deployment"
           +   " join region_code_name_map on (region_code_name_map.code=strike_team_deployment.region_code)"
-          + " where id = '" + id + "'",
+          +   " join strike_team_deployment_member_policy on (strike_team_deployment_member_policy.id=strike_team_deployment.member_policy_id)"
+          + " where strike_team_deployment.id = '" + id + "'",
           connection
           )
           .ExecuteReader()
@@ -275,7 +283,8 @@ namespace Class_db_strike_team_deployments
         name = dr["name"].ToString(),
         region_code = dr["region_code"].ToString(),
         region_name = dr["region_name"].ToString(),
-        be_drill = ("1" == dr["be_drill"].ToString())
+        member_policy_id = dr["member_policy_id"].ToString(),
+        member_policy_description = dr["member_policy_description"].ToString()
         };
       Close();
       return the_summary;
