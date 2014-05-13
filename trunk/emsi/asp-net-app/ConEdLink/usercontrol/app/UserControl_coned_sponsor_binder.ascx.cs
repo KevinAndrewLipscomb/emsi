@@ -154,6 +154,7 @@ namespace UserControl_coned_sponsor_binder
           p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_ABOUT;
           }
         //
+        TabContainer_control.ActiveTabIndex = (int)p.tab_index;
         PlaceHolder_content.Controls.Clear();
         FillPlaceHolder(false,target);
         //

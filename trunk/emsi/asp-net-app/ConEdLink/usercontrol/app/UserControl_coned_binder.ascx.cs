@@ -149,6 +149,7 @@ namespace UserControl_coned_binder
           p.tab_index = UserControl_coned_binder_Static.TSSI_PRACTITIONERS;
           }
         //
+        TabContainer_control.ActiveTabIndex = (int)p.tab_index;
         PlaceHolder_content.Controls.Clear();
         FillPlaceHolder(false,target);
         //
