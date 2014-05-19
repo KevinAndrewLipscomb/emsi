@@ -346,6 +346,14 @@ namespace coned_offering_roster
         p.be_ok_to_edit_roster = false;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(false);
+        Alert
+          (
+          cause:k.alert_cause_type.USER,
+          state:k.alert_state_type.SUCCESS,
+          key:"classclosed",
+          value:"Class closed and submitted for credit.",
+          be_using_scriptmanager:true
+          );
         }
       else
         {
