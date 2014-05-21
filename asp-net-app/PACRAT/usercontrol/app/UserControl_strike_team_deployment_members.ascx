@@ -30,6 +30,12 @@
               </td>
             </tr>
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+            <tr id="TableRow_instant_notification_advisory" runat="server" bgcolor="khaki" visible="false">
+              <td>
+                Members will receive instant SMS notifications when you mobilize or demobilize them.&nbsp; Consider confirming each member's availability, and firming up the overall list, prior to registering your mobilization
+                decisions here.
+              </td>
+            </tr>
             <tr>
               <td>
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
