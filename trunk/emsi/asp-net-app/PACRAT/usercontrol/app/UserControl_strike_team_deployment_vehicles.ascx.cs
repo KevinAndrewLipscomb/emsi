@@ -355,6 +355,7 @@ namespace UserControl_strike_team_deployment_vehicles
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
           link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_vehicles || (p.service_strike_team_management_footprint.Length > 0) ? "YES" : "Edit>") : "no");
           link_button.Font.Bold = be_this_row_in_edit_mode;
+          link_button.ToolTip = (link_button.Text == "no" ? "Click to mobilize" : (link_button.Text == "YES" ? "Click to demobilize" : k.EMPTY));
           if (be_this_row_in_edit_mode)
             {
             link_button.Text = "SAVE>";

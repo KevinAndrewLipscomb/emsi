@@ -94,6 +94,15 @@ namespace UserControl_strike_team_deployment_members {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
+        /// TableRow_instant_notification_advisory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_instant_notification_advisory;
+        
+        /// <summary>
         /// DataGrid_control control.
         /// </summary>
         /// <remarks>
