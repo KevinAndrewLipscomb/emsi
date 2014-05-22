@@ -20,12 +20,16 @@ namespace UserControl_strike_team_deployment_operational_periods
     {
     public class UserControl_strike_team_deployment_operational_periods_Static
       {
+      public const string NOT_APPLICABLE_INDICATION_HTML = "-&nbsp;-&nbsp;-";
+      //
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_START = 2;
-      public const int TCI_END = 3;
-      public const int TCI_CONVOY = 4;
-      public const int TCI_FOR_IAP = 5;
+      public const int TCI_KIND = 2;
+      public const int TCI_PRELIM_NAME = 3;
+      public const int TCI_START = 4;
+      public const int TCI_END = 5;
+      public const int TCI_BE_CONVOY = 6;
+      public const int TCI_FOR_IAP = 7;
       }
 
     private struct p_type
@@ -223,9 +227,29 @@ namespace UserControl_strike_team_deployment_operational_periods
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          var hash_table = new Hashtable();
-          hash_table.Add(key:"operational_period_id",value:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text);
-          ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+          var kind = p.biz_strike_team_deployment_operational_periods.KindOf
+            (
+            start:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Text.Replace("&nbsp;",k.EMPTY),
+            end:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Text.Replace("&nbsp;",k.EMPTY),
+            be_convoy:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_BE_CONVOY].Text,
+            prelim_shift_name:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_PRELIM_NAME].Text.Replace("&nbsp;",k.EMPTY)
+            );
+          e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_KIND].Text = kind.ToString();
+          if (kind == kind_enum.PRELIM)
+            {
+            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
+            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
+            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls.Clear();
+            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
+            }
+          else
+            {
+            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_PRELIM_NAME].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
+            //
+            var hash_table = new Hashtable();
+            hash_table.Add(key:"operational_period_id",value:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text);
+            ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+            }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //

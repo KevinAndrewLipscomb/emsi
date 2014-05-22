@@ -26,11 +26,16 @@
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
                     <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="start" headertext="Start" sortexpression="start%,end"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="end" headertext="End" sortexpression="end%,start"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="be_convoy" HeaderText="Convoy?" SortExpression="be_convoy%,start,end">
+                    <asp:TemplateColumn HeaderText="Kind">
+                      <HeaderStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:TemplateColumn>
+                    <asp:BoundColumn DataField="prelim_shift_name" HeaderText="Prelim name" ReadOnly="True">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
+                    <asp:BoundColumn datafield="start" headertext="Start" sortexpression="start%,end"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="end" headertext="End" sortexpression="end%,start"></asp:BoundColumn>
+                    <asp:BoundColumn DataField="be_convoy" Visible="False"></asp:BoundColumn>
                     <asp:HyperLinkColumn Target="_blank" Text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;For IAP&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" HeaderText="For IAP" NavigateUrl="~/protected/per_op_period_iap.aspx?">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:HyperLinkColumn>

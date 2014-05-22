@@ -140,16 +140,20 @@ namespace UserControl_per_op_period_iap
       var deployment_id = k.EMPTY;
       DateTime start;
       DateTime end;
+      var prelim_shift_name = k.EMPTY;
+      var kind = kind_enum.ACTUAL;
       p.biz_strike_team_deployment_operational_periods.Get
         (
         id:operational_period_id,
         deployment_id:out deployment_id,
         start:out start,
         end:out end,
-        be_convoy:out be_convoy
+        be_convoy:out be_convoy,
+        prelim_shift_name:out prelim_shift_name,
+        kind:out kind
         );
       Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOfId(deployment_id);
-      Literal_nature.Text = (be_convoy ? "CONVOY" : "OPERATIONAL PERIOD");
+      Literal_nature.Text = (kind == kind_enum.ACTUAL ? "OPERATIONAL PERIOD": (kind == kind_enum.CONVOY ? "CONVOY" : "PRELIM - NOT FOR IAP"));
       Literal_start.Text = start.ToString("MM/dd/yyyy HH:mm");
       Literal_end.Text = end.ToString("MM/dd/yyyy HH:mm");
       Bind();

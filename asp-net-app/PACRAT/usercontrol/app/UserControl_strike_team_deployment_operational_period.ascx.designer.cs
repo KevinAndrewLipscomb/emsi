@@ -202,6 +202,33 @@ namespace UserControl_strike_team_deployment_operational_period {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_deployment_id;
         
         /// <summary>
+        /// DropDownList_kind control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_kind;
+        
+        /// <summary>
+        /// RequiredFieldValidator_kind control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind;
+        
+        /// <summary>
+        /// TableRow_start control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_start;
+        
+        /// <summary>
         /// UserControl_drop_down_datetime_start control.
         /// </summary>
         /// <remarks>
@@ -209,6 +236,15 @@ namespace UserControl_strike_team_deployment_operational_period {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UserControl_drop_down_datetime.TWebUserControl_drop_down_datetime UserControl_drop_down_datetime_start;
+        
+        /// <summary>
+        /// TableRow_end control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_end;
         
         /// <summary>
         /// UserControl_drop_down_datetime_end control.
@@ -220,13 +256,31 @@ namespace UserControl_strike_team_deployment_operational_period {
         protected global::UserControl_drop_down_datetime.TWebUserControl_drop_down_datetime UserControl_drop_down_datetime_end;
         
         /// <summary>
-        /// CheckBox_be_convoy control.
+        /// TableRow_prelim_shift_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_convoy;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_prelim_shift_name;
+        
+        /// <summary>
+        /// TextBox_prelim_shift_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_prelim_shift_name;
+        
+        /// <summary>
+        /// RequiredFieldValidator_prelim_shift_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_prelim_shift_name;
         
         /// <summary>
         /// Button_submit control.
