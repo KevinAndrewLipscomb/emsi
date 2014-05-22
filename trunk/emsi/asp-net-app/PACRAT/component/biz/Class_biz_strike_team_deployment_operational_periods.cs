@@ -8,6 +8,13 @@ using System.Collections;
 namespace Class_biz_strike_team_deployment_operational_periods
   {
 
+  internal enum kind_enum
+    {
+    PRELIM,
+    CONVOY,
+    ACTUAL
+    }
+
   internal enum presentation_mode_enum
     {
     NONE,
@@ -18,7 +25,20 @@ namespace Class_biz_strike_team_deployment_operational_periods
 
   public class TClass_biz_strike_team_deployment_operational_periods
     {
+
+    //--
+    //
+    // PRIVATE
+    //
+    //--
+
     private TClass_db_strike_team_deployment_operational_periods db_strike_team_deployment_operational_periods = null;
+
+    //--
+    //
+    // PUBLIC/INTERNAL
+    //
+    //--
 
     public TClass_biz_strike_team_deployment_operational_periods() : base()
       {
@@ -65,23 +85,37 @@ namespace Class_biz_strike_team_deployment_operational_periods
       return db_strike_team_deployment_operational_periods.EndOf(summary);
       }
 
-    public bool Get
+    internal bool Get
       (
       string id,
       out string deployment_id,
       out DateTime start,
       out DateTime end,
-      out bool be_convoy
+      out bool be_convoy,
+      out string prelim_shift_name,
+      out kind_enum kind
       )
       {
-      return db_strike_team_deployment_operational_periods.Get
-        (
-        id,
-        out deployment_id,
-        out start,
-        out end,
-        out be_convoy
-        );
+      var get = false;
+      //
+      kind = kind_enum.ACTUAL;
+      //
+      if(db_strike_team_deployment_operational_periods.Get
+          (
+          id,
+          out deployment_id,
+          out start,
+          out end,
+          out be_convoy,
+          out prelim_shift_name
+          )
+        )
+      //then
+        {
+        kind = KindOf(start,end,be_convoy,prelim_shift_name);
+        get = true;
+        }
+      return get;
       }
 
     internal string IdInSameDeploymentWithCompetingTimes
@@ -95,22 +129,82 @@ namespace Class_biz_strike_team_deployment_operational_periods
       return db_strike_team_deployment_operational_periods.IdInSameDeploymentWithCompetingTimes(id,deployment_id,start,end);
       }
 
-    public void Set
+    internal kind_enum KindOf
+      (
+      DateTime start,
+      DateTime end,
+      bool be_convoy,
+      string prelim_shift_name
+      )
+      {
+      var kind_of = kind_enum.ACTUAL;
+      if (be_convoy)
+        {
+        kind_of = kind_enum.CONVOY;
+        }
+      else if ((start == DateTime.MinValue) && (end == DateTime.MinValue) && (prelim_shift_name.Length > 0))
+        {
+        kind_of = kind_enum.PRELIM;
+        }
+      return kind_of;
+      }
+
+    internal kind_enum KindOf
+      (
+      string start,
+      string end,
+      string be_convoy,
+      string prelim_shift_name
+      )
+      {
+      return KindOf
+        (
+        start:(start.Length > 0 ? DateTime.Parse(start) : DateTime.MinValue),
+        end:(end.Length > 0 ? DateTime.Parse(end) : DateTime.MinValue),
+        be_convoy:(be_convoy == "1"),
+        prelim_shift_name:prelim_shift_name
+        );
+      }
+
+    internal kind_enum KindOf(object summary)
+      {
+      return KindOf(StartOf(summary),EndOf(summary),BeConvoyOf(summary),PrelimShift_nameOf(summary));
+      }
+
+    internal string PrelimShift_nameOf(object summary)
+      {
+      return db_strike_team_deployment_operational_periods.PrelimShiftNameOf(summary);
+      }
+
+    internal void Set
       (
       string id,
       string deployment_id,
       DateTime start,
       DateTime end,
-      bool be_convoy
+      bool be_convoy,
+      string prelim_shift_name,
+      string kind
       )
       {
+      if (kind == "PRELIM")
+        {
+        start = DateTime.MinValue;
+        end = DateTime.MinValue;
+        be_convoy = false;
+        }
+      else
+        {
+        prelim_shift_name = k.EMPTY;
+        }
       db_strike_team_deployment_operational_periods.Set
         (
         id,
         deployment_id,
         start,
         end,
-        be_convoy
+        be_convoy,
+        prelim_shift_name
         );
       }
 

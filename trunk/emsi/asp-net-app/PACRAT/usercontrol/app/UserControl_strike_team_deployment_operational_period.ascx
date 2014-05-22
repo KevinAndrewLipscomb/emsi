@@ -69,6 +69,20 @@
     </td>
   </tr>
   <tr>
+    <td><font class="">Kind:</font></td>
+    <td>
+      <asp:DropDownList ID="DropDownList_kind" runat="server" AutoPostBack="True" onselectedindexchanged="DropDownList_kind_SelectedIndexChanged">
+        <asp:ListItem Value="" Selected="True">-- Select --</asp:ListItem>
+        <asp:ListItem Value="PRELIM">PRELIM -- to let Service Strike Team Managers make default assignments</asp:ListItem>
+        <asp:ListItem Value="CONVOY">CONVOY -- to account for resources on the way to/from deployment base</asp:ListItem>
+        <asp:ListItem Value="ACTUAL">ACTUAL -- to account for resources on duty</asp:ListItem>
+      </asp:DropDownList>
+    </td>
+    <td>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator_kind" runat="server" ControlToValidate="DropDownList_kind" ErrorMessage="Please select the Kind of operational period." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+    </td>
+  </tr>
+  <tr id="TableRow_start" runat="server">
     <td><font class="">Start:</font></td>
     <td>
       <uc2:UserControl_drop_down_datetime ID="UserControl_drop_down_datetime_start" runat="server" />
@@ -76,7 +90,7 @@
     <td nowrap="nowrap">
       &nbsp;</td>
   </tr>
-  <tr>
+  <tr id="TableRow_end" runat="server">
     <td><font class="">End:</font></td>
     <td>
       <uc2:UserControl_drop_down_datetime ID="UserControl_drop_down_datetime_end" runat="server" />
@@ -84,13 +98,14 @@
     <td nowrap="nowrap">
       &nbsp;</td>
   </tr>
-  <tr>
-    <td><font class="">Be convoy:</font></td>
+  <tr id="TableRow_prelim_shift_name" runat="server">
+    <td><font class="">Prelim shift name:</font></td>
     <td>
-      <asp:CheckBox ID="CheckBox_be_convoy" runat="server" />
+      <asp:TextBox ID="TextBox_prelim_shift_name" runat="server" Columns="31" MaxLength="31"></asp:TextBox>
     </td>
     <td nowrap="nowrap">
-      &nbsp;</td>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator_prelim_shift_name" runat="server" ControlToValidate="TextBox_prelim_shift_name" Enabled="False" ErrorMessage="Please specify a Preliminary shift name." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+    </td>
   </tr>
       </table>
     </td>

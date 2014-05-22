@@ -9,6 +9,7 @@ using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_user;
 using kix;
 using System;
+using System.Collections;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -39,9 +40,14 @@ namespace UserControl_strike_team_deployment_operational_period
       TextBox_id.Text = k.EMPTY;
       DropDownList_id.Visible = false;
       TextBox_deployment_id.Text = k.EMPTY;
+      DropDownList_kind.ClearSelection();
+      ManageFormAccordingToKind();
       UserControl_drop_down_datetime_start.Clear();
       UserControl_drop_down_datetime_end.Clear();
-      CheckBox_be_convoy.Checked = false;
+      TextBox_prelim_shift_name.Text = k.EMPTY;
+      TableRow_start.Visible = false;
+      TableRow_end.Visible = false;
+      TableRow_prelim_shift_name.Visible = false;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -157,7 +163,7 @@ namespace UserControl_strike_team_deployment_operational_period
           TextBox_deployment_id.Text = p.deployment_id;
           UserControl_drop_down_datetime_start.selectedvalue = DateTime.Now;
           UserControl_drop_down_datetime_end.selectedvalue = DateTime.Now;
-          UserControl_drop_down_datetime_start.Focus();
+          DropDownList_kind.Focus();
           }
         else
           {
@@ -182,9 +188,11 @@ namespace UserControl_strike_team_deployment_operational_period
       Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
       string deployment_id;
+      kind_enum kind;
       DateTime start;
       DateTime end;
       bool be_convoy;
+      string prelim_shift_name;
       result = false;
       if
         (
@@ -194,16 +202,20 @@ namespace UserControl_strike_team_deployment_operational_period
           out deployment_id,
           out start,
           out end,
-          out be_convoy
+          out be_convoy,
+          out prelim_shift_name,
+          out kind
           )
         )
         {
         TextBox_id.Text = id;
         TextBox_id.Enabled = false;
         TextBox_deployment_id.Text = deployment_id;
+        DropDownList_kind.SelectedValue = kind.ToString();
+        ManageFormAccordingToKind();
         UserControl_drop_down_datetime_start.selectedvalue = start;
         UserControl_drop_down_datetime_end.selectedvalue = end;
-        CheckBox_be_convoy.Checked = be_convoy;
+        TextBox_prelim_shift_name.Text = prelim_shift_name;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -319,6 +331,9 @@ namespace UserControl_strike_team_deployment_operational_period
         var start = new DateTime();
         var end = new DateTime();
         //
+        var kind = k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.ALPHA);
+        var be_convoy = (kind == "CONVOY");
+        //
         if (UserControl_drop_down_datetime_start.selectedvalue != DateTime.MinValue)
           {
           start = UserControl_drop_down_datetime_start.selectedvalue;
@@ -329,19 +344,24 @@ namespace UserControl_strike_team_deployment_operational_period
           }
         p.biz_strike_team_deployment_operational_periods.Set
           (
-          k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
-          start,
-          end,
-          CheckBox_be_convoy.Checked
+          id:k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
+          deployment_id:k.Safe(TextBox_deployment_id.Text,k.safe_hint_type.NUM),
+          start:start,
+          end:end,
+          be_convoy:be_convoy,
+          prelim_shift_name:k.Safe(TextBox_prelim_shift_name.Text,k.safe_hint_type.HYPHENATED_ALPHANUM_WORDS),
+          kind:kind
           );
-        p.biz_strike_team_deployment_logs.Enter
-          (
-          deployment_id:p.deployment_id,
-          action:"designated " + start.ToString("yyyy-MM-dd HH:mm")
-          + " to " + end.ToString("yyyy-MM-dd HH:mm")
-          + " as a" + (CheckBox_be_convoy.Checked ? " convoy" : "n operational period")
-          );
+        if (kind != "PRELIM")
+          {
+          p.biz_strike_team_deployment_logs.Enter
+            (
+            deployment_id:p.deployment_id,
+            action:"designated " + start.ToString("yyyy-MM-dd HH:mm")
+            + " to " + end.ToString("yyyy-MM-dd HH:mm")
+            + " as a" + (be_convoy ? " convoy" : "n operational period")
+            );
+          }
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         if (p.presentation_mode == presentation_mode_enum.NEW)
           {
@@ -389,14 +409,17 @@ namespace UserControl_strike_team_deployment_operational_period
       var summary = p.biz_strike_team_deployment_operational_periods.Summary(id:operational_period_id);
       if (p.biz_strike_team_deployment_operational_periods.Delete(operational_period_id))
         {
-        p.biz_strike_team_deployment_logs.Enter
-          (
-          deployment_id:p.deployment_id,
-          action:"deleted "
-          + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(summary) ? "convoy" : "operational period")
-          + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(summary).ToString("yyyy-MM-dd HH:mm")
-          + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(summary).ToString("yyyy-MM-dd HH:mm")
-          );
+        if (p.biz_strike_team_deployment_operational_periods.KindOf(summary) != kind_enum.PRELIM)
+          {
+          p.biz_strike_team_deployment_logs.Enter
+            (
+            deployment_id:p.deployment_id,
+            action:"deleted "
+            + (p.biz_strike_team_deployment_operational_periods.BeConvoyOf(summary) ? "convoy" : "operational period")
+            + " from " + p.biz_strike_team_deployment_operational_periods.StartOf(summary).ToString("yyyy-MM-dd HH:mm")
+            + " to " + p.biz_strike_team_deployment_operational_periods.EndOf(summary).ToString("yyyy-MM-dd HH:mm")
+            );
+          }
         BackTrack();
         }
       else
@@ -418,9 +441,10 @@ namespace UserControl_strike_team_deployment_operational_period
     private void SetDependentFieldAblements(bool ablement)
       {
       TextBox_deployment_id.Enabled = ablement;
+      DropDownList_kind.Enabled = ablement;
       UserControl_drop_down_datetime_start.enabled = ablement;
       UserControl_drop_down_datetime_end.enabled = ablement;
-      CheckBox_be_convoy.Enabled = ablement;
+      TextBox_prelim_shift_name.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
@@ -471,6 +495,24 @@ namespace UserControl_strike_team_deployment_operational_period
         end:UserControl_drop_down_datetime_end.selectedvalue
         );
       args.IsValid = (id_with_competing_times == k.EMPTY);
+      }
+
+    protected void DropDownList_kind_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      ManageFormAccordingToKind();
+      }
+
+    private void ManageFormAccordingToKind()
+      {
+      var kind = DropDownList_kind.SelectedValue;
+      var be_kind_using_start_and_end = new ArrayList() { "CONVOY", "ACTUAL" }.Contains(kind);
+      var be_prelim = (!be_kind_using_start_and_end && (kind.Length > 0));
+      TableRow_start.Visible = be_kind_using_start_and_end;
+      TableRow_end.Visible = be_kind_using_start_and_end;
+      TableRow_prelim_shift_name.Visible = be_prelim;
+      RequiredFieldValidator_prelim_shift_name.Enabled = be_prelim;
+      CustomValidator_chronological_order.Enabled = be_kind_using_start_and_end;
+      CustomValidator_uniqueness.Enabled = be_kind_using_start_and_end;
       }
 
     } // end TWebUserControl_strike_team_deployment_operational_periods

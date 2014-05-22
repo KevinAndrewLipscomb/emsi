@@ -19,6 +19,7 @@ namespace Class_db_strike_team_deployment_operational_periods
       public DateTime start;
       public DateTime end;
       public bool be_convoy;
+      public string prelim_shift_name;
       }
 
     private TClass_db_trail db_trail = null;
@@ -69,9 +70,10 @@ namespace Class_db_strike_team_deployment_operational_periods
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select id"
+        + " , prelim_shift_name"
         + " , DATE_FORMAT(start,'%Y-%m-%d %H:%i') as start"
         + " , DATE_FORMAT(end,'%Y-%m-%d %H:%i') as end"
-        + " , IF(be_convoy,'YES','no') as be_convoy"
+        + " , be_convoy"
         + " from strike_team_deployment_operational_period"
         + " where deployment_id = '" + deployment_id + "'"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
@@ -93,11 +95,11 @@ namespace Class_db_strike_team_deployment_operational_periods
       var dr = new MySqlCommand
         (
         "SELECT id"
-        + " , CONVERT(concat(IF(be_convoy,'CVY','OPD'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i')) USING utf8) as spec"
+        + " , CONVERT(IF(start is null and end is null and prelim_shift_name <> '',concat('PRE',' - ',prelim_shift_name),concat(IF(be_convoy,'CVY','ACT'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i'))) USING utf8) as spec"
         + " FROM strike_team_deployment_operational_period"
         + " where deployment_id = (select deployment_id from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "')"
-        +   " and start < (select start from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "')"
-        + " order by start desc,end desc",
+        +   " and (start < (select start from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "') or (start is null and end is null and prelim_shift_name <> ''))"
+        + " order by start desc, end desc, prelim_shift_name",
         connection
         )
         .ExecuteReader();
@@ -144,23 +146,29 @@ namespace Class_db_strike_team_deployment_operational_periods
       out string deployment_id,
       out DateTime start,
       out DateTime end,
-      out bool be_convoy
+      out bool be_convoy,
+      out string prelim_shift_name
       )
       {
       deployment_id = k.EMPTY;
       start = DateTime.MinValue;
       end = DateTime.MinValue;
       be_convoy = false;
+      prelim_shift_name = k.EMPTY;
       var result = false;
       //
       Open();
       var dr = new MySqlCommand("select * from strike_team_deployment_operational_period where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
       if (dr.Read())
         {
+        var start_obj = dr["start"];
+        var end_obj = dr["end"];
+        //
         deployment_id = dr["deployment_id"].ToString();
-        start = DateTime.Parse(dr["start"].ToString());
-        end = DateTime.Parse(dr["end"].ToString());
+        start = (start_obj == DBNull.Value ? DateTime.MinValue : DateTime.Parse(start_obj.ToString()));
+        end = (end_obj == DBNull.Value ? DateTime.MinValue : DateTime.Parse(dr["end"].ToString()));
         be_convoy = ("1" == dr["be_convoy"].ToString());
+        prelim_shift_name = dr["prelim_shift_name"].ToString();
         result = true;
         }
       dr.Close();
@@ -199,20 +207,27 @@ namespace Class_db_strike_team_deployment_operational_periods
         }
       }
 
+    internal string PrelimShiftNameOf(object summary)
+      {
+      return (summary as strike_team_deployment_operational_periods_summary).prelim_shift_name;
+      }
+
     public void Set
       (
       string id,
       string deployment_id,
       DateTime start,
       DateTime end,
-      bool be_convoy
+      bool be_convoy,
+      string prelim_shift_name
       )
       {
       var childless_field_assignments_clause = k.EMPTY
       + "deployment_id = NULLIF('" + deployment_id + "','')"
-      + " , start = NULLIF('" + start.ToString("s") + "','')"
-      + " , end = NULLIF('" + end.ToString("s") + "','')"
+      + " , start = NULLIF('" + (start == DateTime.MinValue ? k.EMPTY : start.ToString("s")) + "','')"
+      + " , end = NULLIF('" + (end == DateTime.MinValue ? k.EMPTY : end.ToString("s")) + "','')"
       + " , be_convoy = " + be_convoy.ToString()
+      + " , prelim_shift_name = NULLIF('" + prelim_shift_name + "','')"
       + k.EMPTY;
       db_trail.MimicTraditionalInsertOnDuplicateKeyUpdate
         (
@@ -243,12 +258,15 @@ namespace Class_db_strike_team_deployment_operational_periods
           .ExecuteReader()
         );
       dr.Read();
+      var start_obj = dr["start"];
+      var end_obj = dr["end"];
       var the_summary = new strike_team_deployment_operational_periods_summary()
         {
         id = id,
-        start = DateTime.Parse(dr["start"].ToString()),
-        end = DateTime.Parse(dr["end"].ToString()),
-        be_convoy = (dr["be_convoy"].ToString() == "1")
+        start = (start_obj == DBNull.Value ? DateTime.MinValue : DateTime.Parse(start_obj.ToString())),
+        end = (end_obj == DBNull.Value ? DateTime.MinValue : DateTime.Parse(end_obj.ToString())),
+        be_convoy = (dr["be_convoy"].ToString() == "1"),
+        prelim_shift_name = dr["prelim_shift_name"].ToString()
         };
       Close();
       return the_summary;
