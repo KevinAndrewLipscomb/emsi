@@ -56,6 +56,7 @@ namespace UserControl_operational_period_detail
       public bool be_loaded;
       public bool be_digest_sort_order_ascending;
       public bool be_sort_order_ascending;
+      public bool be_unlimited;
       public TClass_biz_members biz_members;
       public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
@@ -70,10 +71,12 @@ namespace UserControl_operational_period_detail
       public string digest_sort_order;
       public string distribution_list_email;
       public string distribution_list_sms;
+      public kind_enum kind;
       public bool may_add_mappings;
       public k.int_nonnegative num_digest_items;
       public k.int_nonnegative num_mappings;
       public string operational_period_id;
+      public string service_strike_team_management_footprint;
       public string sort_order;
       public string user_target_email;
       public string user_target_sms;
@@ -111,6 +114,11 @@ namespace UserControl_operational_period_detail
       TableRow_digest.Visible = !p.be_digest_empty;
       p.num_digest_items.val = 0;
       //
+      if (!p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
+        {
+        SetRestrictedMode();
+        }
+      //
       if (TableCell_add_mapping.Visible)
         {
         p.biz_strike_team_deployment_vehicles.BindDirectToListControl
@@ -124,7 +132,8 @@ namespace UserControl_operational_period_detail
           (
           target:DropDownList_member,
           deployment_id:p.deployment_id,
-          operational_period_id:p.operational_period_id
+          operational_period_id:p.operational_period_id,
+          service_strike_team_management_footprint:p.service_strike_team_management_footprint
           );
         DropDownList_member.Items.Insert(index:0,item:new ListItem(text:"-- Member -- ",value:k.EMPTY));
         }
@@ -239,6 +248,12 @@ namespace UserControl_operational_period_detail
       // );
       }
 
+    private void SetRestrictedMode()
+      {
+      TableRow_operational_period_started.Visible = true;
+      TableCell_add_mapping.Visible = false;
+      }
+
     private void TWebUserControl_operational_period_detail_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
@@ -252,16 +267,23 @@ namespace UserControl_operational_period_detail
 
     protected void Button_add_Click(object sender, System.EventArgs e)
       {
-      p.biz_strike_team_deployments.MakeOperationalPeriodAssignment
-        (
-        deployment_id:p.deployment_id,
-        operational_period_id:p.operational_period_id,
-        member_id:k.Safe(DropDownList_member.SelectedValue, k.safe_hint_type.NUM),
-        member_designator:k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text, k.safe_hint_type.PUNCTUATED),
-        vehicle_id:k.Safe(DropDownList_vehicle.SelectedValue, k.safe_hint_type.NUM),
-        vehicle_designator:k.Safe(DropDownList_vehicle.Items[DropDownList_vehicle.SelectedIndex].Text, k.safe_hint_type.PUNCTUATED)
-        );
-      Bind();
+      if (p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
+        {
+        p.biz_strike_team_deployments.MakeOperationalPeriodAssignment
+          (
+          deployment_id:p.deployment_id,
+          operational_period_id:p.operational_period_id,
+          member_id:k.Safe(DropDownList_member.SelectedValue, k.safe_hint_type.NUM),
+          member_designator:k.Safe(DropDownList_member.Items[DropDownList_member.SelectedIndex].Text, k.safe_hint_type.PUNCTUATED),
+          vehicle_id:k.Safe(DropDownList_vehicle.SelectedValue, k.safe_hint_type.NUM),
+          vehicle_designator:k.Safe(DropDownList_vehicle.Items[DropDownList_vehicle.SelectedIndex].Text, k.safe_hint_type.PUNCTUATED)
+          );
+        Bind();
+        }
+      else // changes and QuickMessages no longer allowed
+        {
+        SetRestrictedMode();
+        }
       }
 
     protected void Button_copy_other_op_period_Click(object sender, EventArgs e)
@@ -455,14 +477,17 @@ namespace UserControl_operational_period_detail
         p.be_interactive = !(Session["mode:report"] != null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.be_unlimited = false;
         p.deployment_id = k.EMPTY;
         p.digest_sort_order = UserControl_operational_period_detail_Static.INITIAL_DIGEST_SORT_ORDER;
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
+        p.kind = kind_enum.STANDARD;
         p.may_add_mappings = p.be_interactive;
         p.num_digest_items = new k.int_nonnegative();
         p.num_mappings = new k.int_nonnegative();
         p.operational_period_id = k.EMPTY;
+        p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = UserControl_operational_period_detail_Static.INITIAL_SORT_ORDER;
         //
         var member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
@@ -475,24 +500,32 @@ namespace UserControl_operational_period_detail
       {
       if (!p.be_loaded)
         {
-        HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
-        var hash_table = new Hashtable();
-        hash_table.Add(key:"operational_period_id",value:p.operational_period_id);
-        HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+        if (p.be_unlimited)
+          {
+          Td_for_iap.Visible = true;
+          HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+          var hash_table = new Hashtable();
+          hash_table.Add(key:"operational_period_id",value:p.operational_period_id);
+          HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+          //
+          Panel_copy_other_op_period.Visible = (p.kind != kind_enum.PRELIM) && p.biz_strike_team_deployment_operational_periods.BindDirectToListControl
+            (
+            target_operational_period_id:p.operational_period_id,
+            target:DropDownList_source_op_period
+            );
+          if (Panel_copy_other_op_period.Visible)
+            {
+            DropDownList_source_op_period.Items.Insert(0,new ListItem("-- Select --",k.EMPTY));
+            }
+          //
+          DataGrid_digest.Columns[UserControl_operational_period_detail_Static.DIGEST_CI_SELECT_FOR_QUICKMESSAGE].Visible = true;
+          Table_quick_message.Visible = true;
+          }
         //
         DataGrid_control.AllowSorting = p.be_interactive;
         DataGrid_digest.AllowSorting = p.be_interactive;
         Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);
         Bind();
-        Panel_copy_other_op_period.Visible = p.biz_strike_team_deployment_operational_periods.BindDirectToListControl
-          (
-          target_operational_period_id:p.operational_period_id,
-          target:DropDownList_source_op_period
-          );
-        if (Panel_copy_other_op_period.Visible)
-          {
-          DropDownList_source_op_period.Items.Insert(0,new ListItem("-- Select --",k.EMPTY));
-          }
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -540,11 +573,17 @@ namespace UserControl_operational_period_detail
     internal void Set
       (
       string deployment_id,
-      string operational_period_id
+      string operational_period_id,
+      string service_strike_team_management_footprint,
+      bool be_unlimited,
+      kind_enum kind
       )
       {
       p.deployment_id = deployment_id;
       p.operational_period_id = operational_period_id;
+      p.service_strike_team_management_footprint = service_strike_team_management_footprint;
+      p.be_unlimited = be_unlimited;
+      p.kind = kind;
       Bind();
       }
 

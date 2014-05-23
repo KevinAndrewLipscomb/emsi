@@ -66,7 +66,9 @@ namespace operational_period_detail
         UserControl_strike_team_deployment_operational_period_control.Set
           (
           deployment_id:p.incoming.deployment_id,
-          operational_period_id:p.incoming.operational_period_id
+          operational_period_id:p.incoming.operational_period_id,
+          service_strike_team_management_footprint:p.incoming.service_strike_team_management_footprint,
+          be_unlimited:p.incoming.be_unlimited
           );
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)

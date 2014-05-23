@@ -365,26 +365,29 @@ namespace Class_biz_strike_team_deployments
         be_assigned: true
         );
       var operational_period_summary = biz_strike_team_deployment_operational_periods.Summary(id: operational_period_id);
-      var be_convoy = biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary);
-      var start = biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary);
-      var end = biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary);
-      biz_strike_team_deployment_logs.Enter
-        (
-        deployment_id: deployment_id,
-        action: "assigned member `" + member_designator + "`"
-        + " to vehicle `" + vehicle_designator + "`"
-        + " for " + (be_convoy ? "convoy" : "operational period")
-        + " from " + start.ToString("yyyy-MM-dd HH:mm")
-        + " to " + end.ToString("yyyy-MM-dd HH:mm")
-        );
-      biz_notifications.IssueForOperationalPeriodAssignment
-        (
-        target:db_practitioner_strike_team_details.SmsTargetOf(member_id),
-        vehicle_designator:vehicle_designator,
-        nature:(be_convoy ? "convoy" : "op period"),
-        start:start.ToString("M/d HH:mm"),
-        end:end.ToString("M/d HH:mm")
-        );
+      if (biz_strike_team_deployment_operational_periods.KindOf(operational_period_summary) != kind_enum.PRELIM)
+        {
+        var be_convoy = biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary);
+        var start = biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary);
+        var end = biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary);
+        biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id: deployment_id,
+          action: "assigned member `" + member_designator + "`"
+          + " to vehicle `" + vehicle_designator + "`"
+          + " for " + (be_convoy ? "convoy" : "operational period")
+          + " from " + start.ToString("yyyy-MM-dd HH:mm")
+          + " to " + end.ToString("yyyy-MM-dd HH:mm")
+          );
+        biz_notifications.IssueForOperationalPeriodAssignment
+          (
+          target:db_practitioner_strike_team_details.SmsTargetOf(member_id),
+          vehicle_designator:vehicle_designator,
+          nature:(be_convoy ? "convoy" : "op period"),
+          start:start.ToString("M/d HH:mm"),
+          end:end.ToString("M/d HH:mm")
+          );
+        }
       }
 
     internal void MakeOperationalPeriodDeassignment
@@ -404,21 +407,24 @@ namespace Class_biz_strike_team_deployments
         be_assigned: false
         );
       var operational_period_summary = biz_strike_team_deployment_operational_periods.Summary(id: operational_period_id);
-      var be_convoy = biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary);
-      var start = biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary);
-      var end = biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary);
-      biz_strike_team_deployment_logs.Enter
-        (
-        deployment_id: deployment_id,
-        action: "deassigned member `" + member_designator + "` from " + (be_convoy ? "convoy" : "operational period") + " from " + start.ToString("yyyy-MM-dd HH:mm") + " to " + end.ToString("yyyy-MM-dd HH:mm")
-        );
-      biz_notifications.IssueForOperationalPeriodDeassignment
-        (
-        target:db_practitioner_strike_team_details.SmsTargetOf(member_id),
-        nature:(be_convoy ? "convoy" : "op period"),
-        start:start.ToString("M/d HH:mm"),
-        end:end.ToString("M/d HH:mm")
-        );
+      if (biz_strike_team_deployment_operational_periods.KindOf(operational_period_summary) != kind_enum.PRELIM)
+        {
+        var be_convoy = biz_strike_team_deployment_operational_periods.BeConvoyOf(operational_period_summary);
+        var start = biz_strike_team_deployment_operational_periods.StartOf(operational_period_summary);
+        var end = biz_strike_team_deployment_operational_periods.EndOf(operational_period_summary);
+        biz_strike_team_deployment_logs.Enter
+          (
+          deployment_id: deployment_id,
+          action: "deassigned member `" + member_designator + "` from " + (be_convoy ? "convoy" : "operational period") + " from " + start.ToString("yyyy-MM-dd HH:mm") + " to " + end.ToString("yyyy-MM-dd HH:mm")
+          );
+        biz_notifications.IssueForOperationalPeriodDeassignment
+          (
+          target:db_practitioner_strike_team_details.SmsTargetOf(member_id),
+          nature:(be_convoy ? "convoy" : "op period"),
+          start:start.ToString("M/d HH:mm"),
+          end:end.ToString("M/d HH:mm")
+          );
+        }
       }
 
     internal string MemberPolicyDescriptionOf(object summary)

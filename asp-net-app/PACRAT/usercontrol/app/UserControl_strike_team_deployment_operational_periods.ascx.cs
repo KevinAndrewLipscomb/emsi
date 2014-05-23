@@ -46,6 +46,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       public string deployment_id;
       public TClass_msg_protected.operational_period_detail msg_protected_operational_period_detail;
       public uint num_operational_periods;
+      public string service_strike_team_management_footprint;
       public string sort_order;
       }
 
@@ -134,11 +135,6 @@ namespace UserControl_strike_team_deployment_operational_periods
       {
       if (!p.be_loaded)
         {
-        LinkButton_new.Visible = p.be_unlimited;
-        DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Visible = p.be_unlimited;
-        DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Visible = p.be_unlimited;
-        DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Visible = p.be_unlimited;
-        //
         if (!p.be_interactive)
           {
           DataGrid_control.AllowSorting = false;
@@ -182,6 +178,7 @@ namespace UserControl_strike_team_deployment_operational_periods
         p.be_unlimited = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
+        p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "start%,end";
         }
       }
@@ -216,6 +213,8 @@ namespace UserControl_strike_team_deployment_operational_periods
         {
         p.msg_protected_operational_period_detail.operational_period_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text,k.safe_hint_type.NUM);
         p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
+        p.msg_protected_operational_period_detail.service_strike_team_management_footprint = p.service_strike_team_management_footprint;
+        p.msg_protected_operational_period_detail.be_unlimited = p.be_unlimited;
         MessageDropCrumbAndTransferTo(p.msg_protected_operational_period_detail,"protected","operational_period_detail");
         }
       }
@@ -308,6 +307,8 @@ namespace UserControl_strike_team_deployment_operational_periods
     {
     p.msg_protected_operational_period_detail.operational_period_id = k.EMPTY;
     p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
+    p.msg_protected_operational_period_detail.service_strike_team_management_footprint = p.service_strike_team_management_footprint;
+    p.msg_protected_operational_period_detail.be_unlimited = p.be_unlimited;
     MessageDropCrumbAndTransferTo
       (
       msg:p.msg_protected_operational_period_detail,
@@ -319,11 +320,19 @@ namespace UserControl_strike_team_deployment_operational_periods
     internal void Set
       (
       string deployment_id,
+      string service_strike_team_management_footprint,
       bool be_unlimited
       )
       {
       p.deployment_id = deployment_id;
+      p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       p.be_unlimited = be_unlimited;
+      //
+      LinkButton_new.Visible = p.be_unlimited;
+      DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Visible = p.be_unlimited;
+      DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Visible = p.be_unlimited;
+      DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Visible = p.be_unlimited;
+      //
       Bind();
       }
 

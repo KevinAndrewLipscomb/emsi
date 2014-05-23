@@ -40,6 +40,15 @@ namespace UserControl_operational_period_detail {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_quick_message;
         
         /// <summary>
+        /// TableRow_operational_period_started control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_operational_period_started;
+        
+        /// <summary>
         /// DropDownList_assignment_level_filter control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace UserControl_operational_period_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_assignment_level_filter;
+        
+        /// <summary>
+        /// Td_for_iap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td_for_iap;
         
         /// <summary>
         /// HyperLink_for_iap control.
