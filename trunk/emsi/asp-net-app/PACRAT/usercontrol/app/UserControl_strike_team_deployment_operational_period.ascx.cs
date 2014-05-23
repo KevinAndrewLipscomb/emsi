@@ -349,7 +349,7 @@ namespace UserControl_strike_team_deployment_operational_period
           start:start,
           end:end,
           be_convoy:be_convoy,
-          prelim_shift_name:k.Safe(TextBox_prelim_shift_name.Text,k.safe_hint_type.HYPHENATED_ALPHANUM_WORDS),
+          prelim_shift_name:k.Safe(TextBox_prelim_shift_name.Text.ToUpper(),k.safe_hint_type.HYPHENATED_ALPHANUM_WORDS),
           kind:kind
           );
         if (kind != "PRELIM")
@@ -505,7 +505,7 @@ namespace UserControl_strike_team_deployment_operational_period
     private void ManageFormAccordingToKind()
       {
       var kind = DropDownList_kind.SelectedValue;
-      var be_kind_using_start_and_end = new ArrayList() { "CONVOY", "ACTUAL" }.Contains(kind);
+      var be_kind_using_start_and_end = new ArrayList() { "CONVOY", "STANDARD" }.Contains(kind);
       var be_prelim = (!be_kind_using_start_and_end && (kind.Length > 0));
       TableRow_start.Visible = be_kind_using_start_and_end;
       TableRow_end.Visible = be_kind_using_start_and_end;

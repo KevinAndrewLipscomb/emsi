@@ -75,7 +75,7 @@
         <asp:ListItem Value="" Selected="True">-- Select --</asp:ListItem>
         <asp:ListItem Value="PRELIM">PRELIM -- to let Service Strike Team Managers make default assignments</asp:ListItem>
         <asp:ListItem Value="CONVOY">CONVOY -- to account for resources on the way to/from deployment base</asp:ListItem>
-        <asp:ListItem Value="ACTUAL">ACTUAL -- to account for resources on duty</asp:ListItem>
+        <asp:ListItem Value="STANDARD">STANDARD -- to account for resources on duty</asp:ListItem>
       </asp:DropDownList>
     </td>
     <td>
