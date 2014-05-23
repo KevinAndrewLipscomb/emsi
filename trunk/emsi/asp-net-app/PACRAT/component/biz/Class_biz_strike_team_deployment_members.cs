@@ -62,10 +62,11 @@ namespace Class_biz_strike_team_deployment_members
       (
       object target,
       string deployment_id,
-      string operational_period_id
+      string operational_period_id,
+      string service_strike_team_management_footprint
       )
       {
-      db_strike_team_deployment_members.BindUnassignedInOperationalPeriodDirectToListControl(target,deployment_id,operational_period_id);
+      db_strike_team_deployment_members.BindUnassignedInOperationalPeriodDirectToListControl(target,deployment_id,operational_period_id,service_strike_team_management_footprint);
       }
 
     public bool Delete(string id)

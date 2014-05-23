@@ -68,7 +68,7 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_operational_periods)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_operational_periods.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_operational_periods",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.Set(p.deployment_id,p.be_ok_to_config_strike_team_deployments);
+        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments);
         }
       else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_LOG)
         {

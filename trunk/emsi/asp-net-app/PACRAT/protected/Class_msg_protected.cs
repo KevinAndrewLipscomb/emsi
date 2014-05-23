@@ -19,6 +19,8 @@ namespace Class_msg_protected
       {
       internal string deployment_id = k.EMPTY;
       internal string operational_period_id = k.EMPTY;
+      internal string service_strike_team_management_footprint = k.EMPTY;
+      internal bool be_unlimited = false;
       }
     public class overview
       {

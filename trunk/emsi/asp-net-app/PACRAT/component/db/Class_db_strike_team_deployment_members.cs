@@ -155,7 +155,8 @@ namespace Class_db_strike_team_deployment_members
       (
       object target,
       string deployment_id,
-      string operational_period_id
+      string operational_period_id,
+      string service_strike_team_management_footprint
       )
       {
       Open();
@@ -167,7 +168,10 @@ namespace Class_db_strike_team_deployment_members
         + " FROM strike_team_deployment_member"
         +   " join practitioner on (practitioner.id=strike_team_deployment_member.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+        +   " join strike_team_roster on (strike_team_roster.practitioner_id=practitioner.id)"
+        +   " join service on (service.id=strike_team_roster.service_id)"
         + " where deployment_id = '" + deployment_id + "'"
+        +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY)
         +   " and practitioner.id not in (select member_id from strike_team_deployment_assignment where operational_period_id = '" + operational_period_id + "')"
         + " order by spec",
         connection

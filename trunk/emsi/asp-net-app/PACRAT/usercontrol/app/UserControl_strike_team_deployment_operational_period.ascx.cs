@@ -20,7 +20,7 @@ namespace UserControl_strike_team_deployment_operational_period
     private struct p_type
       {
       public bool be_loaded;
-      public bool be_ok_to_config_strike_team_deployment_operational_periods;
+      public bool be_unlimited;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
       public TClass_biz_members biz_members;
@@ -30,6 +30,7 @@ namespace UserControl_strike_team_deployment_operational_period
       public string deployment_id;
       public string operational_period_id;
       public presentation_mode_enum presentation_mode;
+      public string service_strike_team_management_footprint;
       public object summary;
       } // end p_type
 
@@ -143,7 +144,7 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       if (!p.be_loaded)
         {
-        LinkButton_new_record.Visible = p.be_ok_to_config_strike_team_deployment_operational_periods;
+        LinkButton_new_record.Visible = p.be_unlimited;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
@@ -172,7 +173,10 @@ namespace UserControl_strike_team_deployment_operational_period
           UserControl_operational_period_detail_control.Set
             (
             deployment_id:p.deployment_id,
-            operational_period_id:p.operational_period_id
+            operational_period_id:p.operational_period_id,
+            service_strike_team_management_footprint:p.service_strike_team_management_footprint,
+            be_unlimited:p.be_unlimited,
+            kind:p.biz_strike_team_deployment_operational_periods.KindOf(p.summary)
             );
           }
 
@@ -220,9 +224,9 @@ namespace UserControl_strike_team_deployment_operational_period
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
-        SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_periods);
-        Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
-        Button_delete.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
+        SetDependentFieldAblements(p.be_unlimited);
+        Button_submit.Enabled = p.be_unlimited;
+        Button_delete.Enabled = p.be_unlimited;
         result = true;
         }
       return result;
@@ -231,15 +235,19 @@ namespace UserControl_strike_team_deployment_operational_period
     internal void Set
       (
       string deployment_id,
-      string operational_period_id
+      string operational_period_id,
+      string service_strike_team_management_footprint,
+      bool be_unlimited
       )
       {
       p.deployment_id = deployment_id;
+      p.be_unlimited = be_unlimited;
       if (operational_period_id.Length > 0)
         {
         p.operational_period_id = operational_period_id;
+        p.service_strike_team_management_footprint = service_strike_team_management_footprint;
         p.summary = p.biz_strike_team_deployment_operational_periods.Summary(operational_period_id);
-        p.presentation_mode = (p.be_ok_to_config_strike_team_deployment_operational_periods ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
+        p.presentation_mode = (p.be_unlimited ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
         }
       else
         {
@@ -258,8 +266,8 @@ namespace UserControl_strike_team_deployment_operational_period
       Label_lookup_hint.Enabled = false;
       LinkButton_reset.Enabled = true;
       LinkButton_new_record.Enabled = false;
-      SetDependentFieldAblements(p.be_ok_to_config_strike_team_deployment_operational_periods);
-      Button_submit.Enabled = p.be_ok_to_config_strike_team_deployment_operational_periods;
+      SetDependentFieldAblements(p.be_unlimited);
+      Button_submit.Enabled = p.be_unlimited;
       Button_delete.Enabled = false;
       TextBox_id.Focus();
       }
@@ -295,10 +303,11 @@ namespace UserControl_strike_team_deployment_operational_period
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_user = new TClass_biz_user();
-        p.be_ok_to_config_strike_team_deployment_operational_periods = true;
+        p.be_unlimited = true;
         p.deployment_id = k.EMPTY;
         p.operational_period_id = k.EMPTY;
         p.presentation_mode = presentation_mode_enum.NONE;
+        p.service_strike_team_management_footprint = k.EMPTY;
         p.summary = null;
         }
       }

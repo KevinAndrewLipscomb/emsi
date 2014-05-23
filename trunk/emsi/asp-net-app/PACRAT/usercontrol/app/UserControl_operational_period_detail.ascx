@@ -7,6 +7,9 @@
   <tr>
     <td>
       <table cellspacing="0" cellpadding="10" border="0">
+        <tr id="TableRow_operational_period_started" runat="server" bgcolor="khaki" visible="false">
+          <td>An operational period has started for this deployment, so no further preliminary assignments are allowed from your account.</td>
+        </tr>
         <tr>
           <td bgcolor="whitesmoke">
             <table  border="0" cellpadding="5" cellspacing="0" width="100%">
@@ -19,7 +22,7 @@
                     <asp:ListItem Value="Vehicular">Vehicular</asp:ListItem>
                   </ASP:DropDownList>
                 </td>
-                <td align="right" width="99%">
+                <td id="Td_for_iap" runat="server" align="right" width="99%" visible="false">
                   <small>For&nbsp;IAP:&nbsp;<asp:HyperLink ID="HyperLink_for_iap" runat="server" NavigateUrl="~/protected/per_op_period_iap.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="For IAP" border="0" height="16" width="16" /></asp:HyperLink></small>
                 </td>
               </tr>
@@ -51,8 +54,8 @@
                 </td>
                 <td id="TableCell_add_mapping" runat="server" valign="top" visible="false">
                   <asp:Panel ID="Panel_copy_other_op_period" runat="server" Visible="false">
-                    Copy from:<asp:DropDownList ID="DropDownList_source_op_period" runat="server"></asp:DropDownList><asp:Button ID="Button_copy_other_op_period" runat="server" Text="Copy" onclick="Button_copy_other_op_period_Click" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_source_op_period" runat="server" ControlToValidate="DropDownList_source_op_period" Display="Dynamic" ErrorMessage="Please select a source to Copy (assignments) from." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+                    Copy from:<asp:DropDownList ID="DropDownList_source_op_period" runat="server"></asp:DropDownList><asp:Button ID="Button_copy_other_op_period" runat="server" Text="Copy" onclick="Button_copy_other_op_period_Click" ValidationGroup="copy_from" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_source_op_period" runat="server" ControlToValidate="DropDownList_source_op_period" Display="Dynamic" ErrorMessage="Please select a source to Copy (assignments) from." Font-Bold="True" ValidationGroup="copy_from">!ERR!</asp:RequiredFieldValidator>
                     <hr />
                   </asp:Panel>
                   <table cellspacing="0" cellpadding="2" border="0">
@@ -89,7 +92,7 @@
                             <td>
                               <asp:DataGrid id="DataGrid_digest" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_digest_ItemDataBound" onsortcommand="DataGrid_digest_SortCommand">
                                 <Columns>
-                                  <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                                  <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" Visible="False">
                                     <HeaderTemplate>
                                       <small>Include in<br />QuickMessage</small><br /> All:<asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
                                     </HeaderTemplate>
@@ -138,7 +141,7 @@
   </tr>
 </table>
 <br/>
-<table id="Table_quick_message" runat="server" bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
+<table id="Table_quick_message" runat="server" bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1" visible="false">
   <tr>
     <td>
       <table cellspacing="0" cellpadding="10" width="100%" border="0">
