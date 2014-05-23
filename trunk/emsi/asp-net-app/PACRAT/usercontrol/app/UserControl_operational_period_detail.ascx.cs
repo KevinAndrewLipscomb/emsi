@@ -500,14 +500,13 @@ namespace UserControl_operational_period_detail
       {
       if (!p.be_loaded)
         {
+        HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+        var hash_table = new Hashtable();
+        hash_table.Add(key:"operational_period_id",value:p.operational_period_id);
+        HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+        //
         if (p.be_unlimited)
           {
-          Td_for_iap.Visible = true;
-          HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
-          var hash_table = new Hashtable();
-          hash_table.Add(key:"operational_period_id",value:p.operational_period_id);
-          HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
-          //
           Panel_copy_other_op_period.Visible = (p.kind != kind_enum.PRELIM) && p.biz_strike_team_deployment_operational_periods.BindDirectToListControl
             (
             target_operational_period_id:p.operational_period_id,
