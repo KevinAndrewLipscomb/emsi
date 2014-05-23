@@ -11,8 +11,15 @@ using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployment_operational_periods
   {
+
   public class TClass_db_strike_team_deployment_operational_periods: TClass_db
     {
+
+    private static class Static
+      {
+      internal const string BE_PRELIM_CLAUSE = "(start is null and end is null and prelim_shift_name <> '')";
+      }
+
     private class strike_team_deployment_operational_periods_summary
       {
       public string id;
@@ -63,7 +70,8 @@ namespace Class_db_strike_team_deployment_operational_periods
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string deployment_id
+      string deployment_id,
+      bool be_unlimited
       )
       {
       Open();
@@ -76,6 +84,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         + " , be_convoy"
         + " from strike_team_deployment_operational_period"
         + " where deployment_id = '" + deployment_id + "'"
+        +     (be_unlimited ? k.EMPTY : " and " + Static.BE_PRELIM_CLAUSE)
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
@@ -95,10 +104,10 @@ namespace Class_db_strike_team_deployment_operational_periods
       var dr = new MySqlCommand
         (
         "SELECT id"
-        + " , CONVERT(IF(start is null and end is null and prelim_shift_name <> '',concat('PRELIM - ',prelim_shift_name),concat(IF(be_convoy,'CVY','STD'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i'))) USING utf8) as spec"
+        + " , CONVERT(IF(" + Static.BE_PRELIM_CLAUSE + ",concat('PRELIM - ',prelim_shift_name),concat(IF(be_convoy,'CVY','STD'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i'))) USING utf8) as spec"
         + " FROM strike_team_deployment_operational_period"
         + " where deployment_id = (select deployment_id from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "')"
-        +   " and (start < (select start from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "') or (start is null and end is null and prelim_shift_name <> ''))"
+        +   " and (start < (select start from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "') or " + Static.BE_PRELIM_CLAUSE + ")"
         + " order by start desc, end desc, prelim_shift_name",
         connection
         )

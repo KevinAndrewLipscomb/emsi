@@ -181,7 +181,8 @@ namespace UserControl_strike_team_deployment_snapshot
         sort_order:"start,end",
         be_sort_order_ascending:true,
         target:DataGrid_operational_periods,
-        deployment_id:p.deployment_id
+        deployment_id:p.deployment_id,
+        be_unlimited:true
         );
       p.digest_content_xml = k.EMPTY;
       p.biz_strike_team_deployment_assignments.BindDigestByDeployment
