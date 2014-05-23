@@ -5,9 +5,11 @@
     <td align="center">
       <table align="center" cellpadding="2" cellspacing="0">
         <tr><td align="center">&nbsp;</td></tr>
-        <tr><td align="center"><small>Refer to this document as</small></td></tr>
-        <tr><td align="center" nowrap="nowrap"><big><b><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> Resource Assignment Report # <asp:Literal ID="Literal_ref_num" runat="server"></asp:Literal></b></big></td></tr>
-        <tr><td align="center"><small>on NIMS ICS Form 204</small></td></tr>
+        <tr id="TableRow_prelim_1" runat="server" visible="false"><td align="center" nowrap="nowrap"><big><b><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> Resource Assignment WORKSHEET</b></big></td></tr>
+        <tr id="TableRow_prelim_2" runat="server" visible="false"><td align="center"><small>Not intended for NIMS ICS Form 204</small></td></tr>
+        <tr id="TableRow_nonprelim_1" runat="server" visible="false"><td align="center"><small>Refer to this document as</small></td></tr>
+        <tr id="TableRow_nonprelim_2" runat="server" visible="false"><td align="center" nowrap="nowrap"><big><b><asp:Literal ID="Literal_application_name_2" runat="server"></asp:Literal> Resource Assignment Report # <asp:Literal ID="Literal_ref_num" runat="server"></asp:Literal></b></big></td></tr>
+        <tr id="TableRow_nonprelim_3" runat="server" visible="false"><td align="center"><small>on NIMS ICS Form 204</small></td></tr>
         <tr><td align="center">&nbsp;</td></tr>
       </table>
     </td>
@@ -27,7 +29,11 @@
               <tr bgcolor="Gainsboro"><td align="center"><small><b><asp:Literal ID="Literal_nature" runat="server"></asp:Literal></b></small></td></tr>
               <tr>
                 <td align="center">
-                  <table width="100%">
+                  <table id="Table_prelim" runat="server" visible="false" width="100%">
+                    <tr><td align="center"><tt><asp:Literal ID="Literal_prelim_shift_name" runat="server"></asp:Literal></tt></td></tr>
+                    <tr><td align="center"><tt>assignments</tt></td></tr>
+                  </table>
+                  <table id="Table_nonprelim" runat="server" visible="false" width="100%">
                     <tr>
                       <td bgcolor="WhiteSmoke">From</td>
                       <td><tt><asp:Literal ID="Literal_start" runat="server"></asp:Literal></tt></td>

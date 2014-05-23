@@ -47,19 +47,6 @@ namespace UserControl_per_op_period_iap
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
-      var mark = DateTime.Now;
-      Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
-      Literal_ref_num.Text = mark.ToString("yyyy-MM-dd-HH-mm-ss-ff");
-      var practitioner_summary = p.biz_practitioners.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
-      Literal_prepared_name.Text = k.EMPTY
-      + p.biz_practitioners.LevelOf(practitioner_summary)
-      + k.SPACE
-      + p.biz_practitioners.FirstNameOf(practitioner_summary)
-      + k.SPACE
-      + p.biz_practitioners.LastNameOf(practitioner_summary)
-      + k.SPACE
-      + "(" + p.biz_practitioners.CertificationNumberOf(practitioner_summary) + ")";
-      Literal_prepared_timestamp.Text = mark.ToString("yyyy-MM-dd HH:mm:ss.ff");
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -152,11 +139,40 @@ namespace UserControl_per_op_period_iap
         prelim_shift_name:out prelim_shift_name,
         kind:out kind
         );
+      var mark = DateTime.Now;
+      if (kind == kind_enum.PRELIM)
+        {
+        TableRow_prelim_1.Visible = true;
+        TableRow_prelim_2.Visible = true;
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        Literal_nature.Text = "PRELIMINARY";
+        Table_prelim.Visible = true;
+        Literal_prelim_shift_name.Text = prelim_shift_name;
+        }
+      else
+        {
+        TableRow_nonprelim_1.Visible = true;
+        TableRow_nonprelim_2.Visible = true;
+        TableRow_nonprelim_3.Visible = true;
+        Literal_application_name_2.Text = Literal_application_name.Text;
+        Literal_ref_num.Text = mark.ToString("yyyy-MM-dd-HH-mm-ss-ff");
+        Literal_nature.Text = (kind == kind_enum.CONVOY ? "CONVOY" : "OPERATIONAL PERIOD");
+        Table_nonprelim.Visible = true;
+        Literal_start.Text = start.ToString("MM/dd/yyyy HH:mm");
+        Literal_end.Text = end.ToString("MM/dd/yyyy HH:mm");
+        }
       Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOfId(deployment_id);
-      Literal_nature.Text = (kind == kind_enum.STANDARD ? "OPERATIONAL PERIOD": (kind == kind_enum.CONVOY ? "CONVOY" : "PRELIM ONLY - NOT FOR IAP"));
-      Literal_start.Text = start.ToString("MM/dd/yyyy HH:mm");
-      Literal_end.Text = end.ToString("MM/dd/yyyy HH:mm");
       Bind();
+      var practitioner_summary = p.biz_practitioners.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+      Literal_prepared_name.Text = k.EMPTY
+      + p.biz_practitioners.LevelOf(practitioner_summary)
+      + k.SPACE
+      + p.biz_practitioners.FirstNameOf(practitioner_summary)
+      + k.SPACE
+      + p.biz_practitioners.LastNameOf(practitioner_summary)
+      + k.SPACE
+      + "(" + p.biz_practitioners.CertificationNumberOf(practitioner_summary) + ")";
+      Literal_prepared_timestamp.Text = mark.ToString("yyyy-MM-dd HH:mm:ss.ff");
       }
 
     } // end TWebUserControl_per_op_period_iap

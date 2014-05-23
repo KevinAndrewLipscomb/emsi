@@ -13,6 +13,15 @@ namespace UserControl_per_op_period_iap {
     public partial class TWebUserControl_per_op_period_iap {
         
         /// <summary>
+        /// TableRow_prelim_1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_prelim_1;
+        
+        /// <summary>
         /// Literal_application_name control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,42 @@ namespace UserControl_per_op_period_iap {
         protected global::System.Web.UI.WebControls.Literal Literal_application_name;
         
         /// <summary>
+        /// TableRow_prelim_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_prelim_2;
+        
+        /// <summary>
+        /// TableRow_nonprelim_1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_nonprelim_1;
+        
+        /// <summary>
+        /// TableRow_nonprelim_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_nonprelim_2;
+        
+        /// <summary>
+        /// Literal_application_name_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name_2;
+        
+        /// <summary>
         /// Literal_ref_num control.
         /// </summary>
         /// <remarks>
@@ -29,6 +74,15 @@ namespace UserControl_per_op_period_iap {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_ref_num;
+        
+        /// <summary>
+        /// TableRow_nonprelim_3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_nonprelim_3;
         
         /// <summary>
         /// Literal_deployment_name control.
@@ -47,6 +101,33 @@ namespace UserControl_per_op_period_iap {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_nature;
+        
+        /// <summary>
+        /// Table_prelim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_prelim;
+        
+        /// <summary>
+        /// Literal_prelim_shift_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prelim_shift_name;
+        
+        /// <summary>
+        /// Table_nonprelim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_nonprelim;
         
         /// <summary>
         /// Literal_start control.
