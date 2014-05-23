@@ -95,7 +95,7 @@ namespace Class_db_strike_team_deployment_operational_periods
       var dr = new MySqlCommand
         (
         "SELECT id"
-        + " , CONVERT(IF(start is null and end is null and prelim_shift_name <> '',concat('PRE',' - ',prelim_shift_name),concat(IF(be_convoy,'CVY','ACT'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i'))) USING utf8) as spec"
+        + " , CONVERT(IF(start is null and end is null and prelim_shift_name <> '',concat('PRELIM - ',prelim_shift_name),concat(IF(be_convoy,'CVY','STD'),' ',DATE_FORMAT(start,'%Y-%m-%d %H:%i'),' - ',DATE_FORMAT(end,'%Y-%m-%d %H:%i'))) USING utf8) as spec"
         + " FROM strike_team_deployment_operational_period"
         + " where deployment_id = (select deployment_id from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "')"
         +   " and (start < (select start from strike_team_deployment_operational_period where id = '" + target_operational_period_id + "') or (start is null and end is null and prelim_shift_name <> ''))"

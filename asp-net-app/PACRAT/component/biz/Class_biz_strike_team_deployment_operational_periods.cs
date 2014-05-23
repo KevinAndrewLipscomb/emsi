@@ -12,7 +12,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
     {
     PRELIM,
     CONVOY,
-    ACTUAL
+    STANDARD
     }
 
   internal enum presentation_mode_enum
@@ -98,7 +98,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
       {
       var get = false;
       //
-      kind = kind_enum.ACTUAL;
+      kind = kind_enum.STANDARD;
       //
       if(db_strike_team_deployment_operational_periods.Get
           (
@@ -137,7 +137,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
       string prelim_shift_name
       )
       {
-      var kind_of = kind_enum.ACTUAL;
+      var kind_of = kind_enum.STANDARD;
       if (be_convoy)
         {
         kind_of = kind_enum.CONVOY;
