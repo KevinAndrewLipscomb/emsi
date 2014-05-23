@@ -68,7 +68,7 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_operational_periods)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_operational_periods.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_operational_periods",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.Set(p.deployment_id);
+        c.Set(p.deployment_id,p.be_ok_to_config_strike_team_deployments);
         }
       else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_LOG)
         {
@@ -102,7 +102,6 @@ namespace UserControl_strike_team_deployment_binder
       {
       if (!p.be_loaded)
         {
-        TabPanel_operational_periods.Visible = p.be_ok_to_config_strike_team_deployments;
         TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
         TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);

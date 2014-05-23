@@ -10,7 +10,7 @@
               <td bgcolor="#dcdcdc">
                 <table cellspacing="0" cellpadding="0" border="0" width="100%">
                   <tr>
-                    <td><strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong></td>
+                    <td id="Td_filter" runat="server"><strong>Filter:&nbsp;<asp:DropDownList id="DropDownList_filter" runat="server" autopostback="True"></asp:DropDownList></strong></td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td align="right"><asp:Literal ID="Literal_num_operational_periods" runat="server"></asp:Literal> operational&nbsp;periods</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

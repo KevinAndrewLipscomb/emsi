@@ -60,10 +60,11 @@ namespace Class_biz_strike_team_deployment_operational_periods
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string deployment_id
+      string deployment_id,
+      bool be_unlimited
       )
       {
-      db_strike_team_deployment_operational_periods.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id);
+      db_strike_team_deployment_operational_periods.BindBaseDataList(sort_order,be_sort_order_ascending,target,deployment_id,be_unlimited);
       }
 
     public bool BindDirectToListControl

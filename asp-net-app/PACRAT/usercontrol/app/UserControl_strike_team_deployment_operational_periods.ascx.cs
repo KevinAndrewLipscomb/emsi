@@ -37,7 +37,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
-      public bool be_ok_to_config;
+      public bool be_unlimited;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
@@ -134,7 +134,11 @@ namespace UserControl_strike_team_deployment_operational_periods
       {
       if (!p.be_loaded)
         {
-        LinkButton_new.Visible = p.be_ok_to_config;
+        LinkButton_new.Visible = p.be_unlimited;
+        DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Visible = p.be_unlimited;
+        DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Visible = p.be_unlimited;
+        DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Visible = p.be_unlimited;
+        //
         if (!p.be_interactive)
           {
           DataGrid_control.AllowSorting = false;
@@ -175,7 +179,7 @@ namespace UserControl_strike_team_deployment_operational_periods
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
-        p.be_ok_to_config = true;
+        p.be_unlimited = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
         p.sort_order = "start%,end";
@@ -285,7 +289,14 @@ namespace UserControl_strike_team_deployment_operational_periods
 
     private void Bind()
       {
-      p.biz_strike_team_deployment_operational_periods.BindBaseDataList(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.deployment_id);
+      p.biz_strike_team_deployment_operational_periods.BindBaseDataList
+        (
+        sort_order:p.sort_order,
+        be_sort_order_ascending:p.be_sort_order_ascending,
+        target:DataGrid_control,
+        deployment_id:p.deployment_id,
+        be_unlimited:p.be_unlimited
+        );
       p.be_datagrid_empty = (p.num_operational_periods == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
@@ -305,9 +316,14 @@ namespace UserControl_strike_team_deployment_operational_periods
       );
     }
 
-    internal void Set(string deployment_id)
+    internal void Set
+      (
+      string deployment_id,
+      bool be_unlimited
+      )
       {
       p.deployment_id = deployment_id;
+      p.be_unlimited = be_unlimited;
       Bind();
       }
 
