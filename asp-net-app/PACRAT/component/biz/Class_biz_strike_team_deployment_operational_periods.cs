@@ -50,6 +50,11 @@ namespace Class_biz_strike_team_deployment_operational_periods
       return db_strike_team_deployment_operational_periods.BeConvoyOf(summary);
       }
 
+    internal bool BeEmpty(string id)
+      {
+      return db_strike_team_deployment_operational_periods.BeEmpty(id);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_strike_team_deployment_operational_periods.Bind(partial_spec, target);
@@ -169,10 +174,10 @@ namespace Class_biz_strike_team_deployment_operational_periods
 
     internal kind_enum KindOf(object summary)
       {
-      return KindOf(StartOf(summary),EndOf(summary),BeConvoyOf(summary),PrelimShift_nameOf(summary));
+      return KindOf(StartOf(summary),EndOf(summary),BeConvoyOf(summary),PrelimShiftNameOf(summary));
       }
 
-    internal string PrelimShift_nameOf(object summary)
+    internal string PrelimShiftNameOf(object summary)
       {
       return db_strike_team_deployment_operational_periods.PrelimShiftNameOf(summary);
       }

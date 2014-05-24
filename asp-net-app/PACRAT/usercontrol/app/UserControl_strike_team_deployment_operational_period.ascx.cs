@@ -6,6 +6,7 @@ using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_operational_periods;
+using Class_biz_strike_team_deployments;
 using Class_biz_user;
 using kix;
 using System;
@@ -23,13 +24,14 @@ namespace UserControl_strike_team_deployment_operational_period
       public bool be_unlimited;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
+      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_user biz_user;
       public string deployment_id;
       public string operational_period_id;
-      public presentation_mode_enum presentation_mode;
+      public Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum presentation_mode;
       public string service_strike_team_management_footprint;
       public object summary;
       } // end p_type
@@ -158,7 +160,7 @@ namespace UserControl_strike_team_deployment_operational_period
         UserControl_drop_down_datetime_end.minute_intervals = 15;
         //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
-        if (p.presentation_mode == presentation_mode_enum.NEW)
+        if (p.presentation_mode == Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NEW)
           {
           SetDataEntryMode();
           TextBox_deployment_id.Text = p.deployment_id;
@@ -224,7 +226,7 @@ namespace UserControl_strike_team_deployment_operational_period
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
-        SetDependentFieldAblements(p.be_unlimited);
+        SetDependentFieldAblements(p.be_unlimited && ((kind != kind_enum.PRELIM) || p.biz_strike_team_deployment_operational_periods.BeEmpty(id)));
         Button_submit.Enabled = p.be_unlimited;
         Button_delete.Enabled = p.be_unlimited;
         result = true;
@@ -242,20 +244,27 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       p.deployment_id = deployment_id;
       p.be_unlimited = be_unlimited;
+      var be_prelim = false;
       if (operational_period_id.Length > 0)
         {
         p.operational_period_id = operational_period_id;
         p.service_strike_team_management_footprint = service_strike_team_management_footprint;
         p.summary = p.biz_strike_team_deployment_operational_periods.Summary(operational_period_id);
-        p.presentation_mode = (p.be_unlimited ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
+        p.presentation_mode = (p.be_unlimited ? Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.FULL_FUNCTION : Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.REVIEW_ONLY);
+        be_prelim = (p.biz_strike_team_deployment_operational_periods.KindOf(p.summary) == kind_enum.PRELIM);
         }
       else
         {
         p.operational_period_id = k.EMPTY;
         p.summary = null;
-        p.presentation_mode = presentation_mode_enum.NEW;
+        p.presentation_mode = Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NEW;
+        }
+      if (!be_prelim && p.biz_strike_team_deployments.BeAnyOperationalPeriodStartedFor(p.deployment_id))
+        {
+        DropDownList_kind.Items.Remove(DropDownList_kind.Items.FindByValue("PRELIM"));
         }
       }
+
     private void SetDataEntryMode()
       {
       Clear();
@@ -301,12 +310,13 @@ namespace UserControl_strike_team_deployment_operational_period
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_user = new TClass_biz_user();
         p.be_unlimited = true;
         p.deployment_id = k.EMPTY;
         p.operational_period_id = k.EMPTY;
-        p.presentation_mode = presentation_mode_enum.NONE;
+        p.presentation_mode = Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NONE;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.summary = null;
         }
@@ -372,7 +382,7 @@ namespace UserControl_strike_team_deployment_operational_period
             );
           }
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
-        if (p.presentation_mode == presentation_mode_enum.NEW)
+        if (p.presentation_mode == Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NEW)
           {
           BackTrack();
           }
