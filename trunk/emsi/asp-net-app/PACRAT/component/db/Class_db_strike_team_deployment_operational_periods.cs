@@ -41,6 +41,14 @@ namespace Class_db_strike_team_deployment_operational_periods
       return (summary as strike_team_deployment_operational_periods_summary).be_convoy;
       }
 
+    internal bool BeEmpty(string id)
+      {
+      Open();
+      var be_empty = "1" == new MySqlCommand("select count(*) = 0 from strike_team_deployment_assignment where operational_period_id = '" + id + "'",connection).ExecuteScalar().ToString();
+      Close();
+      return be_empty;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(start,'-'),'|',IFNULL(end,'-'))";
