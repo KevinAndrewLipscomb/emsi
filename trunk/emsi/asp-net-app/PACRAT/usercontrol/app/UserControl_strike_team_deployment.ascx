@@ -102,7 +102,7 @@
       <asp:RequiredFieldValidator ID="RequiredFieldValidator_member_policy" runat="server" ControlToValidate="RadioButtonList_member_policy" ErrorMessage="Please selected a Personnel participation policy." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
     </td>
   </tr>
-  <tr>
+  <tr id="TableRow_submit_delete_announce" runat="server" visible="false">
     <td>&nbsp;</td>
     <td>
       <table cellpadding="10" cellspacing="0">
@@ -122,6 +122,17 @@
   </tr>
 </table>
 <asp:Panel ID="Panel_active_deployment_detail" runat="server" Visible="false">
+  <table id="Table_initial_actions" runat="server" cellpadding="10" cellspacing="0" visible="false">
+    <tr>
+      <td bgcolor="Khaki">
+        The following initial steps are recommended when a deployment is first created:
+        <ul>
+          <li>Send a <i>mobilization announcement</i> using the above link.</li>
+          <li>Define <i>PRELIM</i> and <i>CONVOY</i> operational period templates (for the Service Strike Team Managers to populate) using the tab below.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
   <br />
   <uc2:UserControl_strike_team_deployment_binder ID="UserControl_strike_team_deployment_binder_control" runat="server" />
 </asp:Panel>

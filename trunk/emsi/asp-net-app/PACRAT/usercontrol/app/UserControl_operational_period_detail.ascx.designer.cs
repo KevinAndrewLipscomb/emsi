@@ -40,6 +40,15 @@ namespace UserControl_operational_period_detail {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_quick_message;
         
         /// <summary>
+        /// TableRow_initial_actions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_initial_actions;
+        
+        /// <summary>
         /// TableRow_operational_period_started control.
         /// </summary>
         /// <remarks>

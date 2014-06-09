@@ -22,6 +22,24 @@ namespace UserControl_strike_team_deployment_operational_periods {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
+        /// TableRow_initial_actions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_initial_actions;
+        
+        /// <summary>
+        /// TableRow_service_actions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_service_actions;
+        
+        /// <summary>
         /// Td_filter control.
         /// </summary>
         /// <remarks>

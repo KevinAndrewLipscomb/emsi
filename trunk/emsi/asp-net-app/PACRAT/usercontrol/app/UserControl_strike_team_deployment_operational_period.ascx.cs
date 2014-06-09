@@ -258,9 +258,11 @@ namespace UserControl_strike_team_deployment_operational_period
         p.operational_period_id = k.EMPTY;
         p.summary = null;
         p.presentation_mode = Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NEW;
+        TableRow_initial_actions.Visible = p.be_unlimited;
         }
       if (!be_prelim && p.biz_strike_team_deployments.BeAnyOperationalPeriodStartedFor(p.deployment_id))
         {
+        TableRow_initial_actions.Visible = false;
         DropDownList_kind.Items.Remove(DropDownList_kind.Items.FindByValue("PRELIM"));
         }
       }

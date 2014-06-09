@@ -229,6 +229,15 @@ namespace UserControl_strike_team_deployment {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_member_policy;
         
         /// <summary>
+        /// TableRow_submit_delete_announce control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_submit_delete_announce;
+        
+        /// <summary>
         /// Button_submit control.
         /// </summary>
         /// <remarks>
@@ -263,6 +272,15 @@ namespace UserControl_strike_team_deployment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel_active_deployment_detail;
+        
+        /// <summary>
+        /// Table_initial_actions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_initial_actions;
         
         /// <summary>
         /// UserControl_strike_team_deployment_binder_control control.
