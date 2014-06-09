@@ -118,6 +118,10 @@ namespace UserControl_operational_period_detail
         {
         SetRestrictedMode();
         }
+      else if (!p.be_unlimited)
+        {
+        TableRow_initial_actions.Visible = true;
+        }
       //
       if (TableCell_add_mapping.Visible)
         {

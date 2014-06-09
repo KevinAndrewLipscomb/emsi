@@ -4,6 +4,7 @@ using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_user;
 using Class_biz_strike_team_deployment_operational_periods;
+using Class_biz_strike_team_deployments;
 using Class_msg_protected;
 using kix;
 using System;
@@ -41,8 +42,9 @@ namespace UserControl_strike_team_deployment_operational_periods
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
-      public TClass_biz_user biz_user;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
+      public TClass_biz_strike_team_deployments biz_strike_team_deployments;
+      public TClass_biz_user biz_user;
       public string deployment_id;
       public TClass_msg_protected.operational_period_detail msg_protected_operational_period_detail;
       public uint num_operational_periods;
@@ -169,8 +171,9 @@ namespace UserControl_strike_team_deployment_operational_periods
         {
         p.biz_members = new TClass_biz_members();
         p.biz_privileges = new TClass_biz_privileges();
-        p.biz_user = new TClass_biz_user();
         p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
+        p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
+        p.biz_user = new TClass_biz_user();
         p.msg_protected_operational_period_detail = new TClass_msg_protected.operational_period_detail();
         //
         p.be_interactive = (Session["mode:report"] == null);
@@ -328,11 +331,17 @@ namespace UserControl_strike_team_deployment_operational_periods
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       p.be_unlimited = be_unlimited;
       //
+      var be_mobilizing = p.biz_strike_team_deployments.BeDemobilizationReasonRequired
+        (
+        deployment_id:p.deployment_id,
+        service_strike_team_management_footprint:k.EMPTY
+        );
+      TableRow_initial_actions.Visible = p.be_unlimited && !be_mobilizing;
+      TableRow_service_actions.Visible = !p.be_unlimited && !be_mobilizing;
       LinkButton_new.Visible = p.be_unlimited;
       DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Visible = p.be_unlimited;
       DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Visible = p.be_unlimited;
       DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Visible = p.be_unlimited;
-      //
       Bind();
       }
 

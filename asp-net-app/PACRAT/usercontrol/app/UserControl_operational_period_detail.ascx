@@ -7,6 +7,9 @@
   <tr>
     <td>
       <table cellspacing="0" cellpadding="10" border="0">
+        <tr id="TableRow_initial_actions" runat="server" bgcolor="khaki" visible="false">
+          <td>Populate this operational period with preliminary assignments.</td>
+        </tr>
         <tr id="TableRow_operational_period_started" runat="server" bgcolor="khaki" visible="false">
           <td>An operational period has started for this deployment, so no further preliminary assignments are allowed from your account.</td>
         </tr>

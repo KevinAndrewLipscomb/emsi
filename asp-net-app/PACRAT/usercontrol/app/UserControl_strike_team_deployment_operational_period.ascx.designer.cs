@@ -202,6 +202,15 @@ namespace UserControl_strike_team_deployment_operational_period {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_deployment_id;
         
         /// <summary>
+        /// TableRow_initial_actions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_initial_actions;
+        
+        /// <summary>
         /// DropDownList_kind control.
         /// </summary>
         /// <remarks>

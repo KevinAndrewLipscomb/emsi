@@ -68,12 +68,13 @@
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_deployment_id" runat="server" errormessage="Please enter a valid Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
+  <tr id="TableRow_initial_actions" runat="server" visible="false"><td bgcolor="Khaki" colspan="2">You can only create PRELIM op periods until a CONVOY or STANDARD op period starts.</td></tr>
   <tr>
     <td><font class="">Kind:</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_kind" runat="server" AutoPostBack="True" onselectedindexchanged="DropDownList_kind_SelectedIndexChanged">
         <asp:ListItem Value="" Selected="True">-- Select --</asp:ListItem>
-        <asp:ListItem Value="PRELIM">PRELIM -- to let Service Strike Team Managers make default assignments</asp:ListItem>
+        <asp:ListItem Value="PRELIM">PRELIM -- to let Service Strike Team Managers make default shift assignments</asp:ListItem>
         <asp:ListItem Value="CONVOY">CONVOY -- to account for resources on the way to/from deployment base</asp:ListItem>
         <asp:ListItem Value="STANDARD">STANDARD -- to account for resources on duty</asp:ListItem>
       </asp:DropDownList>

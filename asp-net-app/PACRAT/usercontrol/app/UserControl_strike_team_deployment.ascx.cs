@@ -145,6 +145,7 @@ namespace UserControl_strike_team_deployment
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
+        TableRow_submit_delete_announce.Visible = p.be_ok_to_config_strike_team_deployments;
         Button_submit.Visible = p.be_ok_to_config_strike_team_deployments;
         //
         if (p.be_ok_to_config_strike_team_deployments)
@@ -170,12 +171,14 @@ namespace UserControl_strike_team_deployment
         else
           {
           Button_submit.Text = "Alter this deployment";
-          LinkButton_announce.Visible = p.be_ok_to_config_strike_team_deployments && !p.biz_strike_team_deployments.BeDemobilizationReasonRequired
-            (
-            deployment_id:p.id,
-            service_strike_team_management_footprint:k.EMPTY
-            );
+          var be_mobilizing = p.be_ok_to_config_strike_team_deployments && !p.biz_strike_team_deployments.BeDemobilizationReasonRequired
+              (
+              deployment_id:p.id,
+              service_strike_team_management_footprint:k.EMPTY
+              );
+          LinkButton_announce.Visible = be_mobilizing;
           Panel_active_deployment_detail.Visible = true;
+          Table_initial_actions.Visible = be_mobilizing;
           }
         p.be_loaded = true;
         }
