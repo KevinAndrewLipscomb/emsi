@@ -113,7 +113,7 @@ namespace Class_db_role_member_map
             +   " join practitioner on (practitioner.id=role_member_map.member_id)"
             +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
             +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
-            +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
+            +   " left join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
             +   " join role on (role.id=role_member_map.role_id)"
             + " where region_code = '" + region_code + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
