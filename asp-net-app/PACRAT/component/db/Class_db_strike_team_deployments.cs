@@ -26,7 +26,7 @@ namespace Class_db_strike_team_deployments
       +   " left join strike_team_deployment_operational_period on (strike_team_deployment_operational_period.deployment_id=strike_team_deployment.id)"
       + " where region_code in"
       +   " ("
-      +   " select GROUP_CONCAT(region_code_name_map.code)"
+      +   " select DISTINCT region_code_name_map.code"
       +   " from region_code_name_map"
       +     " join county_region_map on (county_region_map.region_code=region_code_name_map.code)"
       +     " join service on (service.county_code=county_region_map.county_code)"
