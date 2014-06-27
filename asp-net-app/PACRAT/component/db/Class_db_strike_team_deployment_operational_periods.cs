@@ -92,7 +92,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         + " , be_convoy"
         + " from strike_team_deployment_operational_period"
         + " where deployment_id = '" + deployment_id + "'"
-        +     (be_unlimited ? k.EMPTY : " and " + Static.BE_PRELIM_CLAUSE)
+        +     (be_unlimited ? k.EMPTY : " and (" + Static.BE_PRELIM_CLAUSE + " or be_convoy)")
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
