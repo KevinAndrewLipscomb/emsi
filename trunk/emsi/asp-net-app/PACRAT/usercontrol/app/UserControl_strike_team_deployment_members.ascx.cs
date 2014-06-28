@@ -456,6 +456,7 @@ namespace UserControl_strike_team_deployment_members
       {
       if (p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
         {
+        BuildDistributionListAndRegisterPostBackControls();
         var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
         var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
         if (distribution_list.Length > 0)
@@ -503,7 +504,6 @@ namespace UserControl_strike_team_deployment_members
             be_using_scriptmanager:true
             );
           }
-        BuildDistributionListAndRegisterPostBackControls();
         }
       else // changes and QuickMessages no longer allowed
         {

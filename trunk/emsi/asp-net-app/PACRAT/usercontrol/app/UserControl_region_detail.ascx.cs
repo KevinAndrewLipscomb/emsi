@@ -319,6 +319,7 @@ namespace UserControl_region_detail
 
     protected void Button_send_Click(object sender, EventArgs e)
       {
+      BuildDistributionListAndRegisterPostBackControls();
       var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
       var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
       if (distribution_list.Length > 0)
@@ -366,7 +367,6 @@ namespace UserControl_region_detail
           be_using_scriptmanager:true
           );
         }
-      BuildDistributionListAndRegisterPostBackControls();
       }
 
     protected void RadioButtonList_quick_message_mode_SelectedIndexChanged(object sender, EventArgs e)
