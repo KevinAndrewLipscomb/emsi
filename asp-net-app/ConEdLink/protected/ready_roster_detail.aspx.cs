@@ -238,7 +238,15 @@ namespace ready_roster_detail
         catch (Exception the_exception)
           {
           be_response_meaningful = false;
-          if (the_exception.Message.Contains("The operation has timed out"))
+          if(
+            new ArrayList()
+              {
+                "The operation has timed out"
+              ,
+                "A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond"
+              }
+              .Contains(the_exception.Message)
+            )
             {
             Alert
               (

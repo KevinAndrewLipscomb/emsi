@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_regional_staffer_binder {
+namespace UserControl_analysis_binder {
     
     
-    public partial class TWebUserControl_regional_staffer_binder {
+    public partial class TWebUserControl_analysis_binder {
         
         /// <summary>
         /// UpdatePanel_control control.
@@ -31,58 +31,40 @@ namespace UserControl_regional_staffer_binder {
         protected global::AjaxControlToolkit.TabContainer TabContainer_control;
         
         /// <summary>
-        /// TabPanel_rosters control.
+        /// TabPanel_by_year control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_rosters;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_by_year;
         
         /// <summary>
-        /// TabPanel_sponsors control.
+        /// TabPanel_by_month control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_sponsors;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_by_month;
         
         /// <summary>
-        /// TabPanel_practitioners control.
+        /// TabPanel_by_sponsor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_practitioners;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_by_sponsor;
         
         /// <summary>
-        /// TabPanel_analyses control.
+        /// TabPanel_by_course control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_analyses;
-        
-        /// <summary>
-        /// TabPanel_config control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_config;
-        
-        /// <summary>
-        /// TabPanel_about control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_about;
+        protected global::AjaxControlToolkit.TabPanel TabPanel_by_course;
         
         /// <summary>
         /// PlaceHolder_content control.

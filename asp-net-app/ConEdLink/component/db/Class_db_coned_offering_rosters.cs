@@ -44,27 +44,6 @@ namespace Class_db_coned_offering_rosters
       return ((target) as ListControl).Items.Count > 0;
       }
 
-    public void BindDirectToListControl(object target)
-      {
-      Open();
-      ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
-        (
-        "SELECT id"
-        + " , CONVERT(concat(id) USING utf8) as spec"
-        + " FROM coned_offering_roster"
-        + " order by spec",
-        connection
-        )
-        .ExecuteReader();
-      while (dr.Read())
-        {
-        ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
-        }
-      dr.Close();
-      Close();
-      }
-
     public void BindBaseDataListByConedOfferingId
       (
       string sort_order,
@@ -114,6 +93,162 @@ namespace Class_db_coned_offering_rosters
         .ExecuteReader();
       ((target) as BaseDataList).DataBind();
       (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+      Close();
+      }
+
+    internal void BindBaseDataListForAnalysisOfRegionByCourse
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string region_code,
+      string year
+      )
+      {
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select LPAD(course_number,6,'0') as course_number"
+        + " , course_title as course_name"
+        + " , count(DISTINCT coned_offering.id) as num_classes"
+        + " , count(coned_offering_roster.id) as num_sittings"
+        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " from coned_offering_roster"
+        +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
+        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
+        +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
+        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and region_code_name_map.code = '" + region_code + "'"
+        + " group by course_number"
+        + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+        connection
+        )
+        .ExecuteReader();
+      ((target) as BaseDataList).DataBind();
+      (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+      Close();
+      }
+
+    internal void BindBaseDataListForAnalysisOfRegionByMonth
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string region_code,
+      string year
+      )
+      {
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select DATE_FORMAT(end_date_time,'%b') as month"
+        + " , count(DISTINCT coned_offering.id) as num_classes"
+        + " , count(coned_offering_roster.id) as num_sittings"
+        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " from coned_offering_roster"
+        +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
+        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
+        +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
+        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and region_code_name_map.code = '" + region_code + "'"
+        + " group by MONTH(end_date_time)"
+        + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+        connection
+        )
+        .ExecuteReader();
+      ((target) as BaseDataList).DataBind();
+      (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+      Close();
+      }
+
+    internal void BindBaseDataListForAnalysisOfRegionBySponsor
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string region_code,
+      string year
+      )
+      {
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select teaching_entity.sponsor_number as sponsor_number"
+        + " , teaching_entity.name as sponsor_name"
+        + " , count(DISTINCT coned_offering.id) as num_classes"
+        + " , count(coned_offering_roster.id) as num_sittings"
+        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " from coned_offering_roster"
+        +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
+        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
+        +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
+        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and region_code_name_map.code = '" + region_code + "'"
+        + " group by teaching_entity.sponsor_number"
+        + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+        connection
+        )
+        .ExecuteReader();
+      ((target) as BaseDataList).DataBind();
+      (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+      Close();
+      }
+
+    internal void BindBaseDataListForAnalysisOfRegionByYear
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string region_code
+      )
+      {
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select @fye := YEAR(ADDDATE(end_date_time,INTERVAL 6 MONTH)) as fiscal_year_ending"
+        + " , count(DISTINCT coned_offering.id) as num_classes"
+        + " , count(coned_offering_roster.id) as num_sittings"
+        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " from coned_offering_roster"
+        +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
+        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
+        +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
+        +   " and region_code_name_map.code = '" + region_code + "'"
+        + " group by fiscal_year_ending"
+        +   " having fiscal_year_ending between 2013 and YEAR(CURDATE())"
+        + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+        connection
+        )
+        .ExecuteReader();
+      ((target) as BaseDataList).DataBind();
+      (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+      Close();
+      }
+
+    public void BindDirectToListControl(object target)
+      {
+      Open();
+      ((target) as ListControl).Items.Clear();
+      var dr = new MySqlCommand
+        (
+        "SELECT id"
+        + " , CONVERT(concat(id) USING utf8) as spec"
+        + " FROM coned_offering_roster"
+        + " order by spec",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
+        }
+      dr.Close();
       Close();
       }
 
