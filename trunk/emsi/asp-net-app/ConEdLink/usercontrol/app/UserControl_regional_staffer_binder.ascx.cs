@@ -1,5 +1,6 @@
 using kix;
 using UserControl_about;
+using UserControl_analysis_binder;
 using UserControl_config;
 using UserControl_coned_sponsors;
 using UserControl_practitioner;
@@ -14,8 +15,9 @@ namespace UserControl_regional_staffer_binder
     public const int TSSI_ROSTERS = 0;
     public const int TSSI_SPONSORS = 1;
     public const int TSSI_PRACTITIONERS = 2;
-    public const int TSSI_CONFIG = 3;
-    public const int TSSI_ABOUT = 4;
+    public const int TSSI_ANALYSES = 3;
+    public const int TSSI_CONFIG = 4;
+    public const int TSSI_ABOUT = 5;
     }
 
   public partial class TWebUserControl_regional_staffer_binder: ki_web_ui.usercontrol_class
@@ -116,6 +118,11 @@ namespace UserControl_regional_staffer_binder
         var c = ((TWebUserControl_practitioner)(LoadControl("~/usercontrol/app/UserControl_practitioner.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
+      else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_ANALYSES)
+        {
+        var c = ((TWebUserControl_analysis_binder)(LoadControl("~/usercontrol/app/UserControl_analysis_binder.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        }
       else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_CONFIG)
         {
         var c = ((TWebUserControl_config)(LoadControl("~/usercontrol/app/UserControl_config.ascx")));
@@ -147,6 +154,10 @@ namespace UserControl_regional_staffer_binder
         else if (target.ToLower().Contains("/practitioner/"))
           {
           p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_PRACTITIONERS;
+          }
+        else if (target.ToLower().Contains("/analyses/"))
+          {
+          p.tab_index = UserControl_regional_staffer_binder_Static.TSSI_ANALYSES;
           }
         else if (target.ToLower().Contains("/config/"))
           {
