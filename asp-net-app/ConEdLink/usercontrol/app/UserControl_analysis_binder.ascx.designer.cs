@@ -67,6 +67,15 @@ namespace UserControl_analysis_binder {
         protected global::AjaxControlToolkit.TabPanel TabPanel_by_course;
         
         /// <summary>
+        /// TabPanel_by_county control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel_by_county;
+        
+        /// <summary>
         /// PlaceHolder_content control.
         /// </summary>
         /// <remarks>
