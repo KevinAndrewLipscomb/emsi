@@ -11,6 +11,7 @@
             <cc1:TabPanel runat="server" headertext="By month" id="TabPanel_by_month"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="By sponsor" id="TabPanel_by_sponsor"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="By course" id="TabPanel_by_course"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="By county" id="TabPanel_by_county"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

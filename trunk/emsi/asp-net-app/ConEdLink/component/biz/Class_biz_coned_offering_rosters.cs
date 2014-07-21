@@ -58,6 +58,11 @@ namespace Class_biz_coned_offering_rosters
       db_coned_offering_rosters.BindBaseDataListByConedOfferingId(sort_order,be_sort_order_ascending,target,id);
       }
 
+    internal void BindBaseDataListForAnalysisOfRegionByCounty(string sort_order, bool be_sort_order_ascending, System.Web.UI.WebControls.DataGrid target, string region_code, string year)
+      {
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByCounty(sort_order,be_sort_order_ascending,target,region_code,year);
+      }
+
     internal void BindBaseDataListForAnalysisOfRegionByCourse
       (
       string sort_order,

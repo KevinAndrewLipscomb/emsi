@@ -312,6 +312,13 @@
     <Compile Include="usercontrol\app\UserControl_analysis_binder.ascx.designer.cs">
       <DependentUpon>UserControl_analysis_binder.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_region_by_county.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_region_by_county.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_region_by_county.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_region_by_county.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_region_by_course.ascx.cs">
       <DependentUpon>UserControl_analysis_of_region_by_course.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -689,6 +696,7 @@
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_binder.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_region_by_county.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_course.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_month.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_sponsor.ascx" />
