@@ -152,9 +152,9 @@ namespace UserControl_analysis_of_region_by_sponsor
         // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
         // had it loaded already.
         //
-        if (instance_id == "ASP.protected_overview_aspx.UserControl_regional_staffer_binder_analysis_binder_analysis_of_region_by_sponsor")
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_regional_staffer_binder_analysis_of_region_binder_analysis_of_region_by_sponsor")
           {
-          p.be_loaded &= ((Session["UserControl_regional_staffer_binder_UserControl_analysis_binder_PlaceHolder_content"] as string) == "UserControl_analysis_of_region_by_sponsor");
+          p.be_loaded &= ((Session["UserControl_regional_staffer_binder_UserControl_analysis_of_region_binder_PlaceHolder_content"] as string) == "UserControl_analysis_of_region_by_sponsor");
           }
         }
       else

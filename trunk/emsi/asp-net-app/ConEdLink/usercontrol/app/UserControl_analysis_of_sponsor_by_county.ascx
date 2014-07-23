@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_analysis_of_region_by_sponsor.ascx.cs" Inherits="UserControl_analysis_of_region_by_sponsor.TWebUserControl_analysis_of_region_by_sponsor"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_analysis_of_sponsor_by_county.ascx.cs" Inherits="UserControl_analysis_of_sponsor_by_county.TWebUserControl_analysis_of_sponsor_by_county"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~datagrid~sortable.ascx-template -->
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">
   <ContentTemplate>
@@ -22,11 +22,8 @@
               <td>
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
-                    <asp:BoundColumn datafield="sponsor_number" headertext="#" sortexpression="sponsor_number%">
-                      <ItemStyle Font-Bold="true" />
-                    </asp:BoundColumn>
-                    <asp:BoundColumn datafield="sponsor_name" headertext="Name" sortexpression="sponsor_name%">
-                      <ItemStyle Font-Bold="true" />
+                    <asp:BoundColumn datafield="county_name" headertext="County" sortexpression="county_name%">
+                      <ItemStyle HorizontalAlign="Right" Font-Bold="true" />
                     </asp:BoundColumn>
                     <asp:BoundColumn datafield="num_classes" headertext="# classes" sortexpression="num_classes%">
                       <ItemStyle HorizontalAlign="Right" />

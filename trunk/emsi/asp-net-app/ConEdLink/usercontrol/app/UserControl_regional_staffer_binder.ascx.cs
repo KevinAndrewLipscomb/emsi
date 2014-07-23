@@ -1,6 +1,6 @@
 using kix;
 using UserControl_about;
-using UserControl_analysis_binder;
+using UserControl_analysis_of_region_binder;
 using UserControl_config;
 using UserControl_coned_sponsors;
 using UserControl_practitioner;
@@ -120,8 +120,8 @@ namespace UserControl_regional_staffer_binder
         }
       else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_ANALYSES)
         {
-        var c = ((TWebUserControl_analysis_binder)(LoadControl("~/usercontrol/app/UserControl_analysis_binder.ascx")));
-        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        var c = ((TWebUserControl_analysis_of_region_binder)(LoadControl("~/usercontrol/app/UserControl_analysis_of_region_binder.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_region_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
       else if (p.tab_index == UserControl_regional_staffer_binder_Static.TSSI_CONFIG)
         {

@@ -10,17 +10,16 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Collections;
 
-namespace UserControl_analysis_of_region_by_course
+namespace UserControl_analysis_of_sponsor_by_month
   {
-  public partial class TWebUserControl_analysis_of_region_by_course: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_analysis_of_sponsor_by_month: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_analysis_of_region_by_course_Static
+    public static class UserControl_analysis_of_sponsor_by_month_Static
       {
-      public const int TCI_COURSE_NUMBER = 0;
-      public const int TCI_COURSE_NAME = 1;
-      public const int TCI_NUM_CLASSES = 2;
-      public const int TCI_NUM_SITTINGS = 3;
-      public const int TCI_AVG_NUM_STUDENTS_PER_CLASS = 4;
+      public const int TCI_MONTH = 0;
+      public const int TCI_NUM_CLASSES = 1;
+      public const int TCI_NUM_SITTINGS = 2;
+      public const int TCI_AVG_NUM_STUDENTS_PER_CLASS = 3;
       }
 
     private struct p_type
@@ -30,7 +29,7 @@ namespace UserControl_analysis_of_region_by_course
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
-      public uint num_courses;
+      public uint num_months;
       public string sort_order;
       public string year;
       }
@@ -152,9 +151,9 @@ namespace UserControl_analysis_of_region_by_course
         // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
         // had it loaded already.
         //
-        if (instance_id == "ASP.protected_overview_aspx.UserControl_regional_staffer_binder_analysis_of_region_binder_analysis_of_region_by_course")
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_coned_sponsor_binder_analysis_of_sponsor_binder_analysis_of_sponsor_by_month")
           {
-          p.be_loaded &= ((Session["UserControl_regional_staffer_binder_UserControl_analysis_of_region_binder_PlaceHolder_content"] as string) == "UserControl_analysis_of_region_by_course");
+          p.be_loaded &= ((Session["UserControl_coned_sponsor_binder_UserControl_analysis_of_sponsor_binder_PlaceHolder_content"] as string) == "UserControl_analysis_of_sponsor_by_month");
           }
         }
       else
@@ -164,7 +163,7 @@ namespace UserControl_analysis_of_region_by_course
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.sort_order = "course_name";
+        p.sort_order = "month_num";
         p.year = DateTime.Today.Year.ToString();
         }
       }
@@ -177,15 +176,15 @@ namespace UserControl_analysis_of_region_by_course
       {
       this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
       this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
-      this.PreRender += this.TWebUserControl_analysis_of_region_by_course_PreRender;
+      this.PreRender += this.TWebUserControl_analysis_of_sponsor_by_month_PreRender;
       }
 
-    private void TWebUserControl_analysis_of_region_by_course_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_analysis_of_sponsor_by_month_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_analysis_of_region_by_course Fresh()
+    public TWebUserControl_analysis_of_sponsor_by_month Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -205,7 +204,7 @@ namespace UserControl_analysis_of_region_by_course
             cell.EnableViewState = false;
             }
           //
-          p.num_courses++;
+          p.num_months++;
           }
         }
       }
@@ -227,18 +226,18 @@ namespace UserControl_analysis_of_region_by_course
 
     private void Bind()
       {
-      p.biz_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByCourse
+      p.biz_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByMonth
         (
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control,
-        region_code:Session["region_code"].ToString(),
+        coned_sponsor_user_id:Session["coned_sponsor_user_id"].ToString(),
         year:p.year
         );
-      p.be_datagrid_empty = (p.num_courses == 0);
+      p.be_datagrid_empty = (p.num_months == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      p.num_courses = 0;
+      p.num_months = 0;
       }
 
     protected void DropDownList_year_SelectedIndexChanged(object sender, EventArgs e)
@@ -247,6 +246,6 @@ namespace UserControl_analysis_of_region_by_course
       Bind();
       }
 
-    } // end TWebUserControl_analysis_of_region_by_course
+    } // end TWebUserControl_analysis_of_sponsor_by_month
 
   }

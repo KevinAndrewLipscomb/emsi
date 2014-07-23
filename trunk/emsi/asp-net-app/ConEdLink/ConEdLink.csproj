@@ -305,12 +305,12 @@
     <Compile Include="usercontrol\app\UserControl_about.ascx.designer.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
     </Compile>
-    <Compile Include="usercontrol\app\UserControl_analysis_binder.ascx.cs">
-      <DependentUpon>UserControl_analysis_binder.ascx</DependentUpon>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_region_binder.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_region_binder.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="usercontrol\app\UserControl_analysis_binder.ascx.designer.cs">
-      <DependentUpon>UserControl_analysis_binder.ascx</DependentUpon>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_region_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_region_binder.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_region_by_county.ascx.cs">
       <DependentUpon>UserControl_analysis_of_region_by_county.ascx</DependentUpon>
@@ -346,6 +346,41 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_region_by_year.ascx.designer.cs">
       <DependentUpon>UserControl_analysis_of_region_by_year.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_binder.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_binder.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_county.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_county.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_county.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_county.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_course.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_course.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_course.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_course.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_month.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_month.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_month.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_month.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_year.ascx.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_year.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_year.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_of_sponsor_by_year.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx.cs">
       <DependentUpon>UserControl_change_practitioner_email_address.ascx</DependentUpon>
@@ -695,12 +730,17 @@
     <None Include="noninteractive\.crontab" />
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
-    <Content Include="usercontrol\app\UserControl_analysis_binder.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_region_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_county.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_course.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_month.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_sponsor.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_year.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_binder.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_county.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_course.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_month.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_year.ascx" />
     <Content Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx" />
     <Content Include="usercontrol\app\UserControl_class_catalog.ascx" />
     <Content Include="usercontrol\app\UserControl_common_header_bar.ascx" />

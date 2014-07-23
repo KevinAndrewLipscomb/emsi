@@ -110,6 +110,53 @@ namespace Class_biz_coned_offering_rosters
       db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByYear(sort_order,be_sort_order_ascending,target,region_code);
       }
 
+    internal void BindBaseDataListForAnalysisOfSponsorByCounty
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string coned_sponsor_user_id,
+      string year
+      )
+      {
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByCounty(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year);
+      }
+
+    internal void BindBaseDataListForAnalysisOfSponsorByCourse
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string coned_sponsor_user_id,
+      string year
+      )
+      {
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByCourse(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year);
+      }
+
+    internal void BindBaseDataListForAnalysisOfSponsorByMonth
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string coned_sponsor_user_id,
+      string year
+      )
+      {
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByMonth(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year);
+      }
+
+    internal void BindBaseDataListForAnalysisOfSponsorByYear
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string coned_sponsor_user_id
+      )
+      {
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByYear(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id);
+      }
+
       public void BindDirectToListControl(object target)
       {
       db_coned_offering_rosters.BindDirectToListControl(target);

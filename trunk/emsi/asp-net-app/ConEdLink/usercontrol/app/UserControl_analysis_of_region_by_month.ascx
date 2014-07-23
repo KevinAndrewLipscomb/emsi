@@ -22,7 +22,7 @@
               <td>
                 <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True">
                   <Columns>
-                    <asp:BoundColumn datafield="month" headertext="Month" sortexpression="MONTH(end_date_time)%">
+                    <asp:BoundColumn datafield="month" headertext="Month" sortexpression="month_num%">
                       <ItemStyle HorizontalAlign="Right" Font-Bold="true" />
                     </asp:BoundColumn>
                     <asp:BoundColumn datafield="num_classes" headertext="# classes" sortexpression="num_classes%">
@@ -31,7 +31,7 @@
                     <asp:BoundColumn datafield="num_sittings" headertext="# sittings" sortexpression="num_sittings%">
                       <ItemStyle HorizontalAlign="Right" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="avg_num_students_per_class" headertext="Avg # students / class" sortexpression="count(coned_offering_roster.id)/count(DISTINCT coned_offering.id)%">
+                    <asp:BoundColumn datafield="avg_num_students_per_class" headertext="Avg # students / class" sortexpression="avg_num_students_per_class%">
                       <ItemStyle HorizontalAlign="Right" />
                     </asp:BoundColumn>
                   </Columns>
