@@ -11,6 +11,7 @@ using UserControl_about;
 using UserControl_class_catalog;
 using UserControl_coned_sponsor;
 using UserControl_practitioner;
+using UserControl_analysis_of_sponsor_binder;
 
 namespace UserControl_coned_sponsor_binder
   {
@@ -19,7 +20,8 @@ namespace UserControl_coned_sponsor_binder
     public const int TSSI_MY_PROFILE = 0;
     public const int TSSI_CLASSES = 1;
     public const int TSSI_PRACTITIONERS = 2;
-    public const int TSSI_ABOUT = 3;
+    public const int TSSI_ANALYSES = 3;
+    public const int TSSI_ABOUT = 4;
     }
 
   public struct p_type
@@ -122,6 +124,11 @@ namespace UserControl_coned_sponsor_binder
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.Set(user_sponsor_id_filter:p.user_sponsor_id);
         }
+      else if (p.tab_index == UserControl_coned_sponsor_binder_Static.TSSI_ANALYSES)
+        {
+        var c = ((TWebUserControl_analysis_of_sponsor_binder)(LoadControl("~/usercontrol/app/UserControl_analysis_of_sponsor_binder.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_sponsor_binder",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        }
       else if (p.tab_index == UserControl_coned_sponsor_binder_Static.TSSI_ABOUT)
         {
         var c = ((TWebUserControl_about)(LoadControl("~/usercontrol/app/UserControl_about.ascx")));
@@ -149,6 +156,10 @@ namespace UserControl_coned_sponsor_binder
           {
           p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_PRACTITIONERS;
           }
+        else if (target.ToLower().Contains("/analysis/"))
+          {
+          p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_ANALYSES;
+          }
         else if (target.ToLower().Contains("/about/"))
           {
           p.tab_index = UserControl_coned_sponsor_binder_Static.TSSI_ABOUT;
@@ -169,4 +180,3 @@ namespace UserControl_coned_sponsor_binder
     } // end TWebUserControl_coned_sponsor_binder
 
   }
-

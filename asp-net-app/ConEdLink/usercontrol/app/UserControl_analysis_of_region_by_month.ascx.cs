@@ -151,9 +151,9 @@ namespace UserControl_analysis_of_region_by_month
         // If this control is being used dynamically under one or more parent binder(s), it must ascertain which instance it is, and whether or not that instance's parent binder
         // had it loaded already.
         //
-        if (instance_id == "ASP.protected_overview_aspx.UserControl_regional_staffer_binder_analysis_binder_analysis_of_region_by_month")
+        if (instance_id == "ASP.protected_overview_aspx.UserControl_regional_staffer_binder_analysis_of_region_binder_analysis_of_region_by_month")
           {
-          p.be_loaded &= ((Session["UserControl_regional_staffer_binder_UserControl_analysis_binder_PlaceHolder_content"] as string) == "UserControl_analysis_of_region_by_month");
+          p.be_loaded &= ((Session["UserControl_regional_staffer_binder_UserControl_analysis_of_region_binder_PlaceHolder_content"] as string) == "UserControl_analysis_of_region_by_month");
           }
         }
       else
@@ -163,7 +163,7 @@ namespace UserControl_analysis_of_region_by_month
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
-        p.sort_order = "MONTH(end_date_time)";
+        p.sort_order = "month_num";
         p.year = DateTime.Today.Year.ToString();
         }
       }

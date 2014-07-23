@@ -34,7 +34,7 @@
                     <asp:BoundColumn datafield="num_sittings" headertext="# sittings" sortexpression="num_sittings%">
                       <ItemStyle HorizontalAlign="Right" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="avg_num_students_per_class" headertext="Avg # students / class" sortexpression="count(coned_offering_roster.id)/count(DISTINCT coned_offering.id)%">
+                    <asp:BoundColumn datafield="avg_num_students_per_class" headertext="Avg # students / class" sortexpression="avg_num_students_per_class%">
                       <ItemStyle HorizontalAlign="Right" />
                     </asp:BoundColumn>
                   </Columns>

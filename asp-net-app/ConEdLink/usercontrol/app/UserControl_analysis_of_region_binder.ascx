@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_analysis_binder.ascx.cs" Inherits="UserControl_analysis_binder.TWebUserControl_analysis_binder"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_analysis_of_region_binder.ascx.cs" Inherits="UserControl_analysis_of_region_binder.TWebUserControl_analysis_of_region_binder"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~binder.ascx-template -->
 <%@ Register TagPrefix="cc1" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
 <asp:UpdatePanel id="UpdatePanel_control" runat="server" updatemode="Conditional">

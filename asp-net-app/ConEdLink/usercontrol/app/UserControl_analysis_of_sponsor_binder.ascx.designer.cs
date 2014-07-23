@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_analysis_binder {
+namespace UserControl_analysis_of_sponsor_binder {
     
     
-    public partial class TWebUserControl_analysis_binder {
+    public partial class TWebUserControl_analysis_of_sponsor_binder {
         
         /// <summary>
         /// UpdatePanel_control control.
@@ -47,15 +47,6 @@ namespace UserControl_analysis_binder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel_by_month;
-        
-        /// <summary>
-        /// TabPanel_by_sponsor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel_by_sponsor;
         
         /// <summary>
         /// TabPanel_by_course control.
