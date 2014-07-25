@@ -33,6 +33,9 @@
                     <asp:BoundColumn datafield="avg_num_students_per_class" headertext="Avg # students / class" sortexpression="CAST(avg_num_students_per_class AS DECIMAL(10,1))%, county_name">
                       <ItemStyle HorizontalAlign="Right" />
                     </asp:BoundColumn>
+                    <asp:BoundColumn datafield="num_distinct_practitioners" headertext="# distinct practitioners" sortexpression="num_distinct_practitioners%, county_name">
+                      <ItemStyle HorizontalAlign="Right" />
+                    </asp:BoundColumn>
                   </Columns>
                   <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
                 </asp:DataGrid>

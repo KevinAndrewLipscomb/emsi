@@ -6,6 +6,10 @@
     <table cellspacing="0" cellpadding="0" border="0" width="100%">
       <tr>
         <td>
+          <small>
+            Based only on rosters processed via ConEdLink
+            <p></p>
+          </small>
           <cc1:TabContainer id="TabContainer_control" runat="server" autopostback="True" cssclass="ajax__tab_ki">
             <cc1:TabPanel runat="server" headertext="By year" id="TabPanel_by_year"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="By month" id="TabPanel_by_month"></cc1:TabPanel>

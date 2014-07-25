@@ -21,6 +21,7 @@ namespace UserControl_analysis_of_sponsor_by_month
       public const int TCI_NUM_CLASSES = 1;
       public const int TCI_NUM_SITTINGS = 2;
       public const int TCI_AVG_NUM_STUDENTS_PER_CLASS = 3;
+      public const int TCI_NUM_DISTINCT_PRACTITIONERS = 4;
       }
 
     private struct p_type

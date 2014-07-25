@@ -22,6 +22,7 @@ namespace UserControl_analysis_of_region_by_course
       public const int TCI_NUM_CLASSES = 2;
       public const int TCI_NUM_SITTINGS = 3;
       public const int TCI_AVG_NUM_STUDENTS_PER_CLASS = 4;
+      public const int TCI_NUM_DISTINCT_PRACTITIONERS = 5;
       }
 
     private struct p_type
