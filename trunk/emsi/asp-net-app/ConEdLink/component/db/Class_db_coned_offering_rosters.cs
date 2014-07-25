@@ -102,7 +102,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -113,14 +114,16 @@ namespace Class_db_coned_offering_rosters
         + " select county_code_name_map.name as county_name"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and region_code_name_map.code = '" + region_code + "'"
         + " group by class_county_code"
         + " )"
@@ -140,7 +143,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -152,14 +156,16 @@ namespace Class_db_coned_offering_rosters
         + " , course_title as course_name"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and region_code_name_map.code = '" + region_code + "'"
         + " group by course_number"
         + " )"
@@ -179,7 +185,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -191,13 +198,15 @@ namespace Class_db_coned_offering_rosters
         + " , DATE_FORMAT(end_date_time,'%b') as month"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and region_code_name_map.code = '" + region_code + "'"
         + " group by MONTH(end_date_time)"
         + " )"
@@ -217,7 +226,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -229,14 +239,16 @@ namespace Class_db_coned_offering_rosters
         + " , teaching_entity.name as sponsor_name"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and region_code_name_map.code = '" + region_code + "'"
         + " group by teaching_entity.sponsor_number"
         + " )"
@@ -255,7 +267,8 @@ namespace Class_db_coned_offering_rosters
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string region_code
+      string region_code,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -266,12 +279,14 @@ namespace Class_db_coned_offering_rosters
         + " select @fye := YEAR(ADDDATE(end_date_time,INTERVAL 6 MONTH)) as fiscal_year_ending"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and region_code_name_map.code = '" + region_code + "'"
         + " group by fiscal_year_ending"
         +   " having fiscal_year_ending between 2013 and YEAR(CURDATE())"
@@ -292,7 +307,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string coned_sponsor_user_id,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -303,14 +319,16 @@ namespace Class_db_coned_offering_rosters
         + " select county_code_name_map.name as county_name"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
         +   " join county_code_name_map on (county_code_name_map.emsrs_code=coned_offering.class_county_code)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and teaching_entity.id = '" + coned_sponsor_user_id + "'"
         + " group by class_county_code"
         + " )"
@@ -330,7 +348,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string coned_sponsor_user_id,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -342,14 +361,16 @@ namespace Class_db_coned_offering_rosters
         + " , course_title as course_name"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and teaching_entity.id = '" + coned_sponsor_user_id + "'"
         + " group by course_number"
         + " )"
@@ -369,7 +390,8 @@ namespace Class_db_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string coned_sponsor_user_id,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -381,13 +403,15 @@ namespace Class_db_coned_offering_rosters
         + " , DATE_FORMAT(end_date_time,'%b') as month"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   " and YEAR(end_date_time) = '" + year + "'"
+        +   " and YEAR(end_date_time) = '" + year_filter + "'"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and teaching_entity.id = '" + coned_sponsor_user_id + "'"
         + " group by MONTH(end_date_time)"
         + " )"
@@ -406,7 +430,8 @@ namespace Class_db_coned_offering_rosters
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string coned_sponsor_user_id
+      string coned_sponsor_user_id,
+      string practitioner_level_filter
       )
       {
       Open();
@@ -417,12 +442,14 @@ namespace Class_db_coned_offering_rosters
         + " select @fye := YEAR(ADDDATE(end_date_time,INTERVAL 6 MONTH)) as fiscal_year_ending"
         + " , count(DISTINCT coned_offering.id) as num_classes"
         + " , count(coned_offering_roster.id) as num_sittings"
-        + " , FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1) as avg_num_students_per_class"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
         + " from coned_offering_roster"
         +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
         +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
         +   " join teaching_entity on (teaching_entity.emsrs_id=coned_offering.sponsor_id)"
+        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
         + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
+        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
         +   " and teaching_entity.id = '" + coned_sponsor_user_id + "'"
         + " group by fiscal_year_ending"
         +   " having fiscal_year_ending between 2013 and YEAR(CURDATE())"

@@ -1,6 +1,7 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using Class_biz_coned_offering_rosters;
+using Class_biz_practitioner_levels;
 using Class_msg_protected;
 using kix;
 using System;
@@ -29,7 +30,9 @@ namespace UserControl_analysis_of_sponsor_by_year
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
       public uint num_fiscal_years;
+      public string practitioner_level_filter;
       public string sort_order;
       }
 
@@ -122,6 +125,11 @@ namespace UserControl_analysis_of_sponsor_by_year
           {
           DataGrid_control.AllowSorting = false;
           }
+        p.biz_practitioner_levels.BindDirectToListControl
+          (
+          target:DropDownList_practitioner_level,
+          unselected_literal:"(All)"
+          );
         Bind();
         p.be_loaded = true;
         }
@@ -150,10 +158,12 @@ namespace UserControl_analysis_of_sponsor_by_year
       else
         {
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
+        p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.practitioner_level_filter = k.EMPTY;
         p.sort_order = "fiscal_year_ending desc";
         }
       }
@@ -221,12 +231,19 @@ namespace UserControl_analysis_of_sponsor_by_year
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control,
-        coned_sponsor_user_id:Session["coned_sponsor_user_id"].ToString()
+        coned_sponsor_user_id:Session["coned_sponsor_user_id"].ToString(),
+        practitioner_level_filter:p.practitioner_level_filter
         );
       p.be_datagrid_empty = (p.num_fiscal_years == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       p.num_fiscal_years = 0;
+      }
+
+    protected void DropDownList_practitioner_level_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      p.practitioner_level_filter = k.Safe(DropDownList_practitioner_level.SelectedValue,k.safe_hint_type.NUM);
+      Bind();
       }
 
     } // end TWebUserControl_analysis_of_sponsor_by_year

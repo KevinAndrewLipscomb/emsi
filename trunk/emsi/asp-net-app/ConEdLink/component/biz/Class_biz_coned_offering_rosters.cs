@@ -58,9 +58,17 @@ namespace Class_biz_coned_offering_rosters
       db_coned_offering_rosters.BindBaseDataListByConedOfferingId(sort_order,be_sort_order_ascending,target,id);
       }
 
-    internal void BindBaseDataListForAnalysisOfRegionByCounty(string sort_order, bool be_sort_order_ascending, System.Web.UI.WebControls.DataGrid target, string region_code, string year)
+    internal void BindBaseDataListForAnalysisOfRegionByCounty
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string region_code,
+      string year_filter,
+      string practitioner_level_filter
+      )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByCounty(sort_order,be_sort_order_ascending,target,region_code,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByCounty(sort_order,be_sort_order_ascending,target,region_code,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfRegionByCourse
@@ -69,10 +77,11 @@ namespace Class_biz_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByCourse(sort_order,be_sort_order_ascending,target,region_code,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByCourse(sort_order,be_sort_order_ascending,target,region_code,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfRegionByMonth
@@ -81,10 +90,11 @@ namespace Class_biz_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByMonth(sort_order,be_sort_order_ascending,target,region_code,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByMonth(sort_order,be_sort_order_ascending,target,region_code,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfRegionBySponsor
@@ -93,10 +103,11 @@ namespace Class_biz_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string region_code,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionBySponsor(sort_order,be_sort_order_ascending,target,region_code,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionBySponsor(sort_order,be_sort_order_ascending,target,region_code,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfRegionByYear
@@ -104,10 +115,11 @@ namespace Class_biz_coned_offering_rosters
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string region_code
+      string region_code,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByYear(sort_order,be_sort_order_ascending,target,region_code);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByYear(sort_order,be_sort_order_ascending,target,region_code,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfSponsorByCounty
@@ -116,10 +128,11 @@ namespace Class_biz_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string coned_sponsor_user_id,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByCounty(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByCounty(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfSponsorByCourse
@@ -128,10 +141,11 @@ namespace Class_biz_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string coned_sponsor_user_id,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByCourse(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByCourse(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfSponsorByMonth
@@ -140,10 +154,11 @@ namespace Class_biz_coned_offering_rosters
       bool be_sort_order_ascending,
       object target,
       string coned_sponsor_user_id,
-      string year
+      string year_filter,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByMonth(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByMonth(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,year_filter,practitioner_level_filter);
       }
 
     internal void BindBaseDataListForAnalysisOfSponsorByYear
@@ -151,10 +166,11 @@ namespace Class_biz_coned_offering_rosters
       string sort_order,
       bool be_sort_order_ascending,
       object target,
-      string coned_sponsor_user_id
+      string coned_sponsor_user_id,
+      string practitioner_level_filter
       )
       {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByYear(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id);
+      db_coned_offering_rosters.BindBaseDataListForAnalysisOfSponsorByYear(sort_order,be_sort_order_ascending,target,coned_sponsor_user_id,practitioner_level_filter);
       }
 
       public void BindDirectToListControl(object target)

@@ -1,6 +1,7 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using Class_biz_coned_offering_rosters;
+using Class_biz_practitioner_levels;
 using Class_msg_protected;
 using kix;
 using System;
@@ -29,9 +30,11 @@ namespace UserControl_analysis_of_region_by_month
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
       public uint num_months;
+      public string practitioner_level_filter;
       public string sort_order;
-      public string year;
+      public string year_filter;
       }
 
     private p_type p;
@@ -131,6 +134,11 @@ namespace UserControl_analysis_of_region_by_month
             item:new ListItem(year.val.ToString())
             );
           }
+        p.biz_practitioner_levels.BindDirectToListControl
+          (
+          target:DropDownList_practitioner_level,
+          unselected_literal:"(All)"
+          );
         Bind();
         p.be_loaded = true;
         }
@@ -159,12 +167,14 @@ namespace UserControl_analysis_of_region_by_month
       else
         {
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
+        p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
+        p.practitioner_level_filter = k.EMPTY;
         p.sort_order = "month_num";
-        p.year = DateTime.Today.Year.ToString();
+        p.year_filter = DateTime.Today.Year.ToString();
         }
       }
 
@@ -232,7 +242,8 @@ namespace UserControl_analysis_of_region_by_month
         be_sort_order_ascending:p.be_sort_order_ascending,
         target:DataGrid_control,
         region_code:Session["region_code"].ToString(),
-        year:p.year
+        year_filter:p.year_filter,
+        practitioner_level_filter:p.practitioner_level_filter
         );
       p.be_datagrid_empty = (p.num_months == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
@@ -242,7 +253,13 @@ namespace UserControl_analysis_of_region_by_month
 
     protected void DropDownList_year_SelectedIndexChanged(object sender, EventArgs e)
       {
-      p.year = k.Safe(DropDownList_year.SelectedValue,k.safe_hint_type.NUM);
+      p.year_filter = k.Safe(DropDownList_year.SelectedValue,k.safe_hint_type.NUM);
+      Bind();
+      }
+
+    protected void DropDownList_practitioner_level_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      p.practitioner_level_filter = k.Safe(DropDownList_practitioner_level.SelectedValue,k.safe_hint_type.NUM);
       Bind();
       }
 
