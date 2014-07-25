@@ -22,6 +22,15 @@ namespace UserControl_analysis_of_sponsor_by_year {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
+        /// DropDownList_practitioner_level control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_practitioner_level;
+        
+        /// <summary>
         /// TableRow_none control.
         /// </summary>
         /// <remarks>
