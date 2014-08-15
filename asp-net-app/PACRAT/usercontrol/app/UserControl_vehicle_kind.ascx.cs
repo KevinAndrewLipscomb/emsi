@@ -22,6 +22,11 @@ namespace UserControl_vehicle_kind
       TextBox_id.Text = k.EMPTY;
       DropDownList_id.Visible = false;
       TextBox_description.Text = k.EMPTY;
+      CheckBox_be_hiway_legal_trailer.Checked = false;
+      CheckBox_be_large_cargo_carrier.Checked = false;
+      CheckBox_be_target_pm_mileage_meaningful.Checked = false;
+      CheckBox_be_dmv_inspection_due_meaningful.Checked = false;
+      TextBox_elaboration.Text = k.EMPTY;
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
       Panel_match_numbers.Visible = false;
@@ -138,19 +143,34 @@ namespace UserControl_vehicle_kind
       Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
       string description;
+      bool be_hiway_legal_trailer;
+      bool be_large_cargo_carrier;
+      bool be_target_pm_mileage_meaningful;
+      bool be_dmv_inspection_due_meaningful;
+      string elaboration;
       result = false;
       if
         (
         p.biz_vehicle_kinds.Get
           (
           id,
-          out description
+          out description,
+          out be_hiway_legal_trailer,
+          out be_large_cargo_carrier,
+          out be_target_pm_mileage_meaningful,
+          out be_dmv_inspection_due_meaningful,
+          out elaboration
           )
         )
         {
         TextBox_id.Text = id;
         TextBox_id.Enabled = false;
         TextBox_description.Text = description;
+        CheckBox_be_hiway_legal_trailer.Checked = be_hiway_legal_trailer;
+        CheckBox_be_large_cargo_carrier.Checked = be_large_cargo_carrier;
+        CheckBox_be_target_pm_mileage_meaningful.Checked = be_target_pm_mileage_meaningful;
+        CheckBox_be_dmv_inspection_due_meaningful.Checked = be_dmv_inspection_due_meaningful;
+        TextBox_elaboration.Text = elaboration;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -251,7 +271,12 @@ namespace UserControl_vehicle_kind
         p.biz_vehicle_kinds.Set
           (
           k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
-          k.Safe(TextBox_description.Text,k.safe_hint_type.MAKE_MODEL).Trim()
+          k.Safe(TextBox_description.Text,k.safe_hint_type.MAKE_MODEL).Trim(),
+          CheckBox_be_hiway_legal_trailer.Checked,
+          CheckBox_be_large_cargo_carrier.Checked,
+          CheckBox_be_target_pm_mileage_meaningful.Checked,
+          CheckBox_be_dmv_inspection_due_meaningful.Checked,
+          k.Safe(TextBox_elaboration.Text,k.safe_hint_type.PUNCTUATED).Trim()
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         SetLookupMode();
@@ -316,6 +341,11 @@ namespace UserControl_vehicle_kind
     private void SetDependentFieldAblements(bool ablement)
       {
       TextBox_description.Enabled = ablement;
+      CheckBox_be_hiway_legal_trailer.Enabled = ablement;
+      CheckBox_be_large_cargo_carrier.Enabled = ablement;
+      CheckBox_be_target_pm_mileage_meaningful.Enabled = ablement;
+      CheckBox_be_dmv_inspection_due_meaningful.Enabled = ablement;
+      TextBox_elaboration.Enabled = ablement;
       }
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)

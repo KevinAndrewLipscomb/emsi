@@ -16,7 +16,7 @@
                  <td>
       <ASP:TextBox id="TextBox_id" runat="server"  cssclass=""></ASP:TextBox><ASP:Button id="Button_lookup" runat="server" causesvalidation="False" text="LOOKUP" onclick="Button_lookup_Click"></ASP:Button>
                 </td>
-                <td nowrap="True"><small><small><asp:Label id="Label_lookup_arrow" runat="server">&lt;--</asp:Label></small></small></td>
+                <td nowrap="nowrap"><small><small><asp:Label id="Label_lookup_arrow" runat="server">&lt;--</asp:Label></small></small></td>
                 <td><small><small><em><asp:Label id="Label_lookup_hint" runat="server">Lookup by partial or full field value</asp:Label></em></small></small></td>
               </tr>
             </table>
@@ -48,7 +48,7 @@
       </table>
     </font>
     </td>
-    <td nowrap="True" valign="top">
+    <td nowrap="nowrap" valign="top">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_id" runat="server" errormessage="Please enter id." font-bold="True" controltovalidate="TextBox_id">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
@@ -56,11 +56,53 @@
     <td><font class="">Description:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_description" runat="server" columns="15" maxlength="15" cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_description" runat="server" columns="31" maxlength="31" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="True">
+    <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_description" runat="server" errormessage="Please enter Description." font-bold="True" controltovalidate="TextBox_description">!ERR!</ASP:RequiredFieldValidator>
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Be hiway legal trailer:</font></td>
+    <td>
+      <asp:CheckBox ID="CheckBox_be_hiway_legal_trailer" runat="server" enabled="False"/>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Be large cargo carrier:</font></td>
+    <td>
+      <asp:CheckBox ID="CheckBox_be_large_cargo_carrier" runat="server" enabled="False"/>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Be target pm mileage meaningful:</font></td>
+    <td>
+      <asp:CheckBox ID="CheckBox_be_target_pm_mileage_meaningful" runat="server" enabled="False"/>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Be dmv inspection due meaningful:</font></td>
+    <td>
+      <asp:CheckBox ID="CheckBox_be_dmv_inspection_due_meaningful" runat="server" enabled="False"/>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Elaboration:</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_elaboration" runat="server" columns="60" maxlength="60" cssclass="" enabled="False"></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
     </td>
   </tr>
       </table>

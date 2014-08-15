@@ -48,26 +48,46 @@ namespace Class_biz_vehicle_kinds
     public bool Get
       (
       string id,
-      out string description
+      out string description,
+      out bool be_hiway_legal_trailer,
+      out bool be_large_cargo_carrier,
+      out bool be_target_pm_mileage_meaningful,
+      out bool be_dmv_inspection_due_meaningful,
+      out string elaboration
       )
       {
       return db_vehicle_kinds.Get
         (
         id,
-        out description
+        out description,
+        out be_hiway_legal_trailer,
+        out be_large_cargo_carrier,
+        out be_target_pm_mileage_meaningful,
+        out be_dmv_inspection_due_meaningful,
+        out elaboration
         );
       }
 
     public void Set
       (
       string id,
-      string description
+      string description,
+      bool be_hiway_legal_trailer,
+      bool be_large_cargo_carrier,
+      bool be_target_pm_mileage_meaningful,
+      bool be_dmv_inspection_due_meaningful,
+      string elaboration
       )
       {
       db_vehicle_kinds.Set
         (
         id,
-        description
+        description,
+        be_hiway_legal_trailer,
+        be_large_cargo_carrier,
+        be_target_pm_mileage_meaningful,
+        be_dmv_inspection_due_meaningful,
+        elaboration
         );
       }
 

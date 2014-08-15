@@ -150,37 +150,61 @@ namespace Class_db_vehicle_kinds
     public bool Get
       (
       string id,
-      out string description
+      out string description,
+      out bool be_hiway_legal_trailer,
+      out bool be_large_cargo_carrier,
+      out bool be_target_pm_mileage_meaningful,
+      out bool be_dmv_inspection_due_meaningful,
+      out string elaboration
       )
       {
-      bool result;
       MySqlDataReader dr;
       //
       description = k.EMPTY;
-      result = false;
+      be_hiway_legal_trailer = false;
+      be_large_cargo_carrier = false;
+      be_target_pm_mileage_meaningful = false;
+      be_dmv_inspection_due_meaningful = false;
+      elaboration = k.EMPTY;
+      var result = false;
       //
-      this.Open();
-      dr = new MySqlCommand("select * from vehicle_kind where CAST(id AS CHAR) = \"" + id + "\"", this.connection).ExecuteReader();
+      Open();
+      dr = new MySqlCommand("select * from vehicle_kind where CAST(id AS CHAR) = '" + id + "'", connection).ExecuteReader();
       if (dr.Read())
         {
         description = dr["description"].ToString();
+        be_hiway_legal_trailer = (dr["be_hiway_legal_trailer"].ToString() == "1");
+        be_large_cargo_carrier = (dr["be_large_cargo_carrier"].ToString() == "1");
+        be_target_pm_mileage_meaningful = (dr["be_target_pm_mileage_meaningful"].ToString() == "1");
+        be_dmv_inspection_due_meaningful = (dr["be_dmv_inspection_due_meaningful"].ToString() == "1");
+        elaboration = dr["elaboration"].ToString();
         result = true;
         }
       dr.Close();
-      this.Close();
+      Close();
       return result;
       }
 
     public void Set
       (
       string id,
-      string description
+      string description,
+      bool be_hiway_legal_trailer,
+      bool be_large_cargo_carrier,
+      bool be_target_pm_mileage_meaningful,
+      bool be_dmv_inspection_due_meaningful,
+      string elaboration
       )
       {
-      string childless_field_assignments_clause = k.EMPTY
+      var childless_field_assignments_clause = k.EMPTY
       + " description = NULLIF('" + description + "','')"
+      + " , be_hiway_legal_trailer = " + be_hiway_legal_trailer.ToString()
+      + " , be_large_cargo_carrier = " + be_large_cargo_carrier.ToString()
+      + " , be_target_pm_mileage_meaningful = " + be_target_pm_mileage_meaningful.ToString()
+      + " , be_dmv_inspection_due_meaningful = " + be_dmv_inspection_due_meaningful.ToString()
+      + " , elaboration = NULLIF('" + elaboration + "','')"
       + k.EMPTY;
-      this.Open();
+      Open();
       new MySqlCommand
         (
         db_trail.Saved
@@ -191,10 +215,10 @@ namespace Class_db_vehicle_kinds
           + " on duplicate key update "
           + childless_field_assignments_clause
           ),
-          this.connection
+          connection
         )
         .ExecuteNonQuery();
-      this.Close();
+      Close();
       }
 
     } // end TClass_db_vehicle_kinds
