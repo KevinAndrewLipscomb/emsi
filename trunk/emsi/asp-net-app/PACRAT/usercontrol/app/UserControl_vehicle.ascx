@@ -123,8 +123,9 @@
         <ASP:TextBox id="TextBox_elaboration" runat="server"  cssclass="" enabled="False" Columns="60" Rows="4" TextMode="MultiLine"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap">
-      &nbsp;</td>
+    <td nowrap="nowrap" valign="top">
+      <asp:CustomValidator ID="CustomValidator_elaboration" runat="server" ErrorMessage="The specified Elaboration is too long." Font-Bold="True" onservervalidate="CustomValidator_elaboration_ServerValidate">!ERR!</asp:CustomValidator>
+    </td>
   </tr>
   <tr>
     <td><font class="">Patient care level:</font></td>
