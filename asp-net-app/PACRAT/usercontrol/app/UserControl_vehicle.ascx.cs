@@ -552,6 +552,11 @@ namespace UserControl_vehicle
       UpdateStagingDesignator(be_for_name_change:false);
       }
 
+    protected void CustomValidator_elaboration_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = (k.Safe(TextBox_elaboration.Text,k.safe_hint_type.MEMO).Trim().Length <= 510);
+      }
+
     } // end TWebUserControl_vehicle
 
   }

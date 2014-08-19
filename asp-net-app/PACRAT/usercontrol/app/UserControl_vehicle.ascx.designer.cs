@@ -292,6 +292,15 @@ namespace UserControl_vehicle {
         protected global::System.Web.UI.WebControls.TextBox TextBox_elaboration;
         
         /// <summary>
+        /// CustomValidator_elaboration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_elaboration;
+        
+        /// <summary>
         /// DropDownList_patient_care_level control.
         /// </summary>
         /// <remarks>
