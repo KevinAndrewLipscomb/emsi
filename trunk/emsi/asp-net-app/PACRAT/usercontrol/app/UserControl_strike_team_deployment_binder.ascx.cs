@@ -185,7 +185,7 @@ namespace UserControl_strike_team_deployment_binder
       TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
       TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
       p.service_strike_team_management_footprint = (be_ok_to_config_strike_team_deployments ? k.EMPTY : p.biz_services.ServiceStrikeTeamManagementFootprintOf(p.biz_members.IdOfUserId(p.biz_user.IdNum())));
-      SetTarget(target:"/personnel/");
+      SetTarget(target:"//"); // Kludge to do everything SetTarget does except alter p.tab_index.
       }
 
     //--
