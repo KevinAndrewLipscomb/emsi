@@ -170,21 +170,26 @@ namespace UserControl_strike_team_deployment
           }
         else
           {
-          Button_submit.Text = "Alter this deployment";
-          var be_mobilizing = p.be_ok_to_config_strike_team_deployments && !p.biz_strike_team_deployments.BeDemobilizationReasonRequired
-              (
-              deployment_id:p.id,
-              service_strike_team_management_footprint:k.EMPTY
-              );
-          LinkButton_announce.Visible = be_mobilizing;
-          Panel_active_deployment_detail.Visible = true;
-          Table_initial_actions.Visible = be_mobilizing;
+          SetNonNewPresentationMode();
           }
         p.be_loaded = true;
         }
       ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
       ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_announce);
       InjectPersistentClientSideScript();
+      }
+
+    private void SetNonNewPresentationMode()
+      {
+      Button_submit.Text = "Alter this deployment";
+      var be_mobilizing = p.be_ok_to_config_strike_team_deployments && !p.biz_strike_team_deployments.BeDemobilizationReasonRequired
+          (
+          deployment_id: p.id,
+          service_strike_team_management_footprint: k.EMPTY
+          );
+      LinkButton_announce.Visible = be_mobilizing;
+      Panel_active_deployment_detail.Visible = true;
+      Table_initial_actions.Visible = be_mobilizing;
       }
 
     private bool PresentRecord(string id)
@@ -346,15 +351,17 @@ namespace UserControl_strike_team_deployment
       if (Page.IsValid)
         {
         var id = k.Safe(TextBox_id.Text,k.safe_hint_type.NUM);
+        var creation_date = (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue);
         var name = k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim();
+        var region_code = k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM);
         var member_policy_id = k.Safe(RadioButtonList_member_policy.SelectedValue,k.safe_hint_type.NUM);
         p.biz_strike_team_deployments.Set
           (
-          id,
-          (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue),
-          name,
-          k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM),
-          member_policy_id
+          id:id,
+          creation_date:creation_date,
+          name:name,
+          region_code:region_code,
+          member_policy_id:member_policy_id
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
           {
@@ -377,7 +384,16 @@ namespace UserControl_strike_team_deployment
           }
         else
           {
-          BackTrack();
+          Set
+            (
+            id:p.biz_strike_team_deployments.IdOfPractical
+              (
+              region_code:region_code,
+              creation_date:creation_date,
+              name:name
+              )
+            );
+          SetNonNewPresentationMode();
           }
         }
       else

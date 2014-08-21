@@ -1,6 +1,8 @@
+using AjaxControlToolkit;
 using Class_biz_notifications;
 using Class_biz_services;
 using Class_biz_strike_team_deployments;
+using Class_msg_protected;
 using kix;
 using System.Web.UI.WebControls;
 
@@ -38,6 +40,7 @@ namespace UserControl_mobilization_announcement
         //
         p.be_loaded = true;
         }
+      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -126,6 +129,15 @@ namespace UserControl_mobilization_announcement
           value:"Announcement sent",
           be_using_scriptmanager:true
           );
+        var msg_protected_strike_team_deployment_detail = new TClass_msg_protected.strike_team_deployment_detail();
+        msg_protected_strike_team_deployment_detail.id = p.biz_strike_team_deployments.IdOf(p.deployment_summary);
+        MessageBack
+          (
+          msg:msg_protected_strike_team_deployment_detail,
+          folder_name:"protected",
+          aspx_name:"strike_team_deployment_detail"
+          );
+        BackTrack();
         }
       else
         {
