@@ -102,8 +102,6 @@ namespace UserControl_strike_team_deployment_binder
       {
       if (!p.be_loaded)
         {
-        TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
-        TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
         TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
         p.be_loaded = true;
         }
@@ -184,6 +182,8 @@ namespace UserControl_strike_team_deployment_binder
       {
       p.deployment_id = deployment_id;
       p.be_ok_to_config_strike_team_deployments = be_ok_to_config_strike_team_deployments;
+      TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
+      TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
       p.service_strike_team_management_footprint = (be_ok_to_config_strike_team_deployments ? k.EMPTY : p.biz_services.ServiceStrikeTeamManagementFootprintOf(p.biz_members.IdOfUserId(p.biz_user.IdNum())));
       SetTarget(target:"/personnel/");
       }

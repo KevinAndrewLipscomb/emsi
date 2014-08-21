@@ -85,6 +85,7 @@
     </td>
     <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_name" runat="server" errormessage="Please enter Name." font-bold="True" controltovalidate="TextBox_name">!ERR!</ASP:RequiredFieldValidator>
+      <asp:CustomValidator ID="CustomValidator_name" runat="server" ControlToValidate="TextBox_name" Display="Dynamic" ErrorMessage="Please remove the DRILL or EXERCISE indication from the deployment's Name. PACRAT will automatically keep stakeholders aware that this is a drill if the Personnel Participation Policy is set to 'This deployment is a DRILL'." Font-Bold="True" onservervalidate="CustomValidator_name_ServerValidate">!ERR!</asp:CustomValidator>
     </td>
   </tr>
   <tr>
@@ -111,7 +112,7 @@
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td><ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="False"></ASP:Button></td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td><asp:LinkButton ID="LinkButton_announce" runat="server" CausesValidation="False" onclick="LinkButton_announce_Click" Visible="False">Mobilization announcement...</asp:LinkButton></td>
+          <td><asp:LinkButton ID="LinkButton_announce" runat="server" CausesValidation="False" onclick="LinkButton_announce_Click" Visible="False" Font-Bold="True">Mobilization announcement...</asp:LinkButton></td>
         </tr>
       </table>
     </td>
@@ -125,10 +126,10 @@
   <table id="Table_initial_actions" runat="server" cellpadding="10" cellspacing="0" visible="false">
     <tr>
       <td bgcolor="Khaki">
-        The following initial steps are recommended when a deployment is first created:
+        You should accomplish the following initial steps right away:
         <ul>
-          <li>Send a <i>mobilization announcement</i> using the above link.</li>
-          <li>Define <i>PRELIM</i> and <i>CONVOY</i> operational period templates (for the Service Strike Team Managers to populate) using the tab below.</li>
+          <li>Send a <b>Mobilization announcement</b> using the above link.</li>
+          <li>Follow the instructions under the <b>Operational periods</b> tab below.</li>
         </ul>
       </td>
     </tr>

@@ -11,6 +11,7 @@ using Class_biz_user;
 using kix;
 using System;
 using System.Collections;
+using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -146,6 +147,9 @@ namespace UserControl_strike_team_deployment_operational_period
       {
       if (!p.be_loaded)
         {
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+        Literal_application_name_2.Text = Literal_application_name.Text;
+        //
         LinkButton_new_record.Visible = p.be_unlimited;
         LinkButton_go_to_match_first.Text = k.ExpandTildePath(LinkButton_go_to_match_first.Text);
         LinkButton_go_to_match_prior.Text = k.ExpandTildePath(LinkButton_go_to_match_prior.Text);
@@ -259,6 +263,8 @@ namespace UserControl_strike_team_deployment_operational_period
         p.summary = null;
         p.presentation_mode = Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NEW;
         TableRow_initial_actions.Visible = p.be_unlimited;
+        TableRow_start_guidance.Visible = p.be_unlimited;
+        TableRow_name_guidance.Visible = p.be_unlimited;
         }
       if (!be_prelim && p.biz_strike_team_deployments.BeAnyOperationalPeriodStartedFor(p.deployment_id))
         {
@@ -383,10 +389,26 @@ namespace UserControl_strike_team_deployment_operational_period
             + " as a" + (be_convoy ? " convoy" : "n operational period")
             );
           }
-        Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         if (p.presentation_mode == Class_biz_strike_team_deployment_operational_periods.presentation_mode_enum.NEW)
           {
-          BackTrack();
+          AlertAndBackTrack
+            (
+            cause:k.alert_cause_type.USER,
+            state:k.alert_state_type.SUCCESS,
+            key:"recsavedbktk",
+            value:"Record saved."
+            );
+          }
+        else
+          {
+          Alert
+            (
+            cause:k.alert_cause_type.USER,
+            state:k.alert_state_type.SUCCESS,
+            key:"recsavedstay",
+            value:"Record saved.",
+            be_using_scriptmanager:true
+            );
           }
         }
       else

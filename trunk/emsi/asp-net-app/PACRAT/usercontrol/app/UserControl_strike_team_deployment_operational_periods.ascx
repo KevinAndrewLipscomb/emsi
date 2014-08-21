@@ -8,21 +8,23 @@
           <table cellspacing="0" cellpadding="10" border="0">
             <tr id="TableRow_initial_actions" runat="server" visible="false" width="100%">
               <td bgcolor="Khaki">
-                Using the <b>NEW</b> link below...
+                Instructions:
                 <ul>
                   <li>
                     <p>
-                      You should create a <i>PRELIM</i> op period template for <u>each repeating shift</u> you plan to run during this deployment.&nbsp; For 12-hour shifts, you might create two PRELIM op periods and name them AM
-                      and PM.&nbsp; For 8-hour shifts, you might create three PRELIM op periods and name them DAY, SWING, and GRAVEYARD.&nbsp; PRELIM op period templates allow Service Strike Team Managers to propose which personnel
-                      will work which shifts.
+                      Create a <i>PRELIM</i> op period template for <u>EACH repeating shift</u> you plan to run during this deployment.&nbsp; For 12-hour shifts, you might create two PRELIM op periods and name them AM
+                      and PM.&nbsp; For 8-hour shifts, you might create three PRELIM op periods and name them DAY, SWING, and GRAVEYARD.&nbsp; If this deployment is a short drill, you might create just one PRELIM op period and name
+                      it DURATION.&nbsp; PRELIM op period templates allow Service Strike Team Managers to propose which personnel will work which shifts.
                     </p>
                   </li>
                   <li>
                     <p>
-                      You should also create a <i>CONVOY</i> op period.&nbsp; This allows Service Strike Team Managers to propose which personnel will occupy which vehicles while enroute to or from the deployment base.
+                      If you are deploying to a distant site, you should also create a <i>CONVOY</i> op period.&nbsp; This allows Service Strike Team Managers to propose which personnel will occupy which vehicles while enroute to or
+                      from the distant site.
                     </p>
                   </li>
                 </ul>
+                To execute these instructions, click the <b>NEW</b> link below.&nbsp Similar instructions will also appear on the next page.
               </td>
             </tr>
             <tr id="TableRow_service_actions" runat="server" visible="false" width="100%"><td bgcolor="Khaki">Before the first operational period starts, drill down into each of the below operational periods.</td></tr>

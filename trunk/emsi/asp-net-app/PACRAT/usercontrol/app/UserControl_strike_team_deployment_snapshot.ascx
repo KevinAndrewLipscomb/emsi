@@ -26,6 +26,7 @@
 </asp:DataGrid>
 <asp:DataGrid id="DataGrid_operational_periods" runat="server" autogeneratecolumns="False" onitemdatabound="DataGrid_operational_periods_ItemDataBound" style="display:none">
   <Columns>
+    <asp:BoundColumn datafield="prelim_shift_name" headertext="Prelim shift name"></asp:BoundColumn>
     <asp:BoundColumn datafield="start" headertext="Start"></asp:BoundColumn>
     <asp:BoundColumn datafield="end" headertext="End"></asp:BoundColumn>
     <asp:BoundColumn DataField="be_convoy" HeaderText="Convoy?"></asp:BoundColumn>

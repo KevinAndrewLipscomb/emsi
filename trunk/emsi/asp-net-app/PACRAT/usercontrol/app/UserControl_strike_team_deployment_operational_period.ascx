@@ -68,7 +68,27 @@
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_deployment_id" runat="server" errormessage="Please enter a valid Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
-  <tr id="TableRow_initial_actions" runat="server" visible="false"><td bgcolor="Khaki" colspan="2">You can only create PRELIM op periods until a CONVOY or STANDARD op period starts.</td></tr>
+  <tr id="TableRow_initial_actions" runat="server" visible="false">
+    <td bgcolor="Khaki" colspan="2">
+      Instructions:
+      <ul>
+        <li>In <asp:Literal ID="Literal_application_name" runat="server"></asp:Literal>, there are three kinds of operational periods -- PRELIM, CONVOY, and STANDARD.</li>
+        <li>
+          <p>
+            Create a <i>PRELIM</i> op period template for <u>EACH repeating shift</u> you plan to run during this deployment.&nbsp; For 12-hour shifts, you might create two PRELIM op periods and name them AM
+            and PM.&nbsp; For 8-hour shifts, you might create three PRELIM op periods and name them DAY, SWING, and GRAVEYARD.&nbsp; If this deployment is a short drill, you might create just one PRELIM op period and name
+            it DURATION.&nbsp; PRELIM op period templates allow Service Strike Team Managers to propose which personnel will work which shifts.
+          </p>
+        </li>
+        <li>
+          <p>
+            If you are deploying to a distant site, you should also create a <i>CONVOY</i> op period.&nbsp; This allows Service Strike Team Managers to propose which personnel will occupy which vehicles while enroute to or
+            from the distant site.
+          </p>
+        </li>
+      </ul>
+    </td>
+  </tr>
   <tr>
     <td><font class="">Kind:</font></td>
     <td>
@@ -84,9 +104,20 @@
     </td>
   </tr>
   <tr id="TableRow_start" runat="server">
-    <td><font class="">Start:</font></td>
+    <td valign="top"><font class="">Start:</font></td>
     <td>
       <uc2:UserControl_drop_down_datetime ID="UserControl_drop_down_datetime_start" runat="server" />
+      <table cellspacing="0" cellpadding="10" border="0">
+        <tr id="TableRow_start_guidance" runat="server" visible="false" width="100%">
+          <td bgcolor="Khaki">
+            <strong>NOTE:</strong>&nbsp; If this is the first CONVOY or STANDARD op period of this deployment, the time you specify here is the time that <asp:Literal ID="Literal_application_name_2" runat="server"></asp:Literal> will...
+            <ul>
+              <li>prohibit you from creating any more PRELIM op periods;</li>
+              <li>make this entire deployment READ-ONLY for Service Strike Team Managers.</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
     </td>
     <td nowrap="nowrap">
       &nbsp;</td>
@@ -100,9 +131,16 @@
       &nbsp;</td>
   </tr>
   <tr id="TableRow_prelim_shift_name" runat="server">
-    <td><font class="">Prelim shift name:</font></td>
+    <td valign="top"><font class="">Prelim shift name:</font></td>
     <td>
       <asp:TextBox ID="TextBox_prelim_shift_name" runat="server" Columns="31" MaxLength="31"></asp:TextBox>
+      <table cellspacing="0" cellpadding="10" border="0">
+        <tr id="TableRow_name_guidance" runat="server" visible="false" width="100%">
+          <td bgcolor="Khaki">
+            You can only create <i>one</i> operational period at a time using this form.
+          </td>
+        </tr>
+      </table>
     </td>
     <td nowrap="nowrap">
       <asp:RequiredFieldValidator ID="RequiredFieldValidator_prelim_shift_name" runat="server" ControlToValidate="TextBox_prelim_shift_name" Enabled="False" ErrorMessage="Please specify a Preliminary shift name." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>

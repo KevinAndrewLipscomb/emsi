@@ -211,6 +211,15 @@ namespace UserControl_strike_team_deployment {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_name;
         
         /// <summary>
+        /// CustomValidator_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_name;
+        
+        /// <summary>
         /// RadioButtonList_member_policy control.
         /// </summary>
         /// <remarks>

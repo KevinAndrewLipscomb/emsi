@@ -11,6 +11,8 @@ using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
+using System.Collections;
+using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -190,6 +192,10 @@ namespace UserControl_strike_team_deployment
       LinkButton_announce.Visible = be_mobilizing;
       Panel_active_deployment_detail.Visible = true;
       Table_initial_actions.Visible = be_mobilizing;
+      if (be_mobilizing)
+        {
+        UserControl_strike_team_deployment_binder_control.SetTarget("/operational-periods/");
+        }
       }
 
     private bool PresentRecord(string id)
@@ -394,6 +400,17 @@ namespace UserControl_strike_team_deployment
               )
             );
           SetNonNewPresentationMode();
+          Alert
+            (
+            cause:k.alert_cause_type.USER,
+            state:k.alert_state_type.SUCCESS,
+            key:"depcrtdseehints",
+            value:k.EMPTY
+            + "Deployment created." + k.NEW_LINE
+            + k.NEW_LINE
+            + "Please direct your attention to the khaki panels that " + ConfigurationManager.AppSettings["application_name"] + " will now display.  They contain important guidance that you should read and follow carefully.",
+            be_using_scriptmanager:true
+            );
           }
         }
       else
@@ -513,6 +530,12 @@ namespace UserControl_strike_team_deployment
         folder_name:"protected",
         aspx_name:"mobilization_announcement"
         );
+      }
+
+    protected void CustomValidator_name_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      var simplified_name = k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).ToUpper();
+      args.IsValid = !(simplified_name.Contains("DRILL") || simplified_name.Contains("EXERCISE"));
       }
 
     } // end TWebUserControl_strike_team_deployment
