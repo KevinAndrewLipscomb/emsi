@@ -167,7 +167,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
         (
         start:(start.Length > 0 ? DateTime.Parse(start) : DateTime.MinValue),
         end:(end.Length > 0 ? DateTime.Parse(end) : DateTime.MinValue),
-        be_convoy:(be_convoy == "1"),
+        be_convoy:(be_convoy == "YES"),
         prelim_shift_name:prelim_shift_name
         );
       }
