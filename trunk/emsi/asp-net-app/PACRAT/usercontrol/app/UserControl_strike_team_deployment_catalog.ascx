@@ -22,7 +22,14 @@
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
             <tr>
               <td>
-                <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True" ondeletecommand="DataGrid_control_DeleteCommand">
+                <table id="Table_hint" runat="server" cellpadding="10" cellspacing="0" visible="false">
+                  <tr>
+                    <td bgcolor="Khaki">
+                      <asp:Literal ID="Literal_aplication_name" runat="server"></asp:Literal> will automatically mark a deployment Concluded when its last operational period has ended.
+                    </td>
+                  </tr>
+                </table>
+                <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="10" autogeneratecolumns="False" allowsorting="True" ondeletecommand="DataGrid_control_DeleteCommand" Width="100%">
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
                     <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>

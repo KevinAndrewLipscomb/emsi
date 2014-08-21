@@ -58,6 +58,24 @@ namespace UserControl_strike_team_deployment_catalog {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
         
         /// <summary>
+        /// Table_hint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_hint;
+        
+        /// <summary>
+        /// Literal_aplication_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_aplication_name;
+        
+        /// <summary>
         /// DataGrid_control control.
         /// </summary>
         /// <remarks>

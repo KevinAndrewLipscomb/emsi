@@ -9,7 +9,7 @@ using Class_msg_protected;
 using kix;
 using System;
 using System.Collections;
-using System.Web.UI;
+using System.Configuration;
 using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_catalog
@@ -28,6 +28,7 @@ namespace UserControl_strike_team_deployment_catalog
 
     private struct p_type
       {
+      public bool be_all_concluded;
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
@@ -127,6 +128,7 @@ namespace UserControl_strike_team_deployment_catalog
       {
       if (!p.be_loaded)
         {
+        Literal_aplication_name.Text = ConfigurationManager.AppSettings["application_name"];
         DataGrid_control.AllowSorting = p.be_interactive;
         DataGrid_control.Columns[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Visible = p.be_interactive;
         DataGrid_control.Columns[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Visible = p.be_interactive && p.be_ok_to_config_strike_team_deployments;
@@ -218,6 +220,10 @@ namespace UserControl_strike_team_deployment_catalog
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_STATUS].Controls[0]) as LinkButton);
           link_button.Font.Bold = (link_button.Text == "*MOBILIZING*");
           ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          if (link_button.Text != "Concluded")
+            {
+            p.be_all_concluded = false;
+            }
           //
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
@@ -256,9 +262,11 @@ namespace UserControl_strike_team_deployment_catalog
 
     private void Bind()
       {
+      p.be_all_concluded = true;
       p.biz_strike_team_deployments.BindBaseDataList(p.biz_members.IdOfUserId(p.biz_user.IdNum()),p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       p.be_datagrid_empty = (p.num_strike_team_deployments == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
+      Table_hint.Visible = !p.be_all_concluded;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       Literal_num_strike_team_deployments.Text = p.num_strike_team_deployments.ToString();
       p.num_strike_team_deployments = 0;
