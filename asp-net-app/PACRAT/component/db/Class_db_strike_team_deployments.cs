@@ -197,6 +197,25 @@ namespace Class_db_strike_team_deployments
       return result;
       }
 
+    internal string IdOf(object summary)
+      {
+      return (summary as strike_team_deployment_summary).id;
+      }
+
+    internal string IdOfPractical
+      (
+      string region_code,
+      DateTime creation_date,
+      string name
+      )
+      {
+      Open();
+      var id_of_practical_obj = new MySqlCommand
+        ("select id from strike_team_deployment where region_code = '" + region_code + "' and creation_date = '" + creation_date.ToString("yyyy-MM-dd") + "' and name = '" + name + "'",connection).ExecuteScalar();
+      Close();
+      return (id_of_practical_obj == null ? k.EMPTY : id_of_practical_obj.ToString());
+      }
+
     internal string MemberPolicyDescription(object summary)
       {
       return (summary as strike_team_deployment_summary).member_policy_description;

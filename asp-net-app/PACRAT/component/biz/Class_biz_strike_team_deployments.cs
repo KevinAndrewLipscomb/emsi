@@ -347,6 +347,21 @@ namespace Class_biz_strike_team_deployments
         );
       }
 
+    internal string IdOf(object summary)
+      {
+      return db_strike_team_deployments.IdOf(summary);
+      }
+
+    internal string IdOfPractical
+      (
+      string region_code,
+      DateTime creation_date,
+      string name
+      )
+      {
+      return db_strike_team_deployments.IdOfPractical(region_code,creation_date,name);
+      }
+
     internal void MakeOperationalPeriodAssignment
       (
       string deployment_id,
