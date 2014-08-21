@@ -18,26 +18,29 @@ namespace UserControl_strike_team_deployment_snapshot
 
   public static class UserControl_strike_team_deployment_snapshot_Static
     {
-    public const int ASSIGNMENTS_CI_START = 0;
-    public const int ASSIGNMENTS_CI_END = 1;
-    public const int ASSIGNMENTS_CI_BE_CONVOY = 2;
-    public const int ASSIGNMENTS_CI_VEHICLE = 3;
-    public const int ASSIGNMENTS_CI_MEMBER_DESIGNATOR = 4;
-    public const int DIGEST_CI_START = 0;
-    public const int DIGEST_CI_END = 1;
-    public const int DIGEST_CI_BE_CONVOY = 2;
-    public const int DIGEST_CI_VEHICLE = 3;
-    public const int DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID = 4;
-    public const int DIGEST_CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER = 5;
-    public const int DIGEST_CI_EFFECTIVE_PATIENT_CARE_LEVEL = 6;
-    public const int DIGEST_CI_KIND = 7;
-    public const int DIGEST_CI_PAR = 8;
+    public const int ASSIGNMENTS_CI_PRELIM_SHIFT_NAME = 0;
+    public const int ASSIGNMENTS_CI_START = 1;
+    public const int ASSIGNMENTS_CI_END = 2;
+    public const int ASSIGNMENTS_CI_BE_CONVOY = 3;
+    public const int ASSIGNMENTS_CI_VEHICLE = 4;
+    public const int ASSIGNMENTS_CI_MEMBER_DESIGNATOR = 5;
+    public const int DIGEST_CI_PRELIM_SHIFT_NAME = 0;
+    public const int DIGEST_CI_START = 01;
+    public const int DIGEST_CI_END = 2;
+    public const int DIGEST_CI_BE_CONVOY = 3;
+    public const int DIGEST_CI_VEHICLE = 4;
+    public const int DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID = 5;
+    public const int DIGEST_CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER = 6;
+    public const int DIGEST_CI_EFFECTIVE_PATIENT_CARE_LEVEL = 7;
+    public const int DIGEST_CI_KIND = 8;
+    public const int DIGEST_CI_PAR = 9;
     public const int LOG_CI_TIMESTAMP = 0;
     public const int LOG_CI_ACTOR = 1;
     public const int LOG_CI_ACTION = 2;
-    public const int OPERATIONAL_PERIODS_CI_START = 0;
-    public const int OPERATIONAL_PERIODS_CI_END = 1;
-    public const int OPERATIONAL_PERIODS_CI_BE_CONVOY = 2;
+    public const int OPERATIONAL_PERIODS_CI_PRELIM_SHIFT_NAME = 0;
+    public const int OPERATIONAL_PERIODS_CI_START = 1;
+    public const int OPERATIONAL_PERIODS_CI_END = 2;
+    public const int OPERATIONAL_PERIODS_CI_BE_CONVOY = 3;
     public const int PERSONNEL_CI_TAG_NUM = 0;
     public const int PERSONNEL_CI_LAST_NAME = 1;
     public const int PERSONNEL_CI_FIRST_NAME = 2;
@@ -225,6 +228,7 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.assignments_content_xml +=
         "<Row>"
+      +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_PRELIM_SHIFT_NAME].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_START].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_END].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_BE_CONVOY].Text + "</Data></Cell>"
@@ -246,6 +250,7 @@ namespace UserControl_strike_team_deployment_snapshot
       //
       p.digest_content_xml +=
         "<Row>"
+      +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_PRELIM_SHIFT_NAME].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_START].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_END].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_BE_CONVOY].Text + "</Data></Cell>"
@@ -270,6 +275,7 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.operational_periods_content_xml +=
         "<Row>"
+      +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_PRELIM_SHIFT_NAME].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_START].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_END].Text + "</Data></Cell>"
       +   "<Cell><Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_BE_CONVOY].Text + "</Data></Cell>"
@@ -323,7 +329,7 @@ namespace UserControl_strike_team_deployment_snapshot
       var region_summary = p.biz_regions.Summary(region_code);
       var raw_xml = k.EMPTY
         + "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-        + "<Workbook xmlns:c=\"urn:schemas-microsoft-com:office:component:spreadsheet\" xmlns:html=\"http://www.w3.org/TR/REC-html40\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:x2=\"http://schemas.microsoft.com/office/excel/2003/xml\" xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:x=\"urn:schemas-microsoft-com:office:excel\">"
+        + "<Workbook xmlns:c=\"urn:schemas-microsoft-com:office:component:spreadsheet\" xmlns:html=\"http://www.w3.org/TR/REC-html40\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:x=\"urn:schemas-microsoft-com:office:excel\">"
         +   "<ss:Worksheet ss:Name=\"Intro\">"
         +     "<Table>"
         +       "<Row><Cell><Data>This is a snapshot of data associated with the '" + name + "' deployment.</Data></Cell></Row>"

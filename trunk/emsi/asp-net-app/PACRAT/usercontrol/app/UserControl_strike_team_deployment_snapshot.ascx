@@ -34,6 +34,7 @@
 </asp:DataGrid>
 <asp:DataGrid id="DataGrid_digest" runat="server" autogeneratecolumns="False" onitemdatabound="DataGrid_digest_ItemDataBound" style="display:none">
   <Columns>
+    <asp:BoundColumn datafield="prelim_shift_name" headertext="Prelim shift name"></asp:BoundColumn>
     <asp:BoundColumn datafield="start" headertext="Start"></asp:BoundColumn>
     <asp:BoundColumn datafield="end" headertext="End"></asp:BoundColumn>
     <asp:BoundColumn DataField="be_convoy" HeaderText="Convoy?"></asp:BoundColumn>
@@ -47,6 +48,7 @@
 </asp:DataGrid>
 <asp:DataGrid id="DataGrid_assignments" runat="server" autogeneratecolumns="False" onitemdatabound="DataGrid_assignments_ItemDataBound" style="display:none">
   <Columns>
+    <asp:BoundColumn datafield="prelim_shift_name" headertext="Prelim shift name"></asp:BoundColumn>
     <asp:BoundColumn datafield="start" headertext="Start"></asp:BoundColumn>
     <asp:BoundColumn datafield="end" headertext="End"></asp:BoundColumn>
     <asp:BoundColumn DataField="be_convoy" HeaderText="Convoy?"></asp:BoundColumn>

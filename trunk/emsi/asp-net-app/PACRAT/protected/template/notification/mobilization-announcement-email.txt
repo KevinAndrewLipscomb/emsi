@@ -12,11 +12,11 @@ STRIKE TEAM MOBILIZATION - <deployment_name/>
    Supplemental message:
       <supplemental_message/>
 
-Please do the following without delay to indicate which of your personnel and vehicles will mobilize for this deployment:
+Please do the following without delay:
 
 1. Log into http://<host_domain_name/>/<application_name/> .
 
-2. Drill down into the <deployment_name/> deployment.
+2. Drill down into the "<deployment_name/>" deployment.
 
 3. Under the PERSONNEL and VEHICLES tabs, respectively:
 
@@ -24,6 +24,9 @@ Please do the following without delay to indicate which of your personnel and ve
 
    B. In the "Mobilized?" column, click "no" to change it to "YES" for
       each person or vehicle you are mobilizing.
+
+4. Under the OPERATIONAL PERIODS tab, drill down into *each* op period
+   and populate it with preliminary assignments.
 
 You can reach the <region_name/> Regional Strike Team Manager(s) at:
 
