@@ -211,6 +211,15 @@ namespace UserControl_strike_team_deployment_operational_period {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_initial_actions;
         
         /// <summary>
+        /// Literal_application_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
+        
+        /// <summary>
         /// DropDownList_kind control.
         /// </summary>
         /// <remarks>
@@ -247,6 +256,24 @@ namespace UserControl_strike_team_deployment_operational_period {
         protected global::UserControl_drop_down_datetime.TWebUserControl_drop_down_datetime UserControl_drop_down_datetime_start;
         
         /// <summary>
+        /// TableRow_start_guidance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_start_guidance;
+        
+        /// <summary>
+        /// Literal_application_name_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name_2;
+        
+        /// <summary>
         /// TableRow_end control.
         /// </summary>
         /// <remarks>
@@ -281,6 +308,15 @@ namespace UserControl_strike_team_deployment_operational_period {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_prelim_shift_name;
+        
+        /// <summary>
+        /// TableRow_name_guidance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_name_guidance;
         
         /// <summary>
         /// RequiredFieldValidator_prelim_shift_name control.

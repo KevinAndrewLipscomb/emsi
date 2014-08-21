@@ -49,13 +49,31 @@ namespace UserControl_mobilization_announcement {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_service_strike_teams;
         
         /// <summary>
-        /// Literal_deployment_name control.
+        /// Label_deployment_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_deployment_name;
+        protected global::System.Web.UI.WebControls.Label Label_deployment_name;
+        
+        /// <summary>
+        /// Literal_application_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
+        
+        /// <summary>
+        /// Panel_hint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_hint;
         
         /// <summary>
         /// TextBox_supplemental_message control.

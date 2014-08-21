@@ -4,6 +4,7 @@ using Class_biz_services;
 using Class_biz_strike_team_deployments;
 using Class_msg_protected;
 using kix;
+using System.Configuration;
 using System.Web.UI.WebControls;
 
 namespace UserControl_mobilization_announcement
@@ -27,7 +28,8 @@ namespace UserControl_mobilization_announcement
       {
       if (!p.be_loaded)
         {
-        Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOf(p.deployment_summary);
+        Label_deployment_name.Text = p.biz_strike_team_deployments.NameOf(p.deployment_summary);
+        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
         p.biz_services.BindStrikeTeamMobilizationAnnouncementListControl
           (
           region_code:p.biz_strike_team_deployments.RegionCodeOf(p.deployment_summary),
@@ -121,14 +123,6 @@ namespace UserControl_mobilization_announcement
             }
           }
         TextBox_supplemental_message.Text = k.EMPTY;
-        Alert
-          (
-          cause:k.alert_cause_type.USER,
-          state:k.alert_state_type.NORMAL,
-          key:"ancmtsent",
-          value:"Announcement sent",
-          be_using_scriptmanager:true
-          );
         var msg_protected_strike_team_deployment_detail = new TClass_msg_protected.strike_team_deployment_detail();
         msg_protected_strike_team_deployment_detail.id = p.biz_strike_team_deployments.IdOf(p.deployment_summary);
         MessageBack
@@ -137,7 +131,13 @@ namespace UserControl_mobilization_announcement
           folder_name:"protected",
           aspx_name:"strike_team_deployment_detail"
           );
-        BackTrack();
+        AlertAndBackTrack
+          (
+          cause:k.alert_cause_type.USER,
+          state:k.alert_state_type.NORMAL,
+          key:"ancmtsent",
+          value:"Announcement sent"
+          );
         }
       else
         {

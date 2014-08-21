@@ -89,7 +89,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         + " , prelim_shift_name"
         + " , DATE_FORMAT(start,'%Y-%m-%d %H:%i') as start"
         + " , DATE_FORMAT(end,'%Y-%m-%d %H:%i') as end"
-        + " , be_convoy"
+        + " , IF(be_convoy,'YES','no') as be_convoy"
         + " from strike_team_deployment_operational_period"
         + " where deployment_id = '" + deployment_id + "'"
         +     (be_unlimited ? k.EMPTY : " and (" + Static.BE_PRELIM_CLAUSE + " or be_convoy)")
