@@ -229,6 +229,15 @@ namespace UserControl_strike_team_deployment_operational_period {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_kind;
         
         /// <summary>
+        /// CheckBox_force_overlap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_force_overlap;
+        
+        /// <summary>
         /// RequiredFieldValidator_kind control.
         /// </summary>
         /// <remarks>
@@ -236,6 +245,15 @@ namespace UserControl_strike_team_deployment_operational_period {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_kind;
+        
+        /// <summary>
+        /// CustomValidator_force_overlap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_force_overlap;
         
         /// <summary>
         /// TableRow_start control.

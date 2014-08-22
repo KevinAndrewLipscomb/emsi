@@ -530,7 +530,7 @@ namespace UserControl_strike_team_deployment_operational_period
 
     protected void CustomValidator_uniqueness_ServerValidate(object source, ServerValidateEventArgs args)
       {
-      var id_with_competing_times = p.biz_strike_team_deployment_operational_periods.IdInSameDeploymentWithCompetingTimes
+      var id_with_competing_times = p.biz_strike_team_deployment_operational_periods.IdInSameDeploymentWithIdenticalTimes
         (
         id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
         deployment_id:p.deployment_id,
@@ -547,7 +547,7 @@ namespace UserControl_strike_team_deployment_operational_period
 
     private void ManageFormAccordingToKind()
       {
-      var kind = DropDownList_kind.SelectedValue;
+      var kind = k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.ALPHA);
       var be_kind_using_start_and_end = new ArrayList() { "CONVOY", "STANDARD" }.Contains(kind);
       var be_prelim = (!be_kind_using_start_and_end && (kind.Length > 0));
       TableRow_start.Visible = be_kind_using_start_and_end;
@@ -556,6 +556,27 @@ namespace UserControl_strike_team_deployment_operational_period
       RequiredFieldValidator_prelim_shift_name.Enabled = be_prelim;
       CustomValidator_chronological_order.Enabled = be_kind_using_start_and_end;
       CustomValidator_uniqueness.Enabled = be_kind_using_start_and_end;
+      }
+
+    protected void CustomValidator_force_overlap_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      var be_valid = CheckBox_force_overlap.Checked
+      ||
+        (
+          new ArrayList() { "CONVOY", "STANDARD" }.Contains(k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.ALPHA))
+        &&
+          !p.biz_strike_team_deployment_operational_periods.BeOverlapInSameDeployment
+            (
+            id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
+            deployment_id:p.deployment_id,
+            start:UserControl_drop_down_datetime_start.selectedvalue,
+            end:UserControl_drop_down_datetime_end.selectedvalue
+            )
+        );
+      CheckBox_force_overlap.Visible = !be_valid;
+      args.IsValid = be_valid;
+      //
+      CheckBox_force_overlap.Checked = false;
       }
 
     } // end TWebUserControl_strike_team_deployment_operational_periods

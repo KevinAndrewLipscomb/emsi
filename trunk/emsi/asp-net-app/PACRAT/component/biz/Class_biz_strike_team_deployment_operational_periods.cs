@@ -55,6 +55,17 @@ namespace Class_biz_strike_team_deployment_operational_periods
       return db_strike_team_deployment_operational_periods.BeEmpty(id);
       }
 
+    internal bool BeOverlapInSameDeployment
+      (
+      string id,
+      string deployment_id,
+      DateTime start,
+      DateTime end
+      )
+      {
+      return db_strike_team_deployment_operational_periods.BeOverlapInSameDeployment(id,deployment_id,start,end);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_strike_team_deployment_operational_periods.Bind(partial_spec, target);
@@ -124,7 +135,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
       return get;
       }
 
-    internal string IdInSameDeploymentWithCompetingTimes
+    internal string IdInSameDeploymentWithIdenticalTimes
       (
       string id,
       string deployment_id,
@@ -132,7 +143,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
       DateTime end
       )
       {
-      return db_strike_team_deployment_operational_periods.IdInSameDeploymentWithCompetingTimes(id,deployment_id,start,end);
+      return db_strike_team_deployment_operational_periods.IdInSameDeploymentWithIdenticalTimes(id,deployment_id,start,end);
       }
 
     internal kind_enum KindOf
