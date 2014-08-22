@@ -53,7 +53,7 @@
     </font>
     </td>
     <td nowrap="nowrap" valign="top">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_id" runat="server" errormessage="Please enter id." font-bold="True" controltovalidate="TextBox_id">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_id" runat="server" errormessage="Please enter id." font-bold="True" controltovalidate="TextBox_id" Display="Dynamic">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
   <tr id="TableRow_id" runat="server" visible="false">
@@ -64,8 +64,8 @@
       </font>
     </td>
     <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_deployment_id" runat="server" errormessage="Please enter Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id">!ERR!</ASP:RequiredFieldValidator>
-      <ASP:RegularExpressionValidator id="RegularExpressionValidator_deployment_id" runat="server" errormessage="Please enter a valid Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
+      <ASP:RequiredFieldValidator id="RequiredFieldValidator_deployment_id" runat="server" errormessage="Please enter Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id" Display="Dynamic">!ERR!</ASP:RequiredFieldValidator>
+      <ASP:RegularExpressionValidator id="RegularExpressionValidator_deployment_id" runat="server" errormessage="Please enter a valid Deployment&nbsp;id." font-bold="True" controltovalidate="TextBox_deployment_id" validationexpression="-?\d+" Display="Dynamic">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
   <tr id="TableRow_initial_actions" runat="server" visible="false">
@@ -98,9 +98,11 @@
         <asp:ListItem Value="CONVOY">CONVOY -- to account for resources on the way to/from deployment base</asp:ListItem>
         <asp:ListItem Value="STANDARD">STANDARD -- to account for resources on duty</asp:ListItem>
       </asp:DropDownList>
+      <asp:CheckBox ID="CheckBox_force_overlap" runat="server" Text="Force overlap" Visible="False" Font-Bold="True" />
     </td>
     <td>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator_kind" runat="server" ControlToValidate="DropDownList_kind" ErrorMessage="Please select the Kind of operational period." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator_kind" runat="server" ControlToValidate="DropDownList_kind" ErrorMessage="Please select the Kind of operational period." Font-Bold="True" Display="Dynamic">!ERR!</asp:RequiredFieldValidator>
+      <asp:CustomValidator ID="CustomValidator_force_overlap" runat="server" Display="Dynamic" ErrorMessage="The specified start and end times overlap an existing operational period.  You should not normally do this.  Check the 'Force overlap' checkbox to override this error." Font-Bold="True" onservervalidate="CustomValidator_force_overlap_ServerValidate">!ERR!</asp:CustomValidator>
     </td>
   </tr>
   <tr id="TableRow_start" runat="server">
@@ -143,7 +145,7 @@
       </table>
     </td>
     <td nowrap="nowrap">
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator_prelim_shift_name" runat="server" ControlToValidate="TextBox_prelim_shift_name" Enabled="False" ErrorMessage="Please specify a Preliminary shift name." Font-Bold="True">!ERR!</asp:RequiredFieldValidator>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator_prelim_shift_name" runat="server" ControlToValidate="TextBox_prelim_shift_name" Enabled="False" ErrorMessage="Please specify a Preliminary shift name." Font-Bold="True" Display="Dynamic">!ERR!</asp:RequiredFieldValidator>
     </td>
   </tr>
       </table>

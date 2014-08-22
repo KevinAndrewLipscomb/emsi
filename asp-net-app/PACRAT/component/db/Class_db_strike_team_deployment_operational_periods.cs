@@ -49,6 +49,29 @@ namespace Class_db_strike_team_deployment_operational_periods
       return be_empty;
       }
 
+    internal bool BeOverlapInSameDeployment
+      (
+      string id,
+      string deployment_id,
+      DateTime start,
+      DateTime end
+      )
+      {
+      Open();
+      var be_overlap_in_same_deployment = "0" != new MySqlCommand
+        (
+        "select count(*)"
+        + " from strike_team_deployment_operational_period"
+        + " where deployment_id = '" + deployment_id + "'"
+        +   " and (start < '" + end.ToString("yyyy-MM-dd HH:mm") + "' and '" + start.ToString("yyyy-MM-dd HH:mm") + "' < end)"
+        +   " and id <> '" + id + "'",
+        connection
+        )
+        .ExecuteScalar().ToString();
+      Close();
+      return be_overlap_in_same_deployment;
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(start,'-'),'|',IFNULL(end,'-'))";
@@ -193,7 +216,7 @@ namespace Class_db_strike_team_deployment_operational_periods
       return result;
       }
 
-    internal string IdInSameDeploymentWithCompetingTimes
+    internal string IdInSameDeploymentWithIdenticalTimes
       (
       string id,
       string deployment_id,
@@ -202,7 +225,7 @@ namespace Class_db_strike_team_deployment_operational_periods
       )
       {
       Open();
-      var id_in_same_deployment_with_competing_times_obj = new MySqlCommand
+      var id_in_same_deployment_with_identical_times_obj = new MySqlCommand
         (
         "select IFNULL(id,'')"
         + " from strike_team_deployment_operational_period"
@@ -214,14 +237,7 @@ namespace Class_db_strike_team_deployment_operational_periods
         )
         .ExecuteScalar();
       Close();
-      if (id_in_same_deployment_with_competing_times_obj == null)
-        {
-        return k.EMPTY;
-        }
-      else
-        {
-        return id_in_same_deployment_with_competing_times_obj.ToString();
-        }
+      return (id_in_same_deployment_with_identical_times_obj == null ? k.EMPTY : id_in_same_deployment_with_identical_times_obj.ToString());
       }
 
     internal string PrelimShiftNameOf(object summary)
