@@ -10,3 +10,7 @@ where short_description in ('AEMT','PHRN','EMT-P','PHPE','HP')
   and expiration_date >= CURDATE()
   and practitioner_status.description in ('Active','Probation')
   and not be_past
+--
+-- Can't really add the following line because not all regions record con-ed activity in ConEdLink.
+--
+--  and practitioner.id in (select distinct practitioner_id from coned_offering_roster)
