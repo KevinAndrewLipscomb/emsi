@@ -64,7 +64,7 @@
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_emsrs_id" runat="server" errormessage="Please enter a valid Emsrs&nbsp;id." font-bold="True" controltovalidate="TextBox_emsrs_id" validationexpression="-?\d+">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Date&nbsp;created:</font></td>
     <td>
       <font class="">
@@ -74,7 +74,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Date&nbsp;last&nbsp;edited:</font></td>
     <td>
       <font class="">
@@ -104,7 +104,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Short&nbsp;name:</font></td>
     <td>
       <font class="">
@@ -114,7 +114,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Address&nbsp;1:</font></td>
     <td>
       <font class="">
@@ -124,7 +124,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Address&nbsp;2:</font></td>
     <td>
       <font class="">
@@ -134,7 +134,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">City:</font></td>
     <td>
       <font class="">
@@ -144,7 +144,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">State:</font></td>
     <td>
       <font class="">
@@ -154,7 +154,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Zip:</font></td>
     <td>
       <font class="">
@@ -164,7 +164,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">County:</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_county" runat="server">
@@ -192,7 +192,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Website:</font></td>
     <td>
       <font class="">
@@ -202,7 +202,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Daytime&nbsp;phone:</font></td>
     <td>
       <font class="">
@@ -212,7 +212,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Evening&nbsp;phone:</font></td>
     <td>
       <font class="">
@@ -222,7 +222,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Fax:</font></td>
     <td>
       <font class="">
@@ -232,7 +232,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Business&nbsp;type:</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_business_type" runat="server">
@@ -241,7 +241,7 @@
     <td nowrap="nowrap">
       &nbsp;</td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Con&nbsp;ed&nbsp;level:</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_con_ed_level" runat="server">
@@ -250,7 +250,7 @@
     <td nowrap="nowrap">
       &nbsp;</td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;first&nbsp;name:</font></td>
     <td>
       <font class="">
@@ -260,7 +260,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;last&nbsp;name:</font></td>
     <td>
       <font class="">
@@ -270,7 +270,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;title:</font></td>
     <td>
       <font class="">
@@ -280,7 +280,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;address&nbsp;1:</font></td>
     <td>
       <font class="">
@@ -290,7 +290,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;address&nbsp;2:</font></td>
     <td>
       <font class="">
@@ -300,7 +300,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;city:</font></td>
     <td>
       <font class="">
@@ -310,7 +310,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;state:</font></td>
     <td>
       <font class="">
@@ -320,7 +320,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;zip:</font></td>
     <td>
       <font class="">
@@ -330,7 +330,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;daytime&nbsp;phone:</font></td>
     <td>
       <font class="">
@@ -340,7 +340,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;evening&nbsp;phone:</font></td>
     <td>
       <font class="">
@@ -350,7 +350,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;fax:</font></td>
     <td>
       <font class="">
@@ -360,7 +360,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Contact&nbsp;email:</font></td>
     <td>
       <font class="">
@@ -370,7 +370,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Public&nbsp;contact&nbsp;name:</font></td>
     <td>
       <font class="">
@@ -380,7 +380,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Public&nbsp;contact&nbsp;phone:</font></td>
     <td>
       <font class="">
@@ -390,7 +390,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Public&nbsp;contact&nbsp;email:</font></td>
     <td>
       <font class="">
@@ -400,7 +400,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Public&nbsp;contact&nbsp;website:</font></td>
     <td>
       <font class="">
@@ -410,7 +410,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Public&nbsp;contact&nbsp;notes:</font></td>
     <td>
       <font class="">
@@ -420,7 +420,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Application&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -430,7 +430,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Application&nbsp;received:</font></td>
     <td>
       <font class="">
@@ -449,7 +449,7 @@
     <td nowrap="nowrap">
       &nbsp;</td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Issue&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -459,7 +459,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Prev&nbsp;expiration&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -469,7 +469,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Expiration&nbsp;date&nbsp;sponsor:</font></td>
     <td>
       <font class="">
@@ -479,7 +479,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Process&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -489,7 +489,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Corrective&nbsp;action:</font></td>
     <td>
       <font class="">
@@ -500,7 +500,7 @@
       <ASP:RegularExpressionValidator id="RegularExpressionValidator_corrective_action" runat="server" errormessage="Please restrict the Corrective&nbsp;action entry to 65535 characters." font-bold="True" controltovalidate="TextBox_corrective_action" validationexpression="^[\s\S]{0,65535}$">!ERR!</ASP:RegularExpressionValidator>
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Compliance&nbsp;by&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -510,7 +510,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Initial&nbsp;accred&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -520,7 +520,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Accepted&nbsp;provisional&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -530,7 +530,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Completed&nbsp;provisional&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -540,7 +540,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Withdrawal&nbsp;challenge&nbsp;due&nbsp;date:</font></td>
     <td>
       <font class="">
@@ -550,7 +550,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Letter&nbsp;for&nbsp;expiration:</font></td>
     <td>
       <font class="">
@@ -560,7 +560,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Letter&nbsp;f&nbsp;for&nbsp;ppwk&nbsp;non&nbsp;compliance:</font></td>
     <td>
       <font class="">
@@ -570,7 +570,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">Other&nbsp;letter:</font></td>
     <td>
       <font class="">
@@ -580,7 +580,7 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false">
     <td><font class="">History:</font></td>
     <td>
       <font class="">
@@ -596,4 +596,3 @@
   </tr>
 </table>
 <ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" visible="false"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" visible="false"></ASP:Button>
-
