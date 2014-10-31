@@ -848,6 +848,9 @@
       <DependentUpon>UserControl_users_and_mapping_binder.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_users_and_mapping_binder.ascx.designer.cs">
+      <DependentUpon>UserControl_users_and_mapping_binder.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_user_member_mapping.ascx.cs">
       <DependentUpon>UserControl_user_member_mapping.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

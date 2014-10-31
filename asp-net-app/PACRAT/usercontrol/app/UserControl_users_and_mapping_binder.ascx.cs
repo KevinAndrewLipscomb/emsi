@@ -1,12 +1,6 @@
-using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Collections;
-
 using UserControl_user;
 using UserControl_user_member_mapping;
+
 namespace UserControl_users_and_mapping_binder
 {
     public struct p_type
@@ -16,12 +10,10 @@ namespace UserControl_users_and_mapping_binder
         public uint tab_index;
     } // end p_type
 
-    public class TWebUserControl_users_and_mapping_binder: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_users_and_mapping_binder: ki_web_ui.usercontrol_class
     {
         private p_type p;
-        protected System.Web.UI.WebControls.PlaceHolder PlaceHolder_content = null;
-        protected AjaxControlToolkit.TabContainer TabContainer_control = null;
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
             {
@@ -59,8 +51,8 @@ namespace UserControl_users_and_mapping_binder
             else
             {
                 p.be_loaded = false;
-                p.tab_index = Units.UserControl_users_and_mapping_binder.TSSI_USERS;
-                p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_user)(LoadControl("~/usercontrol/app/UserControl_user.ascx"))),"UserControl_user",PlaceHolder_content,InstanceId());
+                p.tab_index = Units.UserControl_users_and_mapping_binder.TSSI_USER_MEMBER_MAPPINGS;
+                p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_user_member_mapping)(LoadControl("~/usercontrol/app/UserControl_user_member_mapping.ascx"))),"UserControl_user_member_mapping",PlaceHolder_content,InstanceId());
             }
 
         }
