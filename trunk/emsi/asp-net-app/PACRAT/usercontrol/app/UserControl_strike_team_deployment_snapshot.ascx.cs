@@ -328,25 +328,25 @@ namespace UserControl_strike_team_deployment_snapshot
         );
       var region_summary = p.biz_regions.Summary(region_code);
       var raw_xml = k.EMPTY
-        + "<?xml version=\"1.0\"?>"
-        + "<ss:Workbook xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">"
-        +   "<ss:Worksheet ss:Name=\"Intro\">"
-        +     "<ss:Table>"
-        +       "<ss:Row><ss:Cell><ss:Data>This is a snapshot of data associated with the '" + name + "' deployment.</ss:Data></ss:Cell></ss:Row>"
-        +       "<ss:Row><ss:Cell><ss:Data>This deployment's personnel participation policy is set to '" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "'.</ss:Data></ss:Cell></ss:Row>"
-        +       "<ss:Row><ss:Cell><ss:Data>The authority and scope of this data is Pennsylvania EMS Region " + p.biz_regions.EmsrsCodeOf(region_summary) + " (" + p.biz_regions.NameOf(region_summary) + ").</ss:Data></ss:Cell></ss:Row>"
-        +       "<ss:Row><ss:Cell><ss:Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>"
-        +       "<ss:Row><ss:Cell><ss:Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>"
-        +       "<ss:Row><ss:Cell><ss:Data>Use the worksheet tabs in this workbook to browse this data.</ss:Data></ss:Cell></ss:Row>"
-        +     "</ss:Table>"
-        +   "</ss:Worksheet>"
-        +   "<ss:Worksheet ss:Name=\"Personnel\"><ss:Table>" + p.personnel_content_xml + "</ss:Table></ss:Worksheet>"
-        +   "<ss:Worksheet ss:Name=\"Vehicles\"><ss:Table>" + p.vehicles_content_xml + "</ss:Table></ss:Worksheet>"
-        +   "<ss:Worksheet ss:Name=\"OperationalPeriods\"><ss:Table>" + p.operational_periods_content_xml + "</ss:Table></ss:Worksheet>"
-        +   "<ss:Worksheet ss:Name=\"Digest\"><ss:Table>" + p.digest_content_xml + "</ss:Table></ss:Worksheet>"
-        +   "<ss:Worksheet ss:Name=\"Assignments\"><ss:Table>" + p.assignments_content_xml + "</ss:Table></ss:Worksheet>"
-        +   "<ss:Worksheet ss:Name=\"Log\"><ss:Table>" + p.log_content_xml + "</ss:Table></ss:Worksheet>"
-        + "</ss:Workbook>";
+        + "<?xml version=\"1.0\"?>" + k.NEW_LINE
+        + "<ss:Workbook xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Intro\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>This is a snapshot of data associated with the '" + name + "' deployment.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>This deployment's personnel participation policy is set to '" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "'.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>The authority and scope of this data is Pennsylvania EMS Region " + p.biz_regions.EmsrsCodeOf(region_summary) + " (" + p.biz_regions.NameOf(region_summary) + ").</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>Use the worksheet tabs in this workbook to browse this data.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Personnel\"><ss:Table>" + p.personnel_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Vehicles\"><ss:Table>" + p.vehicles_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"OperationalPeriods\"><ss:Table>" + p.operational_periods_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Digest\"><ss:Table>" + p.digest_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Assignments\"><ss:Table>" + p.assignments_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Log\"><ss:Table>" + p.log_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        + "</ss:Workbook>" + k.NEW_LINE;
       ExportToExcel
         (
         the_page:Page,
