@@ -9,6 +9,7 @@
           <cc1:TabContainer id="TabContainer_control" runat="server" autopostback="True" cssclass="ajax__tab_ki">
             <cc1:TabPanel runat="server" headertext="Outstanding" id="TabPanel_outstanding"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Ready" id="TabPanel_ready"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Discarded" id="TabPanel_discarded"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

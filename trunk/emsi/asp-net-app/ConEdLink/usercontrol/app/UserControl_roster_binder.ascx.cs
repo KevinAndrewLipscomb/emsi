@@ -3,6 +3,7 @@
 using kix;
 using UserControl_outstanding_rosters;
 using UserControl_ready_rosters;
+using UserControl_discarded_rosters;
 
 namespace UserControl_roster_binder
   {
@@ -11,6 +12,7 @@ namespace UserControl_roster_binder
     {
     public const int TSSI_OUTSTANDING = 0;
     public const int TSSI_READY = 1;
+    public const int TSSI_DISCARDED = 2;
     }
 
   public partial class TWebUserControl_roster_binder: ki_web_ui.usercontrol_class
@@ -46,6 +48,11 @@ namespace UserControl_roster_binder
         {
         var c = ((TWebUserControl_ready_rosters)(LoadControl("~/usercontrol/app/UserControl_ready_rosters.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_ready_rosters",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        }
+      else if (p.tab_index == UserControl_roster_binder_Static.TSSI_DISCARDED)
+        {
+        var c = ((TWebUserControl_discarded_rosters)(LoadControl("~/usercontrol/app/UserControl_discarded_rosters.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_discarded_rosters",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
       }
     private void FillPlaceHolder(bool be_fresh_control_required)
@@ -141,6 +148,10 @@ namespace UserControl_roster_binder
         else if (target.ToLower().Contains("/ready/"))
           {
           p.tab_index = UserControl_roster_binder_Static.TSSI_READY;
+          }
+        else if (target.ToLower().Contains("/discarded/"))
+          {
+          p.tab_index = UserControl_roster_binder_Static.TSSI_DISCARDED;
           }
         //
         TabContainer_control.ActiveTabIndex = (int)p.tab_index;
