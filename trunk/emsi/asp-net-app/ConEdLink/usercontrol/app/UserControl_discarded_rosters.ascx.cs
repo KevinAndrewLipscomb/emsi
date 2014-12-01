@@ -223,6 +223,12 @@ namespace UserControl_discarded_rosters
           link_button = ((e.Item.Cells[Static.TCI_UNDISCARD].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          RequireConfirmation
+            (
+            c:link_button,
+            prompt:"Are you sure you want to UNdiscard class # " + e.Item.Cells[Static.TCI_CLASS_NUM].Text + ", '" + e.Item.Cells[Static.TCI_COURSE_TITLE].Text + "', marked " + e.Item.Cells[Static.TCI_STATUS].Text
+            + " by sponsor " + e.Item.Cells[Static.TCI_SPONSOR].Text + ", held at " + e.Item.Cells[Static.TCI_LOCATION].Text + " from " + e.Item.Cells[Static.TCI_START].Text + " to " + e.Item.Cells[Static.TCI_END].Text + "?"
+            );
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
