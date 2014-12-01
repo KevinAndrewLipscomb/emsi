@@ -11,7 +11,7 @@
                 <table cellspacing="0" cellpadding="0" border="0">
                   <tr>
                     <td align="right">
-                      <asp:Button ID="Button_default_sort" runat="server" Text="Default sort" OnClick="Button_default_sort_Click" />
+                      <asp:Button ID="Button_default_sort" runat="server" Text="Sort by most recently discarded (default)" OnClick="Button_default_sort_Click" />
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <strong>Filter:</strong>
                       <asp:DropDownList ID="DropDownList_filter" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList_filter_SelectedIndexChanged">
