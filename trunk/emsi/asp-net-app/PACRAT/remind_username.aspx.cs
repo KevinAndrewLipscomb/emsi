@@ -37,7 +37,7 @@ namespace remind_username
             switch(NatureOfVisit(InstanceId() + ".p"))
             {
                 case nature_of_visit_type.VISIT_INITIAL:
-                    Title.InnerText = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - remind_username";
+                    Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - remind_username";
                     p.biz_users = new TClass_biz_users();
                     Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
                     Label_application_name_2.Text = ConfigurationManager.AppSettings["application_name"];
