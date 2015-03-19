@@ -560,19 +560,19 @@ namespace UserControl_strike_team_deployment_operational_period
 
     protected void CustomValidator_force_overlap_ServerValidate(object source, ServerValidateEventArgs args)
       {
-      var be_valid = CheckBox_force_overlap.Checked
+      var be_valid =
+        CheckBox_force_overlap.Checked
       ||
-        (
-          new ArrayList() { "CONVOY", "STANDARD" }.Contains(k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.ALPHA))
-        &&
-          !p.biz_strike_team_deployment_operational_periods.BeOverlapInSameDeployment
-            (
-            id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
-            deployment_id:p.deployment_id,
-            start:UserControl_drop_down_datetime_start.selectedvalue,
-            end:UserControl_drop_down_datetime_end.selectedvalue
-            )
-        );
+        (k.Safe(DropDownList_kind.SelectedValue,k.safe_hint_type.ALPHA) == "PRELIM")
+      ||
+        !p.biz_strike_team_deployment_operational_periods.BeOverlapInSameDeployment
+          (
+          id:k.Safe(TextBox_id.Text, k.safe_hint_type.NUM),
+          deployment_id:p.deployment_id,
+          start:UserControl_drop_down_datetime_start.selectedvalue,
+          end:UserControl_drop_down_datetime_end.selectedvalue
+          )
+      ;
       CheckBox_force_overlap.Visible = !be_valid;
       args.IsValid = be_valid;
       //
