@@ -70,16 +70,16 @@ namespace practitioner_management
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
-//      try
-//        {
+      try
+        {
         p.biz_strike_team_rosters.Set(id:k.EMPTY,service_id:p.service_id,practitioner_id:list_item.Value);
         Bind();
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
-//        }
-//      catch (NullReferenceException)
-//        {
-//        }
+        }
+      catch (NullReferenceException)
+        {
+        }
       }
 
     private void Bind()
