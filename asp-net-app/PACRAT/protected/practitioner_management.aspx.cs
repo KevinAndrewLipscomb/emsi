@@ -481,7 +481,7 @@ namespace practitioner_management
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         InitForNewSearch();
-        Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
+        Literal_service_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
         //
         var hash_table = new Hashtable();

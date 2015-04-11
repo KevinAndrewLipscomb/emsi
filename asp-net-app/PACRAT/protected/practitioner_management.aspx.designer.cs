@@ -121,13 +121,13 @@ namespace practitioner_management {
         protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
         
         /// <summary>
-        /// Literal_service_name control.
+        /// Literal_service_short_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_service_name;
+        protected global::System.Web.UI.WebControls.Literal Literal_service_short_name;
         
         /// <summary>
         /// Literal_affiliate_num control.

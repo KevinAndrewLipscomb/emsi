@@ -30,8 +30,14 @@
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Manage"></asp:ButtonColumn>
                     <asp:BoundColumn datafield="id" Visible="false"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="name" headertext="Name" sortexpression="name%">
-                      <HeaderStyle horizontalalign="Left"></HeaderStyle>
+                    <asp:BoundColumn datafield="affiliate_num" headertext="Affiliate#" sortexpression="affiliate_num%">
+                      <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn DataField="short_name" HeaderText="Short name" SortExpression="short_name%">
+                      <HeaderStyle HorizontalAlign="Left" />
+                    </asp:BoundColumn>
+                    <asp:BoundColumn DataField="name" HeaderText="Long name" SortExpression="name%">
+                      <ItemStyle Font-Size="Small" />
                     </asp:BoundColumn>
                     <asp:BoundColumn datafield="be_strike_team_participant" headertext="Participating?" sortexpression="be_strike_team_participant%,name">
                       <ItemStyle horizontalalign="Center"></ItemStyle>

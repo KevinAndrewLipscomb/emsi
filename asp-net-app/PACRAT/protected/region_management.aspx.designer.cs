@@ -49,15 +49,6 @@ namespace region_management {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_quick_message;
         
         /// <summary>
-        /// CheckBox_be_pacrat_subscriber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_pacrat_subscriber;
-        
-        /// <summary>
         /// Panel_one_at_a_time control.
         /// </summary>
         /// <remarks>
@@ -130,6 +121,15 @@ namespace region_management {
         protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
         
         /// <summary>
+        /// LinkButton_drill_down control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down;
+        
+        /// <summary>
         /// Literal_region_name control.
         /// </summary>
         /// <remarks>
@@ -155,6 +155,15 @@ namespace region_management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
+        
+        /// <summary>
+        /// CheckBox_be_pacrat_subscriber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_pacrat_subscriber;
         
         /// <summary>
         /// UpdatePanel_assignees control.
@@ -200,15 +209,6 @@ namespace region_management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
-        
-        /// <summary>
-        /// LinkButton_drill_down control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down;
         
         /// <summary>
         /// Literal_author_email_address control.

@@ -22,13 +22,15 @@ namespace UserControl_region_detail
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_NAME = 2;
-      public const int TCI_PARTICIPANT = 3;
-      public const int TCI_NUM_MEMBERS = 4;
-      public const int TCI_NUM_VEHICLES = 5;
-      public const int TCI_EMAIL_TARGET = 6;
-      public const int TCI_SMS_TARGET = 7;
-      public const int TCI_SELECT_FOR_QUICKMESSAGE = 8;
+      public const int TCI_AFFILIATE_NUM = 2;
+      public const int TCI_SHORT_NAME = 3;
+      public const int TCI_LONG_NAME = 4;
+      public const int TCI_PARTICIPANT = 5;
+      public const int TCI_NUM_MEMBERS = 6;
+      public const int TCI_NUM_VEHICLES = 7;
+      public const int TCI_EMAIL_TARGET = 8;
+      public const int TCI_SMS_TARGET = 9;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 10;
       }
 
     private struct p_type
@@ -180,7 +182,7 @@ namespace UserControl_region_detail
         p.distribution_list_sms = k.EMPTY;
         p.do_include_all_services = false;
         p.region_code = k.EMPTY;
-        p.sort_order = "be_strike_team_participant desc,name";
+        p.sort_order = "be_strike_team_participant desc, short_name";
         p.summary = null;
         //
         var member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());

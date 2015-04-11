@@ -21,6 +21,7 @@ namespace service_management
   {
   public struct p_type
     {
+    public string affiliate_num;
     public bool be_noncurrent_practitioners_on_roster;
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
@@ -475,6 +476,8 @@ namespace service_management
         //  region_code:p.incoming.region_code
         //  );
         p.be_ok_to_edit_roster = true;
+        //
+        p.affiliate_num = p.biz_services.AffiliateNumOf(p.incoming.summary);;
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
@@ -498,7 +501,9 @@ namespace service_management
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         InitForNewSearch();
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
-        Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
+        Literal_affiliate_num.Text = p.affiliate_num;
+        TextBox_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
+        TextBox_short_name.Enabled = p.be_ok_to_edit_roster;
         LinkButton_drill_down_to_members.Text = k.ExpandTildePath(LinkButton_drill_down_to_members.Text);
         LinkButton_drill_down_to_vehicles.Text = k.ExpandTildePath(LinkButton_drill_down_to_vehicles.Text);
         //
@@ -588,6 +593,37 @@ namespace service_management
             aspx_name:"practitioner_profile"
             );
           }
+        }
+      }
+
+    protected void CustomValidator_short_name_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      var designator_with_competing_short_name = p.biz_services.DesignatorCompetingShortName(p.affiliate_num,k.Safe(TextBox_short_name.Text,k.safe_hint_type.MAKE_MODEL));
+      CustomValidator_short_name.ErrorMessage += designator_with_competing_short_name;
+      args.IsValid = (designator_with_competing_short_name == k.EMPTY);
+      }
+
+    protected void Button_save_short_name_Click(object sender, EventArgs e)
+      {
+      if (IsValid)
+        {
+        p.biz_services.SetShortName
+          (
+          id:p.service_id,
+          value:k.Safe(TextBox_short_name.Text,k.safe_hint_type.MAKE_MODEL)
+          );
+        Alert
+          (
+          cause:k.alert_cause_type.USER,
+          state:k.alert_state_type.SUCCESS,
+          key:"shrtnamsavd",
+          value:"Short name saved.",
+          be_using_scriptmanager:true
+          );
+        }
+      else
+        {
+        ValidationAlert(true);
         }
       }
 

@@ -18,8 +18,6 @@
       <asp:UpdatePanel ID="UpdatePanel_overall" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
           <asp:ValidationSummary ID="ValidationSummary_quick_message" runat="server" ValidationGroup="QuickMessage"/>
-          <asp:CheckBox ID="CheckBox_be_strike_team_participant" runat="server" AutoPostBack="True" Text="Participating service" oncheckedchanged="CheckBox_be_strike_team_participant_CheckedChanged" Enabled="False" />
-          <hr noshade="noshade" width="100%" size="1" />
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td valign="top">
@@ -56,21 +54,68 @@
                     </tr>
                   </table>
                 </asp:Panel>
+                <br />
+                <table align="center">
+                  <tr><td colspan="3" align="center" valign="middle">Drill down to</td></tr>
+                  <tr>
+                    <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down_to_members" runat="server" onclick="LinkButton_drill_down_to_members_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;MEMBERS&lt;/small&gt;"></asp:LinkButton></td>
+                    <td align="center" valign="middle">or</td>
+                    <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down_to_vehicles" runat="server" onclick="LinkButton_drill_down_to_vehicles_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Vehicles&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;VEHICLES&lt;/small&gt;"></asp:LinkButton></td>
+                  </tr>
+                  <tr><td colspan="3" align="center" valign="middle">in this service's strike team</td></tr>
+                </table>
               </td>
               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
               <td valign="top">
                 <table cellpadding="0" cellspacing="0">
                   <tr>
                     <td>
-                      <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro">
+                      <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro" width="100%">
                         <tr>
                           <td>
-                            <table cellpadding="5" cellspacing="0">
-                              <tr><td colspan="2"><b><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
+                            <table cellpadding="5" cellspacing="0" width="100%">
+                              <tr><td colspan="2"><b><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal></b></td></tr>
                               <tr>
-                                <td nowrap="nowrap" valign="top"><b>PA DOH Affiliate #:</b> <asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
-                                <td valign="top" align="center">
-                                  <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                                <td nowrap="nowrap" align="right">Affiliate #:</td>
+                                <td>
+                                  <table cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                      <td><asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
+                                      <td align="right">
+                                        <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="right" nowrap="nowrap">Strike Team participant:</td>
+                                <td>
+                                  <asp:CheckBox ID="CheckBox_be_strike_team_participant" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_be_strike_team_participant_CheckedChanged" Enabled="False" />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="right" nowrap="nowrap"><font class="">Service short name:</font></td>
+                                <td>
+                                  <asp:TextBox runat="server" columns="31" maxlength="31" id="TextBox_short_name" enabled="False"></asp:TextBox>
+                                  <asp:Button ID="Button_save_short_name" runat="server" OnClick="Button_save_short_name_Click" Text="&larr;Save" />
+                                  <asp:RequiredFieldValidator runat="server" controltovalidate="TextBox_short_name" errormessage="Under the Basic ID tab, please enter Service short name." font-bold="True" id="RequiredFieldValidator_short_name">!ERR!</asp:RequiredFieldValidator>
+                                  <asp:CustomValidator ID="CustomValidator_short_name" runat="server" font-bold="True" ErrorMessage="The specified Service short name is already in use by " onservervalidate="CustomValidator_short_name_ServerValidate">!ERR!</asp:CustomValidator>
+                                </td>
+                              </tr>
+                              <tr bgcolor="khaki">
+                                <td align="right" valign="top"><font class=""><small><b>IMPORTANT:</b></small></font></td>
+                                <td valign="top">
+                                  <font class="">
+                                    <small>
+                                      <b>
+                                        Keep the Service Short Name as short as possible without allowing it to be confused with other services in your region.&nbsp; It should generally reflect the way people refer to the service in
+                                        very casual conversation amongst EMS personnel.&nbsp; Applications may use the short name in SMS messages and screen displays where excessive length will cause problems.&nbsp; For instance, leave
+                                        out "Ambulance Service", "Bureau of", "City of", "Department", "EMS", "Hose Company", "Inc.", "VFD", etc.&nbsp; Abbreviate "Township" to "Twp".&nbsp; Include "Ambulance", "Fire", or "EMS" only if it
+                                        prevents confusion in your region.&nbsp; "By way of example, the short name for "Kempsville Volunteer Rescue Squad Inc." should simply be "Kempsville".
+                                      </b>
+                                    </small>
+                                  </font>
                                 </td>
                               </tr>
                             </table>
@@ -158,19 +203,6 @@
                                   <tr>
                                     <td>
                                       <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <table>
-                                        <tr>
-                                          <td align="center" valign="middle">Drill down to</td>
-                                          <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down_to_members" runat="server" onclick="LinkButton_drill_down_to_members_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;MEMBERS&lt;/small&gt;"></asp:LinkButton></td>
-                                          <td align="center" valign="middle">or</td>
-                                          <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down_to_vehicles" runat="server" onclick="LinkButton_drill_down_to_vehicles_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Vehicles&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;VEHICLES&lt;/small&gt;"></asp:LinkButton></td>
-                                          <td align="center" valign="middle">in this service's strike team</td>
-                                        </tr>
-                                      </table>
                                     </td>
                                   </tr>
                                 </table>
