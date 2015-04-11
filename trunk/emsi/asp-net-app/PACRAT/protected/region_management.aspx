@@ -18,8 +18,6 @@
       <asp:UpdatePanel ID="UpdatePanel_overall" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
           <asp:ValidationSummary ID="ValidationSummary_quick_message" runat="server" ValidationGroup="QuickMessage"/>
-          <asp:CheckBox ID="CheckBox_be_pacrat_subscriber" runat="server" AutoPostBack="True" Text="Subscribing region" oncheckedchanged="CheckBox_be_pacrat_subscriber_CheckedChanged" />
-          <hr noshade="noshade" width="100%" size="1" />
           <table cellpadding="0" cellspacing="0">
             <tr>
               <td valign="top">
@@ -56,21 +54,44 @@
                     </tr>
                   </table>
                 </asp:Panel>
+                <br />
+                <table align="center">
+                  <tr><td align="center" valign="middle">Drill down to</td></tr>
+                  <tr>
+                    <td align="center" valign="middle">
+                      <asp:LinkButton ID="LinkButton_drill_down" runat="server" onclick="LinkButton_drill_down_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;SERVICES&lt;/small&gt;"></asp:LinkButton>
+                    </td>
+                  </tr>
+                  <tr><td align="center" valign="middle">in this region</td></tr>
+                </table>
               </td>
               <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
               <td valign="top">
                 <table cellpadding="0" cellspacing="0">
                   <tr>
                     <td>
-                      <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro">
+                      <table cellpadding="0" cellspacing="0" style="border:1px solid Gainsboro" width="100%">
                         <tr>
                           <td>
-                            <table cellpadding="5" cellspacing="0">
-                              <tr><td colspan="2"><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
+                            <table cellpadding="5" cellspacing="0" width="100%">
+                              <tr><td colspan="2"><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal></b></td></tr>
                               <tr>
-                                <td nowrap="nowrap" valign="top"><b>PA DOH Region #:</b> <asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
-                                <td valign="top" align="center">
-                                  <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                                <td nowrap="nowrap" align="right" valign="top" width="1%">Region #:</td>
+                                <td width="99%">
+                                  <table cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                      <td><asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
+                                      <td align="right">
+                                        <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                                      </td>
+                                    </tr>
+                                  </table>                                  
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="right">Subscriber:</td>
+                                <td>
+                                  <asp:CheckBox ID="CheckBox_be_pacrat_subscriber" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_be_pacrat_subscriber_CheckedChanged" />
                                 </td>
                               </tr>
                             </table>
@@ -158,18 +179,6 @@
                                   <tr>
                                     <td>
                                       <asp:Label ID="Label_noncurrent_practitioner_on_roster" runat="server" Text="*This roster includes at least one non-current practitioner." BackColor="Gold" Font-Bold="True" Font-Italic="True" Font-Size="Small" Visible="False"></asp:Label>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <table>
-                                        <tr>
-                                          <td align="center" valign="middle">Drill down to</td>
-                                          <td align="center" valign="middle"><asp:LinkButton ID="LinkButton_drill_down" runat="server" onclick="LinkButton_drill_down_Click" text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Profile&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&lt;br/&gt;&lt;small&gt;SERVICES&lt;/small&gt;"></asp:LinkButton></td>
-                                          <td align="center" valign="middle">in this region</td>
-                                        </tr>
-                                      </table>
-                                      
                                     </td>
                                   </tr>
                                 </table>

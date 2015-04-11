@@ -49,15 +49,6 @@ namespace service_management {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_quick_message;
         
         /// <summary>
-        /// CheckBox_be_strike_team_participant control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_strike_team_participant;
-        
-        /// <summary>
         /// Panel_one_at_a_time control.
         /// </summary>
         /// <remarks>
@@ -130,6 +121,24 @@ namespace service_management {
         protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
         
         /// <summary>
+        /// LinkButton_drill_down_to_members control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down_to_members;
+        
+        /// <summary>
+        /// LinkButton_drill_down_to_vehicles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down_to_vehicles;
+        
+        /// <summary>
         /// Literal_service_name control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,51 @@ namespace service_management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
+        
+        /// <summary>
+        /// CheckBox_be_strike_team_participant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_strike_team_participant;
+        
+        /// <summary>
+        /// TextBox_short_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_short_name;
+        
+        /// <summary>
+        /// Button_save_short_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_save_short_name;
+        
+        /// <summary>
+        /// RequiredFieldValidator_short_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_short_name;
+        
+        /// <summary>
+        /// CustomValidator_short_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_short_name;
         
         /// <summary>
         /// UpdatePanel_assignees control.
@@ -200,24 +254,6 @@ namespace service_management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
-        
-        /// <summary>
-        /// LinkButton_drill_down_to_members control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down_to_members;
-        
-        /// <summary>
-        /// LinkButton_drill_down_to_vehicles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton_drill_down_to_vehicles;
         
         /// <summary>
         /// Literal_author_email_address control.
