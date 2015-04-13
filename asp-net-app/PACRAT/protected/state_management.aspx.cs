@@ -293,6 +293,7 @@ namespace state_management
         link_button = ((e.Item.Cells[state_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
+        link_button.Visible = (e.Item.Cells[state_management_Static.TCI_ROLE_ID].Text != "1"); // Disable for an Application Administrator
         //
         var edit_update_cancel_controls = e.Item.Cells[state_management_Static.TCI_EDIT_UPDATE_CANCEL].Controls;
         if (edit_update_cancel_controls.Count == 1)
@@ -317,6 +318,7 @@ namespace state_management
           link_button = (edit_update_cancel_controls[0] as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Edit";
+          link_button.Visible = (e.Item.Cells[state_management_Static.TCI_ROLE_ID].Text != "1"); // Disable for an Application Administrator
           }
         else
           {

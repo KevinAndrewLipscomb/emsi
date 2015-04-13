@@ -133,7 +133,7 @@
                             <asp:UpdatePanel ID="UpdatePanel_assignees" runat="server" UpdateMode="Conditional">
                               <ContentTemplate>
                                 <table cellpadding="10" cellspacing="0">
-                                  <tr bgcolor="#99CCFF"><td><b>Key personnel</b></td></tr>
+                                  <tr bgcolor="#99CCFF"><td><b>SERVICE-level Officers</b></td></tr>
                                   <tr id="TableRow_none" runat="server" bgcolor="#99CCFF"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
                                   <tr id="TableRow_assignees" runat="server" bgcolor="#99CCFF">
                                     <td valign="top">
