@@ -161,7 +161,7 @@ namespace UserControl_state_affiliation
         (
         msg:null,
         folder_name:"protected",
-        aspx_name:"state_detail"
+        aspx_name:"state_management"
         );
       }
 

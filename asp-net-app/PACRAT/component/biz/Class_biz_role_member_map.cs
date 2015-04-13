@@ -59,6 +59,16 @@ namespace Class_biz_role_member_map
           db_role_member_map.BindBaseDataListByExplicitServiceId(sort_order,be_sort_order_ascending,target,service_id);
           }
 
+        internal void BindBaseDataListForPennsylvania
+          (
+          string sort_order,
+          bool be_sort_order_ascending,
+          object target
+          )
+          {
+          db_role_member_map.BindBaseDataListForPennsylvania(sort_order,be_sort_order_ascending,target);
+          }
+
         public void BindHolders(string role_name, object target, string sort_order, bool be_sort_order_ascending)
         {
             db_role_member_map.BindHolders(role_name, target, sort_order, be_sort_order_ascending);
