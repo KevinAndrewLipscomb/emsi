@@ -166,6 +166,46 @@ namespace Class_db_role_member_map
           Close();
           }
 
+        internal void BindBaseDataListForPennsylvania
+          (
+          string sort_order,
+          bool be_sort_order_ascending,
+          object target
+          )
+          {
+          Open();
+          ((target) as BaseDataList).DataSource = new MySqlCommand
+            (
+            "select practitioner.id as practitioner_id"
+            + " , last_name"
+            + " , first_name"
+            + " , middle_initial"
+            + " , practitioner_level.short_description as level"
+            + " , LPAD(certification_number,6,'0') as certification_number_for_display"
+            + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
+            + " , be_birth_date_confirmed"
+            + " , role_id"
+            + " , role.name as role_name"
+            + " , IFNULL(email_address,'DESIRED') as email_address"
+            + " , practitioner_level.emsrs_code as level_emsrs_code"
+            + " , practitioner_status.description as practitioner_status_description"
+            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
+            + " from role_member_map"
+            +   " join practitioner on (practitioner.id=role_member_map.member_id)"
+            +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
+            +   " join practitioner_status on (practitioner_status.id=practitioner.status_id)"
+            +   " left join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
+            +   " join role on (role.id=role_member_map.role_id)"
+            + " where region_code is null and service_id is null"
+            + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
+            connection
+            )
+            .ExecuteReader();
+          ((target) as BaseDataList).DataBind();
+          (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
+          Close();
+          }
+
         public void BindHolders(string role_name, object target, string sort_order, bool be_sort_order_ascending)
         {
             this.Open();

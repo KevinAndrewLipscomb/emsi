@@ -106,6 +106,7 @@
     <Content Include="protected\region_management.aspx" />
     <Content Include="protected\service_management.aspx" />
     <Content Include="protected\state_detail.aspx" />
+    <Content Include="protected\state_management.aspx" />
     <Content Include="protected\strike_team_deployment_detail.aspx" />
     <Content Include="protected\template\notification\explicit_region_role_change.txt" />
     <Content Include="protected\template\notification\explicit_service_role_change.txt" />
@@ -425,6 +426,13 @@
     </Compile>
     <Compile Include="protected\state_detail.aspx.designer.cs">
       <DependentUpon>state_detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\state_management.aspx.cs">
+      <DependentUpon>state_management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\state_management.aspx.designer.cs">
+      <DependentUpon>state_management.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\strike_team_deployment_detail.aspx.cs">
       <DependentUpon>strike_team_deployment_detail.aspx</DependentUpon>
