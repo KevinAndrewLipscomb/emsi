@@ -1,0 +1,6 @@
+START TRANSACTION
+;
+ALTER TABLE `region_code_name_map`
+  CHANGE COLUMN `be_active` `be_extant` BOOLEAN NOT NULL DEFAULT TRUE
+;
+COMMIT
