@@ -175,9 +175,6 @@ namespace UserControl_practitioner
         UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
         UserControl_drop_down_date_birth_date.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
         TableRow_birth_date_confirmed.Visible = p.be_educational_reservist_or_higher;
-        TableRow_street_address_1.Visible = p.be_educational_reservist_or_higher;
-        TableRow_street_address_2.Visible = p.be_educational_reservist_or_higher;
-        TableRow_city_state_zip.Visible = p.be_educational_reservist_or_higher;
         TableRow_be_stale.Visible = p.be_educational_reservist_or_higher;
         TableRow_be_past.Visible = p.be_educational_reservist_or_higher;
         Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
