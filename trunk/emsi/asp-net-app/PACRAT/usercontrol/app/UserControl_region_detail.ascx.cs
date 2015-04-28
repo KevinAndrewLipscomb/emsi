@@ -142,6 +142,7 @@ namespace UserControl_region_detail
       if (!p.be_loaded)
         {
         Literal_region_name.Text = p.biz_regions.NameOf(p.summary);
+        CheckBox_do_include_all_services.Checked = p.do_include_all_services;
         if (p.be_interactive)
           {
           Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);

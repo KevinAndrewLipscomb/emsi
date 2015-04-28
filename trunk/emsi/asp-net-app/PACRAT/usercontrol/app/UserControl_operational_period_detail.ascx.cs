@@ -55,6 +55,7 @@ namespace UserControl_operational_period_detail
       public bool be_interactive;
       public bool be_loaded;
       public bool be_digest_sort_order_ascending;
+      public bool be_restricted_mode;
       public bool be_sort_order_ascending;
       public bool be_unlimited;
       public TClass_biz_members biz_members;
@@ -86,7 +87,7 @@ namespace UserControl_operational_period_detail
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive;
+      DataGrid_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive && !p.be_restricted_mode;
       p.biz_strike_team_deployment_assignments.BindActualsByOperationalPeriod
         (
         sort_order:p.sort_order,
@@ -254,8 +255,10 @@ namespace UserControl_operational_period_detail
 
     private void SetRestrictedMode()
       {
+      p.be_restricted_mode = true;
       TableRow_operational_period_started.Visible = true;
       TableCell_add_mapping.Visible = false;
+      Table_quick_message.Visible = false;
       }
 
     private void TWebUserControl_operational_period_detail_PreRender(object sender, System.EventArgs e)
@@ -405,12 +408,13 @@ namespace UserControl_operational_period_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        LinkButton link_button;
-        //
-        link_button = ((e.Item.Cells[UserControl_operational_period_detail_Static.CI_UNMAP].Controls[0]) as LinkButton);
-        link_button.Text = k.ExpandTildePath(link_button.Text);
-        link_button.ToolTip = "Unmap";
-        //
+        if (!p.be_restricted_mode)
+          {
+          LinkButton link_button;
+          link_button = ((e.Item.Cells[UserControl_operational_period_detail_Static.CI_UNMAP].Controls[0]) as LinkButton);
+          link_button.Text = k.ExpandTildePath(link_button.Text);
+          link_button.ToolTip = "Unmap";
+          }
         p.num_mappings.val++;
         }
       }
@@ -480,6 +484,7 @@ namespace UserControl_operational_period_detail
         p.be_digest_sort_order_ascending = true;
         p.be_interactive = !(Session["mode:report"] != null);
         p.be_loaded = false;
+        p.be_restricted_mode = false;
         p.be_sort_order_ascending = true;
         p.be_unlimited = false;
         p.deployment_id = k.EMPTY;
