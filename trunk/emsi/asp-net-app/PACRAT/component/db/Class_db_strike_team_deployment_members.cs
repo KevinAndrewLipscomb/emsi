@@ -163,7 +163,7 @@ namespace Class_db_strike_team_deployment_members
       (target as ListControl).Items.Clear();
       var dr = new MySqlCommand
         (
-        "SELECT practitioner.id as id"
+        "SELECT DISTINCT practitioner.id as id"
         + " , concat(practitioner.last_name,', ',practitioner.first_name,' (',practitioner_level.short_description,' ',practitioner.certification_number,')') as spec"
         + " FROM strike_team_deployment_member"
         +   " join practitioner on (practitioner.id=strike_team_deployment_member.practitioner_id)"
