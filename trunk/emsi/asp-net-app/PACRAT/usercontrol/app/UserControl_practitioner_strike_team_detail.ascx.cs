@@ -648,6 +648,21 @@ namespace UserControl_practitioner_strike_team_detail
         }
       }
 
+    protected void CustomValidator_phone_number_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = k.BeValidNanpNumber(k.Safe(TextBox_phone_number.Text, k.safe_hint_type.NUM));
+      }
+
+    protected void CustomValidator_emergency_contact_1_phone_number_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = k.BeValidNanpNumber(k.Safe(TextBox_emergency_contact_1_phone_number.Text, k.safe_hint_type.NUM));
+      }
+
+    protected void CustomValidator_emergency_contact_2_phone_number_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = k.BeValidNanpNumber(k.Safe(TextBox_emergency_contact_2_phone_number.Text, k.safe_hint_type.NUM));
+      }
+
     } // end TWebUserControl_practitioner_strike_team_detail
 
   }

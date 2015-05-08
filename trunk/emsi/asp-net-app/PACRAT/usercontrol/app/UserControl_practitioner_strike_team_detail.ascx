@@ -66,7 +66,9 @@
         <ASP:TextBox id="TextBox_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">
+      <ASP:CustomValidator id="CustomValidator_phone_num" runat="server" errormessage="Please enter a valid Phone number.  Premium and reserved numbers are not allowed." controltovalidate="TextBox_phone_number" font-bold="True" onservervalidate="CustomValidator_phone_number_ServerValidate" Display="Dynamic">!ERR!</ASP:CustomValidator>
+    </td>
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro"><font class="">Phone&nbsp;service&nbsp;id:</font></td>
@@ -98,7 +100,9 @@
         <ASP:TextBox id="TextBox_emergency_contact_1_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro">
+      <ASP:CustomValidator id="CustomValidator_emergency_contact_1_phone_number" runat="server" errormessage="Please enter a valid Emergency contact 1 phone number.  Premium and reserved numbers are not allowed." controltovalidate="TextBox_emergency_contact_1_phone_number" font-bold="True" onservervalidate="CustomValidator_emergency_contact_1_phone_number_ServerValidate" Display="Dynamic">!ERR!</ASP:CustomValidator>
+    </td>
   </tr>
   <tr style="border-right: thin solid Gainsboro; border-left: thin solid Gainsboro">
     <td style="border-left: thin solid Gainsboro"><font class="">Emergency&nbsp;contact&nbsp;2&nbsp;name:</font></td>
@@ -120,7 +124,9 @@
         <ASP:TextBox id="TextBox_emergency_contact_2_phone_number" runat="server" columns="10" maxlength="10" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
-    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">
+      <ASP:CustomValidator id="CustomValidator_emergency_contact_2_phone_number" runat="server" errormessage="Please enter a valid Emergency contact 2 phone number.  Premium and reserved numbers are not allowed." controltovalidate="TextBox_emergency_contact_2_phone_number" font-bold="True" onservervalidate="CustomValidator_emergency_contact_2_phone_number_ServerValidate" Display="Dynamic">!ERR!</ASP:CustomValidator>
+    </td>
   </tr>
   <tr><td colspan="5">&nbsp;</td></tr>
   <tr>

@@ -166,6 +166,15 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.TextBox TextBox_phone_number;
         
         /// <summary>
+        /// CustomValidator_phone_num control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_phone_num;
+        
+        /// <summary>
         /// DropDownList_phone_service control.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,15 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.TextBox TextBox_emergency_contact_1_phone_number;
         
         /// <summary>
+        /// CustomValidator_emergency_contact_1_phone_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_emergency_contact_1_phone_number;
+        
+        /// <summary>
         /// TextBox_emergency_contact_2_name control.
         /// </summary>
         /// <remarks>
@@ -209,6 +227,15 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_emergency_contact_2_phone_number;
+        
+        /// <summary>
+        /// CustomValidator_emergency_contact_2_phone_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_emergency_contact_2_phone_number;
         
         /// <summary>
         /// CheckBox_be_immune_hepatitis_b control.
