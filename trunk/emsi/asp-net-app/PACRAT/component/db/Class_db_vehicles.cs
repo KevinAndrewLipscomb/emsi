@@ -17,6 +17,7 @@ namespace Class_db_vehicles
       {
       public string id;
       public string service_id;
+      public bool be_active;
       }
 
     private TClass_db_trail db_trail = null;
@@ -24,6 +25,11 @@ namespace Class_db_vehicles
     public TClass_db_vehicles() : base()
       {
       db_trail = new TClass_db_trail();
+      }
+
+    internal bool BeActiveOf(object summary)
+      {
+      return (summary as vehicle_summary).be_active;
       }
 
     public bool Bind(string partial_spec, object target)
@@ -76,7 +82,8 @@ namespace Class_db_vehicles
         +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
         +   " join tow_capacity on (tow_capacity.id=vehicle.tow_capacity_id)"
         +   " join fuel on (fuel.id=vehicle.fuel_id)"
-        + (service_filter.Length > 0 ? " where service_id = '" + service_filter + "'" : k.EMPTY)
+        + " where be_active"
+        + (service_filter.Length > 0 ? " and service_id = '" + service_filter + "'" : k.EMPTY)
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
         )
@@ -189,7 +196,8 @@ namespace Class_db_vehicles
       out string tow_capacity_id,
       out string pa_doh_decal_num,
       out string patient_care_level_id,
-      out string elaboration
+      out string elaboration,
+      out bool be_active
       )
       {
       service_id = k.EMPTY;
@@ -202,10 +210,11 @@ namespace Class_db_vehicles
       pa_doh_decal_num = k.EMPTY;
       patient_care_level_id = k.EMPTY;
       elaboration = k.EMPTY;
+      be_active = false;
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from vehicle where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      var dr = new MySqlCommand("select * from vehicle where CAST(id AS CHAR) = '" + id + "'", connection).ExecuteReader();
       if (dr.Read())
         {
         service_id = dr["service_id"].ToString();
@@ -218,6 +227,7 @@ namespace Class_db_vehicles
         pa_doh_decal_num = dr["pa_doh_decal_num"].ToString();
         patient_care_level_id = dr["patient_care_level_id"].ToString();
         elaboration = dr["elaboration"].ToString();
+        be_active = (dr["be_active"].ToString() == "1");
         result = true;
         }
       dr.Close();
@@ -231,6 +241,13 @@ namespace Class_db_vehicles
       var id_by_service_id_and_name_obj = new MySqlCommand("select id from vehicle where service_id = '" + service_id + "' and name = '" + name + "'",connection).ExecuteScalar();
       Close();
       return (id_by_service_id_and_name_obj == null ? k.EMPTY : id_by_service_id_and_name_obj.ToString());
+      }
+
+    internal void MarkInactive(string id)
+      {
+      Open();
+      new MySqlCommand("update vehicle set be_active = FALSE where id = '" + id + "'",connection).ExecuteNonQuery();
+      Close();
       }
 
     internal string ServiceIdOf(object summary)
@@ -292,7 +309,8 @@ namespace Class_db_vehicles
       var the_summary = new vehicle_summary()
         {
         id = id,
-        service_id = dr["service_id"].ToString()
+        service_id = dr["service_id"].ToString(),
+        be_active = (dr["be_active"].ToString() == "1")
         };
       Close();
       return the_summary;

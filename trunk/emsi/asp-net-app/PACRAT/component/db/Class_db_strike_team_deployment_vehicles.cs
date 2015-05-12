@@ -130,7 +130,7 @@ namespace Class_db_strike_team_deployment_vehicles
         +   " join tow_capacity on (tow_capacity.id=vehicle.tow_capacity_id)"
         +   " join fuel on (fuel.id=vehicle.fuel_id)"
         +   (do_include_all_eligible_vehicles ? " left" : k.EMPTY) + " join strike_team_deployment_vehicle on (strike_team_deployment_vehicle.vehicle_id=vehicle.id and strike_team_deployment_vehicle.deployment_id = '" + deployment_id + "')"
-        + " where 1=1"
+        + " where" + (do_include_all_eligible_vehicles ? " (vehicle.be_active or strike_team_deployment_vehicle.id is not null)" : " TRUE")
         +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY) 
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
         ,
