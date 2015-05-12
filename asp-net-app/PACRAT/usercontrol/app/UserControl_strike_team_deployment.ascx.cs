@@ -172,6 +172,7 @@ namespace UserControl_strike_team_deployment
           }
         else
           {
+          PresentRecord(p.id);
           SetNonNewPresentationMode();
           }
         p.be_loaded = true;
@@ -250,7 +251,6 @@ namespace UserControl_strike_team_deployment
           region_code:p.biz_strike_team_deployments.RegionCodeOf(p.summary)
           );
         p.presentation_mode = (p.be_ok_to_config_strike_team_deployments ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
-        PresentRecord(id);
         UserControl_strike_team_deployment_binder_control.Set
           (
           deployment_id:id,
