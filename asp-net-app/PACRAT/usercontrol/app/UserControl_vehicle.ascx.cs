@@ -206,6 +206,7 @@ namespace UserControl_vehicle
       string pa_doh_decal_num;
       string patient_care_level;
       string elaboration;
+      bool be_active;
       result = false;
       if
         (
@@ -221,7 +222,8 @@ namespace UserControl_vehicle
           out tow_capacity_id,
           out pa_doh_decal_num,
           out patient_care_level,
-          out elaboration
+          out elaboration,
+          out be_active
           )
         )
         {
@@ -242,7 +244,7 @@ namespace UserControl_vehicle
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
         LinkButton_reset.Enabled = true;
-        SetDependentFieldAblements(p.be_ok_to_config_vehicles);
+        SetDependentFieldAblements(p.be_ok_to_config_vehicles && be_active);
         Button_submit.Enabled = p.be_ok_to_config_vehicles;
         Button_delete.Enabled = p.be_ok_to_config_vehicles;
         result = true;
@@ -268,7 +270,7 @@ namespace UserControl_vehicle
           privilege_name:"config-vehicles",
           service_id:p.biz_vehicles.ServiceIdOf(p.summary)
           );
-        p.presentation_mode = (p.be_ok_to_config_vehicles ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
+        p.presentation_mode = (p.be_ok_to_config_vehicles && p.biz_vehicles.BeActiveOf(p.summary) ? presentation_mode_enum.FULL_FUNCTION : presentation_mode_enum.REVIEW_ONLY);
         }
       else
         {
@@ -421,13 +423,15 @@ namespace UserControl_vehicle
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_vehicles.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM)))
+      var id = k.Safe(TextBox_id.Text, k.safe_hint_type.ALPHANUM);
+      if (p.biz_vehicles.Delete(id))
         {
         BackTrack();
         }
       else
         {
-        Alert(k.alert_cause_type.APPDATA,k.alert_state_type.FAILURE, "dependency", " Cannot delete this record because another record depends on it.", true);
+        p.biz_vehicles.MarkInactive(id);
+        BackTrack();
         }
       }
 

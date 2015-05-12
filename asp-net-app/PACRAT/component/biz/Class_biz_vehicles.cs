@@ -25,6 +25,11 @@ namespace Class_biz_vehicles
       db_vehicles = new TClass_db_vehicles();
       }
 
+    internal bool BeActiveOf(object summary)
+      {
+      return db_vehicles.BeActiveOf(summary);
+      }
+
     public bool Bind(string partial_spec, object target)
       {
       return db_vehicles.Bind(partial_spec, target);
@@ -81,7 +86,8 @@ namespace Class_biz_vehicles
       out string tow_capacity_id,
       out string pa_doh_decal_num,
       out string patient_care_level_id,
-      out string elaboration
+      out string elaboration,
+      out bool be_active
       )
       {
       return db_vehicles.Get
@@ -96,7 +102,8 @@ namespace Class_biz_vehicles
         out tow_capacity_id,
         out pa_doh_decal_num,
         out patient_care_level_id,
-        out elaboration
+        out elaboration,
+        out be_active
         );
       }
 
@@ -107,6 +114,11 @@ namespace Class_biz_vehicles
       )
       {
       return db_vehicles.IdByServiceIdAndName(service_id,name);
+      }
+
+    internal void MarkInactive(string id)
+      {
+      db_vehicles.MarkInactive(id);
       }
 
     internal string ServiceIdOf(object summary)
