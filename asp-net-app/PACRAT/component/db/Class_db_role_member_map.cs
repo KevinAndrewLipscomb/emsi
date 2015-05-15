@@ -223,6 +223,35 @@ namespace Class_db_role_member_map
 
         }
 
+    internal string EmailTargetForPennsylvania(string role_name)
+      {
+      var email_target_ofor_pennsylvania = k.EMPTY;
+      Open();
+      var dr = new MySqlCommand
+        (
+        "select email_address"
+        + " from role_member_map"
+        +   " join role on (role.id=role_member_map.role_id)"
+        +   " join member on (member.id=role_member_map.member_id)"
+        + " where role.name = '" + role_name + "'"
+        +   " and region_code is null"
+        +   " and service_id is null",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        email_target_ofor_pennsylvania += dr["email_address"].ToString() + k.COMMA;
+        }
+      dr.Close();
+      Close();
+      if (email_target_ofor_pennsylvania.Length > 0)
+        {
+        email_target_ofor_pennsylvania = email_target_ofor_pennsylvania.Substring(0, email_target_ofor_pennsylvania.Length - 1);
+        }
+      return email_target_ofor_pennsylvania;
+      }
+
         internal string EmailTargetOfByExplicitRegionCode
           (
           string role_name,

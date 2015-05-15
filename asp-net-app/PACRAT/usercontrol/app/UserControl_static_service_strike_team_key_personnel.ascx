@@ -9,11 +9,11 @@
             <table cellpadding="5" cellspacing="0">
               <tr><td colspan="2"><b><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal></b></td></tr>
               <tr>
-                <td>Affiliate #:</td>
+                <td nowrap="nowrap" width="1%">Affiliate #:</td>
                 <td><asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
               </tr>
               <tr>
-                <td>Service short name:</td>
+                <td nowrap="nowrap">Service short name:</td>
                 <td><asp:Literal ID="Literal_short_name" runat="server"></asp:Literal></td>
               </tr>
             </table>

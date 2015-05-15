@@ -86,8 +86,10 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="noninteractive\report_region_strike_team_officers_in_state.aspx" />
     <Content Include="noninteractive\report_service_strike_team_officers_in_region.aspx" />
     <Content Include="noninteractive\report_service_strike_team_roster.aspx" />
+    <Content Include="noninteractive\statement_region_strike_teams.aspx" />
     <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
     <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
@@ -143,6 +145,7 @@
     <Content Include="usercontrol\app\UserControl_preparation_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_region_detail.ascx" />
+    <Content Include="usercontrol\app\UserControl_region_strike_team_officers_in_state.ascx" />
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_service_strike_team_officers_in_region.ascx" />
     <Content Include="usercontrol\app\UserControl_sms_gateway.ascx" />
@@ -192,6 +195,7 @@
     <Compile Include="component\biz\Class_biz_strike_team_deployment_member_policies.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_operational_periods.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_vehicles.cs" />
+    <Compile Include="component\biz\Class_biz_strike_team_officers.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_rosters.cs" />
     <Compile Include="component\biz\Class_biz_tiers.cs" />
     <Compile Include="component\biz\Class_biz_tow_capacities.cs" />
@@ -268,6 +272,13 @@
     <Compile Include="noninteractive\milestone_sweep.aspx.designer.cs">
       <DependentUpon>milestone_sweep.aspx</DependentUpon>
     </Compile>
+    <Compile Include="noninteractive\report_region_strike_team_officers_in_state.aspx.cs">
+      <DependentUpon>report_region_strike_team_officers_in_state.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\report_region_strike_team_officers_in_state.aspx.designer.cs">
+      <DependentUpon>report_region_strike_team_officers_in_state.aspx</DependentUpon>
+    </Compile>
     <Compile Include="noninteractive\report_service_strike_team_officers_in_region.aspx.cs">
       <DependentUpon>report_service_strike_team_officers_in_region.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -281,6 +292,13 @@
     </Compile>
     <Compile Include="noninteractive\report_service_strike_team_roster.aspx.designer.cs">
       <DependentUpon>report_service_strike_team_roster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\statement_region_strike_teams.aspx.cs">
+      <DependentUpon>statement_region_strike_teams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\statement_region_strike_teams.aspx.designer.cs">
+      <DependentUpon>statement_region_strike_teams.aspx</DependentUpon>
     </Compile>
     <Compile Include="noninteractive\statement_service_strike_team_roster.aspx.cs">
       <DependentUpon>statement_service_strike_team_roster.aspx</DependentUpon>
@@ -654,6 +672,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_region_detail.ascx.designer.cs">
       <DependentUpon>UserControl_region_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_region_strike_team_officers_in_state.ascx.cs">
+      <DependentUpon>UserControl_region_strike_team_officers_in_state.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_region_strike_team_officers_in_state.ascx.designer.cs">
+      <DependentUpon>UserControl_region_strike_team_officers_in_state.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_role.ascx.cs">
       <DependentUpon>UserControl_role.ascx</DependentUpon>
