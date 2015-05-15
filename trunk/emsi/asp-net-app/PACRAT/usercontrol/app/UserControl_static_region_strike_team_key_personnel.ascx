@@ -7,9 +7,9 @@
         <tr>
           <td>
             <table cellpadding="5" cellspacing="0">
-              <tr><td><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
+              <tr><td><b><asp:Literal ID="Literal_region_name" runat="server"></asp:Literal></b></td></tr>
               <tr>
-                <td nowrap="nowrap" valign="top"><b>PA DOH Region #:</b> <asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
+                <td nowrap="nowrap" valign="top">Region #: <asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></td>
               </tr>
             </table>
           </td>
@@ -24,12 +24,18 @@
         <tr>
           <td>
             <table cellpadding="10" cellspacing="0">
-              <tr bgcolor="#FFFF99"><td><b>Key personnel</b></td></tr>
+              <tr bgcolor="#FFFF99"><td><b>REGION-level Officers</b></td></tr>
               <tr id="TableRow_none" runat="server" bgcolor="#FFFF99"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
               <tr id="TableRow_assignees" runat="server" bgcolor="#FFFF99">
                 <td valign="top">
                   <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%" BackColor="White">
                     <Columns>
+                      <asp:BoundColumn datafield="be_credentialed" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                      <asp:TemplateColumn>
+                        <ItemTemplate>
+                          <asp:Image ID="Image_uncredentialed" runat="server" AlternateText="Uncredentialed" Height="16px" ImageUrl="@image/dialog-warning-2.png" Width="16px" />
+                        </ItemTemplate>
+                      </asp:TemplateColumn>
                       <asp:BoundColumn datafield="last_name" headertext="Last name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="first_name" headertext="First name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="middle_initial" ReadOnly="True"></asp:BoundColumn>

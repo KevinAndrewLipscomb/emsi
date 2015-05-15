@@ -94,6 +94,7 @@
     <Content Include="protected\hardcopy_region_strike_team_key_personnel.aspx" />
     <Content Include="protected\hardcopy_service_strike_team_key_personnel.aspx" />
     <Content Include="protected\hardcopy_service_strike_team_roster.aspx" />
+    <Content Include="protected\hardcopy_state_strike_team_key_personnel.aspx" />
     <Content Include="protected\mobilization_announcement.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
     <Content Include="protected\per_deployment_iap_log.aspx" />
@@ -148,6 +149,7 @@
     <Content Include="usercontrol\app\UserControl_static_region_strike_team_key_personnel.ascx" />
     <Content Include="usercontrol\app\UserControl_static_service_strike_team_key_personnel.ascx" />
     <Content Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx" />
+    <Content Include="usercontrol\app\UserControl_static_state_strike_team_key_personnel.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx" />
@@ -335,6 +337,13 @@
     </Compile>
     <Compile Include="protected\hardcopy_service_strike_team_roster.aspx.designer.cs">
       <DependentUpon>hardcopy_service_strike_team_roster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="protected\hardcopy_state_strike_team_key_personnel.aspx.cs">
+      <DependentUpon>hardcopy_state_strike_team_key_personnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\hardcopy_state_strike_team_key_personnel.aspx.designer.cs">
+      <DependentUpon>hardcopy_state_strike_team_key_personnel.aspx</DependentUpon>
     </Compile>
     <Compile Include="protected\mobilization_announcement.aspx.cs">
       <DependentUpon>mobilization_announcement.aspx</DependentUpon>
@@ -741,6 +750,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx.designer.cs">
       <DependentUpon>UserControl_static_service_strike_team_roster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_state_strike_team_key_personnel.ascx.cs">
+      <DependentUpon>UserControl_static_state_strike_team_key_personnel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_static_state_strike_team_key_personnel.ascx.designer.cs">
+      <DependentUpon>UserControl_static_state_strike_team_key_personnel.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment.ascx</DependentUpon>
