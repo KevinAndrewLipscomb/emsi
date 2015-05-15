@@ -86,6 +86,7 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_user_registration.aspx" />
+    <Content Include="noninteractive\report_service_strike_team_officers_in_region.aspx" />
     <Content Include="noninteractive\report_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
@@ -143,6 +144,7 @@
     <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_region_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
+    <Content Include="usercontrol\app\UserControl_service_strike_team_officers_in_region.ascx" />
     <Content Include="usercontrol\app\UserControl_sms_gateway.ascx" />
     <Content Include="usercontrol\app\UserControl_state_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_state_detail.ascx" />
@@ -265,6 +267,13 @@
     </Compile>
     <Compile Include="noninteractive\milestone_sweep.aspx.designer.cs">
       <DependentUpon>milestone_sweep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\report_service_strike_team_officers_in_region.aspx.cs">
+      <DependentUpon>report_service_strike_team_officers_in_region.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\report_service_strike_team_officers_in_region.aspx.designer.cs">
+      <DependentUpon>report_service_strike_team_officers_in_region.aspx</DependentUpon>
     </Compile>
     <Compile Include="noninteractive\report_service_strike_team_roster.aspx.cs">
       <DependentUpon>report_service_strike_team_roster.aspx</DependentUpon>
@@ -708,6 +717,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_service_affiliation.ascx.designer.cs">
       <DependentUpon>UserControl_service_affiliation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_service_strike_team_officers_in_region.ascx.cs">
+      <DependentUpon>UserControl_service_strike_team_officers_in_region.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_service_strike_team_officers_in_region.ascx.designer.cs">
+      <DependentUpon>UserControl_service_strike_team_officers_in_region.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_sms_gateway.ascx.cs">
       <DependentUpon>UserControl_sms_gateway.ascx</DependentUpon>
