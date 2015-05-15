@@ -2,7 +2,6 @@
 
 using AjaxControlToolkit;
 using Class_biz_regions;
-using Class_biz_services;
 using Class_msg_protected;
 using kix;
 using System;
@@ -11,15 +10,15 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Collections;
-using UserControl_static_service_strike_team_key_personnel;
+using UserControl_static_region_strike_team_key_personnel;
 
-namespace UserControl_service_strike_team_officers_in_region
+namespace UserControl_region_strike_team_officers_in_state
   {
-  public partial class TWebUserControl_service_strike_team_officers_in_region: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_region_strike_team_officers_in_state: ki_web_ui.usercontrol_class
     {
     private static class Static
       {
-      public const int TCI_ID = 0;
+      public const int TCI_CODE = 0;
       public const int TCI_CONTENT = 1;
       }
 
@@ -28,9 +27,7 @@ namespace UserControl_service_strike_team_officers_in_region
       public bool be_datagrid_empty;
       public bool be_loaded;
       public TClass_biz_regions biz_regions;
-      public TClass_biz_services biz_services;
-      public uint num_services;
-      public string region_code;
+      public uint num_regions;
       }
 
     private p_type p;
@@ -39,8 +36,7 @@ namespace UserControl_service_strike_team_officers_in_region
       {
       if (!p.be_loaded)
         {
-        Literal_region_name.Text = p.biz_regions.NameOf(p.biz_regions.Summary(code:p.region_code));
-        //
+        Bind();
         p.be_loaded = true;
         }
       }
@@ -60,23 +56,21 @@ namespace UserControl_service_strike_team_officers_in_region
         // had it loaded already.
         //
 //#warning Revise the binder-related instance_id to this control appropriately.
-//        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_service_strike_team_officers_in_region")
+//        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_region_strike_team_officers_in_state")
 //          {
 //#warning Revise the ClientID path to this control appropriately.
-//          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_service_strike_team_officers_in_region");
+//          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_region_strike_team_officers_in_state");
 //          }
-//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_service_strike_team_officers_in_region")
+//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_region_strike_team_officers_in_state")
 //        {
-//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_service_strike_team_officers_in_region");
+//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_region_strike_team_officers_in_state");
 //        }
         }
       else
         {
         p.biz_regions = new TClass_biz_regions();
-        p.biz_services = new TClass_biz_services();
         //
         p.be_loaded = false;
-        p.region_code = k.EMPTY;
         }
       }
 
@@ -87,15 +81,15 @@ namespace UserControl_service_strike_team_officers_in_region
     private void InitializeComponent()
       {
       DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
-      PreRender += TWebUserControl_service_strike_team_officers_in_region_PreRender;
+      PreRender += TWebUserControl_region_strike_team_officers_in_state_PreRender;
       }
 
-    private void TWebUserControl_service_strike_team_officers_in_region_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_region_strike_team_officers_in_state_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_service_strike_team_officers_in_region Fresh()
+    public TWebUserControl_region_strike_team_officers_in_state Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -105,38 +99,31 @@ namespace UserControl_service_strike_team_officers_in_region
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.num_services++;
+        p.num_regions++;
         }
       }
 
     private void Bind()
       {
-      p.biz_services.BindPacratManagementBaseDataList
+      p.biz_regions.BindPacratManagementBaseDataList
         (
-        sort_order:"short_name",
+        sort_order:"name",
         be_sort_order_ascending:true,
         target:DataGrid_control,
-        region_code:p.region_code,
-        do_include_all_services:false
+        do_include_all_regions:false
         );
-      for (var i = 0; i < p.num_services; i++)
+      for (var i = 0; i < p.num_regions; i++)
         {
-        (DataGrid_control.Items[i].Cells[Static.TCI_CONTENT].FindControl("UserControl_static_service_strike_team_key_personnel_control") as TWebUserControl_static_service_strike_team_key_personnel).Set
-          (service_summary:p.biz_services.Summary(id:DataGrid_control.Items[i].Cells[Static.TCI_ID].Text));
+        (DataGrid_control.Items[i].Cells[Static.TCI_CONTENT].FindControl("UserControl_static_region_strike_team_key_personnel_control") as TWebUserControl_static_region_strike_team_key_personnel).Set
+          (region_summary:p.biz_regions.Summary(code:DataGrid_control.Items[i].Cells[Static.TCI_CODE].Text));
         }
-      p.be_datagrid_empty = (p.num_services == 0);
+      p.be_datagrid_empty = (p.num_regions == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
-      Literal_num_services.Text = p.num_services.ToString();
-      p.num_services = 0;
+      Literal_num_regions.Text = p.num_regions.ToString();
+      p.num_regions = 0;
       }
 
-    internal void Set(string region_emsrs_code)
-      {
-      p.region_code = p.biz_regions.CodeOfEmsrsCode(region_emsrs_code);
-      Bind();
-      }
-
-    } // end TWebUserControl_service_strike_team_officers_in_region
+    } // end TWebUserControl_region_strike_team_officers_in_state
 
   }

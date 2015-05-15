@@ -1,4 +1,5 @@
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_strike_team_officers;
 using Class_biz_strike_team_rosters;
 using PACRAT.component.os;
 
@@ -8,6 +9,7 @@ namespace Class_biz_scheduled_tasks
     {
 
     private TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+    private TClass_biz_strike_team_officers biz_strike_team_officers;
     private TClass_biz_strike_team_rosters biz_strike_team_rosters;
     private Class_fs fs;
 
@@ -15,6 +17,7 @@ namespace Class_biz_scheduled_tasks
     public TClass_biz_scheduled_tasks() : base()
       {
       biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+      biz_strike_team_officers = new TClass_biz_strike_team_officers();
       biz_strike_team_rosters = new TClass_biz_strike_team_rosters();
       fs = new Class_fs();
       }
@@ -22,6 +25,11 @@ namespace Class_biz_scheduled_tasks
     public void DoDailyChores(string current_working_directory_spec)
       {
       fs.DeleteCondemnedFolders(current_working_directory_spec + "/../protected/attachment");
+      }
+
+    public void DoServiceStrikeTeamOfficersInRegionStatements(string current_working_directory_spec)
+      {
+      biz_strike_team_officers.SendRegionStatements(working_directory:current_working_directory_spec);
       }
 
     public void DoServiceStrikeTeamRosterStatements(string current_working_directory_spec)

@@ -74,6 +74,11 @@ namespace Class_biz_role_member_map
             db_role_member_map.BindHolders(role_name, target, sort_order, be_sort_order_ascending);
         }
 
+    internal string EmailTargetForPennsylvania(string role_name)
+      {
+      return db_role_member_map.EmailTargetForPennsylvania(role_name);
+      }
+
         internal string EmailTargetOfByExplicitRegionCode
           (
           string role_name,

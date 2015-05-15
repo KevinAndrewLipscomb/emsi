@@ -1,6 +1,6 @@
-<%@ Page language="c#" Debug="true" Codebehind="report_service_strike_team_officers_in_region.aspx.cs" AutoEventWireup="True" Inherits="report_service_strike_team_officers_in_region.TWebForm_report_service_strike_team_officers_in_region" EnableViewState="false" %>
+<%@ Page language="c#" Debug="true" Codebehind="report_region_strike_team_officers_in_state.aspx.cs" AutoEventWireup="True" Inherits="report_region_strike_team_officers_in_state.TWebForm_report_region_strike_team_officers_in_state" EnableViewState="false" %>
 <%@ Register src="../usercontrol/app/UserControl_common_header_bar.ascx" tagname="UserControl_common_header_bar" tagprefix="uc1" %>
-<%@ Register src="../usercontrol/app/UserControl_service_strike_team_officers_in_region.ascx" tagname="UserControl_service_strike_team_officers_in_region" tagprefix="uc3" %>
+<%@ Register src="../usercontrol/app/UserControl_region_strike_team_officers_in_state.ascx" tagname="UserControl_region_strike_team_officers_in_state" tagprefix="uc3" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head runat="server">
@@ -14,13 +14,13 @@
           <tr>
             <td>
               <table cellspacing="0" cellpadding="10" width="100%" border="0">
-                <tr><td bgcolor="#f5f5f5"><strong>Monthly CURRENT SERVICE STRIKE TEAM OFFICERS IN REGION <asp:Literal ID="Literal_emsrs_code" runat="server"></asp:Literal></strong></td></tr>
+                <tr><td bgcolor="#f5f5f5"><strong>Monthly CURRENT REGION STRIKE TEAM OFFICERS IN STATE</strong></td></tr>
                 <tr>
                   <td>
                     <small>
                       <p>Best practices:</p>
                       <ul>
-                        <li><p>This report shows your region's Strike Team Program participating services and their officers as currently recorded in <asp:Label ID="Label_application_name_1" runat="server" Font-Bold="True"></asp:Label>.</p></li>
+                        <li><p>This report shows your state's Strike Team Program participating regions and their officers as currently recorded in <asp:Label ID="Label_application_name_1" runat="server" Font-Bold="True"></asp:Label>.</p></li>
                         <li><p>Keep this data current in case of unscheduled deployments.</p></li>
                         <li>
                           <p>
@@ -43,7 +43,7 @@
           </tr>
         </table>
       </p>
-      <uc3:UserControl_service_strike_team_officers_in_region ID="UserControl_service_strike_team_officers_in_region_control" runat="server" />
+      <uc3:UserControl_region_strike_team_officers_in_state ID="UserControl_region_strike_team_officers_in_state_control" runat="server" />
     </form>
   </body>
 </html>
