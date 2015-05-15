@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_static_service_strike_team_key_personnel.ascx.cs" Inherits="UserControl_static_service_strike_team_key_personnel.TWebUserControl_static_service_strike_team_key_personnel"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_static_state_strike_team_key_personnel.ascx.cs" Inherits="UserControl_static_state_strike_team_key_personnel.TWebUserControl_static_state_strike_team_key_personnel"%>
 <!-- Derived from KiAspdotnetFramework/usercontrol/app/UserControl~template~std.ascx-template -->
 <table cellpadding="0" cellspacing="0">
   <tr>
@@ -7,14 +7,9 @@
         <tr>
           <td>
             <table cellpadding="5" cellspacing="0">
-              <tr><td colspan="2"><b><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal></b></td></tr>
+              <tr><td><b>Statewide Strike Team Program</b></td></tr>
               <tr>
-                <td>Affiliate #:</td>
-                <td><asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
-              </tr>
-              <tr>
-                <td>Service short name:</td>
-                <td><asp:Literal ID="Literal_short_name" runat="server"></asp:Literal></td>
+                <td nowrap="nowrap" valign="top">State: Pennsylvania</td>
               </tr>
             </table>
           </td>
@@ -29,9 +24,9 @@
         <tr>
           <td>
             <table cellpadding="10" cellspacing="0">
-              <tr bgcolor="#99CCFF"><td><b>SERVICE-level Officers</b></td></tr>
-              <tr id="TableRow_none" runat="server" bgcolor="#99CCFF"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
-              <tr id="TableRow_assignees" runat="server" bgcolor="#99CCFF">
+              <tr bgcolor="#FFCC99"><td><b>STATE-level Officers</b></td></tr>
+              <tr id="TableRow_none" runat="server" bgcolor="#FFCC99"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
+              <tr id="TableRow_assignees" runat="server" bgcolor="#FFCC99">
                 <td valign="top">
                   <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" onitemdatabound="DataGrid_control_ItemDataBound" Font-Size="85%" BackColor="White">
                     <Columns>

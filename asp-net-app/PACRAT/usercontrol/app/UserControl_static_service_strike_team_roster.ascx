@@ -9,7 +9,7 @@
             <table cellpadding="5" cellspacing="0">
               <tr><td><b><asp:Literal ID="Literal_service_name" runat="server"></asp:Literal> <i>Strike Team</i></b></td></tr>
               <tr>
-                <td nowrap="nowrap" valign="top"><b>PA DOH Affiliate #:</b> <asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
+                <td nowrap="nowrap" valign="top">Affiliate #: <asp:Literal ID="Literal_affiliate_num" runat="server"></asp:Literal></td>
               </tr>
             </table>
           </td>
@@ -24,7 +24,7 @@
         <tr>
           <td>
             <table cellpadding="10" cellspacing="0">
-              <tr bgcolor="#99FF99"><td><b>Members</b></td></tr>
+              <tr bgcolor="#99FF99"><td><b>Front-line members</b></td></tr>
               <tr id="TableRow_none" runat="server" bgcolor="#99FF99"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
               <tr id="TableRow_assignees" runat="server" bgcolor="#99FF99">
                 <td valign="top">

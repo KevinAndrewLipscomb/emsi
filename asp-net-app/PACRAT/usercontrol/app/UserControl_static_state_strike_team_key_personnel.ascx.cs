@@ -1,11 +1,10 @@
 using Class_biz_role_member_map;
-using Class_biz_regions;
 using kix;
 using System.Collections;
 using System.Drawing;
 using System.Web.UI.WebControls;
 
-namespace UserControl_static_region_strike_team_key_personnel
+namespace UserControl_static_state_strike_team_key_personnel
   {
 
   public struct p_type
@@ -13,12 +12,10 @@ namespace UserControl_static_region_strike_team_key_personnel
     public bool be_loaded;
     public bool be_noncurrent_practitioners_on_roster;
     public TClass_biz_role_member_map biz_role_member_map;
-    public TClass_biz_regions biz_regions;
     public k.int_nonnegative num_assignees;
-    public object region_summary;
     }
 
-  public partial class TWebUserControl_static_region_strike_team_key_personnel: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_static_state_strike_team_key_personnel: ki_web_ui.usercontrol_class
     {
 
     private class Static
@@ -42,8 +39,6 @@ namespace UserControl_static_region_strike_team_key_personnel
       {
       if (!p.be_loaded)
         {
-        Literal_region_name.Text = p.biz_regions.EmsrsActivePractitionersNameOf(p.region_summary);
-        Literal_emsrs_code.Text = p.biz_regions.EmsrsCodeOf(p.region_summary);
         Bind();
         p.be_loaded = true;
         }
@@ -67,11 +62,11 @@ namespace UserControl_static_region_strike_team_key_personnel
 //        if (instance_id == "ASP.protected_overview_aspx.UserControl_member_binder_static_service_strike_team_roster")
 //          {
 //#warning Revise the ClientID path to this control appropriately.
-//          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_static_region_strike_team_key_personnel");
+//          p.be_loaded &= ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_static_state_strike_team_key_personnel");
 //          }
 //      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_static_service_strike_team_roster")
 //        {
-//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_static_region_strike_team_key_personnel");
+//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_static_state_strike_team_key_personnel");
 //        }
         }
       else
@@ -79,11 +74,9 @@ namespace UserControl_static_region_strike_team_key_personnel
         p.be_loaded = false;
         //
         p.biz_role_member_map = new TClass_biz_role_member_map();
-        p.biz_regions = new TClass_biz_regions();
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.num_assignees = new k.int_nonnegative();
-        p.region_summary = null;
         }
       }
 
@@ -93,15 +86,15 @@ namespace UserControl_static_region_strike_team_key_personnel
     // / </summary>
     private void InitializeComponent()
       {
-      PreRender += TWebUserControl_static_region_strike_team_key_personnel_PreRender;
+      PreRender += TWebUserControl_static_state_strike_team_key_personnel_PreRender;
       }
 
-    private void TWebUserControl_static_region_strike_team_key_personnel_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_static_state_strike_team_key_personnel_PreRender(object sender, System.EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
 
-    public TWebUserControl_static_region_strike_team_key_personnel Fresh()
+    public TWebUserControl_static_state_strike_team_key_personnel Fresh()
       {
       Session.Remove(InstanceId() + ".p");
       return this;
@@ -111,12 +104,11 @@ namespace UserControl_static_region_strike_team_key_personnel
       {
       p.be_noncurrent_practitioners_on_roster = false;
       p.num_assignees.val = 0;
-      p.biz_role_member_map.BindBaseDataListByExplicitRegionCode
+      p.biz_role_member_map.BindBaseDataListForPennsylvania
         (
         sort_order:"last_name,first_name,middle_initial,certification_number",
         be_sort_order_ascending:true,
-        target:DataGrid_control,
-        region_code:p.biz_regions.CodeOf(p.region_summary)
+        target:DataGrid_control
         );
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
@@ -160,11 +152,6 @@ namespace UserControl_static_region_strike_team_key_personnel
         //
         p.num_assignees.val++;
         }
-      }
-
-    internal void Set(object region_summary)
-      {
-      p.region_summary = region_summary;
       }
 
     }

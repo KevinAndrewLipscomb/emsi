@@ -7,37 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_static_service_strike_team_key_personnel {
+namespace UserControl_static_state_strike_team_key_personnel {
     
     
-    public partial class TWebUserControl_static_service_strike_team_key_personnel {
-        
-        /// <summary>
-        /// Literal_service_name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_service_name;
-        
-        /// <summary>
-        /// Literal_affiliate_num control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_affiliate_num;
-        
-        /// <summary>
-        /// Literal_short_name control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_short_name;
+    public partial class TWebUserControl_static_state_strike_team_key_personnel {
         
         /// <summary>
         /// TableRow_none control.

@@ -15,22 +15,26 @@ namespace UserControl_static_service_strike_team_key_personnel
     public TClass_biz_role_member_map biz_role_member_map;
     public TClass_biz_services biz_services;
     public k.int_nonnegative num_assignees;
+    public string service_id;
     public object service_summary;
     }
 
   public partial class TWebUserControl_static_service_strike_team_key_personnel: ki_web_ui.usercontrol_class
     {
 
-    private class UserControl_static_service_strike_team_key_personnel_Static
+    private class Static
       {
+      public const int TCI_BE_CREDENTIALED = 0;
+      public const int TCI_UNCREDENTIALED = 1;
       public const int TCI_LAST_NAME = 2;
       public const int TCI_FIRST_NAME = 3;
       public const int TCI_MIDDLE_INITIAL = 4;
       public const int TCI_LEVEL = 5;
       public const int TCI_CERT_NUM = 6;
       public const int TCI_DOB = 7;
-      public const int TCI_EMAIL_ADDRESS = 7;
-      public const int TCI_STATUS_DESCRIPTION = 8;
+      public const int TCI_ROLE_NAME = 8;
+      public const int TCI_EMAIL_ADDRESS = 9;
+      public const int TCI_STATUS_DESCRIPTION = 10;
       }
 
     private p_type p;
@@ -41,6 +45,7 @@ namespace UserControl_static_service_strike_team_key_personnel
         {
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.service_summary);
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.service_summary);
+        Literal_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
         Bind();
         p.be_loaded = true;
         }
@@ -80,6 +85,7 @@ namespace UserControl_static_service_strike_team_key_personnel
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.num_assignees = new k.int_nonnegative();
+        p.service_id = k.EMPTY;
         p.service_summary = null;
         }
       }
@@ -122,15 +128,27 @@ namespace UserControl_static_service_strike_team_key_personnel
 
     protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
       {
+      System.Web.UI.WebControls.Image image;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var label_email_address = (e.Item.Cells[UserControl_static_service_strike_team_key_personnel_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
+        image = ((e.Item.Cells[Static.TCI_UNCREDENTIALED].FindControl(id:"Image_uncredentialed")) as System.Web.UI.WebControls.Image);
+        if (e.Item.Cells[Static.TCI_BE_CREDENTIALED].Text == "Y")
+          {
+          image.Visible = false;
+          }
+        else
+          {
+          image.ImageUrl = k.ExpandAsperand(image.ImageUrl);
+          image.ToolTip = "UNCREDENTIALED";
+          }
+        //
+        var label_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
         if (label_email_address.Text == "DESIRED")
           {
           label_email_address.ForeColor = Color.DarkOrange;
           }
         //
-        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[UserControl_static_service_strike_team_key_personnel_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
@@ -150,6 +168,7 @@ namespace UserControl_static_service_strike_team_key_personnel
     internal void Set(object service_summary)
       {
       p.service_summary = service_summary;
+      p.service_id = p.biz_services.IdOf(service_summary);
       }
 
     }
