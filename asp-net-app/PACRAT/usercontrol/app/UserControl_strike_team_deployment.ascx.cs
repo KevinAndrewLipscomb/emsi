@@ -45,7 +45,6 @@ namespace UserControl_strike_team_deployment
       DropDownList_id.Visible = false;
       UserControl_drop_down_date_creation_date.Clear();
       TextBox_name.Text = k.EMPTY;
-      DropDownList_region.ClearSelection();
       RadioButtonList_member_policy.ClearSelection();
       Literal_match_index.Text = k.EMPTY;
       Literal_num_matches.Text = k.EMPTY;
@@ -150,21 +149,6 @@ namespace UserControl_strike_team_deployment
         TableRow_submit_delete_announce.Visible = p.be_ok_to_config_strike_team_deployments;
         Button_submit.Visible = p.be_ok_to_config_strike_team_deployments;
         //
-        if (p.be_ok_to_config_strike_team_deployments)
-          {
-          p.biz_privileges.BindRegionsInWhichMemberHasPrivilegeDirectToListControl
-            (
-            member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-            privilege_name:"config-strike-team-deployments",
-            target:DropDownList_region,
-            unselected_literal:k.EMPTY
-            );
-          }
-        else
-          {
-          DropDownList_region.Items.Add(new ListItem(text:p.biz_strike_team_deployments.RegionNameOf(p.summary),value:k.EMPTY));
-          }
-        //
         RequireConfirmation(Button_delete, "Are you sure you want to delete this record?");
         if (p.presentation_mode == presentation_mode_enum.NEW)
           {
@@ -205,7 +189,6 @@ namespace UserControl_strike_team_deployment
       bool result;
       DateTime creation_date;
       string name;
-      string region_code;
       string member_policy_id;
       result = false;
       if
@@ -215,7 +198,6 @@ namespace UserControl_strike_team_deployment
           id,
           out creation_date,
           out name,
-          out region_code,
           out member_policy_id
           )
         )
@@ -224,7 +206,6 @@ namespace UserControl_strike_team_deployment
         TextBox_id.Enabled = false;
         UserControl_drop_down_date_creation_date.selectedvalue = creation_date;
         TextBox_name.Text = name;
-        DropDownList_region.SelectedValue = region_code;
         RadioButtonList_member_policy.SelectedValue = member_policy_id;
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
@@ -244,11 +225,10 @@ namespace UserControl_strike_team_deployment
         {
         p.id = id;
         p.summary = p.biz_strike_team_deployments.Summary(id);
-        p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForRegion
+        p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForAnyScope
           (
           member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-          privilege_name:"config-strike-team-deployments",
-          region_code:p.biz_strike_team_deployments.RegionCodeOf(p.summary)
+          privilege_name:"config-strike-team-deployments"
           );
         p.presentation_mode = (p.be_ok_to_config_strike_team_deployments ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
         UserControl_strike_team_deployment_binder_control.Set
@@ -359,14 +339,12 @@ namespace UserControl_strike_team_deployment
         var id = k.Safe(TextBox_id.Text,k.safe_hint_type.NUM);
         var creation_date = (p.presentation_mode == presentation_mode_enum.NEW ? DateTime.Today : UserControl_drop_down_date_creation_date.selectedvalue);
         var name = k.Safe(TextBox_name.Text,k.safe_hint_type.MAKE_MODEL).Trim();
-        var region_code = k.Safe(DropDownList_region.SelectedValue,k.safe_hint_type.NUM);
         var member_policy_id = k.Safe(RadioButtonList_member_policy.SelectedValue,k.safe_hint_type.NUM);
         p.biz_strike_team_deployments.Set
           (
           id:id,
           creation_date:creation_date,
           name:name,
-          region_code:region_code,
           member_policy_id:member_policy_id
           );
         if (p.presentation_mode != presentation_mode_enum.NEW)
@@ -394,7 +372,6 @@ namespace UserControl_strike_team_deployment
             (
             id:p.biz_strike_team_deployments.IdOfPractical
               (
-              region_code:region_code,
               creation_date:creation_date,
               name:name
               )
@@ -484,7 +461,6 @@ namespace UserControl_strike_team_deployment
       {
       UserControl_drop_down_date_creation_date.enabled = ablement;
       TextBox_name.Enabled = ablement;
-      DropDownList_region.Enabled = (p.presentation_mode == presentation_mode_enum.NEW) && ablement;
       RadioButtonList_member_policy.Enabled = ablement;
       }
 

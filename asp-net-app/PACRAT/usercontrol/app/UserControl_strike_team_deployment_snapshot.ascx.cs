@@ -316,17 +316,14 @@ namespace UserControl_strike_team_deployment_snapshot
       var mark = DateTime.Now;
       var creation_date = DateTime.MinValue;
       var name = k.EMPTY;
-      var region_code = k.EMPTY;
       var member_policy_id = k.EMPTY;
       p.biz_strike_team_deployments.Get
         (
         id:p.deployment_id,
         creation_date:out creation_date,
         name:out name,
-        region_code:out region_code,
         member_policy_id:out member_policy_id
         );
-      var region_summary = p.biz_regions.Summary(region_code);
       var raw_xml = k.EMPTY
         + "<?xml version=\"1.0\"?>" + k.NEW_LINE
         + "<ss:Workbook xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">" + k.NEW_LINE
@@ -334,7 +331,7 @@ namespace UserControl_strike_team_deployment_snapshot
         +     "<ss:Table>" + k.NEW_LINE
         +       "<ss:Row><ss:Cell><ss:Data>This is a snapshot of data associated with the '" + name + "' deployment.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
         +       "<ss:Row><ss:Cell><ss:Data>This deployment's personnel participation policy is set to '" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "'.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>The authority and scope of this data is Pennsylvania EMS Region " + p.biz_regions.EmsrsCodeOf(region_summary) + " (" + p.biz_regions.NameOf(region_summary) + ").</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data>The authority and scope of this data is the Pennsylvania EMS Strike Team Coordination Center.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
         +       "<ss:Row><ss:Cell><ss:Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
         +       "<ss:Row><ss:Cell><ss:Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
         +       "<ss:Row><ss:Cell><ss:Data>Use the worksheet tabs in this workbook to browse this data.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE

@@ -1,7 +1,7 @@
 STRIKE TEAM MOBILIZATION - <deployment_name/>
 <service_name/> Strike Team Manager(s),
 
-<region_name/> has activated the <service_name/> Strike Team to MOBILIZE for the following deployment:
+The Pennsylvania EMS Strike Team Coordination Center has activated the <service_name/> Strike Team to MOBILIZE for the following deployment:
 
    Name:
       <deployment_name/>
@@ -28,8 +28,8 @@ Please do the following without delay:
 4. Under the OPERATIONAL PERIODS tab, drill down into *each* op period
    and populate it with preliminary assignments.
 
-You can reach the <region_name/> Regional Strike Team Manager(s) at:
+You can reach the deployment coordinator(s) at:
 
-   <region_strike_team_manager_target/> (mailto:<region_strike_team_manager_target/>)
+   <deployment_coordinator_target/> (mailto:<deployment_coordinator_target/>)
 
 -- <application_name/> (http://<host_domain_name/>/<application_name/>)

@@ -175,24 +175,6 @@ namespace UserControl_strike_team_deployment {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_creation_date;
         
         /// <summary>
-        /// DropDownList_region control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_region;
-        
-        /// <summary>
-        /// RequiredFieldValidator_region control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_region;
-        
-        /// <summary>
         /// TextBox_name control.
         /// </summary>
         /// <remarks>

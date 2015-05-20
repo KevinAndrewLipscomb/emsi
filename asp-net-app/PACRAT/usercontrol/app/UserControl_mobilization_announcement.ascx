@@ -5,14 +5,31 @@
   <ContentTemplate>
 <table cellpadding="5" cellspacing="0">
   <tr>
-    <td valign="top">To managers at:</td>
+    <td valign="top">To Service Strike Team Managers in:</td>
     <td valign="top">
-      <table>
-        <tr>
-          <td nowrap="nowrap"valign="top"><small><strong>All:</strong><asp:CheckBox ID="CheckBox_force_all" runat="server" Checked="true" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all"/></small></td>
-          <td><small><asp:CheckBoxList ID="CheckBoxList_service_strike_teams" runat="server" RepeatLayout="Flow" RepeatDirection="Vertical"></asp:CheckBoxList></small></td>
-        </tr>
-      </table>
+      <asp:LinkButton ID="LinkButton_expand_state" runat="server" OnClick="LinkButton_expand_state_Click" Font-Names="Courier New" CausesValidation="False">[+]</asp:LinkButton><asp:CheckBox ID="CheckBox_force_state" runat="server" Checked="true" AutoPostBack="True" oncheckedchanged="CheckBox_force_state_CheckedChanged" ToolTip="Select/Unselect state"/> Pennsylvania
+      <asp:DataGrid id="DataGrid_regions" runat="server" cellpadding="5" autogeneratecolumns="False" ShowHeader="False" GridLines="None" Visible="false" OnItemDataBound="DataGrid_regions_ItemDataBound">
+        <Columns>
+          <asp:BoundColumn DataField="code" Visible="False"></asp:BoundColumn>
+          <asp:TemplateColumn><ItemTemplate>&nbsp;&nbsp;</ItemTemplate></asp:TemplateColumn>
+          <asp:TemplateColumn>
+            <ItemTemplate>
+              <asp:LinkButton ID="LinkButton_expand_region" runat="server" OnClick="LinkButton_expand_region_Click" Font-Names="Courier New" CausesValidation="False">[+]</asp:LinkButton><asp:CheckBox ID="CheckBox_force_region" runat="server" Checked="true" AutoPostBack="True" oncheckedchanged="CheckBox_force_region_CheckedChanged" ToolTip="Select/Unselect region"/> <asp:Label id="Label_service_name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.name") %>'></asp:Label>
+              <asp:DataGrid id="DataGrid_services" runat="server" cellpadding="5" autogeneratecolumns="False" ShowHeader="False" GridLines="None" Visible="false">
+                <Columns>
+                <asp:BoundColumn DataField="id" Visible="False"></asp:BoundColumn>
+                <asp:TemplateColumn><ItemTemplate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ItemTemplate></asp:TemplateColumn>
+                <asp:TemplateColumn>
+                  <ItemTemplate>
+                    <asp:CheckBox ID="CheckBox_include_service" runat="server" Checked="true" ToolTip="Select/Unselect service"/> <asp:Label runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.short_name") %>'></asp:Label>
+                  </ItemTemplate>
+                </asp:TemplateColumn>
+                </Columns>
+              </asp:DataGrid>
+            </ItemTemplate>
+          </asp:TemplateColumn>
+        </Columns>
+      </asp:DataGrid>
     </td>
     <td valign="top">
       <asp:CustomValidator ID="CustomValidator_service_strike_teams" runat="server" ErrorMessage="Please select at least one Service Strike Team." Font-Bold="True" onservervalidate="CustomValidator_service_strike_teams_ServerValidate">!ERR!</asp:CustomValidator>

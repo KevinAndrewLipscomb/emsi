@@ -68,10 +68,9 @@ namespace Class_biz_strike_team_deployments
           target:target,
           deployment_name:NameOf(summary),
           service_name:biz_services.ShortNameOf(service_id),
-          region_name:RegionNameOf(summary),
           actual_vs_drill_indicator:(MemberPolicyDescriptionOf(summary) == "drill" ? "This deployment is a DRILL." : "This is an ACTUAL DEPLOYMENT, not a drill."),
           supplemental_message:supplemental_message,
-          region_strike_team_manager_target:biz_role_member_map.EmailTargetOfByExplicitRegionCode("Region Strike Team Manager",RegionCodeOf(summary))
+          deployment_coordinator_target:biz_role_member_map.EmailTargetForPennsylvania("State Strike Team Manager")
           );
         if ((target = biz_role_member_map.SmsTargetOfByExplicitServiceId("Service Strike Team Manager",service_id)).Length > 0)
           {
@@ -333,7 +332,6 @@ namespace Class_biz_strike_team_deployments
       string id,
       out DateTime creation_date,
       out string name,
-      out string region_code,
       out string member_policy_id
       )
       {
@@ -342,7 +340,6 @@ namespace Class_biz_strike_team_deployments
         id,
         out creation_date,
         out name,
-        out region_code,
         out member_policy_id
         );
       }
@@ -354,12 +351,11 @@ namespace Class_biz_strike_team_deployments
 
     internal string IdOfPractical
       (
-      string region_code,
       DateTime creation_date,
       string name
       )
       {
-      return db_strike_team_deployments.IdOfPractical(region_code,creation_date,name);
+      return db_strike_team_deployments.IdOfPractical(creation_date,name);
       }
 
     internal void MakeOperationalPeriodAssignment
@@ -514,22 +510,11 @@ namespace Class_biz_strike_team_deployments
       return db_strike_team_deployments.NameOfId(id);
       }
 
-    internal string RegionCodeOf(object summary)
-      {
-      return db_strike_team_deployments.RegionCodeOf(summary);
-      }
-
-    internal string RegionNameOf(object summary)
-      {
-      return db_strike_team_deployments.RegionNameOf(summary);
-      }
-
     public void Set
       (
       string id,
       DateTime creation_date,
       string name,
-      string region_code,
       string member_policy_id
       )
       {
@@ -538,7 +523,6 @@ namespace Class_biz_strike_team_deployments
         id,
         creation_date,
         name,
-        region_code,
         member_policy_id
         );
       }

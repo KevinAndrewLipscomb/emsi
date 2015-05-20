@@ -111,7 +111,7 @@ namespace Class_db_strike_team_deployment_members
         + " from strike_team_roster"
         +   " join service on (service.id=strike_team_roster.service_id)"
         +   " join county_region_map on (county_region_map.county_code=service.county_code)"
-        +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code and strike_team_deployment.id = '" + deployment_id + "')"
+        +   " join strike_team_deployment on (strike_team_deployment.id = '" + deployment_id + "')"
         +   " join practitioner on (practitioner.id=strike_team_roster.practitioner_id)"
         +   " join practitioner_level on (practitioner_level.id=practitioner.level_id)"
         +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=practitioner.id)"
