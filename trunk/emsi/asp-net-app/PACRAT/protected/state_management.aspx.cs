@@ -71,13 +71,16 @@ namespace state_management
       {
 //      try
 //        {
-        p.biz_role_member_map.Save
-          (
-          member_id:list_item.Value,
-          role_id:p.state_strike_team_manager_role_id,
-          be_granted:true
-          );
-        Bind();
+        if (p.be_ok_to_edit_roster)
+          {
+          p.biz_role_member_map.Save
+            (
+            member_id:list_item.Value,
+            role_id:p.state_strike_team_manager_role_id,
+            be_granted:true
+            );
+          Bind();
+          }
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
 //        }
@@ -92,6 +95,7 @@ namespace state_management
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[state_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[state_management_Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
       p.biz_role_member_map.BindBaseDataListForPennsylvania(p.sort_order,p.be_sort_order_ascending,DataGrid_control);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
@@ -251,7 +255,7 @@ namespace state_management
         p.biz_role_member_map.Save
           (
           member_id:k.Safe(e.Item.Cells[state_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM),
-          role_id:p.state_strike_team_manager_role_id,
+          role_id:k.Safe(e.Item.Cells[state_management_Static.TCI_ROLE_ID].Text,k.safe_hint_type.NUM),
           be_granted:false
           );
         DataGrid_control.EditItemIndex = -1;
@@ -453,10 +457,10 @@ namespace state_management
         p.state_strike_team_manager_role_id = p.biz_roles.IdOfName("State Strike Team Manager");
         p.state_tier_id = p.biz_tiers.IdOfName("State");
         p.roster_id_arraylist = new ArrayList();
-        p.sort_order = "last_name,first_name,middle_initial,certification_number";
+        p.sort_order = "role.pecking_order,last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
-        p.be_ok_to_edit_roster = true; //p.biz_states.BeOkToEditRoster(p.incoming.summary);
+        p.be_ok_to_edit_roster = k.Has(Session["privilege_array"] as string[],"assign-roles-to-members");
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

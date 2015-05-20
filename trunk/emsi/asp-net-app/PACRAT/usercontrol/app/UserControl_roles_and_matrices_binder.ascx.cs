@@ -28,10 +28,6 @@ namespace UserControl_roles_and_matrices_binder
             if (!p.be_loaded)
             {
                 TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
-                if (k.Has((string[])(Session["privilege_array"]), "config-roles-and-matrices"))
-                {
-                    TabPanel_roles.Enabled = true;
-                }
                 p.be_loaded = true;
             }
 
@@ -74,8 +70,8 @@ namespace UserControl_roles_and_matrices_binder
             else
             {
                 p.be_loaded = false;
-                p.tab_index = Units.UserControl_roles_and_matrices_binder.TSSI_ROLES;
-                p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_role)(LoadControl("~/usercontrol/app/UserControl_role.ascx"))),"UserControl_role",PlaceHolder_content,InstanceId());
+                p.tab_index = Units.UserControl_roles_and_matrices_binder.TSSI_MINE;
+                p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_my_roles_and_mappings)(LoadControl("~/usercontrol/app/UserControl_my_roles_and_mappings.ascx"))),"UserControl_my_roles_and_mappings",PlaceHolder_content,InstanceId());
             }
 
         }

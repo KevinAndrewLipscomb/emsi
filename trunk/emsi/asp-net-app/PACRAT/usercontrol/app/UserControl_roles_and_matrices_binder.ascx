@@ -7,10 +7,10 @@
         <td>
           <cc1:TabContainer id="TabContainer_control" runat="server" autopostback="True" cssclass="ajax__tab_ki">
             <cc1:TabPanel runat="server" headertext="Mine" id="TabPanel_my_roles_and_mappings"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Roles" id="TabPanel_roles"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Roles" id="TabPanel_roles" Enabled="false"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Role-Member mappings" id="TabPanel_role_member_mappings" Enabled="false"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Role-Privilege mappings" id="TabPanel_role_privilege_mappings"></cc1:TabPanel>
-            <cc1:TabPanel runat="server" headertext="Role-Notification mappings" id="TabPanel_role_notification_mappings"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Role-Privilege mappings" id="TabPanel_role_privilege_mappings" Enabled="false"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Role-Notification mappings" id="TabPanel_role_notification_mappings" Enabled="false"></cc1:TabPanel>
           </cc1:TabContainer>
           </td>
       </tr>
