@@ -22,22 +22,31 @@ namespace UserControl_mobilization_announcement {
         protected global::System.Web.UI.UpdatePanel UpdatePanel_control;
         
         /// <summary>
-        /// CheckBox_force_all control.
+        /// LinkButton_expand_state control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_force_all;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_expand_state;
         
         /// <summary>
-        /// CheckBoxList_service_strike_teams control.
+        /// CheckBox_force_state control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList_service_strike_teams;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_force_state;
+        
+        /// <summary>
+        /// DataGrid_regions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid DataGrid_regions;
         
         /// <summary>
         /// CustomValidator_service_strike_teams control.

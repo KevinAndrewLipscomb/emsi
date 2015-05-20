@@ -124,7 +124,7 @@ namespace Class_db_strike_team_deployment_vehicles
         + " from vehicle"
         +   " join service on (service.id=vehicle.service_id)"
         +   " join county_region_map on (county_region_map.county_code=service.county_code)"
-        +   " join strike_team_deployment on (strike_team_deployment.region_code=county_region_map.region_code and strike_team_deployment.id = '" + deployment_id + "')"
+        +   " join strike_team_deployment on (strike_team_deployment.id = '" + deployment_id + "')"
         +   " join patient_care_level on (patient_care_level.id=vehicle.patient_care_level_id)"
         +   " join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
         +   " join tow_capacity on (tow_capacity.id=vehicle.tow_capacity_id)"

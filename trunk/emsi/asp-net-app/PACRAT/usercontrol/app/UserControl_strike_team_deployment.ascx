@@ -65,17 +65,6 @@
     <td nowrap="nowrap">
     </td>
   </tr>
-  <tr runat="server">
-    <td><font class="">Region:</font></td>
-    <td>
-      <font class="">
-        <asp:DropDownList ID="DropDownList_region" runat="server"></asp:DropDownList>
-      </font>
-    </td>
-    <td nowrap="nowrap">
-      <ASP:RequiredFieldValidator id="RequiredFieldValidator_region" runat="server" errormessage="Please select a Region." font-bold="True" controltovalidate="DropDownList_region">!ERR!</ASP:RequiredFieldValidator>
-    </td>
-  </tr>
   <tr>
     <td><font class="">Name:</font></td>
     <td>
