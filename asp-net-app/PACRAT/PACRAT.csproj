@@ -89,6 +89,7 @@
     <Content Include="noninteractive\report_region_strike_team_officers_in_state.aspx" />
     <Content Include="noninteractive\report_service_strike_team_officers_in_region.aspx" />
     <Content Include="noninteractive\report_service_strike_team_roster.aspx" />
+    <Content Include="noninteractive\report_state_strike_team_officers.aspx" />
     <Content Include="noninteractive\statement_region_strike_teams.aspx" />
     <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
@@ -292,6 +293,13 @@
     </Compile>
     <Compile Include="noninteractive\report_service_strike_team_roster.aspx.designer.cs">
       <DependentUpon>report_service_strike_team_roster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\report_state_strike_team_officers.aspx.cs">
+      <DependentUpon>report_state_strike_team_officers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\report_state_strike_team_officers.aspx.designer.cs">
+      <DependentUpon>report_state_strike_team_officers.aspx</DependentUpon>
     </Compile>
     <Compile Include="noninteractive\statement_region_strike_teams.aspx.cs">
       <DependentUpon>statement_region_strike_teams.aspx</DependentUpon>
