@@ -40,6 +40,7 @@ namespace report_region_strike_team_officers_in_state
 
     protected override void Render(HtmlTextWriter writer)
       {
+      var biz_role_member_map = new TClass_biz_role_member_map();
       //
       // Write the HTML stream into a StringBuilder.
       //
@@ -51,7 +52,7 @@ namespace report_region_strike_team_officers_in_state
       k.SmtpMailSend
         (
         from:ConfigurationManager.AppSettings["sender_email_address"],
-        to:new TClass_biz_role_member_map().EmailTargetForPennsylvania(role_name:"State Strike Team Manager"),
+        to:biz_role_member_map.EmailTargetForPennsylvania(role_name:"State Strike Team Executive") + k.COMMA + biz_role_member_map.EmailTargetForPennsylvania(role_name:"State Strike Team Manager"),
         subject:"Region Strike Team Officers in State",
         message_string:sb.ToString(),
         be_html:true
