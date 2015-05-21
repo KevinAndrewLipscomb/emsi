@@ -49,7 +49,7 @@ namespace service_management
 
   public partial class TWebForm_service_management: ki_web_ui.page_class
     {
-    private class service_management_Static
+    private static class Static
       {
       public const int TCI_BE_CREDENTIALED = 0;
       public const int TCI_UNCREDENTIALED = 1;
@@ -99,8 +99,8 @@ namespace service_management
       p.be_noncurrent_practitioners_on_roster = false;
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
-      DataGrid_control.Columns[service_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
-      DataGrid_control.Columns[service_management_Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
       p.biz_role_member_map.BindBaseDataListByExplicitServiceId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.service_id);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
@@ -200,8 +200,8 @@ namespace service_management
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        email_address_text = k.Safe((tcc[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-        distribution_list += ((email_address_text != "DESIRED") && (tcc[service_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
+        email_address_text = k.Safe((tcc[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+        distribution_list += ((email_address_text != "DESIRED") && (tcc[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
         }
       if (distribution_list.Length > 0)
         {
@@ -230,7 +230,7 @@ namespace service_management
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[service_management_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       }
 
@@ -259,7 +259,7 @@ namespace service_management
         {        
         p.biz_role_member_map.SaveForExplicitService
           (
-          member_id:k.Safe(e.Item.Cells[service_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM),
+          member_id:k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM),
           role_id:p.service_strike_team_manager_role_id,
           be_granted:false,
           service_id:p.service_id
@@ -282,32 +282,32 @@ namespace service_management
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        if (e.Item.Cells[service_management_Static.TCI_BE_CREDENTIALED].Text == "Y")
+        if (e.Item.Cells[Static.TCI_BE_CREDENTIALED].Text == "Y")
           {
-          link_button = ((e.Item.Cells[service_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
           link_button.Visible = false;
           }
         else
           {
-          link_button = ((e.Item.Cells[service_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "UNCREDENTIALED";
           ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           }
         //
-        link_button = ((e.Item.Cells[service_management_Static.TCI_PROFILE].Controls[0]) as LinkButton);
+        link_button = ((e.Item.Cells[Static.TCI_PROFILE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Profile";
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
         //
-        link_button = ((e.Item.Cells[service_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
+        link_button = ((e.Item.Cells[Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
         //
-        var edit_update_cancel_controls = e.Item.Cells[service_management_Static.TCI_EDIT_UPDATE_CANCEL].Controls;
+        var edit_update_cancel_controls = e.Item.Cells[Static.TCI_EDIT_UPDATE_CANCEL].Controls;
         if (edit_update_cancel_controls.Count == 1)
           {
-          var label_dob = (e.Item.Cells[service_management_Static.TCI_DOB].FindControl("Label_dob") as Label);
+          var label_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("Label_dob") as Label);
           if (label_dob.Text == "REQUIRED")
             {
             label_dob.Font.Bold = true;
@@ -318,7 +318,7 @@ namespace service_management
             p.num_assignees_with_known_birth_dates.val++;
             }
           //
-          var label_email_address = (e.Item.Cells[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
+          var label_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
           if (label_email_address.Text == "DESIRED")
             {
             label_email_address.ForeColor = Color.DarkOrange;
@@ -338,30 +338,30 @@ namespace service_management
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Cancel edit";
           //
-          var text_box_dob = (e.Item.Cells[service_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
+          var text_box_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
           if (text_box_dob.Text == "REQUIRED")
             {
             text_box_dob.Text = k.EMPTY;
             }
-          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[service_management_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
+          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[Static.TCI_BE_DOB_CONFIRMED].Text == "0");
           //
-          var drop_down_list_role = e.Item.Cells[service_management_Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList;
+          var drop_down_list_role = e.Item.Cells[Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList;
           p.biz_roles.BindDirectToListControl
             (
             target:drop_down_list_role,
             has_config_roles_and_matrices:false,
             tier_filter:p.service_tier_id,
             unselected_literal:k.EMPTY,
-            selected_value:e.Item.Cells[service_management_Static.TCI_ROLE_ID].Text
+            selected_value:e.Item.Cells[Static.TCI_ROLE_ID].Text
             );
           //
-          var text_box_email_address = (e.Item.Cells[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
+          var text_box_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
           if (text_box_email_address.Text == "DESIRED")
             {
             text_box_email_address.Text = k.EMPTY;
             }
           }
-        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[service_management_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
@@ -402,7 +402,7 @@ namespace service_management
       {
       if (IsValid)
         {
-        var practitioner_id = k.Safe(e.Item.Cells[service_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+        var practitioner_id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
         //
         // The order of the next two calls is significant.  If the practitioner's email address is being updated, we must do that before we make the next call, otherwise any notification generated by the next call will go to the
         // old email address.
@@ -410,16 +410,28 @@ namespace service_management
         p.biz_practitioners.SetFieldsNotImportedFromState
           (
           id:practitioner_id,
-          birth_date:DateTime.Parse(k.Safe((e.Item.Cells[service_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
-          email_address:k.Safe((e.Item.Cells[service_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
+          birth_date:DateTime.Parse(k.Safe((e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
+          email_address:k.Safe((e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
           );
-        p.biz_role_member_map.SaveForExplicitService
-          (
-          member_id:practitioner_id,
-          role_id:k.Safe((e.Item.Cells[service_management_Static.TCI_ROLE_ID].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
-          be_granted:true,
-          service_id:p.service_id
-          );
+        var role_id_new = k.Safe((e.Item.Cells[Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM);
+        var role_id_old = k.Safe(e.Item.Cells[Static.TCI_ROLE_ID].Text,k.safe_hint_type.NUM);
+        if (role_id_new != role_id_old)
+          {
+          p.biz_role_member_map.SaveForExplicitService
+            (
+            member_id:practitioner_id,
+            role_id:role_id_old,
+            be_granted:false,
+            service_id:p.service_id
+            );
+          p.biz_role_member_map.SaveForExplicitService
+            (
+            member_id:practitioner_id,
+            role_id:role_id_new,
+            be_granted:true,
+            service_id:p.service_id
+            );
+          }
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
@@ -585,7 +597,7 @@ namespace service_management
         {
         if (e.CommandName == "Profile")
           {
-          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[service_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
           MessageDropCrumbAndTransferTo
             (
             msg:p.msg_protected_practitioner_profile,
