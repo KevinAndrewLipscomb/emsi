@@ -106,7 +106,7 @@ namespace UserControl_static_state_strike_team_key_personnel
       p.num_assignees.val = 0;
       p.biz_role_member_map.BindBaseDataListForPennsylvania
         (
-        sort_order:"last_name,first_name,middle_initial,certification_number",
+        sort_order:"role.pecking_order,last_name,first_name,middle_initial,certification_number",
         be_sort_order_ascending:true,
         target:DataGrid_control
         );
