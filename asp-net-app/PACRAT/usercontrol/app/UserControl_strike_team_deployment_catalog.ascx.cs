@@ -160,7 +160,7 @@ namespace UserControl_strike_team_deployment_catalog
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
-        p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForAnyScope
+        p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForPennsylvania
           (
           member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
           privilege_name:"config-strike-team-deployments"

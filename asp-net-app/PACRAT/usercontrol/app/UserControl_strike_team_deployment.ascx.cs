@@ -221,15 +221,15 @@ namespace UserControl_strike_team_deployment
 
     internal void Set(string id)
       {
+      p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForPennsylvania
+        (
+        member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+        privilege_name:"config-strike-team-deployments"
+        );
       if (id.Length > 0)
         {
         p.id = id;
         p.summary = p.biz_strike_team_deployments.Summary(id);
-        p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForAnyScope
-          (
-          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
-          privilege_name:"config-strike-team-deployments"
-          );
         p.presentation_mode = (p.be_ok_to_config_strike_team_deployments ? presentation_mode_enum.FULL_FUNCTION : p.presentation_mode = presentation_mode_enum.REVIEW_ONLY);
         UserControl_strike_team_deployment_binder_control.Set
           (
@@ -241,7 +241,6 @@ namespace UserControl_strike_team_deployment
         {
         p.id = k.EMPTY;
         p.summary = null;
-        p.be_ok_to_config_strike_team_deployments = true;
         p.presentation_mode = presentation_mode_enum.NEW;
         }
       }
