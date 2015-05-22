@@ -1,5 +1,8 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~binder.cs~template
 
+using Class_biz_privileges;
+using Class_biz_members;
+using Class_biz_user;
 using kix;
 using UserControl_region_affiliation;
 using UserControl_service_affiliation;
@@ -27,7 +30,11 @@ namespace UserControl_preparation_binder
     private struct p_type
       {
       internal bool be_loaded;
+      internal TClass_biz_privileges biz_privileges;
+      internal TClass_biz_members biz_members;
+      internal TClass_biz_user biz_user;
       internal string content_id;
+      internal string user_member_id;
       internal uint tab_index;
       }
 
@@ -121,17 +128,27 @@ namespace UserControl_preparation_binder
         }
       else
         {
-        p.be_loaded = false;
+        p.biz_privileges = new TClass_biz_privileges();
+        p.biz_members = new TClass_biz_members();
+        p.biz_user = new TClass_biz_user();
         //
-        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-service"))
+        p.be_loaded = false;
+        p.user_member_id = p.biz_members.IdOfUserId(p.biz_user.IdNum());
+        //
+        if (p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"config-strike-team-service"))
           {
           p.tab_index = UserControl_preparation_binder_Static.TSSI_SERVICE;
           }
-        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-region"))
+        if (p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"config-strike-team-region"))
           {
           p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
           }
-        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-state"))
+        if(
+            p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"config-strike-team-state")
+          ||
+            p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"config-strike-team-state-unlimited")
+          )
+        //then
           {
           p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
           }
