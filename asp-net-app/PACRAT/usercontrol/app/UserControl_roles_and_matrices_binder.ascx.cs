@@ -1,10 +1,4 @@
 using kix;
-using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Collections;
 using UserControl_my_roles_and_mappings;
 using UserControl_role;
 using UserControl_role_member_mapping;
@@ -16,6 +10,8 @@ namespace UserControl_roles_and_matrices_binder
     public struct p_type
     {
         public bool be_loaded;
+        public bool be_ok_to_config_roles_and_matrices;
+        public bool be_ok_to_config_strike_team_state_unlimited;
         public string content_id;
         public uint tab_index;
     } // end p_type
@@ -28,6 +24,9 @@ namespace UserControl_roles_and_matrices_binder
             if (!p.be_loaded)
             {
                 TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
+                TabPanel_roles.Enabled = p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_state_unlimited;
+                TabPanel_role_privilege_mappings.Enabled = p.be_ok_to_config_roles_and_matrices;
+                TabPanel_role_notification_mappings.Enabled = p.be_ok_to_config_roles_and_matrices;
                 p.be_loaded = true;
             }
 
@@ -70,6 +69,8 @@ namespace UserControl_roles_and_matrices_binder
             else
             {
                 p.be_loaded = false;
+                p.be_ok_to_config_roles_and_matrices = k.Has((string[])(Session["privilege_array"]), "config-roles-and-matrices");
+                p.be_ok_to_config_strike_team_state_unlimited = k.Has((string[])(Session["privilege_array"]), "config-strike-team-state-unlimited");
                 p.tab_index = Units.UserControl_roles_and_matrices_binder.TSSI_MINE;
                 p.content_id = AddIdentifiedControlToPlaceHolder(((TWebUserControl_my_roles_and_mappings)(LoadControl("~/usercontrol/app/UserControl_my_roles_and_mappings.ascx"))),"UserControl_my_roles_and_mappings",PlaceHolder_content,InstanceId());
             }

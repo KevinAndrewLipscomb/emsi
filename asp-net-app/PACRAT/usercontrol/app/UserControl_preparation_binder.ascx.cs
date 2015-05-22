@@ -131,7 +131,7 @@ namespace UserControl_preparation_binder
           {
           p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
           }
-        if (k.Has((string[])(Session["privilege_array"]),"config-roles-and-matrices"))
+        if (k.Has((string[])(Session["privilege_array"]),"config-strike-team-state"))
           {
           p.tab_index = UserControl_preparation_binder_Static.TSSI_STATE;
           }

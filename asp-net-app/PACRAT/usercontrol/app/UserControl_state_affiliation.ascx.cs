@@ -101,7 +101,7 @@ namespace UserControl_state_affiliation
       {
       if (!p.be_loaded)
         {
-        if (k.Has(Session["privilege_array"] as string[],"config-roles-and-matrices"))
+        if (k.Has(Session["privilege_array"] as string[],"config-strike-team-state"))
           {
           TableRow_none.Visible = false;
           TableRow_data.Visible = true;

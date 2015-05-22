@@ -471,7 +471,7 @@ namespace state_management
         p.sort_order = "role.pecking_order,last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
-        p.be_ok_to_edit_roster = k.Has(Session["privilege_array"] as string[],"assign-roles-to-members");
+        p.be_ok_to_edit_roster = k.Has(Session["privilege_array"] as string[],"config-strike-team-state-unlimited");
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
