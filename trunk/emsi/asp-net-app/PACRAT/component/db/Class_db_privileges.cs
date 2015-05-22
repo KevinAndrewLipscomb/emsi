@@ -159,6 +159,28 @@ namespace Class_db_privileges
           return (has_for_any_scope_obj != null);
           }
 
+        internal bool HasForPennsylvania(string member_id, string privilege_name)
+          {
+          Open();
+          var has_for_any_scope_obj = new MySqlCommand
+            (
+            "select 1"
+            + " from member"
+            +   " join role_member_map on (role_member_map.member_id=member.id)"
+            +   " join role on (role.id=role_member_map.role_id)"
+            +   " join role_privilege_map on (role_privilege_map.role_id=role.id)"
+            +   " join privilege on (privilege.id=role_privilege_map.privilege_id)"
+            + " where member.id = '" + member_id + "'"
+            +   " and privilege.name = '" + privilege_name + "'"
+            +   " and region_code is null"
+            +   " and service_id is null",
+            connection
+            )
+            .ExecuteScalar();
+          Close();
+          return (has_for_any_scope_obj != null);
+          }
+
         internal bool HasForRegion
           (
           string member_id,
