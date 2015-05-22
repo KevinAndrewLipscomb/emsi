@@ -33,7 +33,7 @@ namespace UserControl_member_binder
     private struct p_type
       {
       internal bool be_loaded;
-      internal bool be_ok_to_config_roles_and_matrices;
+      internal bool be_ok_to_config_strike_team_state;
       internal bool be_ok_to_config_strike_team_region;
       internal bool be_ok_to_config_strike_team_service;
       internal TClass_biz_members biz_members;
@@ -140,10 +140,10 @@ namespace UserControl_member_binder
         p.be_loaded = false;
         p.user_member_id = p.biz_members.IdOfUserId(p.biz_user.IdNum());
         //
-        p.be_ok_to_config_roles_and_matrices = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-roles-and-matrices");
+        p.be_ok_to_config_strike_team_state = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-state");
         p.be_ok_to_config_strike_team_region = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-region");
         p.be_ok_to_config_strike_team_service = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-service");
-        if (p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service)
+        if (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service)
           {
           if (p.biz_strike_team_deployments.BeAllConcludedWithinScope(p.user_member_id))
             {
@@ -169,7 +169,7 @@ namespace UserControl_member_binder
         {
         p.be_loaded = true;
         }
-      TabPanel_preparation.Enabled = (p.be_ok_to_config_roles_and_matrices || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service);
+      TabPanel_preparation.Enabled = (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service);
       TabPanel_coordination.Enabled = p.biz_privileges.HasForAnyScope(p.user_member_id,"see-strike-team-deployments") || p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-deployments");
       TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
       }
