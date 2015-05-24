@@ -498,7 +498,7 @@ namespace UserControl_practitioner
 
     protected void Button_lookup_Click(object sender, System.EventArgs e)
       {
-      var saved_id = k.Safe(TextBox_id.Text,k.safe_hint_type.PUNCTUATED);
+      var saved_id = k.Safe(TextBox_id.Text,k.safe_hint_type.PUNCTUATED); // Leave the hint PUNCTUATED since the TextBox is being used as a partial spec lookup value that we don't want to modify.
       Clear();
       if (!PresentRecord(saved_id))
         {
