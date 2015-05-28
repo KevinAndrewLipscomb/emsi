@@ -299,7 +299,8 @@ namespace UserControl_coned_sponsors
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
         ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
         }
-      Label_distribution_list.Text = p.distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});;
+      p.distribution_list = p.distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
+      Label_distribution_list.Text = p.distribution_list;
       }
 
     protected void Button_send_Click(object sender, EventArgs e)
