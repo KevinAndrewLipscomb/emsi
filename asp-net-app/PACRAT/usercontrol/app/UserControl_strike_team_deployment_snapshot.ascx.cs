@@ -12,6 +12,7 @@ using System;
 using System.Collections;
 using System.Web.UI.WebControls;
 using AjaxControlToolkit;
+using System.Web.UI;
 
 namespace UserControl_strike_team_deployment_snapshot
   {
@@ -91,7 +92,7 @@ namespace UserControl_strike_team_deployment_snapshot
         {
         p.be_loaded = true;
         }
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_export);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_export);
       }
 
     protected override void OnInit(System.EventArgs e)

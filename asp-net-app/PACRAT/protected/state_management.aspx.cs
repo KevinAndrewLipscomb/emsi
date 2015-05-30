@@ -14,6 +14,7 @@ using System;
 using System.Collections;
 using System.Configuration;
 using System.Drawing;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace state_management
@@ -127,7 +128,7 @@ namespace state_management
 
     private void InjectPersistentClientSideScript()
       {
-      ToolkitScriptManager.RegisterStartupScript(Page,Page.GetType(),"SearchAsYouTypePostBackDelayTimer","var search_as_you_type_post_back_delay_timer;",true);
+      ScriptManager.RegisterStartupScript(Page,Page.GetType(),"SearchAsYouTypePostBackDelayTimer","var search_as_you_type_post_back_delay_timer;",true);
       EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
       EstablishClientSideFunction("SearchAsYouTypePostBack()","__doPostBack('<%= TextBox_practitioner.ClientID %>','');");
       Body_control.Attributes.Add
@@ -286,13 +287,13 @@ namespace state_management
           link_button = ((e.Item.Cells[Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "UNCREDENTIALED";
-          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           }
         //
         link_button = ((e.Item.Cells[Static.TCI_PROFILE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Profile";
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
         //
         link_button = ((e.Item.Cells[Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
@@ -478,7 +479,7 @@ namespace state_management
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
 //
-//ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+//ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
       }
 
@@ -500,7 +501,7 @@ namespace state_management
         Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down);
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)

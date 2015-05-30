@@ -54,7 +54,7 @@ namespace per_op_period_iap
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
       //
-      // ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+      // ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
       //
       }
 

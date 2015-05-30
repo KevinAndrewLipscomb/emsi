@@ -191,7 +191,7 @@ namespace UserControl_practitioner
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_change_email_address);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_change_email_address);
       }
 
     public bool PresentRecord(string id)

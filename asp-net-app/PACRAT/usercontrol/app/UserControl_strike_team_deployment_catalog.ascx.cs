@@ -10,6 +10,7 @@ using kix;
 using System;
 using System.Collections;
 using System.Configuration;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_catalog
@@ -137,7 +138,7 @@ namespace UserControl_strike_team_deployment_catalog
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add);
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -215,11 +216,11 @@ namespace UserControl_strike_team_deployment_catalog
           {
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
-          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_STATUS].Controls[0]) as LinkButton);
           link_button.Font.Bold = (link_button.Text == "*MOBILIZING*");
-          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           if (link_button.Text != "Concluded")
             {
             p.be_all_concluded = false;

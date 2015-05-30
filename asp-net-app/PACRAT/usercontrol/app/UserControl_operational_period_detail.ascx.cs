@@ -159,7 +159,7 @@ namespace UserControl_operational_period_detail
           p.distribution_list_sms += (tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
         //
-        // Calls to ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl() from DataGrid_~_ItemDataBound go here.
+        // Calls to ScriptManager.GetCurrent(Page).RegisterPostBackControl() from DataGrid_~_ItemDataBound go here.
         //
         }
       //p.distribution_list_email = p.distribution_list_email.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});

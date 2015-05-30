@@ -363,7 +363,7 @@ namespace UserControl_strike_team_deployment_vehicles
             }
           if ((link_button.Text == "YES") && (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint)))
             {
-            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+            ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
             }
           //
           var elaboration = e.Item.Cells[UserControl_strike_team_deployment_vehicles_Static.TCI_ELABORATION].Text;

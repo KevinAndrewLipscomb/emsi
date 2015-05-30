@@ -2,6 +2,7 @@
 
 using AjaxControlToolkit;
 using kix;
+using System.Web.UI;
 
 namespace UserControl_state_affiliation
   {
@@ -106,7 +107,7 @@ namespace UserControl_state_affiliation
           TableRow_none.Visible = false;
           TableRow_data.Visible = true;
           LinkButton_control.Text = k.ExpandTildePath(LinkButton_control.Text);
-          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_control);
+          ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_control);
           }
         else
           {

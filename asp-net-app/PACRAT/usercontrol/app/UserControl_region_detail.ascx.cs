@@ -315,7 +315,7 @@ namespace UserControl_region_detail
           p.distribution_list_email += (tcc[UserControl_region_detail_Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           p.distribution_list_sms += (tcc[UserControl_region_detail_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_region_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_region_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
       Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       }

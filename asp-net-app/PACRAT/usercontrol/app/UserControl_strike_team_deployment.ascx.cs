@@ -161,8 +161,8 @@ namespace UserControl_strike_team_deployment
           }
         p.be_loaded = true;
         }
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_announce);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_announce);
       InjectPersistentClientSideScript();
       }
 

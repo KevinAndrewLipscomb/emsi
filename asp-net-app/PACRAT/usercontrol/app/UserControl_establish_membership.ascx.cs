@@ -8,6 +8,7 @@ using Class_biz_users;
 using kix;
 using System;
 using System.Configuration;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_establish_membership
@@ -40,8 +41,8 @@ namespace UserControl_establish_membership
                 TextBox_certification_number.Focus();
                 p.be_loaded = true;
             }
-            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_trouble_handler);
-            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_proceed);
+            ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_trouble_handler);
+            ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_proceed);
         }
 
         protected override void OnInit(System.EventArgs e)

@@ -189,8 +189,8 @@ namespace UserControl_strike_team_deployment_operational_period
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_delete);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_delete);
       }
 
     private bool PresentRecord(string id)

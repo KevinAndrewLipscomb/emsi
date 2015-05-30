@@ -13,6 +13,7 @@ using System;
 using System.Collections;
 using System.Configuration;
 using System.Drawing;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_members
@@ -302,7 +303,7 @@ namespace UserControl_strike_team_deployment_members
             }
           if ((link_button.Text == "YES") && (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint)))
             {
-            ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+            ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
             }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
@@ -447,7 +448,7 @@ namespace UserControl_strike_team_deployment_members
           p.distribution_list_email += (tcc[UserControl_strike_team_deployment_members_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           p.distribution_list_sms += (tcc[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
       Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       }
