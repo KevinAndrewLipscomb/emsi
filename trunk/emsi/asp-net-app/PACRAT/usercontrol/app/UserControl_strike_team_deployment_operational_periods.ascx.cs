@@ -144,7 +144,7 @@ namespace UserControl_strike_team_deployment_operational_periods
         Bind();
         p.be_loaded = true;
         }
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
       InjectPersistentClientSideScript();
       }
 

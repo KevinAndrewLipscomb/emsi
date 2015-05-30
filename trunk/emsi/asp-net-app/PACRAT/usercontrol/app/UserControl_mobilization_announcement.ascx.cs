@@ -6,6 +6,7 @@ using Class_biz_strike_team_deployments;
 using Class_msg_protected;
 using kix;
 using System.Configuration;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_mobilization_announcement
@@ -51,7 +52,7 @@ namespace UserControl_mobilization_announcement
           );
         p.be_loaded = true;
         }
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_submit);
       }
 
     protected override void OnInit(System.EventArgs e)

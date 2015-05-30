@@ -24,6 +24,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,9 +48,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Microsoft ASP.NET\AjaxControlToolkit.Binary.NET35\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit, Version=15.1.2.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>packages\AjaxControlToolkit.15.1.2.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MySql.Data, Version=6.4.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -533,7 +534,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_business_objects_binder.ascx.cs">
       <DependentUpon>UserControl_business_objects_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_business_objects_binder.ascx.designer.cs">
       <DependentUpon>UserControl_business_objects_binder.ascx</DependentUpon>
@@ -568,7 +568,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_member_binder.ascx.cs">
       <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_member_binder.ascx.designer.cs">
       <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
@@ -589,7 +588,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_operational_period_detail.ascx.cs">
       <DependentUpon>UserControl_operational_period_detail.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_operational_period_detail.ascx.designer.cs">
       <DependentUpon>UserControl_operational_period_detail.ascx</DependentUpon>
@@ -659,7 +657,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_preparation_binder.ascx.cs">
       <DependentUpon>UserControl_preparation_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_preparation_binder.ascx.designer.cs">
       <DependentUpon>UserControl_preparation_binder.ascx</DependentUpon>
@@ -813,7 +810,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_binder.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_binder.ascx</DependentUpon>
@@ -869,7 +865,6 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_snapshot.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_snapshot.ascx</DependentUpon>
@@ -967,7 +962,6 @@
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_attachment_explorer.ascx.cs">
       <DependentUpon>UserControl_attachment_explorer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_attachment_explorer.ascx.designer.cs">
       <DependentUpon>UserControl_attachment_explorer.ascx</DependentUpon>
@@ -988,14 +982,12 @@
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_date.ascx.cs">
       <DependentUpon>UserControl_drop_down_date.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_date.ascx.designer.cs">
       <DependentUpon>UserControl_drop_down_date.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_datetime.ascx.cs">
       <DependentUpon>UserControl_drop_down_datetime.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_datetime.ascx.designer.cs">
       <DependentUpon>UserControl_drop_down_datetime.ascx</DependentUpon>
@@ -1068,6 +1060,7 @@
     <Content Include="usercontrol\ki\UserControl_drop_down_date.ascx" />
     <Content Include="usercontrol\ki\UserControl_print_div.ascx" />
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
+    <Content Include="packages.config" />
     <None Include="resource\strike-team-guidelines.pdf" />
     <None Include="work.bat" />
   </ItemGroup>

@@ -79,7 +79,7 @@ namespace overview
                 AddIdentifiedControlToPlaceHolder(((TWebUserControl_member_binder)(LoadControl("~/usercontrol/app/UserControl_member_binder.ascx"))), "UserControl_member_binder", PlaceHolder_member_binder);
             }
 //
-// ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+// ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
         }
 

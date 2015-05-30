@@ -75,7 +75,7 @@ namespace strike_team_deployment_detail
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
 //
-// ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+// ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
       }
 

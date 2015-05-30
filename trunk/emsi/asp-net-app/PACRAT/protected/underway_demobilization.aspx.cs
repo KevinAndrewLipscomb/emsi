@@ -70,7 +70,7 @@ namespace underway_demobilization
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
       //
-      // ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+      // ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
       //
       }
 

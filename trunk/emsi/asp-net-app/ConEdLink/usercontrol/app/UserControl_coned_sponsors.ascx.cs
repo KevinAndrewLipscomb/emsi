@@ -296,8 +296,8 @@ namespace UserControl_coned_sponsors
           {
           p.distribution_list += tcc[UserControl_coned_sponsors_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
           }
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
         }
       p.distribution_list = p.distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       Label_distribution_list.Text = p.distribution_list;

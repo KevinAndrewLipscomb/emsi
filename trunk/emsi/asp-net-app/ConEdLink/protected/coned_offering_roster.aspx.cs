@@ -1,6 +1,5 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_accounts;
 using Class_biz_coned_offering_rosters;
 using Class_biz_coned_offerings;
@@ -17,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace coned_offering_roster
@@ -134,7 +134,7 @@ namespace coned_offering_roster
 
     private void InjectPersistentClientSideScript()
       {
-      ToolkitScriptManager.RegisterStartupScript(Page,Page.GetType(),"SearchAsYouTypePostBackDelayTimer","var search_as_you_type_post_back_delay_timer;",true);
+      ScriptManager.RegisterStartupScript(Page,Page.GetType(),"SearchAsYouTypePostBackDelayTimer","var search_as_you_type_post_back_delay_timer;",true);
       EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
       EstablishClientSideFunction("SearchAsYouTypePostBack()","__doPostBack('<%= TextBox_practitioner.ClientID %>','');");
       Body_control.Attributes.Add
@@ -746,7 +746,7 @@ namespace coned_offering_roster
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
 //
-//ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+//ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
       }
 
@@ -785,9 +785,9 @@ namespace coned_offering_roster
           c:Button_mark_roster_already_submitted,
           prompt:"If you proceed, this class will disappear from " + ConfigurationManager.AppSettings["application_name"] + "."
           );
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_canceled);
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_ran_no_ce);
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_roster_already_submitted);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_canceled);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_class_ran_no_ce);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_mark_roster_already_submitted);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.incoming.summary));
         TableRow_ratings_header.Visible = (p.eval_summary_mode_description == "SAEMS");

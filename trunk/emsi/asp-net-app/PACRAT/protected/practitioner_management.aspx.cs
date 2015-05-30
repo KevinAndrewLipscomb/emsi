@@ -14,6 +14,7 @@ using System;
 using System.Collections;
 using System.Configuration;
 using System.Drawing;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace practitioner_management
@@ -120,7 +121,7 @@ namespace practitioner_management
 
     private void InjectPersistentClientSideScript()
       {
-      ToolkitScriptManager.RegisterStartupScript(Page,Page.GetType(),"SearchAsYouTypePostBackDelayTimer","var search_as_you_type_post_back_delay_timer;",true);
+      ScriptManager.RegisterStartupScript(Page,Page.GetType(),"SearchAsYouTypePostBackDelayTimer","var search_as_you_type_post_back_delay_timer;",true);
       EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
       EstablishClientSideFunction("SearchAsYouTypePostBack()","__doPostBack('<%= TextBox_practitioner.ClientID %>','');");
       Body_control.Attributes.Add
@@ -291,13 +292,13 @@ namespace practitioner_management
           link_button = ((e.Item.Cells[practitioner_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "UNCREDENTIALED";
-          ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           }
         //
         link_button = ((e.Item.Cells[practitioner_management_Static.TCI_PROFILE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Profile";
-        ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
         //
         link_button = ((e.Item.Cells[practitioner_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
@@ -468,7 +469,7 @@ namespace practitioner_management
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
 //
-//ToolkitScriptManager.GetCurrent(Page).EnablePartialRendering = false;
+//ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
       }
 

@@ -147,7 +147,7 @@ namespace UserControl_vehicles
         Bind();
         p.be_loaded = true;
         }
-      ToolkitScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
+      ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_new);
       InjectPersistentClientSideScript();
       }
 
