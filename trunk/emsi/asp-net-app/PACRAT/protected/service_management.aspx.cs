@@ -414,25 +414,23 @@ namespace service_management
           birth_date:DateTime.Parse(k.Safe((e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
           email_address:k.Safe((e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
           );
-        var role_id_new = k.Safe((e.Item.Cells[Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM);
-        var role_id_old = k.Safe(e.Item.Cells[Static.TCI_ROLE_ID].Text,k.safe_hint_type.NUM);
-        if (role_id_new != role_id_old)
-          {
-          p.biz_role_member_map.SaveForExplicitService
-            (
-            member_id:practitioner_id,
-            role_id:role_id_old,
-            be_granted:false,
-            service_id:p.service_id
-            );
-          p.biz_role_member_map.SaveForExplicitService
-            (
-            member_id:practitioner_id,
-            role_id:role_id_new,
-            be_granted:true,
-            service_id:p.service_id
-            );
-          }
+        //
+        // Perform the following unconditionally, so if the practitioner's email_address is being corrected, they will receive notifications at the new correct address even if there has been no role change.
+        //
+        p.biz_role_member_map.SaveForExplicitService
+          (
+          member_id:practitioner_id,
+          role_id:k.Safe(e.Item.Cells[Static.TCI_ROLE_ID].Text,k.safe_hint_type.NUM),
+          be_granted:false,
+          service_id:p.service_id
+          );
+        p.biz_role_member_map.SaveForExplicitService
+          (
+          member_id:practitioner_id,
+          role_id:k.Safe((e.Item.Cells[Static.TCI_ROLE_NAME].FindControl("DropDownList_role") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
+          be_granted:true,
+          service_id:p.service_id
+          );
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
