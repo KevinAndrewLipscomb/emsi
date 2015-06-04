@@ -61,12 +61,13 @@ namespace report_service_strike_team_officers_in_region
       //
       // Send output stream as an email message.
       //
+      var state_strike_team_manager_email_target = biz_role_member_map.EmailTargetForPennsylvania(role_name:"State Strike Team Manager");
       k.SmtpMailSend
         (
         from:ConfigurationManager.AppSettings["sender_email_address"],
         to:biz_role_member_map.EmailTargetForPennsylvania(role_name:"State Strike Team Executive")
         + k.COMMA
-        + biz_role_member_map.EmailTargetForPennsylvania(role_name:"State Strike Team Manager")
+        + state_strike_team_manager_email_target
         + k.COMMA
         + biz_role_member_map.EmailTargetOfByExplicitRegionCode
           (
@@ -75,7 +76,10 @@ namespace report_service_strike_team_officers_in_region
           ),
         subject:"Service Strike Team Officers in Region " + p.region_emsrs_code.ToString(),
         message_string:sb.ToString(),
-        be_html:true
+        be_html:true,
+        cc:k.EMPTY,
+        bcc:k.EMPTY,
+        reply_to:state_strike_team_manager_email_target
         );
       }
 

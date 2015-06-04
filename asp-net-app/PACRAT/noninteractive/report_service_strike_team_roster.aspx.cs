@@ -15,6 +15,8 @@ namespace report_service_strike_team_roster
 
     private struct p_type
       {
+      public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_services biz_services;
       public string service_id;
       }
 
@@ -45,9 +47,12 @@ namespace report_service_strike_team_roster
       InitializeComponent();
       base.OnInit(e);
       //
+      p.biz_role_member_map = new TClass_biz_role_member_map();
+      p.biz_services = new TClass_biz_services();
+      //
       p.service_id = k.Safe(Request["service_id"],k.safe_hint_type.NUM);
       //
-      UserControl_static_service_strike_team_roster_control.Set(new TClass_biz_services().Summary(p.service_id));
+      UserControl_static_service_strike_team_roster_control.Set(p.biz_services.Summary(p.service_id));
       }
 
     protected override void Render(HtmlTextWriter writer)
@@ -63,14 +68,20 @@ namespace report_service_strike_team_roster
       k.SmtpMailSend
         (
         from:ConfigurationManager.AppSettings["sender_email_address"],
-        to:new TClass_biz_role_member_map().EmailTargetOfByExplicitServiceId
+        to:p.biz_role_member_map.EmailTargetOfByExplicitServiceId
           (
           role_name:"Service Strike Team Manager",
           service_id:p.service_id
           ),
         subject:"Service Strike Team Roster",
         message_string:sb.ToString(),
-        be_html:true
+        be_html:true,
+        cc:k.EMPTY,
+        bcc:k.EMPTY,
+        reply_to:k.EMPTY
+        + p.biz_role_member_map.EmailTargetOfByExplicitRegionCode("Region Strike Team Manager",p.biz_services.RegionCodeOf(p.service_id))
+        + k.COMMA
+        + p.biz_role_member_map.EmailTargetForPennsylvania("State Strike Team Manager")
         );
       }
 
