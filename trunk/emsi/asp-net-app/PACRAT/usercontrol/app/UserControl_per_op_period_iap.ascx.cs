@@ -2,7 +2,6 @@
 
 using Class_biz_members;
 using Class_biz_patient_care_levels;
-using Class_biz_practitioners;
 using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_strike_team_deployments;
@@ -33,7 +32,6 @@ namespace UserControl_per_op_period_iap
       {
       public bool be_datagrid_empty;
       public TClass_biz_members biz_members;
-      public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
@@ -57,7 +55,6 @@ namespace UserControl_per_op_period_iap
       //
       p.biz_members = new TClass_biz_members();
       p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
-      p.biz_practitioners = new TClass_biz_practitioners();
       p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
       p.biz_strike_team_deployment_operational_periods = new TClass_biz_strike_team_deployment_operational_periods();
       p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
@@ -163,15 +160,15 @@ namespace UserControl_per_op_period_iap
         }
       Literal_deployment_name.Text = p.biz_strike_team_deployments.NameOfId(deployment_id);
       Bind();
-      var practitioner_summary = p.biz_practitioners.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+      var practitioner_summary = p.biz_members.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
       Literal_prepared_name.Text = k.EMPTY
-      + p.biz_practitioners.LevelOf(practitioner_summary)
+      + p.biz_members.LevelOf(practitioner_summary)
       + k.SPACE
-      + p.biz_practitioners.FirstNameOf(practitioner_summary)
+      + p.biz_members.FirstNameOf(practitioner_summary)
       + k.SPACE
-      + p.biz_practitioners.LastNameOf(practitioner_summary)
+      + p.biz_members.LastNameOf(practitioner_summary)
       + k.SPACE
-      + "(" + p.biz_practitioners.CertificationNumberOf(practitioner_summary) + ")";
+      + "(" + p.biz_members.CertificationNumberOf(practitioner_summary) + ")";
       Literal_prepared_timestamp.Text = mark.ToString("yyyy-MM-dd HH:mm:ss.ff");
       }
 
