@@ -3,7 +3,6 @@
 using Class_biz_counties;
 using Class_biz_members;
 using Class_biz_practitioner_levels;
-using Class_biz_practitioners;
 using Class_biz_privileges;
 using Class_biz_regions;
 using Class_biz_user;
@@ -23,7 +22,6 @@ namespace UserControl_practitioner
       public bool be_loaded;
       public TClass_biz_counties biz_counties;
       public TClass_biz_members biz_members;
-      public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_regions biz_regions;
@@ -198,7 +196,7 @@ namespace UserControl_practitioner
       result = false;
       if
         (
-        p.biz_practitioners.Get
+        p.biz_members.Get
           (
           id,
           out last_name,
@@ -315,7 +313,6 @@ namespace UserControl_practitioner
         //
         p.biz_counties = new TClass_biz_counties();
         p.biz_members = new TClass_biz_members();
-        p.biz_practitioners = new TClass_biz_practitioners();
         p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_regions = new TClass_biz_regions();
@@ -361,7 +358,7 @@ namespace UserControl_practitioner
         //
         // Practitioner record is slaved to EMSRS, so don't perform a Set operation.
         //
-        //p.biz_practitioners.Set
+        //p.biz_members.Set
         //  (
         //  k.Safe(TextBox_id.Text,k.safe_hint_type.NUM),
         //  k.Safe(TextBox_last_name.Text,k.safe_hint_type.HUMAN_NAME).Trim(),
@@ -422,7 +419,7 @@ namespace UserControl_practitioner
 
     protected void Button_delete_Click(object sender, System.EventArgs e)
       {
-      if (p.biz_practitioners.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.NUM)))
+      if (p.biz_members.Delete(k.Safe(TextBox_id.Text, k.safe_hint_type.NUM)))
         {
         SetLookupMode();
         }
@@ -471,7 +468,7 @@ namespace UserControl_practitioner
       if (!PresentRecord(saved_id))
         {
         TextBox_id.Text = saved_id;
-        p.biz_practitioners.Bind(saved_id, DropDownList_id);
+        p.biz_members.Bind(saved_id, DropDownList_id);
         num_matches = (uint)(DropDownList_id.Items.Count);
         if (num_matches > 0)
           {

@@ -1,7 +1,6 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using Class_biz_members;
-using Class_biz_practitioners;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployments;
 using Class_biz_user;
@@ -29,7 +28,6 @@ namespace UserControl_per_deployment_iap_personnel
       {
       public bool be_datagrid_empty;
       public TClass_biz_members biz_members;
-      public TClass_biz_practitioners biz_practitioners;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
@@ -45,15 +43,15 @@ namespace UserControl_per_deployment_iap_personnel
       var mark = DateTime.Now;
       Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
       Literal_ref_num.Text = mark.ToString("yyyy-MM-dd-HH-mm-ss-ff");
-      var practitioner_summary = p.biz_practitioners.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+      var practitioner_summary = p.biz_members.Summary(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
       Literal_prepared_name.Text = k.EMPTY
-      + p.biz_practitioners.LevelOf(practitioner_summary)
+      + p.biz_members.LevelOf(practitioner_summary)
       + k.SPACE
-      + p.biz_practitioners.FirstNameOf(practitioner_summary)
+      + p.biz_members.FirstNameOf(practitioner_summary)
       + k.SPACE
-      + p.biz_practitioners.LastNameOf(practitioner_summary)
+      + p.biz_members.LastNameOf(practitioner_summary)
       + k.SPACE
-      + "(" + p.biz_practitioners.CertificationNumberOf(practitioner_summary) + ")";
+      + "(" + p.biz_members.CertificationNumberOf(practitioner_summary) + ")";
       Literal_prepared_timestamp.Text = mark.ToString("yyyy-MM-dd HH:mm:ss.ff");
       }
 
@@ -64,7 +62,6 @@ namespace UserControl_per_deployment_iap_personnel
       base.OnInit(e);
       //
       p.biz_members = new TClass_biz_members();
-      p.biz_practitioners = new TClass_biz_practitioners();
       p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
       p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
       p.biz_user = new TClass_biz_user();
