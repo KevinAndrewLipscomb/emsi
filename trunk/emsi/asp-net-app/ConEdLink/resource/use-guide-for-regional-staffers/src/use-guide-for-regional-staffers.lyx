@@ -277,10 +277,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-$Log$
 \begin_inset Newpage clearpage
 \end_inset
 
