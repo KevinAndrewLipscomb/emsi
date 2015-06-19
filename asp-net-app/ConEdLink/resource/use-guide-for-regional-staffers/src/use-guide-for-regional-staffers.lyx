@@ -112,6 +112,39 @@ ConEdLink
 for Regional Staffers
 \end_layout
 
+\begin_layout Date
+$Revision$
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+To suppress the page number on the first page, the 
+\backslash
+thispagestyle{empty} ERT must appear in a Standard environment after the
+ Title and Date environments but before the end of the first page.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -121,13 +154,6 @@ status open
 
 \backslash
 pagenumbering{roman}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
 \end_layout
 
 \end_inset
@@ -180,20 +206,6 @@ for
 \end_inset
 
 The Regional EMS Councils of the Pennsylvania state EMS system
-\end_layout
-
-\begin_layout Description
-
-\size footnotesize
-01
-\begin_inset space ~
-\end_inset
-
-December
-\begin_inset space ~
-\end_inset
-
-2014
 \end_layout
 
 \end_inset
@@ -265,6 +277,10 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+$Log$
 \begin_inset Newpage clearpage
 \end_inset
 
