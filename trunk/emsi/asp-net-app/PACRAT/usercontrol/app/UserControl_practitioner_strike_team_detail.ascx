@@ -204,7 +204,7 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -223,7 +223,7 @@
     <td style="border-left: thin solid Gainsboro"><font class="">PA Child Abuse History Clearance date:</font></td>
     <td valign="top"><font color="#33CC33">&clubs;</font></td>
     <td valign="top"><font color="#3366FF">&diams;</font></td>
-    <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></font></td>
+    <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date></font></td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr style="border-left: thin solid Gainsboro; border-right: thin solid Gainsboro">
@@ -232,7 +232,7 @@
     <td valign="top"><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -243,7 +243,7 @@
     <td  style="border-bottom: thin solid Gainsboro"valign="top"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -264,7 +264,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_100_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_100_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -275,7 +275,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_200_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_200_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -286,7 +286,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_700_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -297,7 +297,7 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_800_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_is_800_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -317,7 +317,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_300_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_300_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -328,7 +328,7 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_400_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_nims_ics_400_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -355,7 +355,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_disaster_stress_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_disaster_stress_response_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -372,7 +372,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_mci_ops_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_mci_ops_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -389,7 +389,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_wmd_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_wmd_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -406,7 +406,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_smallpox_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_smallpox_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -423,7 +423,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_basic_med_terrorism_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_basic_med_terrorism_response_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -440,7 +440,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_electrical_hazards_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_electrical_hazards_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -457,7 +457,7 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_bioterror_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_bioterror_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -477,7 +477,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_psychological_first_aid_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_psychological_first_aid_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -488,7 +488,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_water_rescue_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_water_rescue_awareness_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -499,7 +499,7 @@
     <td><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_hazmat_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_hazmat_awareness_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -510,7 +510,7 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_ems_strike_team_leader_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_ems_strike_team_leader_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -530,7 +530,7 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_two_years_supervisory_experience_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_two_years_supervisory_experience_date" runat="server"  cssclass="" be_clearable="true"></uc1:UserControl_drop_down_date>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
