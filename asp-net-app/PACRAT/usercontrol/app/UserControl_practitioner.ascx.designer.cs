@@ -310,6 +310,15 @@ namespace UserControl_practitioner {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_email_address;
         
         /// <summary>
+        /// TableRow_street_address_1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_street_address_1;
+        
+        /// <summary>
         /// TextBox_street_address_1 control.
         /// </summary>
         /// <remarks>
@@ -328,6 +337,15 @@ namespace UserControl_practitioner {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_street_address_1;
         
         /// <summary>
+        /// TableRow_street_address_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_street_address_2;
+        
+        /// <summary>
         /// TextBox_street_address_2 control.
         /// </summary>
         /// <remarks>
@@ -344,6 +362,15 @@ namespace UserControl_practitioner {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_street_address_2;
+        
+        /// <summary>
+        /// TableRow_city_state_zip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_city_state_zip;
         
         /// <summary>
         /// TextBox_city_state_zip control.

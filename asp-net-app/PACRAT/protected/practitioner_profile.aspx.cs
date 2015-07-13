@@ -45,7 +45,7 @@ namespace practitioner_profile
         // Initialize p.~ objects here.
         //
         var incoming = Message<TClass_msg_protected.practitioner_profile>(folder_name:"protected",aspx_name:"practitioner_profile");
-        UserControl_practitioner_control.SetTarget(target:incoming.id);
+        UserControl_practitioner_control.SetInitP(id:incoming.id);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

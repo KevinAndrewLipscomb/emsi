@@ -173,7 +173,7 @@ namespace UserControl_practitioner
       InjectPersistentClientSideScript();
       }
 
-    public bool PresentRecord(string id)
+    private bool PresentRecord(string id)
       {
       Literal_match_index.Text = DropDownList_id.SelectedIndex.ToString();
       bool result;
@@ -236,7 +236,6 @@ namespace UserControl_practitioner
         TextBox_city_state_zip.Text = city_state_zip;
         CheckBox_be_instructor.Checked = be_instructor;
         CheckBox_be_past.Checked = be_past;
-        UserControl_practitioner_strike_team_detail_control.PresentRecord(id);
         Button_lookup.Enabled = false;
         Label_lookup_arrow.Enabled = false;
         Label_lookup_hint.Enabled = false;
@@ -281,14 +280,19 @@ namespace UserControl_practitioner
       TextBox_id.Focus();
       }
 
-    internal void SetTarget(string target)
+    internal void SetInitP(string id)
       {
-      var id = target.Substring(target.LastIndexOf("/") + 1);
-      if (id.Length > 0)
+      p.id = id;
+      UserControl_practitioner_strike_team_detail_control.SetInitP(practitioner_id:id);
+      }
+
+    internal void SetAfterPageLoad(string ui_path)
+      {
+      SetInitP(id:ui_path.Substring(ui_path.LastIndexOf("/") + 1));
+      if (p.id.Length > 0)
         {
-        p.id = id;
-        PresentRecord(p.id);
-        UserControl_practitioner_strike_team_detail_control.SetTarget(target:target);
+        PresentRecord(id:p.id);
+        UserControl_practitioner_strike_team_detail_control.PresentRecord(p.id);
         }
       }
 

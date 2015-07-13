@@ -171,10 +171,13 @@ namespace UserControl_practitioner_strike_team_detail
         //
         var three_year_ago = DateTime.Now.AddYears(-3).Year.ToString();
         var this_year = DateTime.Now.Year.ToString();
+        UserControl_drop_down_date_act_1985_33_date.be_clearable = true;
         UserControl_drop_down_date_act_1985_33_date.minyear = three_year_ago;
         UserControl_drop_down_date_act_1985_33_date.maxyear = this_year;
+        UserControl_drop_down_date_act_1985_34_date.be_clearable = true;
         UserControl_drop_down_date_act_1985_34_date.minyear = three_year_ago;
         UserControl_drop_down_date_act_1985_34_date.maxyear = this_year;
+        UserControl_drop_down_date_act_1994_151_date.be_clearable = true;
         UserControl_drop_down_date_act_1994_151_date.minyear = three_year_ago;
         UserControl_drop_down_date_act_1994_151_date.maxyear = this_year;
         p.biz_sms_gateways.BindDirectToListControl
@@ -182,42 +185,61 @@ namespace UserControl_practitioner_strike_team_detail
           target:DropDownList_phone_service,
           unselected_literal:"-- phone service --"
           );
+        UserControl_drop_down_date_drivers_license_expiration.be_clearable = true;
         UserControl_drop_down_date_drivers_license_expiration.minyear = this_year;
         UserControl_drop_down_date_drivers_license_expiration.maxyear = DateTime.Now.AddYears(int.Parse(ConfigurationManager.AppSettings["max_drivers_license_validity_years"])).Year.ToString();
+        UserControl_drop_down_date_nims_is_100_date.be_clearable = true;
         UserControl_drop_down_date_nims_is_100_date.minyear = "2004";
         UserControl_drop_down_date_nims_is_100_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_is_200_date.be_clearable = true;
         UserControl_drop_down_date_nims_is_200_date.minyear = "2004";
         UserControl_drop_down_date_nims_is_200_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_is_700_date.be_clearable = true;
         UserControl_drop_down_date_nims_is_700_date.minyear = "2004";
         UserControl_drop_down_date_nims_is_700_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_is_800_date.be_clearable = true;
         UserControl_drop_down_date_nims_is_800_date.minyear = "2004";
         UserControl_drop_down_date_nims_is_800_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_ics_300_date.be_clearable = true;
         UserControl_drop_down_date_nims_ics_300_date.minyear = "2004";
         UserControl_drop_down_date_nims_ics_300_date.maxyear = this_year;
+        UserControl_drop_down_date_nims_ics_400_date.be_clearable = true;
         UserControl_drop_down_date_nims_ics_400_date.minyear = "2004";
         UserControl_drop_down_date_nims_ics_400_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_disaster_stress_response_date.be_clearable = true;
         UserControl_drop_down_date_lms_disaster_stress_response_date.minyear = "2007";
         UserControl_drop_down_date_lms_disaster_stress_response_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_ems_mci_ops_date.be_clearable = true;
         UserControl_drop_down_date_lms_ems_mci_ops_date.minyear = "2006";
         UserControl_drop_down_date_lms_ems_mci_ops_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_wmd_date.be_clearable = true;
         UserControl_drop_down_date_lms_wmd_date.minyear = "2008";
         UserControl_drop_down_date_lms_wmd_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_smallpox_date.be_clearable = true;
         UserControl_drop_down_date_lms_smallpox_date.minyear = "2007";
         UserControl_drop_down_date_lms_smallpox_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_basic_med_terrorism_response_date.be_clearable = true;
         UserControl_drop_down_date_lms_basic_med_terrorism_response_date.minyear = "2003";
         UserControl_drop_down_date_lms_basic_med_terrorism_response_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_electrical_hazards_date.be_clearable = true;
         UserControl_drop_down_date_lms_electrical_hazards_date.minyear = "2008";
         UserControl_drop_down_date_lms_electrical_hazards_date.maxyear = this_year;
+        UserControl_drop_down_date_lms_ems_bioterror_date.be_clearable = true;
         UserControl_drop_down_date_lms_ems_bioterror_date.minyear = "2003";
         UserControl_drop_down_date_lms_ems_bioterror_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_psychological_first_aid_date.be_clearable = true;
         UserControl_drop_down_date_pa_psychological_first_aid_date.minyear = "2006";
         UserControl_drop_down_date_pa_psychological_first_aid_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_water_rescue_awareness_date.be_clearable = true;
         UserControl_drop_down_date_pa_water_rescue_awareness_date.minyear = "1966";
         UserControl_drop_down_date_pa_water_rescue_awareness_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_hazmat_awareness_date.be_clearable = true;
         UserControl_drop_down_date_pa_hazmat_awareness_date.minyear = "1984";
         UserControl_drop_down_date_pa_hazmat_awareness_date.maxyear = this_year;
+        UserControl_drop_down_date_pa_ems_strike_team_leader_date.be_clearable = true;
         UserControl_drop_down_date_pa_ems_strike_team_leader_date.minyear = "2008";
         UserControl_drop_down_date_pa_ems_strike_team_leader_date.maxyear = this_year;
+        UserControl_drop_down_date_two_years_supervisory_experience_date.be_clearable = true;
         UserControl_drop_down_date_two_years_supervisory_experience_date.minyear = "1968";
         UserControl_drop_down_date_two_years_supervisory_experience_date.maxyear = this_year;
         //
@@ -638,14 +660,9 @@ namespace UserControl_practitioner_strike_team_detail
         }
       }
 
-    internal void SetTarget(string target)
+    internal void SetInitP(string practitioner_id)
       {
-      var practitioner_id = target.Substring(target.LastIndexOf("/") + 1);
-      if (practitioner_id.Length > 0)
-        {
-        p.practitioner_id = practitioner_id;
-        PresentRecord(p.practitioner_id);
-        }
+      p.practitioner_id = practitioner_id;
       }
 
     protected void CustomValidator_phone_number_ServerValidate(object source, ServerValidateEventArgs args)

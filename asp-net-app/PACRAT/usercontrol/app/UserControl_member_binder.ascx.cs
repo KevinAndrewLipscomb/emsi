@@ -57,7 +57,7 @@ namespace UserControl_member_binder
         {
         var c = ((TWebUserControl_practitioner)(LoadControl("~/usercontrol/app/UserControl_practitioner.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_practitioner",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.SetTarget(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
+        c.SetAfterPageLoad(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         }
       else if (p.tab_index == UserControl_member_binder_Static.TSSI_PREPARATION)
         {
