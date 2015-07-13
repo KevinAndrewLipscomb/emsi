@@ -13,6 +13,24 @@ namespace UserControl_postcontent {
     public partial class TWebUserControl_postcontent {
         
         /// <summary>
+        /// Anchor_strike_team_guidelines control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Anchor_strike_team_guidelines;
+        
+        /// <summary>
+        /// Anchor_receiving_email_notifications control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Anchor_receiving_email_notifications;
+        
+        /// <summary>
         /// TableRow_bounty_program control.
         /// </summary>
         /// <remarks>

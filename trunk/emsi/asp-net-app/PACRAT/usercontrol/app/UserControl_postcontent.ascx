@@ -14,18 +14,18 @@
                     <tr>
                       <td>
                         <table cellspacing="0" cellpadding="5" border="0">
-                          <tr><td><small><strong><a name="ReferenceMaterial"></a>Reference material</strong></small></td></tr>
+                          <tr><td><small><strong><a id="Anchor_reference_material" name="ReferenceMaterial"></a>Reference material</strong></small></td></tr>
                           <tr>
                             <td>
                               <small><small>These links open in a new window. </small></small>
                               <table cellspacing="0" cellpadding="5" border="0">
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a runat="server" href="~/resource/strike-team-guidelines.pdf" target="_blank">PA EMS Strike Team Guidelines</a></small></td>
+                                  <td><small><a id="Anchor_strike_team_guidelines" runat="server" href="~/resource/strike-team-guidelines.pdf" target="_blank">PA EMS Strike Team Guidelines</a></small></td>
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a runat="server" href="~/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small></td>
+                                  <td><small><a id="Anchor_receiving_email_notifications" runat="server" href="~/resource/Email Whitelist Generator Instructions.htm" target="_blank">Receiving email notifications</a></small></td>
                                 </tr>
                               </table>
                             </td>

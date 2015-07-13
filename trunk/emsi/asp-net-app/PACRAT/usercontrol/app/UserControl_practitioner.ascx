@@ -167,7 +167,7 @@
       <asp:CustomValidator id="CustomValidator_email_address" runat="server" errormessage='Please enter an Email address with a valid Domain Name (the part after the "@").' font-bold="True" controltovalidate="TextBox_email_address" onservervalidate="CustomValidator_email_address_ServerValidate" Enabled="False">!ERR!</asp:CustomValidator>
     </td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr id="TableRow_street_address_1" runat="server" visible="false">
     <td><font class="">Street&nbsp;address&nbsp;1:</font></td>
     <td>
       <font class="">
@@ -178,7 +178,7 @@
       <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_1" runat="server" errormessage="Please enter a valid Street address 1." font-bold="True" controltovalidate="TextBox_street_address_1" validationexpression="[0-9a-zA-Z#\-,(). ]+" Enabled="False">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr id="TableRow_street_address_2" runat="server" visible="false">
     <td><font class="">Street&nbsp;address&nbsp;2:</font></td>
     <td>
       <font class="">
@@ -189,7 +189,7 @@
       <asp:RegularExpressionValidator id="RegularExpressionValidator_street_address_2" runat="server" errormessage="Please enter a valid Street address 2." font-bold="True" controltovalidate="TextBox_street_address_2" validationexpression="[0-9a-zA-Z#\-,(). ]+" Enabled="False">!ERR!</asp:RegularExpressionValidator>
     </td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr id="TableRow_city_state_zip" runat="server" visible="false">
     <td><font class="">City&nbsp;state&nbsp;zip:</font></td>
     <td>
       <font class="">
