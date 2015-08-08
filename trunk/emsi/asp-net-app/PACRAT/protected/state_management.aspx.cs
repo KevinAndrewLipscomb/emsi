@@ -19,6 +19,7 @@ namespace state_management
   {
   public struct p_type
     {
+    public bool be_more_than_examiner;
     public bool be_noncurrent_practitioners_on_roster;
     public bool be_ok_to_edit_roster;
     public bool be_sort_order_ascending;
@@ -458,6 +459,7 @@ namespace state_management
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;
+        p.be_more_than_examiner = k.Has(Session["privilege_array"] as string[],"config-strike-team-state");
         p.be_sort_order_ascending = true;
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         p.num_assignees = new k.int_nonnegative();
@@ -492,6 +494,8 @@ namespace state_management
         //
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_state_strike_team_key_personnel.aspx";
         //
+        DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_more_than_examiner;
+        TableRow_quickmessage.Visible = p.be_more_than_examiner;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;

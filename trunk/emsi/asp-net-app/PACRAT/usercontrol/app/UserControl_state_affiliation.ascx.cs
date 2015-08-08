@@ -1,6 +1,5 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using AjaxControlToolkit;
 using kix;
 using System.Web.UI;
 
@@ -102,7 +101,7 @@ namespace UserControl_state_affiliation
       {
       if (!p.be_loaded)
         {
-        if (k.Has(Session["privilege_array"] as string[],"config-strike-team-state"))
+        if (k.Has(Session["privilege_array"] as string[],"config-strike-team-state") || k.Has(Session["privilege_array"] as string[],"see-all-strike-team-data"))
           {
           TableRow_none.Visible = false;
           TableRow_data.Visible = true;

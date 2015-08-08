@@ -36,6 +36,7 @@ namespace UserControl_member_binder
       internal bool be_ok_to_config_strike_team_state;
       internal bool be_ok_to_config_strike_team_region;
       internal bool be_ok_to_config_strike_team_service;
+      internal bool be_ok_to_see_all_strike_team_data;
       internal TClass_biz_members biz_members;
       internal TClass_biz_privileges biz_privileges;
       internal TClass_biz_strike_team_deployments biz_strike_team_deployments;
@@ -143,7 +144,8 @@ namespace UserControl_member_binder
         p.be_ok_to_config_strike_team_state = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-state");
         p.be_ok_to_config_strike_team_region = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-region");
         p.be_ok_to_config_strike_team_service = p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-service");
-        if (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service)
+        p.be_ok_to_see_all_strike_team_data = p.biz_privileges.HasForAnyScope(p.user_member_id,"see-all-strike-team-data");
+        if (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service || p.be_ok_to_see_all_strike_team_data)
           {
           if (p.biz_strike_team_deployments.BeAllConcludedWithinScope(p.user_member_id))
             {
@@ -169,8 +171,10 @@ namespace UserControl_member_binder
         {
         p.be_loaded = true;
         }
-      TabPanel_preparation.Enabled = (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service);
-      TabPanel_coordination.Enabled = p.biz_privileges.HasForAnyScope(p.user_member_id,"see-strike-team-deployments") || p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-deployments");
+      TabPanel_preparation.Enabled =
+        (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service || p.be_ok_to_see_all_strike_team_data);
+      TabPanel_coordination.Enabled =
+        (p.biz_privileges.HasForAnyScope(p.user_member_id,"see-strike-team-deployments") || p.biz_privileges.HasForAnyScope(p.user_member_id,"config-strike-team-deployments") || p.be_ok_to_see_all_strike_team_data);
       TabContainer_control.ActiveTabIndex = (int)(p.tab_index);
       }
 

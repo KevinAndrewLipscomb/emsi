@@ -54,7 +54,7 @@ namespace region_detail
         // Initialize p.~ objects here.
         //
         p.incoming = Message<TClass_msg_protected.region_detail>(folder_name:"protected",aspx_name:"region_detail");
-        UserControl_region_detail_control.Set(p.incoming.summary);
+        UserControl_region_detail_control.SetP(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

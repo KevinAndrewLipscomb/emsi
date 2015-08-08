@@ -189,6 +189,7 @@ namespace UserControl_service_affiliation
         if (e.CommandName == "ManagePersonnel")
           {
           p.msg_protected_practitioner_management.summary = service_summary;
+          p.msg_protected_practitioner_management.be_more_than_examiner = true;
           MessageDropCrumbAndTransferTo(p.msg_protected_practitioner_management,"protected","practitioner_management");
           }
         else if (e.CommandName == "ManageVehicles")

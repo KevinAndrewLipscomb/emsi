@@ -193,6 +193,15 @@ namespace practitioner_management {
         protected global::System.Web.UI.WebControls.Label Label_noncurrent_practitioner_on_roster;
         
         /// <summary>
+        /// TableRow_quickmessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_quickmessage;
+        
+        /// <summary>
         /// Literal_author_email_address control.
         /// </summary>
         /// <remarks>

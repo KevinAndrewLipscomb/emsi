@@ -29,6 +29,7 @@ namespace Class_msg_protected
     public class practitioner_management
       {
       internal object summary = null;
+      internal bool be_more_than_examiner = false;
       }
     public class practitioner_profile
       {
@@ -41,11 +42,13 @@ namespace Class_msg_protected
     public class region_management
       {
       internal object summary = null;
+      internal bool be_more_than_examiner = false;
       }
     public class service_management
       {
       internal string region_code = k.EMPTY;
       internal object summary = null;
+      internal bool be_more_than_examiner = false;
       }
     public class strike_team_deployment_detail
       {

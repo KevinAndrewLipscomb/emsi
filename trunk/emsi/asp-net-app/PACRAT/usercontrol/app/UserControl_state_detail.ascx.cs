@@ -1,6 +1,5 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
 using Class_biz_regions;
@@ -17,7 +16,7 @@ namespace UserControl_state_detail
   {
   public partial class TWebUserControl_state_detail: ki_web_ui.usercontrol_class
     {
-    public class UserControl_state_detail_Static
+    private class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_CODE = 1;
@@ -33,6 +32,7 @@ namespace UserControl_state_detail
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
@@ -141,6 +141,8 @@ namespace UserControl_state_detail
           {
           DataGrid_control.AllowSorting = false;
           }
+        Table_quick_message.Visible = p.be_more_than_examiner;
+        DataGrid_control.Columns[Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = p.be_more_than_examiner;
         Bind();
         p.be_loaded = true;
         }
@@ -167,6 +169,7 @@ namespace UserControl_state_detail
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
+        p.be_more_than_examiner = k.Has(Session["privilege_array"] as string[],"config-strike-team-state");
         p.be_sort_order_ascending = true;
         p.distribution_list_email = k.EMPTY;
         p.distribution_list_sms = k.EMPTY;
@@ -206,7 +209,8 @@ namespace UserControl_state_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_region_management.summary = p.biz_regions.Summary(k.Safe(e.Item.Cells[UserControl_state_detail_Static.TCI_CODE].Text,k.safe_hint_type.NUM));
+        p.msg_protected_region_management.summary = p.biz_regions.Summary(k.Safe(e.Item.Cells[Static.TCI_CODE].Text,k.safe_hint_type.NUM));
+        p.msg_protected_region_management.be_more_than_examiner = p.be_more_than_examiner;
         MessageDropCrumbAndTransferTo(p.msg_protected_region_management,"protected","region_management");
         }
       }
@@ -218,7 +222,7 @@ namespace UserControl_state_detail
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_state_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           //
           p.num_regions++;
@@ -226,7 +230,7 @@ namespace UserControl_state_detail
         }
       else
         {
-        e.Item.Cells[UserControl_state_detail_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -266,7 +270,7 @@ namespace UserControl_state_detail
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[UserControl_state_detail_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       BuildDistributionListAndRegisterPostBackControls();
       }
@@ -284,12 +288,12 @@ namespace UserControl_state_detail
       for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        if ((tcc[UserControl_state_detail_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
+        if ((tcc[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.distribution_list_email += (tcc[UserControl_state_detail_Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
-          p.distribution_list_sms += (tcc[UserControl_state_detail_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_email += (tcc[Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_sms += (tcc[Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
-        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_state_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
       Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       }
