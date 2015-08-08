@@ -1,6 +1,5 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_fuels;
 using Class_biz_members;
 using Class_biz_patient_care_levels;
@@ -449,6 +448,7 @@ namespace UserControl_vehicle
       {
       TextBox_service_id.Enabled = ablement;
       TextBox_name.Enabled = ablement;
+      LinkButton_update_staging_designator.Visible = ablement;
       DropDownList_kind.Enabled = ablement;
       DropDownList_tow_capacity.Enabled = ablement;
       DropDownList_fuel.Enabled = ablement;

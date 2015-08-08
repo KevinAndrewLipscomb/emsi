@@ -53,6 +53,7 @@ namespace Class_msg_protected
     public class strike_team_deployment_detail
       {
       internal string id = k.EMPTY;
+      internal bool be_more_than_examiner = false;
       }
     public class underway_demobilization
       {

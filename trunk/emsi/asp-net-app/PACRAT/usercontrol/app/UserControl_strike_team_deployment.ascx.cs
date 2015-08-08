@@ -1,6 +1,5 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
@@ -11,7 +10,6 @@ using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Collections;
 using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,6 +21,7 @@ namespace UserControl_strike_team_deployment
     private struct p_type
       {
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_ok_to_config_strike_team_deployments;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
@@ -219,13 +218,18 @@ namespace UserControl_strike_team_deployment
       return result;
       }
 
-    internal void Set(string id)
+    internal void Set
+      (
+      string id,
+      bool be_more_than_examiner
+      )
       {
       p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForPennsylvania
         (
         member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
         privilege_name:"config-strike-team-deployments"
         );
+      p.be_more_than_examiner = be_more_than_examiner;
       if (id.Length > 0)
         {
         p.id = id;
@@ -234,7 +238,8 @@ namespace UserControl_strike_team_deployment
         UserControl_strike_team_deployment_binder_control.Set
           (
           deployment_id:id,
-          be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments
+          be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments,
+          be_more_than_examiner:p.be_more_than_examiner
           );
         }
       else
@@ -302,6 +307,7 @@ namespace UserControl_strike_team_deployment
         p.msg_protected_mobilization_announcement = new TClass_msg_protected.mobilization_announcement();
         //
         p.be_loaded = false;
+        p.be_more_than_examiner = false;
         p.be_ok_to_config_strike_team_deployments = false;
         p.id = k.EMPTY;
         p.presentation_mode = presentation_mode_enum.NONE;
@@ -362,7 +368,8 @@ namespace UserControl_strike_team_deployment
           UserControl_strike_team_deployment_binder_control.Set
             (
             deployment_id:id,
-            be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments
+            be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments,
+            be_more_than_examiner:p.be_more_than_examiner
             );
           }
         else
@@ -373,7 +380,8 @@ namespace UserControl_strike_team_deployment
               (
               creation_date:creation_date,
               name:name
-              )
+              ),
+            be_more_than_examiner:p.be_more_than_examiner
             );
           SetNonNewPresentationMode();
           Alert

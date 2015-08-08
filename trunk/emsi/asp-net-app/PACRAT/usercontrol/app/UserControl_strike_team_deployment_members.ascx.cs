@@ -1,8 +1,8 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_privileges;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployments;
@@ -20,7 +20,7 @@ namespace UserControl_strike_team_deployment_members
   {
   public partial class TWebUserControl_strike_team_deployment_members: ki_web_ui.usercontrol_class
     {
-    public class UserControl_strike_team_deployment_members_Static
+    private static class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -42,9 +42,11 @@ namespace UserControl_strike_team_deployment_members
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
@@ -59,6 +61,7 @@ namespace UserControl_strike_team_deployment_members
       public uint num_practitioners;
       public string service_strike_team_management_footprint;
       public string sort_order;
+      public string user_member_id;
       public string user_target_email;
       public string user_target_sms;
       }
@@ -118,6 +121,7 @@ namespace UserControl_strike_team_deployment_members
         {
         p.biz_members = new TClass_biz_members();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
@@ -127,6 +131,7 @@ namespace UserControl_strike_team_deployment_members
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
+        p.be_more_than_examiner = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
         p.deployment_name = k.EMPTY;
@@ -136,9 +141,9 @@ namespace UserControl_strike_team_deployment_members
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "last_name%,first_name";
         //
-        var member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
-        p.user_target_email = p.biz_members.EmailAddressOf(member_id:member_id);
-        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:member_id);
+        p.user_member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
+        p.user_target_email = p.biz_members.EmailAddressOf(member_id:p.user_member_id);
+        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:p.user_member_id);
         }
       }
 
@@ -170,7 +175,7 @@ namespace UserControl_strike_team_deployment_members
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var practitioner_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+        var practitioner_id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
         if (e.CommandName == "Select")
           {
           p.msg_protected_practitioner_profile.id = practitioner_id;
@@ -180,9 +185,9 @@ namespace UserControl_strike_team_deployment_members
           {
           if (p.biz_strike_team_deployments.BeOkToMakeMobilizationChangesAndQuickMessages(p.deployment_id,p.service_strike_team_management_footprint))
             {
-            var id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM);
-            var name = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME) + k.COMMA_SPACE + k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-            var sms_target = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text,k.safe_hint_type.EMAIL_ADDRESS);
+            var id = k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM);
+            var name = k.Safe(e.Item.Cells[Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME) + k.COMMA_SPACE + k.Safe(e.Item.Cells[Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+            var sms_target = k.Safe(e.Item.Cells[Static.TCI_SMS_TARGET].Text,k.safe_hint_type.EMAIL_ADDRESS);
             if (id.Length == 0)
               {
               p.biz_strike_team_deployments.MobilizeMember
@@ -202,8 +207,8 @@ namespace UserControl_strike_team_deployment_members
               {
               if (DataGrid_control.EditItemIndex == e.Item.ItemIndex)
                 {
-                var tag_num = k.Safe((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
-                var saved_tag_num = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SAVED_TAG_NUM].Text,k.safe_hint_type.NUM);
+                var tag_num = k.Safe((e.Item.Cells[Static.TCI_TAG_NUM].Controls[0] as TextBox).Text,k.safe_hint_type.NUM);
+                var saved_tag_num = k.Safe(e.Item.Cells[Static.TCI_SAVED_TAG_NUM].Text,k.safe_hint_type.NUM);
                 var do_continue_editing = false;
                 if (tag_num != saved_tag_num)
                   {
@@ -245,7 +250,7 @@ namespace UserControl_strike_team_deployment_members
                 else
                   {
                   if(
-                      (((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton).Text == "YES")
+                      (((e.Item.Cells[Static.TCI_MOBILIZED].Controls[0]) as LinkButton).Text == "YES")
                     &&
                       (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint))
                     )
@@ -288,18 +293,23 @@ namespace UserControl_strike_team_deployment_members
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           //
           var be_this_row_in_edit_mode = (DataGrid_control.EditItemIndex == e.Item.ItemIndex);
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
-          link_button.Text = (k.Safe(e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_practitioners || (p.service_strike_team_management_footprint.Length > 0) ? "YES" : "Edit>") : "no");
+          link_button = ((e.Item.Cells[Static.TCI_MOBILIZED].Controls[0]) as LinkButton);
+          link_button.Enabled = false;
+          link_button.Text = (k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM).Length > 0 ? (p.do_include_all_eligible_practitioners || (p.service_strike_team_management_footprint.Length > 0) ? "YES" : "Edit>") : "no");
           link_button.Font.Bold = be_this_row_in_edit_mode;
-          link_button.ToolTip = (link_button.Text == "no" ? "Click to mobilize" : (link_button.Text == "YES" ? "Click to demobilize" : k.EMPTY));
+          if (p.be_more_than_examiner)
+            {
+            link_button.Enabled = true;
+            link_button.ToolTip = (link_button.Text == "no" ? "Click to mobilize" : (link_button.Text == "YES" ? "Click to demobilize" : k.EMPTY));
+            }
           if (be_this_row_in_edit_mode)
             {
             link_button.Text = "SAVE>";
-            (e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Controls[0] as TextBox).Focus();
+            (e.Item.Cells[Static.TCI_TAG_NUM].Controls[0] as TextBox).Focus();
             }
           if ((link_button.Text == "YES") && (p.biz_strike_team_deployments.BeDemobilizationReasonRequired(p.deployment_id,p.service_strike_team_management_footprint)))
             {
@@ -312,15 +322,15 @@ namespace UserControl_strike_team_deployment_members
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_ID].EnableViewState = true;
-          e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_SELECT_FOR_QUICKMESSAGE].EnableViewState = true;
           //
           p.num_practitioners++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -345,13 +355,14 @@ namespace UserControl_strike_team_deployment_members
         {
         SetRestrictedMode();
         }
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].HeaderText = (p.do_include_all_eligible_practitioners ? "Mobilized?" : k.EMPTY);
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_MOBILIZED].Visible = (p.do_include_all_eligible_practitioners || (p.service_strike_team_management_footprint.Length == 0));
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_TAG_NUM].Visible = (p.service_strike_team_management_footprint.Length == 0);
+      DataGrid_control.Columns[Static.TCI_MOBILIZED].HeaderText = (p.do_include_all_eligible_practitioners ? "Mobilized?" : k.EMPTY);
+      DataGrid_control.Columns[Static.TCI_MOBILIZED].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[Static.TCI_MOBILIZED].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[Static.TCI_MOBILIZED].Visible =
+        (p.do_include_all_eligible_practitioners || ((p.service_strike_team_management_footprint.Length == 0) && p.be_more_than_examiner));
+      DataGrid_control.Columns[Static.TCI_TAG_NUM].HeaderStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.WhiteSmoke : Color.LightGray);
+      DataGrid_control.Columns[Static.TCI_TAG_NUM].ItemStyle.BackColor = (p.do_include_all_eligible_practitioners ? Color.White : Color.LightGray);
+      DataGrid_control.Columns[Static.TCI_TAG_NUM].Visible = (p.service_strike_team_management_footprint.Length == 0);
       p.biz_strike_team_deployment_members.BindBaseDataList
         (
         sort_order:p.sort_order,
@@ -363,7 +374,7 @@ namespace UserControl_strike_team_deployment_members
         );
       p.be_datagrid_empty = (p.num_practitioners == 0);
       TableRow_none.Visible = p.be_datagrid_empty;
-      TableRow_instant_notification_advisory.Visible = p.do_include_all_eligible_practitioners & !p.be_datagrid_empty;
+      TableRow_instant_notification_advisory.Visible = p.do_include_all_eligible_practitioners && !p.be_datagrid_empty && p.be_more_than_examiner;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       Literal_num_practitioners.Text = p.num_practitioners.ToString();
       p.num_practitioners = 0;
@@ -373,11 +384,11 @@ namespace UserControl_strike_team_deployment_members
 
     private void SetRestrictedMode()
       {
-      TableRow_operational_period_started.Visible = true;
+      TableRow_operational_period_started.Visible = p.be_more_than_examiner;
       CheckBox_do_include_all_eligible_practitioners.Checked = false;
       p.do_include_all_eligible_practitioners = false;
       Td_filter.Visible = false;
-      DataGrid_control.Columns[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = false;
+      DataGrid_control.Columns[Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = false;
       Table_quick_message.Visible = false;
       }
 
@@ -392,7 +403,8 @@ namespace UserControl_strike_team_deployment_members
       (
       string deployment_id,
       string service_strike_team_management_footprint,
-      bool be_ok_to_config_strike_team_deployments
+      bool be_ok_to_config_strike_team_deployments,
+      bool be_more_than_examiner
       )
       {
       if(
@@ -418,6 +430,16 @@ namespace UserControl_strike_team_deployment_members
         HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
         }
       //
+      p.be_more_than_examiner = be_more_than_examiner;
+      //
+      // The following two "conditional re-default" settings *must* occur before the *first* Bind().  They are "conditional re-defaults" because this entire complex usercontrol was originally written with the assumption
+      // that anyone who could see this control could also make certain changes and/or quickmessages.  When support was added for the State Strike Team Examiner role, 'visible="false"' was applied as a new default to the
+      // quickmessage controls in the ASCX file.  Now that we can execute tests, we should re-default those controls to visible if the user is not merely a State Strike Team Examiner.  We must do this before the first
+      // Bind() because Bind() tests for subsequent conditions when the quickmessage controls should again be invisible.
+      //
+      DataGrid_control.Columns[Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = p.be_more_than_examiner;
+      Table_quick_message.Visible = p.be_more_than_examiner;
+      //
       Bind();
       }
 
@@ -425,7 +447,7 @@ namespace UserControl_strike_team_deployment_members
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       BuildDistributionListAndRegisterPostBackControls();
       }
@@ -443,12 +465,12 @@ namespace UserControl_strike_team_deployment_members
       for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        if ((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
+        if ((tcc[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.distribution_list_email += (tcc[UserControl_strike_team_deployment_members_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
-          p.distribution_list_sms += (tcc[UserControl_strike_team_deployment_members_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_email += (tcc[Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_sms += (tcc[Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
-        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_strike_team_deployment_members_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
       Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       }

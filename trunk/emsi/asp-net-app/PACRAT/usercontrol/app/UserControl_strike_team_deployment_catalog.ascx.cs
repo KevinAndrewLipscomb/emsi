@@ -1,6 +1,5 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_strike_team_deployments;
@@ -17,7 +16,7 @@ namespace UserControl_strike_team_deployment_catalog
   {
   public partial class TWebUserControl_strike_team_deployment_catalog: ki_web_ui.usercontrol_class
     {
-    public class UserControl_strike_team_deployment_catalog_Static
+    private static class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -33,6 +32,7 @@ namespace UserControl_strike_team_deployment_catalog
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_ok_to_config_strike_team_deployments;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
@@ -131,8 +131,8 @@ namespace UserControl_strike_team_deployment_catalog
         {
         Literal_aplication_name.Text = ConfigurationManager.AppSettings["application_name"];
         DataGrid_control.AllowSorting = p.be_interactive;
-        DataGrid_control.Columns[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Visible = p.be_interactive;
-        DataGrid_control.Columns[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Visible = p.be_interactive && p.be_ok_to_config_strike_team_deployments;
+        DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_interactive;
+        DataGrid_control.Columns[Static.TCI_DELETE].Visible = p.be_interactive && p.be_ok_to_config_strike_team_deployments;
         LinkButton_add.Visible = p.be_ok_to_config_strike_team_deployments;
         Bind();
         p.be_loaded = true;
@@ -161,6 +161,7 @@ namespace UserControl_strike_team_deployment_catalog
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
+        p.be_more_than_examiner = false;
         p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForPennsylvania
           (
           member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
@@ -201,7 +202,8 @@ namespace UserControl_strike_team_deployment_catalog
         {
         if (e.CommandName == "Select")
           {
-          p.msg_protected_strike_team_deployment_detail.id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          p.msg_protected_strike_team_deployment_detail.id = k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM);
+          p.msg_protected_strike_team_deployment_detail.be_more_than_examiner = p.be_more_than_examiner;
           MessageDropCrumbAndTransferTo(p.msg_protected_strike_team_deployment_detail,"protected","strike_team_deployment_detail");
           }
         }
@@ -214,11 +216,11 @@ namespace UserControl_strike_team_deployment_catalog
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_STATUS].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_STATUS].Controls[0]) as LinkButton);
           link_button.Font.Bold = (link_button.Text == "*MOBILIZING*");
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           if (link_button.Text != "Concluded")
@@ -226,7 +228,7 @@ namespace UserControl_strike_team_deployment_catalog
             p.be_all_concluded = false;
             }
           //
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_DELETE].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_DELETE].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
@@ -235,14 +237,14 @@ namespace UserControl_strike_team_deployment_catalog
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
           //
           p.num_strike_team_deployments++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -287,10 +289,15 @@ namespace UserControl_strike_team_deployment_catalog
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.biz_strike_team_deployments.Delete(k.Safe(e.Item.Cells[UserControl_strike_team_deployment_catalog_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.biz_strike_team_deployments.Delete(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
         }
+      }
+
+    internal void SetP(bool be_more_than_examiner)
+      {
+      p.be_more_than_examiner = be_more_than_examiner;
       }
 
     } // end TWebUserControl_strike_team_deployment_catalog
