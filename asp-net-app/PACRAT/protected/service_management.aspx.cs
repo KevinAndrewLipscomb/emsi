@@ -1,6 +1,5 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
@@ -19,33 +18,6 @@ using System.Web.UI.WebControls;
 
 namespace service_management
   {
-  public struct p_type
-    {
-    public string affiliate_num;
-    public bool be_noncurrent_practitioners_on_roster;
-    public bool be_ok_to_edit_roster;
-    public bool be_sort_order_ascending;
-    public TClass_biz_role_member_map biz_role_member_map;
-    public TClass_biz_members biz_members;
-    public TClass_biz_privileges biz_privileges;
-    public TClass_biz_roles biz_roles;
-    public TClass_biz_services biz_services;
-    public TClass_biz_tiers biz_tiers;
-    public TClass_biz_user biz_user;
-    public TClass_msg_protected.service_management incoming;
-    public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
-    public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
-    public TClass_msg_protected.vehicle_management msg_protected_vehicle_management;
-    public k.int_nonnegative num_assignees;
-    public k.int_nonnegative num_assignees_with_known_birth_dates;
-    public string service_strike_team_manager_role_id;
-    public string service_tier_id;
-    public ArrayList roster_id_arraylist;
-    public string service_id;
-    public string sort_order;
-    public string user_email_address;
-    }
-
   public partial class TWebForm_service_management: ki_web_ui.page_class
     {
     private static class Static
@@ -71,20 +43,51 @@ namespace service_management
       public const int TCI_STATUS_DESCRIPTION = 18;
       }
 
+    private struct p_type
+      {
+      public string affiliate_num;
+      public bool be_more_than_examiner;
+      public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_edit_roster;
+      public bool be_sort_order_ascending;
+      public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_members biz_members;
+      public TClass_biz_privileges biz_privileges;
+      public TClass_biz_roles biz_roles;
+      public TClass_biz_services biz_services;
+      public TClass_biz_tiers biz_tiers;
+      public TClass_biz_user biz_user;
+      public TClass_msg_protected.service_management incoming;
+      public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
+      public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
+      public TClass_msg_protected.vehicle_management msg_protected_vehicle_management;
+      public k.int_nonnegative num_assignees;
+      public k.int_nonnegative num_assignees_with_known_birth_dates;
+      public string service_strike_team_manager_role_id;
+      public string service_tier_id;
+      public ArrayList roster_id_arraylist;
+      public string service_id;
+      public string sort_order;
+      public string user_email_address;
+      }
+
     private p_type p;
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
 //      try
 //        {
-        p.biz_role_member_map.SaveForExplicitService
-          (
-          member_id:list_item.Value,
-          role_id:p.service_strike_team_manager_role_id,
-          be_granted:true,
-          service_id:p.service_id
-          );
-        Bind();
+        if (p.be_ok_to_edit_roster)
+          {
+          p.biz_role_member_map.SaveForExplicitService
+            (
+            member_id:list_item.Value,
+            role_id:p.service_strike_team_manager_role_id,
+            be_granted:true,
+            service_id:p.service_id
+            );
+          Bind();
+          }
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
 //        }
@@ -477,13 +480,15 @@ namespace service_management
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
+        p.be_more_than_examiner = p.incoming.be_more_than_examiner;
+        //
         //p.be_ok_to_edit_roster = p.biz_privileges.HasForRegion
         //  (
         //  member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
         //  privilege_name:"config-strike-team-region",
         //  region_code:p.incoming.region_code
         //  );
-        p.be_ok_to_edit_roster = true;
+        p.be_ok_to_edit_roster = p.be_more_than_examiner;
         //
         p.affiliate_num = p.biz_services.AffiliateNumOf(p.incoming.summary);;
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
@@ -512,6 +517,7 @@ namespace service_management
         Literal_affiliate_num.Text = p.affiliate_num;
         TextBox_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
         TextBox_short_name.Enabled = p.be_ok_to_edit_roster;
+        Button_save_short_name.Visible = p.be_ok_to_edit_roster;
         LinkButton_drill_down_to_members.Text = k.ExpandTildePath(LinkButton_drill_down_to_members.Text);
         LinkButton_drill_down_to_vehicles.Text = k.ExpandTildePath(LinkButton_drill_down_to_vehicles.Text);
         //
@@ -519,6 +525,8 @@ namespace service_management
         hash_table["service_id"] = p.biz_services.IdOf(p.incoming.summary);
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_service_strike_team_key_personnel.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
+        DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_more_than_examiner;
+        TableRow_quickmessage.Visible = p.be_more_than_examiner;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;
@@ -568,6 +576,7 @@ namespace service_management
     protected void LinkButton_drill_down_to_members_Click(object sender, EventArgs e)
       {
       p.msg_protected_practitioner_management.summary = p.biz_services.Summary(p.service_id);
+      p.msg_protected_practitioner_management.be_more_than_examiner = p.be_more_than_examiner;
       MessageDropCrumbAndTransferTo
         (
         msg:p.msg_protected_practitioner_management,

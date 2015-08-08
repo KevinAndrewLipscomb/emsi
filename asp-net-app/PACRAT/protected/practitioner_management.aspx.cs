@@ -1,6 +1,5 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_services;
@@ -18,32 +17,9 @@ using System.Web.UI.WebControls;
 
 namespace practitioner_management
   {
-  public struct p_type
-    {
-    public bool be_noncurrent_practitioners_on_roster;
-    public bool be_ok_to_edit_roster;
-    public bool be_sort_order_ascending;
-    public TClass_biz_members biz_members;
-    public TClass_biz_privileges biz_privileges;
-    public TClass_biz_services biz_services;
-    public TClass_biz_strike_team_rosters biz_strike_team_rosters;
-    public TClass_biz_tiers biz_tiers;
-    public TClass_biz_user biz_user;
-    public TClass_msg_protected.practitioner_management incoming;
-    public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
-    public k.int_nonnegative num_assignees;
-    public k.int_nonnegative num_assignees_with_known_birth_dates;
-    public string service_strike_team_manager_role_id;
-    public string service_tier_id;
-    public ArrayList roster_id_arraylist;
-    public string service_id;
-    public string sort_order;
-    public string user_email_address;
-    }
-
   public partial class TWebForm_practitioner_management: ki_web_ui.page_class
     {
-    private class practitioner_management_Static
+    private class Static
       {
       public const int TCI_ID = 0;
       public const int TCI_BE_CREDENTIALED = 1;
@@ -65,14 +41,40 @@ namespace practitioner_management
       public const int TCI_STATUS_DESCRIPTION = 17;
       }
 
+    private struct p_type
+      {
+      public bool be_more_than_examiner;
+      public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_edit_roster;
+      public bool be_sort_order_ascending;
+      public TClass_biz_members biz_members;
+      public TClass_biz_privileges biz_privileges;
+      public TClass_biz_services biz_services;
+      public TClass_biz_strike_team_rosters biz_strike_team_rosters;
+      public TClass_biz_tiers biz_tiers;
+      public TClass_biz_user biz_user;
+      public TClass_msg_protected.practitioner_management incoming;
+      public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
+      public k.int_nonnegative num_assignees;
+      public k.int_nonnegative num_assignees_with_known_birth_dates;
+      public string service_tier_id;
+      public ArrayList roster_id_arraylist;
+      public string service_id;
+      public string sort_order;
+      public string user_email_address;
+      }
+
     private p_type p;
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
       try
         {
-        p.biz_strike_team_rosters.Set(id:k.EMPTY,service_id:p.service_id,practitioner_id:list_item.Value);
-        Bind();
+        if (p.be_ok_to_edit_roster)
+          {
+          p.biz_strike_team_rosters.Set(id:k.EMPTY,service_id:p.service_id,practitioner_id:list_item.Value);
+          Bind();
+          }
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
         }
@@ -86,8 +88,8 @@ namespace practitioner_management
       p.be_noncurrent_practitioners_on_roster = false;
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
-      DataGrid_control.Columns[practitioner_management_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
-      DataGrid_control.Columns[practitioner_management_Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
       p.biz_strike_team_rosters.BindBaseDataListByServiceId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.service_id);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
@@ -187,8 +189,8 @@ namespace practitioner_management
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        email_address_text = k.Safe((tcc[practitioner_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-        distribution_list += ((email_address_text != "DESIRED") && (tcc[practitioner_management_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
+        email_address_text = k.Safe((tcc[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+        distribution_list += ((email_address_text != "DESIRED") && (tcc[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
         }
       if (distribution_list.Length > 0)
         {
@@ -217,7 +219,7 @@ namespace practitioner_management
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[practitioner_management_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       }
 
@@ -244,7 +246,7 @@ namespace practitioner_management
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.biz_strike_team_rosters.Delete(k.Safe(e.Item.Cells[practitioner_management_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.biz_strike_team_rosters.Delete(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
@@ -264,7 +266,7 @@ namespace practitioner_management
         {
         if (e.CommandName == "Profile")
           {
-          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[practitioner_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
           MessageDropCrumbAndTransferTo
             (
             msg:p.msg_protected_practitioner_profile,
@@ -280,32 +282,32 @@ namespace practitioner_management
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        if (e.Item.Cells[practitioner_management_Static.TCI_BE_CREDENTIALED].Text == "Y")
+        if (e.Item.Cells[Static.TCI_BE_CREDENTIALED].Text == "Y")
           {
-          link_button = ((e.Item.Cells[practitioner_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
           link_button.Visible = false;
           }
         else
           {
-          link_button = ((e.Item.Cells[practitioner_management_Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_UNCREDENTIALED].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "UNCREDENTIALED";
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           }
         //
-        link_button = ((e.Item.Cells[practitioner_management_Static.TCI_PROFILE].Controls[0]) as LinkButton);
+        link_button = ((e.Item.Cells[Static.TCI_PROFILE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Profile";
         ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
         //
-        link_button = ((e.Item.Cells[practitioner_management_Static.TCI_DELETE].Controls[0]) as LinkButton);
+        link_button = ((e.Item.Cells[Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
         //
-        var edit_update_cancel_controls = e.Item.Cells[practitioner_management_Static.TCI_EDIT_UPDATE_CANCEL].Controls;
+        var edit_update_cancel_controls = e.Item.Cells[Static.TCI_EDIT_UPDATE_CANCEL].Controls;
         if (edit_update_cancel_controls.Count == 1)
           {
-          var label_dob = (e.Item.Cells[practitioner_management_Static.TCI_DOB].FindControl("Label_dob") as Label);
+          var label_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("Label_dob") as Label);
           if (label_dob.Text == "REQUIRED")
             {
             label_dob.Font.Bold = true;
@@ -316,7 +318,7 @@ namespace practitioner_management
             p.num_assignees_with_known_birth_dates.val++;
             }
           //
-          var label_email_address = (e.Item.Cells[practitioner_management_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
+          var label_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
           if (label_email_address.Text == "DESIRED")
             {
             label_email_address.ForeColor = Color.DarkOrange;
@@ -336,20 +338,20 @@ namespace practitioner_management
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Cancel edit";
           //
-          var text_box_dob = (e.Item.Cells[practitioner_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
+          var text_box_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
           if (text_box_dob.Text == "REQUIRED")
             {
             text_box_dob.Text = k.EMPTY;
             }
-          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[practitioner_management_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
+          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[Static.TCI_BE_DOB_CONFIRMED].Text == "0");
           //
-          var text_box_email_address = (e.Item.Cells[practitioner_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
+          var text_box_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
           if (text_box_email_address.Text == "DESIRED")
             {
             text_box_email_address.Text = k.EMPTY;
             }
           }
-        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[practitioner_management_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
@@ -364,7 +366,7 @@ namespace practitioner_management
         //  {
         //  cell.EnableViewState = false;
         //  }
-        //e.Item.Cells[practitioner_management_Static.TCI_ID].EnableViewState = true;
+        //e.Item.Cells[Static.TCI_ID].EnableViewState = true;
         //
         p.num_assignees.val++;
         }
@@ -390,7 +392,7 @@ namespace practitioner_management
       {
       if (IsValid)
         {
-        var practitioner_id = k.Safe(e.Item.Cells[practitioner_management_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+        var practitioner_id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
         //
         // The order of the next two calls is significant.  If the practitioner's email address is being updated, we must do that before we make the next call, otherwise any notification generated by the next call will go to the
         // old email address.
@@ -398,12 +400,12 @@ namespace practitioner_management
         p.biz_members.SetFieldsNotImportedFromState
           (
           id:practitioner_id,
-          birth_date:DateTime.Parse(k.Safe((e.Item.Cells[practitioner_management_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
-          email_address:k.Safe((e.Item.Cells[practitioner_management_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
+          birth_date:DateTime.Parse(k.Safe((e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
+          email_address:k.Safe((e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
           );
         p.biz_strike_team_rosters.Set
           (
-          k.Safe(e.Item.Cells[practitioner_management_Static.TCI_ID].Text,k.safe_hint_type.NUM),
+          k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM),
           p.service_id,
           practitioner_id
           );
@@ -451,6 +453,7 @@ namespace practitioner_management
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
+        p.be_more_than_examiner = p.incoming.be_more_than_examiner;
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
         //
         //p.be_ok_to_edit_roster = p.biz_privileges.HasForService
@@ -459,7 +462,7 @@ namespace practitioner_management
         //  privilege_name:"config-strike-team-service",
         //  service_id:p.service_id
         //  );
-        p.be_ok_to_edit_roster = true;
+        p.be_ok_to_edit_roster = p.be_more_than_examiner;
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -486,6 +489,8 @@ namespace practitioner_management
         hash_table["service_id"] = p.biz_services.IdOf(p.incoming.summary);
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_service_strike_team_roster.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
+        DataGrid_control.Columns[Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = p.be_more_than_examiner;
+        TableRow_quickmessage.Visible = p.be_more_than_examiner;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;

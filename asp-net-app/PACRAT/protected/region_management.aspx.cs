@@ -18,31 +18,6 @@ using System.Web.UI.WebControls;
 
 namespace region_management
   {
-  public struct p_type
-    {
-    public bool be_noncurrent_practitioners_on_roster;
-    public bool be_ok_to_edit_roster;
-    public bool be_sort_order_ascending;
-    public TClass_biz_role_member_map biz_role_member_map;
-    public TClass_biz_counties biz_counties;
-    public TClass_biz_members biz_members;
-    public TClass_biz_regions biz_regions;
-    public TClass_biz_roles biz_roles;
-    public TClass_biz_tiers biz_tiers;
-    public TClass_biz_user biz_user;
-    public TClass_msg_protected.region_management incoming;
-    public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
-    public TClass_msg_protected.region_detail msg_protected_region_detail;
-    public k.int_nonnegative num_assignees;
-    public k.int_nonnegative num_assignees_with_known_birth_dates;
-    public string region_code;
-    public string region_strike_team_manager_role_id;
-    public string region_tier_id;
-    public ArrayList roster_id_arraylist;
-    public string sort_order;
-    public string user_email_address;
-    }
-
   public partial class TWebForm_region_management: ki_web_ui.page_class
     {
     private static class Static
@@ -68,20 +43,49 @@ namespace region_management
       public const int TCI_STATUS_DESCRIPTION = 18;
       }
 
+    private struct p_type
+      {
+      public bool be_more_than_examiner;
+      public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_edit_roster;
+      public bool be_sort_order_ascending;
+      public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_counties biz_counties;
+      public TClass_biz_members biz_members;
+      public TClass_biz_regions biz_regions;
+      public TClass_biz_roles biz_roles;
+      public TClass_biz_tiers biz_tiers;
+      public TClass_biz_user biz_user;
+      public TClass_msg_protected.region_management incoming;
+      public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
+      public TClass_msg_protected.region_detail msg_protected_region_detail;
+      public k.int_nonnegative num_assignees;
+      public k.int_nonnegative num_assignees_with_known_birth_dates;
+      public string region_code;
+      public string region_strike_team_manager_role_id;
+      public string region_tier_id;
+      public ArrayList roster_id_arraylist;
+      public string sort_order;
+      public string user_email_address;
+      }
+
     private p_type p;
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
 //      try
 //        {
-        p.biz_role_member_map.SaveForExplicitRegion
-          (
-          member_id:list_item.Value,
-          role_id:p.region_strike_team_manager_role_id,
-          be_granted:true,
-          region_code:p.region_code
-          );
-        Bind();
+        if (p.be_ok_to_edit_roster)
+          {
+          p.biz_role_member_map.SaveForExplicitRegion
+            (
+            member_id:list_item.Value,
+            role_id:p.region_strike_team_manager_role_id,
+            be_granted:true,
+            region_code:p.region_code
+            );
+          Bind();
+          }
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
 //        }
@@ -96,6 +100,7 @@ namespace region_management
       p.num_assignees.val = 0;
       p.num_assignees_with_known_birth_dates.val = 0;
       DataGrid_control.Columns[Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[Static.TCI_EDIT_UPDATE_CANCEL].Visible = p.be_ok_to_edit_roster;
       p.biz_role_member_map.BindBaseDataListByExplicitRegionCode(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.region_code);
       TableRow_none.Visible = (p.num_assignees.val == 0);
       DataGrid_control.Visible = (p.num_assignees.val > 0);
@@ -474,7 +479,9 @@ namespace region_management
         p.sort_order = "last_name,first_name,middle_initial,certification_number";
         p.user_email_address = p.biz_members.EmailAddressOf(p.biz_members.IdOfUserId(p.biz_user.IdNum()));
         //
-        p.be_ok_to_edit_roster = true; //p.biz_regions.BeOkToEditRoster(p.incoming.summary);
+        p.be_more_than_examiner = p.incoming.be_more_than_examiner;
+        //
+        p.be_ok_to_edit_roster = p.be_more_than_examiner; //p.biz_regions.BeOkToEditRoster(p.incoming.summary);
         p.region_code = p.biz_regions.CodeOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
@@ -492,6 +499,7 @@ namespace region_management
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - region_management";
         CheckBox_be_pacrat_subscriber.Checked = p.biz_regions.BePacratSubscriberOf(p.incoming.summary);
+        CheckBox_be_pacrat_subscriber.Enabled = p.be_more_than_examiner;
         var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
@@ -504,6 +512,8 @@ namespace region_management
         hash_table["region_code"] = p.biz_regions.CodeOf(p.incoming.summary);
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_region_strike_team_key_personnel.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
+        DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_more_than_examiner;
+        TableRow_quickmessage.Visible = p.be_more_than_examiner;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
         Literal_author_email_address.Text = p.user_email_address;

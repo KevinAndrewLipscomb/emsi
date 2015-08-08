@@ -1,8 +1,8 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_privileges;
 using Class_biz_regions;
 using Class_biz_services;
 using Class_biz_user;
@@ -18,7 +18,7 @@ namespace UserControl_region_detail
   {
   public partial class TWebUserControl_region_detail: ki_web_ui.usercontrol_class
     {
-    public class UserControl_region_detail_Static
+    private class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -38,15 +38,18 @@ namespace UserControl_region_detail
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+      public TClass_biz_privileges biz_privileges;
       public TClass_biz_regions biz_regions;
       public TClass_biz_services biz_services;
       public TClass_biz_user biz_user;
       public string distribution_list_email;
       public string distribution_list_sms;
       public bool do_include_all_services;
+      public string member_id;
       public TClass_msg_protected.service_management msg_protected_service_management;
       public uint num_services;
       public string region_code;
@@ -151,6 +154,8 @@ namespace UserControl_region_detail
           {
           DataGrid_control.AllowSorting = false;
           }
+        DataGrid_control.Columns[Static.TCI_SELECT_FOR_QUICKMESSAGE].Visible = p.be_more_than_examiner;
+        Table_quick_message.Visible = p.be_more_than_examiner;
         Bind();
         p.be_loaded = true;
         }
@@ -171,12 +176,14 @@ namespace UserControl_region_detail
         {
         p.biz_members = new TClass_biz_members();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_regions = new TClass_biz_regions();
         p.biz_services = new TClass_biz_services();
         p.biz_user = new TClass_biz_user();
         p.msg_protected_service_management = new TClass_msg_protected.service_management();
         //
         p.be_interactive = (Session["mode:report"] == null);
+        p.be_more_than_examiner = false;
         p.be_loaded = false;
         p.be_sort_order_ascending = true;
         p.distribution_list_email = k.EMPTY;
@@ -186,9 +193,10 @@ namespace UserControl_region_detail
         p.sort_order = "be_strike_team_participant desc, short_name";
         p.summary = null;
         //
-        var member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
-        p.user_target_email = p.biz_members.EmailAddressOf(member_id:member_id);
-        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:member_id);
+        p.member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
+        //
+        p.user_target_email = p.biz_members.EmailAddressOf(member_id:p.member_id);
+        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:p.member_id);
         }
       }
 
@@ -220,7 +228,8 @@ namespace UserControl_region_detail
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
         p.msg_protected_service_management.region_code = p.region_code;
-        p.msg_protected_service_management.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_region_detail_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.msg_protected_service_management.summary = p.biz_services.Summary(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.msg_protected_service_management.be_more_than_examiner = p.be_more_than_examiner;
         MessageDropCrumbAndTransferTo(p.msg_protected_service_management,"protected","service_management");
         }
       }
@@ -232,10 +241,10 @@ namespace UserControl_region_detail
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_region_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           //
-          if (e.Item.Cells[UserControl_region_detail_Static.TCI_PARTICIPANT].Text == "YES")
+          if (e.Item.Cells[Static.TCI_PARTICIPANT].Text == "YES")
             {
             e.Item.Style.Add(HtmlTextWriterStyle.FontWeight,"bold");
             }
@@ -245,7 +254,7 @@ namespace UserControl_region_detail
         }
       else
         {
-        e.Item.Cells[UserControl_region_detail_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -282,17 +291,19 @@ namespace UserControl_region_detail
       BuildDistributionListAndRegisterPostBackControls();
       }
 
-    internal void Set(object summary)
+    internal void SetP(object summary)
       {
       p.summary = summary;
       p.region_code = p.biz_regions.CodeOf(p.summary);
+      p.be_more_than_examiner =
+        k.Has(Session["privilege_array"] as string[],"config-strike-team-state") || p.biz_privileges.HasForRegion(member_id:p.member_id,privilege_name:"config-strike-team-region",region_code:p.region_code);
       }
 
     protected void CheckBox_force_all_CheckedChanged(object sender, EventArgs e)
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[UserControl_region_detail_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       BuildDistributionListAndRegisterPostBackControls();
       }
@@ -310,12 +321,12 @@ namespace UserControl_region_detail
       for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        if ((tcc[UserControl_region_detail_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
+        if ((tcc[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.distribution_list_email += (tcc[UserControl_region_detail_Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
-          p.distribution_list_sms += (tcc[UserControl_region_detail_Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_email += (tcc[Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          p.distribution_list_sms += (tcc[Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
           }
-        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_region_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
       Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       }

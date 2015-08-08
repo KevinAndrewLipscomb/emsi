@@ -144,6 +144,8 @@ namespace UserControl_preparation_binder
           p.tab_index = UserControl_preparation_binder_Static.TSSI_REGION;
           }
         if(
+            p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"see-all-strike-team-data")
+          ||
             p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"config-strike-team-state")
           ||
             p.biz_privileges.HasForAnyScope(member_id:p.user_member_id,privilege_name:"config-strike-team-state-unlimited")
