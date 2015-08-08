@@ -82,7 +82,7 @@
     <td>
       <font class="">
         <asp:Literal ID="Literal_service_short_name" runat="server"></asp:Literal>&nbsp;<ASP:TextBox id="TextBox_name" runat="server" columns="63" maxlength="63" cssclass="" enabled="False" AutoPostBack="True" ontextchanged="TextBox_name_TextChanged"></ASP:TextBox>
-        <small><asp:LinkButton ID="LinkButton_update_staging_designator" runat="server" Text="Update Staging Designator (below)" /></small>
+        <small><asp:LinkButton ID="LinkButton_update_staging_designator" runat="server" Text="Update Staging Designator (below)" visible="false"/></small>
       </font>
     </td>
     <td nowrap="nowrap">

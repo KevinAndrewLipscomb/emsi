@@ -1,6 +1,5 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_strike_team_deployments;
 using Class_msg_protected;
 using kix;
@@ -68,7 +67,11 @@ namespace strike_team_deployment_detail
           aspx_name:"strike_team_deployment_detail"
           );
         //
-        UserControl_strike_team_deployment_control.Set(id:p.incoming.id);
+        UserControl_strike_team_deployment_control.Set
+          (
+          id:p.incoming.id,
+          be_more_than_examiner:p.incoming.be_more_than_examiner
+          );
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {

@@ -13,15 +13,6 @@ using UserControl_strike_team_deployment_vehicles;
 namespace UserControl_strike_team_deployment_binder
   {
 
-  public class UserControl_strike_team_deployment_binder_Static
-    {
-    public const int TSSI_PERSONNEL = 0;
-    public const int TSSI_VEHICLES = 1;
-    public const int TSSI_OPERATIONAL_PERIODS = 2;
-    public const int TSSI_LOG = 3;
-    public const int TSSI_SNAPSHOT = 4;
-    }
-
   public partial class TWebUserControl_strike_team_deployment_binder: ki_web_ui.usercontrol_class
     {
 
@@ -31,9 +22,19 @@ namespace UserControl_strike_team_deployment_binder
     //
     //--
 
+    public static class Static
+      {
+      public const int TSSI_PERSONNEL = 0;
+      public const int TSSI_VEHICLES = 1;
+      public const int TSSI_OPERATIONAL_PERIODS = 2;
+      public const int TSSI_LOG = 3;
+      public const int TSSI_SNAPSHOT = 4;
+      }
+
     private struct p_type
       {
       internal bool be_loaded;
+      internal bool be_more_than_examiner;
       internal bool be_ok_to_config_strike_team_deployments;
       internal TClass_biz_members biz_members;
       internal TClass_biz_services biz_services;
@@ -52,31 +53,31 @@ namespace UserControl_strike_team_deployment_binder
       string target
       )
       {
-      if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL)
+      if (p.tab_index == Static.TSSI_PERSONNEL)
         {
         var c = ((TWebUserControl_strike_team_deployment_members)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_members.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_members",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments);
+        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments,p.be_more_than_examiner);
         }
-      else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_VEHICLES)
+      else if (p.tab_index == Static.TSSI_VEHICLES)
         {
         var c = ((TWebUserControl_strike_team_deployment_vehicles)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_vehicles.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_vehicles",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments);
         }
-      else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_OPERATIONAL_PERIODS)
+      else if (p.tab_index == Static.TSSI_OPERATIONAL_PERIODS)
         {
         var c = ((TWebUserControl_strike_team_deployment_operational_periods)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_operational_periods.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_operational_periods",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments);
         }
-      else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_LOG)
+      else if (p.tab_index == Static.TSSI_LOG)
         {
         var c = ((TWebUserControl_strike_team_deployment_log)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_log.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_log",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.Set(p.deployment_id,p.service_strike_team_management_footprint);
         }
-      else if (p.tab_index == UserControl_strike_team_deployment_binder_Static.TSSI_SNAPSHOT)
+      else if (p.tab_index == Static.TSSI_SNAPSHOT)
         {
         var c = ((TWebUserControl_strike_team_deployment_snapshot)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_snapshot.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_snapshot",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
@@ -161,9 +162,10 @@ namespace UserControl_strike_team_deployment_binder
         p.biz_services = new TClass_biz_services();
         p.biz_user = new TClass_biz_user();
         //
+        p.be_more_than_examiner = false;
         p.deployment_id = k.EMPTY;
         p.service_strike_team_management_footprint = k.EMPTY;
-        p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL;
+        p.tab_index = Static.TSSI_PERSONNEL;
         //Don't FillPlaceHolder(true); since it will be done via Set when target information is known.
         }
       }
@@ -177,11 +179,13 @@ namespace UserControl_strike_team_deployment_binder
     internal void Set
       (
       string deployment_id,
-      bool be_ok_to_config_strike_team_deployments
+      bool be_ok_to_config_strike_team_deployments,
+      bool be_more_than_examiner
       )
       {
       p.deployment_id = deployment_id;
       p.be_ok_to_config_strike_team_deployments = be_ok_to_config_strike_team_deployments;
+      p.be_more_than_examiner = be_more_than_examiner;
       TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
       TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
       p.service_strike_team_management_footprint = (be_ok_to_config_strike_team_deployments ? k.EMPTY : p.biz_services.ServiceStrikeTeamManagementFootprintOf(p.biz_members.IdOfUserId(p.biz_user.IdNum())));
@@ -206,23 +210,23 @@ namespace UserControl_strike_team_deployment_binder
         {
         if (target.ToLower().Contains("/personnel/"))
           {
-          p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_PERSONNEL;
+          p.tab_index = Static.TSSI_PERSONNEL;
           }
         else if (target.ToLower().Contains("/vehicles/"))
           {
-          p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_VEHICLES;
+          p.tab_index = Static.TSSI_VEHICLES;
           }
         else if (target.ToLower().Contains("/operational-periods/"))
           {
-          p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_OPERATIONAL_PERIODS;
+          p.tab_index = Static.TSSI_OPERATIONAL_PERIODS;
           }
         else if (target.ToLower().Contains("/log/"))
           {
-          p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_LOG;
+          p.tab_index = Static.TSSI_LOG;
           }
         else if (target.ToLower().Contains("/snapshot/"))
           {
-          p.tab_index = UserControl_strike_team_deployment_binder_Static.TSSI_SNAPSHOT;
+          p.tab_index = Static.TSSI_SNAPSHOT;
           }
         //
         TabContainer_control.ActiveTabIndex = (int)p.tab_index;

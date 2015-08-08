@@ -567,6 +567,7 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_member_binder.ascx.cs">
       <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_member_binder.ascx.designer.cs">
       <DependentUpon>UserControl_member_binder.ascx</DependentUpon>
@@ -809,6 +810,7 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_binder.ascx</DependentUpon>

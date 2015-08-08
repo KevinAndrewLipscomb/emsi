@@ -59,7 +59,7 @@
                     <asp:BoundColumn DataField="affiliation" HeaderText="Affiliation" ReadOnly="True"></asp:BoundColumn>
                     <asp:BoundColumn datafield="email_address" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="sms_target" Visible="false" ReadOnly="true"></asp:BoundColumn>
-                    <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" Visible="False">
                       <HeaderTemplate>
                         <small>Include in<br />QuickMessage</small><br /> All:<asp:CheckBox ID="CheckBox_force_all" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_force_all_CheckedChanged" style="outline:2px solid SlateGray" ToolTip="Select/Unselect all for QuickMessage" Checked="True" />
                       </HeaderTemplate>
@@ -79,7 +79,7 @@
       </tr>
     </table>
     <br/>
-    <table id="Table_quick_message" runat="server" bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
+    <table id="Table_quick_message" runat="server" bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1" visible="false">
       <tr>
         <td>
           <table cellspacing="0" cellpadding="10" width="100%" border="0">
