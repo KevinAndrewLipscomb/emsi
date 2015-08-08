@@ -2,7 +2,6 @@
 
 using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
-using Class_biz_privileges;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
 using Class_biz_strike_team_deployments;
@@ -46,7 +45,6 @@ namespace UserControl_strike_team_deployment_members
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
-      public TClass_biz_privileges biz_privileges;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
@@ -61,7 +59,6 @@ namespace UserControl_strike_team_deployment_members
       public uint num_practitioners;
       public string service_strike_team_management_footprint;
       public string sort_order;
-      public string user_member_id;
       public string user_target_email;
       public string user_target_sms;
       }
@@ -121,7 +118,6 @@ namespace UserControl_strike_team_deployment_members
         {
         p.biz_members = new TClass_biz_members();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
-        p.biz_privileges = new TClass_biz_privileges();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
@@ -141,9 +137,9 @@ namespace UserControl_strike_team_deployment_members
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "last_name%,first_name";
         //
-        p.user_member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
-        p.user_target_email = p.biz_members.EmailAddressOf(member_id:p.user_member_id);
-        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:p.user_member_id);
+        var user_member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
+        p.user_target_email = p.biz_members.EmailAddressOf(member_id:user_member_id);
+        p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:user_member_id);
         }
       }
 
