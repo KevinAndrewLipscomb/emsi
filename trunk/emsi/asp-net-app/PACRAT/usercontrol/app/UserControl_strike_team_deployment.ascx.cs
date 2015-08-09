@@ -23,6 +23,7 @@ namespace UserControl_strike_team_deployment
       public bool be_loaded;
       public bool be_more_than_examiner;
       public bool be_ok_to_config_strike_team_deployments;
+      public bool be_ok_to_see_all_strike_team_data;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_role_member_map biz_role_member_map;
@@ -221,7 +222,8 @@ namespace UserControl_strike_team_deployment
     internal void Set
       (
       string id,
-      bool be_more_than_examiner
+      bool be_more_than_examiner,
+      bool be_ok_to_see_all_strike_team_data
       )
       {
       p.be_ok_to_config_strike_team_deployments = p.biz_privileges.HasForPennsylvania
@@ -230,6 +232,7 @@ namespace UserControl_strike_team_deployment
         privilege_name:"config-strike-team-deployments"
         );
       p.be_more_than_examiner = be_more_than_examiner;
+      p.be_ok_to_see_all_strike_team_data = be_ok_to_see_all_strike_team_data;
       if (id.Length > 0)
         {
         p.id = id;
@@ -239,7 +242,8 @@ namespace UserControl_strike_team_deployment
           (
           deployment_id:id,
           be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments,
-          be_more_than_examiner:p.be_more_than_examiner
+          be_more_than_examiner:p.be_more_than_examiner,
+          be_ok_to_see_all_strike_team_data:p.be_ok_to_see_all_strike_team_data
           );
         }
       else
@@ -309,6 +313,7 @@ namespace UserControl_strike_team_deployment
         p.be_loaded = false;
         p.be_more_than_examiner = false;
         p.be_ok_to_config_strike_team_deployments = false;
+        p.be_ok_to_see_all_strike_team_data = false;
         p.id = k.EMPTY;
         p.presentation_mode = presentation_mode_enum.NONE;
         p.summary = null;
@@ -369,7 +374,8 @@ namespace UserControl_strike_team_deployment
             (
             deployment_id:id,
             be_ok_to_config_strike_team_deployments:p.be_ok_to_config_strike_team_deployments,
-            be_more_than_examiner:p.be_more_than_examiner
+            be_more_than_examiner:p.be_more_than_examiner,
+            be_ok_to_see_all_strike_team_data:p.be_ok_to_see_all_strike_team_data
             );
           }
         else
@@ -381,7 +387,8 @@ namespace UserControl_strike_team_deployment
               creation_date:creation_date,
               name:name
               ),
-            be_more_than_examiner:p.be_more_than_examiner
+            be_more_than_examiner:p.be_more_than_examiner,
+            be_ok_to_see_all_strike_team_data:p.be_ok_to_see_all_strike_team_data
             );
           SetNonNewPresentationMode();
           Alert

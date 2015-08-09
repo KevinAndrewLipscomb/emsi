@@ -21,6 +21,7 @@ namespace Class_msg_protected
       internal string operational_period_id = k.EMPTY;
       internal string service_strike_team_management_footprint = k.EMPTY;
       internal bool be_unlimited = false;
+      internal bool be_more_than_examiner = false;
       }
     public class overview
       {
@@ -54,6 +55,7 @@ namespace Class_msg_protected
       {
       internal string id = k.EMPTY;
       internal bool be_more_than_examiner = false;
+      internal bool be_ok_to_see_all_strike_team_data = false;
       }
     public class underway_demobilization
       {

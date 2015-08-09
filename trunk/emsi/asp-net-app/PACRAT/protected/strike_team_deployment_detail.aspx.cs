@@ -70,7 +70,8 @@ namespace strike_team_deployment_detail
         UserControl_strike_team_deployment_control.Set
           (
           id:p.incoming.id,
-          be_more_than_examiner:p.incoming.be_more_than_examiner
+          be_more_than_examiner:p.incoming.be_more_than_examiner,
+          be_ok_to_see_all_strike_team_data:p.incoming.be_ok_to_see_all_strike_team_data
           );
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)

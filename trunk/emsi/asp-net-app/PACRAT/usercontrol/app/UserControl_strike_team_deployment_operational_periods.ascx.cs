@@ -2,24 +2,21 @@
 
 using Class_biz_members;
 using Class_biz_privileges;
-using Class_biz_user;
 using Class_biz_strike_team_deployment_operational_periods;
 using Class_biz_strike_team_deployments;
+using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
-using AjaxControlToolkit;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_operational_periods
   {
   public partial class TWebUserControl_strike_team_deployment_operational_periods: ki_web_ui.usercontrol_class
     {
-    public class UserControl_strike_team_deployment_operational_periods_Static
+    private static class Static
       {
       public const string NOT_APPLICABLE_INDICATION_HTML = "-&nbsp;-&nbsp;-";
       //
@@ -38,6 +35,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_unlimited;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
@@ -178,6 +176,7 @@ namespace UserControl_strike_team_deployment_operational_periods
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
+        p.be_more_than_examiner = false;
         p.be_unlimited = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
@@ -214,10 +213,11 @@ namespace UserControl_strike_team_deployment_operational_periods
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_operational_period_detail.operational_period_id = k.Safe(e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+        p.msg_protected_operational_period_detail.operational_period_id = k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM);
         p.msg_protected_operational_period_detail.deployment_id = p.deployment_id;
         p.msg_protected_operational_period_detail.service_strike_team_management_footprint = p.service_strike_team_management_footprint;
         p.msg_protected_operational_period_detail.be_unlimited = p.be_unlimited;
+        p.msg_protected_operational_period_detail.be_more_than_examiner = p.be_more_than_examiner;
         MessageDropCrumbAndTransferTo(p.msg_protected_operational_period_detail,"protected","operational_period_detail");
         }
       }
@@ -229,32 +229,32 @@ namespace UserControl_strike_team_deployment_operational_periods
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           var kind = p.biz_strike_team_deployment_operational_periods.KindOf
             (
-            start:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Text.Replace("&nbsp;",k.EMPTY),
-            end:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Text.Replace("&nbsp;",k.EMPTY),
-            be_convoy:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_BE_CONVOY].Text,
-            prelim_shift_name:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_PRELIM_NAME].Text.Replace("&nbsp;",k.EMPTY)
+            start:e.Item.Cells[Static.TCI_START].Text.Replace("&nbsp;",k.EMPTY),
+            end:e.Item.Cells[Static.TCI_END].Text.Replace("&nbsp;",k.EMPTY),
+            be_convoy:e.Item.Cells[Static.TCI_BE_CONVOY].Text,
+            prelim_shift_name:e.Item.Cells[Static.TCI_PRELIM_NAME].Text.Replace("&nbsp;",k.EMPTY)
             );
-          e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_KIND].Text = kind.ToString();
+          e.Item.Cells[Static.TCI_KIND].Text = kind.ToString();
           if (kind == kind_enum.PRELIM)
             {
-            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
-            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
-            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls.Clear();
-            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
+            e.Item.Cells[Static.TCI_START].Text = Static.NOT_APPLICABLE_INDICATION_HTML;
+            e.Item.Cells[Static.TCI_END].Text = Static.NOT_APPLICABLE_INDICATION_HTML;
+            e.Item.Cells[Static.TCI_FOR_IAP].Controls.Clear();
+            e.Item.Cells[Static.TCI_FOR_IAP].Text = Static.NOT_APPLICABLE_INDICATION_HTML;
             }
           else
             {
-            e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_PRELIM_NAME].Text = UserControl_strike_team_deployment_operational_periods_Static.NOT_APPLICABLE_INDICATION_HTML;
+            e.Item.Cells[Static.TCI_PRELIM_NAME].Text = Static.NOT_APPLICABLE_INDICATION_HTML;
             //
             var hash_table = new Hashtable();
-            hash_table.Add(key:"operational_period_id",value:e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].Text);
-            ((e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+            hash_table.Add(key:"operational_period_id",value:e.Item.Cells[Static.TCI_ID].Text);
+            ((e.Item.Cells[Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
             }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
@@ -263,14 +263,14 @@ namespace UserControl_strike_team_deployment_operational_periods
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
           //
           p.num_operational_periods++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_strike_team_deployment_operational_periods_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -324,24 +324,26 @@ namespace UserControl_strike_team_deployment_operational_periods
       (
       string deployment_id,
       string service_strike_team_management_footprint,
-      bool be_unlimited
+      bool be_unlimited,
+      bool be_more_than_examiner
       )
       {
       p.deployment_id = deployment_id;
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       p.be_unlimited = be_unlimited;
+      p.be_more_than_examiner = be_more_than_examiner;
       //
       var be_mobilizing = p.biz_strike_team_deployments.BeDemobilizationReasonRequired
         (
         deployment_id:p.deployment_id,
         service_strike_team_management_footprint:k.EMPTY
         );
-      TableRow_initial_actions.Visible = p.be_unlimited && !be_mobilizing;
-      TableRow_service_actions.Visible = !p.be_unlimited && !be_mobilizing;
+      TableRow_initial_actions.Visible = p.be_unlimited && !be_mobilizing && p.be_more_than_examiner;
+      TableRow_service_actions.Visible = !p.be_unlimited && !be_mobilizing && p.be_more_than_examiner;
       LinkButton_new.Visible = p.be_unlimited;
-      DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_START].Visible = p.be_unlimited;
-      DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_END].Visible = p.be_unlimited;
-      DataGrid_control.Columns[UserControl_strike_team_deployment_operational_periods_Static.TCI_FOR_IAP].Visible = p.be_unlimited;
+      DataGrid_control.Columns[Static.TCI_START].Visible = p.be_unlimited;
+      DataGrid_control.Columns[Static.TCI_END].Visible = p.be_unlimited;
+      DataGrid_control.Columns[Static.TCI_FOR_IAP].Visible = p.be_unlimited;
       Bind();
       }
 

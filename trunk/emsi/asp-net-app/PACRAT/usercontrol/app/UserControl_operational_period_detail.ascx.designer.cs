@@ -148,6 +148,15 @@ namespace UserControl_operational_period_detail {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_source_op_period;
         
         /// <summary>
+        /// Panel_add_mapping_primary_controls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_add_mapping_primary_controls;
+        
+        /// <summary>
         /// DropDownList_vehicle control.
         /// </summary>
         /// <remarks>

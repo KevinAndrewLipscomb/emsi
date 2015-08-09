@@ -1,4 +1,3 @@
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_patient_care_levels;
 using Class_biz_practitioner_strike_team_details;
@@ -55,6 +54,7 @@ namespace UserControl_operational_period_detail
       public bool be_interactive;
       public bool be_loaded;
       public bool be_digest_sort_order_ascending;
+      public bool be_more_than_examiner;
       public bool be_restricted_mode;
       public bool be_sort_order_ascending;
       public bool be_unlimited;
@@ -87,7 +87,7 @@ namespace UserControl_operational_period_detail
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive && !p.be_restricted_mode;
+      DataGrid_control.Columns[UserControl_operational_period_detail_Static.CI_UNMAP].Visible = p.be_interactive && !p.be_restricted_mode && p.be_more_than_examiner;
       p.biz_strike_team_deployment_assignments.BindActualsByOperationalPeriod
         (
         sort_order:p.sort_order,
@@ -100,7 +100,7 @@ namespace UserControl_operational_period_detail
       TableCell_no_mappings.Visible = p.be_datagrid_empty;
       TableCell_mappings.Visible = !p.be_datagrid_empty;
       TableCell_add_mapping.Visible = p.may_add_mappings;
-      Table_quick_message.Visible = !p.be_datagrid_empty;
+      Table_quick_message.Visible = !p.be_datagrid_empty && p.be_unlimited;
       p.num_mappings.val = 0;
       //
       p.biz_strike_team_deployment_assignments.BindDigestByOperationalPeriod
@@ -121,7 +121,7 @@ namespace UserControl_operational_period_detail
         }
       else if (!p.be_unlimited)
         {
-        TableRow_initial_actions.Visible = true;
+        TableRow_initial_actions.Visible = p.be_more_than_examiner;
         }
       //
       if (TableCell_add_mapping.Visible)
@@ -258,7 +258,7 @@ namespace UserControl_operational_period_detail
     private void SetRestrictedMode()
       {
       p.be_restricted_mode = true;
-      TableRow_operational_period_started.Visible = true;
+      TableRow_operational_period_started.Visible = p.be_more_than_examiner;
       TableCell_add_mapping.Visible = false;
       Table_quick_message.Visible = false;
       }
@@ -486,6 +486,7 @@ namespace UserControl_operational_period_detail
         p.be_digest_sort_order_ascending = true;
         p.be_interactive = !(Session["mode:report"] != null);
         p.be_loaded = false;
+        p.be_more_than_examiner = false;
         p.be_restricted_mode = false;
         p.be_sort_order_ascending = true;
         p.be_unlimited = false;
@@ -535,6 +536,7 @@ namespace UserControl_operational_period_detail
         DataGrid_control.AllowSorting = p.be_interactive;
         DataGrid_digest.AllowSorting = p.be_interactive;
         Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);
+        Panel_add_mapping_primary_controls.Visible = p.be_more_than_examiner;
         Bind();
         p.be_loaded = true;
         }
@@ -586,7 +588,8 @@ namespace UserControl_operational_period_detail
       string operational_period_id,
       string service_strike_team_management_footprint,
       bool be_unlimited,
-      kind_enum kind
+      kind_enum kind,
+      bool be_more_than_examiner
       )
       {
       p.deployment_id = deployment_id;
@@ -594,6 +597,7 @@ namespace UserControl_operational_period_detail
       p.service_strike_team_management_footprint = service_strike_team_management_footprint;
       p.be_unlimited = be_unlimited;
       p.kind = kind;
+      p.be_more_than_examiner = be_more_than_examiner;
       Bind();
       }
 

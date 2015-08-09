@@ -22,7 +22,7 @@ namespace UserControl_strike_team_deployment_binder
     //
     //--
 
-    public static class Static
+    private static class Static
       {
       public const int TSSI_PERSONNEL = 0;
       public const int TSSI_VEHICLES = 1;
@@ -69,7 +69,7 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_operational_periods)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_operational_periods.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_operational_periods",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments);
+        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments,p.be_more_than_examiner);
         }
       else if (p.tab_index == Static.TSSI_LOG)
         {
@@ -180,14 +180,15 @@ namespace UserControl_strike_team_deployment_binder
       (
       string deployment_id,
       bool be_ok_to_config_strike_team_deployments,
-      bool be_more_than_examiner
+      bool be_more_than_examiner,
+      bool be_ok_to_see_all_strike_team_data
       )
       {
       p.deployment_id = deployment_id;
       p.be_ok_to_config_strike_team_deployments = be_ok_to_config_strike_team_deployments;
       p.be_more_than_examiner = be_more_than_examiner;
-      TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments;
-      TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments;
+      TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
+      TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
       p.service_strike_team_management_footprint = (be_ok_to_config_strike_team_deployments ? k.EMPTY : p.biz_services.ServiceStrikeTeamManagementFootprintOf(p.biz_members.IdOfUserId(p.biz_user.IdNum())));
       SetTarget(target:"//"); // Kludge to do everything SetTarget does except alter p.tab_index.
       }
