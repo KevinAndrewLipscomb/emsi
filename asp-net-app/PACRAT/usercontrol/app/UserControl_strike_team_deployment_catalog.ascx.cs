@@ -34,6 +34,7 @@ namespace UserControl_strike_team_deployment_catalog
       public bool be_loaded;
       public bool be_more_than_examiner;
       public bool be_ok_to_config_strike_team_deployments;
+      public bool be_ok_to_see_all_strike_team_data;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_privileges biz_privileges;
@@ -167,6 +168,7 @@ namespace UserControl_strike_team_deployment_catalog
           member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
           privilege_name:"config-strike-team-deployments"
           );
+        p.be_ok_to_see_all_strike_team_data = false;
         p.be_sort_order_ascending = true;
         p.sort_order = "creation_date desc";
         }
@@ -204,6 +206,7 @@ namespace UserControl_strike_team_deployment_catalog
           {
           p.msg_protected_strike_team_deployment_detail.id = k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM);
           p.msg_protected_strike_team_deployment_detail.be_more_than_examiner = p.be_more_than_examiner;
+          p.msg_protected_strike_team_deployment_detail.be_ok_to_see_all_strike_team_data = p.be_ok_to_see_all_strike_team_data;
           MessageDropCrumbAndTransferTo(p.msg_protected_strike_team_deployment_detail,"protected","strike_team_deployment_detail");
           }
         }
@@ -295,9 +298,14 @@ namespace UserControl_strike_team_deployment_catalog
         }
       }
 
-    internal void SetP(bool be_more_than_examiner)
+    internal void SetP
+      (
+      bool be_more_than_examiner,
+      bool be_ok_to_see_all_strike_team_data
+      )
       {
       p.be_more_than_examiner = be_more_than_examiner;
+      p.be_ok_to_see_all_strike_team_data = be_ok_to_see_all_strike_team_data;
       }
 
     } // end TWebUserControl_strike_team_deployment_catalog

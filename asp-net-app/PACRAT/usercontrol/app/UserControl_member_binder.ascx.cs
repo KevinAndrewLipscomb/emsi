@@ -70,7 +70,7 @@ namespace UserControl_member_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_catalog)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_catalog.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_catalog",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.SetP(p.be_more_than_examiner);
+        c.SetP(p.be_more_than_examiner,p.be_ok_to_see_all_strike_team_data);
         }
       else if (p.tab_index == Static.TSSI_CONFIG)
         {

@@ -40,7 +40,7 @@
                 <td id="TableCell_mappings" runat="server" nowrap="nowrap" valign="top">
                   <asp:DataGrid id="DataGrid_control" runat="server" gridlines="Horizontal" cellpadding="5" autogeneratecolumns="False" allowsorting="True" ondeletecommand="DataGrid_control_DeleteCommand" onitemdatabound="DataGrid_control_ItemDataBound" onsortcommand="DataGrid_control_SortCommand">
                     <Columns>
-                      <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Unmap&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete"></asp:ButtonColumn>
+                      <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Unmap&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
                       <asp:BoundColumn datafield="vehicle_id" Visible="false"></asp:BoundColumn>
                       <asp:BoundColumn datafield="vehicle_designator" headertext="Vehicle" sortexpression="vehicle_designator%,member_designator">
                         <HeaderStyle horizontalalign="Left"></HeaderStyle>
@@ -61,30 +61,32 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator_source_op_period" runat="server" ControlToValidate="DropDownList_source_op_period" Display="Dynamic" ErrorMessage="Please select a source to Copy (assignments) from." Font-Bold="True" ValidationGroup="copy_from">!ERR!</asp:RequiredFieldValidator>
                     <hr />
                   </asp:Panel>
-                  <table cellspacing="0" cellpadding="2" border="0">
-                    <tr>
-                      <td>
-                        <asp:DropDownList id="DropDownList_vehicle" runat="server" font-size="Small" datavaluefield="id" datatextfield="name" appenddatabounditems="True">
-                          <asp:ListItem selected="True">-- Vehicle --</asp:ListItem>
-                          <asp:ListItem Value="0">(none)</asp:ListItem>
-                        </asp:DropDownList>
-                      </td>
-                      <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_vehicle" runat="server" errormessage="Please select a Vehicle." font-bold="True" controltovalidate="DropDownList_vehicle" setfocusonerror="True" display="Dynamic" ValidationGroup="OperationalPeriodDetail">!ERR!</asp:RequiredFieldValidator></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <asp:DropDownList id="DropDownList_member" runat="server" datatextfield="member_designator" datavaluefield="member_id" font-size="Small" appenddatabounditems="True">
-                          <asp:ListItem selected="True">-- Member --</asp:ListItem>
-                        </asp:DropDownList>
-                      </td>
-                      <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_member" runat="server" errormessage="Please select a Member." font-bold="True" controltovalidate="DropDownList_member" setfocusonerror="True" display="Dynamic" ValidationGroup="OperationalPeriodDetail">!ERR!</asp:RequiredFieldValidator></td>
-                    </tr>
-                    <tr>
-                      <td><asp:Button id="Button_add" runat="server" text="<--&nbsp;Add" onclick="Button_add_Click" ValidationGroup="OperationalPeriodDetail"></asp:Button></td>
-                      <td>&nbsp;</td>
-                    </tr>
-                  </table>
-                  <br/>
+                  <asp:Panel ID="Panel_add_mapping_primary_controls" runat="server" Visible="false">
+                    <table cellspacing="0" cellpadding="2" border="0">
+                      <tr>
+                        <td>
+                          <asp:DropDownList id="DropDownList_vehicle" runat="server" font-size="Small" datavaluefield="id" datatextfield="name" appenddatabounditems="True">
+                            <asp:ListItem selected="True">-- Vehicle --</asp:ListItem>
+                            <asp:ListItem Value="0">(none)</asp:ListItem>
+                          </asp:DropDownList>
+                        </td>
+                        <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_vehicle" runat="server" errormessage="Please select a Vehicle." font-bold="True" controltovalidate="DropDownList_vehicle" setfocusonerror="True" display="Dynamic" ValidationGroup="OperationalPeriodDetail">!ERR!</asp:RequiredFieldValidator></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <asp:DropDownList id="DropDownList_member" runat="server" datatextfield="member_designator" datavaluefield="member_id" font-size="Small" appenddatabounditems="True">
+                            <asp:ListItem selected="True">-- Member --</asp:ListItem>
+                          </asp:DropDownList>
+                        </td>
+                        <td nowrap="nowrap"><asp:RequiredFieldValidator id="RequiredFieldValidator_member" runat="server" errormessage="Please select a Member." font-bold="True" controltovalidate="DropDownList_member" setfocusonerror="True" display="Dynamic" ValidationGroup="OperationalPeriodDetail">!ERR!</asp:RequiredFieldValidator></td>
+                      </tr>
+                      <tr>
+                        <td><asp:Button id="Button_add" runat="server" text="<--&nbsp;Add" onclick="Button_add_Click" ValidationGroup="OperationalPeriodDetail"></asp:Button></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+                    <br/>
+                  </asp:Panel>
                   <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
                     <tr>
                       <td>

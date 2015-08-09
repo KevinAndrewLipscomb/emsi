@@ -1,6 +1,5 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~kicrudhelped~item.ascx.cs~template
 
-using AjaxControlToolkit;
 using Class_biz_members;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
@@ -22,6 +21,7 @@ namespace UserControl_strike_team_deployment_operational_period
     private struct p_type
       {
       public bool be_loaded;
+      public bool be_more_than_examiner;
       public bool be_unlimited;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods;
@@ -182,7 +182,8 @@ namespace UserControl_strike_team_deployment_operational_period
             operational_period_id:p.operational_period_id,
             service_strike_team_management_footprint:p.service_strike_team_management_footprint,
             be_unlimited:p.be_unlimited,
-            kind:p.biz_strike_team_deployment_operational_periods.KindOf(p.summary)
+            kind:p.biz_strike_team_deployment_operational_periods.KindOf(p.summary),
+            be_more_than_examiner:p.be_more_than_examiner
             );
           }
 
@@ -243,11 +244,13 @@ namespace UserControl_strike_team_deployment_operational_period
       string deployment_id,
       string operational_period_id,
       string service_strike_team_management_footprint,
-      bool be_unlimited
+      bool be_unlimited,
+      bool be_more_than_examiner
       )
       {
       p.deployment_id = deployment_id;
       p.be_unlimited = be_unlimited;
+      p.be_more_than_examiner = be_more_than_examiner;
       var be_prelim = false;
       if (operational_period_id.Length > 0)
         {
@@ -321,6 +324,7 @@ namespace UserControl_strike_team_deployment_operational_period
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_user = new TClass_biz_user();
+        p.be_more_than_examiner = false;
         p.be_unlimited = true;
         p.deployment_id = k.EMPTY;
         p.operational_period_id = k.EMPTY;

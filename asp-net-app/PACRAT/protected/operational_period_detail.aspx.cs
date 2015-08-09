@@ -2,16 +2,8 @@
 
 using Class_biz_strike_team_deployment_operational_periods;
 using Class_msg_protected;
-using kix;
 using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Configuration;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 
 namespace operational_period_detail
   {
@@ -68,7 +60,8 @@ namespace operational_period_detail
           deployment_id:p.incoming.deployment_id,
           operational_period_id:p.incoming.operational_period_id,
           service_strike_team_management_footprint:p.incoming.service_strike_team_management_footprint,
-          be_unlimited:p.incoming.be_unlimited
+          be_unlimited:p.incoming.be_unlimited,
+          be_more_than_examiner:p.incoming.be_more_than_examiner
           );
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
