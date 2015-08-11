@@ -67,6 +67,15 @@ namespace UserControl_operational_period_detail {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_assignment_level_filter;
         
         /// <summary>
+        /// HyperLink_opfar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_opfar;
+        
+        /// <summary>
         /// HyperLink_for_iap control.
         /// </summary>
         /// <remarks>

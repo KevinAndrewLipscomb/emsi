@@ -27,7 +27,8 @@ namespace UserControl_strike_team_deployment_operational_periods
       public const int TCI_START = 4;
       public const int TCI_END = 5;
       public const int TCI_BE_CONVOY = 6;
-      public const int TCI_FOR_IAP = 7;
+      public const int TCI_OPFAR = 7;
+      public const int TCI_FOR_IAP = 8;
       }
 
     private struct p_type
@@ -241,6 +242,11 @@ namespace UserControl_strike_team_deployment_operational_periods
             prelim_shift_name:e.Item.Cells[Static.TCI_PRELIM_NAME].Text.Replace("&nbsp;",k.EMPTY)
             );
           e.Item.Cells[Static.TCI_KIND].Text = kind.ToString();
+          //
+          var hash_table = new Hashtable();
+          hash_table.Add(key:"operational_period_id",value:e.Item.Cells[Static.TCI_ID].Text);
+          ((e.Item.Cells[Static.TCI_OPFAR].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+          //
           if (kind == kind_enum.PRELIM)
             {
             e.Item.Cells[Static.TCI_START].Text = Static.NOT_APPLICABLE_INDICATION_HTML;
@@ -251,9 +257,6 @@ namespace UserControl_strike_team_deployment_operational_periods
           else
             {
             e.Item.Cells[Static.TCI_PRELIM_NAME].Text = Static.NOT_APPLICABLE_INDICATION_HTML;
-            //
-            var hash_table = new Hashtable();
-            hash_table.Add(key:"operational_period_id",value:e.Item.Cells[Static.TCI_ID].Text);
             ((e.Item.Cells[Static.TCI_FOR_IAP].Controls[0]) as HyperLink).NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
             }
           //
@@ -343,6 +346,7 @@ namespace UserControl_strike_team_deployment_operational_periods
       LinkButton_new.Visible = p.be_unlimited;
       DataGrid_control.Columns[Static.TCI_START].Visible = p.be_unlimited;
       DataGrid_control.Columns[Static.TCI_END].Visible = p.be_unlimited;
+      DataGrid_control.Columns[Static.TCI_OPFAR].Visible = p.be_unlimited;
       DataGrid_control.Columns[Static.TCI_FOR_IAP].Visible = p.be_unlimited;
       Bind();
       }

@@ -1,9 +1,6 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
 using Class_db_strike_team_deployment_assignments;
-using kix;
-using System;
-using System.Collections;
 
 namespace Class_biz_strike_team_deployment_assignments
   {
@@ -79,6 +76,29 @@ namespace Class_biz_strike_team_deployment_assignments
     public void BindDirectToListControl(object target)
       {
       db_strike_team_deployment_assignments.BindDirectToListControl(target);
+      }
+
+    public void BindOpfarByMemberByOperationalPeriod
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string operational_period_id,
+      string assignment_level_filter
+      )
+      {
+      db_strike_team_deployment_assignments.BindOpfarByMemberByOperationalPeriod(sort_order,be_sort_order_ascending,target,operational_period_id,assignment_level_filter);
+      }
+
+    internal void BindOpfarByVehicleByOperationalPeriod
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string operational_period_id
+      )
+      {
+      db_strike_team_deployment_assignments.BindOpfarByVehicleByOperationalPeriod(sort_order,be_sort_order_ascending,target,operational_period_id);
       }
 
     public bool Delete(string id)

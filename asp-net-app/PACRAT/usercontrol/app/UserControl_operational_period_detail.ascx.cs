@@ -17,7 +17,7 @@ using System.Web.UI.WebControls;
 namespace UserControl_operational_period_detail
   {
 
-  public static class UserControl_operational_period_detail_Static
+  public static class UserControl_operational_period_detail_Static // Referenced externally
     {
     public const int CI_UNMAP = 0;
     public const int CI_VEHICLE_ID = 1;
@@ -513,9 +513,11 @@ namespace UserControl_operational_period_detail
       if (!p.be_loaded)
         {
         HyperLink_for_iap.Text = k.ExpandTildePath(HyperLink_for_iap.Text);
+        HyperLink_opfar.Text = k.ExpandTildePath(HyperLink_opfar.Text);
         var hash_table = new Hashtable();
         hash_table.Add(key:"operational_period_id",value:p.operational_period_id);
         HyperLink_for_iap.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
+        HyperLink_opfar.NavigateUrl += ShieldedQueryStringOfHashtable(hash_table);
         //
         if (p.be_unlimited)
           {

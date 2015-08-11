@@ -96,6 +96,7 @@
     <Content Include="protected\hardcopy_state_strike_team_key_personnel.aspx" />
     <Content Include="protected\mobilization_announcement.aspx" />
     <Content Include="protected\operational_period_detail.aspx" />
+    <Content Include="protected\opfar.aspx" />
     <Content Include="protected\per_deployment_iap_log.aspx" />
     <Content Include="protected\per_deployment_iap_personnel.aspx" />
     <Content Include="protected\per_deployment_iap_vehicles.aspx" />
@@ -131,6 +132,7 @@
     <Content Include="usercontrol\app\UserControl_mobilization_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_my_roles_and_mappings.ascx" />
     <Content Include="usercontrol\app\UserControl_operational_period_detail.ascx" />
+    <Content Include="usercontrol\app\UserControl_opfar.ascx" />
     <Content Include="usercontrol\app\UserControl_patient_care_level.ascx" />
     <Content Include="usercontrol\app\UserControl_per_deployment_iap_log.ascx" />
     <Content Include="usercontrol\app\UserControl_per_deployment_iap_personnel.ascx" />
@@ -391,6 +393,13 @@
     <Compile Include="protected\operational_period_detail.aspx.designer.cs">
       <DependentUpon>operational_period_detail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="protected\opfar.aspx.cs">
+      <DependentUpon>opfar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="protected\opfar.aspx.designer.cs">
+      <DependentUpon>opfar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="protected\overview.aspx.cs">
       <DependentUpon>overview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -591,6 +600,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_operational_period_detail.ascx.designer.cs">
       <DependentUpon>UserControl_operational_period_detail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_opfar.ascx.cs">
+      <DependentUpon>UserControl_opfar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_opfar.ascx.designer.cs">
+      <DependentUpon>UserControl_opfar.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_patient_care_level.ascx.cs">
       <DependentUpon>UserControl_patient_care_level.ascx</DependentUpon>

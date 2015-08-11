@@ -25,7 +25,11 @@
                     <asp:ListItem Value="Vehicular">Vehicular</asp:ListItem>
                   </ASP:DropDownList>
                 </td>
-                <td align="right" width="99%">
+                <td width="99%">&nbsp;</td>
+                <td align="center" nowrap="nowrap">
+                  <small>OPFAR:&nbsp;<asp:HyperLink ID="HyperLink_opfar" runat="server" NavigateUrl="~/protected/opfar.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="OPFAR" border="0" height="16" width="16" /></asp:HyperLink></small>
+                </td>
+                <td align="right" nowrap="nowrap">
                   <small>For&nbsp;IAP:&nbsp;<asp:HyperLink ID="HyperLink_for_iap" runat="server" NavigateUrl="~/protected/per_op_period_iap.aspx?" Target="_blank"><img src="~/protected/image/print16_h.png" alt="For IAP" border="0" height="16" width="16" /></asp:HyperLink></small>
                 </td>
               </tr>
@@ -46,7 +50,7 @@
                         <HeaderStyle horizontalalign="Left"></HeaderStyle>
                         <ItemStyle horizontalalign="Left"></ItemStyle>
                       </asp:BoundColumn>
-                      <asp:BoundColumn datafield="member_designator" headertext="Member" sortexpression="member_designator%,vehicle_designator">
+                      <asp:BoundColumn datafield="member_designator" headertext="Member" sortexpression="member_designator%">
                         <HeaderStyle horizontalalign="Left"></HeaderStyle>
                         <ItemStyle horizontalalign="Left"></ItemStyle>
                       </asp:BoundColumn>

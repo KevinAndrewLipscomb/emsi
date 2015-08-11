@@ -16,7 +16,7 @@ namespace UserControl_per_op_period_iap
   {
   public partial class TWebUserControl_per_op_period_iap: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_per_op_period_iap_Static
+    private static class Static
       {
       public const int CI_VEHICLE = 0;
       public const int CI_VEHICLE_PATIENT_CARE_LEVEL_ID = 1;
@@ -45,6 +45,8 @@ namespace UserControl_per_op_period_iap
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+      Literal_application_name_2.Text = Literal_application_name.Text;
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -89,13 +91,13 @@ namespace UserControl_per_op_period_iap
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        e.Item.Cells[UserControl_per_op_period_iap_Static.CI_EFFECTIVE_PATIENT_CARE_LEVEL].Text = p.biz_patient_care_levels.EffectiveOf
+        e.Item.Cells[Static.CI_EFFECTIVE_PATIENT_CARE_LEVEL].Text = p.biz_patient_care_levels.EffectiveOf
           (
-          vehicle_patient_care_level_description:k.Safe(e.Item.Cells[UserControl_per_op_period_iap_Static.CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text,k.safe_hint_type.HYPHENATED_ALPHA),
-          practitioner_level_short_description:k.Safe(e.Item.Cells[UserControl_per_op_period_iap_Static.CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER].Text,k.safe_hint_type.HYPHENATED_ALPHA)
+          vehicle_patient_care_level_description:k.Safe(e.Item.Cells[Static.CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text,k.safe_hint_type.HYPHENATED_ALPHA),
+          practitioner_level_short_description:k.Safe(e.Item.Cells[Static.CI_MAX_PRACTITIONER_LEVEL_PECKING_ORDER].Text,k.safe_hint_type.HYPHENATED_ALPHA)
           );
         //
-        e.Item.Cells[UserControl_per_op_period_iap_Static.CI_LEADER_PHONE_NUM].Text = k.FormatAsNanpPhoneNum(e.Item.Cells[UserControl_per_op_period_iap_Static.CI_LEADER_PHONE_NUM].Text);
+        e.Item.Cells[Static.CI_LEADER_PHONE_NUM].Text = k.FormatAsNanpPhoneNum(e.Item.Cells[Static.CI_LEADER_PHONE_NUM].Text);
         //
         p.num_items.val++;
         }
@@ -141,7 +143,6 @@ namespace UserControl_per_op_period_iap
         {
         TableRow_prelim_1.Visible = true;
         TableRow_prelim_2.Visible = true;
-        Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
         Literal_nature.Text = "PRELIMINARY";
         Table_prelim.Visible = true;
         Literal_prelim_shift_name.Text = prelim_shift_name;
@@ -151,7 +152,6 @@ namespace UserControl_per_op_period_iap
         TableRow_nonprelim_1.Visible = true;
         TableRow_nonprelim_2.Visible = true;
         TableRow_nonprelim_3.Visible = true;
-        Literal_application_name_2.Text = Literal_application_name.Text;
         Literal_ref_num.Text = mark.ToString("yyyy-MM-dd-HH-mm-ss-ff");
         Literal_nature.Text = (kind == kind_enum.CONVOY ? "CONVOY" : "OPERATIONAL PERIOD");
         Table_nonprelim.Visible = true;
