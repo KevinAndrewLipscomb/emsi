@@ -4,10 +4,7 @@ using Class_db;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployment_assignments
   {
@@ -271,6 +268,99 @@ namespace Class_db_strike_team_deployment_assignments
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
         }
       dr.Close();
+      Close();
+      }
+
+    public void BindOpfarByMemberByOperationalPeriod
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string operational_period_id,
+      string assignment_level_filter
+      )
+      {
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select @static_designator := concat(service.short_name,' ',vehicle.name)"
+        + " , @dynamic_designator := IF(IFNULL(tactical_name = @static_designator,TRUE),concat(@static_designator,' (',vehicle_kind.description,')'),concat(IFNULL(tactical_name,''),' [',@static_designator,' (',vehicle_kind.description,')]'))"
+        + " , IFNULL(@dynamic_designator,'(none)') as vehicle_designator"
+        + " , concat(member.last_name,', ',member.first_name,' (',IFNULL(practitioner_level.short_description,'nocert'),' ',IFNULL(member.certification_number,'nocert'),')') as member_designator"
+        + " , member_id"
+        + " , phone_number as member_phone_num"
+        + " from strike_team_deployment_assignment"
+        +   " join strike_team_deployment_operational_period on (strike_team_deployment_operational_period.id=strike_team_deployment_assignment.operational_period_id)"
+        +   " left join vehicle on (vehicle.id=strike_team_deployment_assignment.vehicle_id)"
+        +   " left join service on (service.id=vehicle.service_id)"
+        +   " left join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +   " left join strike_team_deployment_vehicle on (strike_team_deployment_vehicle.deployment_id=strike_team_deployment_operational_period.deployment_id and strike_team_deployment_vehicle.vehicle_id=vehicle.id)"
+        +   " join member on (member.id=strike_team_deployment_assignment.member_id)"
+        +   " left join practitioner_level on (practitioner_level.id=member.level_id)"
+        +   " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=member.id)"
+        + " where operational_period_id = '" + operational_period_id + "'"
+        +     (assignment_level_filter.Length == 0 ? k.EMPTY : " and vehicle.id is not null")
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
+        connection
+        )
+        .ExecuteReader();
+      ((target) as BaseDataList).DataBind();
+      Close();
+      }
+
+    internal void BindOpfarByVehicleByOperationalPeriod
+      (
+      string sort_order,
+      bool be_sort_order_ascending,
+      object target,
+      string operational_period_id
+      )
+      {
+      Open();
+      ((target) as BaseDataList).DataSource = new MySqlCommand
+        (
+        "select *"
+        + " , count(member_id) as par"
+        +   " , '?' as effective_patient_care_level"
+        +   " , GROUP_CONCAT(concat(leader,' (',max_practitioner_level_short_description,' ',practitioner_certification_number,')') SEPARATOR '<br/>') as crew"
+        + " from"
+        +   " ("
+        +   " select vehicle.id as vehicle_id"
+        +   " , @static_designator := concat(service.short_name,' ',vehicle.name)"
+        +   " , @dynamic_designator := IF(IFNULL(tactical_name = @static_designator,TRUE),@static_designator,concat(IFNULL(tactical_name,''),' [',@static_designator,']'))"
+        +   " , IFNULL(@dynamic_designator,'(none)') as vehicle_designator"
+        +   " , vehicle_kind.description as kind"
+        +   " , IFNULL(patient_care_level.description,'---') as vehicle_patient_care_level_description"
+        +   " , member_id"
+        +   " , IFNULL(practitioner_level.short_description,'nocert') as max_practitioner_level_short_description"
+        +   " , concat(phone_number,'@',hostname) as strike_team_member_sms_target"
+        +   " , IFNULL(vehicle.elaboration,'') as elaboration"
+        +   " , concat(member.last_name,', ',member.first_name) as leader"
+        +   " , IFNULL(practitioner_level.pecking_order,'') as practitioner_level_pecking_order"
+        +   " , IFNULL(member.certification_number,'nocert') as practitioner_certification_number"
+        +   " , practitioner_strike_team_detail.phone_number as leader_phone_num"
+        +   " from strike_team_deployment_assignment"
+        +     " join strike_team_deployment_operational_period on (strike_team_deployment_operational_period.id=strike_team_deployment_assignment.operational_period_id)"
+        +     " left join vehicle on (vehicle.id=strike_team_deployment_assignment.vehicle_id)"
+        +     " left join service on (service.id=vehicle.service_id)"
+        +     " left join vehicle_kind on (vehicle_kind.id=vehicle.kind_id)"
+        +     " left join strike_team_deployment_vehicle on (strike_team_deployment_vehicle.deployment_id=strike_team_deployment_operational_period.deployment_id and strike_team_deployment_vehicle.vehicle_id=vehicle.id)"
+        +     " join member on (member.id=strike_team_deployment_assignment.member_id)"
+        +     " left join practitioner_level on (practitioner_level.id=member.level_id)"
+        +     " left join patient_care_level on (patient_care_level.id=vehicle.patient_care_level_id)"
+        +     " join practitioner_strike_team_detail on (practitioner_strike_team_detail.practitioner_id=member.id)"
+        +     " left join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)" // left join in case a practitioner makes it onto the list despite becoming uncredentialed
+        +   " where operational_period_id = '" + operational_period_id + "'"
+        +   " order by practitioner_level_pecking_order desc, practitioner_certification_number"
+        +   " )"
+        +   " as assignments"
+        + " group by vehicle_id"
+        + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
+        ,
+        connection
+        )
+        .ExecuteReader();
+      ((target) as BaseDataList).DataBind();
       Close();
       }
 
