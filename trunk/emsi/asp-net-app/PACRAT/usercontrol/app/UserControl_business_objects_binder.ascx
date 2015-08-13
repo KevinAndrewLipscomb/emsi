@@ -12,6 +12,7 @@
             <cc1:TabPanel runat="server" headertext="Fuels" id="TabPanel_fuels"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Patient care levels" id="TabPanel_patient_care_levels"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="SMS gateways" id="TabPanel_sms_gateways"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="ST participation levels" id="TabPanel_strike_team_participation_levels"></cc1:TabPanel>
           </cc1:TabContainer>
         </td>
       </tr>

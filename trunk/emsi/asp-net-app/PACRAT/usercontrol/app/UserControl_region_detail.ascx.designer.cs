@@ -58,6 +58,15 @@ namespace UserControl_region_detail {
         protected global::System.Web.UI.WebControls.Literal Literal_num_services;
         
         /// <summary>
+        /// Button_deactivate_ad_hoc_participants control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_deactivate_ad_hoc_participants;
+        
+        /// <summary>
         /// TableRow_none control.
         /// </summary>
         /// <remarks>
