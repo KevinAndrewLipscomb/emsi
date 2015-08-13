@@ -25,7 +25,7 @@ namespace UserControl_region_detail
       public const int TCI_AFFILIATE_NUM = 2;
       public const int TCI_SHORT_NAME = 3;
       public const int TCI_LONG_NAME = 4;
-      public const int TCI_PARTICIPANT = 5;
+      public const int TCI_PARTICIPATION = 5;
       public const int TCI_NUM_MEMBERS = 6;
       public const int TCI_NUM_VEHICLES = 7;
       public const int TCI_EMAIL_TARGET = 8;
@@ -35,6 +35,7 @@ namespace UserControl_region_detail
 
     private struct p_type
       {
+      public bool be_ad_hoc_participants;
       public bool be_datagrid_empty;
       public bool be_interactive;
       public bool be_loaded;
@@ -146,6 +147,14 @@ namespace UserControl_region_detail
         {
         Literal_region_name.Text = p.biz_regions.NameOf(p.summary);
         CheckBox_do_include_all_services.Checked = p.do_include_all_services;
+        RequireConfirmation
+          (
+          c:Button_deactivate_ad_hoc_participants,
+          prompt:"Deactivating ad-hoc participants is a safe operation that should be performed after an unconventional deployment has concluded.  Deactivation only sets the participation level to 'None'.  No other data"
+          + " will be altered or removed." + k.NEW_LINE
+          + k.NEW_LINE
+          + "Are you sure you want to de-activate all the ad hoc participants in this region?"
+          );
         if (p.be_interactive)
           {
           Literal_author_target.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.user_target_email : p.user_target_sms);
@@ -182,6 +191,7 @@ namespace UserControl_region_detail
         p.biz_user = new TClass_biz_user();
         p.msg_protected_service_management = new TClass_msg_protected.service_management();
         //
+        p.be_ad_hoc_participants = false;
         p.be_interactive = (Session["mode:report"] == null);
         p.be_more_than_examiner = false;
         p.be_loaded = false;
@@ -190,7 +200,7 @@ namespace UserControl_region_detail
         p.distribution_list_sms = k.EMPTY;
         p.do_include_all_services = false;
         p.region_code = k.EMPTY;
-        p.sort_order = "be_strike_team_participant desc, short_name";
+        p.sort_order = "strike_team_participation_level.pecking_order desc, short_name";
         p.summary = null;
         //
         p.member_id = p.biz_members.IdOfUserId(user_id:p.biz_user.IdNum());
@@ -244,9 +254,15 @@ namespace UserControl_region_detail
           link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           //
-          if (e.Item.Cells[Static.TCI_PARTICIPANT].Text == "YES")
+          var participation = e.Item.Cells[Static.TCI_PARTICIPATION].Text;
+          if (participation == "Standing")
             {
             e.Item.Style.Add(HtmlTextWriterStyle.FontWeight,"bold");
+            }
+          else if (participation == "Ad-hoc")
+            {
+            e.Item.Style.Add(HtmlTextWriterStyle.FontStyle,"italic");
+            p.be_ad_hoc_participants = true;
             }
           //
           p.num_services++;
@@ -284,10 +300,12 @@ namespace UserControl_region_detail
         do_include_all_services:p.do_include_all_services
         );
       p.be_datagrid_empty = (p.num_services == 0);
+      Button_deactivate_ad_hoc_participants.Visible = p.be_ad_hoc_participants;
       TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       Literal_num_services.Text = p.num_services.ToString();
       p.num_services = 0;
+      p.be_ad_hoc_participants = false;
       BuildDistributionListAndRegisterPostBackControls();
       }
 
@@ -416,6 +434,19 @@ namespace UserControl_region_detail
       Bind();
       }
 
+    protected void Button_deactivate_ad_hoc_participants_Click(object sender, EventArgs e)
+      {
+      p.biz_services.DeactivateAdHocParticipants(p.region_code);
+      Alert
+        (
+        cause:k.alert_cause_type.USER,
+        state:k.alert_state_type.NORMAL,
+        key:"regadhocdeacd",
+        value:"All ad hoc participants in this region have been deactivated.",
+        be_using_scriptmanager:true
+        );
+      Bind();
+      }
     } // end TWebUserControl_region_detail
 
   }

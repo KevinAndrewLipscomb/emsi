@@ -165,6 +165,7 @@
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_vehicle.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_vehicles.ascx" />
+    <Content Include="usercontrol\app\UserControl_strike_team_participation_level.ascx" />
     <Content Include="usercontrol\app\UserControl_tow_capacity.ascx" />
     <Content Include="usercontrol\app\UserControl_underway_demobilization.ascx" />
     <Content Include="usercontrol\app\UserControl_vehicle.ascx" />
@@ -196,6 +197,7 @@
     <Compile Include="component\biz\Class_biz_strike_team_deployment_operational_periods.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_deployment_vehicles.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_officers.cs" />
+    <Compile Include="component\biz\Class_biz_strike_team_participation_levels.cs" />
     <Compile Include="component\biz\Class_biz_strike_team_rosters.cs" />
     <Compile Include="component\biz\Class_biz_tiers.cs" />
     <Compile Include="component\biz\Class_biz_tow_capacities.cs" />
@@ -220,6 +222,7 @@
     <Compile Include="component\db\Class_db_strike_team_deployment_member_policies.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployment_operational_periods.cs" />
     <Compile Include="component\db\Class_db_strike_team_deployment_vehicles.cs" />
+    <Compile Include="component\db\Class_db_strike_team_participation_levels.cs" />
     <Compile Include="component\db\Class_db_strike_team_rosters.cs" />
     <Compile Include="component\db\Class_db_tiers.cs" />
     <Compile Include="component\db\Class_db_tow_capacities.cs" />
@@ -899,6 +902,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_vehicles.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_vehicles.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_participation_level.ascx.cs">
+      <DependentUpon>UserControl_strike_team_participation_level.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_participation_level.ascx.designer.cs">
+      <DependentUpon>UserControl_strike_team_participation_level.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_tow_capacity.ascx.cs">
       <DependentUpon>UserControl_tow_capacity.ascx</DependentUpon>

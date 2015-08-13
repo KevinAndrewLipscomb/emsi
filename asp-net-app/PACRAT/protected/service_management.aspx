@@ -89,9 +89,16 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td align="right" nowrap="nowrap">Strike Team participant:</td>
-                                <td>
-                                  <asp:CheckBox ID="CheckBox_be_strike_team_participant" runat="server" AutoPostBack="True" oncheckedchanged="CheckBox_be_strike_team_participant_CheckedChanged" Enabled="False" />
+                                <td align="right" nowrap="nowrap" valign="top">Strike Team participation:</td>
+                                <td valign="top">
+                                  <table>
+                                    <tr>
+                                      <td valign="top">
+                                        <asp:DropDownList ID="DropDownList_strike_team_participation" runat="server" AutoPostBack="True" oncheckedchanged="DropDownList_strike_team_participation_CheckedChanged" Enabled="False" OnSelectedIndexChanged="DropDownList_strike_team_participation_SelectedIndexChanged" />
+                                      </td>
+                                      <td><small><asp:Literal ID="Literal_strike_team_participation_elaboration" runat="server"></asp:Literal></small></td>
+                                    </tr>
+                                  </table>
                                 </td>
                               </tr>
                               <tr>
@@ -275,7 +282,7 @@
           </table>
         </ContentTemplate>
         <Triggers>
-          <asp:AsyncPostBackTrigger ControlID="CheckBox_be_strike_team_participant" EventName="CheckedChanged" />
+          <asp:AsyncPostBackTrigger ControlID="DropDownList_strike_team_participation" EventName="SelectedIndexChanged" />
         </Triggers>
       </asp:UpdatePanel>
       <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent>

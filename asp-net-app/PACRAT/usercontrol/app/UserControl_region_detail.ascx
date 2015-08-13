@@ -21,6 +21,7 @@
                     </td>
                   </tr>
                 </table>
+                <p align="right"><asp:Button ID="Button_deactivate_ad_hoc_participants" runat="server" Text="Deactivate ad-hoc participants" OnClick="Button_deactivate_ad_hoc_participants_Click" Visible="False" /></p>
               </td>
             </tr>
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
@@ -39,14 +40,14 @@
                     <asp:BoundColumn DataField="name" HeaderText="Long name" SortExpression="name%">
                       <ItemStyle Font-Size="Small" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn datafield="be_strike_team_participant" headertext="Participating?" sortexpression="be_strike_team_participant%,name">
+                    <asp:BoundColumn datafield="strike_team_participation" headertext="Participation" sortexpression="strike_team_participation_level.pecking_order%,name">
                       <ItemStyle horizontalalign="Center"></ItemStyle>
                     </asp:BoundColumn>
-                    <asp:BoundColumn DataField="num_members" HeaderText="#members" ReadOnly="True" SortExpression="num_members%,be_strike_team_participant desc,name">
+                    <asp:BoundColumn DataField="num_members" HeaderText="#members" ReadOnly="True" SortExpression="num_members%,strike_team_participation_level.pecking_order desc,name">
                       <HeaderStyle HorizontalAlign="Center" />
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>
-                    <asp:BoundColumn DataField="num_vehicles" HeaderText="#vehicles" ReadOnly="True" SortExpression="num_vehicles%,be_strike_team_participant desc,name">
+                    <asp:BoundColumn DataField="num_vehicles" HeaderText="#vehicles" ReadOnly="True" SortExpression="num_vehicles%,strike_team_participation_level.pecking_order desc,name">
                       <HeaderStyle HorizontalAlign="Center" />
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>

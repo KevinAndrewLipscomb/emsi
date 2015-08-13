@@ -166,13 +166,22 @@ namespace service_management {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
         
         /// <summary>
-        /// CheckBox_be_strike_team_participant control.
+        /// DropDownList_strike_team_participation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_be_strike_team_participant;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_strike_team_participation;
+        
+        /// <summary>
+        /// Literal_strike_team_participation_elaboration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_strike_team_participation_elaboration;
         
         /// <summary>
         /// TextBox_short_name control.

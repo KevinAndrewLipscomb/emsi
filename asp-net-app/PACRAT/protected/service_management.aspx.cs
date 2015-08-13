@@ -5,6 +5,7 @@ using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_roles;
 using Class_biz_services;
+using Class_biz_strike_team_participation_levels;
 using Class_biz_tiers;
 using Class_biz_user;
 using Class_msg_protected;
@@ -55,6 +56,7 @@ namespace service_management
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_roles biz_roles;
       public TClass_biz_services biz_services;
+      public TClass_biz_strike_team_participation_levels biz_strike_team_participation_levels;
       public TClass_biz_tiers biz_tiers;
       public TClass_biz_user biz_user;
       public TClass_msg_protected.service_management incoming;
@@ -463,6 +465,7 @@ namespace service_management
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_roles = new TClass_biz_roles();
         p.biz_services = new TClass_biz_services();
+        p.biz_strike_team_participation_levels = new TClass_biz_strike_team_participation_levels();
         p.biz_tiers = new TClass_biz_tiers();
         p.biz_user = new TClass_biz_user();
         //
@@ -507,8 +510,14 @@ namespace service_management
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - service_management";
-        CheckBox_be_strike_team_participant.Checked = p.biz_services.BeStrikeTeamParticipantOf(p.incoming.summary);
-        CheckBox_be_strike_team_participant.Enabled = p.be_ok_to_edit_roster;
+        var participation_level_id = p.biz_services.StrikeTeamParticipationLevelIdOf(p.incoming.summary);
+        p.biz_strike_team_participation_levels.BindDirectToListControl
+          (
+          target:DropDownList_strike_team_participation,
+          selected_value:participation_level_id
+          );
+        Literal_strike_team_participation_elaboration.Text = p.biz_strike_team_participation_levels.ElaborationOf(participation_level_id);
+        DropDownList_strike_team_participation.Enabled = p.be_ok_to_edit_roster;
         var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
@@ -566,11 +575,6 @@ namespace service_management
         InitForNewSearch();
         }
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
-      }
-
-    protected void CheckBox_be_strike_team_participant_CheckedChanged(object sender, EventArgs e)
-      {
-      p.biz_services.SetStrikeTeamParticipation(p.service_id,(sender as CheckBox).Checked);
       }
 
     protected void LinkButton_drill_down_to_members_Click(object sender, EventArgs e)
@@ -644,6 +648,12 @@ namespace service_management
         }
       }
 
+    protected void DropDownList_strike_team_participation_SelectedIndexChanged(object sender, EventArgs e)
+      {
+      var level_id = k.Safe(DropDownList_strike_team_participation.SelectedValue,k.safe_hint_type.NUM);
+      p.biz_services.SetStrikeTeamParticipation(p.service_id,level_id);
+      Literal_strike_team_participation_elaboration.Text = p.biz_strike_team_participation_levels.ElaborationOf(level_id);
+      }
     } // end TWebForm_service_management
 
   }

@@ -4,6 +4,7 @@ using kix;
 using UserControl_fuel;
 using UserControl_patient_care_level;
 using UserControl_sms_gateway;
+using UserControl_strike_team_participation_level;
 using UserControl_tow_capacity;
 using UserControl_vehicle_kind;
 
@@ -17,6 +18,7 @@ namespace UserControl_business_objects_binder
     public const int TSSI_FUELS = 2;
     public const int TSSI_PATIENT_CARE_LEVELS = 3;
     public const int TSSI_SMS_GATEWAYS = 4;
+    public const int TSSI_ST_PARTICIPATION_LEVELS = 5;
     }
 
   public partial class TWebUserControl_business_objects_binder: ki_web_ui.usercontrol_class
@@ -71,6 +73,12 @@ namespace UserControl_business_objects_binder
         {
         var c = ((TWebUserControl_sms_gateway)(LoadControl("~/usercontrol/app/UserControl_sms_gateway.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_sms_gateway",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        //c.SetTarget(target);
+        }
+      else if (p.tab_index == UserControl_business_objects_binder_Static.TSSI_ST_PARTICIPATION_LEVELS)
+        {
+        var c = ((TWebUserControl_strike_team_participation_level)(LoadControl("~/usercontrol/app/UserControl_strike_team_participation_level.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_participation_level",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         //c.SetTarget(target);
         }
       }
@@ -139,10 +147,6 @@ namespace UserControl_business_objects_binder
           {
           p.be_loaded &= ((Session["UserControl_member_binder_UserControl_config_binder_PlaceHolder_content"] as string) == "UserControl_business_objects_binder");
           }
-//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_business_objects_binder")
-//        {
-//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_business_objects_binder");
-//        }
         //
         // Dynamic controls must be re-added on each postback.
         //
@@ -192,6 +196,10 @@ namespace UserControl_business_objects_binder
         else if (target.ToLower().Contains("/sms-gateways/"))
           {
           p.tab_index = UserControl_business_objects_binder_Static.TSSI_SMS_GATEWAYS;
+          }
+        else if (target.ToLower().Contains("/st-participation-levels/"))
+          {
+          p.tab_index = UserControl_business_objects_binder_Static.TSSI_ST_PARTICIPATION_LEVELS;
           }
         //
         TabContainer_control.ActiveTabIndex = (int)p.tab_index;
