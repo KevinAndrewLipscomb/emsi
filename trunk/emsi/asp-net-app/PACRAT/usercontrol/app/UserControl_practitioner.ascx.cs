@@ -157,7 +157,7 @@ namespace UserControl_practitioner
         LinkButton_go_to_match_next.Text = k.ExpandTildePath(LinkButton_go_to_match_next.Text);
         LinkButton_go_to_match_last.Text = k.ExpandTildePath(LinkButton_go_to_match_last.Text);
         p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);
-        p.biz_regions.BindDirectToListControl(DropDownList_regional_council);
+        p.biz_regions.BindDirectToListControl(DropDownList_regional_council,application_filter:"pacrat");
         p.biz_counties.BindDirectToListControl(DropDownList_residence_county);
         UserControl_drop_down_date_birth_date.minyear = DateTime.Today.AddYears(-130).Year.ToString();
         UserControl_drop_down_date_birth_date.maxyear = DateTime.Today.AddYears(-16).Year.ToString();

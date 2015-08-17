@@ -49,6 +49,7 @@ namespace service_management
       public string affiliate_num;
       public bool be_more_than_examiner;
       public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_add_associate;
       public bool be_ok_to_edit_roster;
       public bool be_sort_order_ascending;
       public TClass_biz_role_member_map biz_role_member_map;
@@ -470,6 +471,11 @@ namespace service_management
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;
+        p.be_ok_to_add_associate = p.biz_privileges.HasForAnyScope
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"add-associates"
+          );
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.service_management>(folder_name:"protected",aspx_name:"service_management");
         p.msg_protected_practitioner_management = new TClass_msg_protected.practitioner_management();
@@ -521,6 +527,8 @@ namespace service_management
         var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
+        LinkButton_add_associate.Visible = p.be_ok_to_add_associate;
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add_associate);
         InitForNewSearch();
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
         Literal_affiliate_num.Text = p.affiliate_num;
@@ -654,6 +662,12 @@ namespace service_management
       p.biz_services.SetStrikeTeamParticipation(p.service_id,level_id);
       Literal_strike_team_participation_elaboration.Text = p.biz_strike_team_participation_levels.ElaborationOf(level_id);
       }
+
+    protected void LinkButton_add_associate_Click(object sender, EventArgs e)
+      {
+      DropCrumbAndTransferTo("add_associate.aspx");
+      }
+
     } // end TWebForm_service_management
 
   }

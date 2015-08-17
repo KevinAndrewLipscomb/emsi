@@ -1,0 +1,25 @@
+Member added to <application_name/>: <last_name/>, <first_name/>
+This is an automatic notification from <application_name/>.
+
+<actor/> has added a NON-PENNSYLVANIA-PRACTITIONER into <application_name/> as follows:
+
+   First name:
+      <first_name/>
+   Last name:
+      <last_name/>
+   Birth date:
+      <birth_date/>
+   Region:
+      <region_name/>
+   Residence county:
+      <residence_county_name/>
+   Practitioner level:
+      <practitioner_level/>
+   Email address:
+      <email_address/>
+
+You can reach <actor/> at:
+
+   <actor_email_address/> (mailto:<actor_email_address/>)
+
+-- <application_name/> (http://<host_domain_name/>/<application_name/>)

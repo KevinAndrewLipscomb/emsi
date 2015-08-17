@@ -121,6 +121,15 @@ namespace practitioner_management {
         protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
         
         /// <summary>
+        /// LinkButton_add_associate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_add_associate;
+        
+        /// <summary>
         /// Literal_service_short_name control.
         /// </summary>
         /// <remarks>
