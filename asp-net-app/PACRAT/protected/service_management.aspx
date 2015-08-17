@@ -40,7 +40,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td valign="top" bgcolor="Gainsboro">
+                      <td align="center" valign="top" bgcolor="Gainsboro">
                         <asp:UpdatePanel ID="UpdatePanel_search_lower" runat="server" UpdateMode="Conditional">
                           <ContentTemplate>
                             <asp:ListBox ID="ListBox_practitioner" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBox_practitioner_SelectedIndexChanged" Rows="13" Width="100%"></asp:ListBox>
@@ -50,6 +50,7 @@
                             <asp:AsyncPostBackTrigger ControlID="Button_add" EventName="Click" />
                           </Triggers>
                         </asp:UpdatePanel>
+                        <small><asp:LinkButton ID="LinkButton_add_associate" runat="server" Visible="false" OnClick="LinkButton_add_associate_Click">Load non-PA-practitioner(s) into the system</asp:LinkButton></small>
                       </td>
                     </tr>
                   </table>

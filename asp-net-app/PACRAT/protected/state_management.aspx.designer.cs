@@ -121,6 +121,15 @@ namespace state_management {
         protected global::System.Web.UI.WebControls.ListBox ListBox_practitioner;
         
         /// <summary>
+        /// LinkButton_add_associate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton_add_associate;
+        
+        /// <summary>
         /// LinkButton_drill_down control.
         /// </summary>
         /// <remarks>

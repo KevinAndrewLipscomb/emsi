@@ -34,7 +34,7 @@ namespace UserControl_establish_membership
                 Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
                 Label_sponsor_4.Text = ConfigurationManager.AppSettings["sponsor"];
                 Label_shared_secret_description_1.Text = ConfigurationManager.AppSettings["shared_secret_description"];
-                p.biz_regions.BindDirectToListControl(target:DropDownList_regional_council,unselected_literal:"-- region --",selected_value:"1",application_filter:"pacrat");
+                p.biz_regions.BindDirectToListControl(target:DropDownList_regional_council,application_filter:"pacrat");
                 UserControl_drop_down_date_birth.minyear = DateTime.Today.AddYears(-130).Year.ToString();
                 UserControl_drop_down_date_birth.maxyear = DateTime.Today.AddYears(-16).Year.ToString();
                 p.biz_practitioner_levels.BindDirectToListControl(DropDownList_level);

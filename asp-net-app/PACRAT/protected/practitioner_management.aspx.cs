@@ -19,7 +19,7 @@ namespace practitioner_management
   {
   public partial class TWebForm_practitioner_management: ki_web_ui.page_class
     {
-    private class Static
+    private static class Static
       {
       public const int TCI_ID = 0;
       public const int TCI_BE_CREDENTIALED = 1;
@@ -45,6 +45,7 @@ namespace practitioner_management
       {
       public bool be_more_than_examiner;
       public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_add_associate;
       public bool be_ok_to_edit_roster;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
@@ -443,6 +444,11 @@ namespace practitioner_management
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;
+        p.be_ok_to_add_associate = p.biz_privileges.HasForAnyScope
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"add-associates"
+          );
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.practitioner_management>(folder_name:"protected",aspx_name:"practitioner_management");
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
@@ -481,6 +487,8 @@ namespace practitioner_management
         var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
+        LinkButton_add_associate.Visible = p.be_ok_to_add_associate;
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add_associate);
         InitForNewSearch();
         Literal_service_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
@@ -534,6 +542,11 @@ namespace practitioner_management
         InitForNewSearch();
         }
       Focus(TextBox_practitioner,be_using_scriptmanager:true,be_redo:true);
+      }
+
+    protected void LinkButton_add_associate_Click(object sender, EventArgs e)
+      {
+      DropCrumbAndTransferTo("add_associate.aspx");
       }
 
     } // end TWebForm_practitioner_management

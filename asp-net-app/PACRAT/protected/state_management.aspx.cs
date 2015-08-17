@@ -2,6 +2,7 @@
 
 using Class_biz_counties;
 using Class_biz_members;
+using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_roles;
 using Class_biz_tiers;
@@ -17,28 +18,6 @@ using System.Web.UI.WebControls;
 
 namespace state_management
   {
-  public struct p_type
-    {
-    public bool be_more_than_examiner;
-    public bool be_noncurrent_practitioners_on_roster;
-    public bool be_ok_to_edit_roster;
-    public bool be_sort_order_ascending;
-    public TClass_biz_role_member_map biz_role_member_map;
-    public TClass_biz_counties biz_counties;
-    public TClass_biz_members biz_members;
-    public TClass_biz_roles biz_roles;
-    public TClass_biz_tiers biz_tiers;
-    public TClass_biz_user biz_user;
-    public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
-    public k.int_nonnegative num_assignees;
-    public k.int_nonnegative num_assignees_with_known_birth_dates;
-    public string state_strike_team_manager_role_id;
-    public string state_tier_id;
-    public ArrayList roster_id_arraylist;
-    public string sort_order;
-    public string user_email_address;
-    }
-
   public partial class TWebForm_state_management: ki_web_ui.page_class
     {
     private static class Static
@@ -62,6 +41,30 @@ namespace state_management
       public const int TCI_EMAIL_ADDRESS = 16;
       public const int TCI_EDIT_UPDATE_CANCEL = 17;
       public const int TCI_STATUS_DESCRIPTION = 18;
+      }
+
+    public struct p_type
+      {
+      public bool be_more_than_examiner;
+      public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_add_associate;
+      public bool be_ok_to_edit_roster;
+      public bool be_sort_order_ascending;
+      public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_counties biz_counties;
+      public TClass_biz_members biz_members;
+      public TClass_biz_privileges biz_privileges;
+      public TClass_biz_roles biz_roles;
+      public TClass_biz_tiers biz_tiers;
+      public TClass_biz_user biz_user;
+      public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
+      public k.int_nonnegative num_assignees;
+      public k.int_nonnegative num_assignees_with_known_birth_dates;
+      public string state_strike_team_manager_role_id;
+      public string state_tier_id;
+      public ArrayList roster_id_arraylist;
+      public string sort_order;
+      public string user_email_address;
       }
 
     private p_type p;
@@ -454,12 +457,18 @@ namespace state_management
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_counties = new TClass_biz_counties();
         p.biz_members = new TClass_biz_members();
+        p.biz_privileges = new TClass_biz_privileges();
         p.biz_roles = new TClass_biz_roles();
         p.biz_tiers = new TClass_biz_tiers();
         p.biz_user = new TClass_biz_user();
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_more_than_examiner = k.Has(Session["privilege_array"] as string[],"config-strike-team-state");
+        p.be_ok_to_add_associate = p.biz_privileges.HasForAnyScope
+          (
+          member_id:p.biz_members.IdOfUserId(p.biz_user.IdNum()),
+          privilege_name:"add-associates"
+          );
         p.be_sort_order_ascending = true;
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         p.num_assignees = new k.int_nonnegative();
@@ -489,6 +498,8 @@ namespace state_management
         var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY,k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
+        LinkButton_add_associate.Visible = p.be_ok_to_add_associate;
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add_associate);
         InitForNewSearch();
         LinkButton_drill_down.Text = k.ExpandTildePath(LinkButton_drill_down.Text);
         //
@@ -561,6 +572,11 @@ namespace state_management
             );
           }
         }
+      }
+
+    protected void LinkButton_add_associate_Click(object sender, EventArgs e)
+      {
+      DropCrumbAndTransferTo("add_associate.aspx");
       }
 
     } // end TWebForm_state_management
