@@ -91,6 +91,13 @@ namespace UserControl_strike_team_deployment_snapshot
       if (!p.be_loaded)
         {
         p.be_loaded = true;
+        RequireConfirmation
+          (
+          c:Button_export,
+          prompt:"We will send you XMLSS-formatted data masquerading as an XLS file so that it will open up in your spreadsheet program.  The discrepancy is intentional.  The file is not corrupt or untrustworthy." + k.NEW_LINE
+          + k.NEW_LINE
+          + "If your spreadsheet program mentions these things and asks if you want to open the file, click 'Yes'."
+          );
         }
       ScriptManager.GetCurrent(Page).RegisterPostBackControl(Button_export);
       }

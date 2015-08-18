@@ -442,6 +442,14 @@ namespace ready_roster_detail
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
+        //
+        RequireConfirmation
+          (
+          c:LinkButton_gen_lcds,
+          prompt:"We will send you HTML-formatted data masquerading as an XLS file so that it will open up in your spreadsheet program.  The discrepancy is intentional.  The file is not corrupt or untrustworthy." + k.NEW_LINE
+          + k.NEW_LINE
+          + "If your spreadsheet program mentions these things and asks if you want to open the file, click 'Yes'."
+          );
         }
       InjectPersistentClientSideScript();
       }
