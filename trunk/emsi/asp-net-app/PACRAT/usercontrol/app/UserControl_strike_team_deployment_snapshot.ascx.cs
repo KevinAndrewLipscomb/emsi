@@ -229,12 +229,12 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.assignments_content_xml +=
         "<ss:Row>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_PRELIM_SHIFT_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_START].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_END].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_VEHICLE].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_MEMBER_DESIGNATOR].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_PRELIM_SHIFT_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_START].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_END].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_VEHICLE].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_MEMBER_DESIGNATOR].Text + "</ss:Data></ss:Cell>"
       + "</ss:Row>";
       }
 
@@ -251,14 +251,14 @@ namespace UserControl_strike_team_deployment_snapshot
       //
       p.digest_content_xml +=
         "<ss:Row>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_PRELIM_SHIFT_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_START].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_END].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_KIND].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_PAR].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_PRELIM_SHIFT_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_START].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_END].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_KIND].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_PAR].Text + "</ss:Data></ss:Cell>"
       + "</ss:Row>";
       }
 
@@ -266,9 +266,9 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.log_content_xml +=
         "<ss:Row>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_TIMESTAMP].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_ACTOR].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_ACTION].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_TIMESTAMP].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_ACTOR].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_ACTION].Text + "</ss:Data></ss:Cell>"
       + "</ss:Row>";
       }
 
@@ -276,10 +276,10 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.operational_periods_content_xml +=
         "<ss:Row>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_PRELIM_SHIFT_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_START].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_END].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_PRELIM_SHIFT_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_START].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_END].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
       + "</ss:Row>";
       }
 
@@ -287,11 +287,11 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.personnel_content_xml +=
         "<ss:Row>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_TAG_NUM].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_LAST_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_FIRST_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_LEVEL].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_AFFILIATION].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_TAG_NUM].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_LAST_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_FIRST_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_LEVEL].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_AFFILIATION].Text + "</ss:Data></ss:Cell>"
       + "</ss:Row>";
       }
 
@@ -299,16 +299,16 @@ namespace UserControl_strike_team_deployment_snapshot
       {
       p.vehicles_content_xml +=
         "<ss:Row>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TACTICAL_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TRANSPONDER_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_SERVICE].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_NAME].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_LEVEL].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_KIND].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_DECAL_NUM].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TOW_CAPACITY].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_FUEL].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data>" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_BE_AWD].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TACTICAL_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TRANSPONDER_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_SERVICE].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_NAME].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_LEVEL].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_KIND].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_DECAL_NUM].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TOW_CAPACITY].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_FUEL].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_BE_AWD].Text + "</ss:Data></ss:Cell>"
       + "</ss:Row>";
       }
 
@@ -330,12 +330,12 @@ namespace UserControl_strike_team_deployment_snapshot
         + "<ss:Workbook xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">" + k.NEW_LINE
         +   "<ss:Worksheet ss:Name=\"Intro\">" + k.NEW_LINE
         +     "<ss:Table>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>This is a snapshot of data associated with the '" + name + "' deployment.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>This deployment's personnel participation policy is set to '" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "'.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>The authority and scope of this data is the Pennsylvania EMS Strike Team Coordination Center.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
-        +       "<ss:Row><ss:Cell><ss:Data>Use the worksheet tabs in this workbook to browse this data.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">This is a snapshot of data associated with the '" + name + "' deployment.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">This deployment's personnel participation policy is set to '" + p.biz_strike_team_deployment_member_policies.DescriptionOf(member_policy_id).ToUpper() + "'.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">The authority and scope of this data is the Pennsylvania EMS Strike Team Coordination Center.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">The authority initiated tracking of this deployment on " + creation_date.ToString("dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">This snapshot was taken at " + mark.ToString("HH:mm:ss.f dddd d MMMM yyyy") + ".</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
+        +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">Use the worksheet tabs in this workbook to browse this data.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
         +     "</ss:Table>" + k.NEW_LINE
         +   "</ss:Worksheet>" + k.NEW_LINE
         +   "<ss:Worksheet ss:Name=\"Personnel\"><ss:Table>" + p.personnel_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
