@@ -154,8 +154,8 @@ namespace UserControl_add_associate
             (
             cause:k.alert_cause_type.USER,
             state:k.alert_state_type.SUCCESS,
-            key:"recsaved",
-            value:"Record saved.",
+            key:"asctloaded",
+            value:"You have loaded this person into the system.  Now they will appear when you search for them on the appropriate roster management page.",
             be_using_scriptmanager:true
             );
           SetDataEntryMode();
