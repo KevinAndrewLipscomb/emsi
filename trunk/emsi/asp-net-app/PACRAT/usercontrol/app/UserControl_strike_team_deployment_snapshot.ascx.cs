@@ -327,7 +327,7 @@ namespace UserControl_strike_team_deployment_snapshot
         );
       var raw_xml = k.EMPTY
         + "<?xml version=\"1.0\"?>" + k.NEW_LINE
-        + "<ss:Workbook xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">" + k.NEW_LINE
+        + "<ss:Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:x=\"urn:schemas-microsoft-com:office:excel\" xmlns:ss=\"urn:schemas-microsoft-com:office:spreadsheet\">" + k.NEW_LINE
         +   "<ss:Worksheet ss:Name=\"Intro\">" + k.NEW_LINE
         +     "<ss:Table>" + k.NEW_LINE
         +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">This is a snapshot of data associated with the '" + name + "' deployment.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
