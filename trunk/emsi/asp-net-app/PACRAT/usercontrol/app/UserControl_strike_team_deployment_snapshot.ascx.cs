@@ -349,7 +349,7 @@ namespace UserControl_strike_team_deployment_snapshot
         (
         the_page:Page,
         filename_sans_extension:"PACRAT-" + p.deployment_id.ToString() + "-" + k.Safe(name,k.safe_hint_type.ALPHANUM) + "-" + mark.ToString("yyyyMMddHHmmssf"),
-        excel_string:k.Unix2Dos(raw_xml.Replace("&nbsp;",k.EMPTY))
+        excel_string:raw_xml.Replace("&nbsp;",k.EMPTY)
         );
       }
 
