@@ -61,6 +61,7 @@ namespace service_management
       public TClass_biz_tiers biz_tiers;
       public TClass_biz_user biz_user;
       public TClass_msg_protected.service_management incoming;
+      public TClass_msg_protected.add_associate msg_protected_add_associate;
       public TClass_msg_protected.practitioner_management msg_protected_practitioner_management;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public TClass_msg_protected.vehicle_management msg_protected_vehicle_management;
@@ -70,6 +71,7 @@ namespace service_management
       public string service_tier_id;
       public ArrayList roster_id_arraylist;
       public string service_id;
+      public string service_short_name;
       public string sort_order;
       public string user_email_address;
       }
@@ -501,6 +503,12 @@ namespace service_management
         //
         p.affiliate_num = p.biz_services.AffiliateNumOf(p.incoming.summary);;
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
+        p.service_short_name = p.biz_services.ShortNameOf(p.service_id);
+        //
+        p.msg_protected_add_associate = new TClass_msg_protected.add_associate();
+        p.msg_protected_add_associate.tier_name = "Service";
+        p.msg_protected_add_associate.association_id = p.service_id;
+        p.msg_protected_add_associate.association_name = p.service_short_name;
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -532,7 +540,7 @@ namespace service_management
         InitForNewSearch();
         Literal_service_name.Text = p.biz_services.NameOfSummary(p.incoming.summary);
         Literal_affiliate_num.Text = p.affiliate_num;
-        TextBox_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
+        TextBox_short_name.Text = p.service_short_name;
         TextBox_short_name.Enabled = p.be_ok_to_edit_roster;
         Button_save_short_name.Visible = p.be_ok_to_edit_roster;
         LinkButton_drill_down_to_members.Text = k.ExpandTildePath(LinkButton_drill_down_to_members.Text);
@@ -665,7 +673,12 @@ namespace service_management
 
     protected void LinkButton_add_associate_Click(object sender, EventArgs e)
       {
-      DropCrumbAndTransferTo("add_associate.aspx");
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_add_associate,
+        folder_name:"protected",
+        aspx_name:"add_associate"
+        );
       }
 
     } // end TWebForm_service_management

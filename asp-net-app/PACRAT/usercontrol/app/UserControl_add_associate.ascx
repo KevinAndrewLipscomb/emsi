@@ -8,8 +8,8 @@
         <tr>
           <td bgcolor="whitesmoke">
             <h3>Load a non-Pennsylvania-practitioner into the system</h3>
-            <asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> is already loaded with a list of all Pennsylvania EMS practitioners, but you must manually load other personnel into the system using this form.<br />
-            <br />
+            <p><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> is already loaded with a list of all Pennsylvania EMS practitioners, but you must manually load other personnel into the system using this form.</p>
+            <p>You are also adding this person<asp:Literal ID="Literal_association_clause" runat="server"></asp:Literal></p>
             <table cellpadding="10" cellspacing="0" bgcolor="red">
               <tr>
                 <td align="center">
@@ -143,6 +143,25 @@
     <td nowrap="nowrap">
       <asp:RegularExpressionValidator id="RegularExpressionValidator_city_state_zip" runat="server" errormessage="Please enter a valid City state zip." font-bold="True" controltovalidate="TextBox_city_state_zip" validationexpression="[a-zA-Z\-. ]+">!ERR!</asp:RegularExpressionValidator>
     </td>
+  </tr>
+  <tr>
+    <td><font class="">Phone&nbsp;number:</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_phone_number" runat="server" columns="10" maxlength="10" cssclass=""></ASP:TextBox>
+      </font>
+    </td>
+    <td nowrap="nowrap">
+      <ASP:CustomValidator id="CustomValidator_phone_num" runat="server" errormessage="Please enter a valid Phone number.  Premium and reserved numbers are not allowed." controltovalidate="TextBox_phone_number" font-bold="True" onservervalidate="CustomValidator_phone_number_ServerValidate" Display="Dynamic">!ERR!</ASP:CustomValidator>
+    </td>
+  </tr>
+  <tr>
+    <td><font class="">Phone&nbsp;service&nbsp;id:</font></td>
+    <td>
+      <asp:DropDownList ID="DropDownList_phone_service" runat="server">
+      </asp:DropDownList>
+    </td>
+    <td nowrap="nowrap">&nbsp;</td>
   </tr>
       </table>
     </td>

@@ -60,6 +60,7 @@ namespace region_management
       public TClass_biz_tiers biz_tiers;
       public TClass_biz_user biz_user;
       public TClass_msg_protected.region_management incoming;
+      public TClass_msg_protected.add_associate msg_protected_add_associate;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public TClass_msg_protected.region_detail msg_protected_region_detail;
       public k.int_nonnegative num_assignees;
@@ -492,6 +493,11 @@ namespace region_management
         //
         p.be_ok_to_edit_roster = p.be_more_than_examiner; //p.biz_regions.BeOkToEditRoster(p.incoming.summary);
         p.region_code = p.biz_regions.CodeOf(p.incoming.summary);
+        //
+        p.msg_protected_add_associate = new TClass_msg_protected.add_associate();
+        p.msg_protected_add_associate.tier_name = "Region";
+        p.msg_protected_add_associate.association_id = p.region_code;
+        p.msg_protected_add_associate.association_name = p.biz_regions.NameOf(p.incoming.summary);
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -600,7 +606,12 @@ namespace region_management
 
     protected void LinkButton_add_associate_Click(object sender, EventArgs e)
       {
-      DropCrumbAndTransferTo("add_associate.aspx");
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_add_associate,
+        folder_name:"protected",
+        aspx_name:"add_associate"
+        );
       }
 
     } // end TWebForm_region_management

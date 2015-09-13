@@ -11,6 +11,12 @@ namespace Class_msg_protected
 
   public class TClass_msg_protected
     {
+    public class add_associate
+      {
+      internal string tier_name = k.EMPTY;
+      internal string association_id = k.EMPTY;
+      internal string association_name = k.EMPTY;
+      }
     public class mobilization_announcement
       {
       internal object deployment_summary;
