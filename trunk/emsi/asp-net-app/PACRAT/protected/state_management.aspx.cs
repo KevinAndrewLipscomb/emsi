@@ -57,6 +57,7 @@ namespace state_management
       public TClass_biz_roles biz_roles;
       public TClass_biz_tiers biz_tiers;
       public TClass_biz_user biz_user;
+      public TClass_msg_protected.add_associate msg_protected_add_associate;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public k.int_nonnegative num_assignees;
       public k.int_nonnegative num_assignees_with_known_birth_dates;
@@ -470,6 +471,8 @@ namespace state_management
           privilege_name:"add-associates"
           );
         p.be_sort_order_ascending = true;
+        p.msg_protected_add_associate = new TClass_msg_protected.add_associate();
+        p.msg_protected_add_associate.tier_name = "State";
         p.msg_protected_practitioner_profile = new TClass_msg_protected.practitioner_profile();
         p.num_assignees = new k.int_nonnegative();
         p.num_assignees_with_known_birth_dates = new k.int_nonnegative();
@@ -576,7 +579,12 @@ namespace state_management
 
     protected void LinkButton_add_associate_Click(object sender, EventArgs e)
       {
-      DropCrumbAndTransferTo("add_associate.aspx");
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_add_associate,
+        folder_name:"protected",
+        aspx_name:"add_associate"
+        );
       }
 
     } // end TWebForm_state_management

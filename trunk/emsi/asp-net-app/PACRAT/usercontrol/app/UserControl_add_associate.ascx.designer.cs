@@ -22,6 +22,15 @@ namespace UserControl_add_associate {
         protected global::System.Web.UI.WebControls.Literal Literal_application_name;
         
         /// <summary>
+        /// Literal_association_clause control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_association_clause;
+        
+        /// <summary>
         /// TextBox_last_name control.
         /// </summary>
         /// <remarks>
@@ -227,6 +236,33 @@ namespace UserControl_add_associate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_city_state_zip;
+        
+        /// <summary>
+        /// TextBox_phone_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_phone_number;
+        
+        /// <summary>
+        /// CustomValidator_phone_num control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_phone_num;
+        
+        /// <summary>
+        /// DropDownList_phone_service control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_phone_service;
         
         /// <summary>
         /// Button_submit control.

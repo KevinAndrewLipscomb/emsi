@@ -55,12 +55,14 @@ namespace practitioner_management
       public TClass_biz_tiers biz_tiers;
       public TClass_biz_user biz_user;
       public TClass_msg_protected.practitioner_management incoming;
+      public TClass_msg_protected.add_associate msg_protected_add_associate;
       public TClass_msg_protected.practitioner_profile msg_protected_practitioner_profile;
       public k.int_nonnegative num_assignees;
       public k.int_nonnegative num_assignees_with_known_birth_dates;
       public string service_tier_id;
       public ArrayList roster_id_arraylist;
       public string service_id;
+      public string service_short_name;
       public string sort_order;
       public string user_email_address;
       }
@@ -461,6 +463,7 @@ namespace practitioner_management
         //
         p.be_more_than_examiner = p.incoming.be_more_than_examiner;
         p.service_id = p.biz_services.IdOf(p.incoming.summary);
+        p.service_short_name =  p.biz_services.ShortNameOfSummary(p.incoming.summary);
         //
         //p.be_ok_to_edit_roster = p.biz_privileges.HasForService
         //  (
@@ -469,6 +472,11 @@ namespace practitioner_management
         //  service_id:p.service_id
         //  );
         p.be_ok_to_edit_roster = p.be_more_than_examiner;
+        //
+        p.msg_protected_add_associate = new TClass_msg_protected.add_associate();
+        p.msg_protected_add_associate.tier_name = "Practitioner";
+        p.msg_protected_add_associate.association_id = p.service_id;
+        p.msg_protected_add_associate.association_name = p.service_short_name;
         }
       else if (nature_of_visit == nature_of_visit_type.VISIT_POSTBACK_STANDARD)
         {
@@ -490,7 +498,7 @@ namespace practitioner_management
         LinkButton_add_associate.Visible = p.be_ok_to_add_associate;
         ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_add_associate);
         InitForNewSearch();
-        Literal_service_short_name.Text = p.biz_services.ShortNameOf(p.service_id);
+        Literal_service_short_name.Text = p.service_short_name;
         Literal_affiliate_num.Text = p.biz_services.AffiliateNumOf(p.incoming.summary);
         //
         var hash_table = new Hashtable();
@@ -546,7 +554,12 @@ namespace practitioner_management
 
     protected void LinkButton_add_associate_Click(object sender, EventArgs e)
       {
-      DropCrumbAndTransferTo("add_associate.aspx");
+      MessageDropCrumbAndTransferTo
+        (
+        msg:p.msg_protected_add_associate,
+        folder_name:"protected",
+        aspx_name:"add_associate"
+        );
       }
 
     } // end TWebForm_practitioner_management
