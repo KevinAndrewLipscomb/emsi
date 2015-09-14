@@ -2,16 +2,18 @@ using Class_db_practitioner_levels;
 using kix;
 
 namespace Class_biz_practitioner_levels
-{
+  {
+
     public class TClass_biz_practitioner_levels
     {
+
         private TClass_db_practitioner_levels db_practitioner_levels = null;
-        //Constructor  Create()
+
         public TClass_biz_practitioner_levels() : base()
         {
-            // TODO: Add any constructor code here
             db_practitioner_levels = new TClass_db_practitioner_levels();
         }
+
         public bool Bind(string partial_code, object target)
         {
             bool result;
@@ -19,20 +21,16 @@ namespace Class_biz_practitioner_levels
             return result;
         }
 
-        public void BindDirectToListControl(object target, string unselected_literal, string selected_value)
-        {
-            db_practitioner_levels.BindDirectToListControl(target, unselected_literal, selected_value);
-        }
-
-        public void BindDirectToListControl(object target)
-        {
-            BindDirectToListControl(target, "-- practitioner level --");
-        }
-
-        public void BindDirectToListControl(object target, string unselected_literal)
-        {
-            BindDirectToListControl(target, unselected_literal, k.EMPTY);
-        }
+    public void BindDirectToListControl
+      (
+      object target,
+      string unselected_literal = "-- practitioner level --",
+      string selected_value = k.EMPTY,
+      bool be_short_description_desired = false
+      )
+      {
+      db_practitioner_levels.BindDirectToListControl(target,unselected_literal,selected_value,be_short_description_desired);
+      }
 
         public bool Delete(string code)
         {
@@ -57,4 +55,4 @@ namespace Class_biz_practitioner_levels
 
     } // end TClass_biz_practitioner_levels
 
-}
+  }

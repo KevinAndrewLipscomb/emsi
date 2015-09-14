@@ -1,6 +1,7 @@
 // Derived from template~protected~nonlanding.aspx.cs~template
 
 using Class_biz_members;
+using Class_biz_practitioner_levels;
 using Class_biz_privileges;
 using Class_biz_services;
 using Class_biz_strike_team_rosters;
@@ -31,8 +32,8 @@ namespace practitioner_management
       public const int TCI_LAST_NAME = 7;
       public const int TCI_FIRST_NAME = 8;
       public const int TCI_MIDDLE_INITIAL = 9;
-      public const int TCI_LEVEL = 10;
-      public const int TCI_LEVEL_EMSRS_CODE = 11;
+      public const int TCI_LEVEL_ID = 10;
+      public const int TCI_LEVEL_SHORT_DESCRIPTION = 11;
       public const int TCI_CERT_NUM = 12;
       public const int TCI_BE_DOB_CONFIRMED = 13;
       public const int TCI_DOB = 14;
@@ -49,6 +50,7 @@ namespace practitioner_management
       public bool be_ok_to_edit_roster;
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_privileges biz_privileges;
       public TClass_biz_services biz_services;
       public TClass_biz_strike_team_rosters biz_strike_team_rosters;
@@ -341,6 +343,15 @@ namespace practitioner_management
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Cancel edit";
           //
+          var drop_down_list_level = e.Item.Cells[Static.TCI_LEVEL_SHORT_DESCRIPTION].FindControl("DropDownList_level") as DropDownList;
+          p.biz_practitioner_levels.BindDirectToListControl
+            (
+            target:drop_down_list_level,
+            unselected_literal:"nocert",
+            selected_value:e.Item.Cells[Static.TCI_LEVEL_ID].Text,
+            be_short_description_desired:true
+            );
+          //
           var text_box_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
           if (text_box_dob.Text == "REQUIRED")
             {
@@ -358,6 +369,7 @@ namespace practitioner_management
           (e.Item.Cells[Static.TCI_LAST_NAME].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
           (e.Item.Cells[Static.TCI_FIRST_NAME].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
           (e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
+          drop_down_list_level.Enabled = be_non_pa_practitioner;
           }
         if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
@@ -411,14 +423,15 @@ namespace practitioner_management
           birth_date:DateTime.Parse(k.Safe((e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
           email_address:k.Safe((e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
           );
-        if (e.Item.Cells[Static.TCI_LEVEL].Text == "nocert")
+        if (e.Item.Cells[Static.TCI_CERT_NUM].Text == "nocert")
           {
           p.biz_members.SetForNonPaPractitionerOnly
             (
             id:practitioner_id,
             last_name:k.Safe((e.Item.Cells[Static.TCI_LAST_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.HUMAN_NAME),
             first_name:k.Safe((e.Item.Cells[Static.TCI_FIRST_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.HUMAN_NAME),
-            middle_initial:k.Safe((e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Text,k.safe_hint_type.ALPHA)
+            middle_initial:k.Safe((e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Text,k.safe_hint_type.ALPHA),
+            level_id:k.Safe((e.Item.Cells[Static.TCI_LEVEL_ID].FindControl("DropDownList_level") as DropDownList).SelectedValue,k.safe_hint_type.NUM)
             );
           }
         p.biz_strike_team_rosters.Set
@@ -454,6 +467,7 @@ namespace practitioner_management
         // Initialize p.~ objects here.
         //
         p.biz_members = new TClass_biz_members();
+        p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         p.biz_privileges = new TClass_biz_privileges();
         p.biz_services = new TClass_biz_services();
         p.biz_strike_team_rosters = new TClass_biz_strike_team_rosters();
