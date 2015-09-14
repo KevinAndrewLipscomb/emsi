@@ -2,6 +2,7 @@
 
 using Class_biz_counties;
 using Class_biz_members;
+using Class_biz_practitioner_levels;
 using Class_biz_privileges;
 using Class_biz_role_member_map;
 using Class_biz_roles;
@@ -31,8 +32,8 @@ namespace state_management
       public const int TCI_LAST_NAME = 6;
       public const int TCI_FIRST_NAME = 7;
       public const int TCI_MIDDLE_INITIAL = 8;
-      public const int TCI_LEVEL = 9;
-      public const int TCI_LEVEL_EMSRS_CODE = 10;
+      public const int TCI_LEVEL_ID = 9;
+      public const int TCI_LEVEL_SHORT_DESCRIPTION = 10;
       public const int TCI_CERT_NUM = 11;
       public const int TCI_BE_DOB_CONFIRMED = 12;
       public const int TCI_DOB = 13;
@@ -43,17 +44,18 @@ namespace state_management
       public const int TCI_STATUS_DESCRIPTION = 18;
       }
 
-    public struct p_type
+    private struct p_type
       {
       public bool be_more_than_examiner;
       public bool be_noncurrent_practitioners_on_roster;
       public bool be_ok_to_add_associate;
       public bool be_ok_to_edit_roster;
       public bool be_sort_order_ascending;
-      public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_counties biz_counties;
       public TClass_biz_members biz_members;
+      public TClass_biz_practitioner_levels biz_practitioner_levels;
       public TClass_biz_privileges biz_privileges;
+      public TClass_biz_role_member_map biz_role_member_map;
       public TClass_biz_roles biz_roles;
       public TClass_biz_tiers biz_tiers;
       public TClass_biz_user biz_user;
@@ -337,6 +339,15 @@ namespace state_management
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Cancel edit";
           //
+          var drop_down_list_level = e.Item.Cells[Static.TCI_LEVEL_SHORT_DESCRIPTION].FindControl("DropDownList_level") as DropDownList;
+          p.biz_practitioner_levels.BindDirectToListControl
+            (
+            target:drop_down_list_level,
+            unselected_literal:"nocert",
+            selected_value:e.Item.Cells[Static.TCI_LEVEL_ID].Text,
+            be_short_description_desired:true
+            );
+          //
           var text_box_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
           if (text_box_dob.Text == "REQUIRED")
             {
@@ -364,6 +375,7 @@ namespace state_management
           (e.Item.Cells[Static.TCI_LAST_NAME].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
           (e.Item.Cells[Static.TCI_FIRST_NAME].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
           (e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
+          drop_down_list_level.Enabled = be_non_pa_practitioner;
           }
         if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
@@ -435,14 +447,15 @@ namespace state_management
             );
           }
         //
-        if (e.Item.Cells[Static.TCI_LEVEL].Text == "nocert")
+        if (e.Item.Cells[Static.TCI_CERT_NUM].Text == "nocert")
           {
           p.biz_members.SetForNonPaPractitionerOnly
             (
             id:practitioner_id,
             last_name:k.Safe((e.Item.Cells[Static.TCI_LAST_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.HUMAN_NAME),
             first_name:k.Safe((e.Item.Cells[Static.TCI_FIRST_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.HUMAN_NAME),
-            middle_initial:k.Safe((e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Text,k.safe_hint_type.ALPHA)
+            middle_initial:k.Safe((e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Text,k.safe_hint_type.ALPHA),
+            level_id:k.Safe((e.Item.Cells[Static.TCI_LEVEL_ID].FindControl("DropDownList_level") as DropDownList).SelectedValue,k.safe_hint_type.NUM)
             );
           }
         DataGrid_control.EditItemIndex = -1;
@@ -471,10 +484,11 @@ namespace state_management
         //
         // Initialize p.~ objects here.
         //
-        p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_counties = new TClass_biz_counties();
         p.biz_members = new TClass_biz_members();
+        p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         p.biz_privileges = new TClass_biz_privileges();
+        p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_roles = new TClass_biz_roles();
         p.biz_tiers = new TClass_biz_tiers();
         p.biz_user = new TClass_biz_user();

@@ -165,10 +165,14 @@
                                           <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc"></asp:BoundColumn>
                                           <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc"></asp:BoundColumn>
                                           <asp:BoundColumn datafield="middle_initial"></asp:BoundColumn>
-                                          <asp:BoundColumn DataField="level" HeaderText="Level" ReadOnly="True" SortExpression="practitioner_level.pecking_order%,last_name,first_name,middle_initial,certification_number,birth_date desc">
+                                          <asp:BoundColumn DataField="level_id" ReadOnly="True" Visible="false"></asp:BoundColumn>
+                                          <asp:TemplateColumn HeaderText="Level" SortExpression="practitioner_level.pecking_order%,last_name,first_name,middle_initial,certification_number,birth_date desc">
+                                            <ItemTemplate><asp:Label ID="Label_level" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.level_short_description") %>'></asp:Label></ItemTemplate>
+                                            <EditItemTemplate>
+                                              <asp:DropDownList ID="DropDownList_level" runat="server"></asp:DropDownList>
+                                            </EditItemTemplate>
                                             <ItemStyle Wrap="false" />
-                                          </asp:BoundColumn>
-                                          <asp:BoundColumn DataField="level_emsrs_code" Visible="false" ReadOnly="True"></asp:BoundColumn>
+                                          </asp:TemplateColumn>
                                           <asp:BoundColumn datafield="certification_number_for_display" headertext="Cert#" sortexpression="certification_number%,last_name,first_name,middle_initial,practitioner_level.pecking_order,birth_date desc" ReadOnly="True"></asp:BoundColumn>
                                           <asp:BoundColumn DataField="be_birth_date_confirmed" ReadOnly="True" Visible="false"></asp:BoundColumn>
                                           <asp:TemplateColumn HeaderText="DOB" SortExpression="birth_date%,last_name,first_name,middle_initial,practitioner_level.pecking_order,certification_number">
