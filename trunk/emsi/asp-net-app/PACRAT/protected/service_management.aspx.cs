@@ -367,6 +367,11 @@ namespace service_management
             {
             text_box_email_address.Text = k.EMPTY;
             }
+          //
+          var be_non_pa_practitioner = (e.Item.Cells[Static.TCI_CERT_NUM].Text == "nocert");
+          (e.Item.Cells[Static.TCI_LAST_NAME].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
+          (e.Item.Cells[Static.TCI_FIRST_NAME].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
+          (e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Enabled = be_non_pa_practitioner;
           }
         if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
@@ -437,6 +442,17 @@ namespace service_management
           be_granted:true,
           service_id:p.service_id
           );
+        //
+        if (e.Item.Cells[Static.TCI_LEVEL].Text == "nocert")
+          {
+          p.biz_members.SetForNonPaPractitionerOnly
+            (
+            id:practitioner_id,
+            last_name:k.Safe((e.Item.Cells[Static.TCI_LAST_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.HUMAN_NAME),
+            first_name:k.Safe((e.Item.Cells[Static.TCI_FIRST_NAME].Controls[0] as TextBox).Text,k.safe_hint_type.HUMAN_NAME),
+            middle_initial:k.Safe((e.Item.Cells[Static.TCI_MIDDLE_INITIAL].Controls[0] as TextBox).Text,k.safe_hint_type.ALPHA)
+            );
+          }
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
