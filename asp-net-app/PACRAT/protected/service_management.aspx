@@ -162,9 +162,9 @@
                                           </asp:TemplateColumn>
                                           <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Delete" Visible="False"></asp:ButtonColumn>
                                           <asp:BoundColumn datafield="practitioner_id" Visible="false" ReadOnly="True"></asp:BoundColumn>
-                                          <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
-                                          <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc" ReadOnly="True"></asp:BoundColumn>
-                                          <asp:BoundColumn datafield="middle_initial" ReadOnly="True"></asp:BoundColumn>
+                                          <asp:BoundColumn datafield="last_name" headertext="Last name" sortexpression="last_name%,first_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc"></asp:BoundColumn>
+                                          <asp:BoundColumn datafield="first_name" headertext="First name" sortexpression="first_name%,last_name,middle_initial,practitioner_level.pecking_order,certification_number,birth_date desc"></asp:BoundColumn>
+                                          <asp:BoundColumn datafield="middle_initial"></asp:BoundColumn>
                                           <asp:BoundColumn DataField="level" HeaderText="Level" ReadOnly="True" SortExpression="practitioner_level.pecking_order%,last_name,first_name,middle_initial,certification_number,birth_date desc">
                                             <ItemStyle Wrap="false" />
                                           </asp:BoundColumn>
