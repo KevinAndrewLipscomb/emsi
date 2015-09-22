@@ -39,7 +39,7 @@
                       <asp:BoundColumn datafield="last_name" headertext="Last name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="first_name" headertext="First name" ReadOnly="True"></asp:BoundColumn>
                       <asp:BoundColumn datafield="middle_initial" ReadOnly="True"></asp:BoundColumn>
-                      <asp:BoundColumn DataField="level" HeaderText="Level" ReadOnly="True">
+                      <asp:BoundColumn DataField="level_short_description" HeaderText="Level" ReadOnly="True">
                         <ItemStyle Wrap="false" />
                       </asp:BoundColumn>
                       <asp:BoundColumn datafield="certification_number_for_display" headertext="Cert#" ReadOnly="True"></asp:BoundColumn>
