@@ -1,6 +1,12 @@
 <%@ Control Language="c#" AutoEventWireup="True" CodeBehind="UserControl_postcontent.ascx.cs" Inherits="UserControl_postcontent.TWebUserControl_postcontent" %>
 </td></tr></table>
 <p></p>
+<table id="Table_realtime_tech_support" runat="server" bgcolor="khaki" width="100%">
+  <tr>
+    <td align="center"><b>For real-time tech support for <u>September Support - Philadelphia</u> deployment, call <a href="tel:866-430-4545">866-430-4545</a>.</b></td>
+  </tr>
+</table>
+<p></p>
 <table>
   <tr>
     <td>
