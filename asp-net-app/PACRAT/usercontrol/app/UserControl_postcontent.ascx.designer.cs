@@ -13,6 +13,15 @@ namespace UserControl_postcontent {
     public partial class TWebUserControl_postcontent {
         
         /// <summary>
+        /// Table_realtime_tech_support control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_realtime_tech_support;
+        
+        /// <summary>
         /// Anchor_strike_team_guidelines control.
         /// </summary>
         /// <remarks>
