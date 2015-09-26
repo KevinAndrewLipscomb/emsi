@@ -10,9 +10,8 @@ using Class_biz_strike_team_deployments;
 using kix;
 using System;
 using System.Collections;
-using System.Web.UI.WebControls;
-using AjaxControlToolkit;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_strike_team_deployment_snapshot
   {
@@ -240,9 +239,10 @@ namespace UserControl_strike_team_deployment_snapshot
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_START].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_END].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_VEHICLE].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_VEHICLE].Text.Replace("&","&amp;") + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.ASSIGNMENTS_CI_MEMBER_DESIGNATOR].Text + "</ss:Data></ss:Cell>"
-      + "</ss:Row>";
+      + "</ss:Row>"
+      + k.NEW_LINE;
       }
 
     protected void DataGrid_digest_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)
@@ -262,11 +262,12 @@ namespace UserControl_strike_team_deployment_snapshot
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_START].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_END].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
-      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE].Text + "</ss:Data></ss:Cell>"
+      +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE].Text.Replace("&","&amp;") + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_VEHICLE_PATIENT_CARE_LEVEL_ID].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_KIND].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.DIGEST_CI_PAR].Text + "</ss:Data></ss:Cell>"
-      + "</ss:Row>";
+      + "</ss:Row>"
+      + k.NEW_LINE;
       }
 
     protected void DataGrid_log_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -276,7 +277,8 @@ namespace UserControl_strike_team_deployment_snapshot
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_TIMESTAMP].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_ACTOR].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.LOG_CI_ACTION].Text + "</ss:Data></ss:Cell>"
-      + "</ss:Row>";
+      + "</ss:Row>"
+      + k.NEW_LINE;
       }
 
     protected void DataGrid_operational_periods_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -287,7 +289,8 @@ namespace UserControl_strike_team_deployment_snapshot
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_START].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_END].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.OPERATIONAL_PERIODS_CI_BE_CONVOY].Text + "</ss:Data></ss:Cell>"
-      + "</ss:Row>";
+      + "</ss:Row>"
+      + k.NEW_LINE;
       }
 
     protected void DataGrid_personnel_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -299,7 +302,8 @@ namespace UserControl_strike_team_deployment_snapshot
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_FIRST_NAME].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_LEVEL].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.PERSONNEL_CI_AFFILIATION].Text + "</ss:Data></ss:Cell>"
-      + "</ss:Row>";
+      + "</ss:Row>"
+      + k.NEW_LINE;
       }
 
     protected void DataGrid_vehicles_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -316,7 +320,8 @@ namespace UserControl_strike_team_deployment_snapshot
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_TOW_CAPACITY].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_FUEL].Text + "</ss:Data></ss:Cell>"
       +   "<ss:Cell><ss:Data ss:Type=\"String\">" + e.Item.Cells[UserControl_strike_team_deployment_snapshot_Static.VEHICLES_CI_BE_AWD].Text + "</ss:Data></ss:Cell>"
-      + "</ss:Row>";
+      + "</ss:Row>"
+      + k.NEW_LINE;
       }
 
     protected void Button_export_Click(object sender, System.EventArgs e)
@@ -345,12 +350,36 @@ namespace UserControl_strike_team_deployment_snapshot
         +       "<ss:Row><ss:Cell><ss:Data ss:Type=\"String\">Use the worksheet tabs in this workbook to browse this data.</ss:Data></ss:Cell></ss:Row>" + k.NEW_LINE
         +     "</ss:Table>" + k.NEW_LINE
         +   "</ss:Worksheet>" + k.NEW_LINE
-        +   "<ss:Worksheet ss:Name=\"Personnel\"><ss:Table>" + p.personnel_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
-        +   "<ss:Worksheet ss:Name=\"Vehicles\"><ss:Table>" + p.vehicles_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
-        +   "<ss:Worksheet ss:Name=\"OperationalPeriods\"><ss:Table>" + p.operational_periods_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
-        +   "<ss:Worksheet ss:Name=\"Digest\"><ss:Table>" + p.digest_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
-        +   "<ss:Worksheet ss:Name=\"Assignments\"><ss:Table>" + p.assignments_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
-        +   "<ss:Worksheet ss:Name=\"Log\"><ss:Table>" + p.log_content_xml + "</ss:Table></ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Personnel\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       p.personnel_content_xml
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Vehicles\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       p.vehicles_content_xml
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"OperationalPeriods\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       p.operational_periods_content_xml
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Digest\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       p.digest_content_xml
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Assignments\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       p.assignments_content_xml
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
+        +   "<ss:Worksheet ss:Name=\"Log\">" + k.NEW_LINE
+        +     "<ss:Table>" + k.NEW_LINE
+        +       p.log_content_xml
+        +     "</ss:Table>" + k.NEW_LINE
+        +   "</ss:Worksheet>" + k.NEW_LINE
         + "</ss:Workbook>" + k.NEW_LINE;
       ExportToExcel
         (
