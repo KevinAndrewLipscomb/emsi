@@ -27,7 +27,7 @@ namespace training_certificate_package
         p.biz_coned_offerings = new TClass_biz_coned_offerings();
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
         //
-        var hash_table = HashtableOfShieldedRequest();
+        var hash_table = HashtableOfShieldedRequest(do_uncompress:true);
         //
         var class_number = k.EMPTY;
         var sponsor_number = k.EMPTY;

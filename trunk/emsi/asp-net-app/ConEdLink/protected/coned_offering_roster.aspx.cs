@@ -254,7 +254,7 @@ namespace coned_offering_roster
         var hash_table = new Hashtable();
         hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
         hash_table["coned_offering_roster_ids"] = p.roster_id_arraylist;
-        HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_package.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
+        HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_package.aspx?" + ShieldedQueryStringOfHashtable(hash_table,do_compress:true);
         }
       }
 
