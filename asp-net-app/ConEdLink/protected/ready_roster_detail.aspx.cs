@@ -242,6 +242,8 @@ namespace ready_roster_detail
               the_exception.Message.Contains("The operation has timed out")
             ||
               the_exception.Message.Contains("A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond")
+            ||
+              the_exception.Message.Contains("Unable to connect to the remote server")
             )
             {
             Alert
