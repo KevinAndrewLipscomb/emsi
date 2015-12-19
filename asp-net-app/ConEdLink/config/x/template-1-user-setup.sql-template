@@ -1,4 +1,5 @@
-grant select
+create user if not exists 'ki-conedlink-x'@'localhost' identified by '~ki-conedlink-x-password~';
+grant  select
  , insert
  , update
  , delete
@@ -6,7 +7,7 @@ grant select
  , create routine
  , alter routine
   on emsidb_x.*
-  to 'ki-conedlink-x'@'localhost' identified by '~ki-conedlink-x-password~'
+  to 'ki-conedlink-x'@'localhost'
 ;
 --
 -- Must grant PROCESS priv to primary user to include SHOW ENGINE INNODB
