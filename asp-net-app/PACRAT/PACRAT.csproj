@@ -147,6 +147,7 @@
     <Content Include="usercontrol\app\UserControl_region_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_region_detail.ascx" />
     <Content Include="usercontrol\app\UserControl_region_strike_team_officers_in_state.ascx" />
+    <Content Include="usercontrol\app\UserControl_role_member_map_log.ascx" />
     <Content Include="usercontrol\app\UserControl_service_affiliation.ascx" />
     <Content Include="usercontrol\app\UserControl_service_strike_team_officers_in_region.ascx" />
     <Content Include="usercontrol\app\UserControl_sms_gateway.ascx" />
@@ -188,6 +189,7 @@
     <Compile Include="component\biz\Class_biz_practitioner_strike_team_details.cs" />
     <Compile Include="component\biz\Class_biz_privileges.cs" />
     <Compile Include="component\biz\Class_biz_role_member_map.cs" />
+    <Compile Include="component\biz\Class_biz_role_member_map_logs.cs" />
     <Compile Include="component\biz\Class_biz_role_notification_map.cs" />
     <Compile Include="component\biz\Class_biz_role_privilege_map.cs" />
     <Compile Include="component\biz\Class_biz_scheduled_tasks.cs" />
@@ -215,6 +217,7 @@
     <Compile Include="component\db\Class_db_practitioner_strike_team_details.cs" />
     <Compile Include="component\db\Class_db_privileges.cs" />
     <Compile Include="component\db\Class_db_role_member_map.cs" />
+    <Compile Include="component\db\Class_db_role_member_map_logs.cs" />
     <Compile Include="component\db\Class_db_role_notification_map.cs" />
     <Compile Include="component\db\Class_db_role_privilege_map.cs" />
     <Compile Include="component\db\Class_db_sms_gateways.cs" />
@@ -738,6 +741,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_role_member_mapping.ascx.designer.cs">
       <DependentUpon>UserControl_role_member_mapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_role_member_map_log.ascx.cs">
+      <DependentUpon>UserControl_role_member_map_log.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_role_member_map_log.ascx.designer.cs">
+      <DependentUpon>UserControl_role_member_map_log.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_role_member_matrix.ascx.cs">
       <DependentUpon>UserControl_role_member_matrix.ascx</DependentUpon>
