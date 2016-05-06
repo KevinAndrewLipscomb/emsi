@@ -142,6 +142,9 @@ namespace Class_db_privileges
           )
           {
           Open();
+          //
+          // An "access denied" exception attributed to the account INVOKING the following SELECT statement may actually indicate that access has been denied to the EXACT MATCH for the DEFINER of the "member" view.
+          //
           var has_for_any_scope_obj = new MySqlCommand
             (
             "select 1"
