@@ -214,7 +214,7 @@
     <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>Clearance & background checks</strong></p>
       <small>
-        These fields should hold the dates shown on the <strong><a href="http://www.dpw.state.pa.us/findaform/childabusehistoryclearanceforms/index.htm" target="_blank">corresponding state documents</a></strong> indicating
+        These fields should hold the dates shown on the <strong><a href="http://www.dhs.pa.gov/provider/childwelfareservices/childabusehistoryclearanceforms" target="_blank">corresponding state documents</a></strong> indicating
         compliance.&nbsp; The authority entering this data should keep a copy of the source documents in case of audit.
       </small>
     </td>
