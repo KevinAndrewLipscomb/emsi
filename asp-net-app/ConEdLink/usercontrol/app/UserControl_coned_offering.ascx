@@ -718,6 +718,36 @@
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_status" runat="server" errormessage="Please select a Status." font-bold="True" controltovalidate="DropDownList_status">!ERR!</ASP:RequiredFieldValidator>
     </td>
   </tr>
+  <tr runat="server" id="TableRow_credits">
+    <td valign="top"><font class="">Credits:</font></td>
+    <td>
+      <table border="1" bordercolor="Gainsboro" cellpadding="1" cellspacing="0">
+        <tr>
+          <td>&nbsp;</td>
+          <td><span style="font-family:monospace;">FR</span></td>
+          <td><span style="font-family:monospace;">EMT</span></td>
+          <td><span style="font-family:monospace;">EMTP</span></td>
+          <td><span style="font-family:monospace;">PHRN</span></td>
+        </tr>
+        <tr>
+          <td align="right">M/T:</td>
+          <td align="right"><asp:TextBox ID="TextBox_fr_med_trauma_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_fr_med_trauma_hours" runat="server" ErrorMessage="Please enter a valid number of FR M/T Credits." ControlToValidate="TextBox_fr_med_trauma_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+          <td align="right"><asp:TextBox ID="TextBox_emt_med_trauma_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_emt_med_trauma_hours" runat="server" ErrorMessage="Please enter a valid number of EMT M/T Credits." ControlToValidate="TextBox_emt_med_trauma_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+          <td align="right"><asp:TextBox ID="TextBox_emtp_med_trauma_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_emtp_med_trauma_hours" runat="server" ErrorMessage="Please enter a valid number of EMTP M/T Credits." ControlToValidate="TextBox_emtp_med_trauma_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+          <td align="right"><asp:TextBox ID="TextBox_phrn_med_trauma_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_phrn_med_trauma_hours" runat="server" ErrorMessage="Please enter a valid number of PHRN M/T Credits." ControlToValidate="TextBox_phrn_med_trauma_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+        </tr>
+        <tr>
+          <td align="right">Other:</td>
+          <td align="right"><asp:TextBox ID="TextBox_fr_other_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_fr_other_hours" runat="server" ErrorMessage="Please enter a valid number of FR Other Credits." ControlToValidate="TextBox_fr_other_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+          <td align="right"><asp:TextBox ID="TextBox_emt_other_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_emt_other_hours" runat="server" ErrorMessage="Please enter a valid number of EMT Other Credits." ControlToValidate="TextBox_emt_other_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+          <td align="right"><asp:TextBox ID="TextBox_emtp_other_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_emtp_other_hours" runat="server" ErrorMessage="Please enter a valid number of EMTP Other Credits." ControlToValidate="TextBox_emtp_other_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+          <td align="right"><asp:TextBox ID="TextBox_phrn_other_hours" runat="server" columns="6" enabled="false"></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator_phrn_other_hours" runat="server" ErrorMessage="Please enter a valid number of EMTP Other Credits." ControlToValidate="TextBox_phrn_other_hours" Display="Dynamic" ValidationExpression="\d{1,4}(\.\d)?" Font-Bold="True">!ERR!</asp:RegularExpressionValidator></td>
+        </tr>
+      </table>
+    </td>
+    <td nowrap="nowrap">
+    </td>
+  </tr>
   <tr>
     <td valign="top"><font class="">Instructional staff (eval summary):</font></td>
     <td>

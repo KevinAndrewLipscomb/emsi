@@ -448,6 +448,15 @@ namespace ready_roster_detail
           + k.NEW_LINE
           + "If your spreadsheet program mentions these things and asks if you want to open the file, click 'Yes'."
           );
+        //
+        Literal_fr_med_trauma_hours.Text = p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary);
+        Literal_fr_other_hours.Text = p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary);
+        Literal_emt_med_trauma_hours.Text = p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary);
+        Literal_emt_other_hours.Text = p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary);
+        Literal_emtp_med_trauma_hours.Text = p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary);
+        Literal_emtp_other_hours.Text = p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary);
+        Literal_phrn_med_trauma_hours.Text = p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary);
+        Literal_phrn_other_hours.Text = p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary);
         }
       InjectPersistentClientSideScript();
       }
