@@ -22,6 +22,15 @@ namespace UserControl_roster {
         protected global::System.Web.UI.WebControls.Literal Literal_course_title;
         
         /// <summary>
+        /// Literal_location control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_location;
+        
+        /// <summary>
         /// Literal_start control.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,76 @@ namespace UserControl_roster {
         protected global::System.Web.UI.WebControls.Literal Literal_length;
         
         /// <summary>
-        /// Literal_location control.
+        /// Literal_fr_med_trauma_hours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_location;
+        protected global::System.Web.UI.WebControls.Literal Literal_fr_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_emt_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emt_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_emtp_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emtp_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_phrn_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_phrn_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_fr_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_fr_other_hours;
+        
+        /// <summary>
+        /// Literal_emt_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emt_other_hours;
+        
+        /// <summary>
+        /// Literal_emtp_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emtp_other_hours;
+        
+        /// <summary>
+        /// Literal_phrn_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_phrn_other_hours;
         
         /// <summary>
         /// TableRow_none control.

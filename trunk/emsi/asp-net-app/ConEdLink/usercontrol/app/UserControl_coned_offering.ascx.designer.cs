@@ -1012,6 +1012,159 @@ namespace UserControl_coned_offering {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_status;
         
         /// <summary>
+        /// TableRow_credits control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_credits;
+        
+        /// <summary>
+        /// TextBox_fr_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_fr_med_trauma_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_fr_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_fr_med_trauma_hours;
+        
+        /// <summary>
+        /// TextBox_emt_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_emt_med_trauma_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_emt_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_emt_med_trauma_hours;
+        
+        /// <summary>
+        /// TextBox_emtp_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_emtp_med_trauma_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_emtp_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_emtp_med_trauma_hours;
+        
+        /// <summary>
+        /// TextBox_phrn_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_phrn_med_trauma_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_phrn_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_phrn_med_trauma_hours;
+        
+        /// <summary>
+        /// TextBox_fr_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_fr_other_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_fr_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_fr_other_hours;
+        
+        /// <summary>
+        /// TextBox_emt_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_emt_other_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_emt_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_emt_other_hours;
+        
+        /// <summary>
+        /// TextBox_emtp_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_emtp_other_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_emtp_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_emtp_other_hours;
+        
+        /// <summary>
+        /// TextBox_phrn_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_phrn_other_hours;
+        
+        /// <summary>
+        /// RegularExpressionValidator_phrn_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_phrn_other_hours;
+        
+        /// <summary>
         /// TextBox_eval_summary_instructional_staff control.
         /// </summary>
         /// <remarks>

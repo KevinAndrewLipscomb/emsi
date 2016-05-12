@@ -828,6 +828,15 @@ namespace coned_offering_roster
           + "To proceed, click OK:"
           );
         Literal_author_email_address.Text = p.user_email_address;
+        //
+        Literal_fr_med_trauma_hours.Text = p.biz_coned_offerings.FrMedTraumaHoursOf(p.incoming.summary);
+        Literal_fr_other_hours.Text = p.biz_coned_offerings.FrOtherHoursOf(p.incoming.summary);
+        Literal_emt_med_trauma_hours.Text = p.biz_coned_offerings.EmtMedTraumaHoursOf(p.incoming.summary);
+        Literal_emt_other_hours.Text = p.biz_coned_offerings.EmtOtherHoursOf(p.incoming.summary);
+        Literal_emtp_med_trauma_hours.Text = p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.incoming.summary);
+        Literal_emtp_other_hours.Text = p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary);
+        Literal_phrn_med_trauma_hours.Text = p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary);
+        Literal_phrn_other_hours.Text = p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary);
         }
       InjectPersistentClientSideScript();
       }

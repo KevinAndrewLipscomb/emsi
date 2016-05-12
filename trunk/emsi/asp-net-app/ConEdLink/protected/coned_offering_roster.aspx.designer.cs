@@ -247,6 +247,24 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Literal Literal_course_title;
         
         /// <summary>
+        /// HyperLink_print_roster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
+        
+        /// <summary>
+        /// Literal_location control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_location;
+        
+        /// <summary>
         /// Literal_start control.
         /// </summary>
         /// <remarks>
@@ -292,22 +310,76 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.Literal Literal_length;
         
         /// <summary>
-        /// HyperLink_print_roster control.
+        /// Literal_fr_med_trauma_hours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_roster;
+        protected global::System.Web.UI.WebControls.Literal Literal_fr_med_trauma_hours;
         
         /// <summary>
-        /// Literal_location control.
+        /// Literal_emt_med_trauma_hours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal_location;
+        protected global::System.Web.UI.WebControls.Literal Literal_emt_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_emtp_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emtp_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_phrn_med_trauma_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_phrn_med_trauma_hours;
+        
+        /// <summary>
+        /// Literal_fr_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_fr_other_hours;
+        
+        /// <summary>
+        /// Literal_emt_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emt_other_hours;
+        
+        /// <summary>
+        /// Literal_emtp_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_emtp_other_hours;
+        
+        /// <summary>
+        /// Literal_phrn_other_hours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_phrn_other_hours;
         
         /// <summary>
         /// UpdatePanel_attendees control.

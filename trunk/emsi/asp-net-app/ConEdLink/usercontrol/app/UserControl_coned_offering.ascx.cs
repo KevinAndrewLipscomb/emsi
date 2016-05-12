@@ -8,17 +8,14 @@ using Class_biz_counties;
 using Class_biz_regions;
 using kix;
 using System;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Collections;
-using UserControl_drop_down_date;
 
 namespace UserControl_coned_offering
   {
   public partial class TWebUserControl_coned_offering: ki_web_ui.usercontrol_class
     {
+
     private struct p_type
       {
       public bool be_loaded;
@@ -102,6 +99,14 @@ namespace UserControl_coned_offering
       TextBox_courses_course_number.Text = k.EMPTY;
       TextBox_course_title.Text = k.EMPTY;
       DropDownList_status.ClearSelection();
+      TextBox_fr_med_trauma_hours.Text = k.EMPTY;
+      TextBox_fr_other_hours.Text = k.EMPTY;
+      TextBox_emt_med_trauma_hours.Text = k.EMPTY;
+      TextBox_emt_other_hours.Text = k.EMPTY;
+      TextBox_emtp_med_trauma_hours.Text = k.EMPTY;
+      TextBox_emtp_other_hours.Text = k.EMPTY;
+      TextBox_phrn_med_trauma_hours.Text = k.EMPTY;
+      TextBox_phrn_other_hours.Text = k.EMPTY;
       TextBox_eval_summary_instructional_staff.Text = k.EMPTY;
       TextBox_eval_summary_time_appropriately_used.Text = k.EMPTY;
       TextBox_eval_summary_classroom_training_site.Text = k.EMPTY;
@@ -292,6 +297,14 @@ namespace UserControl_coned_offering
       string courses_course_number;
       string course_title;
       string status_id;
+      string fr_med_trauma_hours;
+      string fr_other_hours;
+      string emt_med_trauma_hours;
+      string emt_other_hours;
+      string emtp_med_trauma_hours;
+      string emtp_other_hours;
+      string phrn_med_trauma_hours;
+      string phrn_other_hours;
       string eval_summary_instructional_staff;
       string eval_summary_time_appropriately_used;
       string eval_summary_classroom_training_site;
@@ -368,6 +381,14 @@ namespace UserControl_coned_offering
           out courses_course_number,
           out course_title,
           out status_id,
+          out fr_med_trauma_hours,
+          out fr_other_hours,
+          out emt_med_trauma_hours,
+          out emt_other_hours,
+          out emtp_med_trauma_hours,
+          out emtp_other_hours,
+          out phrn_med_trauma_hours,
+          out phrn_other_hours,
           out eval_summary_instructional_staff,
           out eval_summary_time_appropriately_used,
           out eval_summary_classroom_training_site,
@@ -443,6 +464,14 @@ namespace UserControl_coned_offering
         TextBox_courses_course_number.Text = courses_course_number;
         TextBox_course_title.Text = course_title;
         DropDownList_status.SelectedValue = status_id;
+        TextBox_fr_med_trauma_hours.Text = fr_med_trauma_hours;
+        TextBox_fr_other_hours.Text = fr_other_hours;
+        TextBox_emt_med_trauma_hours.Text = emt_med_trauma_hours;
+        TextBox_emt_other_hours.Text = emt_other_hours;
+        TextBox_emtp_med_trauma_hours.Text = emtp_med_trauma_hours;
+        TextBox_emtp_other_hours.Text = emtp_other_hours;
+        TextBox_phrn_med_trauma_hours.Text = phrn_med_trauma_hours;
+        TextBox_phrn_other_hours.Text = phrn_other_hours;
         TextBox_eval_summary_instructional_staff.Text = eval_summary_instructional_staff;
         TextBox_eval_summary_time_appropriately_used.Text = eval_summary_time_appropriately_used;
         TextBox_eval_summary_classroom_training_site.Text = eval_summary_classroom_training_site;
@@ -619,6 +648,14 @@ namespace UserControl_coned_offering
           k.Safe(TextBox_courses_course_number.Text,k.safe_hint_type.NUM),
           k.Safe(TextBox_course_title.Text,k.safe_hint_type.PUNCTUATED).Trim(),
           k.Safe(DropDownList_status.SelectedValue,k.safe_hint_type.NUM),
+          k.Safe(TextBox_fr_med_trauma_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_fr_other_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_emt_med_trauma_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_emt_other_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_emtp_med_trauma_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_emtp_other_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_phrn_med_trauma_hours.Text,k.safe_hint_type.REAL_NUM),
+          k.Safe(TextBox_phrn_other_hours.Text,k.safe_hint_type.REAL_NUM),
           k.Safe(TextBox_eval_summary_instructional_staff.Text,k.safe_hint_type.MEMO).Trim(),
           k.Safe(TextBox_eval_summary_time_appropriately_used.Text,k.safe_hint_type.MEMO).Trim(),
           k.Safe(TextBox_eval_summary_classroom_training_site.Text,k.safe_hint_type.MEMO).Trim(),
@@ -752,6 +789,14 @@ namespace UserControl_coned_offering
       TextBox_courses_course_number.Enabled = ablement;
       TextBox_course_title.Enabled = ablement;
       DropDownList_status.Enabled = ablement;
+      TextBox_fr_med_trauma_hours.Enabled = ablement;
+      TextBox_fr_other_hours.Enabled = ablement;
+      TextBox_emt_med_trauma_hours.Enabled = ablement;
+      TextBox_emt_other_hours.Enabled = ablement;
+      TextBox_emtp_med_trauma_hours.Enabled = ablement;
+      TextBox_emtp_other_hours.Enabled = ablement;
+      TextBox_phrn_med_trauma_hours.Enabled = ablement;
+      TextBox_phrn_other_hours.Enabled = ablement;
       TextBox_eval_summary_instructional_staff.Enabled = ablement;
       TextBox_eval_summary_time_appropriately_used.Enabled = ablement;
       TextBox_eval_summary_classroom_training_site.Enabled = ablement;

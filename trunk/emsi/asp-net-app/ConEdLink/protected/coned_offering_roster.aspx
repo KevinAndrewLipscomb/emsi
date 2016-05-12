@@ -110,7 +110,22 @@
                       <tr>
                         <td>
                           <table cellpadding="5" cellspacing="0">
-                            <tr><td colspan="5"><b><asp:Literal ID="Literal_course_title" runat="server"></asp:Literal></b></td></tr>
+                            <tr>
+                              <td colspan="8">
+                                <table cellpadding="0" cellspacing="0" width="100%">
+                                  <tr>
+                                    <td><b><asp:Literal ID="Literal_course_title" runat="server"></asp:Literal></b></td>
+                                    <td align="right">
+                                      <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                                    </td>
+                                  </tr>
+                                </table>                                
+                              </td>
+                            </tr>
+                            <tr>
+                              <td nowrap="nowrap" valign="top"><b>Location:</b></td>
+                              <td colspan="7" valign="top"><asp:Literal ID="Literal_location" runat="server"></asp:Literal></td>
+                            </tr>
                             <tr>
                               <td nowrap="nowrap" valign="top"><b>Start:</b></td>
                               <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_start" runat="server"></asp:Literal></td>
@@ -128,13 +143,31 @@
                               <td nowrap="nowrap" valign="top"><b>Length:</b></td>
                               <td nowrap="nowrap" valign="top"><asp:Literal ID="Literal_length" runat="server"></asp:Literal></td>
                               <td>&nbsp;</td>
-                              <td colspan="2" valign="top" align="center">
-                                <asp:HyperLink ID="HyperLink_print_roster" runat="server" Target="_blank" text="&lt;IMG src=&quot;image/print16_h.png&quot; alt=&quot;Print roster&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;"></asp:HyperLink>
+                              <td colspan="2" rowspan="2" valign="top" align="center">
+                                <table border="1" bordercolor="Gainsboro" cellpadding="1" cellspacing="0">
+                                  <tr>
+                                    <td align="right" bgcolor="Gainsboro"><small><b>Credits</b></small></td>
+                                    <td align="center"><small><span style="font-family:monospace;">&nbsp;FR&nbsp;</span></small></td>
+                                    <td align="center"><small><span style="font-family:monospace;">EMT&nbsp;</span></small></td>
+                                    <td align="center"><small><span style="font-family:monospace;">EMTP</span></small></td>
+                                    <td align="center"><small><span style="font-family:monospace;">PHRN</span></small></td>
+                                  </tr>
+                                  <tr>
+                                    <td align="right"><small>M/T:</small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_fr_med_trauma_hours" runat="server"></asp:Literal></span></small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_emt_med_trauma_hours" runat="server"></asp:Literal></span></small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_emtp_med_trauma_hours" runat="server"></asp:Literal></span></small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_phrn_med_trauma_hours" runat="server"></asp:Literal></span></small></td>
+                                  </tr>
+                                  <tr>
+                                    <td align="right"><small>Other:</small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_fr_other_hours" runat="server"></asp:Literal></span></small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_emt_other_hours" runat="server"></asp:Literal></span></small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_emtp_other_hours" runat="server"></asp:Literal></span></small></td>
+                                    <td align="right"><small><span style="font-family:monospace;"><asp:Literal ID="Literal_phrn_other_hours" runat="server"></asp:Literal></span></small></td>
+                                  </tr>
+                                </table>
                               </td>
-                            </tr>
-                            <tr>
-                              <td nowrap="nowrap" valign="top"><b>Location:</b></td>
-                              <td colspan="7" valign="top"><asp:Literal ID="Literal_location" runat="server"></asp:Literal></td>
                             </tr>
                           </table>
                         </td>

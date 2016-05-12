@@ -65,6 +65,14 @@ namespace UserControl_roster
         Literal_end.Text = p.biz_coned_offerings.EndDateOf(p.summary) + k.SPACE + p.biz_coned_offerings.EndOtherOf(p.summary);
         Literal_length.Text = p.length.val.ToString();
         Literal_be_approved.Text = k.YesNoOf(p.biz_coned_offerings.BeApprovedOf(p.summary));
+        Literal_fr_med_trauma_hours.Text = p.biz_coned_offerings.FrMedTraumaHoursOf(p.summary);
+        Literal_fr_other_hours.Text = p.biz_coned_offerings.FrOtherHoursOf(p.summary);
+        Literal_emt_med_trauma_hours.Text = p.biz_coned_offerings.EmtMedTraumaHoursOf(p.summary);
+        Literal_emt_other_hours.Text = p.biz_coned_offerings.EmtOtherHoursOf(p.summary);
+        Literal_emtp_med_trauma_hours.Text = p.biz_coned_offerings.EmtpMedTraumaHoursOf(p.summary);
+        Literal_emtp_other_hours.Text = p.biz_coned_offerings.EmtpOtherHoursOf(p.summary);
+        Literal_phrn_med_trauma_hours.Text = p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.summary);
+        Literal_phrn_other_hours.Text = p.biz_coned_offerings.PhrnOtherHoursOf(p.summary);
         var eval_summary_mode_description = p.biz_regions.ConedlinkEvalSummaryModeDescriptionOf(Session["region_code"].ToString());
         if (eval_summary_mode_description == "SAEMS")
           {
