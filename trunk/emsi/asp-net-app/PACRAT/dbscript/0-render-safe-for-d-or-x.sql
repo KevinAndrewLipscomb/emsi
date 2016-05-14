@@ -33,6 +33,6 @@ update associate
 set email_address = concat("Associate",id,"@frompaper2web.com")
 ;
 update sms_gateway
-set hostname = concat("Host",id,".frompaper2web.com")
+set hostname = concat(hostname,".frompaper2web.com")
 ;
 COMMIT

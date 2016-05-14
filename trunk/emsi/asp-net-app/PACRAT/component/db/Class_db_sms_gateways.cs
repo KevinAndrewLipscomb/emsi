@@ -71,8 +71,9 @@ namespace Class_db_sms_gateways
     public void BindDirectToListControl
       (
       object target,
-      string unselected_literal,
-      string selected_value
+      string unselected_literal = "-- sms_gateway --",
+      string selected_value = k.EMPTY,
+      bool do_show_hostname = false
       )
       {
       ((target) as ListControl).Items.Clear();
@@ -85,6 +86,7 @@ namespace Class_db_sms_gateways
         (
         "select id"
         + " , carrier_name as spec"
+        + " , hostname"
         + " from sms_gateway"
         + " where carrier_name <> '(none specified)'"
         + " order by carrier_name",
@@ -93,7 +95,7 @@ namespace Class_db_sms_gateways
         .ExecuteReader();
       while (dr.Read())
         {
-        ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
+        ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString() + (do_show_hostname ? " -- ~@" + dr["hostname"].ToString() : k.EMPTY), dr["id"].ToString()));
         }
       dr.Close();
       Close();
@@ -101,14 +103,6 @@ namespace Class_db_sms_gateways
         {
         ((target) as ListControl).SelectedValue = selected_value;
         }
-      }
-    public void BindDirectToListControl(object target, string unselected_literal)
-      {
-      BindDirectToListControl(target,unselected_literal,selected_value:k.EMPTY);
-      }
-    public void BindDirectToListControl(object target)
-      {
-      BindDirectToListControl(target,unselected_literal:"-- sms_gateway --");
       }
 
     public bool Delete(string id)

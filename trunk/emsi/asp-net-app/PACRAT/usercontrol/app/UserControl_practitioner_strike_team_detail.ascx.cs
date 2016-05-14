@@ -183,8 +183,12 @@ namespace UserControl_practitioner_strike_team_detail
         p.biz_sms_gateways.BindDirectToListControl
           (
           target:DropDownList_phone_service,
-          unselected_literal:"-- phone service --"
+          unselected_literal:"-- phone service --",
+          do_show_hostname:true
           );
+        Label_user_email_address.Text = p.biz_user.EmailAddress();
+        HyperLink_app_email_address.Text = ConfigurationManager.AppSettings["application_name"] + "@" + ConfigurationManager.AppSettings["host_domain_name"];
+        HyperLink_app_email_address.NavigateUrl = "mailto:" + HyperLink_app_email_address.Text;
         UserControl_drop_down_date_drivers_license_expiration.be_clearable = true;
         UserControl_drop_down_date_drivers_license_expiration.minyear = this_year;
         UserControl_drop_down_date_drivers_license_expiration.maxyear = DateTime.Now.AddYears(int.Parse(ConfigurationManager.AppSettings["max_drivers_license_validity_years"])).Year.ToString();
