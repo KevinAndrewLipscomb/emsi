@@ -71,12 +71,47 @@
     </td>
   </tr>
   <tr>
-    <td style="border-left: thin solid Gainsboro"><font class="">Phone&nbsp;service&nbsp;id:</font></td>
-    <td><font color="#33CC33">&clubs;</font></td>
-    <td><font color="#3366FF">&diams;</font></td>
-    <td>
-      <asp:DropDownList ID="DropDownList_phone_service" runat="server">
-      </asp:DropDownList>
+    <td style="border-left: thin solid Gainsboro" valign="top"><font class="">Cellular&nbsp;service:</font></td>
+    <td valign="top"><font color="#33CC33">&clubs;</font></td>
+    <td valign="top"><font color="#3366FF">&diams;</font></td>
+    <td valign="top">
+      <asp:DropDownList ID="DropDownList_phone_service" runat="server"></asp:DropDownList>
+      <small>
+        <table bgcolor="khaki" cellpadding="5" cellspacing="0">
+          <tr>
+            <td>
+              <p>If the practitioner&#39;s cellular service does not appear in the list of choices, please do as follows:</p>
+              <ol>
+                <li>
+                  <p>
+                    Have the practitioner use his or her cellphone to <strong>TEXT</strong> a test message to <b>your email address</b> --
+                    <asp:Label ID="Label_user_email_address" runat="server" Font-Italic="True"></asp:Label>
+                    &nbsp;-- <b>not</b> to your phone.&nbsp; The practitioner may not realize this is possible, but most cell phones can indeed do this.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Check your email.&nbsp; When you receive the practitioner&#39;s test message, check its <i>From:</i> address.&nbsp; The <i>From:</i> address should reveal which primary cellular service the practitioner's
+                    phone is actually currently assigned to.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If the cellular service revealed by the previous step appears in the list of choices to the left, select it.&nbsp; (The practitioner likely subscribes to an
+                    <a href="https://en.wikipedia.org/wiki/Mobile_virtual_network_operator" target="_blank">MVNO</a> instead of to a true primary cellular service.)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Otherwise, forward the practitioner's test message to <asp:HyperLink ID="HyperLink_app_email_address" runat="server" Font-Italic="True">[HyperLink_app_email_address]</asp:HyperLink> and ask the application administrator to add the indicated cellular service to the list of
+                    choices.
+                  </p>
+                </li>
+              </ol>
+            </td>
+          </tr>
+        </table>
+      </small>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>

@@ -34,19 +34,12 @@ namespace Class_biz_sms_gateways
     public void BindDirectToListControl
       (
       object target,
-      string unselected_literal,
-      string selected_value
+      string unselected_literal = "-- sms_gateway --",
+      string selected_value = k.EMPTY,
+      bool do_show_hostname = false
       )
       {
-      db_sms_gateways.BindDirectToListControl(target,unselected_literal,selected_value);
-      }
-    public void BindDirectToListControl(object target, string unselected_literal)
-      {
-      BindDirectToListControl(target,unselected_literal,selected_value:k.EMPTY);
-      }
-    public void BindDirectToListControl(object target)
-      {
-      BindDirectToListControl(target,unselected_literal:"-- sms_gateway --");
+      db_sms_gateways.BindDirectToListControl(target,unselected_literal,selected_value,do_show_hostname);
       }
 
     public bool Delete(string id)

@@ -184,6 +184,24 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_phone_service;
         
         /// <summary>
+        /// Label_user_email_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_user_email_address;
+        
+        /// <summary>
+        /// HyperLink_app_email_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_app_email_address;
+        
+        /// <summary>
         /// TextBox_emergency_contact_1_name control.
         /// </summary>
         /// <remarks>
