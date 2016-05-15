@@ -113,10 +113,12 @@ namespace state_management
       Literal_click_to_add.Text = k.NO_BREAK_SPACE;
       ListBox_practitioner.Items.Clear();
       ListBox_practitioner.Items.Add(k.EMPTY);
-      ListBox_practitioner.Items.Add("Type at least one letter into the Search box above.");
+      ListBox_practitioner.Items.Add("Type at least one character into the Search box above.");
       ListBox_practitioner.Items.Add(k.EMPTY);
       ListBox_practitioner.Items.Add("Format is:");
       ListBox_practitioner.Items.Add(k.NO_BREAK_SPACE + k.NO_BREAK_SPACE + "Lastname, Firstname MI, Cert#, DOB");
+      ListBox_practitioner.Items.Add("or just:");
+      ListBox_practitioner.Items.Add(k.NO_BREAK_SPACE + k.NO_BREAK_SPACE + "Cert#");
       ListBox_practitioner.Enabled = false;
       Focus(TextBox_practitioner,be_using_scriptmanager:true);
       }
