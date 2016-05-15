@@ -5,6 +5,8 @@
 <%@ Register TagPrefix="uc1" TagName="UserControl_precontent" Src="~/usercontrol/app/UserControl_precontent.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="UserControl_postcontent" Src="~/usercontrol/app/UserControl_postcontent.ascx" %>
 <%@ Register TagPrefix="uc3" TagName="UserControl_update_progress_blocker" Src="~/usercontrol/app/UserControl_update_progress_blocker.ascx" %>
+<%@ Register Src="~/usercontrol/ki/UserControl_attachment_explorer.ascx" TagPrefix="uc1" TagName="UserControl_attachment_explorer" %>
+
 <html>
   <head runat="server">
     <title></title>
@@ -125,6 +127,10 @@
                                     </small>
                                   </font>
                                 </td>
+                              </tr>
+                              <tr>
+                                <td align="right" valign="top"><font class="">Memorandum Of Agreement material:</font></td>
+                                <td><uc1:UserControl_attachment_explorer runat="server" ID="UserControl_attachment_explorer_control" enabled="false"/></td>
                               </tr>
                             </table>
                           </td>
@@ -288,6 +294,7 @@
         </ContentTemplate>
         <Triggers>
           <asp:AsyncPostBackTrigger ControlID="DropDownList_strike_team_participation" EventName="SelectedIndexChanged" />
+          <asp:PostBackTrigger ControlID="UserControl_attachment_explorer_control" />
         </Triggers>
       </asp:UpdatePanel>
       <uc1:UserControl_postcontent id="UserControl_postcontent" runat="server"></uc1:UserControl_postcontent>

@@ -229,6 +229,15 @@ namespace service_management {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_short_name;
         
         /// <summary>
+        /// UserControl_attachment_explorer_control control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_attachment_explorer.TWebUserControl_attachment_explorer UserControl_attachment_explorer_control;
+        
+        /// <summary>
         /// UpdatePanel_assignees control.
         /// </summary>
         /// <remarks>

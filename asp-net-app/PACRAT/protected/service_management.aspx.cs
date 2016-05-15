@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using System.Configuration;
 using System.Drawing;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -122,10 +123,12 @@ namespace service_management
       Literal_click_to_add.Text = k.NO_BREAK_SPACE;
       ListBox_practitioner.Items.Clear();
       ListBox_practitioner.Items.Add(k.EMPTY);
-      ListBox_practitioner.Items.Add("Type at least one letter into the Search box above.");
+      ListBox_practitioner.Items.Add("Type at least one character into the Search box above.");
       ListBox_practitioner.Items.Add(k.EMPTY);
       ListBox_practitioner.Items.Add("Format is:");
       ListBox_practitioner.Items.Add(k.NO_BREAK_SPACE + k.NO_BREAK_SPACE + "Lastname, Firstname MI, Cert#, DOB");
+      ListBox_practitioner.Items.Add("or just:");
+      ListBox_practitioner.Items.Add(k.NO_BREAK_SPACE + k.NO_BREAK_SPACE + "Cert#");
       ListBox_practitioner.Enabled = false;
       Focus(TextBox_practitioner,be_using_scriptmanager:true);
       }
@@ -589,6 +592,10 @@ namespace service_management
       InjectPersistentClientSideScript();
       ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down_to_members);
       ScriptManager.GetCurrent(Page).RegisterPostBackControl(LinkButton_drill_down_to_vehicles);
+      UserControl_attachment_explorer_control.enabled = p.be_more_than_examiner;
+      UserControl_attachment_explorer_control.be_ok_to_add = p.be_more_than_examiner;
+      UserControl_attachment_explorer_control.be_ok_to_delete = p.be_more_than_examiner;
+      UserControl_attachment_explorer_control.path =  HttpContext.Current.Server.MapPath("attachment/service-strike-team-moa/" + p.biz_services.AffiliateNumOf(p.incoming.summary));
       }
 
     protected void TextBox_practitioner_TextChanged(object sender, EventArgs e)
