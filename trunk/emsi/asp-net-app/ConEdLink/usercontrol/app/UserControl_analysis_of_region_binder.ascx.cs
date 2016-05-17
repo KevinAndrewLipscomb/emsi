@@ -1,6 +1,7 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~binder.cs~template
 
 using kix;
+using UserControl_analysis_intro;
 using UserControl_analysis_of_region_by_year;
 using UserControl_analysis_of_region_by_month;
 using UserControl_analysis_of_region_by_sponsor;
@@ -10,15 +11,6 @@ using UserControl_analysis_of_region_by_county;
 namespace UserControl_analysis_of_region_binder
   {
 
-  public static class UserControl_analysis_of_region_binder_Static
-    {
-    public const int TSSI_BY_YEAR = 0;
-    public const int TSSI_BY_MONTH = 1;
-    public const int TSSI_BY_SPONSOR = 2;
-    public const int TSSI_BY_COURSE = 3;
-    public const int TSSI_BY_COUNTY = 4;
-    }
-
   public partial class TWebUserControl_analysis_of_region_binder: ki_web_ui.usercontrol_class
     {
 
@@ -27,6 +19,16 @@ namespace UserControl_analysis_of_region_binder
     // PRIVATE
     //
     //--
+
+    private static class Static
+      {
+      public const int TSSI_INTRO = 0;
+      public const int TSSI_BY_YEAR = 1;
+      public const int TSSI_BY_MONTH = 2;
+      public const int TSSI_BY_SPONSOR = 3;
+      public const int TSSI_BY_COURSE = 4;
+      public const int TSSI_BY_COUNTY = 5;
+      }
 
     private struct p_type
       {
@@ -43,27 +45,32 @@ namespace UserControl_analysis_of_region_binder
       string target
       )
       {
-      if (p.tab_index == UserControl_analysis_of_region_binder_Static.TSSI_BY_YEAR)
+      if (p.tab_index == Static.TSSI_INTRO)
+        {
+        var c = ((TWebUserControl_analysis_intro)(LoadControl("~/usercontrol/app/UserControl_analysis_intro.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_intro",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        }
+      else if (p.tab_index == Static.TSSI_BY_YEAR)
         {
         var c = ((TWebUserControl_analysis_of_region_by_year)(LoadControl("~/usercontrol/app/UserControl_analysis_of_region_by_year.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_region_by_year",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
-      else if (p.tab_index == UserControl_analysis_of_region_binder_Static.TSSI_BY_MONTH)
+      else if (p.tab_index == Static.TSSI_BY_MONTH)
         {
         var c = ((TWebUserControl_analysis_of_region_by_month)(LoadControl("~/usercontrol/app/UserControl_analysis_of_region_by_month.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_region_by_month",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
-      else if (p.tab_index == UserControl_analysis_of_region_binder_Static.TSSI_BY_SPONSOR)
+      else if (p.tab_index == Static.TSSI_BY_SPONSOR)
         {
         var c = ((TWebUserControl_analysis_of_region_by_sponsor)(LoadControl("~/usercontrol/app/UserControl_analysis_of_region_by_sponsor.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_region_by_sponsor",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
-      else if (p.tab_index == UserControl_analysis_of_region_binder_Static.TSSI_BY_COURSE)
+      else if (p.tab_index == Static.TSSI_BY_COURSE)
         {
         var c = ((TWebUserControl_analysis_of_region_by_course)(LoadControl("~/usercontrol/app/UserControl_analysis_of_region_by_course.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_region_by_course",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         }
-      else if (p.tab_index == UserControl_analysis_of_region_binder_Static.TSSI_BY_COUNTY)
+      else if (p.tab_index == Static.TSSI_BY_COUNTY)
         {
         var c = ((TWebUserControl_analysis_of_region_by_county)(LoadControl("~/usercontrol/app/UserControl_analysis_of_region_by_county.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_of_region_by_county",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
@@ -134,10 +141,6 @@ namespace UserControl_analysis_of_region_binder
           {
           p.be_loaded &= ((Session["UserControl_regional_staffer_binder_PlaceHolder_content"] as string) == "UserControl_analysis_binder");
           }
-//      else if (instance_id == "ASP.~_aspx.UserControl_~_binder_analysis_binder")
-//        {
-//        p.be_loaded &= ((Session["UserControl_~_binder_PlaceHolder_content"] as string) == "UserControl_analysis_binder");
-//        }
         //
         // Dynamic controls must be re-added on each postback.
         //
@@ -147,7 +150,7 @@ namespace UserControl_analysis_of_region_binder
         {
         p.be_loaded = false;
         //
-        p.tab_index = UserControl_analysis_of_region_binder_Static.TSSI_BY_YEAR;
+        p.tab_index = Static.TSSI_INTRO;
         FillPlaceHolder(true);
         }
       }
@@ -168,25 +171,29 @@ namespace UserControl_analysis_of_region_binder
       {
       if (target != k.EMPTY)
         {
-        if (target.ToLower().Contains("/by-year/"))
+        if (target.ToLower().Contains("/intro/"))
           {
-          p.tab_index = UserControl_analysis_of_region_binder_Static.TSSI_BY_YEAR;
+          p.tab_index = Static.TSSI_INTRO;
+          }
+        else if (target.ToLower().Contains("/by-year/"))
+          {
+          p.tab_index = Static.TSSI_BY_YEAR;
           }
         else if (target.ToLower().Contains("/by-month/"))
           {
-          p.tab_index = UserControl_analysis_of_region_binder_Static.TSSI_BY_MONTH;
+          p.tab_index = Static.TSSI_BY_MONTH;
           }
         else if (target.ToLower().Contains("/by-sponsor/"))
           {
-          p.tab_index = UserControl_analysis_of_region_binder_Static.TSSI_BY_SPONSOR;
+          p.tab_index = Static.TSSI_BY_SPONSOR;
           }
         else if (target.ToLower().Contains("/by-course/"))
           {
-          p.tab_index = UserControl_analysis_of_region_binder_Static.TSSI_BY_COURSE;
+          p.tab_index = Static.TSSI_BY_COURSE;
           }
         else if (target.ToLower().Contains("/by-county/"))
           {
-          p.tab_index = UserControl_analysis_of_region_binder_Static.TSSI_BY_COUNTY;
+          p.tab_index = Static.TSSI_BY_COUNTY;
           }
         //
         TabContainer_control.ActiveTabIndex = (int)p.tab_index;

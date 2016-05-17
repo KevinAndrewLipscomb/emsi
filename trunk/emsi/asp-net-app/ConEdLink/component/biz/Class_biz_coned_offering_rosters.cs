@@ -110,18 +110,6 @@ namespace Class_biz_coned_offering_rosters
       db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionBySponsor(sort_order,be_sort_order_ascending,target,region_code,year_filter,practitioner_level_filter);
       }
 
-    internal void BindBaseDataListForAnalysisOfRegionByYear
-      (
-      string sort_order,
-      bool be_sort_order_ascending,
-      object target,
-      string region_code,
-      string practitioner_level_filter
-      )
-      {
-      db_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByYear(sort_order,be_sort_order_ascending,target,region_code,practitioner_level_filter);
-      }
-
     internal void BindBaseDataListForAnalysisOfSponsorByCounty
       (
       string sort_order,
@@ -206,6 +194,29 @@ namespace Class_biz_coned_offering_rosters
         out coned_offering_id,
         out practitioner_id,
         out instructor_hours
+        );
+      }
+
+    internal void GetAnalysisOfRegionByYear
+      (
+      string year,
+      string region_code,
+      string practitioner_level_filter,
+      out string num_classes,
+      out string num_sittings,
+      out string avg_num_students_per_class,
+      out string num_distinct_practitioners
+      )
+      {
+      db_coned_offering_rosters.GetAnalysisOfRegionByYear
+        (
+        year,
+        region_code,
+        practitioner_level_filter,
+        out num_classes,
+        out num_sittings,
+        out avg_num_students_per_class,
+        out num_distinct_practitioners
         );
       }
 
