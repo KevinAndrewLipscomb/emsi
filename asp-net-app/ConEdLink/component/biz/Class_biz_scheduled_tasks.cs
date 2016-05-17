@@ -1,4 +1,5 @@
 using Class_biz_coned_offerings;
+using Class_biz_old_analysis_of_region_by_years;
 using Class_biz_practitioners;
 using Class_biz_teaching_entities;
 using ConEdLink.component.os;
@@ -7,7 +8,9 @@ namespace Class_biz_scheduled_tasks
   {
   public class TClass_biz_scheduled_tasks
     {
+
     private TClass_biz_coned_offerings biz_coned_offerings;
+    private TClass_biz_old_analysis_of_region_by_years biz_old_analysis_of_region_by_years;
     private TClass_biz_practitioners biz_practitioners;
     private TClass_biz_teaching_entities biz_teaching_entities;
     private Class_fs fs;
@@ -16,8 +19,9 @@ namespace Class_biz_scheduled_tasks
     public TClass_biz_scheduled_tasks() : base()
       {
       biz_coned_offerings = new TClass_biz_coned_offerings();
-      biz_teaching_entities = new TClass_biz_teaching_entities();
+      biz_old_analysis_of_region_by_years = new TClass_biz_old_analysis_of_region_by_years();
       biz_practitioners = new TClass_biz_practitioners();
+      biz_teaching_entities = new TClass_biz_teaching_entities();
       fs = new Class_fs();
       }
 
@@ -26,6 +30,11 @@ namespace Class_biz_scheduled_tasks
       fs.DeleteCondemnedFolders(current_working_directory_spec + "/../protected/attachment");
       biz_coned_offerings.MakeRosterDueNotifications();
       biz_coned_offerings.PurgeStaleUnused();
+      }
+
+    internal void DoFirstOfCalendarYearChores(string current_working_directory_spec)
+      {
+      biz_old_analysis_of_region_by_years.ReduceFiscalYearEndingLastYear();
       }
 
     public void ImportLatestConedOfferingsFromEmsrs()

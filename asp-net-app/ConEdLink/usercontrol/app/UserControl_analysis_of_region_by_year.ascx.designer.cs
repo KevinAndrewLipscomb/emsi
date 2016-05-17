@@ -31,13 +31,112 @@ namespace UserControl_analysis_of_region_by_year {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_practitioner_level;
         
         /// <summary>
-        /// TableRow_none control.
+        /// TableRow_recent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_none;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_recent;
+        
+        /// <summary>
+        /// Literal_current_fiscal_year_ending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_current_fiscal_year_ending;
+        
+        /// <summary>
+        /// Literal_current_num_classes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_current_num_classes;
+        
+        /// <summary>
+        /// Literal_current_num_sittings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_current_num_sittings;
+        
+        /// <summary>
+        /// Literal_current_avg_num_students_per_class control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_current_avg_num_students_per_class;
+        
+        /// <summary>
+        /// Literal_current_num_distinct_practitioners control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_current_num_distinct_practitioners;
+        
+        /// <summary>
+        /// TableRow_prior_unreduced control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_prior_unreduced;
+        
+        /// <summary>
+        /// Literal_prior_unreduced_fiscal_year_ending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prior_unreduced_fiscal_year_ending;
+        
+        /// <summary>
+        /// Literal_prior_unreduced_num_classes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prior_unreduced_num_classes;
+        
+        /// <summary>
+        /// Literal_prior_unreduced_num_sittings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prior_unreduced_num_sittings;
+        
+        /// <summary>
+        /// Literal_prior_unreduced_avg_num_students_per_class control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prior_unreduced_avg_num_students_per_class;
+        
+        /// <summary>
+        /// Literal_prior_unreduced_num_distinct_practitioners control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_prior_unreduced_num_distinct_practitioners;
         
         /// <summary>
         /// DataGrid_control control.

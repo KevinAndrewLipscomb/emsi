@@ -1,21 +1,19 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
 using Class_biz_coned_offering_rosters;
+using Class_biz_old_analysis_of_region_by_years;
 using Class_biz_practitioner_levels;
-using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Web.UI.WebControls;
 
 namespace UserControl_analysis_of_region_by_year
   {
   public partial class TWebUserControl_analysis_of_region_by_year: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_analysis_of_region_by_year_Static
+
+    private static class Static
       {
       public const int TCI_FISCAL_YEAR_ENDING = 0;
       public const int TCI_NUM_CLASSES = 1;
@@ -31,6 +29,7 @@ namespace UserControl_analysis_of_region_by_year
       public bool be_loaded;
       public bool be_sort_order_ascending;
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
+      public TClass_biz_old_analysis_of_region_by_years biz_old_analysis_of_region_by_years;
       public TClass_biz_practitioner_levels biz_practitioner_levels;
       public uint num_fiscal_years;
       public string practitioner_level_filter;
@@ -131,7 +130,9 @@ namespace UserControl_analysis_of_region_by_year
           target:DropDownList_practitioner_level,
           unselected_literal:"(All)"
           );
+        //
         Bind();
+        //
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -159,6 +160,7 @@ namespace UserControl_analysis_of_region_by_year
       else
         {
         p.biz_coned_offering_rosters = new TClass_biz_coned_offering_rosters();
+        p.biz_old_analysis_of_region_by_years = new TClass_biz_old_analysis_of_region_by_years();
         p.biz_practitioner_levels = new TClass_biz_practitioner_levels();
         //
         p.be_interactive = (Session["mode:report"] == null);
@@ -227,7 +229,51 @@ namespace UserControl_analysis_of_region_by_year
 
     private void Bind()
       {
-      p.biz_coned_offering_rosters.BindBaseDataListForAnalysisOfRegionByYear
+      var fiscal_year_ending = k.EMPTY;
+      var num_classes = k.EMPTY;
+      var num_sittings = k.EMPTY;
+      var avg_num_students_per_class = k.EMPTY;
+      var num_distinct_practitioners = k.EMPTY;
+      //
+      fiscal_year_ending = DateTime.Today.AddMonths(6).Year.ToString();
+      p.biz_coned_offering_rosters.GetAnalysisOfRegionByYear
+        (
+        year:fiscal_year_ending,
+        region_code:Session["region_code"].ToString(),
+        practitioner_level_filter:p.practitioner_level_filter,
+        num_classes:out num_classes,
+        num_sittings:out num_sittings,
+        avg_num_students_per_class:out avg_num_students_per_class,
+        num_distinct_practitioners:out num_distinct_practitioners
+        );
+      Literal_current_fiscal_year_ending.Text = fiscal_year_ending;
+      Literal_current_num_classes.Text = num_classes;
+      Literal_current_num_sittings.Text = num_sittings;
+      Literal_current_avg_num_students_per_class.Text = avg_num_students_per_class;
+      Literal_current_num_distinct_practitioners.Text = num_distinct_practitioners;
+      //
+      TableRow_prior_unreduced.Visible = (DateTime.Today.Month > 6);
+      if (TableRow_prior_unreduced.Visible)
+        {
+        fiscal_year_ending = DateTime.Today.Year.ToString();
+        p.biz_coned_offering_rosters.GetAnalysisOfRegionByYear
+          (
+          year:fiscal_year_ending,
+          region_code:Session["region_code"].ToString(),
+          practitioner_level_filter:p.practitioner_level_filter,
+          num_classes:out num_classes,
+          num_sittings:out num_sittings,
+          avg_num_students_per_class:out avg_num_students_per_class,
+          num_distinct_practitioners:out num_distinct_practitioners
+          );
+        Literal_prior_unreduced_fiscal_year_ending.Text = fiscal_year_ending;
+        Literal_prior_unreduced_num_classes.Text = num_classes;
+        Literal_prior_unreduced_num_sittings.Text = num_sittings;
+        Literal_prior_unreduced_avg_num_students_per_class.Text = avg_num_students_per_class;
+        Literal_prior_unreduced_num_distinct_practitioners.Text = num_distinct_practitioners;
+        }
+      //
+      p.biz_old_analysis_of_region_by_years.BindBaseDataList
         (
         sort_order:p.sort_order,
         be_sort_order_ascending:p.be_sort_order_ascending,
@@ -236,7 +282,6 @@ namespace UserControl_analysis_of_region_by_year
         practitioner_level_filter:p.practitioner_level_filter
         );
       p.be_datagrid_empty = (p.num_fiscal_years == 0);
-      TableRow_none.Visible = p.be_datagrid_empty;
       DataGrid_control.Visible = !p.be_datagrid_empty;
       p.num_fiscal_years = 0;
       }

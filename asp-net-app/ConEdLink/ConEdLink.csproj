@@ -91,6 +91,7 @@
     <Compile Include="component\biz\Class_biz_coned_sponsor_users.cs" />
     <Compile Include="component\biz\Class_biz_eval_summary_modes.cs" />
     <Compile Include="component\biz\Class_biz_eval_summary_tallies.cs" />
+    <Compile Include="component\biz\Class_biz_old_analysis_of_region_by_years.cs" />
     <Compile Include="component\biz\Class_biz_practitioner_levels.cs" />
     <Compile Include="component\biz\Class_biz_scheduled_tasks.cs" />
     <Compile Include="component\biz\Class_biz_teaching_entities.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="component\db\Class_db_coned_sponsor_users.cs" />
     <Compile Include="component\db\Class_db_eval_summary_modes.cs" />
     <Compile Include="component\db\Class_db_eval_summary_tallies.cs" />
+    <Compile Include="component\db\Class_db_old_analysis_of_region_by_years.cs" />
     <Compile Include="component\db\Class_db_teaching_entities.cs" />
     <Compile Include="component\db\Class_db_teaching_entity_business_types.cs" />
     <Compile Include="component\db\Class_db_teaching_entity_levels.cs" />
@@ -147,6 +149,13 @@
     <Compile Include="noninteractive\daily_tasks.aspx.designer.cs">
       <DependentUpon>daily_tasks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="noninteractive\first_of_calendar_year_tasks.aspx.cs">
+      <DependentUpon>first_of_calendar_year_tasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\first_of_calendar_year_tasks.aspx.designer.cs">
+      <DependentUpon>first_of_calendar_year_tasks.aspx</DependentUpon>
+    </Compile>
     <Compile Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx.cs">
       <DependentUpon>import_latest_teaching_entities_from_emsrs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,6 +190,13 @@
     </Compile>
     <Compile Include="noninteractive\report_commanded_training_certificate_legacy.aspx.designer.cs">
       <DependentUpon>report_commanded_training_certificate_legacy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="noninteractive\special_task.aspx.cs">
+      <DependentUpon>special_task.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="noninteractive\special_task.aspx.designer.cs">
+      <DependentUpon>special_task.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -301,8 +317,16 @@
     <Compile Include="usercontrol\app\UserControl_about.ascx.designer.cs">
       <DependentUpon>UserControl_about.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_intro.ascx.cs">
+      <DependentUpon>UserControl_analysis_intro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_analysis_intro.ascx.designer.cs">
+      <DependentUpon>UserControl_analysis_intro.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_region_binder.ascx.cs">
       <DependentUpon>UserControl_analysis_of_region_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_region_binder.ascx.designer.cs">
       <DependentUpon>UserControl_analysis_of_region_binder.ascx</DependentUpon>
@@ -344,6 +368,7 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_binder.ascx.cs">
       <DependentUpon>UserControl_analysis_of_sponsor_binder.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_binder.ascx.designer.cs">
       <DependentUpon>UserControl_analysis_of_sponsor_binder.ascx</DependentUpon>
@@ -671,11 +696,13 @@
     <Content Include="js\sha1.js" />
     <Content Include="login.aspx" />
     <Content Include="new_password.aspx" />
+    <Content Include="noninteractive\first_of_calendar_year_tasks.aspx" />
     <Content Include="noninteractive\import_latest_coned_offerings_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_teaching_entities_from_emsrs.aspx" />
     <Content Include="noninteractive\import_latest_practitioners_from_emsrs.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate.aspx" />
     <Content Include="noninteractive\report_commanded_training_certificate_legacy.aspx" />
+    <Content Include="noninteractive\special_task.aspx" />
     <Content Include="noninteractive\template\notification\roster_due.txt" />
     <Content Include="protected\bounty_program.aspx" />
     <Content Include="protected\change_practitioner_email_address.aspx" />
@@ -723,6 +750,7 @@
     <None Include="noninteractive\.crontab" />
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
+    <Content Include="usercontrol\app\UserControl_analysis_intro.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_county.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_region_by_course.ascx" />

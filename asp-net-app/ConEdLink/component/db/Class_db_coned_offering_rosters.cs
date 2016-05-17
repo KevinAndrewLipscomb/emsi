@@ -266,46 +266,6 @@ namespace Class_db_coned_offering_rosters
       Close();
       }
 
-    internal void BindBaseDataListForAnalysisOfRegionByYear
-      (
-      string sort_order,
-      bool be_sort_order_ascending,
-      object target,
-      string region_code,
-      string practitioner_level_filter
-      )
-      {
-      Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
-        (
-        "select * from"
-        + " ("
-        + " select @fye := YEAR(ADDDATE(end_date_time,INTERVAL 6 MONTH)) as fiscal_year_ending"
-        + " , count(DISTINCT coned_offering.id) as num_classes"
-        + " , count(coned_offering_roster.id) as num_sittings"
-        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT coned_offering.id),1)") + " as avg_num_students_per_class"
-        + " , count(DISTINCT coned_offering_roster.practitioner_id) as num_distinct_practitioners"
-        + " from coned_offering_roster"
-        +   " join coned_offering on (coned_offering.id=coned_offering_roster.coned_offering_id)"
-        +   " join coned_offering_status on (coned_offering_status.id=coned_offering.status_id)"
-        +   " join region_code_name_map on (region_code_name_map.emsrs_code=coned_offering.region_council_num)"
-        +   " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
-        + " where coned_offering_status.description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED')"
-        +   (practitioner_level_filter.Length > 0 ? " and practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY)
-        +   " and region_code_name_map.code = '" + region_code + "'"
-        + " group by fiscal_year_ending"
-        +   " having fiscal_year_ending between 2013 and YEAR(CURDATE())"
-        + " )"
-        + " as p"
-        + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
-        connection
-        )
-        .ExecuteReader();
-      ((target) as BaseDataList).DataBind();
-      (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
-      Close();
-      }
-
     internal void BindBaseDataListForAnalysisOfSponsorByCounty
       (
       string sort_order,
@@ -582,6 +542,58 @@ namespace Class_db_coned_offering_rosters
       dr.Close();
       Close();
       return result;
+      }
+
+    internal void GetAnalysisOfRegionByYear
+      (
+      string year,
+      string region_code,
+      string practitioner_level_filter,
+      out string num_classes,
+      out string num_sittings,
+      out string avg_num_students_per_class,
+      out string num_distinct_practitioners
+      )
+      {
+      Open();
+      var dr = new MySqlCommand
+        (
+        "select count(DISTINCT qco.id) as num_classes"
+        + " , count(coned_offering_roster.id) as num_sittings"
+        + " , " + (practitioner_level_filter.Length > 0 ? "'- -'" : "FORMAT(count(coned_offering_roster.id)/count(DISTINCT qco.id),1)") + " as avg_num_students_per_class"
+        + " , count(DISTINCT coned_offering_roster.practitioner_id) as num_distinct_practitioners"
+        + " from"
+        +  " ("
+        +  " select id"
+        +  " from"
+        +    " ("
+        +    " select id, status_id"
+        +    " from"
+        +      " ("
+        +      " select id, region_council_num, status_id"
+        +      " from coned_offering"
+        +      " where end_date_time between '" + (int.Parse(year) - 1).ToString() + "-07-01' and '" + year + "-06-30'"
+        +      " )"
+        +      " as selected_year_coned_offering"
+        +    (region_code.Length > 0 ? " where region_council_num = (select emsrs_code from region_code_name_map where code = '" + region_code + "')" : k.EMPTY)
+        +    " )"
+        +    " as selected_year_this_region_coned_offering"
+        +  " where status_id in (select id from coned_offering_status where description in ('ARCHIVED','SPONSOR_SAYS_ALREADY_SUBMITTED'))"
+        +  " )"
+        +  " as qco"
+        +  " join coned_offering_roster on (coned_offering_roster.coned_offering_id=qco.id)"
+        +  " join practitioner on (practitioner.id=coned_offering_roster.practitioner_id)"
+        +  (practitioner_level_filter.Length > 0 ? " where practitioner.level_id = '" + practitioner_level_filter + "'" : k.EMPTY),
+        connection
+        )
+        .ExecuteReader();
+      dr.Read();
+      num_classes = dr["num_classes"].ToString();
+      num_sittings = dr["num_sittings"].ToString();
+      avg_num_students_per_class = dr["avg_num_students_per_class"].ToString();
+      num_distinct_practitioners = dr["num_distinct_practitioners"].ToString();
+      dr.Close();
+      Close();
       }
 
     public void Set

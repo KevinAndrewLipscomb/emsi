@@ -31,6 +31,15 @@ namespace UserControl_analysis_of_region_binder {
         protected global::AjaxControlToolkit.TabContainer TabContainer_control;
         
         /// <summary>
+        /// TabPanel_intro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel_intro;
+        
+        /// <summary>
         /// TabPanel_by_year control.
         /// </summary>
         /// <remarks>
