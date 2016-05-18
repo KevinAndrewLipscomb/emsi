@@ -7,6 +7,7 @@ using kix;
 using UserControl_strike_team_deployment_log;
 using UserControl_strike_team_deployment_members;
 using UserControl_strike_team_deployment_operational_periods;
+using UserControl_strike_team_deployment_agreements;
 using UserControl_strike_team_deployment_snapshot;
 using UserControl_strike_team_deployment_vehicles;
 
@@ -27,8 +28,9 @@ namespace UserControl_strike_team_deployment_binder
       public const int TSSI_PERSONNEL = 0;
       public const int TSSI_VEHICLES = 1;
       public const int TSSI_OPERATIONAL_PERIODS = 2;
-      public const int TSSI_LOG = 3;
-      public const int TSSI_SNAPSHOT = 4;
+      public const int TSSI_AD_HOC_AGREEMENTS = 3;
+      public const int TSSI_LOG = 4;
+      public const int TSSI_SNAPSHOT = 5;
       }
 
     private struct p_type
@@ -69,6 +71,12 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_operational_periods)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_operational_periods.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_operational_periods",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
+        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments,p.be_more_than_examiner);
+        }
+      else if (p.tab_index == Static.TSSI_AD_HOC_AGREEMENTS)
+        {
+        var c = ((TWebUserControl_strike_team_deployment_agreements)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_agreements.ascx")));
+        p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_agreements",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments,p.be_more_than_examiner);
         }
       else if (p.tab_index == Static.TSSI_LOG)
@@ -187,9 +195,13 @@ namespace UserControl_strike_team_deployment_binder
       p.deployment_id = deployment_id;
       p.be_ok_to_config_strike_team_deployments = be_ok_to_config_strike_team_deployments;
       p.be_more_than_examiner = be_more_than_examiner;
+      //
+      TabPanel_ad_hoc_agreements.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
       TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
       TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
+      //
       p.service_strike_team_management_footprint = (be_ok_to_config_strike_team_deployments ? k.EMPTY : p.biz_services.ServiceStrikeTeamManagementFootprintOf(p.biz_members.IdOfUserId(p.biz_user.IdNum())));
+      //
       SetTarget(target:"//"); // Kludge to do everything SetTarget does except alter p.tab_index.
       }
 
@@ -220,6 +232,10 @@ namespace UserControl_strike_team_deployment_binder
         else if (target.ToLower().Contains("/operational-periods/"))
           {
           p.tab_index = Static.TSSI_OPERATIONAL_PERIODS;
+          }
+        else if (target.ToLower().Contains("/ad-hoc-agreements/"))
+          {
+          p.tab_index = Static.TSSI_AD_HOC_AGREEMENTS;
           }
         else if (target.ToLower().Contains("/log/"))
           {
