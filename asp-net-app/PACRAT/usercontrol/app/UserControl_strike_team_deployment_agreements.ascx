@@ -19,7 +19,8 @@
                   <Columns>
                     <asp:ButtonColumn text="&lt;IMG src=&quot;~/protected/image/open_document16_h.png&quot; alt=&quot;Detail&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" commandname="Select"></asp:ButtonColumn>
                     <asp:BoundColumn datafield="id" Visible="false" ReadOnly="True"></asp:BoundColumn>
-                    <asp:BoundColumn datafield="region" HeaderText="Region" SortExpression="region.name%,short_name"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="region_code" visible="false"></asp:BoundColumn>
+                    <asp:BoundColumn datafield="region_name" HeaderText="Region" SortExpression="region_name%,short_name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="affiliate_num" headertext="Affiliate#" sortexpression="affiliate_num%">
                       <ItemStyle HorizontalAlign="Center" />
                     </asp:BoundColumn>

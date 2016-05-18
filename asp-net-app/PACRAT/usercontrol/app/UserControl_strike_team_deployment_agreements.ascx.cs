@@ -5,6 +5,7 @@ using Class_biz_practitioner_strike_team_details;
 using Class_biz_services;
 using Class_biz_strike_team_deployments;
 using Class_biz_user;
+using Class_msg_protected;
 using kix;
 using System;
 using System.Configuration;
@@ -19,14 +20,15 @@ namespace UserControl_strike_team_deployment_agreements
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
-      public const int TCI_REGION = 2;
-      public const int TCI_AFFILIATE_NUM = 3;
-      public const int TCI_SHORT_NAME = 4;
-      public const int TCI_LONG_NAME = 5;
-      public const int TCI_FILES = 6;
-      public const int TCI_EMAIL_TARGET = 7;
-      public const int TCI_SMS_TARGET = 8;
-      public const int TCI_SELECT_FOR_QUICKMESSAGE = 9;
+      public const int TCI_REGION_CODE = 2;
+      public const int TCI_REGION_NAME = 3;
+      public const int TCI_AFFILIATE_NUM = 4;
+      public const int TCI_SHORT_NAME = 5;
+      public const int TCI_LONG_NAME = 6;
+      public const int TCI_FILES = 7;
+      public const int TCI_EMAIL_TARGET = 8;
+      public const int TCI_SMS_TARGET = 9;
+      public const int TCI_SELECT_FOR_QUICKMESSAGE = 10;
       }
 
     private struct p_type
@@ -41,6 +43,7 @@ namespace UserControl_strike_team_deployment_agreements
       public TClass_biz_services biz_services;
       public TClass_biz_strike_team_deployments biz_strike_team_deployments;
       public TClass_biz_user biz_user;
+      public TClass_msg_protected.service_management msg_protected_service_management;
       public string deployment_id;
       public string distribution_list_email;
       public string distribution_list_sms;
@@ -176,6 +179,7 @@ namespace UserControl_strike_team_deployment_agreements
         p.biz_services = new TClass_biz_services();
         p.biz_strike_team_deployments = new TClass_biz_strike_team_deployments();
         p.biz_user = new TClass_biz_user();
+        p.msg_protected_service_management = new TClass_msg_protected.service_management();
         //
         p.be_interactive = (Session["mode:report"] == null);
         p.be_loaded = false;
@@ -220,6 +224,14 @@ namespace UserControl_strike_team_deployment_agreements
       {
       if (e.Item.ItemType.ToString().EndsWith("Item"))
         {
+        var service_id = k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM);
+        if (e.CommandName == "Select")
+          {
+          p.msg_protected_service_management.region_code = k.Safe(e.Item.Cells[Static.TCI_REGION_CODE].Text,k.safe_hint_type.NUM);
+          p.msg_protected_service_management.summary = p.biz_services.Summary(id:k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
+          p.msg_protected_service_management.be_more_than_examiner = p.be_more_than_examiner;
+          MessageDropCrumbAndTransferTo(p.msg_protected_service_management,"protected","service_management");
+          }
         }
       }
 
