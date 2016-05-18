@@ -58,6 +58,15 @@ namespace UserControl_strike_team_deployment_binder {
         protected global::AjaxControlToolkit.TabPanel TabPanel_operational_periods;
         
         /// <summary>
+        /// TabPanel_ad_hoc_agreements control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanel_ad_hoc_agreements;
+        
+        /// <summary>
         /// TabPanel_log control.
         /// </summary>
         /// <remarks>

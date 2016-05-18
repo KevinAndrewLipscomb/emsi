@@ -158,6 +158,7 @@
     <Content Include="usercontrol\app\UserControl_static_service_strike_team_roster.ascx" />
     <Content Include="usercontrol\app\UserControl_static_state_strike_team_key_personnel.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment.ascx" />
+    <Content Include="usercontrol\app\UserControl_strike_team_deployment_agreements.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_catalog.ascx" />
     <Content Include="usercontrol\app\UserControl_strike_team_deployment_log.ascx" />
@@ -853,6 +854,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_agreements.ascx.cs">
+      <DependentUpon>UserControl_strike_team_deployment_agreements.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_strike_team_deployment_agreements.ascx.designer.cs">
+      <DependentUpon>UserControl_strike_team_deployment_agreements.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_binder.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_binder.ascx</DependentUpon>

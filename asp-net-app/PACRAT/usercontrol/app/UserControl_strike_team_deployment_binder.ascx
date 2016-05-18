@@ -10,6 +10,7 @@
             <cc1:TabPanel runat="server" headertext="Personnel" id="TabPanel_personnel"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Vehicles" id="TabPanel_vehicles"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Operational periods" id="TabPanel_operational_periods"></cc1:TabPanel>
+            <cc1:TabPanel runat="server" headertext="Ad-hoc agreements" id="TabPanel_ad_hoc_agreements" visible="false"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Log" id="TabPanel_log" visible="false"></cc1:TabPanel>
             <cc1:TabPanel runat="server" headertext="Snapshot" id="TabPanel_snapshot" visible="false"></cc1:TabPanel>
           </cc1:TabContainer>
