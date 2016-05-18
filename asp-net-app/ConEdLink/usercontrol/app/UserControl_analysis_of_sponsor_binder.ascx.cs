@@ -21,7 +21,7 @@ namespace UserControl_analysis_of_sponsor_binder
 
     private static class Static
       {
-      public const int TSSI_INTRO = 0;
+      public const int TSSI_INTRODUCTION = 0;
       public const int TSSI_BY_YEAR = 1;
       public const int TSSI_BY_MONTH = 2;
       public const int TSSI_BY_COURSE = 3;
@@ -43,7 +43,7 @@ namespace UserControl_analysis_of_sponsor_binder
       string target
       )
       {
-      if (p.tab_index == Static.TSSI_INTRO)
+      if (p.tab_index == Static.TSSI_INTRODUCTION)
         {
         var c = ((TWebUserControl_analysis_intro)(LoadControl("~/usercontrol/app/UserControl_analysis_intro.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_analysis_intro",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
@@ -143,7 +143,7 @@ namespace UserControl_analysis_of_sponsor_binder
         {
         p.be_loaded = false;
         //
-        p.tab_index = Static.TSSI_INTRO;
+        p.tab_index = Static.TSSI_INTRODUCTION;
         FillPlaceHolder(true);
         }
       }
@@ -164,9 +164,9 @@ namespace UserControl_analysis_of_sponsor_binder
       {
       if (target != k.EMPTY)
         {
-        if (target.ToLower().Contains("/intro/"))
+        if (target.ToLower().Contains("/introduction/"))
           {
-          p.tab_index = Static.TSSI_INTRO;
+          p.tab_index = Static.TSSI_INTRODUCTION;
           }
         else if (target.ToLower().Contains("/by-year/"))
           {
