@@ -11,7 +11,7 @@
             <tr id="TableRow_operational_period_started" runat="server" bgcolor="khaki" visible="false">
               <td>An operational period has started for this deployment, so no further mobilization changes are allowed from your account.</td>
             </tr>
-            <tr><td bgcolor="#dcdcdc"><small><asp:Literal ID="Literal_num_services" runat="server"></asp:Literal> services</small></td></tr>
+            <tr><td bgcolor="#dcdcdc"><small><asp:Literal ID="Literal_num_services" runat="server"></asp:Literal> ad-hoc services</small></td></tr>
             <tr id="TableRow_none" runat="server"><td><em>--&nbsp;NONE&nbsp;--</em></td></tr>
             <tr>
               <td>
@@ -22,15 +22,19 @@
                     <asp:BoundColumn datafield="region_code" visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="region_name" HeaderText="Region" SortExpression="region_name%,short_name"></asp:BoundColumn>
                     <asp:BoundColumn datafield="affiliate_num" headertext="Affiliate#" sortexpression="affiliate_num%">
-                      <ItemStyle HorizontalAlign="Center" />
+                      <ItemStyle HorizontalAlign="Center" Font-Italic="true"/>
                     </asp:BoundColumn>
                     <asp:BoundColumn DataField="short_name" HeaderText="Short name" SortExpression="short_name%">
                       <HeaderStyle HorizontalAlign="Left" />
+                      <ItemStyle Font-Italic="true" />
                     </asp:BoundColumn>
                     <asp:BoundColumn DataField="name" HeaderText="Long name" SortExpression="name%">
-                      <ItemStyle Font-Size="Small" />
+                      <ItemStyle Font-Size="Small" Font-Italic="true" />
                     </asp:BoundColumn>
-                    <asp:TemplateColumn><ItemTemplate><uc1:UserControl_attachment_explorer runat="server" ID="UserControl_attachment_explorer_control" /></ItemTemplate></asp:TemplateColumn>
+                    <asp:TemplateColumn HeaderText="Files">
+                      <ItemTemplate><uc1:UserControl_attachment_explorer runat="server" ID="UserControl_attachment_explorer_control" /></ItemTemplate>
+                      <HeaderStyle HorizontalAlign="Center"/>
+                    </asp:TemplateColumn>
                     <asp:BoundColumn datafield="email_target" Visible="false"></asp:BoundColumn>
                     <asp:BoundColumn datafield="sms_target" Visible="false" ReadOnly="true"></asp:BoundColumn>
                     <asp:TemplateColumn HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" Visible="False">
