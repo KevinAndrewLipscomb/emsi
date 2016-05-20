@@ -9,8 +9,10 @@ using Class_msg_protected;
 using kix;
 using System;
 using System.Configuration;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserControl_attachment_explorer;
 
 namespace UserControl_strike_team_deployment_agreements
   {
@@ -147,7 +149,6 @@ namespace UserControl_strike_team_deployment_agreements
           {
           DataGrid_control.AllowSorting = false;
           }
-        Bind();
         p.be_loaded = true;
         }
       InjectPersistentClientSideScript();
@@ -238,6 +239,7 @@ namespace UserControl_strike_team_deployment_agreements
     private void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
       {
       LinkButton link_button;
+      TWebUserControl_attachment_explorer attachment_explorer;
       if (p.be_interactive)
         {
         if (e.Item.ItemType.ToString().EndsWith("Item"))
@@ -245,6 +247,14 @@ namespace UserControl_strike_team_deployment_agreements
           link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
+          //
+          attachment_explorer = ((e.Item.Cells[Static.TCI_FILES].FindControl(id:"UserControl_attachment_explorer_control")) as TWebUserControl_attachment_explorer);
+          attachment_explorer.Unbind();
+          attachment_explorer.enabled = p.be_more_than_examiner;
+          attachment_explorer.be_ok_to_add = p.be_more_than_examiner;
+          attachment_explorer.be_ok_to_delete = p.be_more_than_examiner;
+          attachment_explorer.Bind(HttpContext.Current.Server.MapPath("~/protected/attachment/service-strike-team-moa/" + e.Item.Cells[Static.TCI_AFFILIATE_NUM].Text));
+          ScriptManager.GetCurrent(Page).RegisterPostBackControl(attachment_explorer);
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
