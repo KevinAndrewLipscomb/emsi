@@ -13,7 +13,7 @@
     <!--[if lt IE 7]> <style type="text/css">@import "../css/standard-overrides-for-ie6.css";</style><![endif]-->
   </head>
   <body id="Body_control" runat="server" bgcolor="white">
-    <form runat="server">
+    <form runat="server" enctype="multipart/form-data">
       <uc1:UserControl_precontent id="UserControl_precontent" runat="server"></uc1:UserControl_precontent>
       <h3>Detail for strike team deployment</h3>
       <uc2:UserControl_strike_team_deployment ID="UserControl_strike_team_deployment_control" runat="server" />

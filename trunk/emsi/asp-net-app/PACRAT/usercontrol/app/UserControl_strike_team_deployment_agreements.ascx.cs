@@ -249,7 +249,7 @@ namespace UserControl_strike_team_deployment_agreements
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
           attachment_explorer = ((e.Item.Cells[Static.TCI_FILES].FindControl(id:"UserControl_attachment_explorer_control")) as TWebUserControl_attachment_explorer);
-          attachment_explorer.Unbind();
+          attachment_explorer.path = k.EMPTY;
           attachment_explorer.enabled = p.be_more_than_examiner;
           attachment_explorer.be_ok_to_add = p.be_more_than_examiner;
           attachment_explorer.be_ok_to_delete = p.be_more_than_examiner;
