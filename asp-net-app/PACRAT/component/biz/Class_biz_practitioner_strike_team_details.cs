@@ -4,6 +4,7 @@ using Class_db_practitioner_strike_team_details;
 using kix;
 using System;
 using System.Collections;
+using System.Configuration;
 
 namespace Class_biz_practitioner_strike_team_details
   {
@@ -195,9 +196,9 @@ namespace Class_biz_practitioner_strike_team_details
       return db_practitioner_strike_team_details.SmsTargetOf(practitioner_id);
       }
 
-    internal bool BeStaleClearanceOrBackgroundCheckDate(DateTime date)
+    internal bool BeStaleClearance(DateTime date)
       {
-      return date < DateTime.Today.AddYears(-3);
+      return date < DateTime.Today.AddYears(-int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"]));
       }
 
     } // end TClass_biz_practitioner_strike_team_details

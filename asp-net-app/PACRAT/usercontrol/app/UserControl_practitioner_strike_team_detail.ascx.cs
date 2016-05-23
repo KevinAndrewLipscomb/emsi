@@ -695,9 +695,9 @@ namespace UserControl_practitioner_strike_team_detail
     private void EvaluateForWarnings()
       {
       Label_expired_drivers_license.Visible = (UserControl_drop_down_date_drivers_license_expiration.selectedvalue < DateTime.Today);
-      Label_stale_act_1985_33_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearanceOrBackgroundCheckDate(UserControl_drop_down_date_act_1985_33_date.selectedvalue);
-      Label_stale_act_1985_34_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearanceOrBackgroundCheckDate(UserControl_drop_down_date_act_1985_34_date.selectedvalue);
-      Label_stale_act_1994_151_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearanceOrBackgroundCheckDate(UserControl_drop_down_date_act_1994_151_date.selectedvalue);
+      Label_stale_act_1985_33_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(UserControl_drop_down_date_act_1985_33_date.selectedvalue);
+      Label_stale_act_1985_34_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(UserControl_drop_down_date_act_1985_34_date.selectedvalue);
+      Label_stale_act_1994_151_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(UserControl_drop_down_date_act_1994_151_date.selectedvalue);
       }
 
     } // end TWebUserControl_practitioner_strike_team_detail
