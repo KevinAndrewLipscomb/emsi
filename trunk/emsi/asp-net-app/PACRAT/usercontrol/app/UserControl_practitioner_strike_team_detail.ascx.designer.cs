@@ -328,6 +328,15 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_drivers_license_expiration;
         
         /// <summary>
+        /// Label_expired_drivers_license control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_expired_drivers_license;
+        
+        /// <summary>
         /// UserControl_drop_down_date_act_1985_33_date control.
         /// </summary>
         /// <remarks>
@@ -335,6 +344,15 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1985_33_date;
+        
+        /// <summary>
+        /// Label_stale_act_1985_33_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_stale_act_1985_33_date;
         
         /// <summary>
         /// UserControl_drop_down_date_act_1985_34_date control.
@@ -346,6 +364,15 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1985_34_date;
         
         /// <summary>
+        /// Label_stale_act_1985_34_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_stale_act_1985_34_date;
+        
+        /// <summary>
         /// UserControl_drop_down_date_act_1994_151_date control.
         /// </summary>
         /// <remarks>
@@ -353,6 +380,15 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_act_1994_151_date;
+        
+        /// <summary>
+        /// Label_stale_act_1994_151_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_stale_act_1994_151_date;
         
         /// <summary>
         /// UserControl_drop_down_date_nims_is_100_date control.
@@ -533,5 +569,14 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_delete;
+        
+        /// <summary>
+        /// CustomValidator_evaluate_warnings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_evaluate_warnings;
     }
 }

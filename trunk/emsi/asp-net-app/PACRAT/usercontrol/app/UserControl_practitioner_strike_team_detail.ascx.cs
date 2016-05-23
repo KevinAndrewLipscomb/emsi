@@ -16,6 +16,7 @@ namespace UserControl_practitioner_strike_team_detail
   {
   public partial class TWebUserControl_practitioner_strike_team_detail: ki_web_ui.usercontrol_class
     {
+
     private struct p_type
       {
       public bool be_loaded;
@@ -378,6 +379,7 @@ namespace UserControl_practitioner_strike_team_detail
         SetDependentFieldAblements(p.be_ok_to_config_practitioner_strike_team_details);
         Button_submit.Enabled = p.be_ok_to_config_practitioner_strike_team_details;
         Button_delete.Enabled = p.be_ok_to_config_practitioner_strike_team_details;
+        EvaluateForWarnings();
         result = true;
         }
       return result;
@@ -682,6 +684,20 @@ namespace UserControl_practitioner_strike_team_detail
     protected void CustomValidator_emergency_contact_2_phone_number_ServerValidate(object source, ServerValidateEventArgs args)
       {
       args.IsValid = k.BeValidNanpNumber(k.Safe(TextBox_emergency_contact_2_phone_number.Text, k.safe_hint_type.NUM));
+      }
+
+    protected void CustomValidator_evaluate_warnings_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = true;
+      EvaluateForWarnings();
+      }
+
+    private void EvaluateForWarnings()
+      {
+      Label_expired_drivers_license.Visible = (UserControl_drop_down_date_drivers_license_expiration.selectedvalue < DateTime.Today);
+      Label_stale_act_1985_33_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearanceOrBackgroundCheckDate(UserControl_drop_down_date_act_1985_33_date.selectedvalue);
+      Label_stale_act_1985_34_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearanceOrBackgroundCheckDate(UserControl_drop_down_date_act_1985_34_date.selectedvalue);
+      Label_stale_act_1994_151_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearanceOrBackgroundCheckDate(UserControl_drop_down_date_act_1994_151_date.selectedvalue);
       }
 
     } // end TWebUserControl_practitioner_strike_team_detail
