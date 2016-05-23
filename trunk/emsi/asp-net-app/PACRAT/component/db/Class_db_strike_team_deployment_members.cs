@@ -5,15 +5,13 @@ using Class_db_practitioner_strike_team_details;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployment_members
   {
   public class TClass_db_strike_team_deployment_members: TClass_db
     {
+
     private class strike_team_deployment_member_summary
       {
       public string id;
@@ -119,7 +117,7 @@ namespace Class_db_strike_team_deployment_members
         +   (do_include_all_eligible_practitioners ? " left" : k.EMPTY) + " join strike_team_deployment_member on (strike_team_deployment_member.practitioner_id=strike_team_roster.practitioner_id and strike_team_deployment_member.deployment_id = '" + deployment_id + "')"
         +   " join strike_team_deployment_member_policy on (strike_team_deployment_member_policy.id=strike_team_deployment.member_policy_id)"
         + " where " + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION
-        +   (do_include_all_eligible_practitioners ? " and (" + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " or strike_team_deployment_member_policy.description in ('relaxed','drill') or strike_team_deployment_member.id is not null)" : k.EMPTY)
+        +   (do_include_all_eligible_practitioners ? " and (" + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + " or strike_team_deployment_member_policy.description in ('relaxed','drill') or strike_team_deployment_member.id is not null)" : k.EMPTY)
         +   (service_strike_team_management_footprint.Length > 0 ? " and service.id in (" + service_strike_team_management_footprint + ")" : k.EMPTY)
         + " group by member.id"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),

@@ -569,14 +569,5 @@ namespace UserControl_practitioner_strike_team_detail {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_delete;
-        
-        /// <summary>
-        /// CustomValidator_evaluate_warnings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_evaluate_warnings;
     }
 }

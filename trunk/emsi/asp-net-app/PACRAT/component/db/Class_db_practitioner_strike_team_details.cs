@@ -6,21 +6,51 @@ using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
+using System.Configuration;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_practitioner_strike_team_details
   {
+
   public static class Class_db_practitioner_strike_team_details_Static
     {
-    public const string BE_CREDENTIALED_AS_MEMBER_EXPRESSION = k.EMPTY
+    public const string BE_CREDENTIALED_AS_LEADER_EXPRESSION = k.EMPTY
     + " ("
-    +   " (act_1985_33_date is not null and act_1985_33_date > '0001-01-01')"
+    +   " (nims_ics_300_date is not null and nims_ics_300_date > '0001-01-01')"
     + " and"
-    +   " (act_1985_34_date is not null and act_1985_34_date > '0001-01-01')"
+    +   " (nims_ics_400_date is not null and nims_ics_400_date > '0001-01-01')"
     + " and"
-    +   " (act_1994_151_date is not null and act_1994_151_date > '0001-01-01')"
+    +   " (pa_psychological_first_aid_date is not null and pa_psychological_first_aid_date > '0001-01-01')"
+    + " and"
+    +   " (pa_water_rescue_awareness_date is not null and pa_water_rescue_awareness_date > '0001-01-01')"
+    + " and"
+    +   " (pa_hazmat_awareness_date is not null and pa_hazmat_awareness_date > '0001-01-01')"
+    + " and"
+    +   " (pa_ems_strike_team_leader_date is not null and pa_ems_strike_team_leader_date > '0001-01-01')"
+    + " and"
+    +   " (two_years_supervisory_experience_date is not null and two_years_supervisory_experience_date > '0001-01-01')"
+    + " )";
+    public const string BE_TEXTABLE_EXPRESSION = k.EMPTY
+    + " ("
+    +   " (phone_number is not null)"
+    + " and"
+    +   " (phone_service_id is not null)"
+    + " )";
+    }
+
+  public class TClass_db_practitioner_strike_team_details: TClass_db
+    {
+
+  internal static string BeCredentialedAsMemberExpression()
+    {
+    var num_years_clearances_considered_valid = ConfigurationManager.AppSettings["num_years_clearances_considered_valid"];
+    return k.EMPTY
+    + " ("
+    +   " (act_1985_33_date is not null and act_1985_33_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
+    + " and"
+    +   " (act_1985_34_date is not null and act_1985_34_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
+    + " and"
+    +   " (act_1994_151_date is not null and act_1994_151_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
     + " and"
     +   " be_immune_hepatitis_b"
     + " and"
@@ -54,32 +84,7 @@ namespace Class_db_practitioner_strike_team_details
     + " and"
     +   " (lms_ems_bioterror_date is not null and lms_ems_bioterror_date > '0001-01-01')"
     + " )";
-    public const string BE_CREDENTIALED_AS_LEADER_EXPRESSION = k.EMPTY
-    + " ("
-    +   " (nims_ics_300_date is not null and nims_ics_300_date > '0001-01-01')"
-    + " and"
-    +   " (nims_ics_400_date is not null and nims_ics_400_date > '0001-01-01')"
-    + " and"
-    +   " (pa_psychological_first_aid_date is not null and pa_psychological_first_aid_date > '0001-01-01')"
-    + " and"
-    +   " (pa_water_rescue_awareness_date is not null and pa_water_rescue_awareness_date > '0001-01-01')"
-    + " and"
-    +   " (pa_hazmat_awareness_date is not null and pa_hazmat_awareness_date > '0001-01-01')"
-    + " and"
-    +   " (pa_ems_strike_team_leader_date is not null and pa_ems_strike_team_leader_date > '0001-01-01')"
-    + " and"
-    +   " (two_years_supervisory_experience_date is not null and two_years_supervisory_experience_date > '0001-01-01')"
-    + " )";
-    public const string BE_TEXTABLE_EXPRESSION = k.EMPTY
-    + " ("
-    +   " (phone_number is not null)"
-    + " and"
-    +   " (phone_service_id is not null)"
-    + " )";
     }
-
-  public class TClass_db_practitioner_strike_team_details: TClass_db
-    {
 
     private TClass_biz_notifications biz_notifications = null;
     private TClass_db_trail db_trail = null;
@@ -300,8 +305,8 @@ namespace Class_db_practitioner_strike_team_details
         + " , IF(DATE_FORMAT(act_1985_33_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_33_date,'%e %M %Y')) as act_1985_33_date"
         + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_34_date,'%e %M %Y')) as act_1985_34_date"
         + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1994_151_date,'%e %M %Y')) as act_1994_151_date"
-        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one membership requirement') as credentialed_as_member_clause"
-        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one leadership requirement') as credentialed_as_leader_clause"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + ",'Yes','*No* - your record in this system fails at least one membership requirement') as credentialed_as_member_clause"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one leadership requirement') as credentialed_as_leader_clause"
         + " , GROUP_CONCAT(affiliated_service.name ORDER BY affiliated_service.name SEPARATOR ', ') as service_strike_team_affiliation"
         + " , IFNULL("
         +       " ("
@@ -325,7 +330,7 @@ namespace Class_db_practitioner_strike_team_details
         + " where email_address is not null"
         +   " and TRIM(email_address) <> ''"
         +   " and strike_team_participation_level.description = 'Standing'"
-        +   (do_limit_to_uncredentialed ? " and not (" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + ")" : k.EMPTY)
+        +   (do_limit_to_uncredentialed ? " and not (" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + ")" : k.EMPTY)
         + " group by practitioner_strike_team_detail.id"
         + " order by RAND()",
         connection
