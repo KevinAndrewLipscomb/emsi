@@ -195,6 +195,11 @@ namespace Class_biz_practitioner_strike_team_details
       return db_practitioner_strike_team_details.SmsTargetOf(practitioner_id);
       }
 
+    internal bool BeStaleClearanceOrBackgroundCheckDate(DateTime date)
+      {
+      return date < DateTime.Today.AddYears(-3);
+      }
+
     } // end TClass_biz_practitioner_strike_team_details
 
   }

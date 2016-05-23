@@ -239,7 +239,13 @@
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_drivers_license_expiration" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td nowrap="nowrap"><asp:Label ID="Label_expired_drivers_license" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!EXPIRED!&nbsp;" BackColor="#FF9900" ToolTip="This expiration date has passed." Visible="False"></asp:Label></td>
+          </tr>
+        </table>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -258,7 +264,17 @@
     <td style="border-left: thin solid Gainsboro"><font class="">PA Child Abuse History Clearance date:</font></td>
     <td valign="top"><font color="#33CC33">&clubs;</font></td>
     <td valign="top"><font color="#3366FF">&diams;</font></td>
-    <td><font class=""><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></font></td>
+    <td>
+      <font class="">
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1985_33_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!?STALE?!&nbsp;" BackColor="#FF9900" ToolTip="This date is unspecified or older than credentialing rules allow." Visible="False"></asp:Label></td>
+          </tr>
+        </table>
+      </font>
+    </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
   <tr style="border-left: thin solid Gainsboro; border-right: thin solid Gainsboro">
@@ -267,7 +283,13 @@
     <td valign="top"><font color="#3366FF">&diams;</font></td>
     <td>
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1985_34_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!?STALE?!&nbsp;" BackColor="#FF9900" ToolTip="This date is unspecified or older than credentialing rules allow." Visible="False"></asp:Label></td>
+          </tr>
+        </table>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
@@ -278,7 +300,13 @@
     <td  style="border-bottom: thin solid Gainsboro"valign="top"><font color="#3366FF">&diams;</font></td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
-        <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1994_151_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!?STALE?!&nbsp;" BackColor="#FF9900" ToolTip="This date is unspecified or older than credentialing rules allow." Visible="False"></asp:Label></td>
+          </tr>
+        </table>
       </font>
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
@@ -574,5 +602,4 @@
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="false"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="false"></ASP:Button>
-
+<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="false"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="false"></ASP:Button>&nbsp;&nbsp;<asp:CustomValidator ID="CustomValidator_evaluate_warnings" runat="server" OnServerValidate="CustomValidator_evaluate_warnings_ServerValidate"></asp:CustomValidator>
