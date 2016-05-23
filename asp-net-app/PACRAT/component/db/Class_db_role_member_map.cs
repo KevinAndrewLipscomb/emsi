@@ -20,12 +20,15 @@ namespace Class_db_role_member_map
 
   public class TClass_db_role_member_map: TClass_db
     {
+
         private TClass_db_trail db_trail = null;
+
         //Constructor  Create()
         public TClass_db_role_member_map() : base()
         {
             db_trail = new TClass_db_trail();
         }
+
         public void Bind(string sort_order, bool be_sort_order_descending, object target, out ArrayList crosstab_metadata_rec_arraylist)
         {
             crosstab_metadata_rec_type crosstab_metadata_rec;
@@ -108,7 +111,7 @@ namespace Class_db_role_member_map
             + " , role.name as role_name"
             + " , IFNULL(email_address,'DESIRED') as email_address"
             + " , IFNULL(practitioner_status.description,'') as practitioner_status_description"
-            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
+            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
             + " from role_member_map"
             +   " join member on (member.id=role_member_map.member_id)"
             +   " left join practitioner_level on (practitioner_level.id=member.level_id)"
@@ -149,7 +152,7 @@ namespace Class_db_role_member_map
             + " , role.name as role_name"
             + " , IFNULL(email_address,'DESIRED') as email_address"
             + " , IFNULL(practitioner_status.description,'') as practitioner_status_description"
-            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
+            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
             + " from role_member_map"
             +   " join member on (member.id=role_member_map.member_id)"
             +   " left join practitioner_level on (practitioner_level.id=member.level_id)"
@@ -189,7 +192,7 @@ namespace Class_db_role_member_map
             + " , role.name as role_name"
             + " , IFNULL(email_address,'DESIRED') as email_address"
             + " , IFNULL(practitioner_status.description,'') as practitioner_status_description"
-            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
+            + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Y','N') as be_credentialed"
             + " from role_member_map"
             +   " join member on (member.id=role_member_map.member_id)"
             +   " left join practitioner_level on (practitioner_level.id=member.level_id)"

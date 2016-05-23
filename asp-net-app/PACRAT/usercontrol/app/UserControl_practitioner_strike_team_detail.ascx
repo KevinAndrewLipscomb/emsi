@@ -217,7 +217,7 @@
   </tr>
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">PCP&nbsp;name:</font></td>
-    <td style="border-bottom: thin solid Gainsboro">&nbsp</td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
@@ -270,7 +270,7 @@
           <tr>
             <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_33_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
             <td>&nbsp;&nbsp;&nbsp;</td>
-            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1985_33_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!?STALE?!&nbsp;" BackColor="#FF9900" ToolTip="This date is unspecified or older than credentialing rules allow." Visible="False"></asp:Label></td>
+            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1985_33_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!STALE!&nbsp;" BackColor="#FF9900" ToolTip="This date is older than credentialing rules allow." Visible="False"></asp:Label></td>
           </tr>
         </table>
       </font>
@@ -287,7 +287,7 @@
           <tr>
             <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1985_34_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
             <td>&nbsp;&nbsp;&nbsp;</td>
-            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1985_34_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!?STALE?!&nbsp;" BackColor="#FF9900" ToolTip="This date is unspecified or older than credentialing rules allow." Visible="False"></asp:Label></td>
+            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1985_34_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!STALE!&nbsp;" BackColor="#FF9900" ToolTip="This date is older than credentialing rules allow." Visible="False"></asp:Label></td>
           </tr>
         </table>
       </font>
@@ -304,7 +304,7 @@
           <tr>
             <td><uc1:UserControl_drop_down_date id="UserControl_drop_down_date_act_1994_151_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date></td>
             <td>&nbsp;&nbsp;&nbsp;</td>
-            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1994_151_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!?STALE?!&nbsp;" BackColor="#FF9900" ToolTip="This date is unspecified or older than credentialing rules allow." Visible="False"></asp:Label></td>
+            <td nowrap="nowrap"><asp:Label ID="Label_stale_act_1994_151_date" runat="server" Font-Bold="True" ForeColor="White" Text="&nbsp;!STALE!&nbsp;" BackColor="#FF9900" ToolTip="This date is older than credentialing rules allow." Visible="False"></asp:Label></td>
           </tr>
         </table>
       </font>
@@ -602,4 +602,4 @@
     </td>
   </tr>
 </table>
-<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="false"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="false"></ASP:Button>&nbsp;&nbsp;<asp:CustomValidator ID="CustomValidator_evaluate_warnings" runat="server" OnServerValidate="CustomValidator_evaluate_warnings_ServerValidate"></asp:CustomValidator>
+<ASP:Button id="Button_submit" text="Submit" runat="server" enabled="False" onclick="Button_submit_Click" Visible="false"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False" onclick="Button_delete_Click" Visible="false"></ASP:Button>

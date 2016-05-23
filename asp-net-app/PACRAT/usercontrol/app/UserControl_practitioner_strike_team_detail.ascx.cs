@@ -19,6 +19,9 @@ namespace UserControl_practitioner_strike_team_detail
 
     private struct p_type
       {
+      public DateTime act_1985_33_date;
+      public DateTime act_1985_34_date;
+      public DateTime act_1994_151_date;
       public bool be_loaded;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
@@ -27,6 +30,7 @@ namespace UserControl_practitioner_strike_team_detail
       public TClass_biz_sms_gateways biz_sms_gateways;
       public TClass_biz_user biz_user;
       public bool be_ok_to_config_practitioner_strike_team_details;
+      public DateTime drivers_license_expiration;
       public string practitioner_id;
       }
 
@@ -262,9 +266,6 @@ namespace UserControl_practitioner_strike_team_detail
       {
       Literal_match_index.Text = DropDownList_practitioner_id.SelectedIndex.ToString();
       bool result;
-      DateTime act_1985_33_date;
-      DateTime act_1985_34_date;
-      DateTime act_1994_151_date;
       string phone_number;
       string phone_service_id;
       bool be_immune_hepatitis_b;
@@ -276,7 +277,6 @@ namespace UserControl_practitioner_strike_team_detail
       string meds_doses;
       string allergies;
       string pcp_name;
-      DateTime drivers_license_expiration;
       DateTime nims_is_100_date;
       DateTime nims_is_200_date;
       DateTime nims_is_700_date;
@@ -301,9 +301,9 @@ namespace UserControl_practitioner_strike_team_detail
         p.biz_practitioner_strike_team_details.Get
           (
           practitioner_id,
-          out act_1985_33_date,
-          out act_1985_34_date,
-          out act_1994_151_date,
+          out p.act_1985_33_date,
+          out p.act_1985_34_date,
+          out p.act_1994_151_date,
           out phone_number,
           out phone_service_id,
           out be_immune_hepatitis_b,
@@ -315,7 +315,7 @@ namespace UserControl_practitioner_strike_team_detail
           out meds_doses,
           out allergies,
           out pcp_name,
-          out drivers_license_expiration,
+          out p.drivers_license_expiration,
           out nims_is_100_date,
           out nims_is_200_date,
           out nims_is_700_date,
@@ -339,9 +339,9 @@ namespace UserControl_practitioner_strike_team_detail
         {
         TextBox_practitioner_id.Text = practitioner_id;
         TextBox_practitioner_id.Enabled = false;
-        UserControl_drop_down_date_act_1985_33_date.selectedvalue = act_1985_33_date;
-        UserControl_drop_down_date_act_1985_34_date.selectedvalue = act_1985_34_date;
-        UserControl_drop_down_date_act_1994_151_date.selectedvalue = act_1994_151_date;
+        UserControl_drop_down_date_act_1985_33_date.selectedvalue = p.act_1985_33_date;
+        UserControl_drop_down_date_act_1985_34_date.selectedvalue = p.act_1985_34_date;
+        UserControl_drop_down_date_act_1994_151_date.selectedvalue = p.act_1994_151_date;
         TextBox_phone_number.Text = phone_number;
         DropDownList_phone_service.SelectedValue = phone_service_id;
         CheckBox_be_immune_hepatitis_b.Checked = be_immune_hepatitis_b;
@@ -353,7 +353,7 @@ namespace UserControl_practitioner_strike_team_detail
         TextBox_meds_doses.Text = meds_doses;
         TextBox_allergies.Text = allergies;
         TextBox_pcp_name.Text = pcp_name;
-        UserControl_drop_down_date_drivers_license_expiration.selectedvalue = drivers_license_expiration;
+        UserControl_drop_down_date_drivers_license_expiration.selectedvalue = p.drivers_license_expiration;
         UserControl_drop_down_date_nims_is_100_date.selectedvalue = nims_is_100_date;
         UserControl_drop_down_date_nims_is_200_date.selectedvalue = nims_is_200_date;
         UserControl_drop_down_date_nims_is_700_date.selectedvalue = nims_is_700_date;
@@ -489,7 +489,7 @@ namespace UserControl_practitioner_strike_team_detail
       return this;
       }
 
-    protected void Button_submit_Click(object sender, System.EventArgs e)
+    protected void Button_submit_Click(object sender, EventArgs e)
       {
       Submit();
       }
@@ -498,12 +498,16 @@ namespace UserControl_practitioner_strike_team_detail
       {
       if (Page.IsValid)
         {
+        p.act_1985_33_date = UserControl_drop_down_date_act_1985_33_date.selectedvalue;
+        p.act_1985_34_date = UserControl_drop_down_date_act_1985_34_date.selectedvalue;
+        p.act_1994_151_date = UserControl_drop_down_date_act_1994_151_date.selectedvalue;
+        p.drivers_license_expiration = UserControl_drop_down_date_drivers_license_expiration.selectedvalue;
         p.biz_practitioner_strike_team_details.Set
           (
           p.practitioner_id, //k.Safe(TextBox_practitioner_id.Text, k.safe_hint_type.NUM).Trim(),
-          UserControl_drop_down_date_act_1985_33_date.selectedvalue,
-          UserControl_drop_down_date_act_1985_34_date.selectedvalue,
-          UserControl_drop_down_date_act_1994_151_date.selectedvalue,
+          p.act_1985_33_date,
+          p.act_1985_34_date,
+          p.act_1994_151_date,
           k.Safe(TextBox_phone_number.Text, k.safe_hint_type.NUM).Trim(),
           k.Safe(DropDownList_phone_service.SelectedValue, k.safe_hint_type.NUM).Trim(),
           CheckBox_be_immune_hepatitis_b.Checked,
@@ -515,7 +519,7 @@ namespace UserControl_practitioner_strike_team_detail
           k.Safe(TextBox_meds_doses.Text, k.safe_hint_type.PUNCTUATED).Trim(),
           k.Safe(TextBox_allergies.Text, k.safe_hint_type.PUNCTUATED).Trim(),
           k.Safe(TextBox_pcp_name.Text, k.safe_hint_type.PUNCTUATED).Trim(),
-          UserControl_drop_down_date_drivers_license_expiration.selectedvalue,
+          p.drivers_license_expiration,
           UserControl_drop_down_date_nims_is_100_date.selectedvalue,
           UserControl_drop_down_date_nims_is_200_date.selectedvalue,
           UserControl_drop_down_date_nims_is_700_date.selectedvalue,
@@ -537,6 +541,7 @@ namespace UserControl_practitioner_strike_team_detail
           );
         Alert(k.alert_cause_type.USER, k.alert_state_type.SUCCESS, "recsaved", "Record saved.", true);
         //SetLookupMode();  -- inappropriate when not using lookup feature
+        EvaluateForWarnings();
         }
       else
         {
@@ -686,18 +691,12 @@ namespace UserControl_practitioner_strike_team_detail
       args.IsValid = k.BeValidNanpNumber(k.Safe(TextBox_emergency_contact_2_phone_number.Text, k.safe_hint_type.NUM));
       }
 
-    protected void CustomValidator_evaluate_warnings_ServerValidate(object source, ServerValidateEventArgs args)
-      {
-      args.IsValid = true;
-      EvaluateForWarnings();
-      }
-
     private void EvaluateForWarnings()
       {
-      Label_expired_drivers_license.Visible = (UserControl_drop_down_date_drivers_license_expiration.selectedvalue < DateTime.Today);
-      Label_stale_act_1985_33_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(UserControl_drop_down_date_act_1985_33_date.selectedvalue);
-      Label_stale_act_1985_34_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(UserControl_drop_down_date_act_1985_34_date.selectedvalue);
-      Label_stale_act_1994_151_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(UserControl_drop_down_date_act_1994_151_date.selectedvalue);
+      Label_expired_drivers_license.Visible = (p.drivers_license_expiration > DateTime.MinValue) && (p.drivers_license_expiration < DateTime.Today);
+      Label_stale_act_1985_33_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(p.act_1985_33_date);
+      Label_stale_act_1985_34_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(p.act_1985_34_date);
+      Label_stale_act_1994_151_date.Visible = p.biz_practitioner_strike_team_details.BeStaleClearance(p.act_1994_151_date);
       }
 
     } // end TWebUserControl_practitioner_strike_team_detail

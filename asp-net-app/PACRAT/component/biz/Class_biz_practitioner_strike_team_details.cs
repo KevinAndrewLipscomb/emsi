@@ -198,7 +198,7 @@ namespace Class_biz_practitioner_strike_team_details
 
     internal bool BeStaleClearance(DateTime date)
       {
-      return date < DateTime.Today.AddYears(-int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"]));
+      return (date > DateTime.MinValue) && (date < DateTime.Today.AddYears(-int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"])));
       }
 
     } // end TClass_biz_practitioner_strike_team_details

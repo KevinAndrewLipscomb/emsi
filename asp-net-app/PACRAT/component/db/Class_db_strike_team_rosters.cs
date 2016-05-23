@@ -11,6 +11,7 @@ namespace Class_db_strike_team_rosters
   {
   public class TClass_db_strike_team_rosters: TClass_db
     {
+
     private TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_rosters() : base()
@@ -75,7 +76,7 @@ namespace Class_db_strike_team_rosters
       ((target) as BaseDataList).DataSource = new MySqlCommand
         (
         "select strike_team_roster.id as id"
-        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_MEMBER_EXPRESSION + ",'Y','N') as be_credentialed"
+        + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + ",'Y','N') as be_credentialed"
         + " , member.id as practitioner_id"
         + " , last_name"
         + " , first_name"
