@@ -283,6 +283,7 @@ namespace Class_db_practitioner_strike_team_details
 
     public void MakeMemberStatusStatements(bool do_limit_to_uncredentialed)
       {
+      var num_years_clearances_considered_valid = ConfigurationManager.AppSettings["num_years_clearances_considered_valid"];
       Open();
       var dr = new MySqlCommand
         (
@@ -298,13 +299,13 @@ namespace Class_db_practitioner_strike_team_details
         + " , emergency_contact_2_phone_number"
         + " , be_immune_hepatitis_b"
         + " , be_immune_diptheria_tetanus"
-        + " , IF(DATE_FORMAT(drivers_license_expiration,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(drivers_license_expiration,'%e %M %Y')) as drivers_license_expiration"
+        + " , IF(DATE_FORMAT(drivers_license_expiration,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',CONCAT(DATE_FORMAT(drivers_license_expiration,'%e %M %Y'),IF(drivers_license_expiration >= CURDATE(),'',' *EXPIRED*'))) as drivers_license_expiration"
         + " , IF(DATE_FORMAT(nims_is_100_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(nims_is_100_date,'%e %M %Y')) as nims_is_100_date"
         + " , IF(DATE_FORMAT(nims_is_200_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(nims_is_200_date,'%e %M %Y')) as nims_is_200_date"
         + " , IF(DATE_FORMAT(nims_is_700_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(nims_is_700_date,'%e %M %Y')) as nims_is_700_date"
-        + " , IF(DATE_FORMAT(act_1985_33_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_33_date,'%e %M %Y')) as act_1985_33_date"
-        + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1985_34_date,'%e %M %Y')) as act_1985_34_date"
-        + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',DATE_FORMAT(act_1994_151_date,'%e %M %Y')) as act_1994_151_date"
+        + " , IF(DATE_FORMAT(act_1985_33_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',CONCAT(DATE_FORMAT(act_1985_33_date,'%e %M %Y'),IF(act_1985_33_date < SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR),'',' *STALE*'))) as act_1985_33_date"
+        + " , IF(DATE_FORMAT(act_1985_34_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',CONCAT(DATE_FORMAT(act_1985_34_date,'%e %M %Y'),IF(act_1985_34_date < SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR),'',' *STALE*'))) as act_1985_34_date"
+        + " , IF(DATE_FORMAT(act_1994_151_date,'%Y-%m-%d') in (null,'0001-01-01','0000-00-00'),'*not on file*',CONCAT(DATE_FORMAT(act_1994_151_date,'%e %M %Y'),IF(act_1994_151_date < SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR),'',' *STALE*'))) as act_1994_151_date"
         + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + ",'Yes','*No* - your record in this system fails at least one membership requirement') as credentialed_as_member_clause"
         + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + " and " + Class_db_practitioner_strike_team_details_Static.BE_CREDENTIALED_AS_LEADER_EXPRESSION + ",'Yes','*No* - your record in this system fails at least one leadership requirement') as credentialed_as_leader_clause"
         + " , GROUP_CONCAT(affiliated_service.name ORDER BY affiliated_service.name SEPARATOR ', ') as service_strike_team_affiliation"
