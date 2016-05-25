@@ -88,7 +88,9 @@
     <Content Include="noninteractive\statement_region_strike_teams.aspx" />
     <Content Include="noninteractive\statement_service_strike_team_roster.aspx" />
     <Content Include="noninteractive\statement_strike_team_member_status.aspx" />
+    <Content Include="noninteractive\template\notification\stale_clearance_warning.txt" />
     <Content Include="noninteractive\template\notification\strike_team_member_status_statement.txt" />
+    <Content Include="noninteractive\template\notification\expiring_drivers_license_warning.txt" />
     <Content Include="protected\add_associate.aspx" />
     <Content Include="protected\bounty_program.aspx" />
     <Content Include="protected\hardcopy_region_strike_team_key_personnel.aspx" />

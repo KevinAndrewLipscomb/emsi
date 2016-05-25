@@ -196,7 +196,7 @@ namespace UserControl_strike_team_deployment_binder
       p.be_ok_to_config_strike_team_deployments = be_ok_to_config_strike_team_deployments;
       p.be_more_than_examiner = be_more_than_examiner;
       //
-      TabPanel_ad_hoc_agreements.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
+      //TabPanel_ad_hoc_agreements.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
       TabPanel_log.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
       TabPanel_snapshot.Visible = p.be_ok_to_config_strike_team_deployments || be_ok_to_see_all_strike_team_data;
       //

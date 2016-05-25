@@ -1,0 +1,18 @@
+﻿Strike Team clearance credential needs attention
+This is an automatic notification from <application_name/>.
+
+Dear <first_name/> <last_name/> (PA EMS certification # <certification_number/>),
+
+<application_name/> is showing that you have the following clearance(s) that are almost <num_years_clearances_considered_valid/> years old, and that will become stale in <num_days_left/> day(s) according to Strike Team rules:
+
+   <nearly_stale_clearance_list/>
+
+You can address this as follows:
+
+   1. Visit the following link to renew your clearance(s):
+
+         <clearance_forms_web_address/>
+
+   2. Submit copies of your renewed clearance(s) to your Strike Team Leader.
+
+-- <application_name/>

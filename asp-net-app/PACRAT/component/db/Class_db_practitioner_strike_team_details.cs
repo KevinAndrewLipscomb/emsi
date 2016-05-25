@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace Class_db_practitioner_strike_team_details
   {
@@ -41,50 +42,59 @@ namespace Class_db_practitioner_strike_team_details
   public class TClass_db_practitioner_strike_team_details: TClass_db
     {
 
-  internal static string BeCredentialedAsMemberExpression()
-    {
-    var num_years_clearances_considered_valid = ConfigurationManager.AppSettings["num_years_clearances_considered_valid"];
-    return k.EMPTY
-    + " ("
-    +   " (act_1985_33_date is not null and act_1985_33_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
-    + " and"
-    +   " (act_1985_34_date is not null and act_1985_34_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
-    + " and"
-    +   " (act_1994_151_date is not null and act_1994_151_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
-    + " and"
-    +   " be_immune_hepatitis_b"
-    + " and"
-    +   " be_immune_diptheria_tetanus"
-    + " and"
-    +   " (emergency_contact_1_name is not null)"
-    + " and"
-    +   " (emergency_contact_1_phone_number is not null)"
-    + " and"
-    +   " (drivers_license_expiration >= CURDATE())"
-    + " and"
-    +   " (nims_is_100_date is not null and nims_is_100_date > '0001-01-01')"
-    + " and"
-    +   " (nims_is_200_date is not null and nims_is_200_date > '0001-01-01')"
-    + " and"
-    +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
-    + " and"
-    +   " (nims_is_800_date is not null and nims_is_700_date > '0001-01-01')"
-    + " and"
-    +   " (lms_disaster_stress_response_date is not null and lms_disaster_stress_response_date > '0001-01-01')"
-    + " and"
-    +   " (lms_ems_mci_ops_date is not null and lms_ems_mci_ops_date > '0001-01-01')"
-    + " and"
-    +   " (lms_wmd_date is not null and lms_wmd_date > '0001-01-01')"
-    + " and"
-    +   " (lms_smallpox_date is not null and lms_smallpox_date > '0001-01-01')"
-    + " and"
-    +   " (lms_basic_med_terrorism_response_date is not null and lms_basic_med_terrorism_response_date > '0001-01-01')"
-    + " and"
-    +   " (lms_electrical_hazards_date is not null and lms_electrical_hazards_date > '0001-01-01')"
-    + " and"
-    +   " (lms_ems_bioterror_date is not null and lms_ems_bioterror_date > '0001-01-01')"
-    + " )";
-    }
+    internal static string BeCredentialedAsMemberExpression()
+      {
+      var num_years_clearances_considered_valid = ConfigurationManager.AppSettings["num_years_clearances_considered_valid"];
+      return k.EMPTY
+      + " ("
+      +   " (act_1985_33_date is not null and act_1985_33_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
+      + " and"
+      +   " (act_1985_34_date is not null and act_1985_34_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
+      + " and"
+      +   " (act_1994_151_date is not null and act_1994_151_date >= SUBDATE(CURDATE(),INTERVAL " + num_years_clearances_considered_valid + " YEAR))"
+      + " and"
+      +   " be_immune_hepatitis_b"
+      + " and"
+      +   " be_immune_diptheria_tetanus"
+      + " and"
+      +   " (emergency_contact_1_name is not null)"
+      + " and"
+      +   " (emergency_contact_1_phone_number is not null)"
+      + " and"
+      +   " (drivers_license_expiration >= CURDATE())"
+      + " and"
+      +   " (nims_is_100_date is not null and nims_is_100_date > '0001-01-01')"
+      + " and"
+      +   " (nims_is_200_date is not null and nims_is_200_date > '0001-01-01')"
+      + " and"
+      +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
+      + " and"
+      +   " (nims_is_800_date is not null and nims_is_700_date > '0001-01-01')"
+      + " and"
+      +   " (lms_disaster_stress_response_date is not null and lms_disaster_stress_response_date > '0001-01-01')"
+      + " and"
+      +   " (lms_ems_mci_ops_date is not null and lms_ems_mci_ops_date > '0001-01-01')"
+      + " and"
+      +   " (lms_wmd_date is not null and lms_wmd_date > '0001-01-01')"
+      + " and"
+      +   " (lms_smallpox_date is not null and lms_smallpox_date > '0001-01-01')"
+      + " and"
+      +   " (lms_basic_med_terrorism_response_date is not null and lms_basic_med_terrorism_response_date > '0001-01-01')"
+      + " and"
+      +   " (lms_electrical_hazards_date is not null and lms_electrical_hazards_date > '0001-01-01')"
+      + " and"
+      +   " (lms_ems_bioterror_date is not null and lms_ems_bioterror_date > '0001-01-01')"
+      + " )";
+      }
+
+    internal struct UpcomingDecredentialing
+      {
+      internal string email_address;
+      internal string last_name;
+      internal string first_name;
+      internal string certification_number;
+      internal string service_strike_team_primary_manager;
+      }
 
     private TClass_biz_notifications biz_notifications = null;
     private TClass_db_trail db_trail = null;
@@ -161,6 +171,60 @@ namespace Class_db_practitioner_strike_team_details
         }
       Close();
       return result;
+      }
+
+    internal Queue<UpcomingDecredentialing> ExpiringDriversLicenseQueue(k.int_nonnegative days_left)
+      {
+      var expiring_drivers_license_q = new Queue<UpcomingDecredentialing>();
+      Open();
+      var dr = new MySqlCommand
+        (
+        "SELECT email_address"
+        + " , last_name"
+        + " , first_name"
+        + " , IFNULL(certification_number,'nocert') as certification_number"
+        + " , IFNULL("
+        +       " ("
+        +       " select email_address"
+        +       " from role_member_map"
+        +         " join role on (role.id=role_member_map.role_id)"
+        +         " join member on (member.id=role_member_map.member_id)"
+        +       " where role.name = 'Service Strike Team Manager'"
+        +         " and service_id = affiliated_service.id"
+        +       " limit 1"
+        +       " )"
+        +     " ,"
+        +       " ''"
+        +     " ) as service_strike_team_primary_manager"
+        + " FROM practitioner_strike_team_detail"
+        +   " join member on (member.id=practitioner_strike_team_detail.practitioner_id)"
+        +   " join strike_team_roster on (strike_team_roster.practitioner_id=practitioner_strike_team_detail.practitioner_id)"
+        +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
+        +   " join strike_team_participation_level on (strike_team_participation_level.id=affiliated_service.strike_team_participation_level_id)"
+        + " where email_address is not null"
+        +   " and TRIM(email_address) <> ''"
+        +   " and strike_team_participation_level.description = 'Standing'"
+        +   " and drivers_license_expiration = ADDDATE(CURDATE(),INTERVAL " + days_left.val + " DAY)"
+        + " group by practitioner_strike_team_detail.id",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        expiring_drivers_license_q.Enqueue
+          (
+          new UpcomingDecredentialing
+            {
+            email_address = dr["email_address"].ToString(),
+            last_name = dr["last_name"].ToString(),
+            first_name = dr["first_name"].ToString(),
+            certification_number = dr["certification_number"].ToString(),
+            service_strike_team_primary_manager = dr["service_strike_team_primary_manager"].ToString()
+            }
+          );
+        }
+      Close();
+      return expiring_drivers_license_q;
       }
 
     public bool Get
@@ -372,6 +436,107 @@ namespace Class_db_practitioner_strike_team_details
     public void MakeMemberStatusStatements()
       {
       MakeMemberStatusStatements(do_limit_to_uncredentialed:false);
+      }
+
+    internal Queue<UpcomingDecredentialing> NearlyStaleAct1985Num33Queue
+      (
+      k.int_nonnegative days_left,
+      k.int_positive num_years_clearances_considered_valid
+      )
+      {
+      return NearlyStaleClearanceQueue
+        (
+        days_left:days_left,
+        num_years_clearances_considered_valid:num_years_clearances_considered_valid,
+        clearance_designator:"act_1985_33"
+        );
+      }
+
+    internal Queue<UpcomingDecredentialing> NearlyStaleAct1985Num34Queue
+      (
+      k.int_nonnegative days_left,
+      k.int_positive num_years_clearances_considered_valid
+      )
+      {
+      return NearlyStaleClearanceQueue
+        (
+        days_left:days_left,
+        num_years_clearances_considered_valid:num_years_clearances_considered_valid,
+        clearance_designator:"act_1985_34"
+        );
+      }
+
+    internal Queue<UpcomingDecredentialing> NearlyStaleAct1994Num151Queue
+      (
+      k.int_nonnegative days_left,
+      k.int_positive num_years_clearances_considered_valid
+      )
+      {
+      return NearlyStaleClearanceQueue
+        (
+        days_left:days_left,
+        num_years_clearances_considered_valid:num_years_clearances_considered_valid,
+        clearance_designator:"act_1994_151"
+        );
+      }
+
+    private Queue<UpcomingDecredentialing> NearlyStaleClearanceQueue
+      (
+      k.int_nonnegative days_left,
+      k.int_positive num_years_clearances_considered_valid,
+      string clearance_designator
+      )
+      {
+      var nearly_stale_clearance_q = new Queue<UpcomingDecredentialing>();
+      Open();
+      var dr = new MySqlCommand
+        (
+        "SELECT email_address"
+        + " , last_name"
+        + " , first_name"
+        + " , IFNULL(certification_number,'nocert') as certification_number"
+        + " , IFNULL("
+        +       " ("
+        +       " select email_address"
+        +       " from role_member_map"
+        +         " join role on (role.id=role_member_map.role_id)"
+        +         " join member on (member.id=role_member_map.member_id)"
+        +       " where role.name = 'Service Strike Team Manager'"
+        +         " and service_id = affiliated_service.id"
+        +       " limit 1"
+        +       " )"
+        +     " ,"
+        +       " ''"
+        +     " ) as service_strike_team_primary_manager"
+        + " FROM practitioner_strike_team_detail"
+        +   " join member on (member.id=practitioner_strike_team_detail.practitioner_id)"
+        +   " join strike_team_roster on (strike_team_roster.practitioner_id=practitioner_strike_team_detail.practitioner_id)"
+        +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
+        +   " join strike_team_participation_level on (strike_team_participation_level.id=affiliated_service.strike_team_participation_level_id)"
+        + " where email_address is not null"
+        +   " and TRIM(email_address) <> ''"
+        +   " and strike_team_participation_level.description = 'Standing'"
+        +   " and ADDDATE(" + clearance_designator + "_date,INTERVAL " + num_years_clearances_considered_valid.val.ToString() + " YEAR) = ADDDATE(CURDATE(),INTERVAL " + days_left.val + " DAY)"
+        + " group by practitioner_strike_team_detail.id",
+        connection
+        )
+        .ExecuteReader();
+      while (dr.Read())
+        {
+        nearly_stale_clearance_q.Enqueue
+          (
+          new UpcomingDecredentialing
+            {
+            email_address = dr["email_address"].ToString(),
+            last_name = dr["last_name"].ToString(),
+            first_name = dr["first_name"].ToString(),
+            certification_number = dr["certification_number"].ToString(),
+            service_strike_team_primary_manager = dr["service_strike_team_primary_manager"].ToString()
+            }
+          );
+        }
+      Close();
+      return nearly_stale_clearance_q;
       }
 
     public void Set

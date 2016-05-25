@@ -185,6 +185,7 @@ namespace UserControl_practitioner_strike_team_detail
         UserControl_drop_down_date_act_1994_151_date.be_clearable = true;
         UserControl_drop_down_date_act_1994_151_date.minyear = three_year_ago;
         UserControl_drop_down_date_act_1994_151_date.maxyear = this_year;
+        HyperLink_clearance_forms_web_address.NavigateUrl = ConfigurationManager.AppSettings["clearance_forms_web_address"];
         p.biz_sms_gateways.BindDirectToListControl
           (
           target:DropDownList_phone_service,

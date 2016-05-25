@@ -1,20 +1,29 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
+using Class_biz_notifications;
 using Class_db_practitioner_strike_team_details;
 using kix;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 
 namespace Class_biz_practitioner_strike_team_details
   {
   public class TClass_biz_practitioner_strike_team_details
     {
+
+    private TClass_biz_notifications biz_notifications = null;
     private TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
 
     public TClass_biz_practitioner_strike_team_details() : base()
       {
+      biz_notifications = new TClass_biz_notifications();
       db_practitioner_strike_team_details = new TClass_db_practitioner_strike_team_details();
+      }
+
+    internal bool BeStaleClearance(DateTime date)
+      {
+      return (date > DateTime.MinValue) && (date < DateTime.Today.AddYears(-int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"])));
       }
 
     public bool Bind(string partial_spec, object target)
@@ -191,14 +200,104 @@ namespace Class_biz_practitioner_strike_team_details
         );
       }
 
+    internal void MakeUpcomingDecredentialingNotifications()
+      {
+      var days_left = new k.int_nonnegative();
+      Queue<TClass_db_practitioner_strike_team_details.UpcomingDecredentialing> upcoming_decredentialing_q;
+      TClass_db_practitioner_strike_team_details.UpcomingDecredentialing upcoming_decredentialing;
+      var num_years_clearances_considered_valid = new k.int_positive(int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"]));
+      var clearance_forms_web_address = ConfigurationManager.AppSettings["clearance_forms_web_address"];
+      //
+      foreach (int days_left_val in new int[]{60,45,30,20,10,5,2,1})
+        {
+        days_left.val = days_left_val;
+        //
+        upcoming_decredentialing_q = db_practitioner_strike_team_details.ExpiringDriversLicenseQueue(days_left);
+        while (upcoming_decredentialing_q.Count > 0)
+          {
+          upcoming_decredentialing = upcoming_decredentialing_q.Dequeue();
+          biz_notifications.IssueForExpiringDriversLicense
+            (
+            email_address:upcoming_decredentialing.email_address,
+            last_name:upcoming_decredentialing.last_name,
+            first_name:upcoming_decredentialing.first_name,
+            certification_number:upcoming_decredentialing.certification_number,
+            service_strike_team_primary_manager:upcoming_decredentialing.service_strike_team_primary_manager,
+            days_left:days_left
+            );
+          }
+        //
+        upcoming_decredentialing_q = db_practitioner_strike_team_details.NearlyStaleAct1985Num33Queue
+          (
+          days_left:days_left,
+          num_years_clearances_considered_valid:num_years_clearances_considered_valid
+          );
+        while (upcoming_decredentialing_q.Count > 0)
+          {
+          upcoming_decredentialing = upcoming_decredentialing_q.Dequeue();
+          biz_notifications.IssueForNearlyStaleClearance
+            (
+            email_address:upcoming_decredentialing.email_address,
+            last_name:upcoming_decredentialing.last_name,
+            first_name:upcoming_decredentialing.first_name,
+            certification_number:upcoming_decredentialing.certification_number,
+            service_strike_team_primary_manager:upcoming_decredentialing.service_strike_team_primary_manager,
+            days_left:days_left,
+            num_years_clearances_considered_valid:num_years_clearances_considered_valid,
+            clearance_forms_web_address:clearance_forms_web_address,
+            clearance_description:"PA Child Abuse History Clearance"
+            );
+          }
+        //
+        upcoming_decredentialing_q = db_practitioner_strike_team_details.NearlyStaleAct1985Num34Queue
+          (
+          days_left:days_left,
+          num_years_clearances_considered_valid:num_years_clearances_considered_valid
+          );
+        while (upcoming_decredentialing_q.Count > 0)
+          {
+          upcoming_decredentialing = upcoming_decredentialing_q.Dequeue();
+          biz_notifications.IssueForNearlyStaleClearance
+            (
+            email_address:upcoming_decredentialing.email_address,
+            last_name:upcoming_decredentialing.last_name,
+            first_name:upcoming_decredentialing.first_name,
+            certification_number:upcoming_decredentialing.certification_number,
+            service_strike_team_primary_manager:upcoming_decredentialing.service_strike_team_primary_manager,
+            days_left:days_left,
+            num_years_clearances_considered_valid:num_years_clearances_considered_valid,
+            clearance_forms_web_address:clearance_forms_web_address,
+            clearance_description:"PA Criminal Record Check"
+            );
+          }
+        //
+        upcoming_decredentialing_q = db_practitioner_strike_team_details.NearlyStaleAct1994Num151Queue
+          (
+          days_left:days_left,
+          num_years_clearances_considered_valid:num_years_clearances_considered_valid
+          );
+        while (upcoming_decredentialing_q.Count > 0)
+          {
+          upcoming_decredentialing = upcoming_decredentialing_q.Dequeue();
+          biz_notifications.IssueForNearlyStaleClearance
+            (
+            email_address:upcoming_decredentialing.email_address,
+            last_name:upcoming_decredentialing.last_name,
+            first_name:upcoming_decredentialing.first_name,
+            certification_number:upcoming_decredentialing.certification_number,
+            service_strike_team_primary_manager:upcoming_decredentialing.service_strike_team_primary_manager,
+            days_left:days_left,
+            num_years_clearances_considered_valid:num_years_clearances_considered_valid,
+            clearance_forms_web_address:clearance_forms_web_address,
+            clearance_description:"FBI Criminal Background Check"
+            );
+          }
+        }
+      }
+
     internal string SmsTargetOf(string practitioner_id)
       {
       return db_practitioner_strike_team_details.SmsTargetOf(practitioner_id);
-      }
-
-    internal bool BeStaleClearance(DateTime date)
-      {
-      return (date > DateTime.MinValue) && (date < DateTime.Today.AddYears(-int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"])));
       }
 
     } // end TClass_biz_practitioner_strike_team_details
