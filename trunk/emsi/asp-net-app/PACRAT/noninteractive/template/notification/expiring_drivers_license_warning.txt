@@ -1,0 +1,10 @@
+﻿Strike Team drivers license credential needs attention
+This is an automatic notification from <application_name/>.
+
+Dear <first_name/> <last_name/> (PA EMS certification # <certification_number/>),
+
+<application_name/> is showing that your drivers license will expire in <num_days_left/> day(s).
+
+You can address this by submitting a copy of your renewed drivers license to your Strike Team Leader.
+
+-- <application_name/>

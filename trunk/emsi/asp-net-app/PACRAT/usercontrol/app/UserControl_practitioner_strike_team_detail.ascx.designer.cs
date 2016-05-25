@@ -337,6 +337,15 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::System.Web.UI.WebControls.Label Label_expired_drivers_license;
         
         /// <summary>
+        /// HyperLink_clearance_forms_web_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_clearance_forms_web_address;
+        
+        /// <summary>
         /// UserControl_drop_down_date_act_1985_33_date control.
         /// </summary>
         /// <remarks>
