@@ -208,7 +208,7 @@ namespace Class_biz_practitioner_strike_team_details
       var num_years_clearances_considered_valid = new k.int_positive(int.Parse(ConfigurationManager.AppSettings["num_years_clearances_considered_valid"]));
       var clearance_forms_web_address = ConfigurationManager.AppSettings["clearance_forms_web_address"];
       //
-      foreach (int days_left_val in new int[]{60,45,30,20,10,5,2,1})
+      foreach (int days_left_val in new int[]{45,30,15,5,2})
         {
         days_left.val = days_left_val;
         //
