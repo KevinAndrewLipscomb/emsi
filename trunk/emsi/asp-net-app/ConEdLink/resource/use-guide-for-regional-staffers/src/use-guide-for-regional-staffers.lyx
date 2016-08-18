@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \date{}
@@ -14,16 +16,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
-\font_default_family sfdefault
-\use_non_tex_fonts false
+\font_roman "default" "Tahoma"
+\font_sans "default" "Tahoma"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -164,7 +166,7 @@ pagenumbering{roman}
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="50line%">
 <column alignment="left" valignment="top" width="50line%">
 <row>
@@ -383,7 +385,7 @@ ConEdLink
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Staying-in-the-loop"
+name "subsec:Staying-in-the-loop"
 
 \end_inset
 
@@ -671,6 +673,11 @@ width "100text%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -880,6 +887,10 @@ breadcrumb trail
 \bar default
  appears under the account control line.
  Use the links in the breadcrumb trail to get back to previous pages.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -898,6 +909,11 @@ width "75text%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -937,14 +953,14 @@ After you review the details of the roster for appropriateness, you can
  upload the roster using the three-step process (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-three-step-process"
+reference "subsec:The-three-step-process"
 
 \end_inset
 
 ) or the one-step process (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-one-step-process"
+reference "subsec:The-one-step-process"
 
 \end_inset
 
@@ -954,7 +970,7 @@ reference "sub:The-one-step-process"
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-three-step-process"
+name "subsec:The-three-step-process"
 
 \end_inset
 
@@ -969,6 +985,10 @@ ConEdLink
  can generate the roster as a Large Conference Data Sheet (LCDS) for times
  when you want to manually manipulate the data, or independently archive
  it, before submitting it to EMSRS.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -985,6 +1005,11 @@ width "75text%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1025,7 +1050,7 @@ If you don't need to manually manipulate the data or independently archive
  it, use the one-step process (section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-one-step-process"
+reference "subsec:The-one-step-process"
 
 \end_inset
 
@@ -1046,7 +1071,7 @@ Generate the LCDS (and optionally make manual changes to it) (see section
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Generate-the-LCDS"
+reference "subsec:Generate-the-LCDS"
 
 \end_inset
 
@@ -1057,7 +1082,7 @@ reference "sub:Generate-the-LCDS"
 Upload the LCDS via the Pearson scanner application (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Upload-the-LCDS-via-the-Pearson-scanner-application"
+reference "subsec:Upload-the-LCDS-via-the-Pearson-scanner-application"
 
 \end_inset
 
@@ -1068,7 +1093,7 @@ reference "sub:Upload-the-LCDS-via-the-Pearson-scanner-application"
 Mark the process done in ConEdLink (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Mark-the-process-done-in-ConEdLink"
+reference "subsec:Mark-the-process-done-in-ConEdLink"
 
 \end_inset
 
@@ -1082,7 +1107,7 @@ The steps are detailed below.
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Generate-the-LCDS"
+name "subsec:Generate-the-LCDS"
 
 \end_inset
 
@@ -1182,7 +1207,7 @@ Examples of making manual changes to the LCDS will not be provided in this
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Upload-the-LCDS-via-the-Pearson-scanner-application"
+name "subsec:Upload-the-LCDS-via-the-Pearson-scanner-application"
 
 \end_inset
 
@@ -1208,7 +1233,7 @@ ConEdLink
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Mark-the-process-done-in-ConEdLink"
+name "subsec:Mark-the-process-done-in-ConEdLink"
 
 \end_inset
 
@@ -1251,7 +1276,7 @@ regional_staffer_overview
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-one-step-process"
+name "subsec:The-one-step-process"
 
 \end_inset
 
