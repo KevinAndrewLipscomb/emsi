@@ -86,7 +86,7 @@
                 <table cellspacing="0" cellpadding="10" width="100%" border="0">
                   <tr>
                     <td>Send <asp:Literal ID="Literal_quick_message_kind_email" runat="server">email</asp:Literal><asp:Literal ID="Literal_quick_message_kind_sms" runat="server" Visible="false">SMS</asp:Literal> to:</td>
-                    <td>Recipients selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) above.</td>
+                    <td>Region Strike Team Managers at the regions selected (<asp:CheckBox ID="CheckBox_item_sample" runat="server" Checked="True" Enabled="false" />) above.</td>
                     <td></td>
                   </tr>
                   <tr>
