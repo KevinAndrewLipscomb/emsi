@@ -220,7 +220,11 @@ namespace ready_roster_detail
 
     protected void Button_mark_done_Click(object sender, EventArgs e)
       {
-      p.biz_coned_offerings.Archive(p.incoming.summary);
+      p.biz_coned_offerings.Archive
+        (
+        summary:p.incoming.summary,
+        be_submitted_to_emsrs_directly:false
+        );
       BackTrack();
       }
 
@@ -273,7 +277,11 @@ namespace ready_roster_detail
             value:"EMSRS responded:" + k.NEW_LINE + k.NEW_LINE + response,
             be_using_scriptmanager:true
             );
-          p.biz_coned_offerings.Archive(p.incoming.summary);
+          p.biz_coned_offerings.Archive
+            (
+            summary:p.incoming.summary,
+            be_submitted_to_emsrs_directly:true
+            );
           Button_mark_done.Enabled = false;
           Button_submit_to_emsrs.Enabled = false;
           Button_go_back.Enabled = true;
