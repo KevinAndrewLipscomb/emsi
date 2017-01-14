@@ -312,6 +312,13 @@
                                     <small>Use <asp:CheckBox ID="CheckBox_header_sample" runat="server" Checked="True" style="outline:2px solid SlateGray" Enabled="false" /> in header row to select or unselect all attendees at once.</small>
                                   </td>
                                 </tr>
+                                <tr>
+                                  <td align="right">
+                                    <small>
+                                      <asp:HyperLink ID="HyperLink_print_template_completion_document_for_non_pa_practitioner" runat="server" Text="Print completion document for non-PA-practitioner" Enabled="false" Target="_blank"></asp:HyperLink>
+                                    </small>
+                                  </td>
+                                </tr>
                               </table>
                             </ContentTemplate>
                             <Triggers>

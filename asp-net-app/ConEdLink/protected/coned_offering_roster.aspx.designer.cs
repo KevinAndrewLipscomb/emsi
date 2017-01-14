@@ -526,6 +526,15 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_header_sample;
         
         /// <summary>
+        /// HyperLink_print_template_completion_document_for_non_pa_practitioner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink_print_template_completion_document_for_non_pa_practitioner;
+        
+        /// <summary>
         /// TableRow_eval_summary_head_spacer control.
         /// </summary>
         /// <remarks>
