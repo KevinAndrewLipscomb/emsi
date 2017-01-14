@@ -40,6 +40,15 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.WebControls.Literal Literal_sponsor_number;
         
         /// <summary>
+        /// Table_practitioner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_practitioner;
+        
+        /// <summary>
         /// Literal_practitioner_name control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace UserControl_training_certificate {
         protected global::System.Web.UI.WebControls.Literal Literal_dob;
         
         /// <summary>
+        /// Panel_non_pa_practitioner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_non_pa_practitioner;
+        
+        /// <summary>
         /// Literal_completed control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,15 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_class_number;
+        
+        /// <summary>
+        /// TableRow_credits control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_credits;
         
         /// <summary>
         /// TableRow_ceus control.
@@ -173,5 +200,23 @@ namespace UserControl_training_certificate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal_date_final;
+        
+        /// <summary>
+        /// TableRow_disclaimer_for_practitioner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_disclaimer_for_practitioner;
+        
+        /// <summary>
+        /// TableRow_disclaimer_for_non_pa_practitioner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TableRow_disclaimer_for_non_pa_practitioner;
     }
 }

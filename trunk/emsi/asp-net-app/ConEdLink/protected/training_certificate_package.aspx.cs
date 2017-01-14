@@ -60,53 +60,79 @@ namespace training_certificate_package
           ref phrn_other_ceus
           );
         //
-        var roster_ids = (hash_table["coned_offering_roster_ids"] as Object[]);
-        for (var i = new k.subtype<int>(0,roster_ids.Length); i.val < i.LAST; i.val++)
+        if (hash_table["coned_offering_roster_ids"] == null)
           {
-          var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
-          var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
-          var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
           var UserControl_training_certificate = ((LoadControl("~/usercontrol/app/UserControl_training_certificate.ascx") as TWebUserControl_training_certificate));
-          attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
-          p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
-            (
-            fr_med_trauma_ceus.val,
-            fr_other_ceus.val,
-            emt_med_trauma_ceus.val,
-            emt_other_ceus.val,
-            emtp_med_trauma_ceus.val,
-            emtp_other_ceus.val,
-            phrn_med_trauma_ceus.val,
-            phrn_other_ceus.val,
-            attendance_rec.level_short_description,
-            ref med_trauma_ceus_for_this_practitioner,
-            ref other_ceus_for_this_practitioner
-            );
           UserControl_training_certificate.Set
             (
-            sponsor_name,
-            sponsor_number,
-            attendance_rec.first_name,
-            attendance_rec.middle_initial,
-            attendance_rec.last_name,
-            attendance_rec.certification_number,
-            attendance_rec.level_emsrs_code,
-            attendance_rec.level_short_description,
-            attendance_rec.dob,
-            p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
-            course_title,
-            med_trauma_ceus_for_this_practitioner.val.ToString(),
-            other_ceus_for_this_practitioner.val.ToString(),
-            date_final,
-            attendance_rec.instructor_hours
+            sponsor_name:sponsor_name,
+            sponsor_number:sponsor_number,
+            first_name:k.EMPTY,
+            middle_initial:k.EMPTY,
+            last_name:k.EMPTY,
+            certification_number:k.EMPTY,
+            level_emsrs_code:k.EMPTY,
+            level_short_description:k.EMPTY,
+            dob:k.EMPTY,
+            class_number:p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
+            course_title:course_title,
+            med_trauma_ceus:k.EMPTY,
+            other_ceus:k.EMPTY,
+            date_final:date_final,
+            instructor_hours:k.EMPTY
             );
-          if (i.val > i.FIRST)
-            {
-            var page_break = new Literal();
-            page_break.Text = "<div><div style=\"page-break-before:always;\" /></div>";
-            PlaceHolder_training_certificate_package.Controls.Add(page_break);
-            }
           PlaceHolder_training_certificate_package.Controls.Add(UserControl_training_certificate);
+          }
+        else
+          {
+          var roster_ids = (hash_table["coned_offering_roster_ids"] as Object[]);
+          for (var i = new k.subtype<int>(0,roster_ids.Length); i.val < i.LAST; i.val++)
+            {
+            var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
+            var med_trauma_ceus_for_this_practitioner = new k.decimal_nonnegative();
+            var other_ceus_for_this_practitioner = new k.decimal_nonnegative();
+            var UserControl_training_certificate = ((LoadControl("~/usercontrol/app/UserControl_training_certificate.ascx") as TWebUserControl_training_certificate));
+            attendance_rec = p.biz_coned_offering_rosters.GetAttendanceRec(roster_ids[i.val].ToString());
+            p.biz_coned_offering_rosters.GetAppropriateCeuValuesForPractitioner
+              (
+              fr_med_trauma_ceus.val,
+              fr_other_ceus.val,
+              emt_med_trauma_ceus.val,
+              emt_other_ceus.val,
+              emtp_med_trauma_ceus.val,
+              emtp_other_ceus.val,
+              phrn_med_trauma_ceus.val,
+              phrn_other_ceus.val,
+              attendance_rec.level_short_description,
+              ref med_trauma_ceus_for_this_practitioner,
+              ref other_ceus_for_this_practitioner
+              );
+            UserControl_training_certificate.Set
+              (
+              sponsor_name,
+              sponsor_number,
+              attendance_rec.first_name,
+              attendance_rec.middle_initial,
+              attendance_rec.last_name,
+              attendance_rec.certification_number,
+              attendance_rec.level_emsrs_code,
+              attendance_rec.level_short_description,
+              attendance_rec.dob,
+              p.biz_coned_offerings.StandardSafeRenditionOf(class_number),
+              course_title,
+              med_trauma_ceus_for_this_practitioner.val.ToString(),
+              other_ceus_for_this_practitioner.val.ToString(),
+              date_final,
+              attendance_rec.instructor_hours
+              );
+            if (i.val > i.FIRST)
+              {
+              var page_break = new Literal();
+              page_break.Text = "<div><div style=\"page-break-before:always;\" /></div>";
+              PlaceHolder_training_certificate_package.Controls.Add(page_break);
+              }
+            PlaceHolder_training_certificate_package.Controls.Add(UserControl_training_certificate);
+            }
           }
         }
       else if (nature_of_visit_unlimited == nature_of_visit_type.VISIT_POSTBACK_STANDARD)

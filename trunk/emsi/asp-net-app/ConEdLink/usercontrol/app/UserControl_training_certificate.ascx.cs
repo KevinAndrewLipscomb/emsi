@@ -81,27 +81,39 @@ namespace UserControl_training_certificate
       {
       Literal_sponsor_name.Text = sponsor_name;
       Literal_sponsor_number.Text = (sponsor_number.Contains(k.HYPHEN) ? sponsor_number : sponsor_number.Substring(0,2) + k.HYPHEN + sponsor_number.Substring(2));
-      Literal_practitioner_name.Text = (first_name + k.SPACE + middle_initial.Replace("nbsp",k.EMPTY) + k.SPACE + last_name).Replace(k.SPACE + k.SPACE,k.SPACE);
-      Literal_certification_number.Text = certification_number;
-      Literal_practitioner_level_emsrs_code.Text = level_emsrs_code;
-      Literal_practitioner_level_short_description.Text = level_short_description;
-      Literal_dob.Text = dob;
-      if (instructor_hours.Length == 0)
-        {
-        Literal_completed.Visible = true;
-        Literal_num_med_trauma_hours.Text = med_trauma_ceus;
-        Literal_num_other_hours.Text = other_ceus;
-        TableRow_ceus.Visible = true;
-        }
-      else
-        {
-        Literal_taught.Visible = true;
-        Literal_instructor_hours.Text = instructor_hours;
-        TableRow_instructor_hours.Visible = true;
-        }
       Literal_class_number.Text = class_number;
       Literal_course_title.Text = course_title;
       Literal_date_final.Text = DateTime.Parse(date_final.Substring(0,date_final.IndexOf(k.SPACE))).ToString("dddd d MMMM yyyy");
+      if (certification_number.Length > 0)
+        {
+        Literal_practitioner_name.Text = (first_name + k.SPACE + middle_initial.Replace("nbsp",k.EMPTY) + k.SPACE + last_name).Replace(k.SPACE + k.SPACE,k.SPACE);
+        Literal_certification_number.Text = certification_number;
+        Literal_practitioner_level_emsrs_code.Text = level_emsrs_code;
+        Literal_practitioner_level_short_description.Text = level_short_description;
+        Literal_dob.Text = dob;
+        if (instructor_hours.Length == 0)
+          {
+          Literal_completed.Visible = true;
+          Literal_num_med_trauma_hours.Text = med_trauma_ceus;
+          Literal_num_other_hours.Text = other_ceus;
+          TableRow_ceus.Visible = true;
+          }
+        else
+          {
+          Literal_taught.Visible = true;
+          Literal_instructor_hours.Text = instructor_hours;
+          TableRow_instructor_hours.Visible = true;
+          }
+        }
+      else
+        {
+        Table_practitioner.Visible = false;
+        Panel_non_pa_practitioner.Visible = true;
+        Literal_completed.Visible = true;
+        TableRow_credits.Visible = false;
+        TableRow_disclaimer_for_practitioner.Visible = false;
+        TableRow_disclaimer_for_non_pa_practitioner.Visible = true;
+        }
       }
 
     internal TWebUserControl_training_certificate Fresh()

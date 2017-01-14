@@ -237,6 +237,7 @@ namespace coned_offering_roster
       HyperLink_quickmessage.Enabled = (DataGrid_control.EditItemIndex == -1);
       LinkButton_email_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1);
       HyperLink_print_completion_documentation.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1) && p.be_ceu_breakdown_valid;
+      HyperLink_print_template_completion_document_for_non_pa_practitioner.Enabled = !be_open && (DataGrid_control.EditItemIndex == -1);
       Button_send.Enabled = (DataGrid_control.EditItemIndex == -1);
       }
 
@@ -367,7 +368,10 @@ namespace coned_offering_roster
       {
       if (IsValid)
         {
-        p.biz_coned_offering_rosters.Copy(source_id:p.other_roster_id,target_id:p.coned_offering_id);
+        if (p.be_ok_to_edit_roster)
+          {
+          p.biz_coned_offering_rosters.Copy(source_id:p.other_roster_id,target_id:p.coned_offering_id);
+          }
         Bind();
         RadioButtonList_input_method.SelectedValue = "Standard";
         ManageInputPanels();
@@ -839,6 +843,12 @@ namespace coned_offering_roster
         Literal_emtp_other_hours.Text = p.biz_coned_offerings.EmtpOtherHoursOf(p.incoming.summary);
         Literal_phrn_med_trauma_hours.Text = p.biz_coned_offerings.PhrnMedTraumaHoursOf(p.incoming.summary);
         Literal_phrn_other_hours.Text = p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary);
+        //
+        HyperLink_print_template_completion_document_for_non_pa_practitioner.NavigateUrl = k.EMPTY;
+        var template_completion_document_for_non_pa_practitioner_hash_table = new Hashtable();
+        template_completion_document_for_non_pa_practitioner_hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        HyperLink_print_template_completion_document_for_non_pa_practitioner.NavigateUrl = k.EMPTY
+        + "~/protected/training_certificate_package.aspx?" + ShieldedQueryStringOfHashtable(hash_table:template_completion_document_for_non_pa_practitioner_hash_table,do_compress:true);
         }
       InjectPersistentClientSideScript();
       }
