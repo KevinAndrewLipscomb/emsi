@@ -143,7 +143,8 @@ namespace Class_db_privileges
           {
           Open();
           //
-          // An "access denied" exception attributed to the account INVOKING the following SELECT statement may actually indicate that access has been denied to the EXACT MATCH for the DEFINER of the "member" view.
+          // An "access denied" exception attributed to the account INVOKING the following SELECT statement may actually indicate that access has been denied to the EXACT MATCH for the DEFINER of the "member" view.  This can occur is when
+          // refreshing the database onto a new server for the first time.  Performing a "GRANT ALL ON *.* TO {EXACT MATCH for the DEFINER of the 'member' view}" (or the equivalent via MySQL Workbench) should fix this.
           //
           var has_for_any_scope_obj = new MySqlCommand
             (
