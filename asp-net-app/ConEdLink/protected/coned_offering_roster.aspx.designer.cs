@@ -76,6 +76,24 @@ namespace coned_offering_roster {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary_practitioner_attributes;
         
         /// <summary>
+        /// Table_practitioner_addition_disabled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table_practitioner_addition_disabled;
+        
+        /// <summary>
+        /// Literal_application_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal_application_name;
+        
+        /// <summary>
         /// Panel_input_method control.
         /// </summary>
         /// <remarks>

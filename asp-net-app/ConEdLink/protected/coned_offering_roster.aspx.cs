@@ -37,6 +37,7 @@ namespace coned_offering_roster
     public TClass_biz_teaching_entities biz_teaching_entities;
     public TClass_biz_user biz_user;
     public string coned_offering_id;
+    public bool do_prevent_adding_practitioner_to_roster;
     public string eval_summary_mode_description;
     public TClass_msg_protected.coned_offering_roster incoming;
     public k.decimal_nonnegative length;
@@ -80,7 +81,10 @@ namespace coned_offering_roster
       {
       try
         {
-        p.biz_coned_offering_rosters.Set(id:k.EMPTY,coned_offering_id:p.coned_offering_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
+        if (!p.do_prevent_adding_practitioner_to_roster)
+          {
+          p.biz_coned_offering_rosters.Set(id:k.EMPTY,coned_offering_id:p.coned_offering_id,practitioner_id:list_item.Value,instructor_hours:k.EMPTY);
+          }
         Bind();
         TextBox_practitioner.Text = k.EMPTY;
         InitForNewSearch();
@@ -282,14 +286,17 @@ namespace coned_offering_roster
 
     protected void Button_add_batch_Click(object sender, EventArgs e)
       {
-      var cert_num_array = TextBox_certification_number_batch.Text.Trim().Split(new string[] {k.NEW_LINE,k.SPACE,k.COMMA,k.TAB,k.SEMICOLON},StringSplitOptions.RemoveEmptyEntries);
-      TextBox_certification_number_batch.Text = k.EMPTY;
-      for (var i = new k.subtype<int>(0,cert_num_array.Length); i.val < i.LAST; i.val++)
+      if (!p.do_prevent_adding_practitioner_to_roster)
         {
-        var cert_num = k.Safe(cert_num_array[i.val],k.safe_hint_type.NUM).PadLeft(6,'0');
-        if (!p.biz_coned_offering_rosters.SetFromBatch(p.coned_offering_id,cert_num))
+        var cert_num_array = TextBox_certification_number_batch.Text.Trim().Split(new string[] {k.NEW_LINE,k.SPACE,k.COMMA,k.TAB,k.SEMICOLON},StringSplitOptions.RemoveEmptyEntries);
+        TextBox_certification_number_batch.Text = k.EMPTY;
+        for (var i = new k.subtype<int>(0,cert_num_array.Length); i.val < i.LAST; i.val++)
           {
-          TextBox_certification_number_batch.Text += cert_num + k.NEW_LINE;
+          var cert_num = k.Safe(cert_num_array[i.val],k.safe_hint_type.NUM).PadLeft(6,'0');
+          if (!p.biz_coned_offering_rosters.SetFromBatch(p.coned_offering_id,cert_num))
+            {
+            TextBox_certification_number_batch.Text += cert_num + k.NEW_LINE;
+            }
           }
         }
       Bind();
@@ -368,7 +375,7 @@ namespace coned_offering_roster
       {
       if (IsValid)
         {
-        if (p.be_ok_to_edit_roster)
+        if (p.be_ok_to_edit_roster && !p.do_prevent_adding_practitioner_to_roster)
           {
           p.biz_coned_offering_rosters.Copy(source_id:p.other_roster_id,target_id:p.coned_offering_id);
           }
@@ -732,6 +739,7 @@ namespace coned_offering_roster
         //
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
+        p.do_prevent_adding_practitioner_to_roster = ((ConfigurationManager.AppSettings["do_prevent_adding_practitioner_to_roster"] ?? k.EMPTY).ToLower() == "true");
         p.incoming = Message<TClass_msg_protected.coned_offering_roster>(folder_name:"protected",aspx_name:"coned_offering_roster");
         p.num_attendees = new k.int_nonnegative();
         p.num_attendees_with_known_birth_dates = new k.int_nonnegative();
@@ -761,6 +769,12 @@ namespace coned_offering_roster
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_offering_roster";
+        //
+        if (p.do_prevent_adding_practitioner_to_roster)
+          {
+          Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
+          Table_practitioner_addition_disabled.Visible = true;
+          }
         var be_ok_to_input_batch = p.biz_accounts.BeOkForConedSponsorToInputRosterByBatch();
         var be_ok_to_input_copy = p.biz_accounts.BeOkForConedSponsorToInputRosterByCopy();
         RadioButtonList_input_method.Items.FindByValue("Batch").Enabled = be_ok_to_input_batch;
