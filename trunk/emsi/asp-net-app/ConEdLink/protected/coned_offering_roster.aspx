@@ -23,6 +23,17 @@
             <asp:ValidationSummary ID="ValidationSummary_practitioner_attributes" runat="server" ValidationGroup="PractitionerAttributes"/>
           </ContentTemplate>
         </asp:UpdatePanel>
+        <table id="Table_practitioner_addition_disabled" runat="server" bgcolor="khaki" cellpadding="10" cellspacing="0" visible="false" width="100%">
+          <tr>
+            <td align="center">
+              <b>
+                You must now use <a href="https://ems.health.state.pa.us/emsportal" target="_blank">the state EMS Registry System (EMSRS)</a> -- not <asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> -- to add practitioners to
+                rosters.
+              </b>
+            </td>
+          </tr>
+        </table>
+        <br/>
         <table cellpadding="0" cellspacing="0">
           <tr>
             <td valign="top">
