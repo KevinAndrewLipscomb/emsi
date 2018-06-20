@@ -846,6 +846,7 @@
     <ProjectReference Include="lib\emsi\emsi.csproj">
       <Project>{c022dad1-a109-4dc1-b770-9c4d70b6a39a}</Project>
       <Name>emsi</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="lib\ki\ki.csproj">
       <Project>{a20c347b-5154-47b9-a275-36157bf73352}</Project>
