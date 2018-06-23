@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
 <%@ Page language="c#" Debug="true" Codebehind="per_deployment_iap_log.aspx.cs" AutoEventWireup="True" Inherits="per_deployment_iap_log.TWebForm_per_deployment_iap_log" EnableViewState="False" %>
 <%@ Register TagPrefix="uc1" TagName="UserControl_common_header_bar" Src="~/usercontrol/app/UserControl_common_header_bar.ascx" %>

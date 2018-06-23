@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
 <%@ Page language="c#" Debug="true" Codebehind="hardcopy_service_strike_team_key_personnel.aspx.cs" AutoEventWireup="True" Inherits="hardcopy_service_strike_team_key_personnel.TWebForm_hardcopy_service_strike_team_key_personnel" %>
 <%@ Register src="../usercontrol/app/UserControl_static_service_strike_team_key_personnel.ascx" tagname="UserControl_static_service_strike_team_key_personnel" tagprefix="uc1" %>

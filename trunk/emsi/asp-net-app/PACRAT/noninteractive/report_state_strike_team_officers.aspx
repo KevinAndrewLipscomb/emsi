@@ -1,7 +1,7 @@
 <%@ Page language="c#" Debug="true" Codebehind="report_state_strike_team_officers.aspx.cs" AutoEventWireup="True" Inherits="report_state_strike_team_officers.TWebForm_report_state_strike_team_officers" EnableViewState="false" %>
 <%@ Register src="../usercontrol/app/UserControl_common_header_bar.ascx" tagname="UserControl_common_header_bar" tagprefix="uc1" %>
 <%@ Register src="../usercontrol/app/UserControl_static_state_strike_team_key_personnel.ascx" tagname="UserControl_static_state_strike_team_key_personnel" tagprefix="uc3" %>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head runat="server">
     <title></title>
