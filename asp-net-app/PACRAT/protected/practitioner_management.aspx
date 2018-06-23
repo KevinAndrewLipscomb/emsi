@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
 <%@ Page language="c#" Debug="true" Codebehind="practitioner_management.aspx.cs" AutoEventWireup="True" Inherits="practitioner_management.TWebForm_practitioner_management" %>
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
