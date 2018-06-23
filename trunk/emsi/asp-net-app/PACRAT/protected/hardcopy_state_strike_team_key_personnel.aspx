@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
 <%@ Page language="c#" Debug="true" Codebehind="hardcopy_state_strike_team_key_personnel.aspx.cs" AutoEventWireup="True" Inherits="hardcopy_state_strike_team_key_personnel.TWebForm_hardcopy_state_strike_team_key_personnel" %>
 <%@ Register src="../usercontrol/app/UserControl_static_state_strike_team_key_personnel.ascx" tagname="UserControl_static_state_strike_team_key_personnel" tagprefix="uc1" %>

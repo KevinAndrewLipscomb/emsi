@@ -1,7 +1,7 @@
 <%@ Page language="c#" Debug="true" Codebehind="report_service_strike_team_officers_in_region.aspx.cs" AutoEventWireup="True" Inherits="report_service_strike_team_officers_in_region.TWebForm_report_service_strike_team_officers_in_region" EnableViewState="false" %>
 <%@ Register src="../usercontrol/app/UserControl_common_header_bar.ascx" tagname="UserControl_common_header_bar" tagprefix="uc1" %>
 <%@ Register src="../usercontrol/app/UserControl_service_strike_team_officers_in_region.ascx" tagname="UserControl_service_strike_team_officers_in_region" tagprefix="uc3" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
   <head runat="server">
     <title></title>

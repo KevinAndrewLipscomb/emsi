@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
 <%@ Page language="c#" Debug="true" Codebehind="hardcopy_roster.aspx.cs" AutoEventWireup="True" Inherits="hardcopy_roster.TWebForm_hardcopy_roster" %>
 <%@ Register src="../usercontrol/app/UserControl_roster.ascx" tagname="UserControl_roster" tagprefix="uc1" %>

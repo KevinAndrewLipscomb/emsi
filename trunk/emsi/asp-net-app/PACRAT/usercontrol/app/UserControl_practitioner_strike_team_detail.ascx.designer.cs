@@ -454,13 +454,22 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_nims_ics_400_date;
         
         /// <summary>
-        /// UserControl_drop_down_date_lms_disaster_stress_response_date control.
+        /// UserControl_drop_down_date_pa_ems_strike_team_leader_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_lms_disaster_stress_response_date;
+        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_ems_strike_team_leader_date;
+        
+        /// <summary>
+        /// UserControl_drop_down_date_pa_water_rescue_awareness_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_water_rescue_awareness_date;
         
         /// <summary>
         /// UserControl_drop_down_date_lms_ems_mci_ops_date control.
@@ -481,60 +490,6 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_lms_wmd_date;
         
         /// <summary>
-        /// UserControl_drop_down_date_lms_smallpox_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_lms_smallpox_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_lms_basic_med_terrorism_response_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_lms_basic_med_terrorism_response_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_lms_electrical_hazards_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_lms_electrical_hazards_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_lms_ems_bioterror_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_lms_ems_bioterror_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_pa_psychological_first_aid_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_psychological_first_aid_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_pa_water_rescue_awareness_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_water_rescue_awareness_date;
-        
-        /// <summary>
         /// UserControl_drop_down_date_pa_hazmat_awareness_date control.
         /// </summary>
         /// <remarks>
@@ -544,22 +499,13 @@ namespace UserControl_practitioner_strike_team_detail {
         protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_hazmat_awareness_date;
         
         /// <summary>
-        /// UserControl_drop_down_date_pa_ems_strike_team_leader_date control.
+        /// UserControl_drop_down_date_pa_psychological_first_aid_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_ems_strike_team_leader_date;
-        
-        /// <summary>
-        /// UserControl_drop_down_date_two_years_supervisory_experience_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_two_years_supervisory_experience_date;
+        protected global::UserControl_drop_down_date.TWebUserControl_drop_down_date UserControl_drop_down_date_pa_psychological_first_aid_date;
         
         /// <summary>
         /// Button_submit control.

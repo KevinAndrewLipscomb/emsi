@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
 <%@ Page language="c#" Debug="true" Codebehind="ready_roster_detail.aspx.cs" AutoEventWireup="True" Inherits="ready_roster_detail.TWebForm_ready_roster_detail" %>
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
