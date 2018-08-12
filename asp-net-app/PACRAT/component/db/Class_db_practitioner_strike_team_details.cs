@@ -17,14 +17,9 @@ namespace Class_db_practitioner_strike_team_details
     {
     public const string BE_CREDENTIALED_AS_LEADER_EXPRESSION = k.EMPTY
     + " ("
-    +   " (nims_ics_300_date is not null and nims_ics_300_date > '0001-01-01')"
-    + " and"
-    +   " (nims_ics_400_date is not null and nims_ics_400_date > '0001-01-01')"
-    + " and"
-    +   " (pa_ems_strike_team_leader_date is not null and pa_ems_strike_team_leader_date > '0001-01-01')"
-    + " and"
-    +   " (two_years_supervisory_experience_date is not null and two_years_supervisory_experience_date > '0001-01-01')"
-    + " )";
+    + " TRUE"
+    + " )"
+    ;
     public const string BE_TEXTABLE_EXPRESSION = k.EMPTY
     + " ("
     +   " (phone_number is not null)"
@@ -64,8 +59,6 @@ namespace Class_db_practitioner_strike_team_details
       +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
       + " and"
       +   " (nims_is_800_date is not null and nims_is_700_date > '0001-01-01')"
-      + " and"
-      +   " (lms_ems_mci_ops_date is not null and lms_ems_mci_ops_date > '0001-01-01')"
       + " and"
       +   " (lms_wmd_date is not null and lms_wmd_date > '0001-01-01')"
       + " and"

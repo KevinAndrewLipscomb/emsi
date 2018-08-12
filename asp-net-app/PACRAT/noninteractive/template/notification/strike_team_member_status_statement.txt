@@ -49,21 +49,13 @@ Your status in <application_name/> has been recorded as follows:
    -  NATIONAL INCIDENT MANAGEMENT SYSTEM CLASSROOM TRAINING
       -  NIMS ICS-300 date
       -  NIMS ICS-400 date
-   -  PA PREPARED LMS TRAINING
-      -  Stress Response During Disasters date
+      -  Strike Team Leader (E/L 984) date
+   -  TEXAS A&M ENGINEERING EXTENSION SERVICE TRAINING
+      -  Swiftwater Awareness date
+   -  TRAIN PA TRAINING
       -  EMS Operations For MCIs date
       -  WMD Awareness date
-      -  Smallpox date
-      -  Basic Medical Response To Terrorism date
-      -  Electrical Hazards date
-      -  Biological Terrorism For EMS date
-   -  PENNSYLVANIA CONTINUING EDUCATION CLASSES
-      -  Psychological First Aid date
-      -  Water Rescue Awareness date
       -  HazMat Awareness date
-      -  EMS Strike Team Leadership date
-   -  EXPERIENCE
-      -  Two years in supervisory role date
 
 If any of the above details are incorrect in <application_name/>, or have changed, notify your service strike team manager *immediately*.
 
