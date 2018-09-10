@@ -273,13 +273,27 @@ namespace practitioner_management
         {
         if (e.CommandName == "Profile")
           {
-          p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
-          MessageDropCrumbAndTransferTo
-            (
-            msg:p.msg_protected_practitioner_profile,
-            folder_name:"protected",
-            aspx_name:"practitioner_profile"
-            );
+          if ((e.Item.Cells[Static.TCI_DOB].FindControl("Label_dob") as Label).Text == "REQUIRED")
+            {
+            Alert
+              (
+              cause:k.alert_cause_type.APPDATA,
+              state:k.alert_state_type.WARNING,
+              key:"dobreqrd",
+              value:"You must first edit this record and enter a DOB.",
+              be_using_scriptmanager:true
+              );
+            }
+          else
+            {
+            p.msg_protected_practitioner_profile.id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+            MessageDropCrumbAndTransferTo
+              (
+              msg:p.msg_protected_practitioner_profile,
+              folder_name:"protected",
+              aspx_name:"practitioner_profile"
+              );
+            }
           }
         }
       }
