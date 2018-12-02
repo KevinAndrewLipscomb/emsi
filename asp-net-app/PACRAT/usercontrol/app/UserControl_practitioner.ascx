@@ -101,7 +101,7 @@
     <td><font class="">Certification&nbsp;number:</font></td>
     <td>
       <font class="">
-        <ASP:TextBox id="TextBox_certification_number" runat="server" columns="6" maxlength="6" cssclass="" enabled="False"></ASP:TextBox>
+        <ASP:TextBox id="TextBox_certification_number" runat="server" columns="7" maxlength="7" cssclass="" enabled="False"></ASP:TextBox>
       </font>
     </td>
     <td nowrap="nowrap">

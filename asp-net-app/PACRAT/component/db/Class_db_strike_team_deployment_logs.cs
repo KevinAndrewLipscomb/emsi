@@ -68,7 +68,7 @@ namespace Class_db_strike_team_deployment_logs
         (
         "select strike_team_deployment_log.id as id"
         + " , DATE_FORMAT(timestamp,'%Y-%m-%d %H:%i:%s') as timestamp"
-        + " , CONCAT(last_name,', ',first_name,' (',LPAD(certification_number,6,'0'),')') as actor"
+        + " , CONCAT(last_name,', ',first_name,' (',LPAD(certification_number,7,'0'),')') as actor"
         + " , action"
         + " from strike_team_deployment_log"
         +   " join member on (member.id=strike_team_deployment_log.actor_member_id)"
