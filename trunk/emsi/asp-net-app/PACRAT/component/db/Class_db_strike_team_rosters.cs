@@ -83,7 +83,7 @@ namespace Class_db_strike_team_rosters
         + " , middle_initial"
         + " , IFNULL(practitioner_level.id,'') as level_id"
         + " , IFNULL(practitioner_level.short_description,'nocert') as level_short_description"
-        + " , IFNULL(LPAD(certification_number,6,'0'),'nocert') as certification_number_for_display"
+        + " , IFNULL(LPAD(certification_number,7,'0'),'nocert') as certification_number_for_display"
         + " , IFNULL(DATE_FORMAT(birth_date,'%m/%d/%Y'),'REQUIRED') as birth_date"
         + " , be_birth_date_confirmed"
         + " , IFNULL(email_address,'DESIRED') as email_address"
