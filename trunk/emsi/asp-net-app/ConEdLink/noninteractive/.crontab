@@ -9,7 +9,7 @@
 #
 # Weekly
 #
-30 03  *  * 3 wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/ConEdLink/noninteractive/import_latest_practitioners_from_emsrs.aspx
+30 14  *  * 3 wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/ConEdLink/noninteractive/import_latest_practitioners_from_emsrs.aspx
 #
 # Yearly
 #
