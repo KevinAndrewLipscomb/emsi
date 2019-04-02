@@ -327,9 +327,9 @@
   <tr>
     <td style="border-left: thin solid Gainsboro">
       <font class="">
-        NIMS IS-100.b date:
+        NIMS IS-100 date:
         <br />
-        <small>TRAIN PA # 1024627</small>
+        <small>TRAIN PA # 1024632</small>
       </font>
     </td>
     <td><font color="#33CC33">&clubs;</font></td>
@@ -344,9 +344,9 @@
   <tr>
     <td style="border-left: thin solid Gainsboro">
       <font class="">
-        NIMS IS-200.b date:
+        NIMS IS-200 date:
         <br />
-        <small>TRAIN PA # 1024638</small>
+        <small>TRAIN PA # 1084004</small>
       </font>
     </td>
     <td><font color="#33CC33">&clubs;</font></td>
@@ -361,9 +361,9 @@
   <tr>
     <td style="border-left: thin solid Gainsboro">
       <font class="">
-        NIMS IS-700.a date:
+        NIMS IS-700 date:
         <br />
-        <small>TRAIN PA # 1016070</small>
+        <small>TRAIN PA # 1078831</small>
       </font>
     </td>
     <td><font color="#33CC33">&clubs;</font></td>
@@ -378,9 +378,9 @@
   <tr>
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro">
       <font class="">
-        NIMS IS-800.b date:
+        NIMS IS-800 date:
         <br />
-        <small>TRAIN PA # 1011882</small>
+        <small>TRAIN PA # 1077604</small>
       </font>
     </td>
     <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
@@ -451,8 +451,8 @@
         <small>TEEX# TNG80A</small>
       </font>
     </td>
-    <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
-    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_water_rescue_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -470,7 +470,7 @@
       </small>
     </td>
   </tr>
-  <tr>
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro">
       <font class="">
         EMS Ops for MCIs date:
@@ -495,8 +495,8 @@
         <small>TRAIN PA # 1051625</small>
       </font>
     </td>
-    <td><font color="#33CC33">&clubs;</font></td>
-    <td><font color="#3366FF">&diams;</font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_wmd_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -512,8 +512,8 @@
         <small>TRAIN PA # 1076417</small>
       </font>
     </td>
-    <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
-    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_pa_hazmat_awareness_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -521,7 +521,7 @@
     </td>
     <td nowrap="nowrap" style="border-bottom: thin solid Gainsboro; border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro">
       <font class="">
         Stress Response During Disasters date:
@@ -529,8 +529,8 @@
         <small>LMS# 002869</small>
       </font>
     </td>
-    <td><font color="#33CC33">&clubs;</font></td>
-    <td><font color="#3366FF">&diams;</font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_disaster_stress_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -538,7 +538,7 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro">
       <font class="">
         Smallpox date:
@@ -546,8 +546,8 @@
         <small>LMS# 003078 or 003077</small>
       </font>
     </td>
-    <td><font color="#33CC33">&clubs;</font></td>
-    <td><font color="#3366FF">&diams;</font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_smallpox_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -555,7 +555,7 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro">
       <font class="">
         Basic Medical Response to Terrorism date:
@@ -563,8 +563,8 @@
         <small>LMS# 002161</small>
       </font>
     </td>
-    <td><font color="#33CC33">&clubs;</font></td>
-    <td><font color="#3366FF">&diams;</font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_basic_med_terrorism_response_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -572,7 +572,7 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro">
       <font class="">
         Electrical Hazards date:
@@ -580,8 +580,8 @@
         <small>LMS# 003599</small>
       </font>
     </td>
-    <td><font color="#33CC33">&clubs;</font></td>
-    <td><font color="#3366FF">&diams;</font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td>
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_electrical_hazards_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -589,7 +589,7 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro">
       <font class="">
         Biological Terrorism for EMS date:
@@ -597,8 +597,8 @@
         <small>LMS# 002176</small>
       </font>
     </td>
-    <td style="border-bottom: thin solid Gainsboro"><font color="#33CC33">&clubs;</font></td>
-    <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
+    <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro">
       <font class="">
         <uc1:UserControl_drop_down_date id="UserControl_drop_down_date_lms_ems_bioterror_date" runat="server"  cssclass=""></uc1:UserControl_drop_down_date>
@@ -626,8 +626,8 @@
     </td>
     <td nowrap="nowrap" style="border-right: thin solid Gainsboro; border-bottom: thin solid Gainsboro">&nbsp;</td>
   </tr>
-  <tr runat="server" visible="false"><td colspan="5">&nbsp;</td></tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black"><td colspan="5">&nbsp;</td></tr>
+  <tr runat="server" visible="false" bgcolor="black">
     <td colspan="5" style="border-top: thin solid Gainsboro; border-left: thin solid Gainsboro; border-right: thin solid Gainsboro" bgcolor="WhiteSmoke">
       <p><strong>Experience</strong></p>
       <small>
@@ -635,7 +635,7 @@
       </small>
     </td>
   </tr>
-  <tr runat="server" visible="false">
+  <tr runat="server" visible="false" bgcolor="black">
     <td style="border-left: thin solid Gainsboro; border-bottom: thin solid Gainsboro"><font class="">Two years in supervisory role date:</font></td>
     <td style="border-bottom: thin solid Gainsboro">&nbsp;</td>
     <td style="border-bottom: thin solid Gainsboro"><font color="#3366FF">&diams;</font></td>

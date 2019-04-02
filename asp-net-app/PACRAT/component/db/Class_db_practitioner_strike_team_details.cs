@@ -59,12 +59,6 @@ namespace Class_db_practitioner_strike_team_details
       +   " (nims_is_700_date is not null and nims_is_700_date > '0001-01-01')"
       + " and"
       +   " (nims_is_800_date is not null and nims_is_700_date > '0001-01-01')"
-      + " and"
-      +   " (lms_wmd_date is not null and lms_wmd_date > '0001-01-01')"
-      + " and"
-      +   " (pa_water_rescue_awareness_date is not null and pa_water_rescue_awareness_date > '0001-01-01')"
-      + " and"
-      +   " (pa_hazmat_awareness_date is not null and pa_hazmat_awareness_date > '0001-01-01')"
       + " )";
       }
 
