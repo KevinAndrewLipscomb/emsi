@@ -16,9 +16,6 @@ Your status in <application_name/> has been recorded as follows:
    CREDENTIALED FOR STRIKE TEAM PARTICIPATION AS A MEMBER:
       <credentialed_as_member_clause/>
 
-   CREDENTIALED FOR STRIKE TEAM PARTICIPATION AS A LEADER:
-      <credentialed_as_leader_clause/>
-
    SERVICE STRIKE TEAM AFFILIATION(S):
       <service_strike_team_affiliation/>
 
@@ -42,10 +39,10 @@ Your status in <application_name/> has been recorded as follows:
       -  PA Criminal Record Check date
       -  FBI Criminal Background Check date
    -  NATIONAL INCIDENT MANAGEMENT SYSTEM INDEPENDENT STUDY
-      -  NIMS IS-100.b date
-      -  NIMS IS-200.b date
-      -  NIMS IS-700.a date
-      -  NIMS IS-800.b date
+      -  NIMS IS-100 date
+      -  NIMS IS-200 date
+      -  NIMS IS-700 date
+      -  NIMS IS-800 date
    -  NATIONAL INCIDENT MANAGEMENT SYSTEM CLASSROOM TRAINING
       -  NIMS ICS-300 date
       -  NIMS ICS-400 date
@@ -53,7 +50,6 @@ Your status in <application_name/> has been recorded as follows:
    -  TEXAS A&M ENGINEERING EXTENSION SERVICE TRAINING
       -  Swiftwater Awareness date
    -  TRAIN PA TRAINING
-      -  EMS Operations For MCIs date
       -  WMD Awareness date
       -  HazMat Awareness date
 

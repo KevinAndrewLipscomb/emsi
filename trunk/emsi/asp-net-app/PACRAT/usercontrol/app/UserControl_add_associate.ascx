@@ -156,7 +156,7 @@
     </td>
   </tr>
   <tr>
-    <td><font class="">Phone&nbsp;service&nbsp;id:</font></td>
+    <td><font class="">Phone&nbsp;service:</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_phone_service" runat="server">
       </asp:DropDownList>
