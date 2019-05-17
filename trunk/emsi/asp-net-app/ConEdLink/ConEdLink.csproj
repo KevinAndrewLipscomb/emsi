@@ -402,6 +402,13 @@
     <Compile Include="usercontrol\app\UserControl_analysis_of_sponsor_by_year.ascx.designer.cs">
       <DependentUpon>UserControl_analysis_of_sponsor_by_year.ascx</DependentUpon>
     </Compile>
+    <Compile Include="usercontrol\app\UserControl_app_level_announcement.ascx.cs">
+      <DependentUpon>UserControl_app_level_announcement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_app_level_announcement.ascx.designer.cs">
+      <DependentUpon>UserControl_app_level_announcement.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx.cs">
       <DependentUpon>UserControl_change_practitioner_email_address.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -763,6 +770,7 @@
     <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_course.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_month.ascx" />
     <Content Include="usercontrol\app\UserControl_analysis_of_sponsor_by_year.ascx" />
+    <Content Include="usercontrol\app\UserControl_app_level_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_change_practitioner_email_address.ascx" />
     <Content Include="usercontrol\app\UserControl_class_catalog.ascx" />
     <Content Include="usercontrol\app\UserControl_common_header_bar.ascx" />

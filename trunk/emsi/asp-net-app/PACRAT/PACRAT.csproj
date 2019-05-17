@@ -132,6 +132,7 @@
     <Content Include="salogin.aspx" />
     <Content Include="timeout.aspx" />
     <Content Include="usercontrol\app\UserControl_add_associate.ascx" />
+    <Content Include="usercontrol\app\UserControl_app_level_announcement.ascx" />
     <Content Include="usercontrol\app\UserControl_business_objects_binder.ascx" />
     <Content Include="usercontrol\app\UserControl_fuel.ascx" />
     <Content Include="usercontrol\app\UserControl_mobilization_announcement.ascx" />
@@ -565,6 +566,13 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_add_associate.ascx.designer.cs">
       <DependentUpon>UserControl_add_associate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_app_level_announcement.ascx.cs">
+      <DependentUpon>UserControl_app_level_announcement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\app\UserControl_app_level_announcement.ascx.designer.cs">
+      <DependentUpon>UserControl_app_level_announcement.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_business_objects_binder.ascx.cs">
       <DependentUpon>UserControl_business_objects_binder.ascx</DependentUpon>
