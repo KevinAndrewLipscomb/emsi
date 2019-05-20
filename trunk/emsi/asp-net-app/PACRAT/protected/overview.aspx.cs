@@ -1,27 +1,15 @@
-using System.Configuration;
-
-using kix;
-
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Web;
-using System.Web.SessionState;
-
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Data.Common;
-using System.Globalization;
-
-
 using Class_biz_members;
 using Class_biz_user;
 using Class_biz_users;
+using kix;
+using System;
+using System.Configuration;
 using UserControl_establish_membership;
 using UserControl_member_binder;
+
 namespace overview
-{
-    public partial class TWebForm_overview: ki_web_ui.page_class
+  {
+  public partial class TWebForm_overview: ki_web_ui.page_class
     {
         private p_type p;
         protected System.Web.UI.ScriptManager ScriptManager_control = null;
@@ -39,7 +27,7 @@ namespace overview
         {
             if (!IsPostBack)
             {
-                Title.Text = ConfigurationManager.AppSettings["application_name"] + " - overview";
+                Title = ConfigurationManager.AppSettings["application_name"] + " - overview";
             }
         }
 

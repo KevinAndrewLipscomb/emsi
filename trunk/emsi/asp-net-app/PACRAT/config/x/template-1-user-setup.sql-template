@@ -1,4 +1,4 @@
-create user if not exists 'ki-pacrat-x'@'::1' identified by '~ki-pacrat-x-password~';
+create user if not exists 'ki-pacrat-x'@'127.0.0.1' identified by '~ki-pacrat-x-password~';
 grant select
  , insert
  , update
@@ -7,7 +7,7 @@ grant select
  , create routine
  , alter routine
   on emsidb_x.*
-  to 'ki-pacrat-x'@'::1'
+  to 'ki-pacrat-x'@'127.0.0.1'
 ;
 --
 -- Must grant PROCESS priv to primary user to include SHOW ENGINE INNODB
@@ -16,9 +16,9 @@ grant select
 ;
 grant process
   on *.*
-  to 'ki-pacrat-x'@'::1'
+  to 'ki-pacrat-x'@'127.0.0.1'
 ;
-create user if not exists 'ki-pacrath-x'@'::1' identified by '~ki-pacrath-x-password~';
+create user if not exists 'ki-pacrath-x'@'127.0.0.1' identified by '~ki-pacrath-x-password~';
 grant select
   on homedb_x.*
-  to 'ki-pacrath-x'@'::1'
+  to 'ki-pacrath-x'@'127.0.0.1'

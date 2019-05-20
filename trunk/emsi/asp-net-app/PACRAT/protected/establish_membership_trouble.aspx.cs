@@ -1,22 +1,12 @@
-using System.Configuration;
-
-using kix;
-
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-
-
 using Class_biz_notifications;
 using Class_biz_user;
+using kix;
+using System;
+using System.Configuration;
+
 namespace establish_membership_trouble
-{
-    public partial class TWebForm_establish_membership_trouble: ki_web_ui.page_class
+  {
+  public partial class TWebForm_establish_membership_trouble: ki_web_ui.page_class
     {
         private p_type p;
         // / <summary>
@@ -33,7 +23,7 @@ namespace establish_membership_trouble
         {
             if (!IsPostBack)
             {
-                Title.Text = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - establish_membership_trouble";
+                Title = ConfigurationManager.AppSettings["application_name"] + " - establish_membership_trouble";
                 Label_sponsor_1.Text = ConfigurationManager.AppSettings["sponsor"];
                 Label_sponsor_2.Text = ConfigurationManager.AppSettings["sponsor"];
                 Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
