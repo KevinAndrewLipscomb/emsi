@@ -1,15 +1,14 @@
 using Class_biz_coned_offerings;
-using kix;
 using System;
 using System.Configuration;
 
 namespace hardcopy_roster
-{
-    // Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.pas~template
-    public partial class TWebForm_hardcopy_roster: ki_web_ui.page_class
+  {
+  // Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.pas~template
+  public partial class TWebForm_hardcopy_roster: ki_web_ui.page_class
     {
         private p_type p;
-        protected new System.Web.UI.HtmlControls.HtmlTitle Title = null;
+
         // / <summary>
         // / Required method for Designer support -- do not modify
         // / the contents of this method with the code editor.
@@ -24,7 +23,7 @@ namespace hardcopy_roster
         {
             if (!IsPostBack)
             {
-                Title.Text = ConfigurationManager.AppSettings["application_name"] + " - hardcopy_roster";
+                Title = ConfigurationManager.AppSettings["application_name"] + " - hardcopy_roster";
                 Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
                 Literal_timestamp.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 Literal_status.Text = p.biz_coned_offerings.StatusOf(p.summary);
