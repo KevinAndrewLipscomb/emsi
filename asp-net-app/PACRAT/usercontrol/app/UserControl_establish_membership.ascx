@@ -39,7 +39,7 @@
                             </tr>
                             <tr>
                               <td align="right">Certification #:</td>
-                              <td><asp:TextBox ID="TextBox_certification_number" runat="server" Columns="6" MaxLength="6"></asp:TextBox></td>
+                              <td><asp:TextBox ID="TextBox_certification_number" runat="server" Columns="7" MaxLength="7"></asp:TextBox></td>
                             </tr>
                             <tr>
                               <td align="right">Level:</td>
