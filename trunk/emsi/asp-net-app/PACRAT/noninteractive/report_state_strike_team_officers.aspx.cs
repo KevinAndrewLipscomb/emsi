@@ -36,6 +36,8 @@ namespace report_state_strike_team_officers
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
+      //
+      UserControl_static_state_strike_team_key_personnel_control.Set(be_for_email_transmission:true);
       }
 
     protected override void Render(HtmlTextWriter writer)

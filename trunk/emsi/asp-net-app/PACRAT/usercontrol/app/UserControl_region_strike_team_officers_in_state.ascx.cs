@@ -1,15 +1,9 @@
 // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.ascx.cs
 
-using AjaxControlToolkit;
 using Class_biz_regions;
-using Class_msg_protected;
-using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Web.UI.WebControls;
 using UserControl_static_region_strike_team_key_personnel;
 
 namespace UserControl_region_strike_team_officers_in_state
@@ -32,7 +26,7 @@ namespace UserControl_region_strike_team_officers_in_state
 
     private p_type p;
 
-    protected void Page_Load(object sender, System.EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
       {
       if (!p.be_loaded)
         {
@@ -41,7 +35,7 @@ namespace UserControl_region_strike_team_officers_in_state
         }
       }
 
-    protected override void OnInit(System.EventArgs e)
+    protected override void OnInit(EventArgs e)
       {
       // Required for Designer support
       InitializeComponent();
@@ -80,11 +74,11 @@ namespace UserControl_region_strike_team_officers_in_state
     // / </summary>
     private void InitializeComponent()
       {
-      DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
+      DataGrid_control.ItemDataBound += new DataGridItemEventHandler(DataGrid_control_ItemDataBound);
       PreRender += TWebUserControl_region_strike_team_officers_in_state_PreRender;
       }
 
-    private void TWebUserControl_region_strike_team_officers_in_state_PreRender(object sender, System.EventArgs e)
+    private void TWebUserControl_region_strike_team_officers_in_state_PreRender(object sender, EventArgs e)
       {
       SessionSet(InstanceId() + ".p", p);
       }
@@ -95,7 +89,7 @@ namespace UserControl_region_strike_team_officers_in_state
       return this;
       }
 
-    private void DataGrid_control_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)
+    private void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
@@ -115,7 +109,10 @@ namespace UserControl_region_strike_team_officers_in_state
       for (var i = 0; i < p.num_regions; i++)
         {
         (DataGrid_control.Items[i].Cells[Static.TCI_CONTENT].FindControl("UserControl_static_region_strike_team_key_personnel_control") as TWebUserControl_static_region_strike_team_key_personnel).Set
-          (region_summary:p.biz_regions.Summary(code:DataGrid_control.Items[i].Cells[Static.TCI_CODE].Text));
+          (
+          region_summary:p.biz_regions.Summary(code:DataGrid_control.Items[i].Cells[Static.TCI_CODE].Text),
+          be_for_email_transmission:true
+          );
         }
       p.be_datagrid_empty = (p.num_regions == 0);
       TableRow_none.Visible = p.be_datagrid_empty;

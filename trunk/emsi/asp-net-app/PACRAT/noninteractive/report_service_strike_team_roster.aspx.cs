@@ -10,7 +10,7 @@ using System.Web.UI;
 namespace report_service_strike_team_roster
   {
 
-  public partial class TWebForm_report_service_strike_team_roster: System.Web.UI.Page
+  public partial class TWebForm_report_service_strike_team_roster: Page
     {
 
     private struct p_type
@@ -30,7 +30,7 @@ namespace report_service_strike_team_roster
       {
       }
 
-    protected void Page_Load(object sender, System.EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
       {
       Title = ConfigurationManager.AppSettings["application_name"] + " - report_service_strike_team_roster";
       Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
@@ -52,7 +52,11 @@ namespace report_service_strike_team_roster
       //
       p.service_id = k.Safe(Request["service_id"],k.safe_hint_type.NUM);
       //
-      UserControl_static_service_strike_team_roster_control.Set(p.biz_services.Summary(p.service_id));
+      UserControl_static_service_strike_team_roster_control.Set
+        (
+        service_summary:p.biz_services.Summary(p.service_id),
+        be_for_email_transmission:true
+        );
       }
 
     protected override void Render(HtmlTextWriter writer)

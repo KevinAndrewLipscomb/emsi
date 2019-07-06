@@ -10,6 +10,7 @@ namespace UserControl_static_region_strike_team_key_personnel
 
   public struct p_type
     {
+    public bool be_for_email_transmission;
     public bool be_loaded;
     public bool be_noncurrent_practitioners_on_roster;
     public TClass_biz_role_member_map biz_role_member_map;
@@ -81,6 +82,7 @@ namespace UserControl_static_region_strike_team_key_personnel
         p.biz_role_member_map = new TClass_biz_role_member_map();
         p.biz_regions = new TClass_biz_regions();
         //
+        p.be_for_email_transmission = false;
         p.be_noncurrent_practitioners_on_roster = false;
         p.num_assignees = new k.int_nonnegative();
         p.region_summary = null;
@@ -111,6 +113,7 @@ namespace UserControl_static_region_strike_team_key_personnel
       {
       p.be_noncurrent_practitioners_on_roster = false;
       p.num_assignees.val = 0;
+      DataGrid_control.Columns[Static.TCI_DOB].Visible = !p.be_for_email_transmission;
       p.biz_role_member_map.BindBaseDataListByExplicitRegionCode
         (
         sort_order:"last_name,first_name,middle_initial,certification_number",
@@ -162,9 +165,14 @@ namespace UserControl_static_region_strike_team_key_personnel
         }
       }
 
-    internal void Set(object region_summary)
+    internal void Set
+      (
+      object region_summary,
+      bool be_for_email_transmission = false
+      )
       {
       p.region_summary = region_summary;
+      p.be_for_email_transmission = be_for_email_transmission;
       }
 
     }
