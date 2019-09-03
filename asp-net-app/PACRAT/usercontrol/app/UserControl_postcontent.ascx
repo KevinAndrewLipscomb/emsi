@@ -27,7 +27,7 @@
                               <table cellspacing="0" cellpadding="5" border="0">
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a id="Anchor_strike_team_guidelines" runat="server" href="~/resource/strike-team-guidelines.pdf" target="_blank">PA EMS Strike Team Guidelines</a></small></td>
+                                  <td><small><a id="Anchor_strike_team_guidelines" runat="server" href="~/resource/strike-team-personnel-standards.pdf" target="_blank">Strike Team Personnel Standards</a></small></td>
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>

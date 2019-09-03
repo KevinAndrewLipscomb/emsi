@@ -1134,6 +1134,7 @@
     <Content Include="usercontrol\ki\UserControl_print_div.ascx" />
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
     <None Include="resource\strike-team-guidelines.pdf" />
+    <Content Include="resource\strike-team-personnel-standards.pdf" />
     <None Include="work.bat" />
   </ItemGroup>
   <ItemGroup>
