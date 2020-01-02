@@ -13,4 +13,4 @@
 #
 # Yearly
 #
-00 20 01 01 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/ConEdLink/noninteractive/first_of_calendar_month_tasks.aspx
+00 20 01 01 * wget --output-document=/dev/null --no-check-certificate --timeout=14400 --tries=1 https://localhost/ConEdLink/noninteractive/first_of_calendar_year_tasks.aspx
