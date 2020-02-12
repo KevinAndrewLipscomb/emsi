@@ -25,7 +25,7 @@
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
-                                  <td><small><a href="https://ems.health.state.pa.us/emsportal" target="_blank">EMS Registry System (EMSRS)</a></small></td>
+                                  <td><small><a href="https://ems.health.state.pa.us/Registry/" target="_blank">EMS Registry System (EMSRS)</a></small></td>
                                 </tr>
                                 <tr>
                                   <td valign="top">&bull;</td>
