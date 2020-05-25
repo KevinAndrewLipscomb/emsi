@@ -71,8 +71,8 @@ namespace Class_db_practitioner_strike_team_details
       internal string service_strike_team_primary_manager;
       }
 
-    private TClass_biz_notifications biz_notifications = null;
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_biz_notifications biz_notifications = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_practitioner_strike_team_details() : base()
       {
@@ -85,7 +85,7 @@ namespace Class_db_practitioner_strike_team_details
       var concat_clause = "concat(IFNULL(practitioner_id,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select practitioner_id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -93,8 +93,8 @@ namespace Class_db_practitioner_strike_team_details
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["practitioner_id"].ToString()));
@@ -108,15 +108,15 @@ namespace Class_db_practitioner_strike_team_details
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT practitioner_id"
         + " , CONVERT(concat(IFNULL(practitioner_id,'-')) USING utf8) as spec"
         + " FROM practitioner_strike_team_detail"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["practitioner_id"].ToString()));
@@ -131,7 +131,8 @@ namespace Class_db_practitioner_strike_team_details
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from practitioner_strike_team_detail where practitioner_id = \"" + practitioner_id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from practitioner_strike_team_detail where practitioner_id = \"" + practitioner_id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -141,7 +142,7 @@ namespace Class_db_practitioner_strike_team_details
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -152,7 +153,7 @@ namespace Class_db_practitioner_strike_team_details
       {
       var expiring_drivers_license_q = new Queue<UpcomingDecredentialing>();
       Open();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT email_address"
         + " , last_name"
@@ -182,8 +183,8 @@ namespace Class_db_practitioner_strike_team_details
         +   " and drivers_license_expiration = ADDDATE(CURDATE(),INTERVAL " + days_left.val + " DAY)"
         + " group by practitioner_strike_team_detail.id",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         expiring_drivers_license_q.Enqueue
@@ -276,7 +277,8 @@ namespace Class_db_practitioner_strike_team_details
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from practitioner_strike_team_detail where CAST(practitioner_id AS CHAR) = \"" + practitioner_id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from practitioner_strike_team_detail where CAST(practitioner_id AS CHAR) = \"" + practitioner_id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         practitioner_id = dr["practitioner_id"].ToString();
@@ -324,7 +326,7 @@ namespace Class_db_practitioner_strike_team_details
       {
       var num_years_clearances_considered_valid = ConfigurationManager.AppSettings["num_years_clearances_considered_valid"];
       Open();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select email_address"
         + " , last_name"
@@ -374,8 +376,8 @@ namespace Class_db_practitioner_strike_team_details
         + " group by practitioner_strike_team_detail.id"
         + " order by RAND()",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         biz_notifications.IssueStrikeTeamMemberStatusStatement
@@ -464,7 +466,7 @@ namespace Class_db_practitioner_strike_team_details
       {
       var nearly_stale_clearance_q = new Queue<UpcomingDecredentialing>();
       Open();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT email_address"
         + " , last_name"
@@ -494,8 +496,8 @@ namespace Class_db_practitioner_strike_team_details
         +   " and ADDDATE(" + clearance_designator + "_date,INTERVAL " + num_years_clearances_considered_valid.val.ToString() + " YEAR) = ADDDATE(CURDATE(),INTERVAL " + days_left.val + " DAY)"
         + " group by practitioner_strike_team_detail.id",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         nearly_stale_clearance_q.Enqueue
@@ -599,15 +601,15 @@ namespace Class_db_practitioner_strike_team_details
     internal string SmsTargetOf(string practitioner_id)
       {
       Open();
-      var sms_target_of_obj = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select concat(phone_number,'@',hostname)"
         + " from practitioner_strike_team_detail"
         +   " join sms_gateway on (sms_gateway.id=practitioner_strike_team_detail.phone_service_id)"
         + " where practitioner_id = '" + practitioner_id + "'",
         connection
-        )
-        .ExecuteScalar();
+        );
+      var sms_target_of_obj = my_sql_command.ExecuteScalar();
       Close();
       return (sms_target_of_obj == null ? k.EMPTY : sms_target_of_obj.ToString());
       }

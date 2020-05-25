@@ -9,7 +9,7 @@ namespace Class_biz_fuels
   {
   public class TClass_biz_fuels
     {
-    private TClass_db_fuels db_fuels = null;
+    private readonly TClass_db_fuels db_fuels = null;
 
     public TClass_biz_fuels() : base()
       {

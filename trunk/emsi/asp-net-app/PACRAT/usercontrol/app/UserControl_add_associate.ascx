@@ -7,21 +7,9 @@
       <table cellpadding="10" cellspacing="0" width="100%">
         <tr>
           <td bgcolor="whitesmoke">
-            <h3>Load a non-Pennsylvania-practitioner into the system</h3>
-            <p><asp:Literal ID="Literal_application_name" runat="server"></asp:Literal> is already loaded with a list of all Pennsylvania EMS practitioners, but you must manually load other personnel into the system using this form.</p>
+            <h3>Load an unlisted person into the system</h3>
+            <p>If you're unable to find a person using <asp:Literal ID="Literal_application_name" runat="server"></asp:Literal>'s search mechanism, you must manually load the person into the system using this form.</p>
             <p>You are also adding this person<asp:Literal ID="Literal_association_clause" runat="server"></asp:Literal></p>
-            <table cellpadding="10" cellspacing="0" bgcolor="red">
-              <tr>
-                <td align="center">
-                  <b>
-                    <font color="white">
-                      <p>NEVER USE THIS FORM TO ENTER A CURRENT OR FORMER PENNSYLVANIA EMS PRACTITIONER.</p>
-                      <p>USE THE <a href="https://ems.health.state.pa.us/emsportal" target="_blank"><font color="lightblue">STATE EMS REGISTRY SYSTEM</font></a> FOR THAT INSTEAD.</p>
-                    </font>
-                  </b>
-                </td>
-              </tr>
-            </table>
           </td>
         </tr>
         <tr>
@@ -65,16 +53,28 @@
     <td>
       <asp:DropDownList ID="DropDownList_level" runat="server">
       </asp:DropDownList>
-    &nbsp;(rough PA equivalent)</td>
+    &nbsp;(rough Pennsylvania equivalent, if out of state)</td>
     <td nowrap="nowrap">
       &nbsp;</td>
+  </tr>
+  <tr>
+    <td><font class="">Certification&nbsp;number:</font></td>
+    <td>
+      <font class="">
+        <ASP:TextBox id="TextBox_certification_number" runat="server" columns="7" maxlength="7" cssclass="" enabled="False"></ASP:TextBox>
+      &nbsp;(Pennsylvania EMS only)</font></td>
+    <td nowrap="nowrap">
+      
+      <asp:RegularExpressionValidator ID="RegularExpressionValidator_certification_number" runat="server" ControlToValidate="TextBox_certification_number" ErrorMessage="Please enter a valid Pennsylvania EMS certification number." Font-Bold="True" ValidationExpression="\d{6,7}">!ERR!</asp:RegularExpressionValidator>
+      
+    </td>
   </tr>
   <tr>
     <td><font class="">Regional&nbsp;council*:</font></td>
     <td>
       <asp:DropDownList ID="DropDownList_regional_council" runat="server">
       </asp:DropDownList>
-    &nbsp;(sponsor)</td>
+    &nbsp;(sponsor, if out of state)</td>
     <td nowrap="nowrap">
       <ASP:RequiredFieldValidator id="RequiredFieldValidator_regional_council_code" runat="server" errormessage="Please select a Regional&nbsp;council." font-bold="True" controltovalidate="DropDownList_regional_council">!ERR!</ASP:RequiredFieldValidator>
     </td>

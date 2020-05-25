@@ -83,7 +83,7 @@ namespace UserControl_operational_period_detail
       public string user_target_sms;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Bind()
       {

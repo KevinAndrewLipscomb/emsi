@@ -15,7 +15,7 @@ namespace UserControl_change_practitioner_email_address
       public object practitioner_summary;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
@@ -107,7 +107,7 @@ namespace UserControl_change_practitioner_email_address
 
     protected void CustomValidator_email_address_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
       {
-      args.IsValid = (args.Value == k.EMPTY) || k.BeValidDomainPartOfEmailAddress(args.Value);
+      args.IsValid = (args.Value.Length == 0) || k.BeValidDomainPartOfEmailAddress(args.Value);
       }
 
     }

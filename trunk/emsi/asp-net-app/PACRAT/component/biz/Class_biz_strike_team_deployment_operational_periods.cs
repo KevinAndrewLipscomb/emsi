@@ -32,7 +32,7 @@ namespace Class_biz_strike_team_deployment_operational_periods
     //
     //--
 
-    private TClass_db_strike_team_deployment_operational_periods db_strike_team_deployment_operational_periods = null;
+    private readonly TClass_db_strike_team_deployment_operational_periods db_strike_team_deployment_operational_periods = null;
 
     //--
     //

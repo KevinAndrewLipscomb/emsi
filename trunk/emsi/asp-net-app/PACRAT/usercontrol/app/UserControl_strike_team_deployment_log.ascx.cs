@@ -31,7 +31,7 @@ namespace UserControl_strike_team_deployment_log
       public string sort_order;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void InjectPersistentClientSideScript()
       {
@@ -164,10 +164,9 @@ namespace UserControl_strike_team_deployment_log
     // / </summary>
     private void InitializeComponent()
       {
-      this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
-      this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
-      this.PreRender += this.TWebUserControl_strike_team_deployment_log_PreRender;
-      //this.Load += this.Page_Load;
+      DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
+      DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(DataGrid_control_SortCommand);
+      PreRender += TWebUserControl_strike_team_deployment_log_PreRender;
       }
 
     private void TWebUserControl_strike_team_deployment_log_PreRender(object sender, System.EventArgs e)

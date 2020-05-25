@@ -18,7 +18,7 @@ namespace Class_db_strike_team_participation_levels
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_participation_levels() : base()
       {
@@ -30,7 +30,7 @@ namespace Class_db_strike_team_participation_levels
       var concat_clause = "concat(IFNULL(pecking_order,'-'),'|',IFNULL(description,'-'),'|',IFNULL(elaboration,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -38,8 +38,8 @@ namespace Class_db_strike_team_participation_levels
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -51,19 +51,21 @@ namespace Class_db_strike_team_participation_levels
 
     internal void BindBaseDataList
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       string sort_order,
       bool be_sort_order_ascending,
       object target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_participation_level.id as id"
         + " from strike_team_participation_level",
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -76,14 +78,15 @@ namespace Class_db_strike_team_participation_levels
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand("SELECT id, description FROM strike_team_participation_level order by pecking_order",connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("SELECT id, description FROM strike_team_participation_level order by pecking_order",connection);
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["description"].ToString(), dr["id"].ToString()));
         }
       dr.Close();
       Close();
-      if (selected_value != k.EMPTY)
+      if (selected_value.Length > 0)
         {
         ((target) as ListControl).SelectedValue = selected_value;
         }
@@ -95,7 +98,8 @@ namespace Class_db_strike_team_participation_levels
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_participation_level where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from strike_team_participation_level where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -105,7 +109,7 @@ namespace Class_db_strike_team_participation_levels
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -115,7 +119,8 @@ namespace Class_db_strike_team_participation_levels
     internal string ElaborationOf(string id)
       {
       Open();
-      var elaboration_of_obj = new MySqlCommand("select elaboration from strike_team_participation_level where id = '" + id + "'",connection).ExecuteScalar();
+      using var my_sql_command = new MySqlCommand("select elaboration from strike_team_participation_level where id = '" + id + "'",connection);
+      var elaboration_of_obj = my_sql_command.ExecuteScalar();
       Close();
       return (elaboration_of_obj.ToString() ?? k.EMPTY);
       }
@@ -134,7 +139,8 @@ namespace Class_db_strike_team_participation_levels
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_participation_level where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_participation_level where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         description = dr["description"].ToString();
@@ -174,14 +180,14 @@ namespace Class_db_strike_team_participation_levels
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM strike_team_participation_level"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new strike_team_participation_level_summary()

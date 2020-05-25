@@ -1,11 +1,13 @@
 using System;
 
 using Class_db_tiers;
+
 namespace Class_biz_tiers
 {
     public class TClass_biz_tiers
     {
-        private TClass_db_tiers db_tiers = null;
+        private readonly TClass_db_tiers db_tiers = null;
+
         //Constructor  Create()
         public TClass_biz_tiers() : base()
         {

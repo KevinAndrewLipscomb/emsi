@@ -28,7 +28,7 @@ namespace UserControl_service_strike_team_officers_in_region
       public string region_code;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, EventArgs e)
       {

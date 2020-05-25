@@ -23,7 +23,7 @@ namespace UserControl_strike_team_deployment_member
       public bool be_ok_to_config_strike_team_deployment_members;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -228,8 +228,7 @@ namespace UserControl_strike_team_deployment_member
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_deployment_member_PreRender;
+      PreRender += TWebUserControl_strike_team_deployment_member_PreRender;
       }
 
     private void TWebUserControl_strike_team_deployment_member_PreRender(object sender, System.EventArgs e)

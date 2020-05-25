@@ -10,9 +10,10 @@ namespace Class_biz_coned_sponsor_users
 {
     public class TClass_biz_coned_sponsor_users
     {
-        private TClass_db_members db_members = null;
-        private TClass_db_coned_sponsor_users db_coned_sponsor_users = null;
-        private TClass_biz_notifications biz_notifications = null;
+        private readonly TClass_db_members db_members = null;
+        private readonly TClass_db_coned_sponsor_users db_coned_sponsor_users = null;
+        private readonly TClass_biz_notifications biz_notifications = null;
+
         //Constructor  Create()
         public TClass_biz_coned_sponsor_users() : base()
         {

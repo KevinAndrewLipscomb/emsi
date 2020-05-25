@@ -16,7 +16,7 @@ namespace operational_period_detail
       public TClass_msg_protected.operational_period_detail incoming;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -24,8 +24,7 @@ namespace operational_period_detail
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_operational_period_detail_PreRender;
+      PreRender += TWebForm_operational_period_detail_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
-<%@ Page language="c#" Debug="true" Codebehind="practitioner_management.aspx.cs" AutoEventWireup="True" Inherits="practitioner_management.TWebForm_practitioner_management" %>
+<%@ Page language="c#" codebehind="practitioner_management.aspx.cs" AutoEventWireup="True" Inherits="practitioner_management.TWebForm_practitioner_management" %>
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 <%@ Register TagPrefix="uc1" TagName="UserControl_precontent" Src="~/usercontrol/app/UserControl_precontent.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="UserControl_postcontent" Src="~/usercontrol/app/UserControl_postcontent.ascx" %>

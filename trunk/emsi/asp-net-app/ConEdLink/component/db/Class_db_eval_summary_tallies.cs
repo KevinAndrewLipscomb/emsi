@@ -18,7 +18,7 @@ namespace Class_db_eval_summary_tallies
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_eval_summary_tallies() : base()
       {
@@ -30,7 +30,7 @@ namespace Class_db_eval_summary_tallies
       var concat_clause = "concat(id)";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -38,8 +38,8 @@ namespace Class_db_eval_summary_tallies
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -51,19 +51,21 @@ namespace Class_db_eval_summary_tallies
 
     internal void BindBaseDataList
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       string sort_order,
       bool be_sort_order_ascending,
       object target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select eval_summary_tally.id as id"
         + " from eval_summary_tally",
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -72,15 +74,15 @@ namespace Class_db_eval_summary_tallies
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(id) USING utf8) as spec"
         + " FROM eval_summary_tally"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -95,7 +97,8 @@ namespace Class_db_eval_summary_tallies
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from eval_summary_tally where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from eval_summary_tally where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -105,7 +108,7 @@ namespace Class_db_eval_summary_tallies
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -128,7 +131,8 @@ namespace Class_db_eval_summary_tallies
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from eval_summary_tally where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from eval_summary_tally where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         coned_offering_id = dr["coned_offering_id"].ToString();
@@ -150,7 +154,8 @@ namespace Class_db_eval_summary_tallies
       )
       {
       Open();
-      var value_obj = new MySqlCommand("select value from eval_summary_tally where coned_offering_id = '" + coned_offering_id + "' and rating = '" + rating + "' and question = '" + question + "'",connection).ExecuteScalar();
+      using var my_sql_command = new MySqlCommand("select value from eval_summary_tally where coned_offering_id = '" + coned_offering_id + "' and rating = '" + rating + "' and question = '" + question + "'",connection);
+      var value_obj = my_sql_command.ExecuteScalar();
       Close();
       return (value_obj == null ? k.EMPTY : value_obj.ToString());
       }
@@ -185,14 +190,14 @@ namespace Class_db_eval_summary_tallies
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM eval_summary_tally"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new eval_summary_tally_summary()

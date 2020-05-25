@@ -20,9 +20,9 @@ namespace Class_db_strike_team_deployment_logs
       public string id;
       }
 
-    private TClass_biz_members biz_members = null;
-    private TClass_biz_user  biz_user = null;
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_biz_members biz_members = null;
+    private readonly TClass_biz_user  biz_user = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_deployment_logs() : base()
       {
@@ -36,7 +36,7 @@ namespace Class_db_strike_team_deployment_logs
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(timestamp,'-'),'|',IFNULL(actor_member_id,'-'),'|',IFNULL(action,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -44,8 +44,8 @@ namespace Class_db_strike_team_deployment_logs
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -64,7 +64,7 @@ namespace Class_db_strike_team_deployment_logs
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_deployment_log.id as id"
         + " , DATE_FORMAT(timestamp,'%Y-%m-%d %H:%i:%s') as timestamp"
@@ -75,8 +75,8 @@ namespace Class_db_strike_team_deployment_logs
         + " where deployment_id = '" + deployment_id + "'"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -85,15 +85,15 @@ namespace Class_db_strike_team_deployment_logs
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(deployment_id,'-'),'|',IFNULL(timestamp,'-'),'|',IFNULL(actor_member_id,'-'),'|',IFNULL(action,'-')) USING utf8) as spec"
         + " FROM strike_team_deployment_log"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -108,7 +108,8 @@ namespace Class_db_strike_team_deployment_logs
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_log where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_log where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -118,7 +119,7 @@ namespace Class_db_strike_team_deployment_logs
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -132,7 +133,7 @@ namespace Class_db_strike_team_deployment_logs
       )
       {
       Open();
-      new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         db_trail.Saved
           (
@@ -142,8 +143,8 @@ namespace Class_db_strike_team_deployment_logs
           + " , action = NULLIF('" + action + "','')"
           ),
         connection
-        )
-        .ExecuteNonQuery();
+        );
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 
@@ -163,7 +164,8 @@ namespace Class_db_strike_team_deployment_logs
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment_log where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_deployment_log where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         deployment_id = dr["deployment_id"].ToString();
@@ -206,14 +208,14 @@ namespace Class_db_strike_team_deployment_logs
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM strike_team_deployment_log"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new strike_team_deployment_log_summary()

@@ -9,7 +9,7 @@ using System.Web.UI;
 namespace report_region_strike_team_officers_in_state
   {
 
-  public partial class TWebForm_report_region_strike_team_officers_in_state: System.Web.UI.Page
+  public partial class TWebForm_report_region_strike_team_officers_in_state: ki_web_ui.page_class
     {
 
     // / <summary>
@@ -45,7 +45,8 @@ namespace report_region_strike_team_officers_in_state
       // Write the HTML stream into a StringBuilder.
       //
       var sb = new StringBuilder();
-      base.Render(new HtmlTextWriter(new StringWriter(sb)));
+      using var html_text_writer = new HtmlTextWriter(new StringWriter(sb));
+      base.Render(html_text_writer);
       //
       // Send output stream as an email message.
       //

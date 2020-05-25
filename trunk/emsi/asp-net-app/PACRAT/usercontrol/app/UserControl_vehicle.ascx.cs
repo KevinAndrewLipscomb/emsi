@@ -42,7 +42,7 @@ namespace UserControl_vehicle
       public object summary;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -349,8 +349,7 @@ namespace UserControl_vehicle
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_vehicle_PreRender;
+      PreRender += TWebUserControl_vehicle_PreRender;
       }
 
     private void TWebUserControl_vehicle_PreRender(object sender, System.EventArgs e)
@@ -509,7 +508,7 @@ namespace UserControl_vehicle
         license_plate:k.Safe(TextBox_license_plate.Text, k.safe_hint_type.ALPHANUM)
         );
       CustomValidator_license_plate.ErrorMessage += designator_with_competing_license_plate;
-      args.IsValid = (designator_with_competing_license_plate == k.EMPTY);
+      args.IsValid = (designator_with_competing_license_plate.Length == 0);
       }
 
     protected void CustomValidator_pa_doh_decal_num_ServerValidate(object source, ServerValidateEventArgs args)
@@ -520,7 +519,7 @@ namespace UserControl_vehicle
         pa_doh_decal_num:k.Safe(TextBox_pa_doh_decal_num.Text, k.safe_hint_type.NUM)
         );
       CustomValidator_pa_doh_decal_num.ErrorMessage += designator_with_competing_pa_doh_decal_num;
-      args.IsValid = (designator_with_competing_pa_doh_decal_num == k.EMPTY);
+      args.IsValid = (designator_with_competing_pa_doh_decal_num.Length == 0);
       }
 
     protected void DropDownList_kind_SelectedIndexChanged(object sender, EventArgs e)

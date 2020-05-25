@@ -37,7 +37,7 @@ namespace UserControl_ready_rosters
       public string sort_order;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void InjectPersistentClientSideScript()
       {
@@ -161,11 +161,10 @@ namespace UserControl_ready_rosters
     // / </summary>
     private void InitializeComponent()
       {
-      this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
-      this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
-      this.DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.DataGrid_control_ItemCommand);
-      this.PreRender += this.TWebUserControl_ready_rosters_PreRender;
-      //this.Load += this.Page_Load;
+      DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
+      DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(DataGrid_control_SortCommand);
+      DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(DataGrid_control_ItemCommand);
+      PreRender += TWebUserControl_ready_rosters_PreRender;
       }
 
     private void TWebUserControl_ready_rosters_PreRender(object sender, System.EventArgs e)

@@ -4,7 +4,7 @@ using System;
 namespace statement_service_strike_team_roster
   {
 
-  public partial class TWebForm_statement_service_strike_team_roster: System.Web.UI.Page
+  public partial class TWebForm_statement_service_strike_team_roster: ki_web_ui.page_class
     {
 
     // / <summary>

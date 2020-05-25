@@ -17,7 +17,7 @@ namespace strike_team_deployment_detail
       public TClass_msg_protected.strike_team_deployment_detail incoming;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -25,8 +25,7 @@ namespace strike_team_deployment_detail
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_strike_team_deployment_detail_PreRender;
+      PreRender += TWebForm_strike_team_deployment_detail_PreRender;
       }
 
     private void InjectPersistentClientSideScript()

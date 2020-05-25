@@ -7,7 +7,7 @@ namespace Class_biz_eval_summary_modes
   public class TClass_biz_eval_summary_modes
     {
 
-    private TClass_db_eval_summary_modes db_eval_summary_modes = null;
+    private readonly TClass_db_eval_summary_modes db_eval_summary_modes = null;
 
     public TClass_biz_eval_summary_modes() : base()
       {

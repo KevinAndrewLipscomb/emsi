@@ -5,7 +5,8 @@ namespace Class_biz_teaching_entity_levels
 {
     public class TClass_biz_teaching_entity_levels
     {
-        private TClass_db_teaching_entity_levels db_teaching_entity_levels = null;
+        private readonly TClass_db_teaching_entity_levels db_teaching_entity_levels = null;
+
         //Constructor  Create()
         public TClass_biz_teaching_entity_levels() : base()
         {

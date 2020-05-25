@@ -161,7 +161,7 @@ namespace training_certificate_package
       public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void InitializeComponent()
       {

@@ -37,7 +37,7 @@ namespace UserControl_static_region_strike_team_key_personnel
       public const int TCI_STATUS_DESCRIPTION = 10;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, System.EventArgs e)
       {

@@ -12,7 +12,8 @@ namespace UserControl_role
 {
     public partial class TWebUserControl_role: ki_web_ui.usercontrol_class
     {
-        private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         private void Clear()
         {
             TextBox_name.Text = k.EMPTY;
@@ -221,11 +222,10 @@ namespace UserControl_role
         // / </summary>
         private void InitializeComponent()
         {
-            this.GridView_holders.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(this.GridView_holders_Sorting);
-            this.GridView_holders.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(this.GridView_holders_RowDataBound);
-            this.GridView_holders.RowCreated += new System.Web.UI.WebControls.GridViewRowEventHandler(this.GridView_holders_RowCreated);
-            this.PreRender += this.TWebUserControl_role_PreRender;
-            //this.Load += this.Page_Load;
+            GridView_holders.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(GridView_holders_Sorting);
+            GridView_holders.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(GridView_holders_RowDataBound);
+            GridView_holders.RowCreated += new System.Web.UI.WebControls.GridViewRowEventHandler(GridView_holders_RowCreated);
+            PreRender += TWebUserControl_role_PreRender;
         }
 
         private void TWebUserControl_role_PreRender(object sender, System.EventArgs e)

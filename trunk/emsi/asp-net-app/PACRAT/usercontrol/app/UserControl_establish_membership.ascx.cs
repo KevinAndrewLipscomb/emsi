@@ -13,7 +13,10 @@ using System.Web.UI.WebControls;
 
 namespace UserControl_establish_membership
 {
-    public struct p_type
+  public partial class TWebUserControl_establish_membership: ki_web_ui.usercontrol_class
+    {
+
+    private struct p_type
       {
       public bool be_loaded;
       public TClass_biz_members biz_members;
@@ -22,11 +25,10 @@ namespace UserControl_establish_membership
       public TClass_biz_regions biz_regions;
       public TClass_biz_user biz_user;
       public TClass_biz_users biz_users;
-      }
+        }
 
-    public partial class TWebUserControl_establish_membership: ki_web_ui.usercontrol_class
-    {
-        private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
@@ -111,8 +113,7 @@ namespace UserControl_establish_membership
         // / </summary>
         private void InitializeComponent()
         {
-            //this.Load += this.Page_Load;
-            this.PreRender += this.TWebUserControl_establish_membership_PreRender;
+            PreRender += TWebUserControl_establish_membership_PreRender;
         }
 
         private void TWebUserControl_establish_membership_PreRender(object sender, System.EventArgs e)

@@ -9,8 +9,8 @@ namespace UserControl_coned_offering_document_status
     // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~trivial~item.pas
     public partial class TWebUserControl_coned_offering_document_status: ki_web_ui.usercontrol_class
     {
-        private p_type p;
-        protected System.Web.UI.WebControls.Label Label_application_name = null;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         private void Clear()
         {
             TextBox_id.Text = k.EMPTY;
@@ -202,8 +202,7 @@ namespace UserControl_coned_offering_document_status
         // / </summary>
         private void InitializeComponent()
         {
-            this.PreRender += this.TWebUserControl_coned_offering_document_status_PreRender;
-            //this.Load += this.Page_Load;
+            PreRender += TWebUserControl_coned_offering_document_status_PreRender;
         }
 
         private void TWebUserControl_coned_offering_document_status_PreRender(object sender, System.EventArgs e)

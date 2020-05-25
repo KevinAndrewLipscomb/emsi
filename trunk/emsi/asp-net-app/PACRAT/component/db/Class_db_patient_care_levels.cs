@@ -18,7 +18,7 @@ namespace Class_db_patient_care_levels
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_patient_care_levels() : base()
       {
@@ -30,7 +30,7 @@ namespace Class_db_patient_care_levels
       var concat_clause = "concat(IFNULL(description,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -38,8 +38,8 @@ namespace Class_db_patient_care_levels
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -51,19 +51,21 @@ namespace Class_db_patient_care_levels
 
     internal void BindBaseDataList
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       string sort_order,
       bool be_sort_order_ascending,
       object target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select patient_care_level.id as id"
         + " from patient_care_level",
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -72,15 +74,15 @@ namespace Class_db_patient_care_levels
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(description,'-')) USING utf8) as spec"
         + " FROM patient_care_level"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -95,7 +97,8 @@ namespace Class_db_patient_care_levels
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from patient_care_level where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from patient_care_level where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -105,7 +108,7 @@ namespace Class_db_patient_care_levels
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -124,7 +127,8 @@ namespace Class_db_patient_care_levels
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from patient_care_level where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from patient_care_level where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         description = dr["description"].ToString();
@@ -161,14 +165,14 @@ namespace Class_db_patient_care_levels
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM patient_care_level"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new patient_care_level_summary()

@@ -23,7 +23,7 @@ namespace UserControl_patient_care_level
       public bool be_ok_to_config_patient_care_levels;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -236,8 +236,7 @@ namespace UserControl_patient_care_level
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_patient_care_level_PreRender;
+      PreRender += TWebUserControl_patient_care_level_PreRender;
       }
 
     private void TWebUserControl_patient_care_level_PreRender(object sender, System.EventArgs e)

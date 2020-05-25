@@ -5,7 +5,8 @@ namespace Class_biz_teaching_entity_business_types
 {
     public class TClass_biz_teaching_entity_business_types
     {
-        private TClass_db_teaching_entity_business_types db_teaching_entity_business_types = null;
+        private readonly TClass_db_teaching_entity_business_types db_teaching_entity_business_types = null;
+
         //Constructor  Create()
         public TClass_biz_teaching_entity_business_types() : base()
         {

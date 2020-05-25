@@ -22,7 +22,7 @@ namespace region_detail
       public TClass_msg_protected.region_detail incoming;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -30,8 +30,7 @@ namespace region_detail
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_region_detail_PreRender;
+      PreRender += TWebForm_region_detail_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)

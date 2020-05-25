@@ -18,7 +18,7 @@ namespace UserControl_strike_team_deployment_member_policy
       public TClass_biz_strike_team_deployment_member_policies biz_strike_team_deployment_member_policies;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {

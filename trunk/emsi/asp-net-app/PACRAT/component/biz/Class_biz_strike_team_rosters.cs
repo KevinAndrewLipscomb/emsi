@@ -1,12 +1,9 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
-using Class_biz_user;
-using Class_db_practitioners;
 using Class_db_services;
 using Class_db_strike_team_rosters;
 using kix;
 using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 
 namespace Class_biz_strike_team_rosters
@@ -14,17 +11,13 @@ namespace Class_biz_strike_team_rosters
   public class TClass_biz_strike_team_rosters
     {
 
-    private TClass_biz_user biz_user = null;
-    private TClass_db_services db_services = null;
-    private TClass_db_strike_team_rosters db_strike_team_rosters = null;
-    private TClass_db_practitioners db_practitioners = null;
+    private readonly TClass_db_services db_services = null;
+    private readonly TClass_db_strike_team_rosters db_strike_team_rosters = null;
 
     public TClass_biz_strike_team_rosters() : base()
       {
-      biz_user = new TClass_biz_user();
       db_services = new TClass_db_services();
       db_strike_team_rosters = new TClass_db_strike_team_rosters();
-      db_practitioners = new TClass_db_practitioners();
       }
 
     public bool Bind(string partial_spec, object target)

@@ -9,7 +9,7 @@ namespace Class_biz_strike_team_deployment_vehicles
   {
   public class TClass_biz_strike_team_deployment_vehicles
     {
-    private TClass_db_strike_team_deployment_vehicles db_strike_team_deployment_vehicles = null;
+    private readonly TClass_db_strike_team_deployment_vehicles db_strike_team_deployment_vehicles = null;
 
     public TClass_biz_strike_team_deployment_vehicles() : base()
       {

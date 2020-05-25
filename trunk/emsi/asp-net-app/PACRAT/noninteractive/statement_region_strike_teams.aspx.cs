@@ -4,7 +4,7 @@ using System;
 namespace statement_region_strike_teams
   {
 
-  public partial class TWebForm_statement_region_strike_teams: System.Web.UI.Page
+  public partial class TWebForm_statement_region_strike_teams: ki_web_ui.page_class
     {
 
     // / <summary>

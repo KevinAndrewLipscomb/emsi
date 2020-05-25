@@ -18,8 +18,8 @@ namespace Class_biz_old_analysis_of_region_by_years
   public class TClass_biz_old_analysis_of_region_by_years
     {
 
-    private TClass_db_coned_offering_rosters db_coned_offering_rosters = null;
-    private TClass_db_old_analysis_of_region_by_years db_old_analysis_of_region_by_years = null;
+    private readonly TClass_db_coned_offering_rosters db_coned_offering_rosters = null;
+    private readonly TClass_db_old_analysis_of_region_by_years db_old_analysis_of_region_by_years = null;
 
     public TClass_biz_old_analysis_of_region_by_years() : base()
       {

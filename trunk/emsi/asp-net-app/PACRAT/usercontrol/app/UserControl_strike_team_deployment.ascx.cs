@@ -37,7 +37,7 @@ namespace UserControl_strike_team_deployment
       public object summary;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -326,8 +326,7 @@ namespace UserControl_strike_team_deployment
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_deployment_PreRender;
+      PreRender += TWebUserControl_strike_team_deployment_PreRender;
       }
 
     private void TWebUserControl_strike_team_deployment_PreRender(object sender, System.EventArgs e)

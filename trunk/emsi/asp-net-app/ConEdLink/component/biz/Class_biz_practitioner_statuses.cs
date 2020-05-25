@@ -7,7 +7,7 @@ namespace Class_biz_practitioner_statuses
   public class TClass_biz_practitioner_statuses
     {
 
-    private TClass_db_practitioner_statuses db_practitioner_statuses = null;
+    private readonly TClass_db_practitioner_statuses db_practitioner_statuses = null;
 
     public TClass_biz_practitioner_statuses() : base()
       {

@@ -14,7 +14,7 @@ namespace UserControl_teaching_entity
   {
   public partial class TWebUserControl_teaching_entity: ki_web_ui.usercontrol_class
     {
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -442,8 +442,7 @@ namespace UserControl_teaching_entity
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_teaching_entity_PreRender;
+      PreRender += TWebUserControl_teaching_entity_PreRender;
       }
 
     private void TWebUserControl_teaching_entity_PreRender(object sender, System.EventArgs e)

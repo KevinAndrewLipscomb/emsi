@@ -9,7 +9,7 @@ namespace Class_biz_strike_team_deployment_logs
   {
   public class TClass_biz_strike_team_deployment_logs
     {
-    private TClass_db_strike_team_deployment_logs db_strike_team_deployment_logs = null;
+    private readonly TClass_db_strike_team_deployment_logs db_strike_team_deployment_logs = null;
 
     public TClass_biz_strike_team_deployment_logs() : base()
       {

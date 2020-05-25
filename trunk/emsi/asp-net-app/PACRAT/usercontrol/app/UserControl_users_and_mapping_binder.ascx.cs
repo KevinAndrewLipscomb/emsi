@@ -3,16 +3,18 @@ using UserControl_user_member_mapping;
 
 namespace UserControl_users_and_mapping_binder
 {
-    public struct p_type
+  public partial class TWebUserControl_users_and_mapping_binder: ki_web_ui.usercontrol_class
     {
-        public bool be_loaded;
+
+    private struct p_type
+      {
+      public bool be_loaded;
         public string content_id;
         public uint tab_index;
-    } // end p_type
+      }
 
-    public partial class TWebUserControl_users_and_mapping_binder: ki_web_ui.usercontrol_class
-    {
-        private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
@@ -63,9 +65,8 @@ namespace UserControl_users_and_mapping_binder
         // / </summary>
         private void InitializeComponent()
         {
-            this.TabContainer_control.ActiveTabChanged += this.TabContainer_control_ActiveTabChanged;
-            this.PreRender += this.TWebUserControl_users_and_mapping_binder_PreRender;
-            //this.Load += this.Page_Load;
+            TabContainer_control.ActiveTabChanged += TabContainer_control_ActiveTabChanged;
+            PreRender += TWebUserControl_users_and_mapping_binder_PreRender;
         }
 
         private void TWebUserControl_users_and_mapping_binder_PreRender(object sender, System.EventArgs e)

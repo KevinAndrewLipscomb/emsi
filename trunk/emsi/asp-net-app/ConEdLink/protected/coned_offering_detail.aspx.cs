@@ -14,14 +14,15 @@ using System.Web.UI.WebControls;
 
 namespace coned_offering_detail
   {
-  public struct p_type
-    {
-    public TClass_msg_protected.coned_offering_detail incoming;
-    }
-
   public partial class TWebForm_coned_offering_detail: ki_web_ui.page_class
     {
-    private p_type p;
+
+    private struct p_type
+      {
+      public TClass_msg_protected.coned_offering_detail incoming;
+      }
+
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -29,8 +30,7 @@ namespace coned_offering_detail
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_coned_offering_detail_PreRender;
+      PreRender += TWebForm_coned_offering_detail_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)

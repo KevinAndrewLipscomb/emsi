@@ -6,17 +6,17 @@ using System;
 namespace UserControl_training_certificate
   {
 
-  public struct p_type
-    {
-    public bool be_loaded;
-    public TClass_biz_coned_offerings biz_coned_offerings;
-    public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
-    }
-
   public partial class TWebUserControl_training_certificate: ki_web_ui.usercontrol_class
     {
 
-    private p_type p;
+    private struct p_type
+      {
+      public bool be_loaded;
+    public TClass_biz_coned_offerings biz_coned_offerings;
+    public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
+      }
+
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify

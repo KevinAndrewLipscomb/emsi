@@ -15,7 +15,7 @@ namespace Class_db_strike_team_deployment_assignments
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_deployment_assignments() : base()
       {
@@ -27,7 +27,7 @@ namespace Class_db_strike_team_deployment_assignments
       var concat_clause = "concat(id)";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -35,8 +35,8 @@ namespace Class_db_strike_team_deployment_assignments
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -55,7 +55,7 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_deployment_assignment.vehicle_id"
         + " , @static_designator := concat(service.name,' ',vehicle.name)"
@@ -78,8 +78,8 @@ namespace Class_db_strike_team_deployment_assignments
         + " where strike_team_deployment_operational_period.deployment_id = '" + deployment_id + "'"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -94,7 +94,7 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_deployment_assignment.vehicle_id"
         + " , @static_designator := concat(service.short_name,' ',vehicle.name)"
@@ -114,27 +114,29 @@ namespace Class_db_strike_team_deployment_assignments
         +     (assignment_level_filter.Length == 0 ? k.EMPTY : " and vehicle.id is not null")
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
 
     internal void BindBaseDataList
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       string sort_order,
       bool be_sort_order_ascending,
       object target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_deployment_assignment.id as id"
         + " from strike_team_deployment_assignment",
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -148,7 +150,7 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select *"
         + " , count(member_id) as par"
@@ -188,8 +190,8 @@ namespace Class_db_strike_team_deployment_assignments
         + " group by operational_period_id,vehicle_id"
         ,
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -203,7 +205,7 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select *"
         + " , count(member_id) as par"
@@ -244,8 +246,8 @@ namespace Class_db_strike_team_deployment_assignments
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
         ,
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -254,15 +256,15 @@ namespace Class_db_strike_team_deployment_assignments
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(id) USING utf8) as spec"
         + " FROM strike_team_deployment_assignment"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -281,7 +283,7 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select @static_designator := concat(service.short_name,' ',vehicle.name)"
         + " , @dynamic_designator := IF(IFNULL(tactical_name = @static_designator,TRUE),concat(@static_designator,' (',vehicle_kind.description,')'),concat(IFNULL(tactical_name,''),' [',@static_designator,' (',vehicle_kind.description,')]'))"
@@ -302,8 +304,8 @@ namespace Class_db_strike_team_deployment_assignments
         +     (assignment_level_filter.Length == 0 ? k.EMPTY : " and vehicle.id is not null")
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -317,7 +319,7 @@ namespace Class_db_strike_team_deployment_assignments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select *"
         + " , count(member_id) as par"
@@ -358,8 +360,8 @@ namespace Class_db_strike_team_deployment_assignments
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
         ,
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -370,7 +372,8 @@ namespace Class_db_strike_team_deployment_assignments
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_assignment where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_assignment where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -380,7 +383,7 @@ namespace Class_db_strike_team_deployment_assignments
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -401,7 +404,8 @@ namespace Class_db_strike_team_deployment_assignments
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment_assignment where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_deployment_assignment where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         operational_period_id = dr["operational_period_id"].ToString();
@@ -425,15 +429,17 @@ namespace Class_db_strike_team_deployment_assignments
       Open();
       if (be_assigned)
         {
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (db_trail.Saved("insert ignore strike_team_deployment_assignment set operational_period_id = '" + operational_period_id + "', member_id = '" + member_id + "', vehicle_id = '" + vehicle_id + "'"), connection)
-          .ExecuteNonQuery();
+          ;
+        my_sql_command.ExecuteNonQuery();
         }
       else
         {
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (db_trail.Saved("delete from strike_team_deployment_assignment where operational_period_id = '" + operational_period_id + "' and member_id = '" + member_id + "' and vehicle_id = '" + vehicle_id + "'"), connection)
-          .ExecuteNonQuery();
+          ;
+        my_sql_command.ExecuteNonQuery();
         }
       Close();
       }
@@ -465,14 +471,14 @@ namespace Class_db_strike_team_deployment_assignments
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM strike_team_deployment_assignment"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new strike_team_deployment_assignment_summary()

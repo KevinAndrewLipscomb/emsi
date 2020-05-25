@@ -9,7 +9,7 @@ namespace Class_biz_patient_care_levels
   {
   public class TClass_biz_patient_care_levels
     {
-    private TClass_db_patient_care_levels db_patient_care_levels = null;
+    private readonly TClass_db_patient_care_levels db_patient_care_levels = null;
 
     public TClass_biz_patient_care_levels() : base()
       {

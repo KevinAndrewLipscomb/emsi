@@ -5,18 +5,18 @@ using kix;
 namespace UserControl_config
   {
 
-  public struct p_type
-    {
-    public bool be_loaded;
-    public TClass_biz_eval_summary_modes biz_eval_summary_modes;
-    public TClass_biz_regions biz_regions;
-    public string region_code;
-    }
-
   public partial class TWebUserControl_config: ki_web_ui.usercontrol_class
     {
 
-    private p_type p;
+    private struct p_type
+      {
+      public bool be_loaded;
+    public TClass_biz_eval_summary_modes biz_eval_summary_modes;
+    public TClass_biz_regions biz_regions;
+    public string region_code;
+      }
+
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, System.EventArgs e)
       {

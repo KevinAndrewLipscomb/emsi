@@ -7,7 +7,7 @@ namespace Class_biz_genders
   public class TClass_biz_genders
     {
 
-    private TClass_db_genders db_genders = null;
+    private readonly TClass_db_genders db_genders = null;
 
     public TClass_biz_genders() : base()
       {

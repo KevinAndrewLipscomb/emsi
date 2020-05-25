@@ -5,7 +5,8 @@ namespace Class_biz_training_institute_statuses
 {
     public class TClass_biz_training_institute_statuses
     {
-        private TClass_db_training_institute_statuses db_training_institute_statuses = null;
+        private readonly TClass_db_training_institute_statuses db_training_institute_statuses = null;
+
         //Constructor  Create()
         public TClass_biz_training_institute_statuses() : base()
         {

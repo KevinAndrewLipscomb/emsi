@@ -13,7 +13,7 @@ namespace practitioner_profile
       {
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -21,8 +21,7 @@ namespace practitioner_profile
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_practitioner_profile_PreRender;
+      PreRender += TWebForm_practitioner_profile_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)

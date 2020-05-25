@@ -5,6 +5,7 @@ using System;
 
 using System.Web.UI.WebControls;
 using Class_db;
+
 namespace Class_db_tiers
 {
     public class TClass_db_tiers: TClass_db
@@ -18,23 +19,24 @@ namespace Class_db_tiers
         public void BindListControl(object target, string unselected_literal, string selected_id)
         {
             MySqlDataReader dr;
-            this.Open();
+            Open();
             ((target) as ListControl).Items.Clear();
-            if (unselected_literal != k.EMPTY)
+            if (unselected_literal.Length > 0)
             {
                 ((target) as ListControl).Items.Add(new ListItem(unselected_literal, ""));
             }
-            dr = new MySqlCommand("SELECT id,name from tier order by id", this.connection).ExecuteReader();
+            using var my_sql_command = new MySqlCommand("SELECT id,name from tier order by id", connection);
+            dr = my_sql_command.ExecuteReader();
             while (dr.Read())
             {
                 ((target) as ListControl).Items.Add(new ListItem(dr["name"].ToString(), dr["id"].ToString()));
             }
             dr.Close();
-            if (selected_id != k.EMPTY)
+            if (selected_id.Length > 0)
             {
                 ((target) as ListControl).SelectedValue = selected_id;
             }
-            this.Close();
+            Close();
         }
 
         public void BindListControl(object target, string unselected_literal)
@@ -45,18 +47,20 @@ namespace Class_db_tiers
         public string IdOfName(string name)
         {
             string result;
-            this.Open();
-            result = new MySqlCommand("select id from tier where name = \"" + name + "\"", this.connection).ExecuteScalar().ToString();
-            this.Close();
+            Open();
+            using var my_sql_command = new MySqlCommand("select id from tier where name = \"" + name + "\"", connection);
+            result = my_sql_command.ExecuteScalar().ToString();
+            Close();
             return result;
         }
 
         public string NameOfId(string id)
         {
             string result;
-            this.Open();
-            result = new MySqlCommand("select name from tier where id = \"" + id + "\"", this.connection).ExecuteScalar().ToString();
-            this.Close();
+            Open();
+            using var my_sql_command = new MySqlCommand("select name from tier where id = \"" + id + "\"", connection);
+            result = my_sql_command.ExecuteScalar().ToString();
+            Close();
             return result;
         }
 

@@ -179,7 +179,7 @@ namespace UserControl_training_certificate_legacy
       public Hashtable hash_table;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void InitializeComponent()
       {

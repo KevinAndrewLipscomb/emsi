@@ -15,7 +15,7 @@ namespace UserControl_vehicle_kind
   {
   public partial class TWebUserControl_vehicle_kind: ki_web_ui.usercontrol_class
     {
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -249,8 +249,7 @@ namespace UserControl_vehicle_kind
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_vehicle_kind_PreRender;
+      PreRender += TWebUserControl_vehicle_kind_PreRender;
       }
 
     private void TWebUserControl_vehicle_kind_PreRender(object sender, System.EventArgs e)

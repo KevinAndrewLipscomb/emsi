@@ -42,7 +42,7 @@ namespace UserControl_roster
       public object summary;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Bind()
       {

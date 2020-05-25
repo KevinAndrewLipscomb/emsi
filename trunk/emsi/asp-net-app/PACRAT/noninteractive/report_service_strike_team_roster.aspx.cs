@@ -20,7 +20,7 @@ namespace report_service_strike_team_roster
       public string service_id;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -65,7 +65,8 @@ namespace report_service_strike_team_roster
       // Write the HTML stream into a StringBuilder.
       //
       var sb = new StringBuilder();
-      base.Render(new HtmlTextWriter(new StringWriter(sb)));
+      using var html_text_writer = new HtmlTextWriter(new StringWriter(sb));
+      base.Render(html_text_writer);
       //
       // Send output stream as an email message.
       //

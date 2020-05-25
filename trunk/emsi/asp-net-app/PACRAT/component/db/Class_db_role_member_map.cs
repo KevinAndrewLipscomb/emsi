@@ -21,7 +21,7 @@ namespace Class_db_role_member_map
   public class TClass_db_role_member_map: TClass_db
     {
 
-        private TClass_db_trail db_trail = null;
+        private readonly TClass_db_trail db_trail = null;
 
         //Constructor  Create()
         public TClass_db_role_member_map() : base()
@@ -40,11 +40,12 @@ namespace Class_db_role_member_map
             // init to index of last non-dependent column
             crosstab_metadata_rec_arraylist = new ArrayList();
             crosstab_sql = k.EMPTY;
-            this.Open();
-            dr = new MySqlCommand("select id,name,soft_hyphenation_text,tier_id" + " from role" + " where name <> \"Member\"" + crosstab_where_clause, this.connection).ExecuteReader();
+            Open();
+            using var my_sql_command_1 = new MySqlCommand("select id,name,soft_hyphenation_text,tier_id" + " from role" + " where name <> \"Member\"" + crosstab_where_clause, connection);
+            dr = my_sql_command_1.ExecuteReader();
             while (dr.Read())
             {
-                crosstab_metadata_rec.index = crosstab_metadata_rec.index + 1;
+                crosstab_metadata_rec.index++;
                 crosstab_metadata_rec.id = dr["id"].ToString();
                 crosstab_metadata_rec.natural_text = dr["name"].ToString();
                 crosstab_metadata_rec.soft_hyphenation_text = dr["soft_hyphenation_text"].ToString();
@@ -62,9 +63,10 @@ namespace Class_db_role_member_map
             {
                 sort_order = sort_order.Replace("%", " asc");
             }
-            ((target) as GridView).DataSource = new MySqlCommand("select member.id as member_id" + " , concat(last_name,\"" + k.COMMA_SPACE + "\",first_name) as member_name" + crosstab_sql + " from member" + " left outer join role_member_map on (role_member_map.member_id=member.id)" + " left outer join role on (role.id=role_member_map.role_id)" + where_clause + " group by member.id" + " order by " + sort_order, this.connection).ExecuteReader();
+            using var my_sql_command_2 = new MySqlCommand("select member.id as member_id" + " , concat(last_name,\"" + k.COMMA_SPACE + "\",first_name) as member_name" + crosstab_sql + " from member" + " left outer join role_member_map on (role_member_map.member_id=member.id)" + " left outer join role on (role.id=role_member_map.role_id)" + where_clause + " group by member.id" + " order by " + sort_order, connection);
+            ((target) as GridView).DataSource = my_sql_command_2.ExecuteReader();
             ((target) as GridView).DataBind();
-            this.Close();
+            Close();
 
         }
 
@@ -80,10 +82,11 @@ namespace Class_db_role_member_map
             {
                 sort_order = sort_order.Replace("%", " desc");
             }
-            this.Open();
-            ((target) as GridView).DataSource = new MySqlCommand("select role_id" + " , pecking_order as role_pecking_order" + " , role.name as role_name" + " , concat(member.last_name,\", \",first_name) as member_designator" + " , member_id" + " from role_member_map" + " join member on (member.id=role_member_map.member_id)" + " join role on (role.id=role_member_map.role_id)" + where_clause + " order by " + sort_order, this.connection).ExecuteReader();
+            Open();
+            using var my_sql_command = new MySqlCommand("select role_id" + " , pecking_order as role_pecking_order" + " , role.name as role_name" + " , concat(member.last_name,\", \",first_name) as member_designator" + " , member_id" + " from role_member_map" + " join member on (member.id=role_member_map.member_id)" + " join role on (role.id=role_member_map.role_id)" + where_clause + " order by " + sort_order, connection);
+            ((target) as GridView).DataSource = my_sql_command.ExecuteReader();
             ((target) as GridView).DataBind();
-            this.Close();
+            Close();
 
         }
 
@@ -96,7 +99,7 @@ namespace Class_db_role_member_map
           )
           {
           Open();
-          ((target) as BaseDataList).DataSource = new MySqlCommand
+          using var my_sql_command = new MySqlCommand
             (
             "select member.id as practitioner_id"
             + " , last_name"
@@ -121,8 +124,8 @@ namespace Class_db_role_member_map
             + " where region_code = '" + region_code + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
             connection
-            )
-            .ExecuteReader();
+            );
+          ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
           ((target) as BaseDataList).DataBind();
           (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
           Close();
@@ -137,7 +140,7 @@ namespace Class_db_role_member_map
           )
           {
           Open();
-          ((target) as BaseDataList).DataSource = new MySqlCommand
+          using var my_sql_command = new MySqlCommand
             (
             "select member.id as practitioner_id"
             + " , last_name"
@@ -162,8 +165,8 @@ namespace Class_db_role_member_map
             + " where service_id = '" + service_id + "'"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
             connection
-            )
-            .ExecuteReader();
+            );
+          ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
           ((target) as BaseDataList).DataBind();
           (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
           Close();
@@ -177,7 +180,7 @@ namespace Class_db_role_member_map
           )
           {
           Open();
-          ((target) as BaseDataList).DataSource = new MySqlCommand
+          using var my_sql_command = new MySqlCommand
             (
             "select member.id as practitioner_id"
             + " , last_name"
@@ -202,8 +205,8 @@ namespace Class_db_role_member_map
             + " where region_code is null and service_id is null"
             + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
             connection
-            )
-            .ExecuteReader();
+            );
+          ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
           ((target) as BaseDataList).DataBind();
           (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
           Close();
@@ -211,7 +214,7 @@ namespace Class_db_role_member_map
 
         public void BindHolders(string role_name, object target, string sort_order, bool be_sort_order_ascending)
         {
-            this.Open();
+            Open();
             if (be_sort_order_ascending)
             {
                 sort_order = sort_order.Replace("%", " asc");
@@ -220,9 +223,10 @@ namespace Class_db_role_member_map
             {
                 sort_order = sort_order.Replace("%", " desc");
             }
-            ((target) as GridView).DataSource = new MySqlCommand("select concat(last_name,\", \",first_name) as member_name" + " , email_address" + " from role_member_map" + " join member on (member.id=role_member_map.member_id)" + " join role on (role.id=role_member_map.role_id)" + " where role.name = \"" + role_name + "\"" + " order by " + sort_order, this.connection).ExecuteReader();
+            using var my_sql_command = new MySqlCommand("select concat(last_name,\", \",first_name) as member_name" + " , email_address" + " from role_member_map" + " join member on (member.id=role_member_map.member_id)" + " join role on (role.id=role_member_map.role_id)" + " where role.name = \"" + role_name + "\"" + " order by " + sort_order, connection);
+            ((target) as GridView).DataSource = my_sql_command.ExecuteReader();
             ((target) as GridView).DataBind();
-            this.Close();
+            Close();
 
         }
 
@@ -230,7 +234,7 @@ namespace Class_db_role_member_map
       {
       var email_target_ofor_pennsylvania = k.EMPTY;
       Open();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select email_address"
         + " from role_member_map"
@@ -240,8 +244,8 @@ namespace Class_db_role_member_map
         +   " and region_code is null"
         +   " and service_id is null",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         email_target_ofor_pennsylvania += dr["email_address"].ToString() + k.COMMA;
@@ -263,7 +267,7 @@ namespace Class_db_role_member_map
           {
           var email_target_of_by_explicit_region_code = k.EMPTY;
           Open();
-          var dr = new MySqlCommand
+          using var my_sql_command = new MySqlCommand
             (
             "select email_address"
             + " from role_member_map"
@@ -272,8 +276,8 @@ namespace Class_db_role_member_map
             + " where role.name = '" + role_name + "'"
             +   " and region_code = '" + region_code + "'",
             connection
-            )
-            .ExecuteReader();
+            );
+          var dr = my_sql_command.ExecuteReader();
           while (dr.Read())
             {
             email_target_of_by_explicit_region_code += dr["email_address"].ToString() + k.COMMA;
@@ -291,7 +295,7 @@ namespace Class_db_role_member_map
           {
           var email_target_of_by_explicit_service_id = k.EMPTY;
           Open();
-          var dr = new MySqlCommand
+          using var my_sql_command = new MySqlCommand
             (
             "select email_address"
             + " from role_member_map"
@@ -300,8 +304,8 @@ namespace Class_db_role_member_map
             + " where role.name = '" + role_name + "'"
             +   " and service_id = '" + service_id + "'",
             connection
-            )
-            .ExecuteReader();
+            );
+          var dr = my_sql_command.ExecuteReader();
           while (dr.Read())
             {
             email_target_of_by_explicit_service_id += dr["email_address"].ToString() + k.COMMA;
@@ -317,16 +321,18 @@ namespace Class_db_role_member_map
 
         public void Save(string member_id, string role_id, bool be_granted)
         {
-            this.Open();
+            Open();
             if (be_granted)
             {
-                new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = \"" + member_id + "\", role_id = \"" + role_id + "\""), this.connection).ExecuteNonQuery();
+                using var my_sql_command = new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = \"" + member_id + "\", role_id = \"" + role_id + "\""), connection);
+                my_sql_command.ExecuteNonQuery();
             }
             else
             {
-                new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = \"" + member_id + "\" and role_id = \"" + role_id + "\""), this.connection).ExecuteNonQuery();
+                using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = \"" + member_id + "\" and role_id = \"" + role_id + "\""), connection);
+                my_sql_command.ExecuteNonQuery();
             }
-            this.Close();
+            Close();
         }
 
         internal void SaveForExplicitRegion
@@ -340,11 +346,13 @@ namespace Class_db_role_member_map
           Open();
           if (be_granted)
             {
-            new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = '" + member_id + "', role_id = '" + role_id + "', region_code = '" + region_code + "'"),connection).ExecuteNonQuery();
+            using var my_sql_command = new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = '" + member_id + "', role_id = '" + role_id + "', region_code = '" + region_code + "'"),connection);
+            my_sql_command.ExecuteNonQuery();
             }
           else
             {
-            new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and region_code = '" + region_code + "'"),connection).ExecuteNonQuery();
+            using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and region_code = '" + region_code + "'"),connection);
+            my_sql_command.ExecuteNonQuery();
             }
           Close();
           }
@@ -360,11 +368,13 @@ namespace Class_db_role_member_map
           Open();
           if (be_granted)
             {
-            new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = '" + member_id + "', role_id = '" + role_id + "', service_id = '" + service_id + "'"),connection).ExecuteNonQuery();
+            using var my_sql_command = new MySqlCommand(db_trail.Saved("insert ignore role_member_map set member_id = '" + member_id + "', role_id = '" + role_id + "', service_id = '" + service_id + "'"),connection);
+            my_sql_command.ExecuteNonQuery();
             }
           else
             {
-            new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and service_id = '" + service_id + "'"),connection).ExecuteNonQuery();
+            using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from role_member_map where member_id = '" + member_id + "' and role_id = '" + role_id + "' and service_id = '" + service_id + "'"),connection);
+            my_sql_command.ExecuteNonQuery();
             }
           Close();
           }
@@ -373,7 +383,7 @@ namespace Class_db_role_member_map
       {
       var sms_target_of_by_explicit_service_id = k.EMPTY;
       Open();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select concat(phone_number,'@',hostname) as sms_address"
         + " from role_member_map"
@@ -384,8 +394,8 @@ namespace Class_db_role_member_map
         + " where role.name = '" + role_name + "'"
         +   " and service_id = '" + service_id + "'",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         sms_target_of_by_explicit_service_id += dr["sms_address"].ToString() + k.COMMA;

@@ -11,9 +11,12 @@ using Class_biz_role_notification_map;
 using Class_biz_roles;
 namespace UserControl_role_notification_mapping
 {
-    public struct p_type
+  public partial class TWebUserControl_role_notification_mapping: ki_web_ui.usercontrol_class
     {
-        public bool be_interactive;
+
+    private struct p_type
+      {
+      public bool be_interactive;
         public bool be_loaded;
         public bool be_sort_order_ascending;
         public TClass_biz_notifications biz_notifications;
@@ -21,11 +24,10 @@ namespace UserControl_role_notification_mapping
         public TClass_biz_roles biz_roles;
         public bool may_add_mappings;
         public string sort_order;
-    } // end p_type
+      }
 
-    public partial class TWebUserControl_role_notification_mapping: ki_web_ui.usercontrol_class
-    {
-        private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         private void InjectPersistentClientSideScript()
         {
             // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
@@ -154,11 +156,10 @@ namespace UserControl_role_notification_mapping
         // / </summary>
         private void InitializeComponent()
         {
-            this.GridView_control.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(this.GridView_control_Sorting);
-            this.GridView_control.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(this.GridView_control_RowDataBound);
-            this.GridView_control.RowDeleting += new System.Web.UI.WebControls.GridViewDeleteEventHandler(this.GridView_control_RowDeleting);
-            this.PreRender += this.TWebUserControl_role_notification_mapping_PreRender;
-            //this.Load += this.Page_Load;
+            GridView_control.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(GridView_control_Sorting);
+            GridView_control.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(GridView_control_RowDataBound);
+            GridView_control.RowDeleting += new System.Web.UI.WebControls.GridViewDeleteEventHandler(GridView_control_RowDeleting);
+            PreRender += TWebUserControl_role_notification_mapping_PreRender;
         }
 
         private void TWebUserControl_role_notification_mapping_PreRender(object sender, System.EventArgs e)

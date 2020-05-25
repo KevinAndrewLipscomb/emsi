@@ -7,7 +7,7 @@ namespace Class_biz_strike_team_deployment_member_policies
   public class TClass_biz_strike_team_deployment_member_policies
     {
 
-    private TClass_db_strike_team_deployment_member_policies db_strike_team_deployment_member_policies = null;
+    private readonly TClass_db_strike_team_deployment_member_policies db_strike_team_deployment_member_policies = null;
 
     public TClass_biz_strike_team_deployment_member_policies() : base()
       {

@@ -26,7 +26,7 @@ namespace UserControl_strike_team_participation_level
       public object summary;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -257,8 +257,7 @@ namespace UserControl_strike_team_participation_level
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_participation_level_PreRender;
+      PreRender += TWebUserControl_strike_team_participation_level_PreRender;
       }
 
     private void TWebUserControl_strike_team_participation_level_PreRender(object sender, System.EventArgs e)

@@ -9,7 +9,7 @@ namespace Class_biz_strike_team_deployment_members
   {
   public class TClass_biz_strike_team_deployment_members
     {
-    private TClass_db_strike_team_deployment_members db_strike_team_deployment_members = null;
+    private readonly TClass_db_strike_team_deployment_members db_strike_team_deployment_members = null;
 
     public TClass_biz_strike_team_deployment_members() : base()
       {

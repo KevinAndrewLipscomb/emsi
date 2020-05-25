@@ -1,12 +1,8 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
-using Class_biz_user;
-using Class_db_practitioners;
 using Class_db_regions;
-using Class_db_services;
 using kix;
 using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 
 namespace Class_biz_strike_team_officers
@@ -14,17 +10,11 @@ namespace Class_biz_strike_team_officers
   public class TClass_biz_strike_team_officers
     {
 
-    private TClass_biz_user biz_user = null;
-    private TClass_db_regions db_regions = null;
-    private TClass_db_services db_services = null;
-    private TClass_db_practitioners db_practitioners = null;
+    private readonly TClass_db_regions db_regions = null;
 
     public TClass_biz_strike_team_officers() : base()
       {
-      biz_user = new TClass_biz_user();
       db_regions = new TClass_db_regions();
-      db_services = new TClass_db_services();
-      db_practitioners = new TClass_db_practitioners();
       }
 
     internal void SendRegionStatements(string working_directory)

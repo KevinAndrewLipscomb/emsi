@@ -79,7 +79,7 @@ namespace service_management
       public string user_email_address;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
@@ -139,7 +139,7 @@ namespace service_management
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebForm_service_management_PreRender;
+      PreRender += TWebForm_service_management_PreRender;
       }
 
     private void InjectPersistentClientSideScript()
@@ -674,7 +674,7 @@ namespace service_management
       {
       var designator_with_competing_short_name = p.biz_services.DesignatorCompetingShortName(p.affiliate_num,k.Safe(TextBox_short_name.Text,k.safe_hint_type.MAKE_MODEL));
       CustomValidator_short_name.ErrorMessage += designator_with_competing_short_name;
-      args.IsValid = (designator_with_competing_short_name == k.EMPTY);
+      args.IsValid = (designator_with_competing_short_name.Length == 0);
       }
 
     protected void Button_save_short_name_Click(object sender, EventArgs e)
