@@ -17,7 +17,7 @@ namespace Class_db_strike_team_deployment_members
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_deployment_members() : base()
       {
@@ -31,7 +31,7 @@ namespace Class_db_strike_team_deployment_members
       )
       {
       Open();
-      var be_none = "0" == new MySqlCommand
+      var be_none = "0" == using var my_sql_command = new MySqlCommand
         (
         "select count(*)"
         + " from strike_team_deployment_member"
@@ -39,8 +39,7 @@ namespace Class_db_strike_team_deployment_members
         + " where deployment_id = '" + deployment_id + "'"
         +   (service_strike_team_management_footprint.Length > 0 ? " and service_id in (" + service_strike_team_management_footprint + ")" : k.EMPTY),
         connection
-        )
-        .ExecuteScalar().ToString();
+        ); my_sql_command.ExecuteScalar().ToString();
       Close();
       return be_none;
       }
@@ -53,8 +52,8 @@ namespace Class_db_strike_team_deployment_members
       )
       {
       Open();
-      var be_tag_available_for_assignment = null == new MySqlCommand
-        ("select 1 from strike_team_deployment_member where deployment_id = '" + deployment_id + "' and practitioner_id <> '" + practitioner_id + "' and tag_num = '" + tag_num + "'",connection).ExecuteScalar();
+      var be_tag_available_for_assignment = null == using var my_sql_command = new MySqlCommand
+        ("select 1 from strike_team_deployment_member where deployment_id = '" + deployment_id + "' and practitioner_id <> '" + practitioner_id + "' and tag_num = '" + tag_num + "'",connection); my_sql_command.ExecuteScalar();
       Close();
       return be_tag_available_for_assignment;
       }
@@ -64,7 +63,7 @@ namespace Class_db_strike_team_deployment_members
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(practitioner_id,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -72,8 +71,8 @@ namespace Class_db_strike_team_deployment_members
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -94,7 +93,7 @@ namespace Class_db_strike_team_deployment_members
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_deployment_member.id as id"
         + " , member.id as practitioner_id"
@@ -122,8 +121,8 @@ namespace Class_db_strike_team_deployment_members
         + " group by member.id"
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -132,15 +131,15 @@ namespace Class_db_strike_team_deployment_members
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(deployment_id,'-'),'|',IFNULL(practitioner_id,'-')) USING utf8) as spec"
         + " FROM strike_team_deployment_member"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -159,7 +158,7 @@ namespace Class_db_strike_team_deployment_members
       {
       Open();
       (target as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT DISTINCT member.id as id"
         + " , concat(member.last_name,', ',member.first_name,' (',IFNULL(practitioner_level.short_description,'nocert'),' ',IFNULL(member.certification_number,'nocert'),')') as spec"
@@ -173,8 +172,8 @@ namespace Class_db_strike_team_deployment_members
         +   " and member.id not in (select member_id from strike_team_deployment_assignment where operational_period_id = '" + operational_period_id + "')"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -189,7 +188,8 @@ namespace Class_db_strike_team_deployment_members
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_member where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_member where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -199,7 +199,7 @@ namespace Class_db_strike_team_deployment_members
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -220,7 +220,8 @@ namespace Class_db_strike_team_deployment_members
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment_member where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_deployment_member where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         deployment_id = dr["deployment_id"].ToString();
@@ -236,7 +237,8 @@ namespace Class_db_strike_team_deployment_members
     internal string PractitionerIdOfMobilizationId(string mobilization_id)
       {
       Open();
-      var practitioner_id_of_mobilization_id_obj = new MySqlCommand("select practitioner_id from strike_team_deployment_member where id = '" + mobilization_id + "'",connection).ExecuteScalar();
+      using var my_sql_command = new MySqlCommand("select practitioner_id from strike_team_deployment_member where id = '" + mobilization_id + "'",connection);
+      var practitioner_id_of_mobilization_id_obj = my_sql_command.ExecuteScalar();
       Close();
       return (practitioner_id_of_mobilization_id_obj == null ? k.EMPTY : practitioner_id_of_mobilization_id_obj.ToString());
       }
@@ -269,14 +271,14 @@ namespace Class_db_strike_team_deployment_members
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM strike_team_deployment_member"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new strike_team_deployment_member_summary()

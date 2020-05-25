@@ -9,7 +9,7 @@ namespace Class_biz_tow_capacities
   {
   public class TClass_biz_tow_capacities
     {
-    private TClass_db_tow_capacities db_tow_capacities = null;
+    private readonly TClass_db_tow_capacities db_tow_capacities = null;
 
     public TClass_biz_tow_capacities() : base()
       {

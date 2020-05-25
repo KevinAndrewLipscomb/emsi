@@ -13,7 +13,7 @@ namespace Class_db_vehicle_kinds
   {
   public class TClass_db_vehicle_kinds: TClass_db
     {
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_vehicle_kinds() : base()
       {
@@ -23,7 +23,8 @@ namespace Class_db_vehicle_kinds
     internal bool BeTargetPmMileageMeaningful(string id)
       {
       Open();
-      var be_target_pm_mileage_meaningful = ("1" == new MySqlCommand("select be_target_pm_mileage_meaningful from vehicle_kind where id = '" + id + "'",connection).ExecuteScalar().ToString());
+      using var my_sql_command = new MySqlCommand("select be_target_pm_mileage_meaningful from vehicle_kind where id = '" + id + "'",connection);
+      var be_target_pm_mileage_meaningful = ("1" == my_sql_command.ExecuteScalar().ToString());
       Close();
       return be_target_pm_mileage_meaningful;
       }
@@ -32,24 +33,24 @@ namespace Class_db_vehicle_kinds
       {
       bool result;
       MySqlDataReader dr;
-      this.Open();
+      Open();
       ((target) as ListControl).Items.Clear();
-      dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(concat(IFNULL(description,'-')) USING utf8) as spec"
         + " from vehicle_kind"
         + " where concat(IFNULL(description,'-')) like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
-        this.connection
-        )
-        .ExecuteReader();
+        connection
+        );
+      dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
         }
       dr.Close();
-      this.Close();
+      Close();
       result = ((target) as ListControl).Items.Count > 0;
       return result;
       }
@@ -58,25 +59,25 @@ namespace Class_db_vehicle_kinds
       {
       Open();
       (target as ListControl).Items.Clear();
-      if (unselected_literal != k.EMPTY)
+      if (unselected_literal.Length > 0)
         {
         (target as ListControl).Items.Add(new ListItem(unselected_literal, ""));
         }
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(description,IFNULL(concat(' - ',elaboration),'')) USING utf8) as spec"
         + " FROM vehicle_kind"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         (target as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
         }
       dr.Close();
-      if (selected_id != k.EMPTY)
+      if (selected_id.Length > 0)
         {
         (target as ListControl).SelectedValue = selected_id;
         }
@@ -119,10 +120,11 @@ namespace Class_db_vehicle_kinds
       {
       bool result;
       result = true;
-      this.Open();
+      Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from vehicle_kind where id = \"" + id + "\""), this.connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from vehicle_kind where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -132,17 +134,18 @@ namespace Class_db_vehicle_kinds
           }
         else
           {
-          throw e;
+          throw;
           }
         }
-      this.Close();
+      Close();
       return result;
       }
 
     internal string DescriptionOf(string id)
       {
       Open();
-      var description_of = new MySqlCommand("select description from vehicle_kind where id = '" + id + "'",connection).ExecuteScalar().ToString();
+      using var my_sql_command = new MySqlCommand("select description from vehicle_kind where id = '" + id + "'",connection);
+      var description_of = my_sql_command.ExecuteScalar().ToString();
       Close();
       return description_of;
       }
@@ -169,7 +172,8 @@ namespace Class_db_vehicle_kinds
       var result = false;
       //
       Open();
-      dr = new MySqlCommand("select * from vehicle_kind where CAST(id AS CHAR) = '" + id + "'", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from vehicle_kind where CAST(id AS CHAR) = '" + id + "'", connection);
+      dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         description = dr["description"].ToString();
@@ -205,7 +209,7 @@ namespace Class_db_vehicle_kinds
       + " , elaboration = NULLIF('" + elaboration + "','')"
       + k.EMPTY;
       Open();
-      new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         db_trail.Saved
           (
@@ -216,8 +220,8 @@ namespace Class_db_vehicle_kinds
           + childless_field_assignments_clause
           ),
           connection
-        )
-        .ExecuteNonQuery();
+        );
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 

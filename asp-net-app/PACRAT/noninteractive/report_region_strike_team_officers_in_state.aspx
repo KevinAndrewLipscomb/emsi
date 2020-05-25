@@ -1,4 +1,4 @@
-<%@ Page language="c#" Debug="true" Codebehind="report_region_strike_team_officers_in_state.aspx.cs" AutoEventWireup="True" Inherits="report_region_strike_team_officers_in_state.TWebForm_report_region_strike_team_officers_in_state" EnableViewState="false" %>
+<%@ Page language="c#" codebehind="report_region_strike_team_officers_in_state.aspx.cs" AutoEventWireup="True" Inherits="report_region_strike_team_officers_in_state.TWebForm_report_region_strike_team_officers_in_state" EnableViewState="false" %>
 <%@ Register src="../usercontrol/app/UserControl_common_header_bar.ascx" tagname="UserControl_common_header_bar" tagprefix="uc1" %>
 <%@ Register src="../usercontrol/app/UserControl_region_strike_team_officers_in_state.ascx" tagname="UserControl_region_strike_team_officers_in_state" tagprefix="uc3" %>
 <!DOCTYPE html>

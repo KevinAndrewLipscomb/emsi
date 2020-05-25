@@ -5,7 +5,7 @@ using System.Web;
 namespace first_of_calendar_year_tasks
   {
 
-  public partial class TWebForm_first_of_calendar_year_tasks: System.Web.UI.Page
+  public partial class TWebForm_first_of_calendar_year_tasks: ki_web_ui.page_class
     {
 
     // / <summary>

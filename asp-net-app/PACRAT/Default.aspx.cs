@@ -1,6 +1,7 @@
 using System;
 using System.Configuration;
 
+#pragma warning disable CA1716
 namespace Default
 {
     public partial class TWebForm_Default: ki_web_ui.page_class
@@ -11,7 +12,6 @@ namespace Default
         // / </summary>
         private void InitializeComponent()
         {
-            //this.Load += this.Page_Load;
         }
 
         protected void Page_Load(object sender, System.EventArgs e)

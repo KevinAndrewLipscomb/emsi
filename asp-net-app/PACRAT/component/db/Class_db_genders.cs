@@ -17,7 +17,7 @@ namespace Class_db_genders
   public class TClass_db_genders: TClass_db
     {
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_genders() : base()
       {
@@ -32,7 +32,7 @@ namespace Class_db_genders
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT lpad(id,4,'0') as id"
         + " , description"
@@ -40,8 +40,8 @@ namespace Class_db_genders
         + " WHERE concat(lpad(id,4,'0'),' -- ',description) like '%" + partial_spec + "%'"
         + " order by description",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["id"].ToString() + k.SPACE_HYPHENS_SPACE + dr["description"].ToString(), dr["id"].ToString()));
@@ -59,19 +59,20 @@ namespace Class_db_genders
       )
       {
       ((target) as ListControl).Items.Clear();
-      if (unselected_literal != k.EMPTY)
+      if (unselected_literal.Length > 0)
         {
         ((target) as ListControl).Items.Add(new ListItem(unselected_literal, k.EMPTY));
         }
       Open();
-      var dr = new MySqlCommand("SELECT id,description FROM gender where description <> '(none specified)' order by id", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("SELECT id,description FROM gender where description <> '(none specified)' order by id", connection);
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["description"].ToString(), dr["id"].ToString()));
         }
       dr.Close();
       Close();
-      if (selected_value != k.EMPTY)
+      if (selected_value.Length > 0)
         {
         ((target) as ListControl).SelectedValue = selected_value;
         }
@@ -91,7 +92,8 @@ namespace Class_db_genders
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from gender where id = '" + id + "'"), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from gender where id = '" + id + "'"), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -101,7 +103,7 @@ namespace Class_db_genders
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -117,7 +119,8 @@ namespace Class_db_genders
       description = k.EMPTY;
       var result = false;
       Open();
-      var dr = new MySqlCommand("select description from gender where id = '" + id + "'", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select description from gender where id = '" + id + "'", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         description = dr["description"].ToString();
@@ -136,7 +139,7 @@ namespace Class_db_genders
       {
       var childless_field_assignments_clause = "description = '" + description + "'";
       Open();
-      new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         db_trail.Saved
           (
@@ -147,8 +150,8 @@ namespace Class_db_genders
           + childless_field_assignments_clause
           ),
         connection
-        )
-        .ExecuteNonQuery();
+        );
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 

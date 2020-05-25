@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
-<%@ Page language="c#" Debug="true" Codebehind="hardcopy_service_strike_team_roster.aspx.cs" AutoEventWireup="True" Inherits="hardcopy_service_strike_team_roster.TWebForm_hardcopy_service_strike_team_roster" %>
+<%@ Page language="c#" codebehind="hardcopy_service_strike_team_roster.aspx.cs" AutoEventWireup="True" Inherits="hardcopy_service_strike_team_roster.TWebForm_hardcopy_service_strike_team_roster" %>
 <%@ Register src="../usercontrol/app/UserControl_static_service_strike_team_roster.ascx" tagname="UserControl_static_service_strike_team_roster" tagprefix="uc1" %>
 <%@ Register src="../usercontrol/app/UserControl_common_header_bar.ascx" tagname="UserControl_common_header_bar" tagprefix="uc2" %>
 <html>

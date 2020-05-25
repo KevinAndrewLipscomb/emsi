@@ -75,7 +75,7 @@ namespace coned_offering_roster
       public const int TCI_STATUS_DESCRIPTION = 18;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
@@ -135,7 +135,7 @@ namespace coned_offering_roster
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebForm_coned_offering_roster_PreRender;
+      PreRender += TWebForm_coned_offering_roster_PreRender;
       }
 
     private void InjectPersistentClientSideScript()

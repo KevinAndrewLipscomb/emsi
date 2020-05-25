@@ -6,7 +6,7 @@ namespace Class_biz_strike_team_deployment_assignments
   {
   public class TClass_biz_strike_team_deployment_assignments
     {
-    private TClass_db_strike_team_deployment_assignments db_strike_team_deployment_assignments = null;
+    private readonly TClass_db_strike_team_deployment_assignments db_strike_team_deployment_assignments = null;
 
     public TClass_biz_strike_team_deployment_assignments() : base()
       {

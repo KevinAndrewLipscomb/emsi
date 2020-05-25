@@ -1,5 +1,4 @@
 using Class_biz_notifications;
-using Class_biz_user;
 using Class_db_role_member_map;
 using Class_db_role_member_map_logs;
 using System.Collections;
@@ -10,15 +9,13 @@ namespace Class_biz_role_member_map
   public class TClass_biz_role_member_map
     {
 
-        private TClass_biz_notifications biz_notifications = null;
-        private TClass_biz_user biz_user = null;
-        private TClass_db_role_member_map db_role_member_map = null;
-        private TClass_db_role_member_map_logs db_role_member_map_logs = null;
+        private readonly TClass_biz_notifications biz_notifications = null;
+        private readonly TClass_db_role_member_map db_role_member_map = null;
+        private readonly TClass_db_role_member_map_logs db_role_member_map_logs = null;
 
         public TClass_biz_role_member_map() : base()
         {
             biz_notifications = new TClass_biz_notifications();
-            biz_user = new TClass_biz_user();
             db_role_member_map = new TClass_db_role_member_map();
             db_role_member_map_logs = new TClass_db_role_member_map_logs();
         }

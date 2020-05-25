@@ -5,7 +5,8 @@ namespace Class_biz_coned_sponsor_statuses
 {
     public class TClass_biz_coned_sponsor_statuses
     {
-        private TClass_db_coned_sponsor_statuses db_coned_sponsor_statuses = null;
+        private readonly TClass_db_coned_sponsor_statuses db_coned_sponsor_statuses = null;
+
         //Constructor  Create()
         public TClass_biz_coned_sponsor_statuses() : base()
         {

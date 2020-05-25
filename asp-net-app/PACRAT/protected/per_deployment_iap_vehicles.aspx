@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
-<%@ Page language="c#" Debug="true" Codebehind="per_deployment_iap_vehicles.aspx.cs" AutoEventWireup="True" Inherits="per_deployment_iap_vehicles.TWebForm_per_deployment_iap_vehicles" EnableViewState="False" %>
+<%@ Page language="c#" codebehind="per_deployment_iap_vehicles.aspx.cs" AutoEventWireup="True" Inherits="per_deployment_iap_vehicles.TWebForm_per_deployment_iap_vehicles" EnableViewState="False" %>
 <%@ Register TagPrefix="uc1" TagName="UserControl_common_header_bar" Src="~/usercontrol/app/UserControl_common_header_bar.ascx" %>
 <%@ Register TagPrefix="uc2" TagName="UserControl_per_deployment_iap_vehicles" Src="~/usercontrol/app/UserControl_per_deployment_iap_vehicles.ascx" %>
 <html>

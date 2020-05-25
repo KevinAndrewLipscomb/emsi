@@ -17,7 +17,7 @@ namespace Class_db_eval_summary_modes
   public class TClass_db_eval_summary_modes: TClass_db
     {
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_eval_summary_modes() : base()
       {
@@ -32,7 +32,7 @@ namespace Class_db_eval_summary_modes
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT lpad(id,4,'0') as id"
         + " , description"
@@ -40,8 +40,8 @@ namespace Class_db_eval_summary_modes
         + " WHERE concat(lpad(id,4,'0'),' -- ',description) like '%" + partial_spec + "%'"
         + " order by description",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["id"].ToString() + k.SPACE_HYPHENS_SPACE + dr["description"].ToString(), dr["id"].ToString()));
@@ -59,19 +59,20 @@ namespace Class_db_eval_summary_modes
       )
       {
       ((target) as ListControl).Items.Clear();
-      if (unselected_literal != k.EMPTY)
+      if (unselected_literal.Length > 0)
         {
         ((target) as ListControl).Items.Add(new ListItem(unselected_literal, k.EMPTY));
         }
       Open();
-      var dr = new MySqlCommand("SELECT id,description FROM eval_summary_mode where description <> '(none specified)' order by id", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("SELECT id,description FROM eval_summary_mode where description <> '(none specified)' order by id", connection);
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["description"].ToString(), dr["id"].ToString()));
         }
       dr.Close();
       Close();
-      if (selected_value != k.EMPTY)
+      if (selected_value.Length > 0)
         {
         ((target) as ListControl).SelectedValue = selected_value;
         }
@@ -90,19 +91,19 @@ namespace Class_db_eval_summary_modes
       var display_html = k.EMPTY;
       Open();
       ((target) as RadioButtonList).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , description"
         + " , elaboration"
         + " FROM eval_summary_mode",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         display_html = "<b>" + dr["description"].ToString() + "</b>";
-        if (dr["elaboration"].ToString() != k.EMPTY)
+        if (dr["elaboration"].ToString().Length > 0)
           {
           display_html = display_html
           + "<table>"
@@ -124,7 +125,8 @@ namespace Class_db_eval_summary_modes
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from eval_summary_mode where id = '" + id + "'"), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from eval_summary_mode where id = '" + id + "'"), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -134,7 +136,7 @@ namespace Class_db_eval_summary_modes
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -150,7 +152,8 @@ namespace Class_db_eval_summary_modes
       description = k.EMPTY;
       var result = false;
       Open();
-      var dr = new MySqlCommand("select description from eval_summary_mode where id = '" + id + "'", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select description from eval_summary_mode where id = '" + id + "'", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         description = dr["description"].ToString();

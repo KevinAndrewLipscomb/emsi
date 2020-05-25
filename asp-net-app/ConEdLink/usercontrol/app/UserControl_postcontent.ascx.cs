@@ -11,7 +11,7 @@ namespace UserControl_postcontent
       public TClass_biz_accounts biz_accounts;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify

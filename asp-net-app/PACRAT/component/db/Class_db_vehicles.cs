@@ -20,7 +20,7 @@ namespace Class_db_vehicles
       public bool be_active;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_vehicles() : base()
       {
@@ -37,7 +37,7 @@ namespace Class_db_vehicles
       var concat_clause = "concat(IFNULL(service_id,'-'),'|',IFNULL(name,'-'),'|',IFNULL(kind_id,'-'),'|',IFNULL(fuel_id,'-'),'|',IFNULL(license_plate,'-'),'|',IFNULL(be_four_or_all_wheel_drive,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -45,8 +45,8 @@ namespace Class_db_vehicles
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -65,7 +65,7 @@ namespace Class_db_vehicles
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select vehicle.id as id"
         + " , name"
@@ -86,8 +86,8 @@ namespace Class_db_vehicles
         + (service_filter.Length > 0 ? " and service_id = '" + service_filter + "'" : k.EMPTY)
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -96,15 +96,15 @@ namespace Class_db_vehicles
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(service_id,'-'),'|',IFNULL(name,'-'),'|',IFNULL(kind_id,'-'),'|',IFNULL(fuel_id,'-'),'|',IFNULL(license_plate,'-'),'|',IFNULL(be_four_or_all_wheel_drive,'-')) USING utf8) as spec"
         + " FROM vehicle"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -119,7 +119,8 @@ namespace Class_db_vehicles
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from vehicle where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from vehicle where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -129,7 +130,7 @@ namespace Class_db_vehicles
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -143,12 +144,12 @@ namespace Class_db_vehicles
       )
       {
       Open();
-      var designator_with_competing_license_plate_obj = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select IFNULL(concat(service.name,' ',vehicle.name),'') from vehicle join service on (service.id=vehicle.service_id) where license_plate = '" + license_plate + "' and vehicle.id <> '" + id + "'",
         connection
-        )
-        .ExecuteScalar();
+        );
+      var designator_with_competing_license_plate_obj = my_sql_command.ExecuteScalar();
       Close();
       if (designator_with_competing_license_plate_obj == null)
         {
@@ -167,12 +168,12 @@ namespace Class_db_vehicles
       )
       {
       Open();
-      var designator_with_competing_pa_doh_decal_num_obj = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select IFNULL(concat(service.name,' ',vehicle.name),'') from vehicle join service on (service.id=vehicle.service_id) where pa_doh_decal_num = '" + pa_doh_decal_num + "' and vehicle.id <> '" + id + "'",
         connection
-        )
-        .ExecuteScalar();
+        );
+      var designator_with_competing_pa_doh_decal_num_obj = my_sql_command.ExecuteScalar();
       Close();
       if (designator_with_competing_pa_doh_decal_num_obj == null)
         {
@@ -214,7 +215,8 @@ namespace Class_db_vehicles
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from vehicle where CAST(id AS CHAR) = '" + id + "'", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from vehicle where CAST(id AS CHAR) = '" + id + "'", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         service_id = dr["service_id"].ToString();
@@ -238,7 +240,8 @@ namespace Class_db_vehicles
     internal string IdByServiceIdAndName(string service_id, string name)
       {
       Open();
-      var id_by_service_id_and_name_obj = new MySqlCommand("select id from vehicle where service_id = '" + service_id + "' and name = '" + name + "'",connection).ExecuteScalar();
+      using var my_sql_command = new MySqlCommand("select id from vehicle where service_id = '" + service_id + "' and name = '" + name + "'",connection);
+      var id_by_service_id_and_name_obj = my_sql_command.ExecuteScalar();
       Close();
       return (id_by_service_id_and_name_obj == null ? k.EMPTY : id_by_service_id_and_name_obj.ToString());
       }
@@ -246,7 +249,8 @@ namespace Class_db_vehicles
     internal void MarkInactive(string id)
       {
       Open();
-      new MySqlCommand("update vehicle set be_active = FALSE where id = '" + id + "'",connection).ExecuteNonQuery();
+      using var my_sql_command = new MySqlCommand("update vehicle set be_active = FALSE where id = '" + id + "'",connection);
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 
@@ -296,14 +300,14 @@ namespace Class_db_vehicles
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM vehicle"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new vehicle_summary()

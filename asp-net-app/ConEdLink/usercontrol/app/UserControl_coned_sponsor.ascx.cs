@@ -31,7 +31,7 @@ namespace UserControl_coned_sponsor
       public TClass_biz_teaching_entity_levels biz_teaching_entity_levels;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -461,8 +461,7 @@ namespace UserControl_coned_sponsor
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_coned_sponsor_PreRender;
+      PreRender += TWebUserControl_coned_sponsor_PreRender;
       }
 
     private void TWebUserControl_coned_sponsor_PreRender(object sender, System.EventArgs e)

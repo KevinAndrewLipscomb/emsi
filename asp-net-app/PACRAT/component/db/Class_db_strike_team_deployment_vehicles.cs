@@ -18,7 +18,7 @@ namespace Class_db_strike_team_deployment_vehicles
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_deployment_vehicles() : base()
       {
@@ -32,7 +32,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      var be_none = "0" == new MySqlCommand
+      var be_none = "0" == using var my_sql_command = new MySqlCommand
         (
         "select count(*)"
         + " from strike_team_deployment_vehicle"
@@ -40,7 +40,7 @@ namespace Class_db_strike_team_deployment_vehicles
         + " where deployment_id = '" + deployment_id + "'"
         +   (service_strike_team_management_footprint.Length > 0 ? " and service_id in (" + service_strike_team_management_footprint + ")" : k.EMPTY),
         connection
-        ).ExecuteScalar().ToString();
+        ); my_sql_command.ExecuteScalar().ToString();
       Close();
       return be_none;
       }
@@ -54,7 +54,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      var be_tag_transponder_available_for_assignment = null == new MySqlCommand
+      var be_tag_transponder_available_for_assignment = null == using var my_sql_command = new MySqlCommand
         (
         "select 1"
         + " from strike_team_deployment_vehicle"
@@ -62,8 +62,7 @@ namespace Class_db_strike_team_deployment_vehicles
         +   " and vehicle_id <> '" + vehicle_id + "'"
         +   " and (tactical_name = '" + tactical_name + "' or transponder_name = '" + transponder_name + "')",
         connection
-        )
-        .ExecuteScalar();
+        ); my_sql_command.ExecuteScalar();
       Close();
       return be_tag_transponder_available_for_assignment;
       }
@@ -73,7 +72,7 @@ namespace Class_db_strike_team_deployment_vehicles
       var concat_clause = "concat(IFNULL(deployment_id,'-'),'|',IFNULL(vehicle_id,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -81,8 +80,8 @@ namespace Class_db_strike_team_deployment_vehicles
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -103,7 +102,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_deployment_vehicle.id as id"
         + " , vehicle.id as vehicle_id"
@@ -135,8 +134,8 @@ namespace Class_db_strike_team_deployment_vehicles
         + " order by " + sort_order.Replace("%",(be_sort_order_ascending ? " asc" : " desc"))
         ,
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -149,7 +148,7 @@ namespace Class_db_strike_team_deployment_vehicles
       {
       Open();
       (target as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT vehicle.id as id"
         + " , @static_designator := concat(service.short_name,' ',vehicle.name)"
@@ -162,8 +161,8 @@ namespace Class_db_strike_team_deployment_vehicles
         + " where deployment_id = '" + deployment_id + "'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -178,7 +177,8 @@ namespace Class_db_strike_team_deployment_vehicles
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_vehicle where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from strike_team_deployment_vehicle where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -188,7 +188,7 @@ namespace Class_db_strike_team_deployment_vehicles
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -203,7 +203,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      var designator_with_competing_tactical_name_obj = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select IFNULL(concat(service.name,' ',vehicle.name),'')"
         + " from strike_team_deployment_vehicle"
@@ -213,8 +213,8 @@ namespace Class_db_strike_team_deployment_vehicles
         +   " and tactical_name = '" + tactical_name + "'"
         +   " and strike_team_deployment_vehicle.id <> '" + id + "'",
         connection
-        )
-        .ExecuteScalar();
+        );
+      var designator_with_competing_tactical_name_obj = my_sql_command.ExecuteScalar();
       Close();
       if (designator_with_competing_tactical_name_obj == null)
         {
@@ -234,7 +234,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      var designator_with_competing_transponder_name_obj = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select IFNULL(concat(service.name,' ',vehicle.name),'')"
         + " from strike_team_deployment_vehicle"
@@ -244,8 +244,8 @@ namespace Class_db_strike_team_deployment_vehicles
         +   " and transponder_name = '" + transponder_name + "'"
         +   " and strike_team_deployment_vehicle.id <> '" + id + "'",
         connection
-        )
-        .ExecuteScalar();
+        );
+      var designator_with_competing_transponder_name_obj = my_sql_command.ExecuteScalar();
       Close();
       if (designator_with_competing_transponder_name_obj == null)
         {
@@ -273,7 +273,8 @@ namespace Class_db_strike_team_deployment_vehicles
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment_vehicle where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_deployment_vehicle where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         deployment_id = dr["deployment_id"].ToString();
@@ -317,14 +318,14 @@ namespace Class_db_strike_team_deployment_vehicles
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM strike_team_deployment_vehicle"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new strike_team_deployment_vehicle_summary()

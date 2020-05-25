@@ -22,16 +22,17 @@ namespace UserControl_coned_binder
     public const int TSSI_PRACTITIONERS = 3;
     }
 
-  public struct p_type
-    {
-    public bool be_loaded;
-    public string content_id;
-    public uint tab_index;
-    }
-
   public partial class TWebUserControl_coned_binder: ki_web_ui.usercontrol_class
     {
-    private p_type p;
+
+    private struct p_type
+      {
+      public bool be_loaded;
+    public string content_id;
+    public uint tab_index;
+      }
+
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Page_Load(object sender, System.EventArgs e)
       {
@@ -98,8 +99,10 @@ namespace UserControl_coned_binder
 
     private void FillPlaceHolder
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       bool be_fresh_control_required,
       string target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       if (p.tab_index == UserControl_coned_binder_Static.TSSI_READY_ROSTERS)
@@ -130,7 +133,7 @@ namespace UserControl_coned_binder
 
     public void SetTarget(string target)
       {
-      if (target != k.EMPTY)
+      if (target.Length > 0)
         {
         if (target.ToLower().Contains("/ready-rosters/"))
           {

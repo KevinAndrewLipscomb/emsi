@@ -18,7 +18,7 @@ namespace Class_biz_vehicles
 
   public class TClass_biz_vehicles
     {
-    private TClass_db_vehicles db_vehicles = null;
+    private readonly TClass_db_vehicles db_vehicles = null;
 
     public TClass_biz_vehicles() : base()
       {

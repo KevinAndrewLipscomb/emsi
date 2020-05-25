@@ -14,7 +14,7 @@ namespace Class_db_teaching_entities
   {
   public class TClass_db_teaching_entities: TClass_db
     {
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_teaching_entities() : base()
       {
@@ -26,7 +26,7 @@ namespace Class_db_teaching_entities
       var concat_clause = "concat(IFNULL(emsrs_id,'-'),'|',IFNULL(sponsor_number,'-'),'|',IFNULL(training_ins_accred_num,'-'),'|',IFNULL(name,'-'),'|',IFNULL(short_name,'-'),'|',IFNULL(address_1,'-'),'|',IFNULL(address_2,'-'),'|',IFNULL(city,'-'),'|',IFNULL(state,'-'),'|',IFNULL(zip,'-'),'|',IFNULL(county_code,'-'),'|',IFNULL(region,'-'),'|',IFNULL(email,'-'),'|',IFNULL(website,'-'),'|',IFNULL(daytime_phone,'-'),'|',IFNULL(evening_phone,'-'),'|',IFNULL(fax,'-'),'|',IFNULL(contact_first_name,'-'),'|',IFNULL(contact_last_name,'-'),'|',IFNULL(public_contact_name,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -34,8 +34,8 @@ namespace Class_db_teaching_entities
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -54,7 +54,7 @@ namespace Class_db_teaching_entities
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , sponsor_number"
@@ -67,8 +67,8 @@ namespace Class_db_teaching_entities
         +   " and code = '" + region_code + "'"
         + " order by " + sort_order.Replace("%",(be_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -77,15 +77,15 @@ namespace Class_db_teaching_entities
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(emsrs_id,'-'),'|',IFNULL(sponsor_number,'-'),'|',IFNULL(training_ins_accred_num,'-'),'|',IFNULL(name,'-'),'|',IFNULL(short_name,'-'),'|',IFNULL(address_1,'-'),'|',IFNULL(address_2,'-'),'|',IFNULL(city,'-'),'|',IFNULL(state,'-'),'|',IFNULL(zip,'-'),'|',IFNULL(county_code,'-'),'|',IFNULL(region,'-'),'|',IFNULL(email,'-'),'|',IFNULL(website,'-'),'|',IFNULL(daytime_phone,'-'),'|',IFNULL(evening_phone,'-'),'|',IFNULL(fax,'-'),'|',IFNULL(contact_first_name,'-'),'|',IFNULL(contact_last_name,'-'),'|',IFNULL(public_contact_name,'-')) USING utf8) as spec"
         + " FROM teaching_entity"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -100,7 +100,8 @@ namespace Class_db_teaching_entities
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from teaching_entity where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from teaching_entity where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -110,7 +111,7 @@ namespace Class_db_teaching_entities
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -241,7 +242,8 @@ namespace Class_db_teaching_entities
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from teaching_entity where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from teaching_entity where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         emsrs_id = dr["emsrs_id"].ToString();
@@ -354,13 +356,16 @@ namespace Class_db_teaching_entities
             transaction = connection.BeginTransaction();
             try
               {
-              if (new MySqlCommand("select 1 from teaching_entity where emsrs_id = '" + emsrs_id + "'",connection,transaction).ExecuteScalar() == null)
+              using var my_sql_command = new MySqlCommand("select 1 from teaching_entity where emsrs_id = '" + emsrs_id + "'",connection,transaction);
+              if (my_sql_command.ExecuteScalar() == null)
                 {
-                new MySqlCommand("insert teaching_entity set emsrs_id = NULLIF('" + emsrs_id + "',''), " + childless_field_assignments_clause,connection,transaction).ExecuteNonQuery();
+                using var my_sql_command = new MySqlCommand("insert teaching_entity set emsrs_id = NULLIF('" + emsrs_id + "',''), " + childless_field_assignments_clause,connection,transaction);
+                my_sql_command.ExecuteNonQuery();
                 }
               else
                 {
-                new MySqlCommand("update teaching_entity set " + childless_field_assignments_clause + " where emsrs_id = '" + emsrs_id + "'",connection,transaction).ExecuteNonQuery();
+                using var my_sql_command = new MySqlCommand("update teaching_entity set " + childless_field_assignments_clause + " where emsrs_id = '" + emsrs_id + "'",connection,transaction);
+                my_sql_command.ExecuteNonQuery();
                 }
               transaction.Commit();
               }
@@ -499,7 +504,7 @@ namespace Class_db_teaching_entities
       + " , history = NULLIF('" + history + "','')"
       + k.EMPTY;
       Open();
-      new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         db_trail.Saved
           (
@@ -510,15 +515,16 @@ namespace Class_db_teaching_entities
           + childless_field_assignments_clause
           ),
           connection
-        )
-        .ExecuteNonQuery();
+        );
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 
     internal string SponsorNumberOf(string id)
       {
       Open();
-      var sponsor_number_of = new MySqlCommand("select sponsor_number from teaching_entity where id = '" + id + "'",connection).ExecuteScalar().ToString();
+      using var my_sql_command = new MySqlCommand("select sponsor_number from teaching_entity where id = '" + id + "'",connection);
+      var sponsor_number_of = my_sql_command.ExecuteScalar().ToString();
       Close();
       return sponsor_number_of;
       }
@@ -526,7 +532,7 @@ namespace Class_db_teaching_entities
     internal void SyncConedSponsorAccounts()
       {
       Open();
-      new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "update coned_sponsor_user"
         + " join teaching_entity using (id)"
@@ -541,8 +547,8 @@ namespace Class_db_teaching_entities
         +   " and sponsor_number is not null"
         +   " and IFNULL(email,IFNULL(contact_email,public_contact_email)) is not null",
         connection
-        )
-        .ExecuteNonQuery();
+        );
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 

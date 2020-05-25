@@ -7,7 +7,7 @@ namespace hardcopy_roster
   // Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.pas~template
   public partial class TWebForm_hardcopy_roster: ki_web_ui.page_class
     {
-        private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
         // / <summary>
         // / Required method for Designer support -- do not modify
@@ -15,8 +15,7 @@ namespace hardcopy_roster
         // / </summary>
         private void InitializeComponent()
         {
-            this.PreRender += this.TWebForm_hardcopy_roster_PreRender;
-            //this.Load += this.Page_Load;
+            PreRender += TWebForm_hardcopy_roster_PreRender;
         }
 
         protected void Page_Load(object sender, System.EventArgs e)

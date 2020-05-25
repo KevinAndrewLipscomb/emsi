@@ -30,7 +30,7 @@ namespace UserControl_per_deployment_iap_log
       public uint num_logs;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
@@ -70,9 +70,8 @@ namespace UserControl_per_deployment_iap_log
     // / </summary>
     private void InitializeComponent()
       {
-      this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
-      this.PreRender += this.TWebUserControl_per_deployment_iap_log_PreRender;
-      //this.Load += this.Page_Load;
+      DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
+      PreRender += TWebUserControl_per_deployment_iap_log_PreRender;
       }
 
     private void TWebUserControl_per_deployment_iap_log_PreRender(object sender, System.EventArgs e)

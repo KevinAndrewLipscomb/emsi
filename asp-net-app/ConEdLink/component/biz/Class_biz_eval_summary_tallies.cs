@@ -9,7 +9,7 @@ namespace Class_biz_eval_summary_tallies
   {
   public class TClass_biz_eval_summary_tallies
     {
-    private TClass_db_eval_summary_tallies db_eval_summary_tallies = null;
+    private readonly TClass_db_eval_summary_tallies db_eval_summary_tallies = null;
 
     public TClass_biz_eval_summary_tallies() : base()
       {

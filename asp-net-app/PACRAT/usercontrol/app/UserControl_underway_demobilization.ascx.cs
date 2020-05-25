@@ -26,7 +26,7 @@ namespace UserControl_underway_demobilization
       public Class_msg_protected.underway_demobilization_mode_enum mode;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, System.EventArgs e)
       {

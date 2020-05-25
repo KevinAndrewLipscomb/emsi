@@ -7,7 +7,7 @@ namespace Class_biz_coned_offering_statuses
   public class TClass_biz_coned_offering_statuses
     {
 
-    private TClass_db_coned_offering_statuses db_coned_offering_statuses = null;
+    private readonly TClass_db_coned_offering_statuses db_coned_offering_statuses = null;
 
     public TClass_biz_coned_offering_statuses() : base()
       {

@@ -23,7 +23,7 @@ namespace UserControl_strike_team_deployment_vehicle
       public bool be_ok_to_config_strike_team_deployment_vehicles;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -233,8 +233,7 @@ namespace UserControl_strike_team_deployment_vehicle
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_deployment_vehicle_PreRender;
+      PreRender += TWebUserControl_strike_team_deployment_vehicle_PreRender;
       }
 
     private void TWebUserControl_strike_team_deployment_vehicle_PreRender(object sender, System.EventArgs e)
@@ -370,7 +369,7 @@ namespace UserControl_strike_team_deployment_vehicle
         tactical_name:k.Safe(TextBox_tactical_name.Text, k.safe_hint_type.ALPHANUM)
         );
       CustomValidator_tactical_name.ErrorMessage += designator_with_competing_tactical_name;
-      args.IsValid = (designator_with_competing_tactical_name == k.EMPTY);
+      args.IsValid = (designator_with_competing_tactical_name.Length == 0);
       }
 
     protected void CustomValidator_transponder_name_ServerValidate(object source, ServerValidateEventArgs args)
@@ -382,7 +381,7 @@ namespace UserControl_strike_team_deployment_vehicle
         transponder_name:k.Safe(TextBox_transponder_name.Text, k.safe_hint_type.ALPHANUM)
         );
       CustomValidator_transponder_name.ErrorMessage += designator_with_competing_transponder_name;
-      args.IsValid = (designator_with_competing_transponder_name == k.EMPTY);
+      args.IsValid = (designator_with_competing_transponder_name.Length == 0);
       }
 
     } // end TWebUserControl_strike_team_deployment_vehicle

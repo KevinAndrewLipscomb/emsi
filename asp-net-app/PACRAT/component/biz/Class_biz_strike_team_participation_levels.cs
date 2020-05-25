@@ -17,7 +17,7 @@ namespace Class_biz_strike_team_participation_levels
 
   public class TClass_biz_strike_team_participation_levels
     {
-    private TClass_db_strike_team_participation_levels db_strike_team_participation_levels = null;
+    private readonly TClass_db_strike_team_participation_levels db_strike_team_participation_levels = null;
 
     public TClass_biz_strike_team_participation_levels() : base()
       {

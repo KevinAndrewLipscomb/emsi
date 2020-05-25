@@ -15,10 +15,10 @@ namespace Class_biz_coned_offering_rosters
   public class TClass_biz_coned_offering_rosters
     {
 
-    private TClass_biz_user biz_user = null;
-    private TClass_db_coned_offering_rosters db_coned_offering_rosters = null;
-    private TClass_db_practitioners db_practitioners = null;
-    private TClass_db_teaching_entities db_teaching_entities = null;
+    private readonly TClass_biz_user biz_user = null;
+    private readonly TClass_db_coned_offering_rosters db_coned_offering_rosters = null;
+    private readonly TClass_db_practitioners db_practitioners = null;
+    private readonly TClass_db_teaching_entities db_teaching_entities = null;
 
     public TClass_biz_coned_offering_rosters() : base()
       {

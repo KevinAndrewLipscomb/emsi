@@ -36,7 +36,7 @@ namespace Class_db_strike_team_deployments
       public string member_policy_description;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_deployments() : base()
       {
@@ -47,15 +47,14 @@ namespace Class_db_strike_team_deployments
       {
       var be_all_concluded_within_scope = false;
       Open();
-      be_all_concluded_within_scope = "1" == new MySqlCommand
+      be_all_concluded_within_scope = "1" == using var my_sql_command = new MySqlCommand
         (
         //
         // By bookkending the equality test with the IFNULL(~,1) clause, we cover the case where the catalog is empty.
         //
         "select IFNULL(sum(status = 'Concluded') = count(*),1) from ("+   Static.CATALOG_CMDTEXT + " ) as catalog",
         connection
-        )
-        .ExecuteScalar().ToString();
+        ); my_sql_command.ExecuteScalar().ToString();
       Close();
       return be_all_concluded_within_scope;
       }
@@ -64,7 +63,8 @@ namespace Class_db_strike_team_deployments
       {
       var be_any_operational_period_started_for = true;
       Open();
-      be_any_operational_period_started_for = "0" != new MySqlCommand("select count(*) from strike_team_deployment_operational_period where deployment_id = '" + deployment_id + "' and start <= NOW()",connection).ExecuteScalar().ToString();
+      using var my_sql_command = new MySqlCommand("select count(*) from strike_team_deployment_operational_period where deployment_id = '" + deployment_id + "' and start <= NOW()",connection);
+      be_any_operational_period_started_for = "0" != my_sql_command.ExecuteScalar().ToString();
       Close();
       return be_any_operational_period_started_for;
       }
@@ -74,7 +74,7 @@ namespace Class_db_strike_team_deployments
       var concat_clause = "concat(IFNULL(creation_date,'-'),'|',IFNULL(name,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -82,8 +82,8 @@ namespace Class_db_strike_team_deployments
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -102,7 +102,8 @@ namespace Class_db_strike_team_deployments
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand(Static.CATALOG_CMDTEXT + " order by creation_date desc",connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand(Static.CATALOG_CMDTEXT + " order by creation_date desc",connection);
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -111,15 +112,15 @@ namespace Class_db_strike_team_deployments
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(creation_date,'-'),'|',IFNULL(name,'-')) USING utf8) as spec"
         + " FROM strike_team_deployment"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -134,7 +135,8 @@ namespace Class_db_strike_team_deployments
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from strike_team_deployment where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from strike_team_deployment where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -144,7 +146,7 @@ namespace Class_db_strike_team_deployments
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -165,7 +167,8 @@ namespace Class_db_strike_team_deployments
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_deployment where CAST(id AS CHAR) = '" + id + "'", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_deployment where CAST(id AS CHAR) = '" + id + "'", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         creation_date = DateTime.Parse(dr["creation_date"].ToString());
@@ -190,8 +193,9 @@ namespace Class_db_strike_team_deployments
       )
       {
       Open();
-      var id_of_practical_obj = new MySqlCommand
-        ("select id from strike_team_deployment where creation_date = '" + creation_date.ToString("yyyy-MM-dd") + "' and name = '" + name + "'",connection).ExecuteScalar();
+      using var my_sql_command = new MySqlCommand
+        ("select id from strike_team_deployment where creation_date = '" + creation_date.ToString("yyyy-MM-dd") + "' and name = '" + name + "'",connection);
+      var id_of_practical_obj = my_sql_command.ExecuteScalar();
       Close();
       return (id_of_practical_obj == null ? k.EMPTY : id_of_practical_obj.ToString());
       }
@@ -214,7 +218,8 @@ namespace Class_db_strike_team_deployments
     internal string NameOfId(string id)
       {
       Open();
-      var name_of_id_obj = new MySqlCommand("select name from strike_team_deployment where id = '" + id + "'",connection).ExecuteScalar();
+      using var my_sql_command = new MySqlCommand("select name from strike_team_deployment where id = '" + id + "'",connection);
+      var name_of_id_obj = my_sql_command.ExecuteScalar();
       Close();
       return (name_of_id_obj == null ? k.EMPTY : name_of_id_obj.ToString());
       }
@@ -246,7 +251,7 @@ namespace Class_db_strike_team_deployments
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT strike_team_deployment.creation_date as creation_date"
           + " , strike_team_deployment.name as name"
@@ -256,8 +261,8 @@ namespace Class_db_strike_team_deployments
           +   " join strike_team_deployment_member_policy on (strike_team_deployment_member_policy.id=strike_team_deployment.member_policy_id)"
           + " where strike_team_deployment.id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new strike_team_deployment_summary()

@@ -71,7 +71,7 @@ namespace ready_roster_detail
       internal const int TCI_LCDS_FORM_TYPE_ID = 18;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Bind()
       {
@@ -90,7 +90,7 @@ namespace ready_roster_detail
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebForm_ready_roster_detail_PreRender;
+      PreRender += TWebForm_ready_roster_detail_PreRender;
       }
 
     private void InjectPersistentClientSideScript()

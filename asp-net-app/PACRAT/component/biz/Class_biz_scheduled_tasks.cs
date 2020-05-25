@@ -1,3 +1,4 @@
+using System;
 using Class_biz_practitioner_strike_team_details;
 using Class_biz_strike_team_officers;
 using Class_biz_strike_team_rosters;
@@ -8,10 +9,10 @@ namespace Class_biz_scheduled_tasks
   public class TClass_biz_scheduled_tasks
     {
 
-    private TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
-    private TClass_biz_strike_team_officers biz_strike_team_officers;
-    private TClass_biz_strike_team_rosters biz_strike_team_rosters;
-    private Class_fs fs;
+    private readonly TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+    private readonly TClass_biz_strike_team_officers biz_strike_team_officers;
+    private readonly TClass_biz_strike_team_rosters biz_strike_team_rosters;
+    private readonly Class_fs fs;
 
     //Constructor  Create()
     public TClass_biz_scheduled_tasks() : base()
@@ -41,6 +42,11 @@ namespace Class_biz_scheduled_tasks
     public void DoStrikeTeamMemberStatusStatements(bool do_limit_to_uncredentialed)
       {
       biz_practitioner_strike_team_details.MakeMemberStatusStatements(do_limit_to_uncredentialed);
+      }
+
+    internal void VerifyPractitionerAttributes()
+      {
+      throw new NotImplementedException();
       }
 
     } // end TClass_biz_scheduled_tasks

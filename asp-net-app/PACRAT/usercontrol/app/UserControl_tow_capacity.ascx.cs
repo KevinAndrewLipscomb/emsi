@@ -23,7 +23,7 @@ namespace UserControl_tow_capacity
       public bool be_ok_to_config_tow_capacities;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -240,8 +240,7 @@ namespace UserControl_tow_capacity
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_tow_capacity_PreRender;
+      PreRender += TWebUserControl_tow_capacity_PreRender;
       }
 
     private void TWebUserControl_tow_capacity_PreRender(object sender, System.EventArgs e)

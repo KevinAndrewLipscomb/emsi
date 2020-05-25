@@ -35,12 +35,14 @@ namespace UserControl_analysis_of_sponsor_binder
       internal uint tab_index;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void FillPlaceHolder
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       bool be_fresh_control_required,
       string target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       if (p.tab_index == Static.TSSI_INTRODUCTION)
@@ -162,7 +164,7 @@ namespace UserControl_analysis_of_sponsor_binder
 
     public void SetTarget(string target)
       {
-      if (target != k.EMPTY)
+      if (target.Length > 0)
         {
         if (target.ToLower().Contains("/introduction/"))
           {

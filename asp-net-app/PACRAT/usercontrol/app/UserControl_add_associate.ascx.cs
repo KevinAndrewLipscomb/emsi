@@ -45,7 +45,7 @@ namespace UserControl_add_associate
       public string tier_name;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {

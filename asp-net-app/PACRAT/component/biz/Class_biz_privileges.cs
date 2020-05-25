@@ -6,7 +6,8 @@ namespace Class_biz_privileges
 {
     public class TClass_biz_privileges
     {
-        private TClass_db_privileges db_privileges = null;
+        private readonly TClass_db_privileges db_privileges = null;
+
         //Constructor  Create()
         public TClass_biz_privileges() : base()
         {

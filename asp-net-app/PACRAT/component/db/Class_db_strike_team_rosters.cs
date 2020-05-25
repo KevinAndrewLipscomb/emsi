@@ -12,7 +12,7 @@ namespace Class_db_strike_team_rosters
   public class TClass_db_strike_team_rosters: TClass_db
     {
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_strike_team_rosters() : base()
       {
@@ -24,7 +24,7 @@ namespace Class_db_strike_team_rosters
       var concat_clause = "concat(id)";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -32,8 +32,8 @@ namespace Class_db_strike_team_rosters
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -47,15 +47,15 @@ namespace Class_db_strike_team_rosters
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(id) USING utf8) as spec"
         + " FROM strike_team_roster"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -73,7 +73,7 @@ namespace Class_db_strike_team_rosters
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select strike_team_roster.id as id"
         + " , IF(" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + ",'Y','N') as be_credentialed"
@@ -97,8 +97,8 @@ namespace Class_db_strike_team_rosters
         + " where service.id = '" + id + "'"
         + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       (((target) as BaseDataList).DataSource as MySqlDataReader).Close();
       Close();
@@ -110,7 +110,7 @@ namespace Class_db_strike_team_rosters
       Open();
       try
         {
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           db_trail.Saved
             (
@@ -118,8 +118,8 @@ namespace Class_db_strike_team_rosters
             + " where id = '" + id + "'"
             ),
           connection
-          )
-          .ExecuteNonQuery();
+          );
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -129,7 +129,7 @@ namespace Class_db_strike_team_rosters
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -148,7 +148,8 @@ namespace Class_db_strike_team_rosters
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from strike_team_roster where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from strike_team_roster where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         service_id = dr["service_id"].ToString();
@@ -172,7 +173,7 @@ namespace Class_db_strike_team_rosters
       + " , practitioner_id = NULLIF('" + practitioner_id + "','')"
       + k.EMPTY;
       Open();
-      new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         db_trail.Saved
           (
@@ -186,8 +187,8 @@ namespace Class_db_strike_team_rosters
           + childless_field_assignments_clause
           ),
         connection
-        )
-        .ExecuteNonQuery();
+        );
+      my_sql_command.ExecuteNonQuery();
       Close();
       }
 
@@ -195,7 +196,8 @@ namespace Class_db_strike_team_rosters
       {
       var size_of = k.EMPTY;
       Open();
-      size_of = new MySqlCommand("select count(id) from strike_team_roster where service_id = '" + service_id + "'",connection).ExecuteScalar().ToString();
+      using var my_sql_command = new MySqlCommand("select count(id) from strike_team_roster where service_id = '" + service_id + "'",connection);
+      size_of = my_sql_command.ExecuteScalar().ToString();
       Close();
       return size_of;
       }

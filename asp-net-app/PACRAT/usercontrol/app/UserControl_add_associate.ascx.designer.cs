@@ -85,6 +85,24 @@ namespace UserControl_add_associate {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_level;
         
         /// <summary>
+        /// TextBox_certification_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_certification_number;
+        
+        /// <summary>
+        /// RegularExpressionValidator_certification_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_certification_number;
+        
+        /// <summary>
         /// DropDownList_regional_council control.
         /// </summary>
         /// <remarks>

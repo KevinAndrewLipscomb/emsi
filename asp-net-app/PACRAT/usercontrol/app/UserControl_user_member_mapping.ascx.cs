@@ -11,9 +11,12 @@ using Class_biz_user_member_map;
 using Class_biz_users;
 namespace UserControl_user_member_mapping
 {
-    public struct p_type
+  public partial class TWebUserControl_user_member_mapping: ki_web_ui.usercontrol_class
     {
-        public bool be_interactive;
+
+    private struct p_type
+      {
+      public bool be_interactive;
         public bool be_loaded;
         public bool be_sort_order_ascending;
         public TClass_biz_members biz_members;
@@ -21,16 +24,10 @@ namespace UserControl_user_member_mapping
         public TClass_biz_users biz_users;
         public bool may_add_mappings;
         public string sort_order;
-    } // end p_type
+      }
 
-    public partial class TWebUserControl_user_member_mapping: ki_web_ui.usercontrol_class
-    {
-        private p_type p;
-        protected System.Web.UI.WebControls.Button Button_add = null;
-        protected System.Web.UI.WebControls.DropDownList DropDownList_user = null;
-        protected System.Web.UI.WebControls.DropDownList DropDownList_member = null;
-        protected System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_user = null;
-        protected System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_member = null;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         private void InjectPersistentClientSideScript()
         {
             // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
@@ -159,10 +156,9 @@ namespace UserControl_user_member_mapping
         // / </summary>
         private void InitializeComponent()
         {
-            this.GridView_control.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(this.GridView_control_Sorting);
-            this.GridView_control.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(this.GridView_control_RowDataBound);
-            this.PreRender += this.TWebUserControl_user_member_mapping_PreRender;
-            //this.Load += this.Page_Load;
+            GridView_control.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(GridView_control_Sorting);
+            GridView_control.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(GridView_control_RowDataBound);
+            PreRender += TWebUserControl_user_member_mapping_PreRender;
         }
 
         private void TWebUserControl_user_member_mapping_PreRender(object sender, System.EventArgs e)

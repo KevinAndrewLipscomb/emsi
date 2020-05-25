@@ -7,18 +7,20 @@ using UserControl_role_privilege_mapping;
 
 namespace UserControl_roles_and_matrices_binder
 {
-    public struct p_type
+  public partial class TWebUserControl_roles_and_matrices_binder: ki_web_ui.usercontrol_class
     {
-        public bool be_loaded;
+
+    private struct p_type
+      {
+      public bool be_loaded;
         public bool be_ok_to_config_roles_and_matrices;
         public bool be_ok_to_config_strike_team_state_unlimited;
         public string content_id;
         public uint tab_index;
-    } // end p_type
+      }
 
-    public partial class TWebUserControl_roles_and_matrices_binder: ki_web_ui.usercontrol_class
-    {
-        private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
@@ -83,9 +85,8 @@ namespace UserControl_roles_and_matrices_binder
         // / </summary>
         private void InitializeComponent()
         {
-            this.TabContainer_control.ActiveTabChanged += this.TabContainer_control_ActiveTabChanged;
-            this.PreRender += this.TWebUserControl_roles_and_matrices_binder_PreRender;
-            //this.Load += this.Page_Load;
+            TabContainer_control.ActiveTabChanged += TabContainer_control_ActiveTabChanged;
+            PreRender += TWebUserControl_roles_and_matrices_binder_PreRender;
         }
 
         private void TWebUserControl_roles_and_matrices_binder_PreRender(object sender, System.EventArgs e)

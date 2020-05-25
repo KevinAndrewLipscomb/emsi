@@ -16,7 +16,7 @@ namespace UserControl_state_affiliation
       public bool be_loaded;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void InjectPersistentClientSideScript()
       {
@@ -141,7 +141,7 @@ namespace UserControl_state_affiliation
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebUserControl_state_affiliation_PreRender;
+      PreRender += TWebUserControl_state_affiliation_PreRender;
       }
 
     private void TWebUserControl_state_affiliation_PreRender(object sender, System.EventArgs e)

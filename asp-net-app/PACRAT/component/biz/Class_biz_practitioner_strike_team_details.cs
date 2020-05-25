@@ -12,8 +12,8 @@ namespace Class_biz_practitioner_strike_team_details
   public class TClass_biz_practitioner_strike_team_details
     {
 
-    private TClass_biz_notifications biz_notifications = null;
-    private TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
+    private readonly TClass_biz_notifications biz_notifications = null;
+    private readonly TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
 
     public TClass_biz_practitioner_strike_team_details() : base()
       {

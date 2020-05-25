@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Derived from KiAspdotnetFramework/protected/template~protected~nonlanding.aspx~template -->
-<%@ Page language="c#" Debug="true" Codebehind="ready_roster_detail.aspx.cs" AutoEventWireup="True" Inherits="ready_roster_detail.TWebForm_ready_roster_detail" %>
+<%@ Page language="c#" codebehind="ready_roster_detail.aspx.cs" AutoEventWireup="True" Inherits="ready_roster_detail.TWebForm_ready_roster_detail" %>
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit"%>
 <%@ Register TagPrefix="uc1" TagName="UserControl_precontent" Src="~/usercontrol/app/UserControl_precontent.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="UserControl_postcontent" Src="~/usercontrol/app/UserControl_postcontent.ascx" %>

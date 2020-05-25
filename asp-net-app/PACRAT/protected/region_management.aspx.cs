@@ -75,7 +75,7 @@ namespace region_management
       public string user_email_address;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
@@ -135,7 +135,7 @@ namespace region_management
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebForm_region_management_PreRender;
+      PreRender += TWebForm_region_management_PreRender;
       }
 
     private void InjectPersistentClientSideScript()

@@ -9,11 +9,11 @@ namespace Class_biz_scheduled_tasks
   public class TClass_biz_scheduled_tasks
     {
 
-    private TClass_biz_coned_offerings biz_coned_offerings;
-    private TClass_biz_old_analysis_of_region_by_years biz_old_analysis_of_region_by_years;
-    private TClass_biz_practitioners biz_practitioners;
-    private TClass_biz_teaching_entities biz_teaching_entities;
-    private Class_fs fs;
+    private readonly TClass_biz_coned_offerings biz_coned_offerings;
+    private readonly TClass_biz_old_analysis_of_region_by_years biz_old_analysis_of_region_by_years;
+    private readonly TClass_biz_practitioners biz_practitioners;
+    private readonly TClass_biz_teaching_entities biz_teaching_entities;
+    private readonly Class_fs fs;
 
     //Constructor  Create()
     public TClass_biz_scheduled_tasks() : base()

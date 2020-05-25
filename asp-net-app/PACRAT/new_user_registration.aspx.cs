@@ -7,22 +7,23 @@ using System.Web.UI;
 
 namespace new_user_registration
 {
-    public struct p_type
+  public partial class TWebForm_new_user_registration: ki_web_ui.page_class
     {
-        public TClass_biz_users biz_users;
-    } // end p_type
 
-    public partial class TWebForm_new_user_registration: ki_web_ui.page_class
-    {
-        private p_type p;
+    private struct p_type
+      {
+      public TClass_biz_users biz_users;
+      }
+
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+
         // / <summary>
         // / Required method for Designer support -- do not modify
         // / the contents of this method with the code editor.
         // / </summary>
         private void InitializeComponent()
         {
-            //this.Load += this.Page_Load;
-            this.PreRender += this.TWebForm_new_user_registration_PreRender;
+            PreRender += TWebForm_new_user_registration_PreRender;
         }
 
     private void InjectPersistentClientSideScript()

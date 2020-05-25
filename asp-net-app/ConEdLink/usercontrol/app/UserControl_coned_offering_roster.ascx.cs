@@ -23,7 +23,7 @@ namespace UserControl_coned_offering_roster
       public bool be_ok_to_config_coned_offering_rosters;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -236,8 +236,7 @@ namespace UserControl_coned_offering_roster
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_coned_offering_roster_PreRender;
+      PreRender += TWebUserControl_coned_offering_roster_PreRender;
       }
 
     private void TWebUserControl_coned_offering_roster_PreRender(object sender, System.EventArgs e)

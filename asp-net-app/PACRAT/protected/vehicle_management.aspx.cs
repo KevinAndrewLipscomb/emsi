@@ -16,7 +16,7 @@ namespace vehicle_management
       public TClass_msg_protected.vehicle_management incoming;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify
@@ -24,8 +24,7 @@ namespace vehicle_management
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebForm_vehicle_management_PreRender;
+      PreRender += TWebForm_vehicle_management_PreRender;
       }
 
     protected void Page_Load(object sender, System.EventArgs e)

@@ -34,7 +34,7 @@ namespace UserControl_practitioner_strike_team_detail
       public string practitioner_id;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     internal void Clear()
       {
@@ -453,8 +453,7 @@ namespace UserControl_practitioner_strike_team_detail
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_practitioner_strike_team_detail_PreRender;
+      PreRender += TWebUserControl_practitioner_strike_team_detail_PreRender;
       }
 
     private void TWebUserControl_practitioner_strike_team_detail_PreRender(object sender, System.EventArgs e)

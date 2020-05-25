@@ -33,7 +33,7 @@ namespace Global
         protected void Application_Start(object sender, EventArgs e)
         {
             // Establish an application-scoped object to allows synchronized control of nonreentrant spcchartnet code.
-            this.Application.Add("spcchartnet_avail", new AutoResetEvent(true));
+            Application.Add("spcchartnet_avail", new AutoResetEvent(true));
 
         }
 
@@ -54,15 +54,15 @@ namespace Global
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
-            if (this.Request.IsAuthenticated)
+            if (Request.IsAuthenticated)
             {
-                HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(this.User.Identity, new TClass_biz_user().Roles());
+                HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(User.Identity, new TClass_biz_user().Roles());
             }
         }
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            this.Server.Transfer("~/exception.aspx");
+            Server.Transfer("~/exception.aspx");
         }
 
         protected void Session_End(object sender, EventArgs e)

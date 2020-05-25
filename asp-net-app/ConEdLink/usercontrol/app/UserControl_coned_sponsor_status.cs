@@ -8,6 +8,7 @@ using System.Collections;
 
 using Class_biz_coned_sponsor_statuses;
 using UserControl_drop_down_date;
+
 namespace UserControl_coned_sponsor_status
 {
     // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~trivial~item.pas
@@ -206,8 +207,7 @@ namespace UserControl_coned_sponsor_status
         // / </summary>
         private void InitializeComponent()
         {
-            this.PreRender += this.TWebUserControl_coned_sponsor_status_PreRender;
-            //this.Load += this.Page_Load;
+            PreRender += TWebUserControl_coned_sponsor_status_PreRender;
         }
 
         private void TWebUserControl_coned_sponsor_status_PreRender(object sender, System.EventArgs e)

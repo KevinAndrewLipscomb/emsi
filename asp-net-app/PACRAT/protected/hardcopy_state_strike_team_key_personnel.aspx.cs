@@ -11,7 +11,7 @@ namespace hardcopy_state_strike_team_key_personnel
       {
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify

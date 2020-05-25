@@ -18,7 +18,7 @@ namespace Class_db_old_analysis_of_region_by_years
       public string id;
       }
 
-    private TClass_db_trail db_trail = null;
+    private readonly TClass_db_trail db_trail = null;
 
     public TClass_db_old_analysis_of_region_by_years() : base()
       {
@@ -30,7 +30,7 @@ namespace Class_db_old_analysis_of_region_by_years
       var concat_clause = "concat(IFNULL(region_code,'-'),'|',IFNULL(fiscal_year_ending,'-'),'|',IFNULL(practitioner_level_id,'-'))";
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select id"
         + " , CONVERT(" + concat_clause + " USING utf8) as spec"
@@ -38,8 +38,8 @@ namespace Class_db_old_analysis_of_region_by_years
         + " where " + concat_clause + " like '%" + partial_spec.ToUpper() + "%'"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -59,7 +59,7 @@ namespace Class_db_old_analysis_of_region_by_years
       )
       {
       Open();
-      ((target) as BaseDataList).DataSource = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select fiscal_year_ending"
         + " , num_classes"
@@ -72,8 +72,8 @@ namespace Class_db_old_analysis_of_region_by_years
         +   " and practitioner_level_id" + (practitioner_level_filter.Length > 0 ? " = '" + practitioner_level_filter + "'" : " is null")
         + " order by " + sort_order.Replace("%", (be_sort_order_ascending ? " asc" : " desc")),
         connection
-        )
-        .ExecuteReader();
+        );
+      ((target) as BaseDataList).DataSource = my_sql_command.ExecuteReader();
       ((target) as BaseDataList).DataBind();
       Close();
       }
@@ -82,15 +82,15 @@ namespace Class_db_old_analysis_of_region_by_years
       {
       Open();
       ((target) as ListControl).Items.Clear();
-      var dr = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "SELECT id"
         + " , CONVERT(concat(IFNULL(region_code,'-'),'|',IFNULL(fiscal_year_ending,'-'),'|',IFNULL(practitioner_level_id,'-')) USING utf8) as spec"
         + " FROM old_analysis_of_region_by_year"
         + " order by spec",
         connection
-        )
-        .ExecuteReader();
+        );
+      var dr = my_sql_command.ExecuteReader();
       while (dr.Read())
         {
         ((target) as ListControl).Items.Add(new ListItem(dr["spec"].ToString(), dr["id"].ToString()));
@@ -105,7 +105,8 @@ namespace Class_db_old_analysis_of_region_by_years
       Open();
       try
         {
-        new MySqlCommand(db_trail.Saved("delete from old_analysis_of_region_by_year where id = \"" + id + "\""), connection).ExecuteNonQuery();
+        using var my_sql_command = new MySqlCommand(db_trail.Saved("delete from old_analysis_of_region_by_year where id = \"" + id + "\""), connection);
+        my_sql_command.ExecuteNonQuery();
         }
       catch(System.Exception e)
         {
@@ -115,7 +116,7 @@ namespace Class_db_old_analysis_of_region_by_years
           }
         else
           {
-          throw e;
+          throw;
           }
         }
       Close();
@@ -144,7 +145,8 @@ namespace Class_db_old_analysis_of_region_by_years
       var result = false;
       //
       Open();
-      var dr = new MySqlCommand("select * from old_analysis_of_region_by_year where CAST(id AS CHAR) = \"" + id + "\"", connection).ExecuteReader();
+      using var my_sql_command = new MySqlCommand("select * from old_analysis_of_region_by_year where CAST(id AS CHAR) = \"" + id + "\"", connection);
+      var dr = my_sql_command.ExecuteReader();
       if (dr.Read())
         {
         region_code = dr["region_code"].ToString();
@@ -196,14 +198,14 @@ namespace Class_db_old_analysis_of_region_by_years
       Open();
       var dr =
         (
-        new MySqlCommand
+        using var my_sql_command = new MySqlCommand
           (
           "SELECT *"
           + " FROM old_analysis_of_region_by_year"
           + " where id = '" + id + "'",
           connection
-          )
-          .ExecuteReader()
+          );
+        my_sql_command.ExecuteReader()
         );
       dr.Read();
       var the_summary = new old_analysis_of_region_by_year_summary()

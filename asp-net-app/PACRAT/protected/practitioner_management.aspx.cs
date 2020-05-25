@@ -69,7 +69,7 @@ namespace practitioner_management
       public string user_email_address;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void AddPractitionerToRosterAndInitForNewSearch(ListItem list_item)
       {
@@ -123,7 +123,7 @@ namespace practitioner_management
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebForm_practitioner_management_PreRender;
+      PreRender += TWebForm_practitioner_management_PreRender;
       }
 
     private void InjectPersistentClientSideScript()

@@ -36,7 +36,7 @@ namespace UserControl_analysis_of_region_by_year
       public string sort_order;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void InjectPersistentClientSideScript()
       {
@@ -177,9 +177,9 @@ namespace UserControl_analysis_of_region_by_year
     // / </summary>
     private void InitializeComponent()
       {
-      this.DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(this.DataGrid_control_ItemDataBound);
-      this.DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(this.DataGrid_control_SortCommand);
-      this.PreRender += this.TWebUserControl_analysis_of_region_by_year_PreRender;
+      DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
+      DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(DataGrid_control_SortCommand);
+      PreRender += TWebUserControl_analysis_of_region_by_year_PreRender;
       }
 
     private void TWebUserControl_analysis_of_region_by_year_PreRender(object sender, System.EventArgs e)

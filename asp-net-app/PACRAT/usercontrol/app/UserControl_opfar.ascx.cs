@@ -43,7 +43,7 @@ namespace UserControl_opfar
       public string operational_period_id;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     protected void Page_Load(object sender, System.EventArgs e)
       {

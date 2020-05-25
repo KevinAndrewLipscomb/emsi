@@ -7,7 +7,7 @@ namespace Class_biz_role_member_map_logs
   {
   public class TClass_biz_role_member_map_logs
     {
-    private TClass_db_role_member_map_logs db_role_member_map_logs = null;
+    private readonly TClass_db_role_member_map_logs db_role_member_map_logs = null;
 
     public TClass_biz_role_member_map_logs() : base()
       {

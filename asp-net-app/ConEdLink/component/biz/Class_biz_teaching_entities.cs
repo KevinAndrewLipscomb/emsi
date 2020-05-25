@@ -15,7 +15,7 @@ namespace Class_biz_teaching_entities
   {
   public class TClass_biz_teaching_entities
     {
-    private TClass_db_teaching_entities db_teaching_entities = null;
+    private readonly TClass_db_teaching_entities db_teaching_entities = null;
     private Class_ss_emsams ss_emsams = null;
 
     public TClass_biz_teaching_entities() : base()

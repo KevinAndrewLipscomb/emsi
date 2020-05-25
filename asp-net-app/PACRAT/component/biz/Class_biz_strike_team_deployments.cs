@@ -28,16 +28,16 @@ namespace Class_biz_strike_team_deployments
   public class TClass_biz_strike_team_deployments
     {
 
-    private TClass_biz_notifications biz_notifications = null;
-    private TClass_biz_role_member_map biz_role_member_map = null;
-    private TClass_biz_services biz_services = null;
-    private TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments = null;
-    private TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs = null;
-    private TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members = null;
-    private TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods = null;
-    private TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles = null;
-    private TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
-    private TClass_db_strike_team_deployments db_strike_team_deployments = null;
+    private readonly TClass_biz_notifications biz_notifications = null;
+    private readonly TClass_biz_role_member_map biz_role_member_map = null;
+    private readonly TClass_biz_services biz_services = null;
+    private readonly TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments = null;
+    private readonly TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs = null;
+    private readonly TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members = null;
+    private readonly TClass_biz_strike_team_deployment_operational_periods biz_strike_team_deployment_operational_periods = null;
+    private readonly TClass_biz_strike_team_deployment_vehicles biz_strike_team_deployment_vehicles = null;
+    private readonly TClass_db_practitioner_strike_team_details db_practitioner_strike_team_details = null;
+    private readonly TClass_db_strike_team_deployments db_strike_team_deployments = null;
 
     public TClass_biz_strike_team_deployments() : base()
       {

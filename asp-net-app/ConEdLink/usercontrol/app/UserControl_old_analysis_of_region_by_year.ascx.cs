@@ -26,7 +26,7 @@ namespace UserControl_old_analysis_of_region_by_year
       public object summary;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -276,8 +276,7 @@ namespace UserControl_old_analysis_of_region_by_year
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_old_analysis_of_region_by_year_PreRender;
+      PreRender += TWebUserControl_old_analysis_of_region_by_year_PreRender;
       }
 
     private void TWebUserControl_old_analysis_of_region_by_year_PreRender(object sender, System.EventArgs e)
@@ -295,7 +294,7 @@ namespace UserControl_old_analysis_of_region_by_year
       {
       if (Page.IsValid)
         {
-        if (TextBox_fiscal_year_ending.Text != k.EMPTY)
+        if (TextBox_fiscal_year_ending.Text.Length > 0)
           {
           fiscal_year_ending = DateTime.Parse(k.Safe(TextBox_fiscal_year_ending.Text,k.safe_hint_type.DATE_TIME));
           }

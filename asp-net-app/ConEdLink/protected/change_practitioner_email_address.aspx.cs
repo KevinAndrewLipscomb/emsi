@@ -22,7 +22,7 @@ namespace change_practitioner_email_address
       public TClass_msg_protected.change_practitioner_email_address incoming;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     // / <summary>
     // / Required method for Designer support -- do not modify

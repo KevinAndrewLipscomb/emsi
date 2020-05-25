@@ -37,7 +37,7 @@ namespace UserControl_strike_team_deployment_operational_period
       public object summary;
       } // end p_type
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void Clear()
       {
@@ -340,8 +340,7 @@ namespace UserControl_strike_team_deployment_operational_period
     // / </summary>
     private void InitializeComponent()
       {
-      //this.Load += this.Page_Load;
-      this.PreRender += this.TWebUserControl_strike_team_deployment_operational_periods_PreRender;
+      PreRender += TWebUserControl_strike_team_deployment_operational_periods_PreRender;
       }
 
     private void TWebUserControl_strike_team_deployment_operational_periods_PreRender(object sender, System.EventArgs e)
@@ -541,7 +540,7 @@ namespace UserControl_strike_team_deployment_operational_period
         start:UserControl_drop_down_datetime_start.selectedvalue,
         end:UserControl_drop_down_datetime_end.selectedvalue
         );
-      args.IsValid = (id_with_competing_times == k.EMPTY);
+      args.IsValid = (id_with_competing_times.Length == 0);
       }
 
     protected void DropDownList_kind_SelectedIndexChanged(object sender, EventArgs e)
