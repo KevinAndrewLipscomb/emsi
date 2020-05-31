@@ -5,9 +5,7 @@ using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployments
   {
@@ -15,7 +13,7 @@ namespace Class_db_strike_team_deployments
   public class TClass_db_strike_team_deployments: TClass_db
     {
 
-    private class Static
+    private static class Static
       {
       internal const string CATALOG_CMDTEXT = k.EMPTY
       + "select strike_team_deployment.id as id"
@@ -43,18 +41,19 @@ namespace Class_db_strike_team_deployments
       db_trail = new TClass_db_trail();
       }
 
-    internal bool BeAllConcludedWithinScope(string member_id)
+    internal bool BeAllConcludedWithinScope()
       {
       var be_all_concluded_within_scope = false;
       Open();
-      be_all_concluded_within_scope = "1" == using var my_sql_command = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         //
         // By bookkending the equality test with the IFNULL(~,1) clause, we cover the case where the catalog is empty.
         //
         "select IFNULL(sum(status = 'Concluded') = count(*),1) from ("+   Static.CATALOG_CMDTEXT + " ) as catalog",
         connection
-        ); my_sql_command.ExecuteScalar().ToString();
+        ); 
+      be_all_concluded_within_scope = ("1" == my_sql_command.ExecuteScalar().ToString());
       Close();
       return be_all_concluded_within_scope;
       }
@@ -95,10 +94,12 @@ namespace Class_db_strike_team_deployments
 
     internal void BindBaseDataList
       (
+      #pragma warning disable CA1801 // Remove unused parameter
       string member_id,
       string sort_order,
       bool be_sort_order_ascending,
       object target
+      #pragma warning restore CA1801 // Remove unused parameter
       )
       {
       Open();
@@ -249,21 +250,18 @@ namespace Class_db_strike_team_deployments
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT strike_team_deployment.creation_date as creation_date"
-          + " , strike_team_deployment.name as name"
-          + " , member_policy_id"
-          + " , strike_team_deployment_member_policy.description as member_policy_description"
-          + " FROM strike_team_deployment"
-          +   " join strike_team_deployment_member_policy on (strike_team_deployment_member_policy.id=strike_team_deployment.member_policy_id)"
-          + " where strike_team_deployment.id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT strike_team_deployment.creation_date as creation_date"
+        + " , strike_team_deployment.name as name"
+        + " , member_policy_id"
+        + " , strike_team_deployment_member_policy.description as member_policy_description"
+        + " FROM strike_team_deployment"
+        +   " join strike_team_deployment_member_policy on (strike_team_deployment_member_policy.id=strike_team_deployment.member_policy_id)"
+        + " where strike_team_deployment.id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new strike_team_deployment_summary()
         {

@@ -1,9 +1,8 @@
 using kix;
-using System;
 
 namespace Class_msg_protected
   {
-  public class TClass_msg_protected
+  internal class TClass_msg_protected
     {
     internal class change_practitioner_email_address
       {

@@ -34,7 +34,7 @@ namespace Class_db_coned_sponsor_users
           object member_id_obj;
           //
           Open();
-          using var my_sql_command = new MySqlCommand
+          using var my_sql_command_1 = new MySqlCommand
             (
             "select id"
             + " from member"
@@ -46,11 +46,11 @@ namespace Class_db_coned_sponsor_users
             +   " and gender_id = '" + gender_id + "'",
             connection
             );
-          member_id_obj = my_sql_command.ExecuteScalar();
+          member_id_obj = my_sql_command_1.ExecuteScalar();
           if (member_id_obj != null)
             {
-            using var my_sql_command = new MySqlCommand("insert user_member_map set user_id = '" + id + "' , member_id = '" + member_id_obj.ToString() + "' on duplicate key update user_id = '" + id + "'",connection);
-            my_sql_command.ExecuteNonQuery();
+            using var my_sql_command_2 = new MySqlCommand("insert user_member_map set user_id = '" + id + "' , member_id = '" + member_id_obj.ToString() + "' on duplicate key update user_id = '" + id + "'",connection);
+            my_sql_command_2.ExecuteNonQuery();
             accept_as_member = true;
             }
           Close();

@@ -21,38 +21,10 @@ using System.Web.UI.WebControls;
 
 namespace coned_offering_roster
   {
-  public struct p_type
-    {
-    public bool be_ceu_breakdown_valid;
-    public bool be_noncurrent_practitioners_on_roster;
-    public bool be_ok_to_edit_roster;
-    public bool be_sort_order_ascending;
-    public TClass_biz_accounts biz_accounts;
-    public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
-    public TClass_biz_coned_offerings biz_coned_offerings;
-    public TClass_biz_counties biz_counties;
-    public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
-    public TClass_biz_practitioners biz_practitioners;
-    public TClass_biz_regions biz_regions;
-    public TClass_biz_teaching_entities biz_teaching_entities;
-    public TClass_biz_user biz_user;
-    public string coned_offering_id;
-    public bool do_prevent_adding_practitioner_to_roster;
-    public string eval_summary_mode_description;
-    public TClass_msg_protected.coned_offering_roster incoming;
-    public k.decimal_nonnegative length;
-    public k.int_nonnegative num_attendees;
-    public k.int_nonnegative num_attendees_with_known_birth_dates;
-    public string other_roster_id;
-    public string region_code;
-    public ArrayList roster_id_arraylist;
-    public string sort_order;
-    public string user_email_address;
-    }
-
   public partial class TWebForm_coned_offering_roster: ki_web_ui.page_class
     {
-    private class coned_offering_roster_Static
+
+    private class Static
       {
       public const int TCI_ID = 0;
       public const int TCI_SELECT = 1;
@@ -73,6 +45,35 @@ namespace coned_offering_roster
       public const int TCI_INSTRUCTOR_HOURS = 16;
       public const int TCI_EDIT_UPDATE_CANCEL = 17;
       public const int TCI_STATUS_DESCRIPTION = 18;
+      }
+
+    private struct p_type
+      {
+      public bool be_ceu_breakdown_valid;
+      public bool be_noncurrent_practitioners_on_roster;
+      public bool be_ok_to_edit_roster;
+      public bool be_sort_order_ascending;
+      public TClass_biz_accounts biz_accounts;
+      public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
+      public TClass_biz_coned_offerings biz_coned_offerings;
+      public TClass_biz_counties biz_counties;
+      public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
+      public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_regions biz_regions;
+      public TClass_biz_teaching_entities biz_teaching_entities;
+      public TClass_biz_user biz_user;
+      public string coned_offering_id;
+      public bool do_prevent_adding_practitioner_to_roster;
+      public string eval_summary_mode_description;
+      public TClass_msg_protected.coned_offering_roster incoming;
+      public k.decimal_nonnegative length;
+      public k.int_nonnegative num_attendees;
+      public k.int_nonnegative num_attendees_with_known_birth_dates;
+      public string other_roster_id;
+      public string region_code;
+      public ArrayList roster_id_arraylist;
+      public string sort_order;
+      public string user_email_address;
       }
 
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
@@ -99,7 +100,7 @@ namespace coned_offering_roster
       p.be_noncurrent_practitioners_on_roster = false;
       p.num_attendees.val = 0;
       p.num_attendees_with_known_birth_dates.val = 0;
-      DataGrid_control.Columns[coned_offering_roster_Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
+      DataGrid_control.Columns[Static.TCI_DELETE].Visible = p.be_ok_to_edit_roster;
       p.biz_coned_offering_rosters.BindBaseDataListByClassId(p.sort_order,p.be_sort_order_ascending,DataGrid_control,p.coned_offering_id);
       Button_mark_class_canceled.Visible = (p.num_attendees.val == 0);
       Button_mark_class_ran_no_ce.Visible = (p.num_attendees.val == 0);
@@ -251,16 +252,18 @@ namespace coned_offering_roster
       p.roster_id_arraylist.Clear();
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        if ((DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+        if ((DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.roster_id_arraylist.Add(k.Safe(DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+          p.roster_id_arraylist.Add(k.Safe(DataGrid_control.Items[i.val].Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
           }
         }
       if (p.roster_id_arraylist.Count > 0)
         {
-        var hash_table = new Hashtable();
-        hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
-        hash_table["coned_offering_roster_ids"] = p.roster_id_arraylist;
+        var hash_table = new Hashtable
+          {
+          ["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary),
+          ["coned_offering_roster_ids"] = p.roster_id_arraylist
+          };
         HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_package.aspx?" + ShieldedQueryStringOfHashtable(hash_table,do_compress:true);
         }
       }
@@ -387,19 +390,19 @@ namespace coned_offering_roster
 
     protected void Button_mark_class_canceled_Click(object sender, EventArgs e)
       {
-      p.biz_coned_offerings.RequestCancellation(p.incoming.summary,p.region_code);
+      p.biz_coned_offerings.RequestCancellation(p.incoming.summary);
       BackTrack();
       }
 
     protected void Button_mark_class_ran_no_ce_Click(object sender, EventArgs e)
       {
-      p.biz_coned_offerings.RequestRanNoCe(p.incoming.summary,p.region_code);
+      p.biz_coned_offerings.RequestRanNoCe(p.incoming.summary);
       BackTrack();
       }
 
     protected void Button_mark_roster_already_submitted_Click(object sender, EventArgs e)
       {
-      p.biz_coned_offerings.MarkRosterAlreadySubmitted(p.incoming.summary,p.region_code);
+      p.biz_coned_offerings.MarkRosterAlreadySubmitted(p.incoming.summary);
       BackTrack();
       }
 
@@ -411,8 +414,8 @@ namespace coned_offering_roster
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        email_address_text = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-        distribution_list += ((email_address_text != "DESIRED") && (tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
+        email_address_text = k.Safe((tcc[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+        distribution_list += ((email_address_text != "DESIRED") && (tcc[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked ? email_address_text + k.COMMA : k.EMPTY);
         }
       if (distribution_list.Length > 0)
         {
@@ -441,7 +444,7 @@ namespace coned_offering_roster
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       SetHyperlinkPrintCompletionDocumentation();
       }
@@ -486,7 +489,7 @@ namespace coned_offering_roster
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.biz_coned_offering_rosters.Delete(k.Safe(e.Item.Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.biz_coned_offering_rosters.Delete(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
         DataGrid_control.EditItemIndex = -1;
         Bind();
         SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
@@ -505,14 +508,14 @@ namespace coned_offering_roster
       LinkButton link_button;
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        link_button = ((e.Item.Cells[coned_offering_roster_Static.TCI_DELETE].Controls[0]) as LinkButton);
+        link_button = ((e.Item.Cells[Static.TCI_DELETE].Controls[0]) as LinkButton);
         link_button.Text = k.ExpandTildePath(link_button.Text);
         link_button.ToolTip = "Delete";
         //
-        var edit_update_cancel_controls = e.Item.Cells[coned_offering_roster_Static.TCI_EDIT_UPDATE_CANCEL].Controls;
+        var edit_update_cancel_controls = e.Item.Cells[Static.TCI_EDIT_UPDATE_CANCEL].Controls;
         if (edit_update_cancel_controls.Count == 1)
           {
-          var label_dob = (e.Item.Cells[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label);
+          var label_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("Label_dob") as Label);
           if (label_dob.Text == "REQUIRED")
             {
             label_dob.Font.Bold = true;
@@ -523,15 +526,15 @@ namespace coned_offering_roster
             p.num_attendees_with_known_birth_dates.val++;
             }
           //
-          var label_email_address = (e.Item.Cells[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
+          var label_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label);
           if (label_email_address.Text == "DESIRED")
             {
             label_email_address.ForeColor = Color.DarkOrange;
             }
           //
-          if (e.Item.Cells[coned_offering_roster_Static.TCI_BE_INSTRUCTOR].Text == "1")
+          if (e.Item.Cells[Static.TCI_BE_INSTRUCTOR].Text == "1")
             {
-            var label_instructor_hours = (e.Item.Cells[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label);
+            var label_instructor_hours = (e.Item.Cells[Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label);
             label_instructor_hours.Visible = true;
             if (label_instructor_hours.Text == "none")
               {
@@ -553,25 +556,25 @@ namespace coned_offering_roster
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Cancel edit";
           //
-          var text_box_dob = (e.Item.Cells[coned_offering_roster_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
+          var text_box_dob = (e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox);
           if (text_box_dob.Text == "REQUIRED")
             {
             text_box_dob.Text = k.EMPTY;
             }
-          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[coned_offering_roster_Static.TCI_BE_DOB_CONFIRMED].Text == "0");
+          text_box_dob.Enabled = p.be_ok_to_edit_roster && (e.Item.Cells[Static.TCI_BE_DOB_CONFIRMED].Text == "0");
           //
-          var drop_down_list_county = e.Item.Cells[coned_offering_roster_Static.TCI_COUNTY_NAME].FindControl("DropDownList_county") as DropDownList;
-          p.biz_counties.BindDirectToListControl(drop_down_list_county,"-- County --",e.Item.Cells[coned_offering_roster_Static.TCI_COUNTY_CODE].Text,k.EMPTY);
+          var drop_down_list_county = e.Item.Cells[Static.TCI_COUNTY_NAME].FindControl("DropDownList_county") as DropDownList;
+          p.biz_counties.BindDirectToListControl(drop_down_list_county,"-- County --",e.Item.Cells[Static.TCI_COUNTY_CODE].Text,k.EMPTY);
           //
-          var text_box_email_address = (e.Item.Cells[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
+          var text_box_email_address = (e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox);
           if (text_box_email_address.Text == "DESIRED")
             {
             text_box_email_address.Text = k.EMPTY;
             }
           //
-          if (e.Item.Cells[coned_offering_roster_Static.TCI_BE_INSTRUCTOR].Text == "1")
+          if (e.Item.Cells[Static.TCI_BE_INSTRUCTOR].Text == "1")
             {
-            var text_box_instructor_hours = (e.Item.Cells[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("TextBox_instructor_hours") as TextBox);
+            var text_box_instructor_hours = (e.Item.Cells[Static.TCI_INSTRUCTOR_HOURS].FindControl("TextBox_instructor_hours") as TextBox);
             text_box_instructor_hours.Visible = true;
             if (text_box_instructor_hours.Text == "none")
               {
@@ -580,7 +583,7 @@ namespace coned_offering_roster
             text_box_instructor_hours.Enabled = p.be_ok_to_edit_roster;
             }
           }
-        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[coned_offering_roster_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
@@ -621,20 +624,20 @@ namespace coned_offering_roster
       {
       if (IsValid)
         {
-        var practitioner_id = k.Safe(e.Item.Cells[coned_offering_roster_Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
+        var practitioner_id = k.Safe(e.Item.Cells[Static.TCI_PRACTITIONER_ID].Text,k.safe_hint_type.NUM);
         p.biz_coned_offering_rosters.Set
           (
-          k.Safe(e.Item.Cells[coned_offering_roster_Static.TCI_ID].Text,k.safe_hint_type.NUM),
+          k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM),
           p.coned_offering_id,
           practitioner_id,
-          k.Safe((e.Item.Cells[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("TextBox_instructor_hours") as TextBox).Text.Replace("#.#",k.EMPTY),k.safe_hint_type.REAL_NUM)
+          k.Safe((e.Item.Cells[Static.TCI_INSTRUCTOR_HOURS].FindControl("TextBox_instructor_hours") as TextBox).Text.Replace("#.#",k.EMPTY),k.safe_hint_type.REAL_NUM)
           );
         p.biz_practitioners.SetFieldsNotImportedFromState
           (
           practitioner_id,
-          DateTime.Parse(k.Safe((e.Item.Cells[coned_offering_roster_Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
-          k.Safe((e.Item.Cells[coned_offering_roster_Static.TCI_COUNTY_CODE].FindControl("DropDownList_county") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
-          k.Safe((e.Item.Cells[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
+          DateTime.Parse(k.Safe((e.Item.Cells[Static.TCI_DOB].FindControl("TextBox_dob") as TextBox).Text,k.safe_hint_type.DATE_TIME)),
+          k.Safe((e.Item.Cells[Static.TCI_COUNTY_CODE].FindControl("DropDownList_county") as DropDownList).SelectedValue,k.safe_hint_type.NUM),
+          k.Safe((e.Item.Cells[Static.TCI_EMAIL_ADDRESS].FindControl("TextBox_email_address") as TextBox).Text.Replace("user@domain.tld",k.EMPTY),k.safe_hint_type.EMAIL_ADDRESS)
           );
         DataGrid_control.EditItemIndex = -1;
         Bind();
@@ -661,18 +664,18 @@ namespace coned_offering_roster
         for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
           {
           tcc = DataGrid_control.Items[i.val].Cells;
-          email_address_text = k.Safe((tcc[coned_offering_roster_Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
-          if ((email_address_text != "DESIRED") && (tcc[coned_offering_roster_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+          email_address_text = k.Safe((tcc[Static.TCI_EMAIL_ADDRESS].FindControl("Label_email_address") as Label).Text,k.safe_hint_type.EMAIL_ADDRESS);
+          if ((email_address_text != "DESIRED") && (tcc[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
             {
             var attendance_rec = new TClass_biz_coned_offering_rosters.attendance_rec_class();
-            attendance_rec.certification_number = k.Safe(tcc[coned_offering_roster_Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
-            attendance_rec.dob = k.Safe((tcc[coned_offering_roster_Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
-            attendance_rec.first_name = k.Safe(tcc[coned_offering_roster_Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-            attendance_rec.last_name = k.Safe(tcc[coned_offering_roster_Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
-            attendance_rec.level_emsrs_code = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
-            attendance_rec.level_short_description = k.Safe(tcc[coned_offering_roster_Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
-            attendance_rec.middle_initial = k.Safe(tcc[coned_offering_roster_Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
-            attendance_rec.instructor_hours = k.Safe((tcc[coned_offering_roster_Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label).Text,k.safe_hint_type.REAL_NUM);
+            attendance_rec.certification_number = k.Safe(tcc[Static.TCI_CERT_NUM].Text,k.safe_hint_type.NUM);
+            attendance_rec.dob = k.Safe((tcc[Static.TCI_DOB].FindControl("Label_dob") as Label).Text,k.safe_hint_type.DATE_TIME);
+            attendance_rec.first_name = k.Safe(tcc[Static.TCI_FIRST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+            attendance_rec.last_name = k.Safe(tcc[Static.TCI_LAST_NAME].Text,k.safe_hint_type.HUMAN_NAME);
+            attendance_rec.level_emsrs_code = k.Safe(tcc[Static.TCI_LEVEL_EMSRS_CODE].Text,k.safe_hint_type.NUM);
+            attendance_rec.level_short_description = k.Safe(tcc[Static.TCI_LEVEL].Text,k.safe_hint_type.HYPHENATED_ALPHANUM);
+            attendance_rec.middle_initial = k.Safe(tcc[Static.TCI_MIDDLE_INITIAL].Text,k.safe_hint_type.ALPHA);
+            attendance_rec.instructor_hours = k.Safe((tcc[Static.TCI_INSTRUCTOR_HOURS].FindControl("Label_instructor_hours") as Label).Text,k.safe_hint_type.REAL_NUM);
             attendance_rec.email_address = email_address_text;
             attendance_rec_q.Enqueue(attendance_rec);
             }
@@ -781,7 +784,7 @@ namespace coned_offering_roster
         RadioButtonList_input_method.Items.FindByValue("Copy").Enabled = be_ok_to_input_copy;
         p.biz_coned_offerings.BindDirectToListControlForCopy(p.coned_offering_id,DropDownList_other_roster);
         Panel_input_method.Visible = (be_ok_to_input_batch || be_ok_to_input_copy);
-        var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code,k.EMPTY);
+        var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         InitForNewSearch();
@@ -834,8 +837,10 @@ namespace coned_offering_roster
         Button_close_and_submit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         CustomValidator_close_class_and_submit_for_credit_2.Visible = (p.eval_summary_mode_description != "Hidden");
         //
-        var hash_table = new Hashtable();
-        hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        var hash_table = new Hashtable
+          {
+          ["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary)
+          };
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();
@@ -859,8 +864,10 @@ namespace coned_offering_roster
         Literal_phrn_other_hours.Text = p.biz_coned_offerings.PhrnOtherHoursOf(p.incoming.summary);
         //
         HyperLink_print_template_completion_document_for_non_pa_practitioner.NavigateUrl = k.EMPTY;
-        var template_completion_document_for_non_pa_practitioner_hash_table = new Hashtable();
-        template_completion_document_for_non_pa_practitioner_hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        var template_completion_document_for_non_pa_practitioner_hash_table = new Hashtable
+          {
+          ["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary)
+          };
         HyperLink_print_template_completion_document_for_non_pa_practitioner.NavigateUrl = k.EMPTY
         + "~/protected/training_certificate_package.aspx?" + ShieldedQueryStringOfHashtable(hash_table:template_completion_document_for_non_pa_practitioner_hash_table,do_compress:true);
         }
@@ -978,7 +985,12 @@ namespace coned_offering_roster
       UpdatePanel_attendees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
-      p.biz_practitioners.BindDirectToListControlForRoster(ListBox_practitioner,p.region_code,practitioner,new k.int_positive(12));
+      p.biz_practitioners.BindDirectToListControlForRoster
+        (
+        target:ListBox_practitioner,
+        starting_with:practitioner,
+        limit:new k.int_positive(12)
+        );
       if (practitioner.Length > 0)
         {
         if (ListBox_practitioner.Items.Count > 0)

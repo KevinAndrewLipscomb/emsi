@@ -9,7 +9,8 @@ namespace UserControl_strike_team_deployment_log
   {
   public partial class TWebUserControl_strike_team_deployment_log: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_strike_team_deployment_log_Static
+
+    private static class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -193,14 +194,14 @@ namespace UserControl_strike_team_deployment_log
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_strike_team_deployment_log_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
           //
           p.num_strike_team_deployment_logs++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_strike_team_deployment_log_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 

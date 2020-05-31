@@ -7,17 +7,16 @@ using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace UserControl_practitioner_coned_detail
   {
   public partial class TWebUserControl_practitioner_coned_detail: ki_web_ui.usercontrol_class
     {
-    public class UserControl_practitioner_coned_detail_Static
+
+    private static class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -228,7 +227,7 @@ namespace UserControl_practitioner_coned_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_coned_offering_detail.summary = p.biz_coned_offerings.Summary(k.Safe(e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.msg_protected_coned_offering_detail.summary = p.biz_coned_offerings.Summary(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
         MessageDropCrumbAndTransferTo(p.msg_protected_coned_offering_detail,"protected","coned_offering_detail");
         }
       }
@@ -240,11 +239,11 @@ namespace UserControl_practitioner_coned_detail
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_CLASS_NUMBER].Text = p.biz_coned_offerings.StandardSafeRenditionOf(e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_CLASS_NUMBER].Text);
+          e.Item.Cells[Static.TCI_CLASS_NUMBER].Text = p.biz_coned_offerings.StandardSafeRenditionOf(e.Item.Cells[Static.TCI_CLASS_NUMBER].Text);
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
           //
@@ -259,7 +258,7 @@ namespace UserControl_practitioner_coned_detail
         }
       else
         {
-        e.Item.Cells[UserControl_practitioner_coned_detail_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
@@ -280,8 +279,8 @@ namespace UserControl_practitioner_coned_detail
 
     private void Bind()
       {
-      DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SELECT].Visible = !p.be_user_coned_sponsor;
-      DataGrid_control.Columns[UserControl_practitioner_coned_detail_Static.TCI_SPONSOR].Visible = !p.be_user_coned_sponsor;
+      DataGrid_control.Columns[Static.TCI_SELECT].Visible = !p.be_user_coned_sponsor;
+      DataGrid_control.Columns[Static.TCI_SPONSOR].Visible = !p.be_user_coned_sponsor;
       p.biz_coned_offerings.BindBaseDataListPractitionerConedDetail
         (
         practitioner_id:p.practitioner_id,
@@ -317,15 +316,14 @@ namespace UserControl_practitioner_coned_detail
       p.roster_id_arraylist.Clear();
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        if ((DataGrid_control.Items[i.val].Cells[UserControl_practitioner_coned_detail_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+        if ((DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.roster_id_arraylist.Add(k.Safe(DataGrid_control.Items[i.val].Cells[UserControl_practitioner_coned_detail_Static.TCI_ROSTER_ID].Text,k.safe_hint_type.NUM));
+          p.roster_id_arraylist.Add(k.Safe(DataGrid_control.Items[i.val].Cells[Static.TCI_ROSTER_ID].Text,k.safe_hint_type.NUM));
           }
         }
       if (p.roster_id_arraylist.Count > 0)
         {
-        var hash_table = new Hashtable();
-        hash_table["coned_offering_roster_ids"] = p.roster_id_arraylist;
+        var hash_table = new Hashtable {["coned_offering_roster_ids"] = p.roster_id_arraylist};
         p.shielded_query_string_of_hashtable = ShieldedQueryStringOfHashtable(hash_table);
         HyperLink_print_completion_documentation.NavigateUrl = "~/protected/training_certificate_legacy.aspx?" + p.shielded_query_string_of_hashtable;
         }
@@ -335,7 +333,7 @@ namespace UserControl_practitioner_coned_detail
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[UserControl_practitioner_coned_detail_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       SetHyperlinkPrintCompletionDocumentation();
       }

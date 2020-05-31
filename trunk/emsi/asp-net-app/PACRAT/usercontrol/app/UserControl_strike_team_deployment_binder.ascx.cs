@@ -53,7 +53,7 @@ namespace UserControl_strike_team_deployment_binder
       (
       #pragma warning disable CA1801 // Remove unused parameter
       bool be_fresh_control_required,
-      string target
+      string target = k.EMPTY
       #pragma warning restore CA1801 // Remove unused parameter
       )
       {
@@ -79,7 +79,12 @@ namespace UserControl_strike_team_deployment_binder
         {
         var c = ((TWebUserControl_strike_team_deployment_agreements)(LoadControl("~/usercontrol/app/UserControl_strike_team_deployment_agreements.ascx")));
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_agreements",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
-        c.Set(p.deployment_id,p.service_strike_team_management_footprint,p.be_ok_to_config_strike_team_deployments,p.be_more_than_examiner);
+        c.Set
+          (
+          deployment_id:p.deployment_id,
+          service_strike_team_management_footprint:p.service_strike_team_management_footprint,
+          be_more_than_examiner:p.be_more_than_examiner
+          );
         }
       else if (p.tab_index == Static.TSSI_LOG)
         {
@@ -93,10 +98,6 @@ namespace UserControl_strike_team_deployment_binder
         p.content_id = AddIdentifiedControlToPlaceHolder(c,"UserControl_strike_team_deployment_snapshot",PlaceHolder_content,(be_fresh_control_required ? InstanceId() : k.EMPTY));
         c.Set(p.deployment_id,p.service_strike_team_management_footprint);
         }
-      }
-    private void FillPlaceHolder(bool be_fresh_control_required)
-      {
-      FillPlaceHolder(be_fresh_control_required,k.EMPTY);
       }
 
     // / <summary>

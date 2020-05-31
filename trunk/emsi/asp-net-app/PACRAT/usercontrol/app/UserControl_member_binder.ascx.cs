@@ -21,7 +21,7 @@ namespace UserControl_member_binder
     //
     //--
 
-    public static class Static
+    private static class Static
       {
       public const int TSSI_MEMBER_PROFILE = 0;
       public const int TSSI_PREPARATION = 1;
@@ -152,7 +152,7 @@ namespace UserControl_member_binder
         p.be_ok_to_see_all_strike_team_data = p.biz_privileges.HasForAnyScope(p.user_member_id,"see-all-strike-team-data");
         if (p.be_ok_to_config_strike_team_state || p.be_ok_to_config_strike_team_region || p.be_ok_to_config_strike_team_service || p.be_ok_to_see_all_strike_team_data)
           {
-          if (p.biz_strike_team_deployments.BeAllConcludedWithinScope(p.user_member_id))
+          if (p.biz_strike_team_deployments.BeAllConcludedWithinScope())
             {
             p.tab_index = Static.TSSI_PREPARATION;
             }

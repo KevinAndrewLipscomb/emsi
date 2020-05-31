@@ -1,7 +1,7 @@
 Member added to <application_name/>: <last_name/>, <first_name/>
 This is an automatic notification from <application_name/>.
 
-<actor/> has added a NON-PENNSYLVANIA-PRACTITIONER into <application_name/> as follows:
+<actor/> has added a NON-PENNSYLVANIA-PRACTITIONER into <application_name/>, or has not supplied a certification number for a Pennsylvania practitioner.  Please be aware that <application_name/> will not be able to validate this individual against the Pennsylvania EMS Registry:
 
    First name:
       <first_name/>

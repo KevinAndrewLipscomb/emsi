@@ -263,7 +263,6 @@ namespace UserControl_class_catalog
       DataGrid_control.Columns[UserControl_class_catalog_Static.TCI_IN_PROCESS].Visible = !new ArrayList() {"InProcess","ClosedLastThreeYears"}.Contains(p.range);
       p.biz_coned_offerings.BindClassCatalog
         (
-        region_code:Session["region_code"].ToString(),
         coned_sponsor_user_id:Session["coned_sponsor_user_id"].ToString(),
         range:p.range,
         sort_order:p.sort_order,

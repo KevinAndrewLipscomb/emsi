@@ -12,6 +12,7 @@ using kix;
 using System;
 using System.Collections;
 using System.Configuration;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace UserControl_operational_period_detail
@@ -70,8 +71,6 @@ namespace UserControl_operational_period_detail
       public TClass_biz_user biz_user;
       public string deployment_id;
       public string digest_sort_order;
-      public string distribution_list_email;
-      public string distribution_list_sms;
       public kind_enum kind;
       public bool may_add_mappings;
       public k.int_nonnegative num_digest_items;
@@ -83,7 +82,14 @@ namespace UserControl_operational_period_detail
       public string user_target_sms;
       }
 
+    private struct v_type
+      {
+      public StringBuilder distribution_list_email;
+      public StringBuilder distribution_list_sms;
+      }
+
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+    private v_type v; // Volatile instance Variable container
 
     private void Bind()
       {
@@ -147,24 +153,25 @@ namespace UserControl_operational_period_detail
 
     private void BuildDistributionListAndRegisterPostBackControls()
       {
-      p.distribution_list_email = k.EMPTY;
-      p.distribution_list_sms = k.EMPTY;
+      v.distribution_list_email.Clear();
+      v.distribution_list_sms.Clear();
       TableCellCollection tcc;
       for (var i = new k.subtype<int>(0, DataGrid_digest.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_digest.Items[i.val].Cells;
         if ((tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          //p.distribution_list_email += tcc[UserControl_operational_period_detail_Static.DIGEST_CI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
-          p.distribution_list_sms += (tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          //v.distribution_list_email.Append(k.COMMA_SPACE);
+          //v.distribution_list_email.Append(tcc[UserControl_operational_period_detail_Static.DIGEST_CI_EMAIL_ADDRESS].Text);
+          v.distribution_list_sms.Append((k.COMMA_SPACE + tcc[UserControl_operational_period_detail_Static.DIGEST_CI_SMS_TARGET].Text).Replace(",&nbsp;",k.EMPTY));
           }
         //
         // Calls to ScriptManager.GetCurrent(Page).RegisterPostBackControl() from DataGrid_~_ItemDataBound go here.
         //
         }
-      //p.distribution_list_email = p.distribution_list_email.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
-      p.distribution_list_sms = p.distribution_list_sms.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
-      Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms);
+      //if (v.distribution_list_email.Length > 0) v.distribution_list_email.Remove(0,2); // .TrimStart(k.COMMA_SPACE)
+      if (v.distribution_list_sms.Length > 0) v.distribution_list_sms.Remove(0,2); // .TrimStart(k.COMMA_SPACE)
+      Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? v.distribution_list_email : v.distribution_list_sms).ToString();
       }
 
     // / <summary>
@@ -311,8 +318,7 @@ namespace UserControl_operational_period_detail
       {
       BuildDistributionListAndRegisterPostBackControls();
       var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
-      var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
-      if (distribution_list.Length > 0)
+      if (Label_distribution_list.Text.Length > 0)
         {
         var attribution = k.EMPTY;
         if (be_email_mode)
@@ -327,7 +333,7 @@ namespace UserControl_operational_period_detail
         k.SmtpMailSend
           (
           from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:distribution_list,
+          to:Label_distribution_list.Text,
           subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
           message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
           be_html:false,
@@ -492,8 +498,6 @@ namespace UserControl_operational_period_detail
         p.be_unlimited = false;
         p.deployment_id = k.EMPTY;
         p.digest_sort_order = UserControl_operational_period_detail_Static.INITIAL_DIGEST_SORT_ORDER;
-        p.distribution_list_email = k.EMPTY;
-        p.distribution_list_sms = k.EMPTY;
         p.kind = kind_enum.STANDARD;
         p.may_add_mappings = p.be_interactive;
         p.num_digest_items = new k.int_nonnegative();
@@ -506,6 +510,8 @@ namespace UserControl_operational_period_detail
         p.user_target_email = p.biz_members.EmailAddressOf(member_id:member_id);
         p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:member_id);
         }
+      v.distribution_list_email = new StringBuilder();
+      v.distribution_list_sms = new StringBuilder();
       }
 
     protected void Page_Load(object sender, System.EventArgs e)
@@ -547,6 +553,7 @@ namespace UserControl_operational_period_detail
 
     protected void RadioButtonList_quick_message_mode_SelectedIndexChanged(object sender, EventArgs e)
       {
+      BuildDistributionListAndRegisterPostBackControls();
       if (RadioButtonList_quick_message_mode.SelectedValue == "email")
         {
         Literal_quick_message_kind_email.Visible = true;
@@ -556,7 +563,6 @@ namespace UserControl_operational_period_detail
         TableRow_subject.Visible = true;
         TextBox_quick_message_body.Columns = 72;
         TextBox_quick_message_body.Rows = 18;
-        Label_distribution_list.Text = p.distribution_list_email;
         }
       else
         {
@@ -567,9 +573,7 @@ namespace UserControl_operational_period_detail
         TableRow_subject.Visible = false;
         TextBox_quick_message_body.Columns = 40;
         TextBox_quick_message_body.Rows = 4;
-        Label_distribution_list.Text = p.distribution_list_sms;
         }
-      BuildDistributionListAndRegisterPostBackControls();
       }
 
     //--

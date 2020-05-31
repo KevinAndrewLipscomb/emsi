@@ -14,9 +14,6 @@ namespace UserControl_per_deployment_iap_log
   {
   public partial class TWebUserControl_per_deployment_iap_log: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_per_deployment_iap_log_Static
-      {
-      }
 
     private struct p_type
       {

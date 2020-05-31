@@ -8,18 +8,6 @@ using System.Web.UI.WebControls;
 namespace UserControl_static_service_strike_team_roster
   {
 
-  public struct p_type
-    {
-    public bool be_for_email_transmission;
-    public bool be_loaded;
-    public bool be_noncurrent_practitioners_on_roster;
-    public TClass_biz_services biz_services;
-    public TClass_biz_strike_team_rosters biz_strike_team_rosters;
-    public k.int_nonnegative num_assignees;
-    public string service_id;
-    public object service_summary;
-    }
-
   public partial class TWebUserControl_static_service_strike_team_roster: ki_web_ui.usercontrol_class
     {
 
@@ -35,6 +23,18 @@ namespace UserControl_static_service_strike_team_roster
       public const int TCI_DOB = 7;
       public const int TCI_EMAIL_ADDRESS = 8;
       public const int TCI_STATUS_DESCRIPTION = 9;
+      }
+
+    private struct p_type
+      {
+      public bool be_for_email_transmission;
+      public bool be_loaded;
+      public bool be_noncurrent_practitioners_on_roster;
+      public TClass_biz_services biz_services;
+      public TClass_biz_strike_team_rosters biz_strike_team_rosters;
+      public k.int_nonnegative num_assignees;
+      public string service_id;
+      public object service_summary;
       }
 
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters

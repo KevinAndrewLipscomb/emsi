@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Web;
-using System.Web.SessionState;
-
-
-using System.Security.Principal;
 using Class_biz_user;
+using System;
+using System.Web;
+using System.Web.Security;
+
+#pragma warning disable CA1716
 namespace Global
-{
-    public class TGlobal: System.Web.HttpApplication
+  {
+  public class TGlobal: System.Web.HttpApplication
     {
         // / <summary>
         // / Required method for Designer support -- do not modify
@@ -31,9 +28,17 @@ namespace Global
         {
         }
 
-        protected void Session_Start(object sender, EventArgs e)
+    protected void Session_Start(object sender, EventArgs e)
+      {
+      if (HttpContext.Current.Request.IsAuthenticated)
         {
+        //
+        // The user is logged in.  We must log the user out since their stored session has been replaced with an empty new one.
+        //
+        FormsAuthentication.SignOut();
+        FormsAuthentication.RedirectToLoginPage();
         }
+      }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {

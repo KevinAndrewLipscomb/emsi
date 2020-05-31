@@ -8,17 +8,6 @@ using System.Web.UI.WebControls;
 namespace UserControl_static_region_strike_team_key_personnel
   {
 
-  public struct p_type
-    {
-    public bool be_for_email_transmission;
-    public bool be_loaded;
-    public bool be_noncurrent_practitioners_on_roster;
-    public TClass_biz_role_member_map biz_role_member_map;
-    public TClass_biz_regions biz_regions;
-    public k.int_nonnegative num_assignees;
-    public object region_summary;
-    }
-
   public partial class TWebUserControl_static_region_strike_team_key_personnel: ki_web_ui.usercontrol_class
     {
 
@@ -35,6 +24,17 @@ namespace UserControl_static_region_strike_team_key_personnel
       public const int TCI_ROLE_NAME = 8;
       public const int TCI_EMAIL_ADDRESS = 9;
       public const int TCI_STATUS_DESCRIPTION = 10;
+      }
+
+    private struct p_type
+      {
+      public bool be_for_email_transmission;
+      public bool be_loaded;
+      public bool be_noncurrent_practitioners_on_roster;
+      public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_regions biz_regions;
+      public k.int_nonnegative num_assignees;
+      public object region_summary;
       }
 
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters

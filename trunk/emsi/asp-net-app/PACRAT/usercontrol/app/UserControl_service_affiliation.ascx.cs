@@ -13,7 +13,8 @@ namespace UserControl_service_affiliation
   {
   public partial class TWebUserControl_service_affiliation: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_service_affiliation_Static
+
+    private static class Static
       {
       public const int TCI_PERSONNEL = 0;
       public const int TCI_VEHICLES = 1;
@@ -184,7 +185,7 @@ namespace UserControl_service_affiliation
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var service_summary = p.biz_services.Summary(k.Safe(e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        var service_summary = p.biz_services.Summary(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
         if (e.CommandName == "ManagePersonnel")
           {
           p.msg_protected_practitioner_management.summary = service_summary;
@@ -206,11 +207,11 @@ namespace UserControl_service_affiliation
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_service_affiliation_Static.TCI_PERSONNEL].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_PERSONNEL].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          link_button = ((e.Item.Cells[UserControl_service_affiliation_Static.TCI_VEHICLES].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_VEHICLES].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
@@ -220,15 +221,15 @@ namespace UserControl_service_affiliation
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_service_affiliation_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
           //
           p.num_services++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_service_affiliation_Static.TCI_PERSONNEL].Visible = false;
-        e.Item.Cells[UserControl_service_affiliation_Static.TCI_VEHICLES].Visible = false;
+        e.Item.Cells[Static.TCI_PERSONNEL].Visible = false;
+        e.Item.Cells[Static.TCI_VEHICLES].Visible = false;
         }
       }
 

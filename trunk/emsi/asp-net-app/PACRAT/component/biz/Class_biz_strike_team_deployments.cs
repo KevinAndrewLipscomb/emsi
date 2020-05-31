@@ -160,9 +160,9 @@ namespace Class_biz_strike_team_deployments
       return assign_vehicle_tag_transponder;
       }
 
-    internal bool BeAllConcludedWithinScope(string member_id)
+    internal bool BeAllConcludedWithinScope()
       {
-      return db_strike_team_deployments.BeAllConcludedWithinScope(member_id);
+      return db_strike_team_deployments.BeAllConcludedWithinScope();
       }
 
     internal bool BeAnyOperationalPeriodStartedFor(string deployment_id)

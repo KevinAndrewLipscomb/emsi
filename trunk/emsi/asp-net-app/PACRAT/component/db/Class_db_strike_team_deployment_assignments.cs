@@ -10,6 +10,7 @@ namespace Class_db_strike_team_deployment_assignments
   {
   public class TClass_db_strike_team_deployment_assignments: TClass_db
     {
+
     private class strike_team_deployment_assignment_summary
       {
       public string id;
@@ -469,17 +470,14 @@ namespace Class_db_strike_team_deployment_assignments
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM strike_team_deployment_assignment"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM strike_team_deployment_assignment"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new strike_team_deployment_assignment_summary()
         {

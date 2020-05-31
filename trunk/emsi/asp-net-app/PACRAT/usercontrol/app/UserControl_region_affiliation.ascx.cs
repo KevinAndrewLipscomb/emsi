@@ -13,7 +13,8 @@ namespace UserControl_region_affiliation
   {
   public partial class TWebUserControl_region_affiliation: ki_web_ui.usercontrol_class
     {
-    public class UserControl_region_affiliation_Static
+
+    private static class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -182,7 +183,7 @@ namespace UserControl_region_affiliation
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_region_detail.summary = p.biz_regions.Summary(k.Safe(e.Item.Cells[UserControl_region_affiliation_Static.TCI_ID].Text,k.safe_hint_type.NUM));
+        p.msg_protected_region_detail.summary = p.biz_regions.Summary(k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM));
         MessageDropCrumbAndTransferTo(p.msg_protected_region_detail,"protected","region_detail");
         }
       }
@@ -194,7 +195,7 @@ namespace UserControl_region_affiliation
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_region_affiliation_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
@@ -204,14 +205,14 @@ namespace UserControl_region_affiliation
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_region_affiliation_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
           //
           p.num_regions++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_region_affiliation_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 

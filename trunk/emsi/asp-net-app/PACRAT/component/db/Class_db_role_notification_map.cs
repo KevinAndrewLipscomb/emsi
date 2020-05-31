@@ -1,17 +1,14 @@
-using MySql.Data.MySqlClient;
+using Class_db;
+using Class_db_roles;
+using Class_db_trail;
 using kix;
-using System;
-
-
+using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Web.UI.WebControls;
-using Class_db;
-using Class_db_trail;
-using Class_db_roles;
 
 namespace Class_db_role_notification_map
-{
-    public class TClass_db_role_notification_map: TClass_db
+  {
+  public class TClass_db_role_notification_map: TClass_db
     {
 
     private static class Static

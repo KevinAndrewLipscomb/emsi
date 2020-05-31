@@ -175,7 +175,8 @@ namespace UserControl_add_associate
           residence_county_name:k.Safe(DropDownList_residence_county.SelectedItem.Text, k.safe_hint_type.ALPHA),
           street_address_1:k.Safe(TextBox_street_address_1.Text, k.safe_hint_type.POSTAL_STREET_ADDRESS),
           street_address_2:k.Safe(TextBox_street_address_2.Text, k.safe_hint_type.POSTAL_STREET_ADDRESS),
-          city_state_zip:k.Safe(TextBox_city_state_zip.Text, k.safe_hint_type.POSTAL_CITY)
+          city_state_zip:k.Safe(TextBox_city_state_zip.Text, k.safe_hint_type.POSTAL_CITY),
+          certification_number:k.Safe(TextBox_certification_number.Text,k.safe_hint_type.NUM)
           );
         if (id_of_member_added.Length > 0)
           {

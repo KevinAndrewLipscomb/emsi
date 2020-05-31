@@ -2,20 +2,17 @@
 
 using Class_biz_coned_offering_rosters;
 using Class_biz_practitioner_levels;
-using Class_msg_protected;
 using kix;
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
+using System.Web.UI.WebControls;
 
 namespace UserControl_analysis_of_sponsor_by_month
   {
   public partial class TWebUserControl_analysis_of_sponsor_by_month: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_analysis_of_sponsor_by_month_Static
+
+    private static class Static
       {
       public const int TCI_MONTH = 0;
       public const int TCI_NUM_CLASSES = 1;

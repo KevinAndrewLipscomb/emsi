@@ -10,7 +10,7 @@ using System.Web.UI;
 namespace report_service_strike_team_roster
   {
 
-  public partial class TWebForm_report_service_strike_team_roster: Page
+  public partial class TWebForm_report_service_strike_team_roster: ki_web_ui.page_class
     {
 
     private struct p_type
