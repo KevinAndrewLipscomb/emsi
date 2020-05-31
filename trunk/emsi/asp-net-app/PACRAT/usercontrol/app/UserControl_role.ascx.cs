@@ -2,9 +2,11 @@ using Class_biz_members;
 using Class_biz_role_member_map;
 using Class_biz_roles;
 using Class_biz_user;
+using Class_db_role_member_map;
 using kix;
 using System;
 using System.Configuration;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,7 +14,29 @@ namespace UserControl_role
 {
     public partial class TWebUserControl_role: ki_web_ui.usercontrol_class
     {
+
+    private struct p_type
+      {
+      public bool be_gridview_empty;
+      public bool be_loaded;
+      public bool be_ok_to_config_roles;
+      public bool be_sort_order_ascending;
+      public TClass_biz_members biz_members;
+      public TClass_biz_role_member_map biz_role_member_map;
+      public TClass_biz_roles biz_roles;
+      public TClass_biz_user biz_user;
+      public uint num_gridview_rows;
+      public string role_name;
+      public string sort_order;
+      }
+
+    private struct v_type
+      {
+      public StringBuilder distribution_list;
+      }
+
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+    private v_type v; // Volatile instance Variable container
 
         private void Clear()
         {
@@ -204,7 +228,6 @@ namespace UserControl_role
                 p.be_loaded = false;
                 p.be_ok_to_config_roles = k.Has((string[])(Session["privilege_array"]), "config-roles-and-matrices");
                 p.be_sort_order_ascending = true;
-                p.distribution_list = k.EMPTY;
                 p.num_gridview_rows = 0;
                 p.role_name = k.EMPTY;
                 p.sort_order = "member_name%";
@@ -213,7 +236,7 @@ namespace UserControl_role
                 p.biz_roles = new TClass_biz_roles();
                 p.biz_user = new TClass_biz_user();
             }
-
+            v.distribution_list = new StringBuilder();
         }
 
         // / <summary>
@@ -265,7 +288,8 @@ namespace UserControl_role
         {
             if ((e.Row.RowType == DataControlRowType.DataRow) && (e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text != "&nbsp;"))
             {
-                p.distribution_list = p.distribution_list + e.Row.Cells[Class_db_role_member_map.Class_db_role_member_map_Static.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text + k.COMMA_SPACE;
+                v.distribution_list.Append(k.COMMA_SPACE);
+                v.distribution_list.Append(e.Row.Cells[Class_db_role_member_map_Static.ROLE_HOLDER_EMAIL_ADDRESS_CI].Text);
                 p.num_gridview_rows = p.num_gridview_rows + 1;
             }
         }
@@ -406,32 +430,17 @@ namespace UserControl_role
             p.biz_role_member_map.BindHolders(role_name, GridView_holders, p.sort_order, p.be_sort_order_ascending);
             p.be_gridview_empty = (p.num_gridview_rows == 0);
             Table_holders.Visible = !p.be_gridview_empty;
-            Label_distribution_list.Text = (p.distribution_list + k.SPACE).TrimEnd(new char[] {Convert.ToChar(k.COMMA), Convert.ToChar(k.SPACE)});
+            if (v.distribution_list.Length > 0) v.distribution_list.Remove(0,2);
+            Label_distribution_list.Text = v.distribution_list.ToString(); // .TrimStart(k.COMMA_SPACE)
             Label_num_rows.Text = p.num_gridview_rows.ToString();
             be_user_authorized_to_send_quickmessages = k.Has((string[])(Session["privilege_array"]), "send-quickmessages") && !p.be_gridview_empty;
             Anchor_quick_message_shortcut.Visible = be_user_authorized_to_send_quickmessages;
             Table_quick_message.Visible = be_user_authorized_to_send_quickmessages;
             // Clear aggregation vars for next bind, if any.
-            p.distribution_list = k.EMPTY;
+            v.distribution_list.Clear();
             p.num_gridview_rows = 0;
 
         }
-
-        private struct p_type
-        {
-            public bool be_gridview_empty;
-            public bool be_loaded;
-            public bool be_ok_to_config_roles;
-            public bool be_sort_order_ascending;
-            public TClass_biz_members biz_members;
-            public TClass_biz_role_member_map biz_role_member_map;
-            public TClass_biz_roles biz_roles;
-            public TClass_biz_user biz_user;
-            public string distribution_list;
-            public uint num_gridview_rows;
-            public string role_name;
-            public string sort_order;
-        } // end p_type
 
     } // end TWebUserControl_role
 

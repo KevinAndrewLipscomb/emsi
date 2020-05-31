@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using System.Text;
 
 namespace UserControl_counties
   {
@@ -36,12 +37,17 @@ namespace UserControl_counties
       public TClass_biz_accounts biz_accounts;
       public TClass_biz_counties biz_counties;
       public TClass_biz_user biz_user;
-      public string distribution_list;
       public uint num_counties;
       public string sort_order;
       }
 
+    private struct v_type
+      {
+      public StringBuilder distribution_list;
+      }
+
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+    private v_type v; // Volatile instance Variable container
 
     private void InjectPersistentClientSideScript()
       {
@@ -161,6 +167,7 @@ namespace UserControl_counties
         p.be_sort_order_ascending = true;
         p.sort_order = "name%";
         }
+      v.distribution_list = new StringBuilder();
       }
 
     // / <summary>
@@ -234,7 +241,7 @@ namespace UserControl_counties
             }
           e.Item.Cells[Static.TCI_CODE].EnableViewState = true;
           //
-          p.distribution_list = p.distribution_list + e.Item.Cells[Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
+          v.distribution_list.Append(k.COMMA_SPACE + e.Item.Cells[Static.TCI_EMAIL_ADDRESS].Text);
           p.num_counties++;
           }
         }
@@ -263,8 +270,8 @@ namespace UserControl_counties
       {
       DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_ok_to_change_details;
       p.biz_counties.BindGrid(p.sort_order, p.be_sort_order_ascending, DataGrid_control);
-      Label_distribution_list.Text = (p.distribution_list + k.SPACE).TrimEnd(new char[] {Convert.ToChar(k.COMMA), Convert.ToChar(k.SPACE)});
-      p.distribution_list = k.EMPTY;
+      Label_distribution_list.Text = v.distribution_list.Remove(0,2).ToString(); // .TrimStart(k.COMMA_SAPCE)
+      v.distribution_list.Clear();
       p.num_counties = 0;
       }
 
