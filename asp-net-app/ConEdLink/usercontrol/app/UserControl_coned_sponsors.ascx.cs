@@ -1,4 +1,5 @@
-using AjaxControlToolkit;
+// Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.pas
+
 using Class_biz_accounts;
 using Class_biz_teaching_entities;
 using Class_biz_user;
@@ -7,17 +8,18 @@ using kix;
 using System;
 using System.Collections;
 using System.Configuration;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_coned_sponsors
-{
-    // Derived from KiAspdotnetFramework/UserControl/app/UserControl~template~datagrid~sortable.pas
-    public partial class TWebUserControl_coned_sponsors: ki_web_ui.usercontrol_class
+  {
+  public partial class TWebUserControl_coned_sponsors: ki_web_ui.usercontrol_class
     {
-        public class UserControl_coned_sponsors_Static
+
+        private static class Static
           {
           public const int TCI_SELECT = 0;
           public const int TCI_ID = 1;
@@ -36,7 +38,6 @@ namespace UserControl_coned_sponsors
           public TClass_biz_accounts biz_accounts;
           public TClass_biz_teaching_entities biz_teaching_entities;
           public TClass_biz_user biz_user;
-          public string distribution_list;
           public TClass_msg_protected.coned_sponsor_detail msg_protected_coned_sponsor_detail;
           public uint num_teaching_entities;
           public string sort_order;
@@ -160,7 +161,6 @@ namespace UserControl_coned_sponsors
                 p.biz_teaching_entities = new TClass_biz_teaching_entities();
                 p.biz_user = new TClass_biz_user();
                 //
-                p.distribution_list = k.EMPTY;
                 p.msg_protected_coned_sponsor_detail = new TClass_msg_protected.coned_sponsor_detail();
                 p.be_interactive = !(Session["mode:report"] != null);
                 p.be_loaded = false;
@@ -201,18 +201,18 @@ namespace UserControl_coned_sponsors
         {
             if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
               {
-              var sponsor_number = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_SPONSOR_NUMBER].Text, k.safe_hint_type.NUM);
+              var sponsor_number = k.Safe(e.Item.Cells[Static.TCI_SPONSOR_NUMBER].Text, k.safe_hint_type.NUM);
               SessionSet("sponsor_number",sponsor_number);
               if (e.CommandName == "select")
                 {
-                p.msg_protected_coned_sponsor_detail.id = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_ID].Text, k.safe_hint_type.NUM);
-                p.msg_protected_coned_sponsor_detail.name = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
+                p.msg_protected_coned_sponsor_detail.id = k.Safe(e.Item.Cells[Static.TCI_ID].Text, k.safe_hint_type.NUM);
+                p.msg_protected_coned_sponsor_detail.name = k.Safe(e.Item.Cells[Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
                 MessageDropCrumbAndTransferTo(p.msg_protected_coned_sponsor_detail,"protected","coned_sponsor_detail");
                 }
               else if (e.CommandName == "imitate")
                 {
-                var coned_sponsor_name = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
-                var coned_sponsor_user_id = k.Safe(e.Item.Cells[UserControl_coned_sponsors_Static.TCI_ID].Text, k.safe_hint_type.NUM);
+                var coned_sponsor_name = k.Safe(e.Item.Cells[Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
+                var coned_sponsor_user_id = k.Safe(e.Item.Cells[Static.TCI_ID].Text, k.safe_hint_type.NUM);
                 SessionSet(name:"imitator_designator",value:HttpContext.Current.User.Identity.Name);
                 SessionSet("target_user_table","coned_sponsor");
                 SessionSet("coned_sponsor_user_id",coned_sponsor_user_id);
@@ -230,10 +230,10 @@ namespace UserControl_coned_sponsors
             {
                 if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
                 {
-                    link_button = ((e.Item.Cells[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
+                    link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
                     link_button.Text = k.ExpandTildePath(link_button.Text);
                     link_button.ToolTip = "Profile";
-                    link_button = ((e.Item.Cells[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
+                    link_button = ((e.Item.Cells[Static.TCI_IMITATE].Controls[0]) as LinkButton);
                     link_button.Text = k.ExpandTildePath(link_button.Text);
                     link_button.ToolTip = "Imitate";
                     RequireConfirmation(link_button,"The application will now allow you to imitate a subordinate user.  When you are done imitating the subordinate user, you must log out and log back in as yourself.");
@@ -242,8 +242,8 @@ namespace UserControl_coned_sponsors
             }
             else
             {
-                e.Item.Cells[UserControl_coned_sponsors_Static.TCI_SELECT].Visible = false;
-                e.Item.Cells[UserControl_coned_sponsors_Static.TCI_IMITATE].Visible = false;
+                e.Item.Cells[Static.TCI_SELECT].Visible = false;
+                e.Item.Cells[Static.TCI_IMITATE].Visible = false;
             }
         }
 
@@ -274,7 +274,7 @@ namespace UserControl_coned_sponsors
       {
       for (var i = new k.subtype<int>(0,DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
-        (DataGrid_control.Items[i.val].Cells[UserControl_coned_sponsors_Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
+        (DataGrid_control.Items[i.val].Cells[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked = (sender as CheckBox).Checked;
         }
       BuildDistributionListAndRegisterPostBackControls();
       }
@@ -286,30 +286,33 @@ namespace UserControl_coned_sponsors
 
     private void BuildDistributionListAndRegisterPostBackControls()
       {
-      p.distribution_list = k.EMPTY;
+      var distribution_list = new StringBuilder();
       TableCellCollection tcc;
       for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
-        if ((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
+        if ((tcc[Static.TCI_SELECT].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.distribution_list += tcc[UserControl_coned_sponsors_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
+          distribution_list.Append(tcc[Static.TCI_EMAIL_ADDRESS].Text);
+          if (i.val + 1 < i.LAST)
+            {
+            distribution_list.Append(k.COMMA_SPACE);
+            }
           }
-        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_SELECT].Controls[0]) as LinkButton);
-        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[UserControl_coned_sponsors_Static.TCI_IMITATE].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[Static.TCI_SELECT].Controls[0]) as LinkButton);
+        ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[Static.TCI_IMITATE].Controls[0]) as LinkButton);
         }
-      p.distribution_list = p.distribution_list.TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
-      Label_distribution_list.Text = p.distribution_list;
+      Label_distribution_list.Text = distribution_list.ToString();
       }
 
     protected void Button_send_Click(object sender, EventArgs e)
       {
-      if (p.distribution_list.Length > 0)
+      if (Label_distribution_list.Text.Length > 0)
         {
         k.SmtpMailSend
           (
           from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:p.distribution_list,
+          to:Label_distribution_list.Text,
           subject:TextBox_quick_message_subject.Text,
           message_string:"-- From " + Session[p.biz_user.Kind() + "_name"].ToString() + " (via " + ConfigurationManager.AppSettings["application_name"] + ")" + k.NEW_LINE
             + k.NEW_LINE

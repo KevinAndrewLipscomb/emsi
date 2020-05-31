@@ -32,7 +32,7 @@ namespace Class_biz_scheduled_tasks
       biz_coned_offerings.PurgeStaleUnused();
       }
 
-    internal void DoFirstOfCalendarYearChores(string current_working_directory_spec)
+    internal void DoFirstOfCalendarYearChores()
       {
       biz_old_analysis_of_region_by_years.ReduceFiscalYearEndingLastYear();
       }

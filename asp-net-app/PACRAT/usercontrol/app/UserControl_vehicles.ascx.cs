@@ -16,7 +16,8 @@ namespace UserControl_vehicles
   {
   public partial class TWebUserControl_vehicles: ki_web_ui.usercontrol_class
     {
-    public class UserControl_vehicles_Static
+
+    private static class Static
       {
       public const int TCI_SELECT = 0;
       public const int TCI_ID = 1;
@@ -204,7 +205,7 @@ namespace UserControl_vehicles
       {
       if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        p.msg_protected_vehicle_detail.id = k.Safe(e.Item.Cells[UserControl_vehicles_Static.TCI_ID].Text,k.safe_hint_type.NUM);
+        p.msg_protected_vehicle_detail.id = k.Safe(e.Item.Cells[Static.TCI_ID].Text,k.safe_hint_type.NUM);
         p.msg_protected_vehicle_detail.service_id = p.service_id;
         MessageDropCrumbAndTransferTo(p.msg_protected_vehicle_detail,"protected","vehicle_detail");
         }
@@ -217,15 +218,15 @@ namespace UserControl_vehicles
         {
         if (new ArrayList {ListItemType.AlternatingItem, ListItemType.Item, ListItemType.EditItem, ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_vehicles_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
           //
-          var elaboration = e.Item.Cells[UserControl_vehicles_Static.TCI_ELABORATION].Text;
+          var elaboration = e.Item.Cells[Static.TCI_ELABORATION].Text;
           if (!new ArrayList() {"&nbsp;",k.EMPTY}.Contains(elaboration))
             {
-            e.Item.Cells[UserControl_vehicles_Static.TCI_KIND].ToolTip = elaboration;
-            (e.Item.Cells[UserControl_vehicles_Static.TCI_KIND].FindControl("Label_kind") as Label).Attributes.Add("style","border-bottom:2px dotted");
+            e.Item.Cells[Static.TCI_KIND].ToolTip = elaboration;
+            (e.Item.Cells[Static.TCI_KIND].FindControl("Label_kind") as Label).Attributes.Add("style","border-bottom:2px dotted");
             }
           //
           // Remove all cell controls from viewstate except for the one at TCI_ID.
@@ -234,14 +235,14 @@ namespace UserControl_vehicles
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_vehicles_Static.TCI_ID].EnableViewState = true;
+          e.Item.Cells[Static.TCI_ID].EnableViewState = true;
           //
           p.num_vehicles++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_vehicles_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 

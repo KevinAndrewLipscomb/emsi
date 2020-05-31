@@ -1,27 +1,25 @@
 // Derived from KiAspdotnetFramework/component/biz/Class~biz~~template~kicrudhelped~item.cs~template
 
 using Class_db_teaching_entities;
-using ConEdLink.component.ss;
 using emsi.ServiceReference_emsams_ConEd;
 using external_data_binding.emsams.ConEdSponsorInfo;
 using external_data_binding.emsams.ConEdSponsorStatusList;
 using System;
+using System.Collections;
 using System.Configuration;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
-using System.Collections;
 
 namespace Class_biz_teaching_entities
   {
   public class TClass_biz_teaching_entities
     {
     private readonly TClass_db_teaching_entities db_teaching_entities = null;
-    private Class_ss_emsams ss_emsams = null;
 
     public TClass_biz_teaching_entities() : base()
       {
       db_teaching_entities = new TClass_db_teaching_entities();
-      ss_emsams = new Class_ss_emsams();
       }
 
     public bool Bind(string partial_spec, object target)
@@ -183,11 +181,11 @@ namespace Class_biz_teaching_entities
       var con_ed_sponsor_status_list_obj = new ConEdSponsorStatusList();
       con_ed_sponsor_status_list_obj.GUID = ConfigurationManager.AppSettings["emsams_service_references_guid"];
       con_ed_sponsor_status_list_obj.Items = new Status[] {Status.ApprovedSponsor,Status.ProvisionalSponsor};
-      var con_ed_sponsor_status_list = new StringWriter();
+      using var con_ed_sponsor_status_list = new StringWriter();
       new XmlSerializer(typeof(ConEdSponsorStatusList)).Serialize(con_ed_sponsor_status_list,con_ed_sponsor_status_list_obj);
       var response = client.GetSponsorInfo(statuses:con_ed_sponsor_status_list.ToString());
-      db_teaching_entities.ImportLatestFromEmsrs
-        (recs:ArrayList.Adapter(((Sponsors)new XmlSerializer(typeof(Sponsors)).Deserialize(new StringReader(response))).Sponsor));
+      using var xml_reader = XmlReader.Create(input:new StringReader(response));
+      db_teaching_entities.ImportLatestFromEmsrs(recs:ArrayList.Adapter(((Sponsors)new XmlSerializer(typeof(Sponsors)).Deserialize(xml_reader)).Sponsor));
       client.Close();
       }
 

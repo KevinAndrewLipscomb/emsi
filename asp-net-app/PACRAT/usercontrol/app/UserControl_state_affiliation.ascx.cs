@@ -7,9 +7,6 @@ namespace UserControl_state_affiliation
   {
   public partial class TWebUserControl_state_affiliation: ki_web_ui.usercontrol_class
     {
-    public class UserControl_state_affiliation_Static
-      {
-      }
 
     private struct p_type
       {

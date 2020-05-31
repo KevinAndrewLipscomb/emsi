@@ -188,17 +188,14 @@ namespace Class_db_eval_summary_tallies
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM eval_summary_tally"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM eval_summary_tally"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new eval_summary_tally_summary()
         {

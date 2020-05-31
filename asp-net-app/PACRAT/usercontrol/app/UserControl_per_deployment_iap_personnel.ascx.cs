@@ -14,7 +14,8 @@ namespace UserControl_per_deployment_iap_personnel
   {
   public partial class TWebUserControl_per_deployment_iap_personnel: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_per_deployment_iap_personnel_Static
+
+    private static class Static
       {
       public const int TCI_TAG_NUM = 0;
       public const int TCI_LAST_NAME = 1;

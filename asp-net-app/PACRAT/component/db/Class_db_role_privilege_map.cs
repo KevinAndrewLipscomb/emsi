@@ -1,17 +1,14 @@
-using MySql.Data.MySqlClient;
+using Class_db;
+using Class_db_roles;
+using Class_db_trail;
 using kix;
-using System;
-
-
+using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Web.UI.WebControls;
-using Class_db;
-using Class_db_trail;
-using Class_db_roles;
 
 namespace Class_db_role_privilege_map
-{
-    public class TClass_db_role_privilege_map: TClass_db
+  {
+  public class TClass_db_role_privilege_map: TClass_db
     {
 
     private static class Static
@@ -28,6 +25,7 @@ namespace Class_db_role_privilege_map
         {
             db_trail = new TClass_db_trail();
         }
+
         public void Bind(string sort_order, bool be_sort_order_descending, object target, out ArrayList crosstab_metadata_rec_arraylist)
         {
             crosstab_metadata_rec_type crosstab_metadata_rec;

@@ -1,6 +1,5 @@
 using Class_biz_scheduled_tasks;
 using System;
-using System.Web;
 
 namespace first_of_calendar_year_tasks
   {
@@ -18,7 +17,7 @@ namespace first_of_calendar_year_tasks
 
     protected void Page_Load(object sender, EventArgs e)
       {
-      new TClass_biz_scheduled_tasks().DoFirstOfCalendarYearChores(HttpContext.Current.Server.MapPath("."));
+      new TClass_biz_scheduled_tasks().DoFirstOfCalendarYearChores();
       }
 
     protected override void OnInit(EventArgs e)

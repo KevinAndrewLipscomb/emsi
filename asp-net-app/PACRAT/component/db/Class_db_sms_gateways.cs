@@ -4,15 +4,13 @@ using Class_db;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_sms_gateways
   {
   public class TClass_db_sms_gateways: TClass_db
     {
+
     private class sms_gateway_summary
       {
       public string id;
@@ -179,17 +177,14 @@ namespace Class_db_sms_gateways
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM sms_gateway"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM sms_gateway"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new sms_gateway_summary()
         {

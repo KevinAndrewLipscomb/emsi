@@ -31,7 +31,7 @@ namespace Class_db_strike_team_deployment_members
       )
       {
       Open();
-      var be_none = "0" == using var my_sql_command = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select count(*)"
         + " from strike_team_deployment_member"
@@ -39,7 +39,8 @@ namespace Class_db_strike_team_deployment_members
         + " where deployment_id = '" + deployment_id + "'"
         +   (service_strike_team_management_footprint.Length > 0 ? " and service_id in (" + service_strike_team_management_footprint + ")" : k.EMPTY),
         connection
-        ); my_sql_command.ExecuteScalar().ToString();
+        ); 
+      var be_none = ("0" == my_sql_command.ExecuteScalar().ToString());
       Close();
       return be_none;
       }
@@ -52,8 +53,8 @@ namespace Class_db_strike_team_deployment_members
       )
       {
       Open();
-      var be_tag_available_for_assignment = null == using var my_sql_command = new MySqlCommand
-        ("select 1 from strike_team_deployment_member where deployment_id = '" + deployment_id + "' and practitioner_id <> '" + practitioner_id + "' and tag_num = '" + tag_num + "'",connection); my_sql_command.ExecuteScalar();
+      using var my_sql_command = new MySqlCommand("select 1 from strike_team_deployment_member where deployment_id = '" + deployment_id + "' and practitioner_id <> '" + practitioner_id + "' and tag_num = '" + tag_num + "'",connection);
+      var be_tag_available_for_assignment = (null == my_sql_command.ExecuteScalar());
       Close();
       return be_tag_available_for_assignment;
       }
@@ -269,17 +270,14 @@ namespace Class_db_strike_team_deployment_members
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM strike_team_deployment_member"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM strike_team_deployment_member"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new strike_team_deployment_member_summary()
         {

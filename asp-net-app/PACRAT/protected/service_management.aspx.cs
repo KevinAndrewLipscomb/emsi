@@ -180,7 +180,7 @@ namespace service_management
         );
       }
 
-    private void SetCloseAndSubmitAblementsAndVisibilities(bool be_open)
+    private void SetCloseAndSubmitAblementsAndVisibilities()
       {
       Button_send.Enabled = (DataGrid_control.EditItemIndex == -1);
       }
@@ -262,7 +262,7 @@ namespace service_management
       {
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitAblementsAndVisibilities();
       }
 
     protected void DataGrid_control_DeleteCommand(object source, DataGridCommandEventArgs e)
@@ -278,7 +278,7 @@ namespace service_management
           );
         DataGrid_control.EditItemIndex = -1;
         Bind();
-        SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitAblementsAndVisibilities();
         }
       }
 
@@ -286,7 +286,7 @@ namespace service_management
       {
       DataGrid_control.EditItemIndex = e.Item.ItemIndex;
       Bind();
-      SetCloseAndSubmitAblementsAndVisibilities(false);
+      SetCloseAndSubmitAblementsAndVisibilities();
       }
 
     protected void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -422,7 +422,7 @@ namespace service_management
         }
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitAblementsAndVisibilities();
       }
 
     protected void DataGrid_control_UpdateCommand(object source, DataGridCommandEventArgs e)
@@ -471,7 +471,7 @@ namespace service_management
           }
         DataGrid_control.EditItemIndex = -1;
         Bind();
-        SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitAblementsAndVisibilities();
         }
       else
         {
@@ -565,7 +565,7 @@ namespace service_management
           );
         Literal_strike_team_participation_elaboration.Text = p.biz_strike_team_participation_levels.ElaborationOf(participation_level_id);
         DropDownList_strike_team_participation.Enabled = p.be_ok_to_edit_roster;
-        var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY,k.EMPTY);
+        var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY);
         TextBox_practitioner.Width = new Unit(max_spec_length.val*0.535,UnitType.Em);
         ListBox_practitioner.Width = new Unit(max_spec_length.val*0.650,UnitType.Em);
         LinkButton_add_associate.Visible = p.be_ok_to_add_associate;
@@ -579,14 +579,13 @@ namespace service_management
         LinkButton_drill_down_to_members.Text = k.ExpandTildePath(LinkButton_drill_down_to_members.Text);
         LinkButton_drill_down_to_vehicles.Text = k.ExpandTildePath(LinkButton_drill_down_to_vehicles.Text);
         //
-        var hash_table = new Hashtable();
-        hash_table["service_id"] = p.biz_services.IdOf(p.incoming.summary);
+        var hash_table = new Hashtable {["service_id"] = p.biz_services.IdOf(p.incoming.summary)};
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_service_strike_team_key_personnel.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_more_than_examiner;
         TableRow_quickmessage.Visible = p.be_more_than_examiner;
         Bind();
-        SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
+        SetCloseAndSubmitAblementsAndVisibilities();
         Literal_author_email_address.Text = p.user_email_address;
         }
       InjectPersistentClientSideScript();
@@ -602,11 +601,16 @@ namespace service_management
       {
       DataGrid_control.EditItemIndex = -1;
       Bind();
-      SetCloseAndSubmitAblementsAndVisibilities(p.be_ok_to_edit_roster);
+      SetCloseAndSubmitAblementsAndVisibilities();
       UpdatePanel_assignees.Update();
       //
       var practitioner = k.Safe(TextBox_practitioner.Text,k.safe_hint_type.PUNCTUATED);
-      p.biz_members.BindDirectToListControlForRoster(ListBox_practitioner,k.EMPTY,practitioner,new k.int_positive(12));
+      p.biz_members.BindDirectToListControlForRoster
+        (
+        target:ListBox_practitioner,
+        starting_with:practitioner,
+        limit:new k.int_positive(12)
+        );
       if (practitioner.Length > 0)
         {
         if (ListBox_practitioner.Items.Count > 0)

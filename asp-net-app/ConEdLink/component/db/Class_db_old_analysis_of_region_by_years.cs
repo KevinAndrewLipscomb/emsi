@@ -196,17 +196,14 @@ namespace Class_db_old_analysis_of_region_by_years
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM old_analysis_of_region_by_year"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM old_analysis_of_region_by_year"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new old_analysis_of_region_by_year_summary()
         {

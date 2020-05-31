@@ -1,24 +1,13 @@
+using Class_biz_accounts;
+using kix;
+using System;
 using System.Configuration;
 
-using kix;
-
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Web;
-using System.Web.SessionState;
-
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-
-
-using Class_biz_accounts;
 namespace new_password
-{
-    public partial class TWebForm_new_password: ki_web_ui.page_class
+  {
+  public partial class TWebForm_new_password: ki_web_ui.page_class
     {
-        protected System.Web.UI.WebControls.PlaceHolder PlaceHolder_precontent = null;
-        protected System.Web.UI.WebControls.PlaceHolder PlaceHolder_postcontent = null;
+
         // / <summary>
         // / Required method for Designer support -- do not modify
         // / the contents of this method with the code editor.

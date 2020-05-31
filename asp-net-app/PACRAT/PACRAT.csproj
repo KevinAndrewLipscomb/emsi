@@ -926,6 +926,7 @@
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx.cs">
       <DependentUpon>UserControl_strike_team_deployment_snapshot.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrol\app\UserControl_strike_team_deployment_snapshot.ascx.designer.cs">
       <DependentUpon>UserControl_strike_team_deployment_snapshot.ascx</DependentUpon>

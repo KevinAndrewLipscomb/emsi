@@ -50,7 +50,7 @@
                             <asp:AsyncPostBackTrigger ControlID="Button_add" EventName="Click" />
                           </Triggers>
                         </asp:UpdatePanel>
-                        <small><asp:LinkButton ID="LinkButton_add_associate" runat="server" Visible="false" OnClick="LinkButton_add_associate_Click">Load non-PA-practitioner(s) into the system</asp:LinkButton></small>
+                        <small><asp:LinkButton ID="LinkButton_add_associate" runat="server" Visible="false" OnClick="LinkButton_add_associate_Click">Load unlisted practitioner(s) into the system</asp:LinkButton></small>
                       </td>
                     </tr>
                   </table>

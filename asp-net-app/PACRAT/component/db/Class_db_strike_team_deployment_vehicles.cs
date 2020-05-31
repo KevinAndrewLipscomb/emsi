@@ -4,15 +4,13 @@ using Class_db;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployment_vehicles
   {
   public class TClass_db_strike_team_deployment_vehicles: TClass_db
     {
+
     private class strike_team_deployment_vehicle_summary
       {
       public string id;
@@ -32,7 +30,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      var be_none = "0" == using var my_sql_command = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select count(*)"
         + " from strike_team_deployment_vehicle"
@@ -40,7 +38,8 @@ namespace Class_db_strike_team_deployment_vehicles
         + " where deployment_id = '" + deployment_id + "'"
         +   (service_strike_team_management_footprint.Length > 0 ? " and service_id in (" + service_strike_team_management_footprint + ")" : k.EMPTY),
         connection
-        ); my_sql_command.ExecuteScalar().ToString();
+        );
+      var be_none = ("0" == my_sql_command.ExecuteScalar().ToString());
       Close();
       return be_none;
       }
@@ -54,7 +53,7 @@ namespace Class_db_strike_team_deployment_vehicles
       )
       {
       Open();
-      var be_tag_transponder_available_for_assignment = null == using var my_sql_command = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select 1"
         + " from strike_team_deployment_vehicle"
@@ -62,7 +61,8 @@ namespace Class_db_strike_team_deployment_vehicles
         +   " and vehicle_id <> '" + vehicle_id + "'"
         +   " and (tactical_name = '" + tactical_name + "' or transponder_name = '" + transponder_name + "')",
         connection
-        ); my_sql_command.ExecuteScalar();
+        );
+      var be_tag_transponder_available_for_assignment = (null == my_sql_command.ExecuteScalar());
       Close();
       return be_tag_transponder_available_for_assignment;
       }
@@ -316,17 +316,14 @@ namespace Class_db_strike_team_deployment_vehicles
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM strike_team_deployment_vehicle"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM strike_team_deployment_vehicle"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new strike_team_deployment_vehicle_summary()
         {

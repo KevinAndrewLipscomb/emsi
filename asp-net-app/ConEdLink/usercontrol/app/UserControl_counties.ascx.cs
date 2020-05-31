@@ -16,7 +16,8 @@ namespace UserControl_counties
   {
   public partial class TWebUserControl_counties: ki_web_ui.usercontrol_class
     {
-    public class UserControl_counties_Static
+
+    private static class Static
       {
       public const int TCI_CODE = 0;
       public const int TCI_NAME = 1;
@@ -168,9 +169,9 @@ namespace UserControl_counties
     // / </summary>
     private void InitializeComponent()
       {
-      DataGrid_control.ItemDataBound += new System.Web.UI.WebControls.DataGridItemEventHandler(DataGrid_control_ItemDataBound);
-      DataGrid_control.SortCommand += new System.Web.UI.WebControls.DataGridSortCommandEventHandler(DataGrid_control_SortCommand);
-      DataGrid_control.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(DataGrid_control_ItemCommand);
+      DataGrid_control.ItemDataBound += new DataGridItemEventHandler(DataGrid_control_ItemDataBound);
+      DataGrid_control.SortCommand += new DataGridSortCommandEventHandler(DataGrid_control_SortCommand);
+      DataGrid_control.ItemCommand += new DataGridCommandEventHandler(DataGrid_control_ItemCommand);
       PreRender += TWebUserControl_counties_PreRender;
       }
 
@@ -185,11 +186,11 @@ namespace UserControl_counties
       return this;
       }
 
-    private void DataGrid_control_ItemCommand(object source, System.Web.UI.WebControls.DataGridCommandEventArgs e)
+    private void DataGrid_control_ItemCommand(object source, DataGridCommandEventArgs e)
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var county_code = k.Safe(e.Item.Cells[UserControl_counties_Static.TCI_CODE].Text,k.safe_hint_type.NUM);
+        var county_code = k.Safe(e.Item.Cells[Static.TCI_CODE].Text,k.safe_hint_type.NUM);
         if (e.CommandName == "Edit")
           {
           SessionSet("county_summary",p.biz_counties.Summary(county_code));
@@ -197,7 +198,7 @@ namespace UserControl_counties
           }
         else if (e.CommandName == "imitate")
           {
-          var county_name = k.Safe(e.Item.Cells[UserControl_counties_Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
+          var county_name = k.Safe(e.Item.Cells[Static.TCI_NAME].Text, k.safe_hint_type.ORG_NAME);
           SessionSet(name:"imitator_designator",value:HttpContext.Current.User.Identity.Name);
           SessionSet("target_user_table","county");
           SessionSet("county_user_id",county_code);
@@ -208,18 +209,18 @@ namespace UserControl_counties
         }
       }
 
-    private void DataGrid_control_ItemDataBound(object sender, System.Web.UI.WebControls.DataGridItemEventArgs e)
+    private void DataGrid_control_ItemDataBound(object sender, DataGridItemEventArgs e)
       {
       LinkButton link_button;
       if (p.be_interactive)
         {
         if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
           {
-          link_button = ((e.Item.Cells[UserControl_counties_Static.TCI_SELECT].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_SELECT].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Edit";
           ScriptManager.GetCurrent(Page).RegisterPostBackControl(link_button);
-          link_button = ((e.Item.Cells[UserControl_counties_Static.TCI_IMITATE].Controls[0]) as LinkButton);
+          link_button = ((e.Item.Cells[Static.TCI_IMITATE].Controls[0]) as LinkButton);
           link_button.Text = k.ExpandTildePath(link_button.Text);
           link_button.ToolTip = "Imitate";
           RequireConfirmation(link_button,"The application will now allow you to imitate a subordinate user.  When you are done imitating the subordinate user, you must log out and log back in as yourself.");
@@ -231,19 +232,19 @@ namespace UserControl_counties
             {
             cell.EnableViewState = false;
             }
-          e.Item.Cells[UserControl_counties_Static.TCI_CODE].EnableViewState = true;
+          e.Item.Cells[Static.TCI_CODE].EnableViewState = true;
           //
-          p.distribution_list = p.distribution_list + e.Item.Cells[UserControl_counties_Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
+          p.distribution_list = p.distribution_list + e.Item.Cells[Static.TCI_EMAIL_ADDRESS].Text + k.COMMA_SPACE;
           p.num_counties++;
           }
         }
       else
         {
-        e.Item.Cells[UserControl_counties_Static.TCI_SELECT].Visible = false;
+        e.Item.Cells[Static.TCI_SELECT].Visible = false;
         }
       }
 
-    private void DataGrid_control_SortCommand(object source, System.Web.UI.WebControls.DataGridSortCommandEventArgs e)
+    private void DataGrid_control_SortCommand(object source, DataGridSortCommandEventArgs e)
       {
       if (e.SortExpression == p.sort_order)
         {
@@ -260,7 +261,7 @@ namespace UserControl_counties
 
     private void BindGrid()
       {
-      DataGrid_control.Columns[UserControl_counties_Static.TCI_SELECT].Visible = p.be_ok_to_change_details;
+      DataGrid_control.Columns[Static.TCI_SELECT].Visible = p.be_ok_to_change_details;
       p.biz_counties.BindGrid(p.sort_order, p.be_sort_order_ascending, DataGrid_control);
       Label_distribution_list.Text = (p.distribution_list + k.SPACE).TrimEnd(new char[] {Convert.ToChar(k.COMMA), Convert.ToChar(k.SPACE)});
       p.distribution_list = k.EMPTY;

@@ -5,9 +5,7 @@ using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployment_operational_periods
   {
@@ -59,7 +57,7 @@ namespace Class_db_strike_team_deployment_operational_periods
       )
       {
       Open();
-      var be_overlap_in_same_deployment = "0" != using var my_sql_command = new MySqlCommand
+      using var my_sql_command = new MySqlCommand
         (
         "select count(*)"
         + " from strike_team_deployment_operational_period"
@@ -67,7 +65,8 @@ namespace Class_db_strike_team_deployment_operational_periods
         +   " and (start < '" + end.ToString("yyyy-MM-dd HH:mm") + "' and '" + start.ToString("yyyy-MM-dd HH:mm") + "' < end)"
         +   " and id <> '" + id + "'",
         connection
-        ); my_sql_command.ExecuteScalar().ToString();
+        );
+      var be_overlap_in_same_deployment = ("0" != my_sql_command.ExecuteScalar().ToString());
       Close();
       return be_overlap_in_same_deployment;
       }
@@ -281,17 +280,14 @@ namespace Class_db_strike_team_deployment_operational_periods
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM strike_team_deployment_operational_period"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM strike_team_deployment_operational_period"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var start_obj = dr["start"];
       var end_obj = dr["end"];

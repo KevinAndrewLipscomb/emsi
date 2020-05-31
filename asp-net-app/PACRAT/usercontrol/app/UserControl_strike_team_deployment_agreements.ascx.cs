@@ -9,6 +9,7 @@ using Class_msg_protected;
 using kix;
 using System;
 using System.Configuration;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -47,8 +48,6 @@ namespace UserControl_strike_team_deployment_agreements
       public TClass_biz_user biz_user;
       public TClass_msg_protected.service_management msg_protected_service_management;
       public string deployment_id;
-      public string distribution_list_email;
-      public string distribution_list_sms;
       public uint num_services;
       public string service_strike_team_management_footprint;
       public string sort_order;
@@ -56,7 +55,14 @@ namespace UserControl_strike_team_deployment_agreements
       public string user_target_sms;
       }
 
+    private struct v_type
+      {
+      public StringBuilder distribution_list_email;
+      public StringBuilder distribution_list_sms;
+      }
+
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+    private v_type v; // Volatile instance Variable container
 
     private void InjectPersistentClientSideScript()
       {
@@ -187,8 +193,6 @@ namespace UserControl_strike_team_deployment_agreements
         p.be_more_than_examiner = false;
         p.be_sort_order_ascending = true;
         p.deployment_id = k.EMPTY;
-        p.distribution_list_email = k.EMPTY;
-        p.distribution_list_sms = k.EMPTY;
         p.service_strike_team_management_footprint = k.EMPTY;
         p.sort_order = "service.short_name%";
         //
@@ -196,6 +200,8 @@ namespace UserControl_strike_team_deployment_agreements
         p.user_target_email = p.biz_members.EmailAddressOf(member_id:user_member_id);
         p.user_target_sms = p.biz_practitioner_strike_team_details.SmsTargetOf(practitioner_id:user_member_id);
         }
+      v.distribution_list_email = new StringBuilder();
+      v.distribution_list_sms = new StringBuilder();
       }
 
     // / <summary>
@@ -320,7 +326,6 @@ namespace UserControl_strike_team_deployment_agreements
       (
       string deployment_id,
       string service_strike_team_management_footprint,
-      bool be_ok_to_config_strike_team_deployments,
       bool be_more_than_examiner
       )
       {
@@ -356,20 +361,20 @@ namespace UserControl_strike_team_deployment_agreements
 
     private void BuildDistributionListAndRegisterPostBackControls()
       {
-      p.distribution_list_email = k.EMPTY;
-      p.distribution_list_sms = k.EMPTY;
+      v.distribution_list_email.Clear();
+      v.distribution_list_sms.Clear();
       TableCellCollection tcc;
       for (var i = new k.subtype<int>(0, DataGrid_control.Items.Count); i.val < i.LAST; i.val++)
         {
         tcc = DataGrid_control.Items[i.val].Cells;
         if ((tcc[Static.TCI_SELECT_FOR_QUICKMESSAGE].FindControl("CheckBox_selected") as CheckBox).Checked)
           {
-          p.distribution_list_email += (tcc[Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
-          p.distribution_list_sms += (tcc[Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY);
+          v.distribution_list_email.Append((tcc[Static.TCI_EMAIL_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY));
+          v.distribution_list_sms.Append((tcc[Static.TCI_SMS_TARGET].Text + k.COMMA_SPACE).Replace("&nbsp;,",k.EMPTY));
           }
         ScriptManager.GetCurrent(Page).RegisterPostBackControl((tcc[Static.TCI_SELECT].Controls[0]) as LinkButton);
         }
-      Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? p.distribution_list_email : p.distribution_list_sms).TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
+      Label_distribution_list.Text = (RadioButtonList_quick_message_mode.SelectedValue == "email" ? v.distribution_list_email : v.distribution_list_sms).ToString().TrimEnd(new char[] {Convert.ToChar(k.COMMA),Convert.ToChar(k.SPACE)});
       }
 
     protected void Button_send_Click(object sender, EventArgs e)
@@ -378,8 +383,7 @@ namespace UserControl_strike_team_deployment_agreements
         {
         BuildDistributionListAndRegisterPostBackControls();
         var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
-        var distribution_list = (be_email_mode ? p.distribution_list_email : p.distribution_list_sms);
-        if (distribution_list.Length > 0)
+        if (Label_distribution_list.Text.Length > 0)
           {
           var attribution = k.EMPTY;
           if (be_email_mode)
@@ -394,7 +398,7 @@ namespace UserControl_strike_team_deployment_agreements
           k.SmtpMailSend
             (
             from:ConfigurationManager.AppSettings["sender_email_address"],
-            to:distribution_list,
+            to:Label_distribution_list.Text,
             subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
             message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
             be_html:false,
@@ -433,6 +437,7 @@ namespace UserControl_strike_team_deployment_agreements
 
     protected void RadioButtonList_quick_message_mode_SelectedIndexChanged(object sender, EventArgs e)
       {
+      BuildDistributionListAndRegisterPostBackControls();
       if (RadioButtonList_quick_message_mode.SelectedValue == "email")
         {
         Literal_quick_message_kind_email.Visible = true;
@@ -442,7 +447,6 @@ namespace UserControl_strike_team_deployment_agreements
         TableRow_subject.Visible = true;
         TextBox_quick_message_body.Columns = 72;
         TextBox_quick_message_body.Rows = 18;
-        Label_distribution_list.Text = p.distribution_list_email;
         }
       else
         {
@@ -453,9 +457,7 @@ namespace UserControl_strike_team_deployment_agreements
         TableRow_subject.Visible = false;
         TextBox_quick_message_body.Columns = 40;
         TextBox_quick_message_body.Rows = 4;
-        Label_distribution_list.Text = p.distribution_list_sms;
         }
-      BuildDistributionListAndRegisterPostBackControls();
       }
 
     } // end TWebUserControl_strike_team_deployment_agreements

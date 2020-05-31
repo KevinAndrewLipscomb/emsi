@@ -6,15 +6,13 @@ using Class_db;
 using Class_db_trail;
 using kix;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
 using System.Web.UI.WebControls;
-using UserControl_drop_down_date;
 
 namespace Class_db_strike_team_deployment_logs
   {
   public class TClass_db_strike_team_deployment_logs: TClass_db
     {
+
     private class strike_team_deployment_log_summary
       {
       public string id;
@@ -206,17 +204,14 @@ namespace Class_db_strike_team_deployment_logs
     internal object Summary(string id)
       {
       Open();
-      var dr =
+      using var my_sql_command = new MySqlCommand
         (
-        using var my_sql_command = new MySqlCommand
-          (
-          "SELECT *"
-          + " FROM strike_team_deployment_log"
-          + " where id = '" + id + "'",
-          connection
-          );
-        my_sql_command.ExecuteReader()
+        "SELECT *"
+        + " FROM strike_team_deployment_log"
+        + " where id = '" + id + "'",
+        connection
         );
+      var dr = my_sql_command.ExecuteReader();
       dr.Read();
       var the_summary = new strike_team_deployment_log_summary()
         {

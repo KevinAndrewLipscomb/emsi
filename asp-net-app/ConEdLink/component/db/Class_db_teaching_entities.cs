@@ -118,6 +118,7 @@ namespace Class_db_teaching_entities
       return result;
       }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1806:Do not ignore method results")]
     public bool Get
       (
       string id,
@@ -311,6 +312,7 @@ namespace Class_db_teaching_entities
       return result;
       }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types")]
     internal void ImportLatestFromEmsrs(ArrayList recs)
       {
       if (recs.Count > 0)
@@ -356,16 +358,16 @@ namespace Class_db_teaching_entities
             transaction = connection.BeginTransaction();
             try
               {
-              using var my_sql_command = new MySqlCommand("select 1 from teaching_entity where emsrs_id = '" + emsrs_id + "'",connection,transaction);
-              if (my_sql_command.ExecuteScalar() == null)
+              using var my_sql_command_1 = new MySqlCommand("select 1 from teaching_entity where emsrs_id = '" + emsrs_id + "'",connection,transaction);
+              if (my_sql_command_1.ExecuteScalar() == null)
                 {
-                using var my_sql_command = new MySqlCommand("insert teaching_entity set emsrs_id = NULLIF('" + emsrs_id + "',''), " + childless_field_assignments_clause,connection,transaction);
-                my_sql_command.ExecuteNonQuery();
+                using var my_sql_command_2 = new MySqlCommand("insert teaching_entity set emsrs_id = NULLIF('" + emsrs_id + "',''), " + childless_field_assignments_clause,connection,transaction);
+                my_sql_command_2.ExecuteNonQuery();
                 }
               else
                 {
-                using var my_sql_command = new MySqlCommand("update teaching_entity set " + childless_field_assignments_clause + " where emsrs_id = '" + emsrs_id + "'",connection,transaction);
-                my_sql_command.ExecuteNonQuery();
+                using var my_sql_command_3 = new MySqlCommand("update teaching_entity set " + childless_field_assignments_clause + " where emsrs_id = '" + emsrs_id + "'",connection,transaction);
+                my_sql_command_3.ExecuteNonQuery();
                 }
               transaction.Commit();
               }

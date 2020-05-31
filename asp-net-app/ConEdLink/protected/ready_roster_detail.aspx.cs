@@ -13,32 +13,15 @@ using System;
 using System.Collections;
 using System.Configuration;
 using System.Drawing;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace ready_roster_detail
   {
-  public struct p_type
-    {
-    public bool be_noncurrent_practitioners_on_roster;
-    public bool be_sort_order_ascending;
-    public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
-    public TClass_biz_coned_offerings biz_coned_offerings;
-    public TClass_biz_counties biz_counties;
-    public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
-    public TClass_biz_practitioners biz_practitioners;
-    public TClass_biz_regions biz_regions;
-    public string coned_offering_id;
-    public TClass_msg_protected.ready_roster_detail incoming;
-    public string lcds_content_xml;
-    public k.decimal_nonnegative length;
-    public k.int_nonnegative num_attendees;
-    public string region_code;
-    public string sort_order;
-    }
-
   public partial class TWebForm_ready_roster_detail: ki_web_ui.page_class
     {
-    private static class ready_roster_detail_Static
+
+    private static class Static
       {
       public const int TCI_LAST_NAME = 0;
       public const int TCI_FIRST_NAME = 1;
@@ -71,7 +54,31 @@ namespace ready_roster_detail
       internal const int TCI_LCDS_FORM_TYPE_ID = 18;
       }
 
+    private struct p_type
+      {
+      public bool be_noncurrent_practitioners_on_roster;
+      public bool be_sort_order_ascending;
+      public TClass_biz_coned_offering_rosters biz_coned_offering_rosters;
+      public TClass_biz_coned_offerings biz_coned_offerings;
+      public TClass_biz_counties biz_counties;
+      public TClass_biz_eval_summary_tallies biz_eval_summary_tallies;
+      public TClass_biz_practitioners biz_practitioners;
+      public TClass_biz_regions biz_regions;
+      public string coned_offering_id;
+      public TClass_msg_protected.ready_roster_detail incoming;
+      public k.decimal_nonnegative length;
+      public k.int_nonnegative num_attendees;
+      public string region_code;
+      public string sort_order;
+      }
+
+    private struct v_type
+      {
+      public StringBuilder lcds_content_xml;
+      }
+
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
+    private v_type v; // Volatile instance Variable container
 
     private void Bind()
       {
@@ -230,6 +237,8 @@ namespace ready_roster_detail
 
     protected void Button_submit_to_emsrs_Click(object sender, EventArgs e)
       {
+      Bind();
+      var lcds_content_xml_string = v.lcds_content_xml.ToString();
       var application_name = ConfigurationManager.AppSettings["application_name"];
       var be_response_meaningful = true;
       var response = "Errors Found: 0  (Not really.  " + application_name + " is not an instance that actually makes changes to EMSRS.)";
@@ -237,7 +246,8 @@ namespace ready_roster_detail
         {
         try
           {
-          response = new EMSREGWebServices().ProcessConed("<CONEDRAW>" + p.lcds_content_xml + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
+          using var ems_reg_web_services = new EMSREGWebServices();
+          response = ems_reg_web_services.ProcessConed("<CONEDRAW>" + lcds_content_xml_string + "<Constraint><SecurityString>" + ConfigurationManager.AppSettings["strxml_security_string"] + "</SecurityString></Constraint></CONEDRAW>");
           }
         catch (Exception the_exception)
           {
@@ -261,7 +271,7 @@ namespace ready_roster_detail
             }
           else
             {
-            throw the_exception;
+            throw;
             }
           }
         }
@@ -293,7 +303,7 @@ namespace ready_roster_detail
             from:ConfigurationManager.AppSettings["sender_email_address"],
             to:ConfigurationManager.AppSettings["failsafe_recipient_email_address"],
             subject:"EMSRS coned cards submission response",
-            message_string:"[response]" + k.NEW_LINE + response + k.NEW_LINE + k.NEW_LINE + "[p.lcds_content_xml]" + k.NEW_LINE + p.lcds_content_xml.Replace("</Table><Table>","</Table>" + k.NEW_LINE + "<Table>")
+            message_string:"[response]" + k.NEW_LINE + response + k.NEW_LINE + k.NEW_LINE + "[p.lcds_content_xml]" + k.NEW_LINE + lcds_content_xml_string.Replace("</Table><Table>","</Table>" + k.NEW_LINE + "<Table>")
             );
           Alert
             (
@@ -311,12 +321,12 @@ namespace ready_roster_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        var instructor_hours_cell = e.Item.Cells[ready_roster_detail_Static.TCI_INSTRUCTOR_HOURS];
+        var instructor_hours_cell = e.Item.Cells[Static.TCI_INSTRUCTOR_HOURS];
         if (instructor_hours_cell.Text == "none")
           {
           LabelizeAndSetTextForeColor(instructor_hours_cell,Color.LightGray);
           }
-        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[ready_roster_detail_Static.TCI_STATUS_DESCRIPTION].Text))
+        if (!(new ArrayList {"Active","Probation","Suspended"}).Contains(e.Item.Cells[Static.TCI_STATUS_DESCRIPTION].Text))
           {
           e.Item.BackColor = Color.Gold;
           p.be_noncurrent_practitioners_on_roster = true;
@@ -332,29 +342,31 @@ namespace ready_roster_detail
       {
       if (new ArrayList {ListItemType.AlternatingItem,ListItemType.Item,ListItemType.EditItem,ListItemType.SelectedItem}.Contains(e.Item.ItemType))
         {
-        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OLDCERT].Attributes.Add("style","mso-number-format:\\@");
-        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REGION].Attributes.Add("style","mso-number-format:\\@");
-        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Attributes.Add("style","mso-number-format:\\@");
-        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HOURS].Attributes.Add("style","mso-number-format:\\@");
-        e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COUNTY].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[Static.TCI_LCDS_OLDCERT].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[Static.TCI_LCDS_REGION].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[Static.TCI_LCDS_COURSE].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[Static.TCI_LCDS_HOURS].Attributes.Add("style","mso-number-format:\\@");
+        e.Item.Cells[Static.TCI_LCDS_COUNTY].Attributes.Add("style","mso-number-format:\\@");
         //
-        p.lcds_content_xml +=
+        v.lcds_content_xml.Append
+          (
           "<Table>"
-        +   "<HEADER>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HEADER].Text + "</HEADER>"
-        +   "<DOB>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DOB].Text + "</DOB>"
-        +   "<VALID>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_VALID].Text + "</VALID>"
-        +   "<OLDCERT>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_OLDCERT].Text,k.safe_hint_type.NUM) + "</OLDCERT>"
-        +   "<LEVEL1>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_LEVEL1].Text + "</LEVEL1>"
-        +   "<REGION>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REGION].Text,k.safe_hint_type.NUM) + "</REGION>"
-        +   "<COURSE>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COURSE].Text,k.safe_hint_type.NUM) + "</COURSE>"
-        +   "<CLASS>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_CLASS].Text + "</CLASS>"
-        +   "<HOURS>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_HOURS].Text,k.safe_hint_type.NUM) + "</HOURS>"
-        +   "<DATEFINAL>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_DATEFINAL].Text,k.safe_hint_type.DATE_TIME) + "</DATEFINAL>"
-        +   "<SSN />"
-        +   "<REMED>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_REMED].Text + "</REMED>"
-        +   "<COUNTY>" + k.Safe(e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_COUNTY].Text,k.safe_hint_type.NUM) + "</COUNTY>"
-        +   "<SEND>" + e.Item.Cells[ready_roster_detail_Static.TCI_LCDS_SEND].Text + "</SEND>"
-        + "</Table>";
+          +   "<HEADER>" + e.Item.Cells[Static.TCI_LCDS_HEADER].Text + "</HEADER>"
+          +   "<DOB>" + e.Item.Cells[Static.TCI_LCDS_DOB].Text + "</DOB>"
+          +   "<VALID>" + e.Item.Cells[Static.TCI_LCDS_VALID].Text + "</VALID>"
+          +   "<OLDCERT>" + k.Safe(e.Item.Cells[Static.TCI_LCDS_OLDCERT].Text,k.safe_hint_type.NUM) + "</OLDCERT>"
+          +   "<LEVEL1>" + e.Item.Cells[Static.TCI_LCDS_LEVEL1].Text + "</LEVEL1>"
+          +   "<REGION>" + k.Safe(e.Item.Cells[Static.TCI_LCDS_REGION].Text,k.safe_hint_type.NUM) + "</REGION>"
+          +   "<COURSE>" + k.Safe(e.Item.Cells[Static.TCI_LCDS_COURSE].Text,k.safe_hint_type.NUM) + "</COURSE>"
+          +   "<CLASS>" + e.Item.Cells[Static.TCI_LCDS_CLASS].Text + "</CLASS>"
+          +   "<HOURS>" + k.Safe(e.Item.Cells[Static.TCI_LCDS_HOURS].Text,k.safe_hint_type.NUM) + "</HOURS>"
+          +   "<DATEFINAL>" + k.Safe(e.Item.Cells[Static.TCI_LCDS_DATEFINAL].Text,k.safe_hint_type.DATE_TIME) + "</DATEFINAL>"
+          +   "<SSN />"
+          +   "<REMED>" + e.Item.Cells[Static.TCI_LCDS_REMED].Text + "</REMED>"
+          +   "<COUNTY>" + k.Safe(e.Item.Cells[Static.TCI_LCDS_COUNTY].Text,k.safe_hint_type.NUM) + "</COUNTY>"
+          +   "<SEND>" + e.Item.Cells[Static.TCI_LCDS_SEND].Text + "</SEND>"
+          + "</Table>"
+          );
         }
       }
 
@@ -374,7 +386,7 @@ namespace ready_roster_detail
 
     protected void LinkButton_gen_lcds_Click(object sender, EventArgs e)
       {
-      ExportToExcel(Page,p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary)),StringOfControl(DataGrid_lcds));
+      ExportToExcel(p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary)),StringOfControl(DataGrid_lcds));
       }
 
     protected override void OnInit(EventArgs e)
@@ -398,7 +410,6 @@ namespace ready_roster_detail
         p.be_noncurrent_practitioners_on_roster = false;
         p.be_sort_order_ascending = true;
         p.incoming = Message<TClass_msg_protected.ready_roster_detail>(folder_name:"protected",aspx_name:"ready_roster_detail");
-        p.lcds_content_xml = k.EMPTY;
         p.num_attendees = new k.int_nonnegative();
         p.region_code = Session["region_code"].ToString();
         p.sort_order = "last_name%,first_name,middle_initial,certification_number,birth_date";
@@ -410,6 +421,7 @@ namespace ready_roster_detail
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
+      v.lcds_content_xml = new StringBuilder();
 //
 //ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
@@ -420,7 +432,7 @@ namespace ready_roster_detail
       if (!IsPostBack)
         {
         Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - ready_roster_detail";
-        var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code,k.EMPTY);
+        var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code);
         Literal_course_title.Text = p.biz_coned_offerings.CourseTitleOf(p.incoming.summary);
         Literal_class_number.Text = p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary));
         Literal_location.Text = p.biz_coned_offerings.LocationOf(p.incoming.summary);
@@ -443,8 +455,10 @@ namespace ready_roster_detail
         TableRow_ratings_header.Visible = (eval_summary_mode_description == "SAEMS");
         TableRow_ratings_body.Visible = TableRow_ratings_header.Visible;
         //
-        var hash_table = new Hashtable();
-        hash_table["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary);
+        var hash_table = new Hashtable
+          {
+          ["coned_offering_id"] = p.biz_coned_offerings.IdOf(p.incoming.summary)
+          };
         HyperLink_print_roster.NavigateUrl = "~/protected/hardcopy_roster.aspx?" + ShieldedQueryStringOfHashtable(hash_table);
         //
         Bind();

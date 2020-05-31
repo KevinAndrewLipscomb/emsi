@@ -14,7 +14,8 @@ namespace UserControl_per_deployment_iap_vehicles
   {
   public partial class TWebUserControl_per_deployment_iap_vehicles: ki_web_ui.usercontrol_class
     {
-    public static class UserControl_per_deployment_iap_vehicles_Static
+
+    private static class Static
       {
       public const int TCI_TACTICAL_NAME = 0;
       public const int TCI_TRANSPONDER_NAME = 1;
