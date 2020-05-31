@@ -184,6 +184,7 @@ namespace UserControl_role
             if (p.biz_roles.Get(name, out soft_hyphenation_text, out pecking_order))
             {
                 TextBox_name.Text = name;
+                p.role_name = name;
                 TextBox_soft_hyphenation_text.Text = soft_hyphenation_text;
                 TextBox_pecking_order.Text = pecking_order;
                 TextBox_name.Enabled = false;
