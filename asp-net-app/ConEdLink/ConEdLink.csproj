@@ -786,7 +786,6 @@
     <Content Include="protected\regional_staffer_overview.aspx" />
     <Content Include="protected\template\notification\corruption_notification.txt" />
     <Content Include="unpublished.config" />
-    <Content Include="libman.json" />
     <None Include="noninteractive\.crontab" />
     <Content Include="protected\Web.config" />
     <Content Include="usercontrol\app\UserControl_about.ascx" />
