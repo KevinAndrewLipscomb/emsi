@@ -120,7 +120,6 @@ namespace login
                 SessionSet("user_id",user_id);
                 SessionSet("username", username);
                 SessionSet("password_reset_email_address",p.biz_users.PasswordResetEmailAddressOfId(user_id));
-                p.biz_users.RecordSuccessfulLogin(Session["user_id"].ToString());
                 FormsAuthentication.SetAuthCookie(username, CheckBox_keep_me_logged_in.Checked);
                 Response.Redirect("~/protected/overview.aspx");
             }
