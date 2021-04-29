@@ -1,9 +1,11 @@
 using Class_biz_members;
+using Class_biz_subjoined_attributes;
 using Class_biz_user;
 using Class_biz_users;
 using kix;
 using System;
 using System.Configuration;
+using UserControl_capture_subjoined_attributes;
 using UserControl_establish_membership;
 using UserControl_member_binder;
 
@@ -11,6 +13,14 @@ namespace overview
   {
   public partial class TWebForm_overview: ki_web_ui.page_class
     {
+    private struct p_type
+      {
+      public TClass_biz_members biz_members;
+      public TClass_biz_subjoined_attributes biz_subjoined_attributes;
+      public TClass_biz_user biz_user;
+      public TClass_biz_users biz_users;
+      } // end p_type
+
     private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
         // / <summary>
@@ -38,9 +48,10 @@ namespace overview
             switch(NatureOfLanding(InstanceId() + ".p"))
             {
                 case nature_of_visit_type.VISIT_INITIAL:
+                    p.biz_members = new TClass_biz_members();
+                    p.biz_subjoined_attributes = new TClass_biz_subjoined_attributes();
                     p.biz_user = new TClass_biz_user();
                     p.biz_users = new TClass_biz_users();
-                    p.biz_members = new TClass_biz_members();
                     BeginBreadCrumbTrail();
                     if (p.biz_users.BeStalePassword(p.biz_user.IdNum()))
                     {
@@ -57,14 +68,18 @@ namespace overview
                     break;
             }
             if (p.biz_members.IdOfUserId(p.biz_user.IdNum()).Length == 0)
-            {
-                // Display controls appropriate ONLY to nonmembers.
-                AddIdentifiedControlToPlaceHolder(((TWebUserControl_establish_membership)(LoadControl("~/usercontrol/app/UserControl_establish_membership.ascx"))), "UserControl_establish_membership", PlaceHolder_establish_membership);
-            }
+              {
+              // Display controls appropriate ONLY to nonmembers.
+              AddIdentifiedControlToPlaceHolder(((TWebUserControl_establish_membership)(LoadControl("~/usercontrol/app/UserControl_establish_membership.ascx"))), "UserControl_establish_membership", PlaceHolder_control);
+              }
+            else if(p.biz_subjoined_attributes.BeAnyImplementedSince(p.biz_user.LastLoginTime()))
+              {
+              AddIdentifiedControlToPlaceHolder(((TWebUserControl_capture_subjoined_attributes)(LoadControl("~/usercontrol/app/UserControl_capture_subjoined_attributes.ascx"))), "UserControl_capture_subjoined_attributes", PlaceHolder_control);
+              }
             else
-            {
-                AddIdentifiedControlToPlaceHolder(((TWebUserControl_member_binder)(LoadControl("~/usercontrol/app/UserControl_member_binder.ascx"))), "UserControl_member_binder", PlaceHolder_member_binder);
-            }
+              {
+              AddIdentifiedControlToPlaceHolder(((TWebUserControl_member_binder)(LoadControl("~/usercontrol/app/UserControl_member_binder.ascx"))), "UserControl_member_binder", PlaceHolder_control);
+              }
 //
 // ScriptManager.GetCurrent(Page).EnablePartialRendering = false;
 //
@@ -74,13 +89,6 @@ namespace overview
         {
             SessionSet(InstanceId() + ".p", p);
         }
-
-        private struct p_type
-        {
-            public TClass_biz_user biz_user;
-            public TClass_biz_users biz_users;
-            public TClass_biz_members biz_members;
-        } // end p_type
 
     } // end TWebForm_overview
 
