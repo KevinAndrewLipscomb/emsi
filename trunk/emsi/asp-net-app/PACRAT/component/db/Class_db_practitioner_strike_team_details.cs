@@ -369,10 +369,13 @@ namespace Class_db_practitioner_strike_team_details
         +   " join strike_team_roster on (strike_team_roster.practitioner_id=member.id)"
         +   " join service affiliated_service on (affiliated_service.id=strike_team_roster.service_id)"
         +   " join strike_team_participation_level on (strike_team_participation_level.id=affiliated_service.strike_team_participation_level_id)"
+        +   " join county_region_map on (county_region_map.county_code=affiliated_service.county_code)"
+        +   " join region_code_name_map on (region_code_name_map.code=county_region_map.region_code)"
         + " where email_address is not null"
         +   " and TRIM(email_address) <> ''"
         +   " and strike_team_participation_level.description = 'Standing'"
         +   (do_limit_to_uncredentialed ? " and not (" + Class_db_practitioner_strike_team_details_Static.BE_TEXTABLE_EXPRESSION + " and " + TClass_db_practitioner_strike_team_details.BeCredentialedAsMemberExpression() + ")" : k.EMPTY)
+        +   " and be_pacrat_subscriber"
         + " group by practitioner_strike_team_detail.id"
         + " order by RAND()",
         connection
