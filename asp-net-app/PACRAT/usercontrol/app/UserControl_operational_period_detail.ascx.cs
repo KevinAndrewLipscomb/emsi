@@ -1,6 +1,7 @@
 using Class_biz_members;
 using Class_biz_patient_care_levels;
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_quick_messages;
 using Class_biz_strike_team_deployment_assignments;
 using Class_biz_strike_team_deployment_logs;
 using Class_biz_strike_team_deployment_members;
@@ -11,7 +12,6 @@ using Class_biz_user;
 using kix;
 using System;
 using System.Collections;
-using System.Configuration;
 using System.Text;
 using System.Web.UI.WebControls;
 
@@ -62,6 +62,7 @@ namespace UserControl_operational_period_detail
       public TClass_biz_members biz_members;
       public TClass_biz_patient_care_levels biz_patient_care_levels;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+      public TClass_biz_quick_messages biz_quick_messages;
       public TClass_biz_strike_team_deployment_assignments biz_strike_team_deployment_assignments;
       public TClass_biz_strike_team_deployment_logs biz_strike_team_deployment_logs;
       public TClass_biz_strike_team_deployment_members biz_strike_team_deployment_members;
@@ -317,29 +318,20 @@ namespace UserControl_operational_period_detail
     protected void Button_send_Click(object sender, EventArgs e)
       {
       BuildDistributionListAndRegisterPostBackControls();
-      var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
       if (Label_distribution_list.Text.Length > 0)
         {
-        var attribution = k.EMPTY;
-        if (be_email_mode)
-          {
-          attribution += "-- From "
-          + p.biz_user.Roles()[0] + k.SPACE
-          + p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()) + k.SPACE + p.biz_members.LastNameOfMemberId(Session["member_id"].ToString())
-          + " (" + p.biz_user.EmailAddress() + ")"
-          + " [via " + ConfigurationManager.AppSettings["application_name"] + "]" + k.NEW_LINE
-          + k.NEW_LINE;
-          }
-        k.SmtpMailSend
+        p.biz_quick_messages.Send
           (
-          from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:Label_distribution_list.Text,
-          subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
-          message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
-          be_html:false,
-          cc:k.EMPTY,
-          bcc:k.Safe(Literal_author_target.Text,k.safe_hint_type.EMAIL_ADDRESS),
-          reply_to:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? ConfigurationManager.AppSettings["bouncer_email_address"] : (RadioButtonList_reply_to.SelectedValue == "email" ? p.user_target_email : p.user_target_sms))
+          be_email_mode:(RadioButtonList_quick_message_mode.SelectedValue == "email"),
+          author_title_clause:p.biz_user.Roles()[0],
+          author_first_name:p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()),
+          author_last_name:p.biz_members.LastNameOfMemberId(Session["member_id"].ToString()),
+          author_target_email:p.user_target_email,
+          author_target_sms:p.user_target_sms,
+          distribution_list:Label_distribution_list.Text,
+          subject:TextBox_quick_message_subject.Text,
+          body:TextBox_quick_message_body.Text,
+          reply_mode:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? reply_mode_enum.BOUNCER : (RadioButtonList_reply_to.SelectedValue == "phone" ? reply_mode_enum.PHONE : reply_mode_enum.EMAIL))
           );
         TextBox_quick_message_subject.Text = k.EMPTY;
         TextBox_quick_message_body.Text = k.EMPTY;
@@ -478,6 +470,7 @@ namespace UserControl_operational_period_detail
         p.biz_members = new TClass_biz_members();
         p.biz_patient_care_levels = new TClass_biz_patient_care_levels();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+        p.biz_quick_messages = new TClass_biz_quick_messages();
         p.biz_strike_team_deployment_assignments = new TClass_biz_strike_team_deployment_assignments();
         p.biz_strike_team_deployment_logs = new TClass_biz_strike_team_deployment_logs();
         p.biz_strike_team_deployment_members = new TClass_biz_strike_team_deployment_members();

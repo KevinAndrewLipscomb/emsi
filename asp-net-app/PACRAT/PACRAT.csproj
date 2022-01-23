@@ -250,6 +250,7 @@
     <Compile Include="component\biz\Class_biz_practitioner_levels.cs" />
     <Compile Include="component\biz\Class_biz_practitioner_strike_team_details.cs" />
     <Compile Include="component\biz\Class_biz_privileges.cs" />
+    <Compile Include="component\biz\Class_biz_quick_messages.cs" />
     <Compile Include="component\biz\Class_biz_role_member_map.cs" />
     <Compile Include="component\biz\Class_biz_role_member_map_logs.cs" />
     <Compile Include="component\biz\Class_biz_role_notification_map.cs" />

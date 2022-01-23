@@ -2,13 +2,13 @@
 
 using Class_biz_members;
 using Class_biz_practitioner_strike_team_details;
+using Class_biz_quick_messages;
 using Class_biz_regions;
 using Class_biz_user;
 using Class_msg_protected;
 using kix;
 using System;
 using System.Collections;
-using System.Configuration;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,6 +37,7 @@ namespace UserControl_state_detail
       public bool be_sort_order_ascending;
       public TClass_biz_members biz_members;
       public TClass_biz_practitioner_strike_team_details biz_practitioner_strike_team_details;
+      public TClass_biz_quick_messages biz_quick_messages;
       public TClass_biz_regions biz_regions;
       public TClass_biz_user biz_user;
       public bool do_include_all_regions;
@@ -169,6 +170,7 @@ namespace UserControl_state_detail
         {
         p.biz_members = new TClass_biz_members();
         p.biz_practitioner_strike_team_details = new TClass_biz_practitioner_strike_team_details();
+        p.biz_quick_messages = new TClass_biz_quick_messages();
         p.biz_regions = new TClass_biz_regions();
         p.msg_protected_region_management = new TClass_msg_protected.region_management();
         p.biz_user = new TClass_biz_user();
@@ -307,29 +309,20 @@ namespace UserControl_state_detail
     protected void Button_send_Click(object sender, EventArgs e)
       {
       BuildDistributionListAndRegisterPostBackControls();
-      var be_email_mode = (RadioButtonList_quick_message_mode.SelectedValue == "email");
       if (Label_distribution_list.Text.Length > 0)
         {
-        var attribution = k.EMPTY;
-        if (be_email_mode)
-          {
-          attribution += "-- From "
-          + p.biz_user.Roles()[0] + k.SPACE
-          + p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()) + k.SPACE + p.biz_members.LastNameOfMemberId(Session["member_id"].ToString())
-          + " (" + p.biz_user.EmailAddress() + ")"
-          + " [via " + ConfigurationManager.AppSettings["application_name"] + "]" + k.NEW_LINE
-          + k.NEW_LINE;
-          }
-        k.SmtpMailSend
+        p.biz_quick_messages.Send
           (
-          from:ConfigurationManager.AppSettings["sender_email_address"],
-          to:Label_distribution_list.Text,
-          subject:(be_email_mode ? TextBox_quick_message_subject.Text : k.EMPTY),
-          message_string:attribution + k.Safe(TextBox_quick_message_body.Text,k.safe_hint_type.MEMO),
-          be_html:false,
-          cc:k.EMPTY,
-          bcc:k.Safe(Literal_author_target.Text,k.safe_hint_type.EMAIL_ADDRESS),
-          reply_to:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? ConfigurationManager.AppSettings["bouncer_email_address"] : (RadioButtonList_reply_to.SelectedValue == "email" ? p.user_target_email : p.user_target_sms))
+          be_email_mode:(RadioButtonList_quick_message_mode.SelectedValue == "email"),
+          author_title_clause:p.biz_user.Roles()[0],
+          author_first_name:p.biz_members.FirstNameOfMemberId(Session["member_id"].ToString()),
+          author_last_name:p.biz_members.LastNameOfMemberId(Session["member_id"].ToString()),
+          author_target_email:p.user_target_email,
+          author_target_sms:p.user_target_sms,
+          distribution_list:Label_distribution_list.Text,
+          subject:TextBox_quick_message_subject.Text,
+          body:TextBox_quick_message_body.Text,
+          reply_mode:(RadioButtonList_reply_to.SelectedValue == "bouncer" ? reply_mode_enum.BOUNCER : (RadioButtonList_reply_to.SelectedValue == "phone" ? reply_mode_enum.PHONE : reply_mode_enum.EMAIL))
           );
         TextBox_quick_message_subject.Text = k.EMPTY;
         TextBox_quick_message_body.Text = k.EMPTY;
