@@ -1,19 +1,15 @@
-using kix;
-using System;
-using System.Collections;
-using System.Web.Security;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-
 using Class_biz_members;
 using Class_biz_user;
 using Class_biz_user_member_map;
 using Class_biz_users;
+using kix;
+using System;
+using System.Collections;
+using System.Web.Security;
+using System.Web.UI.WebControls;
 
 namespace UserControl_user_member_mapping
-{
+  {
   public partial class TWebUserControl_user_member_mapping: ki_web_ui.usercontrol_class
     {
 
@@ -149,7 +145,7 @@ namespace UserControl_user_member_mapping
             if (Session[InstanceId() + ".p"] != null)
             {
                 p = (p_type)(Session[InstanceId() + ".p"]);
-                p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_UserControl_config_UserControl_users_and_matrices_binder_PlaceHolder_content"] as string) == "UserControl_user_member_mapping");
+                p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_UserControl_config_UserControl_users_and_mapping_binder_PlaceHolder_content"] as string) == "UserControl_user_member_mapping");
             }
             else
             {
@@ -172,8 +168,8 @@ namespace UserControl_user_member_mapping
         // / </summary>
         private void InitializeComponent()
         {
-            GridView_control.Sorting += new System.Web.UI.WebControls.GridViewSortEventHandler(GridView_control_Sorting);
-            GridView_control.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(GridView_control_RowDataBound);
+            GridView_control.Sorting += new GridViewSortEventHandler(GridView_control_Sorting);
+            GridView_control.RowDataBound += new GridViewRowEventHandler(GridView_control_RowDataBound);
             PreRender += TWebUserControl_user_member_mapping_PreRender;
         }
 
@@ -190,21 +186,23 @@ namespace UserControl_user_member_mapping
             return result;
         }
 
-        private void GridView_control_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType != DataControlRowType.EmptyDataRow)
-            {
-                e.Row.Cells[Static.CI_USER_ID].Visible = false;
-                e.Row.Cells[Static.CI_MEMBER_ID].Visible = false;
-            }
+    private void GridView_control_RowDataBound(object sender, GridViewRowEventArgs e)
+      {
       if (e.Row.RowType == DataControlRowType.DataRow)
         {
-        var image_button = (e.Row.Cells[Static.CI_IMITATE].FindControl("ImageButton_imitate") as ImageButton);
-        //image_button.Text = k.ExpandTildePath(image_button.Text);
+        var image_button = (e.Row.Cells[Static.CI_IMITATE].Controls[0] as ImageButton);
         image_button.ToolTip = "Imitate";
         RequireConfirmation(image_button,"The application will now allow you to imitate a subordinate user.  When you are done imitating the subordinate user, you must log out and log back in as yourself.");
         }
+      //
+      // Remove all cell controls from viewstate except for the one at TCI_USER_NAME.
+      //
+      foreach (TableCell cell in e.Row.Cells)
+        {
+        cell.EnableViewState = false;
         }
+      e.Row.Cells[Static.CI_USER_NAME].EnableViewState = true;
+      }
 
         private void GridView_control_Sorting(object sender, System.Web.UI.WebControls.GridViewSortEventArgs e)
         {
@@ -227,17 +225,20 @@ namespace UserControl_user_member_mapping
 
         }
 
-    protected void ImageButton_imitate_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+    protected void GridView_control_RowCommand(object sender, GridViewCommandEventArgs e)
       {
-      var username = k.Safe((sender as ImageButton).CommandArgument,k.safe_hint_type.HYPHENATED_UNDERSCORED_ALPHANUM);
-      //
-      Session.RemoveAll();
-      //
-      SessionSet("username",username);
-      SessionSet("user_id",p.biz_users.IdOf(username));
-      SessionSet("password_reset_email_address",p.biz_users.PasswordResetEmailAddressOfUsername(username));
-      FormsAuthentication.SetAuthCookie(username,createPersistentCookie:false);
-      Response.Redirect("~/protected/overview.aspx");
+      if (e.CommandName == "Imitate")
+        {
+        var username = k.Safe(GridView_control.Rows[Convert.ToInt32(e.CommandArgument)].Cells[Static.CI_USER_NAME].Text,k.safe_hint_type.HYPHENATED_UNDERSCORED_ALPHANUM);
+        //
+        Session.RemoveAll();
+        //
+        SessionSet("username",username);
+        SessionSet("user_id",p.biz_users.IdOf(username));
+        SessionSet("password_reset_email_address",p.biz_users.PasswordResetEmailAddressOfUsername(username));
+        FormsAuthentication.SetAuthCookie(username,createPersistentCookie:false);
+        Response.Redirect("~/protected/overview.aspx");
+        }
       }
 
     } // end TWebUserControl_user_member_mapping

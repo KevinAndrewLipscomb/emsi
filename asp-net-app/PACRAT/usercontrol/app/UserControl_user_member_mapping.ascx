@@ -3,24 +3,20 @@
 <table cellspacing="0" cellpadding="10" border="0">
   <tr>
     <td valign="top">
-      <asp:GridView id="GridView_control" runat="server" gridlines="Horizontal" cellpadding="5" allowsorting="True" emptydatatext="No mappings" bordercolor="Gainsboro" borderstyle="Solid" borderwidth="1px" autogeneratecolumns="False">
+      <asp:GridView id="GridView_control" runat="server" gridlines="Horizontal" cellpadding="5" allowsorting="True" emptydatatext="No mappings" bordercolor="Gainsboro" borderstyle="Solid" borderwidth="1px" autogeneratecolumns="False" OnRowCommand="GridView_control_RowCommand">
         <RowStyle font-size="Small"></RowStyle>
         <Columns>
-          <asp:BoundField datafield="member_id"></asp:BoundField>
+          <asp:BoundField datafield="member_id" visible="false"></asp:BoundField>
           <asp:BoundField datafield="member_name" headertext="Member" sortexpression="member_name%">
             <HeaderStyle horizontalalign="Left"></HeaderStyle>
             <ItemStyle horizontalalign="Left"></ItemStyle>
           </asp:BoundField>
-          <asp:BoundField datafield="user_id"></asp:BoundField>
+          <asp:BoundField datafield="user_id" visible="false"></asp:BoundField>
           <asp:BoundField datafield="user_name" headertext="User" sortexpression="user_name%">
             <HeaderStyle horizontalalign="Left"></HeaderStyle>
             <ItemStyle horizontalalign="Left"></ItemStyle>
           </asp:BoundField>
-          <asp:TemplateField Visible="false">
-            <ItemTemplate>
-              <asp:ImageButton ID="ImageButton_imitate" runat="server" CommandName="Select" CommandArgument='<%# Eval("user_name") %>' ImageUrl="~/protected/image/mask-16-16.png" OnClick="ImageButton_imitate_Click"></asp:ImageButton>
-            </ItemTemplate>
-          </asp:TemplateField>
+          <asp:ButtonField ButtonType="Image" CommandName="Imitate" ImageUrl="~/protected/image/mask-16-16.png" Visible="False" />
         </Columns>
         <HeaderStyle backcolor="WhiteSmoke"></HeaderStyle>
       </asp:GridView>
