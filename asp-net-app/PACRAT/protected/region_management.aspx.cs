@@ -542,9 +542,9 @@ namespace region_management
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - region_management";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - region_management";
         CheckBox_be_pacrat_subscriber.Checked = p.biz_regions.BePacratSubscriberOf(p.incoming.summary);
         CheckBox_be_pacrat_subscriber.Enabled = p.be_more_than_examiner;
         var max_spec_length = p.biz_members.MaxSpecLength(k.EMPTY);

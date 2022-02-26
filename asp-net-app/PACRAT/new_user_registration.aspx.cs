@@ -42,10 +42,10 @@ namespace new_user_registration
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - new_user_registration";
             switch(NatureOfVisit(InstanceId() + ".p"))
             {
                 case nature_of_visit_type.VISIT_INITIAL:
-                    Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - new_user_registration";
                     p.biz_users = new TClass_biz_users();
                     Label_application_name.Text = ConfigurationManager.AppSettings["application_name"];
                     TextBox_username.Focus();

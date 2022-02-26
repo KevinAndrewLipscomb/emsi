@@ -43,10 +43,10 @@ namespace change_password
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - change_password";
             switch(NatureOfVisit(InstanceId() + ".p"))
             {
                 case nature_of_visit_type.VISIT_INITIAL:
-                    Title = ConfigurationManager.AppSettings["application_name"] + " - change_password";
                     p.biz_users = new TClass_biz_users();
                     p.biz_user = new TClass_biz_user();
                     TextBox_nominal_password.Focus();

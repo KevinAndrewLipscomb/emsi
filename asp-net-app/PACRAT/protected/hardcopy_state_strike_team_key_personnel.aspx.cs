@@ -24,9 +24,9 @@ namespace hardcopy_state_strike_team_key_personnel
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - hardcopy_state_strike_team_key_personnel";
       if (!IsPostBack)
         {
-        Title = ConfigurationManager.AppSettings["application_name"] + " - hardcopy_state_strike_team_key_personnel";
         }
       }
 

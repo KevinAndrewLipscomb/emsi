@@ -32,7 +32,7 @@ namespace report_service_strike_team_roster
 
     protected void Page_Load(object sender, EventArgs e)
       {
-      Title = ConfigurationManager.AppSettings["application_name"] + " - report_service_strike_team_roster";
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - report_service_strike_team_roster";
       Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
       Label_application_name_2.Text = Label_application_name_1.Text;
       Image_uncredentialed.ImageUrl = k.ExpandAsperand(Image_uncredentialed.ImageUrl);

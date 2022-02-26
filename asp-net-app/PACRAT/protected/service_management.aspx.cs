@@ -554,9 +554,9 @@ namespace service_management
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - service_management";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - service_management";
         var participation_level_id = p.biz_services.StrikeTeamParticipationLevelIdOf(p.incoming.summary);
         p.biz_strike_team_participation_levels.BindDirectToListControl
           (

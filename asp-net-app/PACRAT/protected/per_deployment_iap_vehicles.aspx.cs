@@ -26,9 +26,9 @@ namespace per_deployment_iap_vehicles
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - per_deployment_iap_vehicles";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - per_deployment_iap_vehicles";
         }
       }
 
