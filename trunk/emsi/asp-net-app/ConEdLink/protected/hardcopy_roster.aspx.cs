@@ -20,9 +20,9 @@ namespace hardcopy_roster
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - hardcopy_roster";
             if (!IsPostBack)
             {
-                Title = ConfigurationManager.AppSettings["application_name"] + " - hardcopy_roster";
                 Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
                 Literal_timestamp.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 Literal_status.Text = p.biz_coned_offerings.StatusOf(p.summary);

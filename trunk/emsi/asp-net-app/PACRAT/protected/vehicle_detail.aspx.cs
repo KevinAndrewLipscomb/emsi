@@ -39,9 +39,9 @@ namespace vehicle_detail
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - vehicle_detail";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - vehicle_detail";
         Literal_service.Text = p.biz_services.NameOf(p.incoming.service_id);
         }
       }

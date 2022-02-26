@@ -29,7 +29,7 @@ namespace report_service_strike_team_officers_in_region
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
-      Title = ConfigurationManager.AppSettings["application_name"] + " - report_service_strike_team_officers_in_region";
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - report_service_strike_team_officers_in_region";
       Literal_emsrs_code.Text = p.region_emsrs_code;
       Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
       Label_application_name_2.Text = Label_application_name_1.Text;

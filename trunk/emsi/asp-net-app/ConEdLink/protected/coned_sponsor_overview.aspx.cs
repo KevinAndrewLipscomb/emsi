@@ -13,9 +13,9 @@ namespace coned_sponsor_overview
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_sponsor_overview";
             if (!IsPostBack)
             {
-                Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_sponsor_overview";
                 BeginBreadCrumbTrail();
                 if (new TClass_biz_accounts().BeStalePassword(user_kind:"coned_sponsor",user_id:Session["coned_sponsor_user_id"].ToString()))
                   {

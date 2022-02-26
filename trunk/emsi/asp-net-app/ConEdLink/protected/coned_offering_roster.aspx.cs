@@ -769,10 +769,9 @@ namespace coned_offering_roster
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_offering_roster";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_offering_roster";
-        //
         if (p.do_prevent_adding_practitioner_to_roster)
           {
           Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];

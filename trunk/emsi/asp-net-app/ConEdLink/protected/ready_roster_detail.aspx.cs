@@ -429,9 +429,9 @@ namespace ready_roster_detail
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - ready_roster_detail";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - ready_roster_detail";
         var max_spec_length = p.biz_practitioners.MaxSpecLength(p.region_code);
         Literal_course_title.Text = p.biz_coned_offerings.CourseTitleOf(p.incoming.summary);
         Literal_class_number.Text = p.biz_coned_offerings.StandardSafeRenditionOf(p.biz_coned_offerings.ClassNumberOf(p.incoming.summary));

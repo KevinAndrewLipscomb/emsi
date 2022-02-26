@@ -36,11 +36,11 @@ namespace salogin
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - salogin";
             switch(NatureOfVisitUnlimited(InstanceId() + ".p"))
             {
                 case nature_of_visit_type.VISIT_COLD_CALL:
                 case nature_of_visit_type.VISIT_INITIAL:
-                    Title = ConfigurationManager.AppSettings["application_name"] + " - salogin";
                     p.biz_users = new TClass_biz_users();
                     RequireConfirmation(LinkButton_forgot_password,"Are you sure you want a new password?");
                     TextBox_username.Focus();

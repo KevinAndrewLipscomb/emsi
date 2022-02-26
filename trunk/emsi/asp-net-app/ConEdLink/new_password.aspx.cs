@@ -18,6 +18,7 @@ namespace new_password
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - new_password";
             if (!IsPostBack)
             {
                 if (Request.ServerVariables["URL"] == Request.CurrentExecutionFilePath)
@@ -26,7 +27,6 @@ namespace new_password
                     Server.Transfer("~/login.aspx");
                 }
                 var application_name = ConfigurationManager.AppSettings["application_name"];
-                Title = ConfigurationManager.AppSettings["application_name"] + " - new_password";
                 var biz_accounts = new TClass_biz_accounts();
                 Label_user_name.Text = Session[Session["target_user_table"].ToString() + "_name"].ToString();
                 var email_address = biz_accounts.EmailAddressByKindId(Session["target_user_table"].ToString(), Session[Session["target_user_table"].ToString() + "_user_id"].ToString());

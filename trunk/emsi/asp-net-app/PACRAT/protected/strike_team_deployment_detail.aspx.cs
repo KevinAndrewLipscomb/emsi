@@ -40,9 +40,9 @@ namespace strike_team_deployment_detail
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - strike_team_deployment_detail";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - strike_team_deployment_detail";
         }
       InjectPersistentClientSideScript();
       }

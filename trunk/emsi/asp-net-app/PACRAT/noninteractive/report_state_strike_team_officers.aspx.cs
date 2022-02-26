@@ -22,7 +22,7 @@ namespace report_state_strike_team_officers
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
-      Title = ConfigurationManager.AppSettings["application_name"] + " - report_state_strike_team_officers";
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - report_state_strike_team_officers";
       Label_application_name_1.Text = ConfigurationManager.AppSettings["application_name"];
       Label_application_name_2.Text = Label_application_name_1.Text;
       Image_uncredentialed.ImageUrl = k.ExpandAsperand(Image_uncredentialed.ImageUrl);

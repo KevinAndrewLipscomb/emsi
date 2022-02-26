@@ -29,9 +29,9 @@ namespace coned_sponsor_detail
 
     protected void Page_Load(object sender, System.EventArgs e)
       {
+      Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_sponsor_detail";
       if (!IsPostBack)
         {
-        Title = Server.HtmlEncode(ConfigurationManager.AppSettings["application_name"]) + " - coned_sponsor_detail";
         Literal_sponsor_name.Text = p.incoming.name;
         Literal_application_name.Text = ConfigurationManager.AppSettings["application_name"];
         Literal_application_name_2.Text = Literal_application_name.Text;
