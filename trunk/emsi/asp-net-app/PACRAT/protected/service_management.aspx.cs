@@ -676,7 +676,7 @@ namespace service_management
 
     protected void CustomValidator_short_name_ServerValidate(object source, ServerValidateEventArgs args)
       {
-      var designator_with_competing_short_name = p.biz_services.DesignatorCompetingShortName(p.affiliate_num,k.Safe(TextBox_short_name.Text,k.safe_hint_type.MAKE_MODEL));
+      var designator_with_competing_short_name = p.biz_services.DesignatorWithCompetingShortName(p.affiliate_num,k.Safe(TextBox_short_name.Text,k.safe_hint_type.MAKE_MODEL));
       CustomValidator_short_name.ErrorMessage += designator_with_competing_short_name;
       args.IsValid = (designator_with_competing_short_name.Length == 0);
       }
