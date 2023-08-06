@@ -1,2 +1,0 @@
-
-You're assigned to <vehicle_designator/> for <nature/> from <start/> to <end/>. -<application_name/>

@@ -1,2 +1,0 @@
-
-You've been DEMOBILIZED from Strike Team <actual_vs_drill_indicator/> "<deployment_name/>". -<application_name/>

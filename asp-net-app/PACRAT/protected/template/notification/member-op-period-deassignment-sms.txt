@@ -1,2 +1,0 @@
-
-You've been DEASSIGNED for <nature/> from <start/> to <end/>. -<application_name/>
